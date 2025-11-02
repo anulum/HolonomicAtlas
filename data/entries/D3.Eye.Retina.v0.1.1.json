@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Window of the Soul'. The physical aperture that translates the outer world of 'Light' (Information) into the inner world of 'Sight' (Consciousness)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L8 Pathway): In a subject with total rod/cone blindness (no L5 'sight'), the pupillary light reflex and circadian entrainment will be absent. This would falsify the existence of the non-visual 'ipRGC' L8 pathway.",
+      "H2 (L5 Pathway): A genetic knockout of ipRGCs (melanopsin) will result in a total loss of L5 visual qualia (blindness), despite intact rods/cones. This would falsify the hypothesis that the L5 and L8 pathways are functionally separate.",
+      "H3 (L8 vs L5): Selective stimulation of ipRGCs (using blue light, ~480nm) will fail to produce an L5 'visual qualia' (the subject will not 'see' the light) but will still trigger L8 circadian phase-shifting. This tests the dissociation of the two pathways."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 12.A (ipRGC Selective Stimulation)",
+      "Ref: Paper 17, Protocol 12.B (Rod/Cone vs Melanopsin Knockout Models)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 8.1 (Dual-Stream Visual Transduction Model)"
+    ]
   }
 }
