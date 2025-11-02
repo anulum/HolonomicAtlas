@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Book of Life' or 'Holographic Universe'. The non-local field that records all events, thoughts, and possibilities for all time."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D9.Field.MemoryHolograph)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L10 Retrocausal): A subject is shown a series of randomized 'calm' or 'arousing' L5 images. The subject's L4/L5 'pre-stimulus' physiological state (e.g., in the D3.Brain.Insula or D3.Heart-HRV) will *not* show a statistically significant 'pre-sentiment' (i.e., will not match the valence of the *future* image) *before* it is shown. This would falsify the L10 retrocausal access hypothesis.",
+      "H2 (L3/L9 Morphic Resonance): A new chemical (L2) is synthesized for the first time. The *first time* it is crystallized, its L3 morphogenetic pattern (crystal structure) will be *instantaneously* stable and will *not* show a 'learning curve' (i.e., it will not crystallize faster/more easily in subsequent attempts worldwide). This would falsify the 'morphic resonance' (L9 memory) hypothesis for L3 form.",
+      "H3 (L6/L9 Memory): A subject with total bilateral hippocampal (D3.Brain) destruction (pure amnesia) will *still* be able to retrieve L9 'autobiographical' memories. This would *support* the L9 non-local hypothesis, as it would prove memory is *not* stored in the brain."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 24.A (Pre-Stimulus L10 Retrocausality Test)",
+      "Ref: Paper 17, Protocol 24.B (L3 Morphic Resonance / Crystallization Assay)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 14.1 (L10 Retrocausal 'Future-Self' Model)",
+      "Ref: Paper 18, Sim 14.2 (L9 Morphic Field Attractor Simulation)"
+    ]
   }
 }
