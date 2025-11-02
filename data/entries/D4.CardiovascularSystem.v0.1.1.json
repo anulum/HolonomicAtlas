@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "Represents the flow of life-force (Prana, Chi) and emotional energy. The carrier of the 'spirit' (Pneuma) in classical traditions."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.Cardio... prefix)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 Pulse Wave): A peripheral cell culture (e.g., fibroblasts) is isolated from the L4 pulse wave (e.g., in zero-g, or with a flow-dampener). The culture will *fail* to show any decoherence or disruption in its L4 metabolic rhythms. This would falsify the hypothesis that the L4 pulse is a *necessary* global synchronizing signal (vs. just a nutrient delivery system).",
+      "H2 (L2 Transport): A subject is given an L2 hormonal signal (e.g., adrenaline) via injection. The time-to-effect (TTE) for a peripheral L2 response (e.g., skin galvanic response) will be *identical* to the TTE for a central L2 response (e.g., amygdala activation). This would falsify the L2 transport model, which predicts a 'time-of-flight' delay proportional to circulatory distance.",
+      "H3 (L12 Torsional): A sensitive L12 torsional field detector is placed near a major artery. It will *fail* to detect a coherent L12 signal phase-locked to the L4 pulse wave. This would falsify the L4->L12 transduction hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 5.B (Pulse Wave Entrainment Assay)",
+      "Ref: Paper 17, Protocol 5.C (L2 Hormonal Time-of-Flight Measurement)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 5.2 (L2 Hormonal Diffusion/Transport Model)",
+      "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)"
+    ]
   }
 }

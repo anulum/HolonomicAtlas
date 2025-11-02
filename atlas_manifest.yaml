@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.26"
-LastModified: "2025-11-02T05:17:00Z"
+GlobalVersion: "1.0.27"
+LastModified: "2025-11-02T05:19:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D4.ANS.v0.1.1.json"
-  NextAction: "Validation Pass: D4.ANS complete. **Next Action:** Populate the 'Validation' section for 'D4.CardiovascularSystem' to test its L2 'Hormonal Transport Network' and L4 'Pulse Wave' (global oscillator) hypotheses (per Paper 2, 4, 17)."
+  LastFileEdited: "./data/entries/D4.CardiovascularSystem.v0.1.1.json"
+  NextAction: "Validation Pass: D4.CardiovascularSystem complete. **Next Action:** Populate the 'Validation' section for 'D4.EndocrineSystem' to test its L2 'Slow Network' (hormonal) and L3 'Morphogenetic Control' hypotheses (per Paper 2, 3, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -63,11 +63,11 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.ANS"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.CNS"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.CardiovascularSystem"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D4.DMN"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
