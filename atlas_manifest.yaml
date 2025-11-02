@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.5"
-LastModified: "2025-11-02T06:33:00Z"
+GlobalVersion: "1.1.6"
+LastModified: "2025-11-02T06:36:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D1.Mitochondrion.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D1.Mitochondrion complete. **Next Action:** Populate the 'Formalism' section for 'D2.ConnectiveTissue', using `Paper 1` & `Paper 4` to define its KeyEquations_LaTeX (Piezoelectric Network, Tensegrity) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D2.ConnectiveTissue.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D2.ConnectiveTissue complete. **Next Action:** Populate the 'Formalism' section for 'D3.Heart', using `Paper 1` & `Paper 5` to define its KeyEquations_LaTeX (Quantum Pacemaker, HRV) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -21,11 +21,11 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D1.Astrocyte"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D1.Mitochondrion"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D1.Neuron"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D2.ConnectiveTissue"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D3.Brain"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brain.ACC"
