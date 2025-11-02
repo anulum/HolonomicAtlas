@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.19"
-LastModified: "2025-11-02T05:02:00Z"
+GlobalVersion: "1.0.20"
+LastModified: "2025-11-02T05:03:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D0.Exosome.v0.1.1.json"
-  NextAction: "Validation Pass: D0.Exosome complete. **Next Action:** Populate the 'Validation' section for 'D1.Neuron' to test its L1 'Quantum State Reduction' (firing) and L4 'Oscillator' (rhythm generation) hypotheses (per Paper 1, 4, 17)."
+  LastFileEdited: "./data/entries/D1.Neuron.v0.1.1.json"
+  NextAction: "Validation Pass: D1.Neuron complete. **Next Action:** Populate the 'Validation' section for 'D1.Astrocyte' to test its L2 'Homeostat' (tripartite synapse) and L4 'Slow Control' (calcium wave) hypotheses (per Paper 2, 4, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -15,7 +15,7 @@ Handoff:
 # Tracks every entry in the Atlas. (37 Drafts, 0 Stubs)
 MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D0.Exosome"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D0.Microtubule"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D1.Astrocyte"
@@ -23,7 +23,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D1.Mitochondrion"
     Version: "0.1.0"
   - HolonomicID: "scpn://atlas.v1/D1.Neuron"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D2.ConnectiveTissue"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brain"
@@ -47,7 +47,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualCortex"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamDorsal"
-    Version:B "0.1.1"
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamVentral"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brainstem.NTS"

@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "A 'Node of Mind'. A single point of light in the 'Great Web' of consciousness."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L1->L2 Firing): A neuron's L2 action potential (firing) will be shown to be *fully* described by the classical Hodgkin-Huxley model (ion channels). The timing of its firing will show *no* quantum-statistical deviation (e.g., non-Poissonian statistics) that would imply an L1 quantum-reduction trigger (from D0.Microtubule).",
+      "H2 (L1->L5 Anesthesia): A general anesthetic (which ablates L5 qualia) will be applied to a single neuron. It will *fail* to disrupt the L1 coherence of its internal D0.Microtubules (see D0.Microtubule.Validation.H2). This would dissociate neuronal L1 coherence from L5 consciousness.",
+      "H3 (L4 Oscillator): A single, isolated neuron (in-vitro) will *fail* to produce a stable, endogenous L4 oscillation (rhythm). This would falsify its role as a fundamental 'oscillator' and suggest L4 rhythms are *purely* an emergent property of the *network*."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 3.A (Neuronal Firing Quantum Statistics)",
+      "Ref: Paper 17, Protocol 1.B (Anesthetic-Coherence Dissociation)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 1.2 (Anesthetic-Tubulin Q-Compute Interaction)",
+      "Ref: Paper 18, Sim 4.1 (Single-Neuron Oscillator Model)"
+    ]
   }
 }
