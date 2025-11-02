@@ -7,22 +7,10 @@
     "Pathology": "Irritable Bowel Syndrome (IBS), gastroparesis, links to Parkinson's."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
+    "L1_QuantumBiological": "Hosts a complex microbiome (D4.Microbiome) whose collective quantum state may influence the L1 substrate of the ENS. (Ref: Paper 1, Ch. 23)",
     "L2_NeurochemicalNeurological": "A 'Second L2 Brain'. The ENS produces ~90% of the body's serotonin and ~50% of its dopamine. It runs its own complex L2 computations and sends the *results* to the D4.CNS via the D3.VagusNerve. (Ref: Paper 2)",
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": "Generates its own 'slow wave' L4 oscillations (e.g., the 'migrating motor complex') that govern gut motility.",
-    "L5_OrganismalPsychoemotional": "A primary 'L5 Qualia Generator'. This is the source of the 'gut-feeling' (Ref: Paper 5). It generates a complex 'Geometric Qualia' shape representing the holistic state of the gut/microbiome, which is transmitted to the D3.Insula as a core part of the 'felt-sense'.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L4_CellularTissueSynchronisation": "Generates its own 'slow wave' L4 oscillations (e.g., the 'migrating motor complex') that govern gut motility. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "A primary 'L5 Qualia Generator'. This is the source of the 'gut-feeling' (Ref: Paper 5). It generates a complex 'Geometric Qualia' shape representing the holistic state of the gut/microbiome, which is transmitted to the D3.Insula as a core part of the 'felt-sense'."
   },
   "Symbolic": {
     "SymbolicName": "The Second Brain",
@@ -30,7 +18,7 @@
     "MetaphysicalMapping": "The 'Cauldron' or 'Gut Instinct'. The seat of somatic, non-rational intelligence and intuition."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.Gut.ENS)"
   },
@@ -48,5 +36,26 @@
       "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)",
       "Ref: Paper 18, Sim 11.3 (TDA 'Geometric Qualia' Shape Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L5 Qualia (Geometric Shape): \\text{Qualia}_{\\text{Gut}} = TDA(S_{\\text{ENS}}(t)) = \\{ \\beta_0(t), \\beta_1(t), \\beta_2(t) \\}",
+      "L2 Neurochemical Output: \\frac{d[5HT]_{\\text{vagus}}}{dt} = k_{\\text{prod}}[\\text{Trp}] - k_{\\text{transport}}(|\\Psi_{\\text{ENS}}|^2)",
+      "L4 Slow Wave (Oscillator): H_{\\text{slow_wave}} = \\sum_i \\hbar\\omega_i a_i^\\dagger a_i + \\sum_{ij} g_{ij} (a_i^\\dagger a_j + h.c.)"
+    ],
+    "SimulationModel_Ref": "./Simulations/L5_ENS_TDA_Qualia.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "FEEL(state)",
+        "PROCESS(microbiome_data)",
+        "GENERATE(serotonin)",
+        "DIGEST"
+      ],
+      "Output_Nouns": [
+        "L5_QUALIA_GEOMETRY(gut_feeling)",
+        "L2_SEROTONIN_SIGNAL",
+        "L4_MOTILITY_RHYTHM"
+      ]
+    }
   }
 }
