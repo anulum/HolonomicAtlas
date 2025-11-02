@@ -7,22 +7,10 @@
     "Pathology": "Implicated in the spread of cancer (metastasis) and neurodegenerative proteins (e.g., tau, alpha-synuclein)."
   },
   "SCPN": {
-    "L1_QuantumBiological": "Provides a 'shielded' environment for transporting L1 coherent molecules (e.g., quantum-entangled RNA) between cells. (Ref: Paper 1)",
+    "L1_QuantumBiological": "Provides a 'shielded' environment for transporting L1 coherent molecules (e.g., quantum-entangled RNA) between cells. (Ref: Paper 1, Ch. 8)",
     "L2_NeurochemicalNeurological": "A primary 'L2 Packet Delivery' system. Transports L2 information (proteins, miRNA) that is not transmissible via standard synaptic signaling.",
     "L3_GenomicEpigeneticMorphogenetic": "The primary carrier for L3 morphogenetic signals (e.g., miRNA, transcription factors) that epigenetically reprogram the recipient cell.",
-    "L4_CellularTissueSynchronisation": "Synchronizes L4 tissue states by delivering 'average state' information across cell populations.",
-    "L5_OrganismalPsychoemotional": null,
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L4_CellularTissueSynchronisation": "Synchronizes L4 tissue states by delivering 'average state' information across cell populations."
   },
   "Symbolic": {
     "SymbolicName": "The Information Packet",
@@ -30,7 +18,7 @@
     "MetaphysicalMapping": "A 'Messenger Orb'. The physical mechanism for non-local information transfer (cellular telepathy)."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21"
   },
@@ -46,5 +34,28 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 1.3 (Exosome Quantum Shielding Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "Quantum Cargo State: |\\Psi_{\\text{exosome}} \\rangle = \\sum_i \\alpha_i |\\text{RNA}_i \\rangle \\otimes |\\text{protein}_i \\rangle",
+      "Coherence Protection: \\tau_{\\text{coh}}^{\\text{exo}} = \\tau_0 \\exp(E_{\\text{vesicle}} / k_B T)",
+      "Quantum Targeting: P_{\\text{binding}} = | \\langle \\text{target}|M_{\\text{surface}}|\\Psi_{\\text{targeting}} \\rangle |^2",
+      "Transfer Fidelity: F_{\\text{transfer}} = | \\langle \\Psi_{\\text{final}}|\\Psi_{\\text{initial}} \\rangle |^2 > 0.8"
+    ],
+    "SimulationModel_Ref": "./Simulations/L1_Exosome_QuantumMail.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "ENCODE(cargo)",
+        "PACKAGE",
+        "ADDRESS(target)",
+        "RELEASE"
+      ],
+      "Output_Nouns": [
+        "QUANTUM_PAYLOAD",
+        "L3_REPROGRAM_SIGNAL",
+        "L1_COHERENCE_TRANSFER",
+        "TARGETED_MESSAGE"
+      ]
+    }
   }
 }
