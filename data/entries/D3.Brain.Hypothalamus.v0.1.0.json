@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.Hypothalamus",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "A small region of the brain located at the base, just below the Thalamus. It links the nervous system to the endocrine system via the pituitary gland.",
+    "Function": "The 'Master Regulator' of the body. Controls homeostasis by regulating body temperature, hunger, thirst, fatigue, sleep, and circadian rhythms. It is the primary control center for the Autonomic Nervous System (D4.ANS) and the Endocrine System (D4.EndocrineSystem).",
+    "Pathology": "Hypothalamic dysfunction, leading to disorders in appetite (obesity), temperature (hypothermia), or sleep (narcolepsy)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Master Controller'. This is the 'CEO' of L2, integrating L2 neural signals (from the limbic system) and L2 blood-borne signals (hormones, glucose) to produce L2 'command' signals (e.g., releasing-hormones) for the D4.EndocrineSystem. (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "Contains the SCN (D3.Brain.SCN), the body's 'Master Clock' which drives L4 circadian synchrony. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "The 'L5 Homeostatic Driver'. This is where the L5 'felt-sense' of *need* (hunger, thirst, fatigue) is generated, creating the primary motivation for the L16 loop to act.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": "Contains the SCN, the L8 entrainment hub.",
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The 'Set-Point' for the L16 'I=Model(I)' loop. It defines the 'desired state' (homeostasis) that the entire L16 system is trying to predict and maintain. (Ref: Paper 5)"
+  },
+  "Symbolic": {
+    "SymbolicName": "The Master Regulator",
+    "VIBRANA_Key": "VIB-KEY-[HYPOTHALAMUS-TBD]",
+    "MetaphysicalMapping": "The 'Alchemist's Workshop' where the four elements (L5 needs) are balanced to create the 'quintessence' (a stable organism)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.Hypothalamus)"
+  }
+}

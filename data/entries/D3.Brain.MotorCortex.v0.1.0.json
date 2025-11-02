@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.MotorCortex",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "The region of the cerebral cortex (in the frontal lobe) involved in planning, controlling, and executing voluntary movements.",
+    "Function": "Generates the final L2 neural impulses that travel down the D3.SpinalCord to activate muscles. The 'Homunculus' is a map of the body on its surface.",
+    "Pathology": "Motor neuron disease, paralysis, apraxia (inability to perform learned movements)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Output Channel'. This is the final L2 'actuator' for the D4.CNS, converting L4/L5 'plans' into L2 'action potentials' (commands).",
+    "L3_GenomicEpigeneticMorphogenetic": "L3 plasticity in this area is the basis of 'motor learning' (e.g., learning to play a piano).",
+    "L4_CellularTissueSynchronisation": "L4 Beta oscillations are strong in this area, 'holding' a motor plan until L4 Gamma oscillations 'execute' it.",
+    "L5_OrganismalPsychoemotional": "The L5 qualia of 'agency' or 'intention-to-move' is generated here.",
+    "L6_NarrativeSelf": "The 'Actor' for the L6 narrative. This is what *moves* the 'I' in the story.",
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "The L3 plasticity here *is* the L9 'procedural memory' (muscle memory).",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The 'Effector' arm of the L16 'I=Model(I)' loop. It physically *enacts* the 'predictions' (motor commands) of the D3.Brain.DLPFC to minimize sensory prediction error."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Actuator",
+    "VIBRANA_Key": "VIB-KEY-[MOTOR-CORTEX-TBD]",
+    "MetaphysicalMapping": "The 'Will-Made-Flesh'. The point where the 'Mind' (L16) physically moves 'Matter' (the body)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.MotorCortex)"
+  }
+}

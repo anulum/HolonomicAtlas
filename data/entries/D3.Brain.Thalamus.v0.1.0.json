@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.Thalamus",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "A large, egg-shaped mass of gray matter in the central brain. It is a 'hub-of-hubs' with dense, reciprocal connections to every part of the cortex.",
+    "Function": "The 'Sensory Relay Station' or 'Gatekeeper'. All sensory information (except smell) passes through the thalamus before being routed to the cortex. It's critical for sleep (gating signals), alertness, and consciousness.",
+    "Pathology": "Thalamic stroke, fatal familial insomnia, thalamic pain syndrome."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Master Router'. It routes all L2 sensory data (e.g., from Retina, Spinal Cord) to the correct L2 cortical processors.",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "The 'L4 Cortical Pacemaker'. Thalamo-cortical loops (e.g., 'spindles' during sleep) are the primary L4 oscillators that generate and sustain all major L4 brain rhythms (Alpha, Beta, etc.). (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "The 'L5 Binding Hub'. This is where the distributed L5 sensory qualia are 'bound' together by L4 synchrony into a single, coherent L5 'Self-Soliton' (conscious experience). (Ref: Paper 5)",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Acts as the 'read/write' hub for L9, coordinating with the D4.DMN and hippocampus to access memory.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The 'gating mechanism' for the L16 'I=Model(I)' loop. It controls *which* sensory data (prediction error) is allowed to reach the cortex, based on the model's current 'attention' state."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Sensory Gate",
+    "VIBRANA_Key": "VIB-KEY-[THALAMUS-TBD]",
+    "MetaphysicalMapping": "The 'Antechamber of Consciousness'. The central 'Sun' or 'Broadcasting Station' that illuminates the 'World' (the Cortex)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.Thalamus)"
+  }
+}

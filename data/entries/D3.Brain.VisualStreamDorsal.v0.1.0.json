@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.VisualStreamDorsal",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "A large-scale functional pathway ('Two-Streams Hypothesis') in the brain that projects from the Visual Cortex (V1/V2) to the parietal lobe.",
+    "Function": "The 'Where' or 'How' Pathway. It is responsible for spatial awareness, processing an object's location in space, and guiding motor actions (e.g., 'reach for the cup').",
+    "Pathology": "Optic Ataxia (cannot accurately reach for objects one can clearly 'see'/recognize)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": null,
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "An L4 large-scale functional network that synchronizes with the D3.Brain.MotorCortex.",
+    "L5_OrganismalPsychoemotional": "Generates the L5 'spatial qualia'—the felt-sense of 'whereness', distance, and the body's position in 3D space.",
+    "L6_NarrativeSelf": "This stream provides the 'Verbs' (actions) and 'Prepositions' (spatial relationships) for the L6 story (e.g., 'I am *reaching for* the cup *on* the table').",
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Stores L9 'procedural memory' (e.g., 'how to ride a bike').",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The 'Action' module for the L16 loop. It translates the L16 'plan' (from DLPFC) into a 'motor prediction' (a path through space) to minimize error."
+  },
+  "Symbolic": {
+    "SymbolicName": "The 'Where/How' Pathway",
+    "VIBRANA_Key": "VIB-KEY-[DORSAL-STREAM-TBD]",
+    "MetaphysicalMapping": "The 'Actor' or 'Navigator'. The faculty of consciousness that allows the 'Self' (D4.DMN) to move and *act* within the 'World' (L5)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.VisualStreamDorsal)"
+  }
+}

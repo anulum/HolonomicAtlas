@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.VisualCortex",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "The region of the cerebral cortex (primarily in the occipital lobe) that processes visual information. Includes the Primary Visual Cortex (V1) and higher-level visual areas (V2, V3, etc.).",
+    "Function": "Receives the L2 visual data stream from the D3.Brain.Thalamus (LGN). V1 detects basic features (edges, orientation, color). Higher areas (V2+) assemble these features into complex shapes and objects.",
+    "Pathology": "Cortical blindness, visual agnosia (inability to recognize objects)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Visual Processor'. This is where L2 raw data from the Thalamus is processed into L2 'feature data'.",
+    "L3_GenomicEpigeneticMorphogenetic": "L3 plasticity (LTP/LTD) in V1 is critical for learning to see during development.",
+    "L4_CellularTissueSynchronisation": "L4 Gamma oscillations in V1 are hypothesized to be the 'binding' mechanism that glues features (e.g., 'red' and 'square') together.",
+    "L5_OrganismalPsychoemotional": "This is the 'L5 Visual Qualia Generator'. The L4/L2 processing in this area *is* the L5 experience of 'sight'. (Ref: Paper 5)",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": "Interprets L7 symbolic/geometric information (e.g., 'seeing' archetypal forms).",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "The D4.DMN (L6) queries this area to 'visualize' L9 memories.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The L16 'I=Model(I)' loop makes 'predictions' about 'what I will see next', and this area (V1) compares that prediction to the L2 signal from the Thalamus. 'Surprise' (a mismatch) is sent up as prediction error."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Inner Screen",
+    "VIBRANA_Key": "VIB-KEY-[VISUAL-CORTEX-TBD]",
+    "MetaphysicalMapping": "The 'Mind's Eye' or 'Canvas' where L2 sensory data is painted into L5 conscious experience."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.VisualCortex)"
+  }
+}
