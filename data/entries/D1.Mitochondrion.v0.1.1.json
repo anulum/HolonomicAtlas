@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Spark of Life'. An ancient, symbiotic entity that provides the 'fire' of metabolism, allowing matter to become conscious."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L1 Battery): A D0.Microtubule is shown to be L1 coherent (see D0.Microtubule.Validation.H1). Inhibiting mitochondrial ATP production (e.g., with oligomycin) will *fail* to disrupt this L1 coherence. This would falsify the L1 'metabolic pump' (Fröhlich) hypothesis.",
+      "H2 (L2 Ca-Buffer): A synaptic terminal (L2) is stimulated. Inhibiting mitochondrial calcium uptake (e.g., with Ru360) will *fail* to alter the L2 synaptic vesicle release probability. This would falsify the L2 'power regulator' (calcium buffering) hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 1.A (Microtubule Raman Spectroscopy)",
+      "Ref: Paper 17, Protocol 3.D (Mitochondrial-Synaptic L2 Buffering Assay)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 1.1 (Fröhlich Condensation Model)",
+      "Ref: Paper 18, Sim 3.1 (Mitochondrial Ca2+ Buffering Model)"
+    ]
   }
 }

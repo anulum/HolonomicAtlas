@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.21"
-LastModified: "2025-11-02T05:05:00Z"
+GlobalVersion: "1.0.22"
+LastModified: "2025-11-02T05:07:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D1.Astrocyte.v0.1.1.json"
-  NextAction: "Validation Pass: D1.Astrocyte complete. **Next Action:** Populate the 'Validation' section for 'D1.Mitochondrion' to test its L1 'Quantum Battery' (ATP-driven coherence) and L2 'Power Regulator' (calcium buffering) hypotheses (per Paper 1, 2, 17)."
+  LastFileEdited: "./data/entries/D1.Mitochondrion.v0.1.1.json"
+  NextAction: "Validation Pass: D1.Mitochondrion complete. **Next Action:** Populate the 'Validation' section for 'D3.SpinalCord' to test its L4 'Central Pattern Generator' (CPG) and L9 'Somatic Memory' (reflex) hypotheses (per Paper 4, 9, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -19,9 +19,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D0.Microtubule"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D1.Astrocyte"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D1.Mitochondrion"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D1.Neuron"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D2.ConnectiveTissue"
