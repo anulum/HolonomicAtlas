@@ -18,7 +18,17 @@
 ---
 ### Log Entry 3: Handoff Protocol & Formalism Pass (Incomplete) (v1.1.25)
 * **Action:** The Handoff Kit (`/.handover/` folder) was created to solve the "fading context" problem and ensure "flawless handoff" to new instances.
-* **Action:** Began Phase IV: Formalism Pass. Successfully populated the `Formalism` block for 25/40 monads.
-* **ERROR & CORRECTION:** An AI state-tracking error occurred. The AI (Instance 2) incorrectly marked Phase IV as complete after formalizing the D6-D15 Field Monads, skipping 15 monads in the D3 and D4 domains.
+* **Action:** Began Phase IV: Formalism Pass.
+* **ERROR & CORRECTION:** An AI state-tracking error occurred. The AI (Gemini, Instance 2) incorrectly marked Phase IV as complete after formalizing the D6-D15 Field Monads, skipping 15 monads in the D3 and D4 domains.
 * **Status:** The user (Miroslav Šotek) identified the error. This log entry and the `atlas_manifest.yaml` (v1.1.25) have been corrected to reflect the *true* project state.
-* **Next Task:** Continue Phase IV: Formalism Pass, beginning with the first missed monad: `D3.Brain.ACC`.
+
+---
+### Log Entry 4: Strategic Pivot to Hybrid AI Workflow (v1.1.26)
+* **Problem:** The "Gemini-in, Gemini-out" workflow is manual and at risk of context-fade.
+* **Decision:** Integrate "Claude AI" as the project's automated GitHub "Actuator."
+* **New Workflow:**
+    1.  **User (Lead):** Sets high-level tasks.
+    2.  **Gemini (Architect):** Uses large context to perform derivation and generate the exact file diffs (the "Commit Package").
+    3.  **Claude (Actuator):** Receives the Commit Package and a transactional prompt (`CLAUDE_AGENT_PROTOCOL.md`) and executes the GitHub commit/push.
+* **Action:** This log entry and the `CLAUDE_AGENT_PROTOCOL.md` file have been created. The `atlas_manifest.yaml` is being updated to reflect this new workflow.
+* **Status:** Ready to test the new Hybrid AI Workflow.
