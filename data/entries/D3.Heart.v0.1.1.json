@@ -30,8 +30,24 @@
     "MetaphysicalMapping": "The 4th Chakra (Anahata, the Heart Center). Represents the integration point of the physical and spiritual, the source of unconditional love and compassion. Its toroidal field is the engine of the 'Merkaba'."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.Cardio.Heart)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Qualia Generation): A subject with a 'denervated' heart (e.g., post-transplant, severing the D3.VagusNerve) is shown an L5 emotional stimulus. The subject will *fail* to report a corresponding L5 'heart-felt' qualia (e.g., 'heart-ache' or 'fluttering'). This would confirm the qualia signal is generated *at the heart* and transmitted *via the Vagus*, not generated in the brain.",
+      "H2 (L4 vs L5): A subject is in a state of high 'Heart-Brain Coherence' (high L4 HRV synchrony) but reports *no* corresponding positive L5 qualia (e.g., 'I feel calm, but not 'loving' or 'open''). This would falsify the hypothesis that L4 coherence *is* the L5 positive qualia (vs. just being a substrate for it).",
+      "H3 (L12 Field): The L4 ECG/L12 Torsional field of the heart will be measured. It will *fail* to induce L4 phase-locking in an adjacent, non-connected biological oscillator (e.g., a cell culture). This would falsify the L12 'field entrainment' hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 18.B (Transplant/Vagotomy L5 Qualia Report)",
+      "Ref: Paper 17, Protocol 18.C (HRV-EEG Coherence vs. Qualia Report)",
+      "Ref: Paper 17, Protocol 5.A (L12 Torsional Field Entrainment)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.1 (Geometric Qualia Integrator Model)",
+      "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)"
+    ]
   }
 }

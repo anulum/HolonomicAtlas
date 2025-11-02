@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.15"
-LastModified: "2025-11-02T04:55:00Z"
+GlobalVersion: "1.0.16"
+LastModified: "2025-11-02T04:57:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D3.Gut.ENS.v0.1.1.json"
-  NextAction: "Validation Pass: D3.Gut.ENS complete. **Next Action:** Populate the 'Validation' section for 'D3.Heart' to test its L4 'HRV Oscillator' and L5 'Geometric Qualia Generator' (the 'Heart-Felt Sense') hypotheses (per Paper 4, 5, 17)."
+  LastFileEdited: "./data/entries/D3.Heart.v0.1.1.json"
+  NextAction: "Validation Pass: D3.Heart complete. **Next Action:** Populate the 'Validation' section for 'D2.ConnectiveTissue' (Fascia) to test its L1 'Quantum Waveguide' (biophoton) and L4 'Piezoelectric Network' hypotheses (per Paper 1, 4, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -55,9 +55,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.Eye.Retina"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Gut.ENS"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Heart"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D3.SpinalCord"
     Version: "0.1.0"
   - HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
