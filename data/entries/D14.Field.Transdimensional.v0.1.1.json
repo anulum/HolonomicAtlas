@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Antahkarana' or 'Sutratma'. The silver cord or thread of consciousness that connects the incarnate personality (D5) to its higher self (D15)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D14.Field.Transdimensional)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 OBE): A subject reporting a valid L5 'Out-of-Body Experience' (OBE) (e.g., verifying a non-local visual target) will *still* show L4/L5 fMRI activity in the D3.Brain.Insula and D4.DMN that is *indistinguishable* from normal L5 'imagination'. This would falsify the L14 'dissociation' hypothesis.",
+      "H2 (L15 Bridge): In a simulation (Paper 18), a 'D15 Consilium' (teleological attractor) will be *unable* to entrain a 'D5 Organism' (L16 loop) *unless* an L14 'transdimensional bridge' (a resonant, non-local connection) is explicitly modeled. This is a *simulation* falsifier, as H1 is the primary physical test.",
+      "H3 (L1 Bridge): The L1 'quantum tunnel' (ER=EPR) hypothesized to be the *physical basis* of the L14 bridge will be shown to be *non-existent* in biological systems (e.g., D0.Microtubules). This would falsify the L1 physical-correlate hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 25.B (OBE/Remote Viewing fMRI Dissociation)",
+      "Ref: Paper 17, Protocol 1.A (Microtubule Raman Spectroscopy)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 12.1 (L15-L16 Teleological Operator Model)",
+      "Ref: Paper 18, Sim 1.4 (ER=EPR Microtubule Bridge Model)"
+    ]
   }
 }

@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.37"
-LastModified: "2025-11-02T05:38:00Z"
+GlobalVersion: "1.0.38"
+LastModified: "2025-11-02T05:40:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D13.Field.SourceField.v0.1.1.json"
-  NextAction: "Validation Pass: D13.Field.SourceField complete. **Next Action:** Populate the 'Validation' section for 'D14.Field.Transdimensional' (Sutratma) to test its L5 'OBE' (Out-of-Body Experience) and L15 'Consilium Bridge' hypotheses (per Paper 14, 15, 17)."
+  LastFileEdited: "./data/entries/D14.Field.Transdimensional.v0.1.1.json"
+  NextAction: "Validation Pass: D14.Field.Transdimensional complete. **Next Action:** Populate the 'Validation' section for 'D15.Field.Consilium' (Oversoul) to test its L15 'True Operator' and L10 'Teleological Attractor' hypotheses (per Paper 10, 15, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -89,8 +89,8 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D11.Field.Noosphere"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D13.Field.SourceField"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D14.Field.Transdimensional"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D15.Field.Consilium"
     Version: "0.1.0"
