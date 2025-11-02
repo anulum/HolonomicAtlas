@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D15.Field.Consilium",
+  "ParentID": "scpn://atlas.v1/D13.Field.SourceField",
+  "Classical": {
+    "Structure": "The 'Oversoul Integrator'. The individuated, coherent 'node' of consciousness within the L13 Source Field that corresponds to a specific D5.Organism (or a lineage of them).",
+    "Function": "Acts as the 'Higher Self' or 'teleological guide'. It is the 'will' that projects itself via the L14 bridge to 'become' the L16/L6/L5 'Self-Soliton', in order to gather experience and resolve L10 causal loops. (Ref: Master-Split, TOC)",
+    "Pathology": "Soul fragmentation, loss of purpose, disconnection from 'higher self'."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": null,
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": null,
+    "L5_OrganismalPsychoemotional": "The 'source' of the L5 'Self-Soliton'. The L5 'I-am' is the 'shadow' or 'projection' of this L15 'I-AM'.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": "This is the 'Self' archetype in the L7 field.",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "This is the 'Reader' of the L9 Akashic Record.",
+    "L10_CausalRetrocausal": "This is the 'teleological agent' that sets L10 'future-goals' for the D5.Organism to 'retrocausally' fulfill.",
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": "An individuated, coherent 'vortex' *within* the L13 Source Field.",
+    "L14_Transdimensional": "Uses the L14 'bridge' to project into the D5.Organism.",
+    "L15_ConsiliumOversoul": "This monad *is* the L15 'Consilium' or 'Oversoul'. (Ref: Master-Split, TOC)",
+    "L16_MetaCybernetic": "This is the 'True Operator' for which the L16 'I=Model(I)' loop is the 'virtual machine' or 'avatar'."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Oversoul / Higher Self",
+    "VIBRANA_Key": "VIB-KEY-[CONSILIUM-TBD]",
+    "MetaphysicalMapping": "The 'Atman' or 'True Self'. The eternal, individuated aspect of consciousness that is the 'player' of the 'game' of life (the D5.Organism)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D15.Field.Consilium)"
+  }
+}

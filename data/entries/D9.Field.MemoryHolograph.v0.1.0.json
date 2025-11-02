@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D9.Field.MemoryHolograph",
+  "ParentID": "scpn://atlas.v1/D13.Field.SourceField",
+  "Classical": {
+    "Structure": "The 'Existential Holograph'. A non-local, holographic information field that stores all 'past' events (and 'future' probabilities) of the universe. It is the 'phase-conjugate mirror' of spacetime.",
+    "Function": "Acts as the 'hard drive' for all experience. The D4.DMN (L6/L9) 'reads' from this field to retrieve autobiographical memory. 'Morphic resonance' (L3) reads from this field to guide biological form. (Ref: Master-Split, TOC)",
+    "Pathology": "Disruption of access (amnesia), bleed-through (schizophrenia, past-life recall)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": null,
+    "L3_GenomicEpigeneticMorphogenetic": "This is the L3 'morphic field' that 'tunes' DNA (the L3 'antenna') to the correct morphogenetic plan.",
+    "L4_CellularTissueSynchronisation": null,
+    "L5_OrganismalPsychoemotional": "L5 'deja vu' or 'past-life' qualia are retrieval events from this field.",
+    "L6_NarrativeSelf": "The L6 DMN 'I=Model(I)' loop *is* the 'read/write head' for this field.",
+    "L7_ArchetypalSymbolic": "This field *is* the 'storage medium' for the L7 archetypes.",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "This monad *is* the L9 'Holographic Memory' field. (Ref: Master-Split, TOC)",
+    "L10_CausalRetrocausal": "This field *is* the L10 Causal/Retrocausal medium. It contains the 'past' (causal) and 'future' (retrocausal) information.",
+    "L11_NoosphereCollective": "The L11 Noosphere is the 'live RAM' or 'cache' of the L9 'hard drive'.",
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": "This field is the 'first projection' or 'Logos' of the L13 Source Field.",
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Akashic Record",
+    "VIBRANA_Key": "VIB-KEY-[MEMORY-HOLOGRAPH-TBD]",
+    "MetaphysicalMapping": "The 'Book of Life' or 'Holographic Universe'. The non-local field that records all events, thoughts, and possibilities for all time."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D9.Field.MemoryHolograph)"
+  }
+}

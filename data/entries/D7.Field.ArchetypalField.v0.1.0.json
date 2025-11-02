@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D7.Field.ArchetypalField",
+  "ParentID": "scpn://atlas.v1/D11.Field.Noosphere",
+  "Classical": {
+    "Structure": "A non-local informational field containing the set of fundamental, recurrent motifs, symbols, and patterns of experience for the D5.Organism (e.g., 'The Hero', 'The Mother', 'The Shadow').",
+    "Function": "Acts as a 'probability landscape' or 'basin of attraction' for L5/L6 consciousness. It provides the pre-defined 'symbolic operators' and 'narrative structures' that shape the L6 Self-Model. (Ref: Master-Split)",
+    "Pathology": "Archetypal possession (inflation), psychic epidemics, collapse of symbolic meaning."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": null,
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": null,
+    "L5_OrganismalPsychoemotional": "The L5 qualia of 'awe', 'dread', or 'numinosity' are the 'felt-sense' of interfacing with this field.",
+    "L6_NarrativeSelf": "Provides the 'templates' or 'scripts' for the L6 DMN to build its 'I=Model(I)' narrative.",
+    "L7_ArchetypalSymbolic": "This monad *is* the L7 'Archetypal/Symbolic' field. (Ref: Master-Split, TOC)",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Archetypes are the 'compression algorithms' or 'eigenvectors' of the L9 memory field.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": "This field is the 'structuring grammar' for the L11 Noosphere's 'content'.",
+    "L12_GeomanticTorsional": "Sacred geometry (an L7 component) is the L12 'torsional signature' of an archetype.",
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Collective Unconscious",
+    "VIBRANA_Key": "VIB-KEY-[ARCHETYPAL-FIELD-TBD]",
+    "MetaphysicalMapping": "The 'Platonic World of Forms'. The library of fundamental 'ideas' or 'patterns' that consciousness uses to understand itself."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D7.Field.ArchetypalField)"
+  }
+}
