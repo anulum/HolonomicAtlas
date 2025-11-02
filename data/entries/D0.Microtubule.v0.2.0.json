@@ -7,11 +7,11 @@
     "Pathology": "Disruption is linked to neurodegenerative diseases (e.g., tauopathies like Alzheimer's) and cancer."
   },
   "SCPN": {
-    "L1_QuantumBiological": "The primary L1 'Quantum Coherence Substrate'. Hypothesized to support Fröhlich condensation and phonon-based quantum computation. Acts as the biological 'waveguide' for L1 information. (Ref: Paper 1)",
-    "L3_GenomicEpigeneticMorphogenetic": "Forms the mitotic spindle, the critical L3 machine that separates chromosomes during cell division, executing the morphogenetic plan.",
-    "L4_CellularTissueSynchronisation": "Its coherent vibrational modes (phonons) are hypothesized to be a mechanism for L4 cellular synchrony, phase-locking the cell's internal state.",
-    "L5_OrganismalPsychoemotional": "The quantum computations within microtubules are hypothesized to be the foundational substrate for L5 qualia.",
-    "L7_ArchetypalSymbolic": "The geometric structure (13-protofilament) holds L7 symbolic information."
+    "L1_QuantumBiological": "The primary L1 'Quantum Coherence Substrate'. Hypothesized to support Fröhlich condensation and phonon-based quantum computation. Acts as the biological 'waveguide' for L1 information. (Ref: Paper 1, Ch. 5, 15)",
+    "L3_GenomicEpigeneticMorphogenetic": "Forms the mitotic spindle, the critical L3 machine that separates chromosomes during cell division, executing the morphogenetic plan. (Ref: Paper 1, Ch. 34)",
+    "L4_CellularTissueSynchronisation": "Its coherent vibrational modes (phonons) are hypothesized to be a mechanism for L4 cellular synchrony, phase-locking the cell's internal state. (Ref: Paper 1, Ch. 15)",
+    "L5_OrganismalPsychoemotional": "The quantum computations within microtubules are hypothesized to be the foundational substrate for L5 qualia. (Ref: Paper 1, Ch. 22)",
+    "L7_ArchetypalSymbolic": "The geometric structure (13-protofilament) holds L7 symbolic information. (Ref: Paper 1, Ch. 28)"
   },
   "Symbolic": {
     "SymbolicName": "The Quantum Filament",
@@ -41,7 +41,7 @@
   "Formalism": {
     "KeyEquations_LaTeX": [
       "Fröhlich Hamiltonian (Pumped Oscillator): H_F = \\hbar\\omega_k a_k^\\dagger a_k + S(a_k + a_k^\\dagger) + \\chi a_k^\\dagger a_k (b_l + b_l^\\dagger)",
-      "Topological QEC (Stabilizer): H_{\\text{QEC}} = -J \\sum_p B_p - J \\sum_s A_s",
+      "Topological QEC (Stabilizer): H_{\\text{topo}} = -J \\sum_p B_p - J \\sum_s A_s",
       "Consciousness Coupling (QZE): H_{\\text{int}} = -\\lambda \\Psi_s \\sum_i \\sigma_i^x",
       "Protective Gap (Stability): \\Delta \\approx 1.64 \\, \\text{eV} \\gg k_B T"
     ],
