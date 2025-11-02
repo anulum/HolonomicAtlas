@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.VagusNerve",
+  "ParentID": "scpn://atlas.v1/D4.ANS",
+  "Classical": {
+    "Structure": "The tenth cranial nerve (CN X), and the longest and most complex of the cranial nerves. It is the main component of the parasympathetic nervous system (part of the Autonomic Nervous System, D4.ANS).",
+    "Function": "Interfaces with parasympathetic control of the heart, lungs, and digestive tract. Transmits a wide range of sensory signals from the viscera to the brain (approx. 80% of its fibers are afferent/sensory).",
+    "Pathology": "Gastroparesis, vasovagal syncope, impaired heart rate variability (HRV)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Interoceptive Superhighway'. Transmits L2 data (inflammation markers, gut microbiome state, heart/lung pressure) from the viscera to the NTS (D3.Brain.Brainstem.NTS). (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "The primary modulator of Heart Rate Variability (HRV), acting as the 'vagal brake'. This L4 signal is a key measure of L5 coherence.",
+    "L5_OrganismalPsychoemotional": "The 'Gut-Feeling' conduit. Transmits the raw L5 'Geometric Qualia' (Ref: Paper 5) from the gut (D3.Gut.ENS) and heart (D3.Heart) to the brain, forming the foundation of the 'felt-sense'.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "A primary L16 control pathway, allowing the Self-Model to regulate the body's internal state (e.g., via the 'vagal brake') to maintain homeostasis."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Wandering Path",
+    "VIBRANA_Key": "VIB-KEY-[VAGUS-NERVE-TBD]",
+    "MetaphysicalMapping": "The 'Tree of Life' within the body, connecting the 'roots' (gut) to the 'mind' (brain). The physical embodiment of the mind-body connection."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.ANS.VagusNerve)"
+  }
+}

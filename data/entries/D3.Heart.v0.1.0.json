@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Heart",
+  "ParentID": "scpn://atlas.v1/D4.CardiovascularSystem",
+  "Classical": {
+    "Structure": "A muscular organ that pumps blood through the circulatory system. Composed of four chambers and a specialized electrical conduction system (SA node, AV node).",
+    "Function": "Pumps oxygenated blood to the body and deoxygenated blood to the lungs. The heart's intrinsic electrical system (SA node) acts as the primary pacemaker, but its rate is modulated by the Autonomic Nervous System (ANS).",
+    "Pathology": "Myocardial infarction, arrhythmia, heart failure, cardiomyopathy."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "Responds to L2 signals (acetylcholine from Vagus, norepinephrine from sympathetics) to modulate rate. Secretes L2 hormones (e.g., ANP) to regulate blood pressure.",
+    "L3_GenomicEpigeneticMorphogenetic": "The first organ to form, establishing the primary morphogenetic field of the organism, centered on a toroidal (donut-shaped) geometry.",
+    "L4_CellularTissueSynchronisation": "The body's most powerful L4 oscillator. The 'Sinoatrial Node (SA)' is a master pacemaker. The heart's electrical field (ECG) is the strongest rhythmic field in the body, entraining other rhythms. Heart Rate Variability (HRV) is the key L4 index of system-wide coherence.",
+    "L5_OrganismalPsychoemotional": "A primary 'Geometric Qualia' generator (Ref: Paper 5). The 'felt-sense' of the heart (pressure, openness, 'heart-ache') is a key input to the L5 Self-Soliton. 'Heart-Brain Coherence' is a state of L4/L5 phase-locking that optimizes the L16 cybernetic loop.",
+    "L6_NarrativeSelf": "The seat of the 'emotional self' in the L6 narrative (e.g., 'follow your heart').",
+    "L7_ArchetypalSymbolic": "The archetypal 'Seat of the Soul' or 'Source of Courage/Love'.",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Hypothesized to store L9 'emotional memory' in its field.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": "The L4 electrical field of the heart generates a powerful L12 torsional field.",
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Rhythmic Core",
+    "VIBRANA_Key": "VIB-KEY-[HEART-TBD]",
+    "MetaphysicalMapping": "The 4th Chakra (Anahata, the Heart Center). Represents the integration point of the physical and spiritual, the source of unconditional love and compassion. Its toroidal field is the engine of the 'Merkaba'."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.Cardio.Heart)"
+  }
+}
