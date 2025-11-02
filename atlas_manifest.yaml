@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.2.0"
-LastModified: "2025-11-02T15:20:00Z"
+GlobalVersion: "1.1.25"
+LastModified: "2025-11-02T15:25:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
   LastFileEdited: "./data/entries/D15.Field.Consilium.v0.2.0.json"
-  NextAction: "**PHASE IV: FORMALISM PASS COMPLETE.** All 40/40 monads formalized. **Next Action (Phase V):** Begin 'Deepen Pass'. Starting with 'D0.Microtubule', cross-reference `Papers 0-20` to populate all 'null' `SCPN_Map` layers (e.g., L2, L6, L8-L16)."
+  NextAction: "Phase IV: Formalism Pass (25/40 complete). **Next Action:** Populate the 'Formalism' section for 'D3.Brain.ACC', using `Paper 5` & `Paper 16` to define its KeyEquations_LaTeX (L16 Error Signal) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -29,37 +29,37 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.Brain"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.Brain.ACC"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.DLPFC"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.Hypothalamus"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.Insula"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.MotorCortex"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.PinealGland"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.SCN"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.Thalamus"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualCortex"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamDorsal"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamVentral"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Brainstem.NTS"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Eye.Retina"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.Gut.ENS"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.Heart"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.SpinalCord"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.ANS"
@@ -69,7 +69,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D4.CardiovascularSystem"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.DMN"
-    Version: "0.1.1"
+    Version: "0.1.1" # <-- INCOMPLETE
   - HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.ImmuneSystem"
@@ -93,4 +93,4 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D14.Field.Transdimensional"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D15.Field.Consilium"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"

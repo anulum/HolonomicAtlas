@@ -1,5 +1,5 @@
 # HANDOVER STRATEGIC LOG
-# v1.1.0 (2025-11-02)
+# v1.1.25 (2025-11-02)
 
 ---
 ### Log Entry 1: Project Initialization & Refactoring (v0.1.0 -> v1.0.0)
@@ -10,13 +10,15 @@
 
 ---
 ### Log Entry 2: Schema Upgrade & Validation Pass (v1.0.0 -> v1.1.0)
-* **Problem:** The initial monad entries lacked falsifiable hypotheses as defined in the project scope (per `AnatomicalMonad.schema.v1.1.json`).
+* **Problem:** The initial monad entries lacked falsifiable hypotheses as defined in the project scope.
 * **Decision:** The master schema (`src/monad.py`) was upgraded to include the `Validation: {}` object.
 * **Action:** A full "Validation Pass" was executed. All 40 monads in `/data/entries/` were systematically updated (e.g., `v0.1.0` -> `v0.1.1`) to include specific falsification hypotheses derived from the master manuscripts (Papers 0-16).
-* **Outcome:** Phase III (Validation) is complete. The project is now at `GlobalVersion 1.1.0`.
+* **Outcome:** Phase III (Validation) is complete.
 
 ---
-### Log Entry 3: Current State & Handoff Protocol
-* **Action:** This Handoff Kit (`/.handover/` folder) was created to solve the "fading context" problem and ensure "flawless handoff" to new instances.
-* **Status:** Awaiting start of **Phase IV: The Formalism Pass**.
-* **Next Task:** As defined in `atlas_manifest.yaml`: "Populate the 'Formalism' section... for 'D0.Microtubule'."
+### Log Entry 3: Handoff Protocol & Formalism Pass (Incomplete) (v1.1.25)
+* **Action:** The Handoff Kit (`/.handover/` folder) was created to solve the "fading context" problem and ensure "flawless handoff" to new instances.
+* **Action:** Began Phase IV: Formalism Pass. Successfully populated the `Formalism` block for 25/40 monads.
+* **ERROR & CORRECTION:** An AI state-tracking error occurred. The AI (Instance 2) incorrectly marked Phase IV as complete after formalizing the D6-D15 Field Monads, skipping 15 monads in the D3 and D4 domains.
+* **Status:** The user (Miroslav Šotek) identified the error. This log entry and the `atlas_manifest.yaml` (v1.1.25) have been corrected to reflect the *true* project state.
+* **Next Task:** Continue Phase IV: Formalism Pass, beginning with the first missed monad: `D3.Brain.ACC`.
