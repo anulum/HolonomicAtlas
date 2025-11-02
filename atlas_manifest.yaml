@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.9"
-LastModified: "2025-11-02T14:07:00Z"
+GlobalVersion: "1.1.10"
+LastModified: "2025-11-02T14:11:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D3.Gut.ENS.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D3.Gut.ENS complete. **Next Action:** Populate the 'Formalism' section for 'D3.Brain', using `Paper 5` & `Paper 16` to define its KeyEquations_LaTeX (L16 'I=Model(I)' loop, Triple Network) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D3.Brain.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D3.Brain complete. **Next Action:** Populate the 'Formalism' section for 'D4.CNS' (Central Nervous System), defining its KeyEquations_LaTeX (Integrated State, Brain-Spinal coupling) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -27,7 +27,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D2.ConnectiveTissue"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.Brain"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D3.Brain.ACC"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brain.DLPFC"
@@ -55,7 +55,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.Eye.Retina"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Gut.ENS"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.Heart"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D3.SpinalCord"
