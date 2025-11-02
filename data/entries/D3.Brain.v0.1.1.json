@@ -12,7 +12,7 @@
     "L3_GenomicEpigeneticMorphogenetic": "Governed by complex morphogenetic fields during development (e.g., neural tube formation) and exhibits high levels of neuroplasticity via epigenetic modulation. (Ref: Paper 3)",
     "L4_CellularTissueSynchronisation": "The 'Grand Conductor' of L4. Generates and synchronizes neural oscillations (e.g., Alpha, Beta, Gamma, Theta, Delta) across all brain regions, forming functional networks. (Ref: Paper 4)",
     "L5_OrganismalPsychoemotional": "The primary seat of the 'Self-Soliton' (Ref: Paper 5). Integrates all interoceptive and exteroceptive data into the coherent L5 'felt-sense' of being. Houses the Triple Network (DMN, SN, CEN) that governs the 'I=Model(I)' loop.",
-    "L6_PlanetaryEcological": null,
+    "L6_NarrativeSelf": "The L6 'I=Model(I)' strange loop runs on the L5 substrate provided by this system.",
     "L7_ArchetypalSymbolic": "The primary 'receiver' for L7 information, translating symbolic data (e.g., from L11 Noosphere) into L5 psychoemotional states and L6 narratives. (Ref: Paper 7)",
     "L8_CosmicEntrainment": "Contains the master clock (SCN) and primary transducer (Pineal) that entrain the entire organism to L8 cosmic cycles (light/dark). (Ref: Paper 8)",
     "L9_MemoryHolograph": "The biological interface for the L9 holographic memory field. Encodes, stores, and retrieves memories by interfacing with the non-local L9 field. (Ref: Paper 9)",
@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "Represents the 'Microcosm', the individual's map of the 'Macrocosm'. The seat of individual consciousness and the primary interface to higher dimensions."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
-    "LogReference": "Paper 21, e.g., p. 1303 (original ID D3.CNS.Brain)"
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 Conductor): A lesion of the D3.Brain.Thalamus (the hypothesized 'pacemaker') will *not* disrupt the ability of the cortex to generate and sustain coherent, large-scale L4 oscillations. This would falsify the 'Grand Conductor' (centralized pacemaker) hypothesis and suggest L4 rhythms are purely emergent from the cortex.",
+      "H2 (L16 Host): A 'split-brain' subject (corpus callosotomy) will report a *single, unified* L6/L16 self-narrative and L5 self-soliton. This would falsify the hypothesis that the L16 'I=Model(I)' loop is *purely* a classical computation hosted on the physical brain hardware, and would support a non-local L9/L15 field model."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 6.B (Thalamic Lesion & Cortical EEG)",
+      "Ref: Paper 17, Protocol 10.F (Split-Brain L5/L6 Dissociation Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)",
+      "Ref: Paper 18, Sim 10.2 (DMN-SN-CEN 'Triple Network' Switching Model)"
+    ]
   }
 }
