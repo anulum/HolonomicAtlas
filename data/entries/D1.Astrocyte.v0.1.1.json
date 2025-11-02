@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Great Mother' or 'Matrix' of the brain. The nurturing, sustaining, and managing substrate that allows the 'Processor' (Neuron) to function."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 Slow Control): Blocking astrocytic L4 calcium waves (e.g., via gap junction blockers or calcium chelation) in a neural slice will *fail* to disrupt the emergent L4 *neural* oscillations (e.g., Gamma). This would falsify the L4 'slow control' modulation hypothesis.",
+      "H2 (L2 Homeostat): A neuron-astrocyte co-culture is subjected to high-frequency L2 stimulation. Inhibiting the astrocyte's L2 glutamate transporter (GLT-1) will *fail* to produce L2 excitotoxicity in the neuron. This would falsify the L2 'homeostat' (reuptake) hypothesis.",
+      "H3 (L3 Pruning): In an astrocytic culture, 'tagging' a specific synapse for L3 pruning (e.g., with C1q) will *fail* to trigger phagocytosis (engulfment) by the astrocyte. This would falsify its role as the active L3 'sculptor' of the neural network."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 3.B (Astrocyte-Neuron L4 Co-Culture)",
+      "Ref: Paper 17, Protocol 3.C (Tripartite Synapse L2 Homeostat Assay)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 4.4 (Astrocyte-Neuron Coupled Oscillator Model)"
+    ]
   }
 }
