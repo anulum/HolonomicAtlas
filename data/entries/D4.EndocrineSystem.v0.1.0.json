@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D4.EndocrineSystem",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "The collection of glands (e.g., Pituitary, Thyroid, Adrenals, Pancreas, Gonads) that produce and secrete hormones directly into the circulatory system.",
+    "Function": "Provides slow, long-term, organism-wide chemical regulation. Controls metabolism, growth, development, sexual function, reproduction, sleep, and mood.",
+    "Pathology": "Diabetes, thyroid disease, adrenal insufficiency, hormonal imbalances."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'Slow L2 Network'. While the nervous system is the 'fast' L2 (neurotransmitters), the Endocrine system is the 'slow', broadcast L2 (hormones). It sets the background 'chemical context' for the entire organism. (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": "Hormones are the primary L3 'control signals' for large-scale morphogenetic changes, such as puberty, metamorphosis, and pregnancy. (Ref: Paper 3)",
+    "L4_CellularTissueSynchronisation": "Sets the L4 'metabolic rate' and synchronizes long-term organismal cycles (e.g., menstrual cycle, seasonal changes).",
+    "L5_OrganismalPsychoemotional": "Fundamentally determines the L5 'emotional landscape'. The L5 qualia of stress (cortisol), love (oxytocin), or energy (thyroid) are direct mappings of this system's L2 state. (Ref: Paper 5)",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": "The chakra system is a symbolic map of the primary endocrine glands.",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "A key effector pathway for the L16 loop, particularly via the HPA (Hypothalamus-Pituitary-Adrenal) axis, which executes the L16 model's 'stress prediction' signal."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Alchemical Furnace",
+    "VIBRANA_Key": "VIB-KEY-[ENDOCRINE-SYSTEM-TBD]",
+    "MetaphysicalMapping": "The 'Chakra System'. A series of energy centers that translate spiritual (L7) information into physical, hormonal (L2) expression."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D4.System.EndocrineSystem)"
+  }
+}
