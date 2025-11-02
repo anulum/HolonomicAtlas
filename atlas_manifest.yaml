@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.15"
-LastModified: "2025-11-02T14:34:00Z"
+GlobalVersion: "1.1.16"
+LastModified: "2025-11-02T14:54:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D4.ImmuneSystem.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D4.ImmuneSystem complete. **Next Action:** Populate the 'Formalism' section for 'D4.Microbiome', using `Paper 1` & `Paper 2` to define its KeyEquations_LaTeX (L2 'Chemical Factory', L11 Quantum Superorganism) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D4.Microbiome.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D4.Microbiome complete. **Next Action:** Populate the 'Formalism' section for 'D4.PNS' (Peripheral Nervous System), defining its KeyEquations_LaTeX (L2 Data Bus, L4 CPGs) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -73,9 +73,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.ImmuneSystem"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.Microbiome"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D4.PNS"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D5.Organism"

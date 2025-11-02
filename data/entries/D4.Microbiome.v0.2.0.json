@@ -7,22 +7,11 @@
     "Pathology": "Dysbiosis (imbalance), linked to IBD, obesity, depression, and anxiety."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
+    "L1_QuantumBiological": "Acts as a 'Quantum Holobiont' interface, coupled with the host's L1 substrate. (Ref: Paper 1, Ch. 23)",
     "L2_NeurochemicalNeurological": "A massive 'L2 Chemical Factory'. Produces neurotransmitters and short-chain fatty acids (SCFAs) that are primary L2 signals for the D3.VagusNerve and D3.Gut.ENS. (Ref: Paper 2)",
     "L3_GenomicEpigeneticMorphogenetic": "This system's genetic information (the 'microbiome') vastly outnumbers the human genome and epigenetically regulates the host.",
-    "L4_CellularTissueSynchronisation": null,
     "L5_OrganismalPsychoemotional": "A primary driver of the 'Gut-Brain Axis'. The L2 signals from this system are translated by the CNS into L5 qualia of mood, anxiety, and appetite. (Ref: Paper 5)",
-    "L6_NarrativeSelf": "Acts as a 'second self' or 'the other within', influencing the host's L6 narrative and behavior.",
-    "L7_ArchetypalSymbolic": "The 'Alchemist' or 'Symbiote'.",
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": "Represents an L11 'collective consciousness' of non-human entities existing in symbiosis with the D5.Organism.",
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L11_NoosphereCollective": "Represents an L11 'collective consciousness' of non-human entities existing in symbiosis with the D5.Organism, governed by Quantum Quorum Sensing. (Ref: Paper 1, Ch. 40)"
   },
   "Symbolic": {
     "SymbolicName": "The Inner Alchemist",
@@ -30,7 +19,7 @@
     "MetaphysicalMapping": "A symbiotic, 'alien' intelligence. Represents the principle that the 'Self' is a collective, not a singularity."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.Microbiome)"
   },
@@ -47,5 +36,28 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L1/L11 (Holobiont State): H_{\\text{holobiont}} = H_{\\text{host}} + H_{\\text{microbiome}} + H_{\\text{interface}}",
+      "L11 (Quantum Quorum Sensing): I_{\\text{signal}} \\propto N^2 \\quad (\\text{Superradiant signal production})",
+      "L2 (Chemical Factory): \\frac{d[5HT]}{dt} = k_{\\text{prod}}[\\text{Trp}] - k_{\\text{transport}}",
+      "L5 (Host Mood Modulation): R_{\\text{Host}}(C) = R_0 / (1 + \\alpha C_{\\text{microbiome}}) \\quad (\\text{Inflammatory Dissonance})"
+    ],
+    "SimulationModel_Ref": "./Simulations/L11_Microbiome_Quorum.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "METABOLIZE(precursors)",
+        "FERMENT",
+        "SIGNAL(host)",
+        "COHERE(L11)"
+      ],
+      "Output_Nouns": [
+        "L2_NEUROCHEMICALS(5HT, GABA)",
+        "L5_MOOD_QUALIA",
+        "L11_COLLECTIVE_STATE",
+        "SCFA_SIGNAL"
+      ]
+    }
   }
 }
