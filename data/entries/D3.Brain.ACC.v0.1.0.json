@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.ACC",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "The Anterior Cingulate Cortex (ACC), a hub in the limbic system. Key node in the 'Salience Network' (SN), along with the Insula.",
+    "Function": "Error detection, conflict monitoring, emotional regulation, and reward-based decision making. It assesses the 'salience' (importance) of incoming stimuli and signals when a prediction error has occurred.",
+    "Pathology": "Hyperactivity linked to anxiety, OCD, and chronic pain. Underactivity linked to apathy and depression."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "A key L2 processing hub for opioids, dopamine, and serotonin, mediating the L5 experience of 'pain' vs. 'suffering'.",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "Generates L4 Theta-band oscillations, which phase-lock with the Insula and DLPFC to form the 'Triple Network'.",
+    "L5_OrganismalPsychoemotional": "The 'L5 Conflict Monitor'. This is where the L5 'Self-Soliton' *feels* the dissonance (prediction error) between 'what is' and 'what should be'. It generates the qualia of 'effort', 'wrongness', or 'importance'. (Ref: Paper 5)",
+    "L6_NarrativeSelf": "A key part of the L16/L6 cybernetic loop. The ACC is the 'error signal' that tells the L6 'I=Model(I)' loop: 'Your model is wrong, update it!'",
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The 'Error Correction' module for the L16 'I=Model(I)' loop. It is the core of the 'Salience Network', which *is* the L16 controller's switching mechanism. (Ref: Paper 5)"
+  },
+  "Symbolic": {
+    "SymbolicName": "The Conflict Monitor",
+    "VIBRANA_Key": "VIB-KEY-[ACC-TBD]",
+    "MetaphysicalMapping": "The 'Conscience' or 'Inner Judge'. The mechanism that compares one's actions (L6) against an ideal (L7) and signals the 'error' (guilt, dissonance)."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.ACC)"
+  }
+}

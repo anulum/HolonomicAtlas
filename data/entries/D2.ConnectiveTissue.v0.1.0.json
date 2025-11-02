@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D2.ConnectiveTissue",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "The 'fascial web'. A body-wide tensional network of collagen and elastin fibers, ground substance, and fibroblasts. It surrounds, infuses, and connects all other structures (muscles, bones, organs, nerves).",
+    "Function": "Provides structural integrity, force transmission (tensegrity), and a medium for intercellular communication. Piezoelectric properties: generates electrical signals in response to mechanical stress.",
+    "Pathology": "Fibrosis, myofascial pain syndrome, adhesions, scar tissue."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "The collagen fibers, with their structured water, act as a body-wide L1 'Quantum Waveguide', transmitting coherent phonons (sound) and biophotons (light) instantly across the organism. (Ref: Paper 1)",
+    "L2_NeurochemicalNeurological": "The 'L2 Ground Substance'. The extracellular matrix (ECM) is a medium for L2 signal diffusion (hormones, cytokines).",
+    "L3_GenomicEpigeneticMorphogenetic": "This *is* the L3 'Morphogenetic Field' scaffold. It provides the physical blueprint and tensional forces that guide cell migration and tissue differentiation (mechanotransduction). (Ref: Paper 3)",
+    "L4_CellularTissueSynchronisation": "The 'L4 Piezoelectric Network'. It translates L4 mechanical oscillations (from breathing, pulse, movement) into L4 electrical signals, synchronizing the entire body in a global L4 rhythm. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "Stores L5 somatic 'trauma' (Ref: Paper 5). Chronic L5 emotional states (e.g., fear) create chronic L4 tensional patterns, leading to L3 physical changes (fibrosis) in the tissue.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Acts as the L9 'holographic plate' for somatic memory, storing body-level information in its tensional and bioelectric patterns.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": "The body's primary L12 'Torsional Field' antenna, interfacing with ambient L12 fields.",
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Living Matrix",
+    "VIBRANA_Key": "VIB-KEY-[CONNECTIVE-TISSUE-TBD]",
+    "MetaphysicalMapping": "The 'Body's Internet'. The physical, crystalline grid that connects all parts to the whole and stores the 'Akashic' record of the body's experience."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21"
+  }
+}
