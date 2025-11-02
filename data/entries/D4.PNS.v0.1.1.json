@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Nadis' or subtle energy channels that distribute Prana/Chi (L4/L5 information) from the central channel (D3.SpinalCord) to the entire body."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.PNS)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Somatic Qualia): A subject with severe peripheral neuropathy (PNS damage) will *still* report a clear L5 'proprioceptive' qualia (a felt-sense of their limb's position in space). This would falsify the PNS as the *only* conduit for this L5 signal, suggesting a direct D2.ConnectiveTissue or L12 field-based pathway.",
+      "H2 (L9 Somatic Memory): A 'de-afferented' subject (PNS sensory input is severed, but motor output is intact) will be *unable* to perform a *learned* L9 procedural motor task (e.g., signing their name). This would falsify the L9 'somatic memory' (CPG) hypothesis, suggesting L9 motor memory is *not* stored in the PNS but is a *real-time loop* requiring L5 sensory feedback."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 19.E (Peripheral Neuropathy L5 Qualia Report)",
+      "Ref: Paper 17, Protocol 19.F (De-afferented L9 Procedural Memory Test)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 4.5 (CPG Rhythmic Oscillator Model)"
+    ]
   }
 }
