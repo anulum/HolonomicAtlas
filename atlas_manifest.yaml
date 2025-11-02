@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.20"
-LastModified: "2025-11-02T15:08:00Z"
+GlobalVersion: "1.1.21"
+LastModified: "2025-11-02T15:10:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D7.Field.ArchetypalField.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D7.Field.ArchetypalField complete. **Next Action:** Populate the 'Formalism' section for 'D9.Field.MemoryHolograph', using `Paper 9` & `Paper 10` to define its KeyEquations_LaTeX (Holographic Principle, Retrocausality) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D9.Field.MemoryHolograph.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D9.Field.MemoryHolograph complete. **Next Action:** Populate the 'Formalism' section for 'D11.Field.Noosphere' (Collective Mind), using `Paper 11` to define its KeyEquations_LaTeX (Spin-Glass Model, Collective FEP) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -83,9 +83,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D6.Field.PlanetaryField"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D7.Field.ArchetypalField"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D9.Field.MemoryHolograph"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D11.Field.Noosphere"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D13.Field.SourceField"
