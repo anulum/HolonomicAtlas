@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.0"
-LastModified: "2025-11-02T05:43:00Z"
+GlobalVersion: "1.1.1"
+LastModified: "2025-11-02T06:11:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./.handover/HANDOVER_LOG.md"
-  NextAction: "**PHASE III: VALIDATION PASS COMPLETE.** All 40/40 monads validated. Handoff Protocol established. **Next Action (Phase IV):** Begin 'Formalism Pass'. Populate the 'Formalism' section (per Paper 19, 20) for 'D0.Microtubule', using `Paper 1` to define its KeyEquations_LaTeX (Fröhlich Hamiltonian) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D0.Microtubule.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D0.Microtubule complete. **Next Action:** Populate the 'Formalism' section for 'D0.Exosome', using `Paper 1` to define its KeyEquations_LaTeX (Quantum Mail) and VIBRANA_Interface (per Paper 19, 20)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -17,7 +17,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D0.Exosome"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D0.Microtubule"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D1.Astrocyte"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D1.Mitochondrion"
