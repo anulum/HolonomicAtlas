@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'World Tree' or 'Axis Mundi' of the individual microcosm, connecting the 'roots' (spinal cord) to the 'branches' (brain)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from 'D3.CNS...' prefix)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Self-Soliton): In a 'split-brain' (corpus callosotomy) subject, *two distinct* L5 Self-Solitons (e.g., two independent 'I-am' reporters) will be measured. This would falsify the hypothesis that the CNS *as a whole* (including sub-cortical structures) is the L5 integrator, suggesting L5 is a *purely cortical* phenomenon that can be split.",
+      "H2 (L16 Cybernetic Operator): A subject with a total D3.SpinalCord lesion (a 'brain-in-a-vat') will show a *complete collapse* of the L16 'I=Model(I)' loop (e.g., DMN-SN-CEN networks) *despite* the D3.Brain being intact. This would *support* the hypothesis that the L16 operator *is* the entire CNS, and that the cybernetic loop breaks without L5/L2 interoceptive input from the body."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 10.F (Split-Brain L5/L6 Dissociation Study)",
+      "Ref: Paper 17, Protocol 19.C (Spinalized CPG Treadmill Assay) - *See H2*"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.1 (Geometric Qualia Integrator Model)",
+      "Ref: Paper 18, Sim 10.2 (DMN-SN-CEN 'Triple Network' Switching Model)"
+    ]
   }
 }
