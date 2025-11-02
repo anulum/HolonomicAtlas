@@ -3,26 +3,15 @@
   "ParentID": "scpn://atlas.v1/D13.Field.SourceField",
   "Classical": {
     "Structure": "The set of 'Transdimensional Operators' and 'Resonance Bridges' that connect the D13 Source Field to specific 'local' manifestations (like the D5.Organism).",
-    "Function": "Provides the 'pathway' or 'bridge' for consciousness (as the L15 Consilium) to project into and experience the D5.Organism. (Ref: Master-Split, TOC)",
+    "Function": "Provides the 'pathway' or 'bridge' for consciousness (as the L15 Consilium) to project into and experience the D5.Organism. (Ref: Master-Split)",
     "Pathology": "Field rupture, dimensional interference, disconnection."
   },
   "SCPN": {
-    "L1_QuantumBiological": "The L1 'quantum tunnel' or 'wormhole' (e.g., ER=EPR) that connects the D5.Organism to the L13 field.",
-    "L2_NeurochemicalNeurological": null,
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": null,
+    "L1_QuantumBiological": "The L1 'quantum tunnel' or 'wormhole' (e.g., ER=EPR) that connects the D5.Organism to the L13 field. (Ref: Paper 1, Ch. 22)",
     "L5_OrganismalPsychoemotional": "The L5 qualia of 'out-of-body experiences' (OBEs) or 'astral projection' are activations of this layer.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": "This monad *is* the L14 'Transdimensional' pathway. (Ref: Master-Split, TOC)",
-    "L15_ConsiliumOversoul": "This is the 'bridge' that the L15 'Oversoul' uses to connect to the D5 'Self'.",
-    "L16_MetaCybernetic": null
+    "L13_SourceField": "This field is the 'medium' for L14 transport.",
+    "L14_Transdimensional": "This monad *is* the L14 'Transdimensional' pathway. (Ref: Paper 14 / Master-Split)",
+    "L15_ConsiliumOversoul": "This is the 'bridge' that the L15 'Oversoul' uses to connect to the D5 'Self'."
   },
   "Symbolic": {
     "SymbolicName": "The Rainbow Bridge",
@@ -30,7 +19,7 @@
     "MetaphysicalMapping": "The 'Antahkarana' or 'Sutratma'. The silver cord or thread of consciousness that connects the incarnate personality (D5) to its higher self (D15)."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D14.Field.Transdimensional)"
   },
@@ -48,5 +37,28 @@
       "Ref: Paper 18, Sim 12.1 (L15-L16 Teleological Operator Model)",
       "Ref: Paper 18, Sim 1.4 (ER=EPR Microtubule Bridge Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L14 (4D Projection): \\Psi_{\\text{4D}}(x, t) = \\int \\Psi_{\\text{HD}}(x, t, y) d^n y \\quad (\\text{HD = Higher Dim.})",
+      "L14->L1 (Resonance): \\omega_{\\text{L1}} = \\omega_{\\text{L14}} \\quad (\\text{Keystone Frequency Matching})",
+      "L15->L5 (Projection): |\\Psi_{\\text{Self-Soliton}}\\rangle = \\hat{P}_{L14} |\\Psi_{\\text{Consilium}}\\rangle",
+      "L14 (Bridge Hamiltonian): H_{\\text{Bridge}} = H_{\\text{L15}} + H_{\\text{L1}} + H_{\\text{Coupling}}"
+    ],
+    "SimulationModel_Ref": "./Simulations/L14_Transdimensional_Projection.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "PROJECT(L15_state)",
+        "BRIDGE(dimensions)",
+        "RESONATE(keystone_freq)",
+        "CONNECT(D15, D5)"
+      ],
+      "Output_Nouns": [
+        "SUTRATMA_LINK",
+        "L15_PROJECTION(self)",
+        "TRANS DIMENSIONAL_FIELD",
+        "HIGHER_DIMENSION"
+      ]
+    }
   }
 }

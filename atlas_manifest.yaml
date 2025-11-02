@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.23"
-LastModified: "2025-11-02T15:14:00Z"
+GlobalVersion: "1.1.24"
+LastModified: "2025-11-02T15:16:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D13.Field.SourceField.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D13.Field.SourceField complete. **Next Action:** Populate the 'Formalism' section for 'D14.Field.Transdimensional', using `Paper 14` to define its KeyEquations_LaTeX (Sutratma, Quantum Bridge) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D14.Field.Transdimensional.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D14.Field.Transdimensional complete. **Next Action:** Populate the 'Formalism' section for 'D15.Field.Consilium' (Oversoul), using `Paper 15` to define its KeyEquations_LaTeX (Teleological Attractor, PELA) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -89,8 +89,8 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D11.Field.Noosphere"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D13.Field.SourceField"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D14.Field.Transdimensional"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D15.Field.Consilium"
     Version: "0.1.1"
