@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Cauldron' or 'Gut Instinct'. The seat of somatic, non-rational intelligence and intuition."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.Gut.ENS)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Generation): A 'gut-in-a-dish' (in-vitro ENS) preparation is given an L2 stimulus (e.g., capsaicin). It will *fail* to produce a coherent, complex L4/L5 electrical/chemical oscillation pattern (the 'Geometric Qualia' signal). This would falsify its role as the 'generator' (vs. just a simple L2 relay).",
+      "H2 (L5 vs L2): A D3.VagusNerve-severed subject is given a gut stimulus (e.g., L2 serotonin precursor). The subject will report *no L5 qualia* (no 'gut feeling'), *but* L2 hormonal blood markers for serotonin will rise. This dissociates the L5 'Geometric Qualia' (a vagal signal) from the L2 'hormonal' (a circulatory signal) pathways.",
+      "H3 (vs Insula): A subject with a lesioned D3.Brain.Insula (no L5 'felt-sense') will *still* show a coherent L4/L5 signal generated in the ENS (via electrogastrogram, EGG) *and* transmitted up the D3.VagusNerve. This dissociates the 'Generator' (ENS) from the 'Integrator' (Insula)."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 18.A (In-Vitro ENS Qualia Generation)",
+      "Ref: Paper 17, Protocol 17.C (Vagotomy L2/L5 Dissociation fMRI)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)",
+      "Ref: Paper 18, Sim 11.3 (TDA 'Geometric Qualia' Shape Model)"
+    ]
   }
 }
