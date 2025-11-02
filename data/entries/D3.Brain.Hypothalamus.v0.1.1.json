@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Alchemist's Workshop' where the four elements (L5 needs) are balanced to create the 'quintessence' (a stable organism)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.Hypothalamus)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Qualia of Need): A subject is made homeostatically 'thirsty' (L16 set-point error). Direct stimulation (DBS) of the hypothalamus will *fail* to generate the L5 'qualia of thirst' *and* will *fail* to motivate L16 'drinking behavior'. This would falsify its role as the L5/L16 generator for this need-state.",
+      "H2 (L16 Set-Point): A subject's 'set-point' for body temperature is stable. Lesioning the hypothalamus will *fail* to disrupt the L16 cybernetic loop's ability to maintain core temperature (e.g., shivering/sweating). This would falsify its role as the primary L16 'Set-Point' controller.",
+      "H3 (L5 vs L16): Direct L2 stimulation of the hypothalamus will generate L16 *behavior* (e.g., eating) but the subject will *not* report the corresponding L5 *qualia* (e.g., 'I don't feel hungry, but I can't stop eating'). This would dissociate the L5 qualia from the L16 cybernetic drive."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 16.A (Hypothalamic DBS and Qualia Report)",
+      "Ref: Paper 17, Protocol 16.B (Thermoregulation Lesion Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 10.3 (Homeostatic Active Inference Model)"
+    ]
   }
 }
