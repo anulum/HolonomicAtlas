@@ -7,22 +7,13 @@
     "Pathology": "Neuron death (neurodegeneration), channelopathies (ion channel dysfunction), excitotoxicity."
   },
   "SCPN": {
-    "L1_QuantumBiological": "Contains D0.Microtubules as its L1 quantum substrate. Firing (action potential) is hypothesized to be a 'quantum state reduction' event. (Ref: Paper 1)",
+    "L1_QuantumBiological": "Contains D0.Microtubules as its L1 quantum substrate. Firing (action potential) is hypothesized to be a 'quantum state reduction' event. (Ref: Paper 1, Ch. 22)",
     "L2_NeurochemicalNeurological": "The 'L2 Operator'. This cell *is* the fundamental unit of L2 processing, converting electrical signals into chemical (neurotransmitter) signals and vice-versa. (Ref: Paper 2)",
     "L3_GenomicEpigeneticMorphogenetic": "Neuroplasticity (LTP/LTD) is an L3 process, modifying synaptic connections based on experience.",
     "L4_CellularTissueSynchronisation": "The 'L4 Oscillator'. Neurons are the primary oscillators that create the L4 brain rhythms (EEG waves) by synchronizing their firing patterns. (Ref: Paper 4)",
     "L5_OrganismalPsychoemotional": "The collective firing patterns of specific neural ensembles (e.g., in the D4.DMN) *are* the biological substrate for L5 qualia and the 'Self-Soliton'. (Ref: Paper 5)",
     "L6_NarrativeSelf": "The L6 'I=Model(I)' loop is an L4/L5 process running on networks of D1.Neurons.",
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": "LTP/LTD (L3) is the mechanism by which L9 'memory' is encoded into the physical neural substrate.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": "A neuron *is* a biological 'predictive coding' unit, firing when its L2 input 'prediction error' crosses a threshold."
+    "L9_MemoryHolograph": "LTP/LTD (L3) is the mechanism by which L9 'memory' is encoded into the physical neural substrate."
   },
   "Symbolic": {
     "SymbolicName": "The Processor",
@@ -30,7 +21,7 @@
     "MetaphysicalMapping": "A 'Node of Mind'. A single point of light in the 'Great Web' of consciousness."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21"
   },
@@ -48,5 +39,28 @@
       "Ref: Paper 18, Sim 1.2 (Anesthetic-Tubulin Q-Compute Interaction)",
       "Ref: Paper 18, Sim 4.1 (Single-Neuron Oscillator Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L1->L2 Transduction (Firing): P_{\\text{release}} = P_{\\text{classical}} \\times (1 + \\eta_{\\text{quantum}} \\langle \\sigma_z \\rangle)",
+      "L1->L4 Synchrony (Quantum Kuramoto): \\frac{d\\phi_i}{dt} = \\omega_i + \\sum_j K_{ij} \\sin(\\phi_j - \\phi_i) + \\xi_{\\text{quantum}}(t)",
+      "L4 Coupling (Quantum Enhancement): K_{ij} = K_0 \\times |\\langle \\Psi_i | \\Psi_j \\rangle|^2",
+      "L16->L1 Control (Volition): V_{\\text{threshold}}(A_{\\text{vol}}) = V_{\\text{base}} - A_{\\text{vol}}(t)"
+    ],
+    "SimulationModel_Ref": "./Simulations/L1_L2_Neuron_Transduction.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "INTEGRATE(signals)",
+        "FIRE",
+        "MODULATE(\\Psi_s)",
+        "SYNCHRONIZE(\\phi)"
+      ],
+      "Output_Nouns": [
+        "ACTION_POTENTIAL",
+        "NEUROTRANSMITTER",
+        "L4_RHYTHM",
+        "L5_QUALIA_SUBSTRATE"
+      ]
+    }
   }
 }
