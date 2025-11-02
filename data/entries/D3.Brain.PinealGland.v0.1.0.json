@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D3.Brain.PinealGland",
+  "ParentID": "scpn://atlas.v1/D3.Brain",
+  "Classical": {
+    "Structure": "A small endocrine gland located in the epithalamus, near the center of the brain. Composed primarily of pinealocytes. It is unique for being one of the few brain structures outside the blood-brain barrier.",
+    "Function": "Produces and secretes melatonin, the primary hormone that regulates circadian rhythms (sleep-wake cycles). It receives photoperiod information from the retina via the suprachiasmatic nucleus (SCN) and sympathetic nervous system.",
+    "Pathology": "Pineal cysts, pineal tumors, and progressive calcification (which may impact melatonin production and sleep quality)."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "Hypothesized site for quantum-coherent water or microtubule activity, potentially sensitive to external fields (Ref: Paper 1).",
+    "L2_NeurochemicalNeurological": "The primary L2 generator for Melatonin, the key hormone for L4 circadian entrainment. Acts as a transducer, converting an L2 neural signal (norepinephrine) from the SCN into an L2 hormonal signal (melatonin). (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "The 'Master Circadian Oscillator' interface. While the SCN is the pacemaker, the Pineal Gland is the *actuator* that broadcasts the L4 timing signal (melatonin) to the entire organism, synchronizing all peripheral tissue oscillators. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "Mediates shifts in conscious state (sleep, dreaming). Diminished L5 'Self-Soliton' coherence during melatonin peak. Hypothesized link to endogenous DMT production and non-ordinary states of qualia. (Ref: Paper 5)",
+    "L6_PlanetaryEcological": null,
+    "L7_ArchetypalSymbolic": "Archetypal 'Third Eye' or 'Seat of the Soul'. Acts as an L7 receiver for symbolic/archetypal information, translating it into L5 psychoemotional states. (Ref: Paper 7 / Master-Split)",
+    "L8_CosmicEntrainment": "Primary biological transducer for L8 cosmic cycles (solar, lunar), translating photoperiod data into the organism's L4 circadian rhythm. (Ref: Paper 8 / Master-Split)",
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": "Hypothesized sensitivity to geomagnetic fields, potentially via piezoelectric properties of calcified concretions or quantum-magnetic mechanisms (e.g., cryptochromes). (Ref: Paper 4 / Paper 12)",
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Chrono-Biological Gateway",
+    "VIBRANA_Key": "VIB-KEY-[PINEAL-GLAND-TBD]",
+    "MetaphysicalMapping": "Corresponds to the 6th Chakra (Ajna, Third Eye). Represents the interface between physical time (circadian) and higher-dimensional perception."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21, e.g., p. 1303 (original ID D3.CNS.Brain.PinealGland)"
+  }
+}
