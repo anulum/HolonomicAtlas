@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Mind's Eye' or 'Canvas' where L2 sensory data is painted into L5 conscious experience."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.VisualCortex)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4->L5 Dissociation): A subject is presented with a standard 'binding' illusion (e.g., color-shape conjunction). The subject will *consciously report* the non-existent, illusory conjunction (L5 qualia is present), but EEG/MEG will show *no L4 Gamma-band synchrony* between the color and shape processing areas. This would dissociate L4 synchrony from L5 qualia.",
+      "H2 (L4 is Sufficient): Anesthetizing a subject (e.g., with propofol) to the point of *total L5 unresponsiveness* (no qualia) will *fail* to disrupt L4 Gamma-band oscillations in V1 in response to a direct L2 visual stimulus. This would prove L4 synchrony can exist *without* L5 qualia.",
+      "H3 (L5 requires L4): Using TMS to disrupt L4 40Hz Gamma-band synchrony in V1 will *not* affect the subject's ability to perceive and report a coherent L5 visual object. This would falsify the hypothesis that L4 Gamma is *necessary* for L5 binding."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 7.A (TMS-EEG Visual Binding Disruption)",
+      "Ref: Paper 17, Protocol 7.B (Anesthetic Dissociation of L4/L5)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 9.2 (V1 Predictive Coding Model)",
+      "Ref: Paper 18, Sim 4.2 (Kuramoto Phase-Binding Model)"
+    ]
   }
 }
