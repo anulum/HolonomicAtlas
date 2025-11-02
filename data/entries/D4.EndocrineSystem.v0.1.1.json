@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Chakra System'. A series of energy centers that translate spiritual (L7) information into physical, hormonal (L2) expression."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.EndocrineSystem)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L3 Morphogenetic): A prepubescent subject with a genetic inability to produce L2/L3 'gonadotropin-releasing hormone' (GnRH) is given an L2/L3 'kisspeptin' (the 'gate') antagonist. The subject will *still* undergo puberty. This would falsify the L2(Kisspeptin) -> L2(GnRH) -> L3(Puberty) morphogenetic cascade hypothesis.",
+      "H2 (L2 'Slow Network'): A subject is given an L2 'fear' stimulus. The 'fast' L2 (sympathetic/ANS) response (e.g., heart rate) will be measured, and the 'slow' L2 (HPA-axis/cortisol) response will be measured. The 'slow' L2 response will *precede* the 'fast' L2 response. This would falsify the L2 'fast' (neural) vs. 'slow' (endocrine) model."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 16.D (HPA Axis L2 Latency Study)",
+      "Ref: Paper 17, Protocol 20.A (GnRH/Kisspeptin L3 Cascade Assay)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 5.2 (L2 Hormonal Diffusion/Transport Model)",
+      "Ref: Paper 18, Sim 6.1 (L3 Morphogenetic Cascade Model)"
+    ]
   }
 }
