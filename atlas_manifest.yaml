@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.11"
-LastModified: "2025-11-02T14:14:00Z"
+GlobalVersion: "1.1.12"
+LastModified: "2025-11-02T14:26:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D4.CNS.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D4.CNS complete. **Next Action:** Populate the 'Formalism' section for 'D4.ANS' (Autonomic Nervous System), defining its KeyEquations_LaTeX (Sympathetic/Parasympathetic Balance) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D4.ANS.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D4.ANS complete. **Next Action:** Populate the 'Formalism' section for 'D4.CardiovascularSystem', defining its KeyEquations_LaTeX (L2 Transport Network, L4 Pulse Wave) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -63,9 +63,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.ANS"
-    Version: "0.1.1"
-  - HolonomicID: "scpn://atlas.v1/D4.CNS"
     Version: "0.2.0" # <-- This one is updated
+  - HolonomicID: "scpn://atlas.v1/D4.CNS"
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.CardiovascularSystem"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.DMN"

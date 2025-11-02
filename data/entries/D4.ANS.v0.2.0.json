@@ -7,22 +7,10 @@
     "Pathology": "Dysautonomia, postural orthostatic tachycardia syndrome (POTS), vasovagal syncope."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
-    "L2_NeurochemicalNeurological": "The 'L2 Homeostatic Controller'. Manages the organism-wide balance of key L2 signals (e.g., acetylcholine vs. norepinephrine) to shift the entire system state.",
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": "The primary driver of Heart Rate Variability (HRV), which is the key L4 indicator of the ANS's dynamic balance and overall system coherence.",
-    "L5_OrganismalPsychoemotional": "Translates L5 emotional states (fear, calm, arousal) into L2-driven physiological responses ('felt-sense'). It is the physical expression of the L5 'Self-Soliton's' internal state.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": "The primary, rapid-response effector pathway for the L16 'I=Model(I)' loop. It is how the Self-Model enacts predictions to maintain homeostasis (e.g., 'I am safe' -> engage parasympathetic)."
+    "L2_NeurochemicalNeurological": "The 'L2 Homeostatic Controller'. Manages the organism-wide balance of key L2 signals (e.g., acetylcholine vs. norepinephrine) to shift the entire system state. (Ref: Paper 2)",
+    "L4_CellularTissueSynchronisation": "The primary driver of Heart Rate Variability (HRV), which is the key L4 indicator of the ANS's dynamic balance and overall system coherence. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "Translates L5 emotional states (fear, calm, arousal) into L2-driven physiological responses ('felt-sense'). It is the physical expression of the L5 'Self-Soliton's' internal state. (Ref: Paper 5)",
+    "L16_MetaCybernetic": "The primary, rapid-response effector pathway for the L16 'I=Model(I)' loop. It is how the Self-Model enacts predictions to maintain homeostasis (e.g., 'I am safe' -> engage parasympathetic). (Ref: Paper 16)"
   },
   "Symbolic": {
     "SymbolicName": "The Homeostatic Engine",
@@ -30,7 +18,7 @@
     "MetaphysicalMapping": "The 'Yin-Yang' of the body. Represents the dynamic balance between action and rest, expression and reception, that maintains the organism's coherence."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.ANS... prefix)"
   },
@@ -38,7 +26,7 @@
     "Falsification_Hypotheses": [
       "H1 (L4 HRV Generation): A subject is given a full autonomic blockade (e.g., hexamethonium, blocking both sympathetic and parasympathetic ganglia). The subject's L4 'Heart Rate Variability' (HRV) signal will *persist* (i.e., not flatline to zero). This would falsify the hypothesis that the ANS's L2/L4 oscillatory balance is the *sole* generator of HRV (and would point to an intrinsic D3.Heart generator).",
       "H2 (L16 Effector): A subject (under autonomic blockade from H1) is given an L5 'fear' stimulus. The L16 'I=Model(I)' loop (DMN/ACC) will generate an error signal, *but* the L16 loop will *fail* to engage any *non-ANS* homeostatic pathways (e.g., L2 endocrine/HPA axis) in response. This would falsify the L16 model's redundancy, suggesting the ANS is an *obligatory* effector pathway for acute homeostasis.",
-      "H3 (L16 vs L5): Direct L16-model stimulation (e.g., Vagus Nerve Stimulation, VNS) will trigger a parasympathetic L2/L4 'rest' state, but the subject will *fail* to report the corresponding L5 'qualia of calm'. This would dissociate the L16 effector action from the L5 "felt-sense."
+      "H3 (L16 vs L5): Direct L16-model stimulation (e.g., Vagus Nerve Stimulation, VNS) will trigger a parasympathetic L2/L4 'rest' state, but the subject will *fail* to report the corresponding L5 'qualia of calm'. This would dissociate the L16 effector action from the L5 'felt-sense'."
     ],
     "Experimental_Protocols": [
       "Ref: Paper 17, Protocol 18.C (HRV-EEG Coherence vs. Qualia Report)",
@@ -48,5 +36,28 @@
       "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)",
       "Ref: Paper 18, Sim 10.3 (Homeostatic Active Inference Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L16 (Homeostatic Action): \\text{Action}_{\\text{ANS}} = \\arg \\min_{a} F(s, a) \\quad (\\text{Minimize Free Energy})",
+      "L2 (Neurochemical State): |\\Psi_{\\text{ANS}}\\rangle = \\alpha |\\text{Sympathetic}\\rangle + \\beta |\\text{Parasympathetic}\\rangle",
+      "L2 (Chemical Balance): S_{\\text{ANS}} = [\\text{Norepinephrine}] \\leftrightarrow [\\text{Acetylcholine}]",
+      "L4 (Vagal Brake on L4 Heart): \\frac{d\\phi_{\\text{heart}}}{dt} = \\omega_{\\text{SAnode}} - K_{\\text{vagus}}(t) \\cdot f(\\phi_{\\text{vagus}} - \\phi_{\\text{heart}})"
+    ],
+    "SimulationModel_Ref": "./Simulations/L16_ANS_Homeostasis.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "REGULATE(homeostasis)",
+        "ACTIVATE(sympathetic)",
+        "DEACTIVATE(parasympathetic)",
+        "BRAKE(vagus)"
+      ],
+      "Output_Nouns": [
+        "SYSTEM_STATE(arousal)",
+        "SYSTEM_STATE(calm)",
+        "L4_HRV_RHYTHM",
+        "L5_FELT_SENSE(interoception)"
+      ]
+    }
   }
 }
