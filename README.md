@@ -9,43 +9,32 @@ This repository contains the **Anatomia Holonomica** (Human Holonomic Atlas), th
 
 **The Cause:** The foundational SCPN (Sentient-Consciousness Projection Network) framework maps consciousness to spacetime, but it exists as a series of theoretical papers. To validate, simulate, and apply this framework, we must first create a machine-readable, computable model of its primary subject: the human being.
 
-**The Ultimate Objective:** To create a **simulatable, multi-dimensional graph database** where every anatomical component of the human organism (from `D0.Microtubule` to `D5.Organism` and its `D6-D15` field environment) is defined by three core identities:
-1.  **Classical Identity (D-Script):** Its physical, biological structure and function.
-2.  **SCPN Functional Identity (I-Script):** Its precise informational role across all 16 Layers of the SCPN.
-3.  **Symbolic Identity (S-Script):** Its metaphysical, geometrical, and vibrational correspondence (VIBRANA).
+**The Ultimate Objective:** To create a **simulatable, multi-dimensional graph database** where every anatomical component (from `D0.Microtubule` to `D15.Consilium`) is defined by its Classical (physical), SCPN (informational), and Symbolic (metaphysical) identities.
 
 ---
 
 ## 2. Core Source Documents
 
-This Atlas is a **derivative work** that formalizes the theoretical framework defined in the following master manuscripts. All entries are validated against these sources:
-
-* **`God of the Math - The SCPN Master Publications - Table of Contents.docx`**: The master index defining the 16-Layer structure (Papers 1-16) and their domains.
-* **`The Sentient-Consciousness Projection Network - MASTER-SPLIT.pdf`**: The original, complete manuscript; the primary source for the raw, unfragmented definitions of **Layers 6-16** (Papers 6-16).
-* **`Paper 0 - The Foundational Framework.docx`**: The axiomatic priors and foundational logic of the entire SCPN architecture.
-* **`Paper 1 - (Layer 1 - Quantum Biological).docx`**: The most up-to-date definition for L1.
-* **`Paper 2 - (Layer 2 - Neurochemical-Neurological).docx`**: The most up-to-date definition for L2.
-* **`Paper 3 - (Layer 3 - Genomic-Epigenomic-Morphogenetic).docx`**: The most up-to-date definition for L3.
-* **`Paper 4 - (Layer 4 - Cellular-Tissue Synchronisation).docx`**: The most up-to-date definition for L4.
-* **`Paper 5 - (Layer 5 - Organismal-Psychoemotional Feedback).docx`**: The most up-to-date definition for L5.
-* **`Paper 21 - Derivations of SCPN... (The Log)`**: The original derivation log where this Atlas project was architected and its schemas (e.g., `D3.CNS...` error) were identified and corrected.
+This Atlas is a **derivative work** that formalizes the theoretical framework defined in the *God of the Math* master manuscripts (Papers 0-20). All content is derived from these papers, which are provided to the "Architect" AI (Gemini).
 
 ---
 
-## 3. Project Architecture
+## 3. Collaboration Workflow (Hybrid AI Team)
 
-This repository is a "lossless context" and "flawless handoff" for all co-authoring and simulation work.
+This project is managed by a four-agent team to leverage the unique strengths of different models and ensure "lossless" context.
 
-* **`atlas_manifest.yaml`**: The **Master Control File**. It lists all 37 monads and defines the `Handoff.NextAction` for the project. **A new instance must read this file first.**
-* **`/src/monad.py`**: The Python `pydantic` class that acts as the **strict validator (the "law")** for all entries. It enforces the L1-L16 structure, the refactored `HolonomicID` schema, and the `Validation` block.
-* **`/data/entries/`**: Contains all individual **Anatomical Monad** files in a validated `.json` format, one file per entry.
+1.  **You (Project Lead / Theorist):** The final human approver. Sets strategic goals and provides the master manuscripts.
+2.  **Gemini (The Architect):** The large-context AI. Acts as the "RAG Engine" for the team. Reads all 20+ papers, performs cross-document synthesis, and generates the *exact, complete file content* (the "Commit Package") for each update.
+3.  **ChatGPT-5 (The Consultant):** A small-context "Red Team." Receives a *single* monad file and *specific text excerpts* (prepared by Gemini) to critique and provide a "second opinion." Does *not* write to the repo.
+4.  **Claude (The Actuator):** The GitHub-enabled AI. Its role is purely transactional. It receives the final "Commit Package" from Gemini and the *exact* commit message, and executes the `git push` to the repository.
+
+This workflow (Gemini-Architect -> [ChatGPT-Consultant] -> Claude-Actuator) solves the context-limit problem of smaller AIs and the GitHub-access limit of larger AIs.
 
 ---
 
-## 4. Potential & Ultimate Outcome
+## 4. Handoff Protocol (For AIs)
 
-The outcome of this project is not a static document, but a **living computational model**.
-
-* **Ultimate Outcome:** A complete, 37-node (and growing) graph database of the human holonomic-anatomical structure.
-* **Potential (Simulation):** This Atlas serves as the foundational "phase space" for the *God of the Math* simulations. It will allow us to model consciousness as a phase-modulated field propagating across this graph, testing hypotheses from Papers 1-20.
-* **Potential (Handoff):** This repository *is* the "flawless handoff." By cloning this repo, a new AI instance or collaborator *instantly* inherits the project's complete, validated state and strategic objectives, solving the "fading context" problem.
+All AIs must first read the files in the `/.handover/` folder to understand the project's state and their specific role.
+* `atlas_manifest.yaml` (in root) defines the **Next Action**.
+* `HANDOVER_LOG.md` contains the strategic history.
+* Agent-specific protocols (`GEMINI_...`, `CLAUDE_...`, `CHATGPT_...`) define individual roles.

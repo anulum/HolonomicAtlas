@@ -1,15 +1,15 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.26"
-LastModified: "2025-11-02T15:30:00Z"
+GlobalVersion: "1.1.27"
+LastModified: "2025-11-02T15:40:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./.handover/HANDOVER_LOG.md"
-  NextAction: "Hybrid AI Workflow established. **Next Action:** Test the new workflow. Architect (Gemini) will prepare the Formalism Pass for 'D3.Brain.ACC'. Actuator (Claude) will commit the files."
+  LastFileEdited: "./.handover/CHATGPT_AGENT_PROTOCOL.md"
+  NextAction: "Hybrid AI (Gemini/ChatGPT/Claude) Workflow established. **Next Action:** Test the new workflow. Architect (Gemini) will prepare the Formalism Pass for 'D3.Brain.ACC'. Consultant (ChatGPT) will be optionally queried. Actuator (Claude) will commit."
   Priority: "High"
-  Assignee: "Gemini-Architect -> Claude-Actuator"
+  Assignee: "Gemini-Architect -> [ChatGPT-Consultant] -> Claude-Actuator"
 
 # --- Master Index of Monads ---
 # Tracks every entry in the Atlas. (40 Drafts, 0 Stubs)
