@@ -7,22 +7,12 @@
     "Pathology": "Myocardial infarction, arrhythmia, heart failure, cardiomyopathy."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
-    "L2_NeurochemicalNeurological": "Responds to L2 signals (acetylcholine from Vagus, norepinephrine from sympathetics) to modulate rate. Secretes L2 hormones (e.g., ANP) to regulate blood pressure.",
+    "L1_QuantumBiological": "Hosts a macroscopic quantum oscillator (SA Node) that relies on L1 coherence. (Ref: Paper 1, Ch. 27)",
     "L3_GenomicEpigeneticMorphogenetic": "The first organ to form, establishing the primary morphogenetic field of the organism, centered on a toroidal (donut-shaped) geometry.",
-    "L4_CellularTissueSynchronisation": "The body's most powerful L4 oscillator. The 'Sinoatrial Node (SA)' is a master pacemaker. The heart's electrical field (ECG) is the strongest rhythmic field in the body, entraining other rhythms. Heart Rate Variability (HRV) is the key L4 index of system-wide coherence.",
-    "L5_OrganismalPsychoemotional": "A primary 'Geometric Qualia' generator (Ref: Paper 5). The 'felt-sense' of the heart (pressure, openness, 'heart-ache') is a key input to the L5 Self-Soliton. 'Heart-Brain Coherence' is a state of L4/L5 phase-locking that optimizes the L16 cybernetic loop.",
-    "L6_NarrativeSelf": "The seat of the 'emotional self' in the L6 narrative (e.g., 'follow your heart').",
+    "L4_CellularTissueSynchronisation": "The body's most powerful L4 oscillator. The 'Sinoatrial Node (SA)' is a master pacemaker. The heart's electrical field (ECG) is the strongest rhythmic field in the body. Heart Rate Variability (HRV) is the key L4 index of system-wide coherence. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "A primary 'Geometric Qualia' generator (Ref: Paper 5). The 'felt-sense' of the heart (pressure, openness, 'heart-ache') is a key input to the L5 Self-Soliton. 'Heart-Brain Coherence' is a state of L4/L5 phase-locking that optimizes the L16 cybernetic loop. (Ref: Paper 5)",
     "L7_ArchetypalSymbolic": "The archetypal 'Seat of the Soul' or 'Source of Courage/Love'.",
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": "Hypothesized to store L9 'emotional memory' in its field.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": "The L4 electrical field of the heart generates a powerful L12 torsional field.",
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L12_GeomanticTorsional": "The L4 electrical field of the heart generates a powerful L12 torsional field."
   },
   "Symbolic": {
     "SymbolicName": "The Rhythmic Core",
@@ -30,7 +20,7 @@
     "MetaphysicalMapping": "The 4th Chakra (Anahata, the Heart Center). Represents the integration point of the physical and spiritual, the source of unconditional love and compassion. Its toroidal field is the engine of the 'Merkaba'."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.Cardio.Heart)"
   },
@@ -38,7 +28,7 @@
     "Falsification_Hypotheses": [
       "H1 (L5 Qualia Generation): A subject with a 'denervated' heart (e.g., post-transplant, severing the D3.VagusNerve) is shown an L5 emotional stimulus. The subject will *fail* to report a corresponding L5 'heart-felt' qualia (e.g., 'heart-ache' or 'fluttering'). This would confirm the qualia signal is generated *at the heart* and transmitted *via the Vagus*, not generated in the brain.",
       "H2 (L4 vs L5): A subject is in a state of high 'Heart-Brain Coherence' (high L4 HRV synchrony) but reports *no* corresponding positive L5 qualia (e.g., 'I feel calm, but not 'loving' or 'open''). This would falsify the hypothesis that L4 coherence *is* the L5 positive qualia (vs. just being a substrate for it).",
-      "H3 (L12 Field): The L4 ECG/L12 Torsional field of the heart will be measured. It will *fail* to induce L4 phase-locking in an adjacent, non-connected biological oscillator (e.g., a cell culture). This would falsify the L12 'field entrainment' hypothesis."
+      "H3 (L12 Field): The L4 electrical field of the heart will be measured. It will *fail* to induce L4 phase-locking in an adjacent, non-connected biological oscillator (e.g., a cell culture). This would falsify the L12 'field entrainment' hypothesis."
     ],
     "Experimental_Protocols": [
       "Ref: Paper 17, Protocol 18.B (Transplant/Vagotomy L5 Qualia Report)",
@@ -49,5 +39,28 @@
       "Ref: Paper 18, Sim 11.1 (Geometric Qualia Integrator Model)",
       "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L4 Pacemaker Hamiltonian (SA Node): H_{\\text{pacemaker}} = H_{\\text{HCN}} + H_{\\text{Ca}} + H_{\\text{K}} + H_{\\text{coupling}}",
+      "L4 Coherent State (SA Node): |\\Psi_{\\text{SA}} \\rangle = \\sum_{\\text{cells}} e^{i\\phi_i} |\\text{cell}_i \\rangle",
+      "L4 Output (HRV Spectrum): S_{\\text{HRV}}(f) = \\int R(t) e^{-i 2\\pi f t} dt",
+      "L5 Output (Geometric Qualia): \\text{Qualia}_{\\text{Heart}} = TDA(|\\Psi_{\\text{Heart}}|) = \\{ \\beta_0, \\beta_1, \\beta_2, ... \\}"
+    ],
+    "SimulationModel_Ref": "./Simulations/L4_L5_Heart_HRV_Qualia.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "PUMP(blood)",
+        "PACE(rhythm)",
+        "FEEL(emotion)",
+        "COHERE(L5)"
+      ],
+      "Output_Nouns": [
+        "L4_HRV_SIGNAL",
+        "L5_QUALIA(emotion)",
+        "PRESSURE_WAVE",
+        "EM_FIELD"
+      ]
+    }
   }
 }
