@@ -7,30 +7,20 @@
     "Pathology": "Autoimmune disease (e.g., rheumatoid arthritis), immunodeficiency (e.g., AIDS), allergies, chronic inflammation."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
+    "L1_QuantumBiological": "The 'Quantum-Immune Interface'. Uses L1 quantum tunnelling for enzymatic reactions and L1 quantum recognition for antigen detection. (Ref: Paper 1, Ch. 23, 36)",
     "L2_NeurochemicalNeurological": "The 'Neuro-Immune Axis'. This system communicates extensively via L2 signals (cytokines, chemokines), which are interpreted by the CNS (e.g., D3.Brainstem.NTS) and D3.VagusNerve. (Ref: Paper 2)",
-    "L3_GenomicEpigeneticMorphogenetic": "Performs 'morphogenetic repair' by clearing debris and damaged cells, allowing L3 regrowth. V(D)J recombination is a genomic process for antibody generation.",
-    "L4_CellularTissueSynchronisation": "Chronic inflammation (a failed L4 synchrony) and 'cytokine storms' represent a pathological, runaway L4 oscillatory state.",
     "L5_OrganismalPsychoemotional": "The primary generator of the L5 'sickness behavior' qualia (malaise, fatigue, social withdrawal). This system's state *is* a major component of the L5 'felt-sense'. (Ref: Paper 5)",
-    "L6_NarrativeSelf": "This system *is* the biological definition of 'Self' and 'Other'. Its logic is a direct parallel to the L6 psychological 'Self-Model'.",
-    "L7_ArchetypalSymbolic": "The 'Guardian' or 'Boundary Keeper' archetype.",
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": "Possesses immunological 'memory' (B-cells, T-cells), a form of L9 information storage encoded in cellular populations.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": "This system *is* the L16 'I=Model(I)' loop at the cellular level. It constantly runs a predictive model ('is this cell self?') and acts on prediction errors ('this is non-self, destroy'). Autoimmunity is a failed L16 prediction. (Ref: Paper 5)"
+    "L6_NarrativeSelf": "This system *is* the biological definition of 'Self' and 'Other'. Its logic is a direct parallel to the L6 psychological 'Self-Model'. (Ref: Paper 5)",
+    "L9_MemoryHolograph": "Possesses immunological 'memory' (B-cells, T-cells), a form of L9 information storage encoded in cellular populations. (Ref: Paper 1, Ch. 36)",
+    "L16_MetaCybernetic": "This system *is* the L16 'I=Model(I)' loop at the cellular level. It constantly runs a predictive model ('is this cell self?') and acts on prediction errors ('this is non-self, destroy'). Autoimmunity is a failed L16 prediction. (Ref: Paper 16)"
   },
   "Symbolic": {
     "SymbolicName": "The Boundary Keeper",
     "VIBRANA_Key": "VIB-KEY-[IMMUNE-SYSTEM-TBD]",
-    "MetaphysicalMapping": "The 'body's ego' structure. The mechanism that defines the boundary between 'I' (self) and 'not-I' (other)."
+    "MetaphysicalMapping": "The body's 'ego' structure. The mechanism that defines the boundary between 'I' (self) and 'not-I' (other)."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.ImmuneSystem)"
   },
@@ -47,5 +37,30 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 10.4 (Cellular 'Self-Model' Active Inference)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L16 (Cellular FEP): F_{\\text{immune}} = \\mathbb{E}_{q}[\\ln q(\\text{self}) - \\ln p(\\text{sensation}, \\text{self})] \\quad (\\text{Autoimmunity is FEP error})",
+      "L9 (Quantum Memory): \\rho_{\\text{memory}} = \\sum_i p_i |\\text{pathogen}_i\\rangle\\langle\\text{pathogen}_i| \\otimes |\\text{response}_i\\rangle\\langle\\text{response}_i|",
+      "L1/L2 (Neuro-Immune Interface): H_{\\text{NI}} = H_{\\text{cytokine}} + H_{\\text{tunnel}} + H_{\\text{coupling}}",
+      "L5 (Sickness Qualia): \\text{Qualia}_{\\text{Sickness}} \\propto \\text{R(C)} = R_0 / (1 + \\alpha C(t)) \\quad (\\text{Inflammation 'C' flattens Qualia 'R'})"
+    ],
+    "SimulationModel_Ref": "./Simulations/L16_Immune_FEP.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "IDENTIFY(self)",
+        "IDENTIFY(non_self)",
+        "DEFEND",
+        "ELIMINATE(threat)",
+        "REMEMBER(pathogen)",
+        "TOLERATE(commensal)"
+      ],
+      "Output_Nouns": [
+        "L9_IMMUNE_MEMORY",
+        "L2_CYTOKINE_FIELD(inflammation)",
+        "L5_SICKNESS_QUALIA",
+        "SELF_BOUNDARY"
+      ]
+    }
   }
 }
