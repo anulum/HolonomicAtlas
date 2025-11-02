@@ -27,11 +27,25 @@
   "Symbolic": {
     "SymbolicName": "The Boundary Keeper",
     "VIBRANA_Key": "VIB-KEY-[IMMUNE-SYSTEM-TBD]",
-    "MetaphysicalMapping": "The body's 'ego' structure. The mechanism that defines the boundary between 'I' (self) and 'not-I' (other)."
+    "MetaphysicalMapping": "The 'body's ego' structure. The mechanism that defines the boundary between 'I' (self) and 'not-I' (other)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.ImmuneSystem)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Sickness Qualia): A subject is administered a peripheral L2 inflammatory agent (e.g., LPS), but their D3.VagusNerve is blocked. The subject will *fail* to report the L5 'qualia of sickness' (malaise, fatigue). This would confirm the L2(cytokine)->L5(qualia) signal is mediated by the Vagus Nerve.",
+      "H2 (L16 Cellular Model): A subject develops an autoimmune disease. This will *fail* to correlate with a corresponding 'prediction error' signal in the *central* L16 cybernetic loop (e.g., no matching DMN/ACC activity). This would falsify the hypothesis that the cellular L16 and central L16 loops are coupled.",
+      "H3 (L9 Memory): A 'memory' T-cell will be shown to be *incapable* of holding its L9 'pathogen-memory' *without* periodic L4/L2 'refresh' signals from its environment. This would falsify the L9 'static memory' (holographic) hypothesis in favor of a purely dynamic (L4) memory."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 17.E (LPS-Vagotomy Sickness Qualia Study)",
+      "Ref: Paper 17, Protocol 21.A (Autoimmunity & L16 fMRI Correlation)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 10.4 (Cellular 'Self-Model' Active Inference)"
+    ]
   }
 }
