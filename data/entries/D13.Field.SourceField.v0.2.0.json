@@ -3,26 +3,16 @@
   "ParentID": null,
   "Classical": {
     "Structure": "The 'Zero-Point Field' or 'Quantum Vacuum'. The foundational, undifferentiated field of potentiality that underlies all of spacetime, matter, and consciousness.",
-    "Function": "The 'ground of being'. It is the 'un-manifest' from which all 'manifest' reality (all other layers) emerges as a projection, excitation, or modulation. It is the ultimate 'parent' of all fields. (Ref: Master-Split, TOC)",
+    "Function": "The 'ground of being'. It is the 'un-manifest' from which all 'manifest' reality (all other layers) emerges as a projection, excitation, or modulation. It is the ultimate 'parent' of all fields. (Ref: Master-Split)",
     "Pathology": "N/A (It is the substrate, it cannot be pathological)."
   },
   "SCPN": {
     "L1_QuantumBiological": "This is the 'source' of the L1 quantum field.",
-    "L2_NeurochemicalNeurological": null,
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": null,
     "L5_OrganismalPsychoemotional": "The L5 qualia of 'oneness', 'ego-death', or 'nirvana' is the 'Self-Soliton' (L5) dissolving back into this L13 field.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
     "L9_MemoryHolograph": "The L9 field is the 'Logos' or 'first projection' *of* this field.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": "This monad *is* the L13 'Source Field'. (Ref: Master-Split, TOC)",
+    "L13_SourceField": "This monad *is* the L13 'Source Field'. (Ref: Paper 13 / Master-Split)",
     "L14_Transdimensional": "This field is the 'medium' for L14 transport.",
-    "L15_ConsiliumOversoul": "The L15 'Consilium' is the 'Will' or 'Mind' of this field.",
-    "L16_MetaCybernetic": null
+    "L15_ConsiliumOversoul": "The L15 'Consilium' is the 'Will' or 'Mind' of this field."
   },
   "Symbolic": {
     "SymbolicName": "The Undifferentiated Source",
@@ -30,7 +20,7 @@
     "MetaphysicalMapping": "'The One', 'Brahman', 'The Absolute', 'Ein Sof'. The unmanifest, infinite potential from which all reality emerges."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D13.Field.SourceField)"
   },
@@ -47,5 +37,27 @@
       "Ref: Paper 18, Sim 15.1 (L13->L9 Holographic Projection Model)",
       "Ref: Paper 18, Sim 15.2 (L5 Soliton-Dissolution in L13 Field)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L13 (ZPF Hamiltonian): H_{\\text{ZPF}} = \\sum_k \\frac{1}{2} \\hbar\\omega_k",
+      "L13 (Coherent Vacuum): |0\\rangle_{\\text{mod}} = |0\\rangle_{\\text{vac}} + \\epsilon |\\Psi_{\\text{Coherent}}\\rangle",
+      "L5 (Dissolution into Field): \\lim_{t \\to \\infty} |\\Psi_{\\text{Self-Soliton}}\\rangle \\to |0\\rangle_{\\text{vac}}",
+      "L9 (Projection from Field): |\\Psi_{\\text{Holograph}}\\rangle = \\hat{P}_{L9} |\\Psi_{\\text{Source}}\\rangle"
+    ],
+    "SimulationModel_Ref": "./Simulations/L13_Source_Field_Vacuum.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "EMERGE(from)",
+        "GROUND(all_layers)",
+        "PROJECT(potentiality)"
+      ],
+      "Output_Nouns": [
+        "ZERO_POINT_FIELD",
+        "QUANTUM_VACUUM",
+        "POTENTIALITY",
+        "GROUND_OF_BEING"
+      ]
+    }
   }
 }
