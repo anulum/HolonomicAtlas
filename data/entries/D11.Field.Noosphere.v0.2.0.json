@@ -7,22 +7,10 @@
     "Pathology": "Psychic epidemics, mass hysteria, memetic viruses, polarization (spin-glass models)."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
-    "L2_NeurochemicalNeurological": null,
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": null,
-    "L5_OrganismalPsychoemotional": "The L5 qualia of 'collective effervescence' or 'group-mind'.",
     "L6_NarrativeSelf": "The L6 DMN 'tunes' to this field to download 'cultural narratives' and 'memes' that shape the 'I=Model(I)' loop.",
     "L7_ArchetypalSymbolic": "This field is the 'live content' (memes, culture) that is structured by the L7 'grammar' (archetypes).",
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": "This is the 'live cache' of the L9 field, representing the 'current' collective thought-form.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": "This monad *is* the L11 'Noosphere' field. (Ref: Master-Split, TOC)",
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L9_MemoryHolograph": "This is the 'live cache' or 'RAM' of the L9 'hard drive', representing the 'current' collective thought-form.",
+    "L11_NoosphereCollective": "This monad *is* the L11 'Noosphere' field. (Ref: Paper 11 / Master-Split)"
   },
   "Symbolic": {
     "SymbolicName": "The Collective Mind",
@@ -30,12 +18,12 @@
     "MetaphysicalMapping": "The 'Global Consciousness' or 'World-Soul-in-Becoming'. The emergent super-organism of humanity."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D11.Field.Noosphere)"
   },
   "Validation": {
-    "Falsification_Hypotheses": [
+    "Falsification_HypothesES": [
       "H1 (L11 Entrainment): During a documented global-coherence event (e.g., 9/11, global meditation), the Global Consciousness Project (GCP) REG network will *fail* to show a statistically significant deviation from randomness. This would falsify the L11 'collective field entrainment' hypothesis.",
       "H2 (L6 Memetic Injection): The emergence of a *truly novel* L6 memetic concept (one with no L7 archetypal or L9 historical precedent) will *fail* to appear simultaneously in multiple, isolated D5.Organisms. It will *only* spread via classical L2 (verbal, visual) pathways. This would falsify the L11 'field-injection' hypothesis in favor of a purely classical memetic model."
     ],
@@ -47,5 +35,28 @@
       "Ref: Paper 18, Sim 13.3 (Noospheric Spin-Glass Model)",
       "Ref: Paper 18, Sim 13.4 (Memetic 'Field Injection' Simulation)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L11 (Spin-Glass Model): H = -\\sum_{i<j} J_{ij} S_i S_j - h \\sum_i S_i \\quad (\\text{Sherrington-Kirkpatrick})",
+      "L16 (Collective FEP): F_{\\text{Noosphere}} = \\mathbb{E}_{q}[\\ln q(\\Psi_{\\text{coll}}) - \\ln p(S_{\\text{data}}, \\Psi_{\\text{coll}})]",
+      "L11 (Collective State): |\\Psi_{\\text{Noosphere}}\\rangle = \\bigotimes_{i} |\\psi_i\\rangle \\quad (\\text{Tensor product of individual minds})",
+      "L11 (Memetic Dynamics): \\dot{x}_i = x_i (f_i(\\vec{x}) - \\bar{f}(\\vec{x})) \\quad (\\text{Replicator Equation})"
+    ],
+    "SimulationModel_Ref": "./Simulations/L11_Noosphere_SpinGlass.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "BROADCAST(meme)",
+        "SYNCHRONIZE(belief)",
+        "RESONATE(culture)",
+        "ENTRAIN(D5.Organism)"
+      ],
+      "Output_Nouns": [
+        "COLLECTIVE_FIELD",
+        "MEMETIC_ATTRACTOR",
+        "CULTURAL_NARRATIVE",
+        "GROUP_MIND"
+      ]
+    }
   }
 }
