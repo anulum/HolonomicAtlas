@@ -7,22 +7,11 @@
     "Pathology": "Astrogliosis (scarring), linked to epilepsy, neurodegeneration, and CNS trauma."
   },
   "SCPN": {
-    "L1_QuantumBiological": "Astrocyte networks (syncytium) connected by gap junctions may form large-scale L1 coherent fields.",
+    "L1_QuantumBiological": "Astrocyte networks (syncytium) connected by gap junctions may form large-scale L1 coherent fields. (Ref: Paper 1, Ch. 27)",
     "L2_NeurochemicalNeurological": "The 'L2 Homeostat'. The 'tripartite synapse' means this cell is a partner in L2 processing, clearing neurotransmitters to reset the synapse and providing metabolic fuel (lactate). (Ref: Paper 2)",
     "L3_GenomicEpigeneticMorphogenetic": "Controls L3 neuroplasticity by 'pruning' (removing) unused or weak synapses, physically shaping the neural network.",
     "L4_CellularTissueSynchronisation": "The 'L4 Slow Controller'. Generates and propagates slow calcium (Ca2+) waves across the astrocyte network, which in turn modulate and synchronize the L4 firing of D1.Neurons. (Ref: Paper 4)",
-    "L5_OrganismalPsychoemotional": "By modulating L4 neural synchrony, the astrocytic network directly shapes the L5 state (e.g., sleep, arousal).",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": "Synaptic pruning (L3) is a key L9 mechanism for 'forgetting' or 'refining' memory traces.",
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L5_OrganismalPsychoemotional": "By modulating L4 neural synchrony, the astrocytic network directly shapes the L5 state (e.g., sleep, arousal)."
   },
   "Symbolic": {
     "SymbolicName": "The Modulator Matrix",
@@ -30,7 +19,7 @@
     "MetaphysicalMapping": "The 'Great Mother' or 'Matrix' of the brain. The nurturing, sustaining, and managing substrate that allows the 'Processor' (Neuron) to function."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21"
   },
@@ -47,5 +36,28 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 4.4 (Astrocyte-Neuron Coupled Oscillator Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "Astrocyte Hamiltonian: H_{\\text{astro}} = H_{\\text{gap}} + H_{\\text{Ca_wave}} + H_{\\text{metabolic}} + H_{\\text{sync}}",
+      "Gap Junction (Connexin-43): H_{\\text{gap}} = -t_{cx} \\sum_{\\langle i,j \\rangle} (c_i^\\dagger c_j + h.c.) \\times \\exp(-|V_{ij}|/V_0)",
+      "L4 Calcium Wave (IP3): H_{\\text{Ca_wave}} = \\sum_i \\hbar\\omega_{Ca} a_i^\\dagger a_i + \\sum_{ij} g_{IP3} (a_i^\\dagger a_j + h.c.)",
+      "Coherence Time: \\tau_{\\text{astro}} \\sim 10^{-3} \\, \\text{s (millisecond scale)}"
+    ],
+    "SimulationModel_Ref": "./Simulations/L4_Astrocyte_Ca_Wave.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "BUFFER(glutamate)",
+        "MODULATE(L4_rhythm)",
+        "REGULATE(homeostasis)",
+        "SYNC(network)"
+      ],
+      "Output_Nouns": [
+        "CALCIUM_WAVE",
+        "GLIOTRANSMITTER",
+        "L4_SLOW_CONTROL",
+        "NEURAL_HOMEOSTASIS"
+      ]
+    }
   }
 }
