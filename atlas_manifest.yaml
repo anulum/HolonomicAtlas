@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.29"
-LastModified: "2025-11-02T05:23:00Z"
+GlobalVersion: "1.0.30"
+LastModified: "2025-11-02T05:25:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D4.ImmuneSystem.v0.1.1.json"
-  NextAction: "Validation Pass: D4.ImmuneSystem complete. **Next Action:** Populate the 'Validation' section for 'D4.Microbiome' to test its L2 'Chemical Factory' and L5 'Gut-Brain Axis' (mood) hypotheses (per Paper 2, 5, 17)."
+  LastFileEdited: "./data/entries/D4.Microbiome.v0.1.1.json"
+  NextAction: "Validation Pass: D4.Microbiome complete. **Next Action:** Populate the 'Validation' section for 'D4.PNS' (Peripheral Nervous System) to test its L5 'Somatic Felt-Sense' (e.g., proprioception) and L9 'Somatic Memory' (CPG) hypotheses (per Paper 5, 9, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -73,9 +73,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.ImmuneSystem"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D4.Microbiome"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D4.PNS"
     Version: "0.1.0"
   - HolonomicID: "scpn://atlas.v1/D5.Organism"

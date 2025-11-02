@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "A symbiotic, 'alien' intelligence. Represents the principle that the 'Self' is a collective, not a singularity."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.Microbiome)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L2->L5 Mood): A 'germ-free' (gnotobiotic) animal (no microbiome) will exhibit an *identical* L5 anxiety/mood profile (e.g., in an open-field test) to a normal control. This would falsify the L2->L5 (microbiome->mood) hypothesis.",
+      "H2 (L2 Vagal Pathway): A 'germ-free' animal (from H1) is given a 'fecal-microbiota transplant' (FMT) from an 'anxious' donor. The recipient animal *will* develop the anxious L5 phenotype, *even after* a complete vagotomy (D3.VagusNerve lesion). This would falsify the L5 signal as being *primarily* vagal (H2a) and support a *purely* L2 circulatory/hormonal pathway (H2b).",
+      "H3 (L2 Chemical Factory): An in-vitro microbiome culture will *fail* to produce measurable L2 neuroactive chemicals (e.g., serotonin, GABA) when given L2 precursors (e.g., tryptophan). This would falsify the L2 'chemical factory' hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 22.A (Germ-Free L5 Phenotype Study)",
+      "Ref: Paper 17, Protocol 22.B (FMT-Vagotomy L5/L2 Dissociation)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)"
+    ]
   }
 }
