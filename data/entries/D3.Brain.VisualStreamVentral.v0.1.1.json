@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Objectifier' or 'Namer'. The faculty of consciousness that discretizes the unified visual field into 'things'."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.VisualStreamVentral)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 vs L6): A subject with anomic aphasia (intact recognition, but inability to *name* objects) is shown a 'cup'. The subject will be able to *use* the cup correctly (intact L5 'what-it-is-for' qualia), but will fail to generate the L6 'noun' ('cup'). This would dissociate L5 recognition (Ventral) from L6 naming (DMN/Language).",
+      "H2 (Visual Agnosia): A subject with visual agnosia will show normal L2/L4 activity in V1 (seeing features) but no coherent L4/L5 activation in the Ventral Stream (no 'recognition'). This would falsify the hypothesis that V1 is sufficient for L5 recognition.",
+      "H3 (L7 Symbolism): A subject is shown a novel L7 symbol. The Ventral Stream (L5) will show high activity (pattern recognition), but the L6 DMN/language centers will show *low* activity (no associated 'noun' or narrative). This tests the L5 'recognition' vs. L6 'naming' split."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 7.C (Agnosia/Aphasia Dissociation Study)",
+      "Ref: Paper 17, Protocol 13.A (Novel Symbol fMRI Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 9.3 (Ventral Stream 'What' Model)"
+    ]
   }
 }
