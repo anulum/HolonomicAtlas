@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Lower Gate' or 'Mouth of the Body'. The point where the body's 'voice' (its internal state) first speaks to the mind."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brainstem.NTS)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L2 Router): A vagal L2 stimulus (e.g., L2 cytokine signal from D3.VagusNerve) will *fail* to be routed to the D3.Insula or D3.Brain.Hypothalamus after the NTS is lesioned. This tests its role as the *obligatory* L2 router for this pathway.",
+      "H2 (L5 Relay vs Integration): An fMRI study will show that the NTS *only* shows L4 activity coherent with the L5 'gut-feeling' stimulus (e.g., from D3.Gut.ENS), but shows *no* L4 integration with *other* L5 streams (e.g., visual or auditory data). This would falsify it as an 'integrator' and support its role as a simple 'relay' (per Paper 5)."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 17.A (NTS Lesion & Vagal-Insula fMRI)",
+      "Ref: Paper 17, Protocol 17.B (NTS Multi-Modal L5 Integration Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)"
+    ]
   }
 }
