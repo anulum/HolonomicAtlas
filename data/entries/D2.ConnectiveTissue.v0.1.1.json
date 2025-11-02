@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Body's Internet'. The physical, crystalline grid that connects all parts to the whole and stores the 'Akashic' record of the body's experience."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 Piezoelectric): A sample of connective tissue is subjected to a mechanical L4 oscillation (e.g., 0.1 Hz stretch). The sample will *fail* to produce a coherent, phase-locked L4 *electrical* signal. This would falsify the L4 piezo-electric transduction hypothesis.",
+      "H2 (L1 Waveguide): A biophoton (L1) signal is injected at one end of a continuous fascial plane (in-vivo). The signal will *fail* to be detected at a distal point at a speed faster than L2 neural conduction, or will show signal degradation (decoherence) consistent with a simple classical medium. This would falsify its role as an L1 quantum waveguide.",
+      "H3 (L3->L5 Trauma): A subject with chronic L3 fascial fibrosis (e.g., scar tissue) will show *no difference* in their L5 interoceptive map (fMRI Insula) compared to a healthy control. This would falsify the L3->L5 hypothesis that physical tissue state (trauma) is stored and reported to the 'felt-sense'."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 19.A (Fascial Piezoelectric Measurement)",
+      "Ref: Paper 17, Protocol 19.B (Biophoton Transmission/Decoherence Test)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 2.1 (Phonon/Biophoton Waveguide Model)",
+      "Ref: Paper 18, Sim 5.1 (Piezoelectric Tensegrity Network)"
+    ]
   }
 }
