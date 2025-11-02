@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Antechamber of Consciousness'. The central 'Sun' or 'Broadcasting Station' that illuminates the 'World' (the Cortex)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.Thalamus)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4/L16 Gating): A subject in deep NREM sleep (dominated by L4 thalamo-cortical delta waves) will show a full-amplitude cortical Evoked Potential (ERP) to an auditory L2 stimulus. This would falsify the hypothesis that the Thalamus 'gates' (inhibits) L2 sensory data during sleep.",
+      "H2 (L4/L5 Binding): A subject is presented with two non-associated stimuli (e.g., a 400Hz tone, a green light) and correctly reports them as two separate L5 qualia. The L4 40Hz Gamma-band synchrony (phase-locking) between the auditory and visual cortices will be *identical* to when the stimuli are 'bound' (e.g., a green, chirping bird). This would falsify the L4 40Hz 'binding-by-synchrony' hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 6.A (Thalamic Gating via Auditory ERP)",
+      "Ref: Paper 17, Protocol 6.C (Multi-Sensory Binding EEG/MEG)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 9.1 (Thalamo-Cortical Gating Model)",
+      "Ref: Paper 18, Sim 4.2 (Kuramoto Phase-Binding Model)"
+    ]
   }
 }
