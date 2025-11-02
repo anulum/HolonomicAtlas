@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "The 'Global Consciousness' or 'World-Soul-in-Becoming'. The emergent super-organism of humanity."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D11.Field.Noosphere)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L11 Entrainment): During a documented global-coherence event (e.g., 9/11, global meditation), the Global Consciousness Project (GCP) REG network will *fail* to show a statistically significant deviation from randomness. This would falsify the L11 'collective field entrainment' hypothesis.",
+      "H2 (L6 Memetic Injection): The emergence of a *truly novel* L6 memetic concept (one with no L7 archetypal or L9 historical precedent) will *fail* to appear simultaneously in multiple, isolated D5.Organisms. It will *only* spread via classical L2 (verbal, visual) pathways. This would falsify the L11 'field-injection' hypothesis in favor of a purely classical memetic model."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 23.C (GCP REG Coherence Analysis)",
+      "Ref: Paper 17, Protocol 23.D (Novel Memetic Emergence Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 13.3 (Noospheric Spin-Glass Model)",
+      "Ref: Paper 18, Sim 13.4 (Memetic 'Field Injection' Simulation)"
+    ]
   }
 }
