@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Yin-Yang' of the body. Represents the dynamic balance between action and rest, expression and reception, that maintains the organism's coherence."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.ANS... prefix)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 HRV Generation): A subject is given a full autonomic blockade (e.g., hexamethonium, blocking both sympathetic and parasympathetic ganglia). The subject's L4 'Heart Rate Variability' (HRV) signal will *persist* (i.e., not flatline to zero). This would falsify the hypothesis that the ANS's L2/L4 oscillatory balance is the *sole* generator of HRV (and would point to an intrinsic D3.Heart generator).",
+      "H2 (L16 Effector): A subject (under autonomic blockade from H1) is given an L5 'fear' stimulus. The L16 'I=Model(I)' loop (DMN/ACC) will generate an error signal, *but* the L16 loop will *fail* to engage any *non-ANS* homeostatic pathways (e.g., L2 endocrine/HPA axis) in response. This would falsify the L16 model's redundancy, suggesting the ANS is an *obligatory* effector pathway for acute homeostasis.",
+      "H3 (L16 vs L5): Direct L16-model stimulation (e.g., Vagus Nerve Stimulation, VNS) will trigger a parasympathetic L2/L4 'rest' state, but the subject will *fail* to report the corresponding L5 'qualia of calm'. This would dissociate the L16 effector action from the L5 "felt-sense."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 18.C (HRV-EEG Coherence vs. Qualia Report)",
+      "Ref: Paper 17, Protocol 16.C (Autonomic Blockade & L5/L16 Response)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 4.3 (HRV-EEG Coupled Oscillator Model)",
+      "Ref: Paper 18, Sim 10.3 (Homeostatic Active Inference Model)"
+    ]
   }
 }
