@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'World Soul' or 'Anima Mundi'. The living, conscious super-organism of which the D5.Organism is a single cell."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D6.Field.PlanetaryField)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 Schumann Entrainment): A D5.Organism (human subject) is placed in a 'Mu-metal' (magnetically shielded) and Faraday-caged room, *isolating* them from the L4 Schumann Resonance (7.83Hz). The subject's L4 Alpha-band (8-12Hz) brain rhythms will show *no decoherence, drift, or loss of power*. This would falsify the L4 (Schumann) -> L4 (Alpha) entrainment hypothesis.",
+      "H2 (L8 Light Entrainment): A D5.Organism is placed in a 'free-run' bunker (no L8 light cues), but the L4 Schumann and L12 Geomagnetic fields are left intact. The organism's L4 circadian rhythm (e.g., L2 melatonin) will *fail* to entrain to the 24-hour planetary cycle. This would confirm that the L8 'light' signal (via D3.Eye.Retina) is the *only* planetary entrainment pathway, and that L4/L12 fields are *not*."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 23.A (Schumann Resonance Isolation Chamber)",
+      "Ref: Paper 17, Protocol 23.B (Free-Run 'Bunker' Entrainment Study)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 13.1 (Planetary-Human Coupled Oscillator Model)"
+    ]
   }
 }
