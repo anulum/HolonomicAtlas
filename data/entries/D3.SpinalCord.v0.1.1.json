@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Jacob's Ladder' connecting Heaven (Brain) and Earth (Body). The primary channel for the flow of subtle energy (Prana, Chi)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.SpinalCord)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L4 CPGs): A 'spinalized' animal (with a severed D3.Brain connection) is placed on a treadmill. The spinal cord will *fail* to generate a coherent L4 rhythmic 'walking' motion (CPG activation). This would falsify its role as an independent L4 oscillator.",
+      "H2 (L9 Somatic Memory): A spinalized animal (from H1) is subjected to a 'spinal reflex' L9 training protocol (e.g., paw-shock avoidance). The spinal cord will *fail* to exhibit L9 'memory' (e.g., fail to learn the avoidance reflex *without* L16 brain input). This would falsify the L9 somatic memory hypothesis."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 19.C (Spinalized CPG Treadmill Assay)",
+      "Ref: Paper 17, Protocol 19.D (Spinal Reflex L9 Memory Assay)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 4.5 (CPG Rhythmic Oscillator Model)"
+    ]
   }
 }
