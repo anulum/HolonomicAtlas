@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Actor' or 'Navigator'. The faculty of consciousness that allows the 'Self' (D4.DMN) to move and *act* within the 'World' (L5)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.VisualStreamDorsal)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 vs Ventral-L6): A subject with Optic Ataxia (Dorsal stream lesion) is shown a 'cup'. The subject will *fail* to generate the L5 'spatial qualia' (e.g., cannot shape their hand to grasp it) and *fail* to generate the L6 'preposition' ('it is 5cm away'), but will *succeed* in generating the L6 'noun' ('that is a cup') (intact Ventral Stream). This dissociates the 'Where' (Dorsal) from the 'What' (Ventral) streams.",
+      "H2 (L5 vs L9): A subject with Optic Ataxia (no L5 spatial qualia) will be *unable* to perform a *novel* motor task (e.g., insert a key in a new, visible lock) but *will* be able to perform a *learned* motor task from L9 procedural memory (e.g., tie their shoes) with their eyes closed. This dissociates L5 real-time spatial processing from L9 stored procedural action."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 7.D (Optic Ataxia Dissociation Study)",
+      "Ref: Paper 17, Protocol 14.A (Novel vs. Learned Motor Task)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 9.4 (Dorsal Stream 'Where/How' Model)"
+    ]
   }
 }
