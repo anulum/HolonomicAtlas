@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, constr
 from typing import List, Dict, Optional
 
-# --- SCPN Layer & Identity Schemas (v2 - CORRECTED) ---
+# --- SCPN Layer & Identity Schemas (v2) ---
 # This structure is validated against the Master TOC and Papers 0-5.
 
 class ClassicalIdentity(BaseModel):
@@ -55,8 +55,17 @@ class Metadata(BaseModel):
     Status: str = "Draft"
     LogReference: Optional[str] = None # e.g., "Paper 21, p. 1303"
 
+# --- NEWLY ADDED VALIDATION SCHEMA ---
+class ValidationPass(BaseModel):
+    """
+    V-Script: Falsification hypotheses and experimental/simulation references
+    per the Part III (Papers 17-20) Validation Suite.
+    """
+    Falsification_Hypotheses: Optional[List[str]] = Field(None, description="Testable hypotheses to *disprove* the SCPN mappings.")
+    Experimental_Protocols: Optional[List[str]] = Field(None, description="References to protocols in Paper 17.")
+    Simulation_Suite: Optional[List[str]] = Field(None, description="References to simulation models in Paper 18.")
 
-# --- The Core Monad Class ---
+# --- The Core Monad Class (UPDATED) ---
 
 class AnatomicalMonad(BaseModel):
     """
@@ -65,7 +74,6 @@ class AnatomicalMonad(BaseModel):
     """
     
     # HolonomicID (The Corrected, Validated Schema)
-    # This regex enforces our new, clean rules.
     HolonomicID: constr(
         regex=r"^scpn://atlas.v1/D\d{1,2}\.([A-Za-z0-9]+)(\.[A-Za-z0-9]+)*$"
     ) = Field(..., description="The unique, structural identifier. e.g., 'scpn://atlas.v1/D3.Brain.PinealGland'")
@@ -83,3 +91,6 @@ class AnatomicalMonad(BaseModel):
     
     # Metadata
     Meta: Metadata
+
+    # --- NEWLY ADDED VALIDATION OBJECT ---
+    Validation: Optional[ValidationPass] = Field(None, description="The V-Script for falsification (per Papers 17-20).")
