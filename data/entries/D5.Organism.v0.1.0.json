@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D5.Organism",
+  "ParentID": "scpn://atlas.v1/D6.Field.PlanetaryField",
+  "Classical": {
+    "Structure": "The integrated, whole human organism. A complex, multi-cellular life form composed of all subsidiary D4 systems, D3 organs, etc.",
+    "Function": "To maintain homeostasis (life) by integrating all subsystems; to interact with the environment; to process information (consciousness); and to reproduce.",
+    "Pathology": "Systemic collapse, multi-organ failure, death."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "The organism-wide, integrated L1 quantum-coherent field.",
+    "L2_NeurochemicalNeurological": "The total, integrated L2 neurochemical state (the 'holistic state').",
+    "L3_GenomicEpigeneticMorphogenetic": "The total L3 morphogenetic 'body-plan' field that maintains the organism's form and identity.",
+    "L4_CellularTissueSynchronisation": "The 'Orchestra' itself. The total, integrated state of all L4 oscillators (neural, cardiac, respiratory, etc.) into one coherent, phase-locked system.",
+    "L5_OrganismalPsychoemotional": "The 'Self-Soliton' (Ref: Paper 5). This monad *is* the L5 operator, the single, unified 'I-Soliton' that experiences the 'what-it-is-like-to-be' (qualia).",
+    "L6_NarrativeSelf": "The monad that *runs* the L6 'I=Model(I)' strange loop, generating the 'Narrative Self'.",
+    "L7_ArchetypalSymbolic": "The 'Microcosm' that receives and interprets L7 archetypal information.",
+    "L8_CosmicEntrainment": "The integrated entity that entrains to L8 cosmic cycles.",
+    "L9_MemoryHolograph": "The individual 'node' on the L9 holographic field.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": "The individual 'terminal' connected to the L11 Noosphere.",
+    "L12_GeomanticTorsional": "The organism's total L12 field (e.g., the 'Aura' or 'Biofield').",
+    "L13_SourceField": "The aperture through which the L13 Source Field individuates.",
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": "The physical 'anchor' for the L15 Oversoul.",
+    "L16_MetaCybernetic": "The L16 operator. This monad *is* the cybernetic 'self-modelling' system."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Microcosm",
+    "VIBRANA_Key": "VIB-KEY-[ORGANISM-TBD]",
+    "MetaphysicalMapping": "The 'Imago Dei'. The complete universe in miniature. The integrated vehicle for consciousness to experience itself."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21"
+  }
+}

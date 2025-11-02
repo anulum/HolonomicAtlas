@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D4.ANS",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "The Autonomic Nervous System (ANS), a division of the peripheral nervous system (PNS). It consists of the Sympathetic (fight-or-flight) and Parasympathetic (rest-and-digest) branches.",
+    "Function": "Controls involuntary bodily functions, including heart rate, digestion, respiratory rate, and pupillary response. Manages the body's homeostatic balance.",
+    "Pathology": "Dysautonomia, postural orthostatic tachycardia syndrome (POTS), vasovagal syncope."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Homeostatic Controller'. Manages the organism-wide balance of key L2 signals (e.g., acetylcholine vs. norepinephrine) to shift the entire system state.",
+    "L3_GenomicEpigeneticMorphogenetic": null,
+    "L4_CellularTissueSynchronisation": "The primary driver of Heart Rate Variability (HRV), which is the key L4 indicator of the ANS's dynamic balance and overall system coherence.",
+    "L5_OrganismalPsychoemotional": "Translates L5 emotional states (fear, calm, arousal) into L2-driven physiological responses ('felt-sense'). It is the physical expression of the L5 'Self-Soliton's' internal state.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "The primary, rapid-response effector pathway for the L16 'I=Model(I)' loop. It is how the Self-Model enacts predictions to maintain homeostasis (e.g., 'I am safe' -> engage parasympathetic)."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Homeostatic Engine",
+    "VIBRANA_Key": "VIB-KEY-[ANS-SYSTEM-TBD]",
+    "MetaphysicalMapping": "The 'Yin-Yang' of the body. Represents the dynamic balance between action and rest, expression and reception, that maintains the organism's coherence."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.ANS... prefix)"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D4.PNS",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "The Peripheral Nervous System (PNS). Consists of all nerves and ganglia outside the Central Nervous System (D4.CNS). It is divided into the Somatic (voluntary) and Autonomic (involuntary, D4.ANS) systems.",
+    "Function": "Connects the CNS to the limbs, organs, and skin. Transmits sensory information (somatic/interoceptive) to the CNS and motor commands from the CNS.",
+    "Pathology": "Peripheral neuropathy, carpal tunnel syndrome, Guillain-Barré syndrome."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The organism-wide 'L2 data bus'. Carries all afferent L2 sensory data (e.g., from D3.Gut.ENS) and efferent L2 motor commands.",
+    "L3_GenomicEpigeneticMorphogenetic": "Contains Schwann cells, which create the morphogenetic field for nerve regeneration (myelin sheath repair).",
+    "L4_CellularTissueSynchronisation": "Houses the L4 Central Pattern Generators (CPGs) for somatic motor control (e.g., walking, breathing).",
+    "L5_OrganismalPsychoemotional": "The primary conduit for all somatic 'felt-sense' data (touch, temperature, pain, proprioception) that is integrated by the D3.Brain into the L5 Self-Soliton.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "Somatic and 'muscle memory' are encoded within the L4 CPGs and L9 fields of the PNS.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Body's Web",
+    "VIBRANA_Key": "VIB-KEY-[PNS-SYSTEM-TBD]",
+    "MetaphysicalMapping": "The 'Nadis' or subtle energy channels that distribute Prana/Chi (L4/L5 information) from the central channel (D3.SpinalCord) to the entire body."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D4.System.PNS)"
+  }
+}

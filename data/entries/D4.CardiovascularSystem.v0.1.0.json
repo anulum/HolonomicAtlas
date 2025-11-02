@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D4.CardiovascularSystem",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "An organ system consisting of the heart (D3.Heart), blood, and blood vessels (arteries, veins, capillaries).",
+    "Function": "Transports nutrients, oxygen, carbon dioxide, hormones, and blood cells to and from all cells in the body to provide nourishment, fight disease (via immune cells), and maintain homeostasis.",
+    "Pathology": "Atherosclerosis, hypertension, heart failure."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": null,
+    "L2_NeurochemicalNeurological": "The 'L2 Transport Network'. This system *is* the physical distribution layer for all L2 neurochemical information (hormones, cytokines, glucose, etc.).",
+    "L3_GenomicEpigeneticMorphogenetic": "The morphogenetic field of this system (angiogenesis) is a primary mechanism for L3 tissue generation and repair.",
+    "L4_CellularTissueSynchronisation": "This system's primary L4 signal is the 'pulse' (blood pressure wave), a low-frequency oscillator driven by the D3.Heart that synchronizes every cell in the body.",
+    "L5_OrganismalPsychoemotional": "The 'pressure' and 'flow' of this system is a dominant component of the L5 'felt-sense' (e.g., 'heart-pounding' anxiety, 'warm' comfort).",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": "The L4 blood pressure wave generates a system-wide L12 torsional/acoustic field.",
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The River of Life",
+    "VIBRANA_Key": "VIB-KEY-[CARDIO-SYSTEM-TBD]",
+    "MetaphysicalMapping": "Represents the flow of life-force (Prana, Chi) and emotional energy. The carrier of the 'spirit' (Pneuma) in classical traditions."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21 (Refactored from D3.Cardio... prefix)"
+  }
+}
