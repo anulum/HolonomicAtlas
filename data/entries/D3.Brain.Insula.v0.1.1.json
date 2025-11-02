@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Inner Ocean'. The seat of the 'emotional body' where the subconscious (the body's wisdom) becomes conscious feeling."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.CNS.Brain.Insula)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Integration): A subject is given an L2 beta-blocker (blocking the D3.Heart's L2 signal) but is shown a 'fear' stimulus. The subject will report a *full* L5 'qualia of fear' (e.g., 'I feel afraid') despite the Insula showing *no* L2/L4 'heart-racing' input. This would falsify the hypothesis that the Insula *integrates* peripheral body signals to *create* the L5 qualia.",
+      "H2 (L5 vs L6): A subject with Alexithymia (difficulty *naming* L6 feelings) will show *no L4/L5 activation* in the Insula in response to a visceral L2 stimulus (e.g., a painful shock). This would falsify the hypothesis that L5 'feeling' (Insula) and L6 'naming' (DMN/Language) are dissociable.",
+      "H3 (vs ACC): The Insula will show high L4/L5 activity *not just* during raw interoception (e.g., 'I feel my heart'), but also during high-level 'prediction error' tasks (e.g., a Stroop test). This would falsify the SCPN 'division of labor' where the Insula (L5 data) and ACC (L16 error) are separate modules in the Salience Network."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 15.A (Beta-Blocker L5 Qualia Report)",
+      "Ref: Paper 17, Protocol 15.B (Alexithymia Interoceptive fMRI)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.1 (Geometric Qualia Integrator Model)",
+      "Ref: Paper 18, Sim 10.2 (DMN-SN 'Triple Network' Switching Model)"
+    ]
   }
 }
