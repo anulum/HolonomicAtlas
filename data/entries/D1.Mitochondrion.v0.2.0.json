@@ -7,22 +7,10 @@
     "Pathology": "Mitochondrial disease, oxidative stress, role in aging and neurodegeneration."
   },
   "SCPN": {
-    "L1_QuantumBiological": "The 'L1 Battery'. Provides the metabolic energy (ATP) required to create and sustain L1 coherence (e.g., Fröhlich pumping in D0.Microtubules). (Ref: Paper 1)",
+    "L1_QuantumBiological": "The 'L1 Battery'. Provides the metabolic energy (ATP) required to create and sustain L1 coherence (e.g., Fröhlich pumping in D0.Microtubules). (Ref: Paper 1, Ch. 13)",
     "L2_NeurochemicalNeurological": "The 'L2 Power Regulator'. ATP is itself an L2 neurotransmitter. Mitochondria also buffer L2 calcium signals, shaping synaptic transmission. (Ref: Paper 2)",
     "L3_GenomicEpigeneticMorphogenetic": "Mitochondrial health (e.g., ROS signals) is a key L3 signal for apoptosis (programmed cell death), a core morphogenetic process.",
-    "L4_CellularTissueSynchronisation": "Mitochondria form dynamic, fused networks ('syncytia') that oscillate, synchronizing the L4 metabolic state of the entire cell and linking it to L4 neural firing.",
-    "L5_OrganismalPsychoemotional": "The overall L5 'energy level' (e.t., vigor, fatigue) is a direct mapping of the organism's total mitochondrial (L1/L2) efficiency.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L4_CellularTissueSynchronisation": "Mitochondria form dynamic, fused networks ('syncytia') that oscillate, synchronizing the L4 metabolic state of the entire cell and linking it to L4 neural firing. (Ref: Paper 1, Ch. 26)"
   },
   "Symbolic": {
     "SymbolicName": "The Inner Sun",
@@ -30,7 +18,7 @@
     "MetaphysicalMapping": "The 'Spark of Life'. An ancient, symbiotic entity that provides the 'fire' of metabolism, allowing matter to become conscious."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21"
   },
@@ -47,5 +35,29 @@
       "Ref: Paper 18, Sim 1.1 (Fröhlich Condensation Model)",
       "Ref: Paper 18, Sim 3.1 (Mitochondrial Ca2+ Buffering Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "ATP Synthase Rotor (Quantum Motor): H_{\\text{rotor}} = L_z^2 / (2I) + V_0 \\cos(3\\phi)",
+      "Proton Tunnelling (Fuel): H_{\\text{proton}} = -t_H \\sum_n (|n\\rangle\\langle n+1| + h.c.) \\times \\exp(-\\gamma_H \\Delta\\text{pH})",
+      "Cristae Waveguide (Energy Transport): G_{\\text{quantum}} = (2e^2/h) \\times T_n \\times M_n",
+      "Quantum Work Extraction (L1 Battery): W_{\\text{max}} = k_B T \\ln(2) + k_B T S(\\rho || \\rho_{\\text{th}})"
+    ],
+    "SimulationModel_Ref": "./Simulations/L1_Mitochondria_QHE.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "GENERATE(ATP)",
+        "PUMP(protons)",
+        "ROTATE(rotor)",
+        "BUFFER(calcium)"
+      ],
+      "Output_Nouns": [
+        "ATP",
+        "L1_BATTERY",
+        "COHERENCE_POWER",
+        "HEAT",
+        "L2_SIGNAL(ATP)"
+      ]
+    }
   }
 }
