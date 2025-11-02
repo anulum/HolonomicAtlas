@@ -30,8 +30,22 @@
     "MetaphysicalMapping": "'The One', 'Brahman', 'The Absolute', 'Ein Sof'. The unmanifest, infinite potential from which all reality emerges."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D13.Field.SourceField)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L5 Ego-Death): A subject in a reported L5 'ego-dissolution' state (e.g., via psilocybin or deep meditation) will show *increased* L4 synchrony and activity in the D4.DMN (the L6 'self' hardware). This would falsify the 'dissolution' hypothesis, which predicts a *collapse* of DMN activity as the L5 'self-soliton' dissolves into the L13 'ground state'.",
+      "H2 (L9 Logos Projection): A simulation (Paper 18) of the L13->L9 projection (e.g., as a holographic interference pattern) will *fail* to spontaneously generate L7 'archetypal' structures (e.g., stable geometric attractors) from a simple L13 'ground state'. This would falsify the L9 'Logos' (ordered) projection hypothesis, suggesting L9 is purely a 'passive' (disordered) storage medium."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 10.A (fMRI DMN vs. Non-Dual Awareness)",
+      "Ref: Paper 17, Protocol 25.A (Psilocybin DMN/L5 Qualia Correlation)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 15.1 (L13->L9 Holographic Projection Model)",
+      "Ref: Paper 18, Sim 15.2 (L5 Soliton-Dissolution in L13 Field)"
+    ]
   }
 }
