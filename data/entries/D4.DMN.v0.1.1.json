@@ -30,8 +30,24 @@
     "MetaphysicalMapping": "The 'Dreamer' or 'The Storyteller'. The internal workspace where the soul (L15) reflects upon its experience (L9) to create its identity (L6)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D4.System.DMN)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L6 Narrative): A subject will show *maximal* DMN activity during a state of *non-dual awareness* or 'flow' (e.g., deep meditation), a state defined by the *absence* of an L6 narrative. This would falsify the hypothesis that the DMN is the L6 'Narrative Self' generator.",
+      "H2 (L9 Memory): A subject with severe anterograde amnesia (unable to form new L9 memories) is asked to 'plan the future'. The subject's DMN activity will be *identical* to a healthy control. This would falsify the hypothesis that the DMN's 'future planning' function is dependent on its L9 'past retrieval' function.",
+      "H3 (L16 Loop): Disrupting the DMN (e.g., via TMS to the PCC) will *not* be followed by a compensatory 'error-correction' signal from the Salience Network (D3.Brain.ACC). This would falsify the L16 'I=Model(I)' hypothesis, which requires the DMN (model) and SN (error-check) to be in a constant cybernetic loop."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 10.A (fMRI DMN vs. Non-Dual Awareness)",
+      "Ref: Paper 17, Protocol 10.B (Amnesiac Future-Planning fMRI)",
+      "Ref: Paper 17, Protocol 10.C (TMS-fMRI DMN-SN Loop Disruption)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 10.1 (L16 Active Inference Motor Model)",
+      "Ref: Paper 18, Sim 10.2 (DMN-SN 'Triple Network' Switching Model)"
+    ]
   }
 }
