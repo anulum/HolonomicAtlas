@@ -30,8 +30,23 @@
     "MetaphysicalMapping": "The 'Antenna to the Quantum Field'. The physical structure that bridges classical (L2) biology with the quantum (L1) substrate."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L1 Fröhlich Coherence): A living microtubule, when metabolically 'pumped' by ATP (L1 battery), will *fail* to exhibit the predicted coherent L1 phonon emissions (e.g., in the THz range) via Raman spectroscopy. This would falsify the Fröhlich condensation hypothesis.",
+      "H2 (L1->L5 Qualia Substrate): A general anesthetic (e.g., sevoflurane), known to *ablate* L5 qualia (consciousness), is applied to a coherent microtubule preparation (from H1). The anesthetic will *fail* to disrupt the L1 quantum coherence. This would dissociate L1 coherence from L5 qualia, falsifying the hypothesis that L1 coherence *is* the substrate for L5.",
+      "H3 (L4 Phonons): The L4 vibrational modes of the microtubule will be shown to be thermally overdamped and *incapable* of phase-locking with other cellular oscillators. This would falsify its role in L4 cellular synchrony."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 1.A (Microtubule Raman Spectroscopy)",
+      "Ref: Paper 17, Protocol 1.B (Anesthetic-Coherence Dissociation)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 1.1 (Fröhlich Condensation Model)",
+      "Ref: Paper 18, Sim 1.2 (Anesthetic-Tubulin Q-Compute Interaction)"
+    ]
   }
 }
