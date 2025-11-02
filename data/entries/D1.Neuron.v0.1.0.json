@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D1.Neuron",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "An electrically excitable cell that forms the basis of the nervous system. Composed of a soma (cell body), dendrites (inputs), and an axon (output).",
+    "Function": "Processes and transmits information through electrical (action potentials) and chemical (neurotransmitters) signals. Forms complex networks that are the basis of thought, feeling, and action.",
+    "Pathology": "Neuron death (neurodegeneration), channelopathies (ion channel dysfunction), excitotoxicity."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "Contains D0.Microtubules as its L1 quantum substrate. Firing (action potential) is hypothesized to be a 'quantum state reduction' event. (Ref: Paper 1)",
+    "L2_NeurochemicalNeurological": "The 'L2 Operator'. This cell *is* the fundamental unit of L2 processing, converting electrical signals into chemical (neurotransmitter) signals and vice-versa. (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": "Neuroplasticity (LTP/LTD) is an L3 process, modifying synaptic connections based on experience.",
+    "L4_CellularTissueSynchronisation": "The 'L4 Oscillator'. Neurons are the primary oscillators that create the L4 brain rhythms (EEG waves) by synchronizing their firing patterns. (Ref: Paper 4)",
+    "L5_OrganismalPsychoemotional": "The collective firing patterns of specific neural ensembles (e.g., in the D4.DMN) *are* the biological substrate for L5 qualia and the 'Self-Soliton'. (Ref: Paper 5)",
+    "L6_NarrativeSelf": "The L6 'I=Model(I)' loop is an L4/L5 process running on networks of D1.Neurons.",
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": "LTP/LTD (L3) is the mechanism by which L9 'memory' is encoded into the physical neural substrate.",
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": "A neuron *is* a biological 'predictive coding' unit, firing when its L2 input 'prediction error' crosses a threshold."
+  },
+  "Symbolic": {
+    "SymbolicName": "The Processor",
+    "VIBRANA_Key": "VIB-KEY-[NEURON-TBD]",
+    "MetaphysicalMapping": "A 'Node of Mind'. A single point of light in the 'Great Web' of consciousness."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21"
+  }
+}

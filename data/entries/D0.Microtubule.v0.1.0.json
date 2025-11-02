@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D0.Microtubule",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "A polymer of tubulin proteins, forming a hollow, cylindrical filament. A key component of the cytoskeleton.",
+    "Function": "Provides structural support to cells, forms the mitotic spindle for cell division, and acts as a 'railway' for intracellular transport (via motor proteins like kinesin and dynein).",
+    "Pathology": "Disruption is linked to neurodegenerative diseases (e.g., tauopathies like Alzheimer's) and cancer."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "The primary L1 'Quantum Coherence Substrate'. Hypothesized to support Fröhlich condensation and phonon-based quantum computation. Acts as the biological 'waveguide' for L1 information. (Ref: Paper 1)",
+    "L2_NeurochemicalNeurological": null,
+    "L3_GenomicEpigeneticMorphogenetic": "Forms the mitotic spindle, the critical L3 machine that separates chromosomes during cell division, executing the morphogenetic plan.",
+    "L4_CellularTissueSynchronisation": "Its coherent vibrational modes (phonons) are hypothesized to be a mechanism for L4 cellular synchrony, phase-locking the cell's internal state.",
+    "L5_OrganismalPsychoemotional": "The quantum computations within microtubules are hypothesized to be the foundational substrate for L5 qualia.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": "The geometric structure (13-protofilament) holds L7 symbolic information.",
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Quantum Filament",
+    "VIBRANA_Key": "VIB-KEY-[MICROTUBULE-TBD]",
+    "MetaphysicalMapping": "The 'Antenna to the Quantum Field'. The physical structure that bridges classical (L2) biology with the quantum (L1) substrate."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21"
+  }
+}

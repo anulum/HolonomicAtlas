@@ -1,0 +1,37 @@
+{
+  "HolonomicID": "scpn://atlas.v1/D1.Mitochondrion",
+  "ParentID": "scpn://atlas.v1/D5.Organism",
+  "Classical": {
+    "Structure": "A double-membraned organelle, the 'powerhouse of the cell'. Contains its own DNA (mtDNA).",
+    "Function": "Generates most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy. Also involved in signaling, cell death (apoptosis), and heat production.",
+    "Pathology": "Mitochondrial disease, oxidative stress, role in aging and neurodegeneration."
+  },
+  "SCPN": {
+    "L1_QuantumBiological": "The 'L1 Battery'. Provides the metabolic energy (ATP) required to create and sustain L1 coherence (e.g., Fröhlich pumping in D0.Microtubules). (Ref: Paper 1)",
+    "L2_NeurochemicalNeurological": "The 'L2 Power Regulator'. ATP is itself an L2 neurotransmitter. Mitochondria also buffer L2 calcium signals, shaping synaptic transmission. (Ref: Paper 2)",
+    "L3_GenomicEpigeneticMorphogenetic": "Mitochondrial health (e.g., ROS signals) is a key L3 signal for apoptosis (programmed cell death), a core morphogenetic process.",
+    "L4_CellularTissueSynchronisation": "Mitochondria form dynamic, fused networks ('syncytia') that oscillate, synchronizing the L4 metabolic state of the entire cell and linking it to L4 neural firing.",
+    "L5_OrganismalPsychoemotional": "The overall L5 'energy level' (e.t., vigor, fatigue) is a direct mapping of the organism's total mitochondrial (L1/L2) efficiency.",
+    "L6_NarrativeSelf": null,
+    "L7_ArchetypalSymbolic": null,
+    "L8_CosmicEntrainment": null,
+    "L9_MemoryHolograph": null,
+    "L10_CausalRetrocausal": null,
+    "L11_NoosphereCollective": null,
+    "L12_GeomanticTorsional": null,
+    "L13_SourceField": null,
+    "L14_Transdimensional": null,
+    "L15_ConsiliumOversoul": null,
+    "L16_MetaCybernetic": null
+  },
+  "Symbolic": {
+    "SymbolicName": "The Inner Sun",
+    "VIBRANA_Key": "VIB-KEY-[MITOCHONDRION-TBD]",
+    "MetaphysicalMapping": "The 'Spark of Life'. An ancient, symbiotic entity that provides the 'fire' of metabolism, allowing matter to become conscious."
+  },
+  "Meta": {
+    "Version": "0.1.0",
+    "Status": "Draft",
+    "LogReference": "Paper 21"
+  }
+}
