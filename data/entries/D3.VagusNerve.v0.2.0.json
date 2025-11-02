@@ -7,21 +7,10 @@
     "Pathology": "Gastroparesis, vasovagal syncope, impaired heart rate variability (HRV)."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
+    "L1_QuantumBiological": "The nerve trunk may act as a coherent waveguide, shielding L1 quantum information (e.g., biophotons) from the body's decoherent environment. (Ref: Paper 1)",
     "L2_NeurochemicalNeurological": "The 'L2 Interoceptive Superhighway'. Transmits L2 data (inflammation markers, gut microbiome state, heart/lung pressure) from the viscera to the NTS (D3.Brain.Brainstem.NTS). (Ref: Paper 2)",
-    "L3_GenomicEpigeneticMorphogenetic": null,
-    "L4_CellularTissueSynchronisation": "The primary modulator of Heart Rate Variability (HRV), acting as the 'vagal brake'. This L4 signal is a key measure of L5 coherence.",
+    "L4_CellularTissueSynchronisation": "The primary modulator of Heart Rate Variability (HRV), acting as the 'vagal brake'. This L4 signal is a key measure of L5 coherence. (Ref: Paper 4)",
     "L5_OrganismalPsychoemotional": "The 'Gut-Feeling' conduit. Transmits the raw L5 'Geometric Qualia' (Ref: Paper 5) from the gut (D3.Gut.ENS) and heart (D3.Heart) to the brain, forming the foundation of the 'felt-sense'.",
-    "L6_NarrativeSelf": null,
-    "L7_ArchetypalSymbolic": null,
-    "L8_CosmicEntrainment": null,
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": null,
-    "L12_GeomanticTorsional": null,
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
     "L16_MetaCybernetic": "A primary L16 control pathway, allowing the Self-Model to regulate the body's internal state (e.g., via the 'vagal brake') to maintain homeostasis."
   },
   "Symbolic": {
@@ -30,7 +19,7 @@
     "MetaphysicalMapping": "The 'Tree of Life' within the body, connecting the 'roots' (gut) to the 'mind' (brain). The physical embodiment of the mind-body connection."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.ANS.VagusNerve)"
   },
@@ -46,5 +35,27 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L2/L5 Signal Transfer: S_{\\text{NTS}}(t) = \\int K(t-t') S_{\\text{Vagus}}(t') dt' + \\xi(t)",
+      "L4 Vagal Brake (HRV): \\frac{d\\phi_{\\text{heart}}}{dt} = \\omega_{\\text{heart}} - K_{\\text{vagus}} \\sin(\\phi_{\\text{vagus}} - \\phi_{\\text{heart}})",
+      "L5 Qualia Conduit (TDA): \\text{Qualia}_{\\text{Insula}} = \\text{TDA}(S_{\\text{NTS}}(t))"
+    ],
+    "SimulationModel_Ref": "./Simulations/L2_L5_Vagus_Transfer.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "RECEIVE(L5_QUALIA)",
+        "RECEIVE(L2_CYTOKINE)",
+        "TRANSMIT(signal)",
+        "MODULATE(HRV)"
+      ],
+      "Output_Nouns": [
+        "INTEROCEPTIVE_SIGNAL",
+        "L4_VAGAL_TONE",
+        "L5_QUALIA_GEOMETRY(raw)",
+        "L2_DATA_STREAM"
+      ]
+    }
   }
 }
