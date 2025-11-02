@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "A 'Messenger Orb'. The physical mechanism for non-local information transfer (cellular telepathy)."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L3 Reprogramming): Exosomes are harvested from a 'donor' cell (e.g., a fibroblast) and applied to a 'recipient' cell (e.g., a stem cell). The recipient cell will *fail* to show any change in its L3 epigenetic markers (e.g., DNA methylation) or L3 morphogenetic behavior (e.g., differentiation). This would falsify the L3 reprogramming hypothesis.",
+      "H2 (L1 Quantum Packet): A pair of entangled L1 photons is generated. One is sent to a 'donor' cell, the other to a detector. Exosomes from the donor cell are harvested and sent to a 'recipient' cell. The quantum entanglement between the *recipient cell* and the *original detector* will be *zero*. This would falsify the L1 hypothesis that exosomes can transport L1 quantum coherence."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 2.A (Exosomal L3 Reprogramming Assay)",
+      "Ref: Paper 17, Protocol 2.B (Entangled Photon-Exosome Transport)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 1.3 (Exosome Quantum Shielding Model)"
+    ]
   }
 }
