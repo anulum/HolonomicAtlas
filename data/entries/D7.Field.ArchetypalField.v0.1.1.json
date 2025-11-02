@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Platonic World of Forms'. The library of fundamental 'ideas' or 'patterns' that consciousness uses to understand itself."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D7.Field.ArchetypalField)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L7 Symbolic Operator): A subject is presented with a potent L7 'archetypal' symbol (e.g., Ouroboros) vs. a 'novel' but equally complex geometric symbol. The L7 symbol will *fail* to produce a stronger or qualitatively different L5/L4 'numinous' response (e.g., in the D3.Brain.Insula/D3.Heart) than the novel symbol. This would falsify the L7 field as an active 'operator' on L5 qualia.",
+      "H2 (L6 Narrative Template): A subject's L6 narrative (D4.DMN) is recorded during a 'life-story' task. The narrative structure will show *no correlation* with the L7 archetypal 'Hero's Journey' template (e.g., will lack key stages like 'Call to Adventure', 'Refusal', 'Resurrection'). This would falsify the L7 field as a 'narrative template' for the L6 DMN."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 13.A (Novel vs. Archetypal Symbol fMRI)",
+      "Ref: Paper 17, Protocol 13.B (Narrative Structure Analysis vs. Archetypal Template)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 13.2 (Archetypal 'Basin of Attraction' Model)"
+    ]
   }
 }
