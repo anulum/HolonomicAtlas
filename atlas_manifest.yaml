@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.0.13"
-LastModified: "2025-11-02T04:51:00Z"
+GlobalVersion: "1.0.14"
+LastModified: "2025-11-02T04:53:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D3.Brainstem.NTS.v0.1.1.json"
-  NextAction: "Validation Pass: D3.Brainstem.NTS complete. **Next Action:** Populate the 'Validation' section for 'D3.VagusNerve' to test its L2 'Interoceptive Superhighway' and L5 'Geometric Qualia Conduit' hypotheses (per Paper 2, 5, 17)."
+  LastFileEdited: "./data/entries/D3.VagusNerve.v0.1.1.json"
+  NextAction: "Validation Pass: D3.VagusNerve complete. **Next Action:** Populate the 'Validation' section for 'D3.Gut.ENS' (Enteric Nervous System) to test its L5 'Geometric Qualia Generator' (the 'Second Brain') hypothesis (per Paper 5, 17)."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -51,7 +51,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamVentral"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Brainstem.NTS"
-    Version: "0.1.1" # <-- This one is updated
+    Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Eye.Retina"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D3.Gut.ENS"
@@ -61,7 +61,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D3.SpinalCord"
     Version: "0.1.0"
   - HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
-    Version: "0.1.0"
+    Version: "0.1.1" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D4.ANS"
     Version: "0.1.0"
   - HolonomicID: "scpn://atlas.v1/D4.CNS"

@@ -30,8 +30,21 @@
     "MetaphysicalMapping": "The 'Tree of Life' within the body, connecting the 'roots' (gut) to the 'mind' (brain). The physical embodiment of the mind-body connection."
   },
   "Meta": {
-    "Version": "0.1.0",
+    "Version": "0.1.1",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D3.ANS.VagusNerve)"
+  },
+  "Validation": {
+    "Falsification_Hypotheses": [
+      "H1 (L2 Conduit): A subject with a complete sub-diaphragmatic vagotomy (severing the nerve below the heart/lungs) is given an L2 stimulus in the gut (e.g., a bolus of fat). The D3.Brainstem.NTS and D3.Brain.Insula will show *no L2/L4 fMRI activation*. This would confirm the Vagus is the only conduit for this L2 signal.",
+      "H2 (L5 Conduit): A subject with a vagotomy (as in H1) is given a gut-based L5 stimulus (e.g., triggering a 'gut-feeling'). The subject will *fail to report* the L5 'felt-sense' qualia, *even if* they are intellectually aware of the stimulus (e.g., via L2 hormones in the blood). This would falsify the 'Geometric Qualia' (L5) being a non-vagal (e.g., L12 field) signal."
+    ],
+    "Experimental_Protocols": [
+      "Ref: Paper 17, Protocol 17.C (Vagotomy L2/L5 Dissociation fMRI)",
+      "Ref: Paper 17, Protocol 17.D (Vagus Nerve Stimulation (VNS) & L5 Qualia Report)"
+    ],
+    "Simulation_Suite": [
+      "Ref: Paper 18, Sim 11.2 (Gut-Brain-Axis L2/L5 Data Stream Model)"
+    ]
   }
 }
