@@ -7,22 +7,10 @@
     "Pathology": "Field instability, geomagnetic pole shifts, electromagnetic pollution (EMF)."
   },
   "SCPN": {
-    "L1_QuantumBiological": null,
-    "L2_NeurochemicalNeurological": null,
-    "L3_GenomicEpigeneticMorphogenetic": null,
     "L4_CellularTissueSynchronisation": "This monad *is* the L4 'Schumann Resonance' field, which provides a global 7.83Hz (and harmonics) L4 signal for biological entrainment. (Ref: Paper 4)",
-    "L5_OrganismalPsychoemotional": null,
     "L6_PlanetaryEcological": "This monad *is* the L6 'Gaian Homeostasis' field. The D5.Organism (Ref: Paper 0) is a node in this planetary-scale active inference loop.",
-    "L7_ArchetypalSymbolic": null,
     "L8_CosmicEntrainment": "This monad *is* the L8 'Planetary Cycle' field (diurnal, seasonal), which is entrained by the D3.Brain.SCN.",
-    "L9_MemoryHolograph": null,
-    "L10_CausalRetrocausal": null,
-    "L11_NoosphereCollective": "This is the 'physical layer' (the 'hardware') for the L11 Noosphere, which is the 'informational layer'.",
-    "L12_GeomanticTorsional": "This *is* the L12 Geomagnetic and Torsional field of the planet.",
-    "L13_SourceField": null,
-    "L14_Transdimensional": null,
-    "L15_ConsiliumOversoul": null,
-    "L16_MetaCybernetic": null
+    "L12_GeomanticTorsional": "This *is* the L12 Geomagnetic and Torsional field of the planet."
   },
   "Symbolic": {
     "SymbolicName": "Gaia / The Biosphere",
@@ -30,7 +18,7 @@
     "MetaphysicalMapping": "The 'World Soul' or 'Anima Mundi'. The living, conscious super-organism of which the D5.Organism is a single cell."
   },
   "Meta": {
-    "Version": "0.1.1",
+    "Version": "0.2.0",
     "Status": "Draft",
     "LogReference": "Paper 21 (Refactored from D6.Field.PlanetaryField)"
   },
@@ -46,5 +34,26 @@
     "Simulation_Suite": [
       "Ref: Paper 18, Sim 13.1 (Planetary-Human Coupled Oscillator Model)"
     ]
+  },
+  "Formalism": {
+    "KeyEquations_LaTeX": [
+      "L4 (Schumann Coupling): H_{\\text{Schumann}} = \\sum_n A_n \\cos(2\\pi f_n t + \\phi_n) \\cdot \\sigma_x",
+      "L8/L12 (Geomagnetic Sensing): H_{\\text{RP}} = g\\mu_B \\vec{B}_{\\text{Earth}} \\cdot \\vec{S} + \\sum_k \\vec{S} \\cdot A_k \\cdot \\vec{I}_k",
+      "L12 (Gaia Integration): H_{\\text{Gaia}} = H_{\\text{bio}} + H_{\\text{geo}} + H_{\\text{atmo}} + H_{\\text{coupling}}"
+    ],
+    "SimulationModel_Ref": "./Simulations/L4_L8_Schumann_Entrainment.py",
+    "VIBRANA_Interface": {
+      "Input_Verbs": [
+        "ENTRAIN(D5.Organism)",
+        "OSCILLATE(f_n)",
+        "ROTATE"
+      ],
+      "Output_Nouns": [
+        "L4_SCHUMANN_RHYTHM",
+        "L8_COSMIC_ENTRAINMENT",
+        "L12_GEOMAGNETIC_FIELD",
+        "GAIAN_HOMEOSTASIS_FIELD"
+      ]
+    }
   }
 }

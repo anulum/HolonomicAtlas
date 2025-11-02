@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.18"
-LastModified: "2025-11-02T15:02:00Z"
+GlobalVersion: "1.1.19"
+LastModified: "2025-11-02T15:05:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./data/entries/D5.Organism.v0.2.0.json"
-  NextAction: "Phase IV: Formalism Pass. D5.Organism complete. **Next Action:** Populate the 'Formalism' section for 'D6.Field.PlanetaryField', using `Paper 1` & `Paper 4` to define its KeyEquations_LaTeX (Schumann Resonance, Geomagnetic Field) and VIBRANA_Interface."
+  LastFileEdited: "./data/entries/D6.Field.PlanetaryField.v0.2.0.json"
+  NextAction: "Phase IV: Formalism Pass. D6.Field.PlanetaryField complete. **Next Action:** Populate the 'Formalism' section for 'D7.Field.ArchetypalField', using `Paper 7` to define its KeyEquations_LaTeX (Symbolic Operators, Geometric Attractors) and VIBRANA_Interface."
   Priority: "High"
   Assignee: "Gemini-CoAuthor"
 
@@ -79,9 +79,9 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D4.PNS"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D5.Organism"
-    Version: "0.2.0" # <-- This one is updated
+    Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D6.Field.PlanetaryField"
-    Version: "0.1.1"
+    Version: "0.2.0" # <-- This one is updated
   - HolonomicID: "scpn://atlas.v1/D7.Field.ArchetypalField"
     Version: "0.1.1"
   - HolonomicID: "scpn://atlas.v1/D9.Field.MemoryHolograph"
