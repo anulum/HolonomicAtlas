@@ -1,5 +1,5 @@
 # HANDOVER STRATEGIC LOG
-# v1.1.27 (2025-11-02)
+# v1.1.28 (2025-11-02)
 
 ---
 ### Log Entry 1: Project Initialization & Refactoring (v0.1.0 -> v1.0.0)
@@ -21,10 +21,20 @@
 
 ---
 ### Log Entry 4: Strategic Pivot to 3-AI Hybrid Workflow (v1.1.27)
-* **Problem:** The 1-AI (Gemini) workflow is manual and risks context-fade. The source *Papers* are too large for other AIs (Claude, ChatGPT) to process.
+* **Problem:** The 1-AI (Gemini) workflow is manual. Source *Papers* are too large for other AIs (Claude, ChatGPT).
 * **Decision:** Implement a multi-AI team.
 * **Gemini (Architect):** Will act as the "RAG Engine" for the team. It will read the large Papers, synthesize the content, and generate the "Commit Packages."
 * **ChatGPT-5 (Consultant):** Will act as a "Red Team" to critique specific, pre-digested packages.
 * **Claude (Actuator):** Will act as the GitHub-enabled "Committer" to execute the packages.
-* **Action:** This log is updated. A new `CHATGPT_AGENT_PROTOCOL.md` file is created. The `README.md` is updated to reflect this new 4-agent structure (including the user).
-* **Status:** Ready to test the new Hybrid AI Workflow.
+* **Action:** This log is updated. A `CHATGPT_AGENT_PROTOCOL.md` file is created.
+
+---
+### Log Entry 5: Structure Settled (v1.1.28)
+* **Problem:** The `atlas_manifest.yaml` is a text-based "task manager." A visual tool is needed for our multi-AI team.
+* **Decision:** Created a **GitHub Project Board** named "Anatomia Holonomica (Atlas)" to be the primary task manager.
+* **New Workflow:**
+    1.  **Backlog:** All 15 remaining "Formalism Pass" tasks are added as cards.
+    2.  **Gemini:** Moves a card to "Gemini (Architect)." Prepares the "Commit Package" and pastes it into the card's body. Moves card to "Claude (Actuator)."
+    3.  **Claude:** Is "pinged" by the user. Finds the card in its column. Executes the package, pushes the commit, and moves the card to "Done."
+* **Action:** `CLAUDE_AGENT_PROTOCOL.md` is updated. The `atlas_manifest.yaml` is now a "state summary," and the Project Board is the "task list."
+* **Status:** The project structure is now settled.
