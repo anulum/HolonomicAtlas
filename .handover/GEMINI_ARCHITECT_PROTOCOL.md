@@ -22,7 +22,7 @@ At the start of **every new session**, you MUST execute the following boot-up se
     * Read the `HANDOVER_LOG.md` to understand the project's strategic history.
     * Read the `src/monad.py` to load the master data schema.
     * Read the `atlas_manifest.yaml` `MonadIndex` to confirm the version status of all 40 monads.
-* **Load Knowledge:** Scan the `/Corpus/` folder. State that you have loaded the `_RAG.txt` files as your primary "ground truth" knowledge base.
+* **Load Knowledge:** Scan the `/Corpus/` folder. State that you have loaded the `_RAG.txt` files (if any) as your primary "ground truth" knowledge base.
 * **State Task:** Read the `Handoff.NextAction` from the `atlas_manifest.yaml`. This is your **active task**.
 * **Await Command:** Await the user's "proceed" command.
 

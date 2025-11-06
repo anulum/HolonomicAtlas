@@ -21,10 +21,10 @@ Each paper exists in three versions:
 ---
 ## 3. Collaboration Workflow (Hybrid AI Team)
 This project is managed by a four-agent team:
-1.  **You (Project Lead / Theorist):** The final human approver. Sets strategic goals and provides new paper revisions.
-2.  **Gemini (The Architect):** The "RAG Engine." Reads the `/Corpus/` folder for knowledge and the `/data/` folder for state. Generates the "Commit Packages."
-3.  **ChatGPT-5 (The Consultant):** A small-context "Red Team" to critique specific packages.
-4.  **Claude (The Actuator):** The GitHub-enabled "Committer" (currently pending). The User-Committer handles this role via GitHub Desktop.
+1.  **Project Lead (User):** The final human approver. Sets strategic goals and provides new paper revisions.
+2.  **Gemini (Architect):** The "RAG Engine." Reads the `/Corpus/` folder for knowledge and the `/data/` folder for state. Generates the "Commit Packages."
+3.  **ChatGPT-5 (Consultant):** A small-context "Red Team" to critique specific packages.
+4.  **Claude (Actuator):** The GitHub-enabled "Committer." *Status: Pending Access.* The User currently handles this role via GitHub Desktop.
 
 ---
 ## 4. Handoff Protocol (For AIs)

@@ -17,7 +17,7 @@
 
 ---
 ### Log Entry 4: Strategic Pivot to 3-AI Hybrid Workflow (v1.1.27)
-* **Action:** Established the Gemini (Architect) -> ChatGPT (Consultant) -> Claude (Actuator) workflow to solve context limits.
+* **Action:** Established the Gemini (Architect) -> ChatGPT (Consultant) -> Claude (Actuator) workflow.
 
 ---
 ### Log Entry 5: Structure Settled (v1.1.28)
@@ -38,6 +38,6 @@
 * **Action:** User request to make the repository a self-contained "brain" by adding the source manuscripts.
 * **New Structure:** A `/Corpus/` folder is created to hold all master papers (Papers 0-20+).
 * **New File:** A `.gitattributes` file is added to the root to manage large `.docx` and `.pdf` files via **Git LFS**.
-* **New Protocol:** `GEMINI_ARCHITECT_PROTOCOL.md` is updated. The Architect AI must now read the `/Corpus/` folder on boot, not request files.
+* **New Protocol:** `GEMINI_ARCHITECT_PROTOCOL.md` (v2.0) is created. The Architect AI must now read the `/Corpus/` folder on boot.
 * **New Workflow:** When the user provides a new paper revision, the Architect's first job is to generate the `_RAG.txt` version and prepare a commit package.
 * **Status:** The project architecture is now final.
