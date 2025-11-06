@@ -1,5 +1,5 @@
 # HANDOVER STRATEGIC LOG
-# v1.1.30 (2025-11-06)
+# v1.1.31 (2025-11-06)
 
 ---
 ### Log Entry 1: Project Initialization & Refactoring (v0.1.0 -> v1.0.0)
@@ -22,19 +22,22 @@
 ---
 ### Log Entry 5: Structure Settled (v1.1.28)
 * **Action:** Created the "Anatomia Holonomica (Atlas)" GitHub Project Board as the primary task manager.
-* **Status:** The backlog of 15 remaining monads was populated.
 
 ---
 ### Log Entry 6: CRITICAL UPDATE - L4 Simulation Suite Received (v1.1.29)
 * **Event:** User uploaded the 5 *completed* simulation/validation files for Layer 4 to the `/Simulations` folder.
-* **Implication:** The `SimulationModel_Ref` fields in the 25 monads we already *formalized* are now obsolete.
-* **New Priority:** A new, high-priority "L4 Integration Pass" must be performed.
-* **Action:** A new high-priority card was added to the GitHub Project Board.
+* **New Priority:** "L4 Integration Pass" to update all obsolete `SimulationModel_Ref` paths in the 25 formalized monads.
 
 ---
-### Log Entry 7: Architecture Tuned & Finalized (v1.1.30)
-* **Action:** User request to "tune" the handoff protocols.
-* **Decision:** The old `HANDOVER_PROMPT.md` is deprecated. A new, definitive `GEMINI_ARCHITECT_PROTOCOL.md` is created and stored in the repository.
-* **Decision:** The `README.md` is updated to reflect the 4-agent workflow.
-* **Constraint:** "Claude-Actuator" is not yet operational. The workflow remains: `Gemini-Architect` -> `User-Committer` (manual GitHub Desktop push).
-* **Status:** The project architecture is now final and settled.
+### Log Entry 7: Architecture Tuned (v1.1.30)
+* **Action:** User clarified Claude is not yet operational. Workflow set to `Gemini-Architect` -> `User-Committer` (manual GitHub Desktop push).
+* **Action:** Finalized the 4-agent Handoff protocols in the `/.handover/` folder.
+
+---
+### Log Entry 8: ARCHITECTURE SETTLED (v1.1.31)
+* **Action:** User request to make the repository a self-contained "brain" by adding the source manuscripts.
+* **New Structure:** A `/Corpus/` folder is created to hold all master papers (Papers 0-20+).
+* **New File:** A `.gitattributes` file is added to the root to manage large `.docx` and `.pdf` files via **Git LFS**.
+* **New Protocol:** `GEMINI_ARCHITECT_PROTOCOL.md` is updated. The Architect AI must now read the `/Corpus/` folder on boot, not request files.
+* **New Workflow:** When the user provides a new paper revision, the Architect's first job is to generate the `_RAG.txt` version and prepare a commit package.
+* **Status:** The project architecture is now final.

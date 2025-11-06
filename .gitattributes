@@ -1,0 +1,8 @@
+# Tell Git LFS to track these large file types
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Tell Git to ignore common system/temp files
+.DS_Store
+*.tmp
+~$*

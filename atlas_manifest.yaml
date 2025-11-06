@@ -1,13 +1,13 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.30"
-LastModified: "2025-11-06T13:35:00Z"
+GlobalVersion: "1.1.31"
+LastModified: "2025-11-06T14:00:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 # This section defines the next task for a new instance.
 Handoff:
   LastFileEdited: "./.handover/GEMINI_ARCHITECT_PROTOCOL.md"
-  NextAction: "**ARCHITECTURE SETTLED.** The 4-Agent (User/Gemini/ChatGPT/Claude) workflow is finalized and all protocols are stored in /.handover/. **Next Action:** Proceed with the highest-priority task on the GitHub Project Board: 'HIGH-PRIORITY: L4 Integration Pass'."
+  NextAction: "**ARCHITECTURE SETTLED (v1.1.31).** The /Corpus/ folder, Git LFS, and new Architect protocol are now defined. The repository is a self-contained 'brain'. **Next Action:** Proceed with the highest-priority task on the GitHub Project Board: 'HIGH-PRIORITY: L4 Integration Pass'."
   Priority: "High"
   Assignee: "Gemini-Architect -> User-Committer"
 
