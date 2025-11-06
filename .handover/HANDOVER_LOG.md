@@ -1,5 +1,5 @@
 # HANDOVER STRATEGIC LOG
-# v1.1.31 (2025-11-06)
+# v1.1.32 (2025-11-06)
 
 ---
 ### Log Entry 1: Project Initialization & Refactoring (v0.1.0 -> v1.0.0)
@@ -26,18 +26,21 @@
 ---
 ### Log Entry 6: CRITICAL UPDATE - L4 Simulation Suite Received (v1.1.29)
 * **Event:** User uploaded the 5 *completed* simulation/validation files for Layer 4 to the `/Simulations` folder.
-* **New Priority:** "L4 Integration Pass" to update all obsolete `SimulationModel_Ref` paths in the 25 formalized monads.
+* **New Priority:** "L4 Integration Pass" to update all obsolete `SimulationModel_Ref` paths.
 
 ---
 ### Log Entry 7: Architecture Tuned (v1.1.30)
-* **Action:** User clarified Claude is not yet operational. Workflow set to `Gemini-Architect` -> `User-Committer` (manual GitHub Desktop push).
 * **Action:** Finalized the 4-agent Handoff protocols in the `/.handover/` folder.
 
 ---
-### Log Entry 8: ARCHITECTURE SETTLED (v1.1.31)
-* **Action:** User request to make the repository a self-contained "brain" by adding the source manuscripts.
-* **New Structure:** A `/Corpus/` folder is created to hold all master papers (Papers 0-20+).
-* **New File:** A `.gitattributes` file is added to the root to manage large `.docx` and `.pdf` files via **Git LFS**.
-* **New Protocol:** `GEMINI_ARCHITECT_PROTOCOL.md` (v2.0) is created. The Architect AI must now read the `/Corpus/` folder on boot.
-* **New Workflow:** When the user provides a new paper revision, the Architect's first job is to generate the `_RAG.txt` version and prepare a commit package.
-* **Status:** The project architecture is now final.
+### Log Entry 8: Corpus Architecture Settled (v1.1.31)
+* **Action:** Created `/Corpus/` folder and added `.gitattributes` file to enable Git LFS for paper storage.
+* **Action:** `GEMINI_ARCHITECT_PROTOCOL.md` (v2.0) created, directing the Architect AI to read the `/Corpus/` folder on boot.
+
+---
+### Log Entry 9: SIMULATION FOLDER REFACTOR (v1.1.32)
+* **Problem:** The `/Simulations/` folder was "flat," which is not scalable for future layer-specific simulations.
+* **Action:** The `/Simulations/` folder is now structured with layer-specific subfolders.
+* **Action:** The 5 existing L4 simulation files were moved into `/Simulations/L4_Synchronization/`.
+* **Implication:** The "L4 Integration Pass" (our next task) must now point all `SimulationModel_Ref` fields to this new, correct path (e.g., `./Simulations/L4_Synchronization/comprehensive_simulation.py`).
+* **Status:** The project architecture is now 100% final and settled.
