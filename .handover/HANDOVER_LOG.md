@@ -1,5 +1,5 @@
 # HANDOVER STRATEGIC LOG
-# v1.1.29 (2025-11-05)
+# v1.1.30 (2025-11-06)
 
 ---
 ### Log Entry 1: Project Initialization & Refactoring (v0.1.0 -> v1.0.0)
@@ -26,8 +26,15 @@
 
 ---
 ### Log Entry 6: CRITICAL UPDATE - L4 Simulation Suite Received (v1.1.29)
-* **Event:** User uploaded the 5 *completed* simulation/validation files for Layer 4.
-* **Implication:** The `SimulationModel_Ref` fields in the 25 monads we already *formalized* are now obsolete (they point to hypothetical files).
-* **New Priority:** A new, high-priority "L4 Integration Pass" must be performed to update these 25 monads to point to the *real* simulation files.
-* **Action:** A new high-priority card has been added to the GitHub Project Board, superseding the "Formalism Pass" for now.
-* **Status:** Ready to begin the L4 Integration Pass.
+* **Event:** User uploaded the 5 *completed* simulation/validation files for Layer 4 to the `/Simulations` folder.
+* **Implication:** The `SimulationModel_Ref` fields in the 25 monads we already *formalized* are now obsolete.
+* **New Priority:** A new, high-priority "L4 Integration Pass" must be performed.
+* **Action:** A new high-priority card was added to the GitHub Project Board.
+
+---
+### Log Entry 7: Architecture Tuned & Finalized (v1.1.30)
+* **Action:** User request to "tune" the handoff protocols.
+* **Decision:** The old `HANDOVER_PROMPT.md` is deprecated. A new, definitive `GEMINI_ARCHITECT_PROTOCOL.md` is created and stored in the repository.
+* **Decision:** The `README.md` is updated to reflect the 4-agent workflow.
+* **Constraint:** "Claude-Actuator" is not yet operational. The workflow remains: `Gemini-Architect` -> `User-Committer` (manual GitHub Desktop push).
+* **Status:** The project architecture is now final and settled.
