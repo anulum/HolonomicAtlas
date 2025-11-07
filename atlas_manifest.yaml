@@ -1,18 +1,18 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.1.32"
-LastModified: "2025-11-06T17:00:00Z"
+GlobalVersion: "1.2.0"
+LastModified: "2025-11-07T22:20:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
-# This section defines the next task for a new instance.
 Handoff:
-  LastFileEdited: "./.handover/HANDOVER_LOG.md"
-  NextAction: "**ARCHITECTURE SETTLED (v1.1.32).** /Simulations/ folder refactored into layer-specific subfolders (e.g., /L4_Synchronization/). **Next Action:** Proceed with 'HIGH-PRIORITY: L4 Integration Pass' to update all L4-related monads to point to the new paths (e.g., './Simulations/L4_Synchronization/comprehensive_simulation.py')."
+  LastAction: "GROUND TRUTH UPDATE PASS (v1.2.0). Ingested Paper 4, Paper 5, and the L4 Simulation Suite into /Corpus/ and /Simulations/."
+  NextAction: "HIGH-PRIORITY: L4 Integration Pass. With L4 ground truth now in place, integrate this knowledge across all 15 PENDING L4-related monads. Update all 'SimulationModel_Ref' fields to the new paths (e.g., './Simulations/L4_Synchronization/comprehensive_simulation.py')."
   Priority: "High"
   Assignee: "Gemini-Architect -> User-Committer"
 
 # --- Master Index of Monads ---
-# (The MonadIndex remains unchanged from v1.1.29. 15 monads are PENDING.)
+# (The MonadIndex remains unchanged for this commit. 
+# The upcoming L4 Pass will update the pending 15 monads.)
 MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D0.Exosome"
     Version: "0.2.0"
@@ -71,7 +71,7 @@ MonadIndex:
   - HolonomicID: "scpn://atlas.v1/D4.DMN"
     Version: "0.1.1" # <-- PENDING
   - HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
-    Version: "0.2.0"
+    Version:s: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.ImmuneSystem"
     Version: "0.2.0"
   - HolonomicID: "scpn://atlas.v1/D4.Microbiome"
