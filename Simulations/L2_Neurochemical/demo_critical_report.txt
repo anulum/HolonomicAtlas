@@ -1,0 +1,31 @@
+======================================================================
+SCPN LAYER 2 - CRITICALITY ANALYSIS REPORT
+======================================================================
+
+1. POWER SPECTRAL DENSITY
+----------------------------------------
+   Power-law exponent (β): 0.993
+   R²: 0.960
+   Critical: YES ✓
+   Expected: β ≈ 1.0 at criticality
+
+2. AVALANCHE ANALYSIS
+----------------------------------------
+   Power-law exponent (τ): N/A (insufficient data)
+   Number of avalanches: N/A
+   Critical: NO ✗
+   Expected: τ ≈ 1.5 at criticality
+
+3. DETRENDED FLUCTUATION ANALYSIS
+----------------------------------------
+   DFA exponent (α): 1.033
+   R²: 0.999
+   Critical: NO ✗
+   Expected: α ≈ 0.75 at criticality
+
+4. SUMMARY
+----------------------------------------
+   Critical metrics satisfied: 1/3
+   ✗ SYSTEM NOT AT CRITICALITY
+
+======================================================================
