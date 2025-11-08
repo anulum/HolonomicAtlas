@@ -12,33 +12,11 @@ import warnings
 
 class MultiPathCouplingHamiltonian:
     """
-    Implements the total coupling Hamiltonian for a multi-path neural system.
-
-    This class models the energy landscape of a neural system by integrating five
-    distinct coupling mechanisms: chemical synaptic, gap junction, ephaptic field,
-    glial calcium wave, and vascular (hemodynamic) coupling. The total energy,
-    or Hamiltonian, of the system is the sum of these components.
-
-    Attributes:
-        N_neurons (int): The number of neurons in the simulation.
-        N_glia (int): The number of glial cells in the simulation.
-        N_vascular (int): The number of vascular compartments in the simulation.
-        J_synaptic (np.ndarray): The synaptic coupling matrix [N_neurons x N_neurons].
-        g_gap (np.ndarray): The gap junction conductance matrix [N_neurons x N_neurons].
-        neuron_states (np.ndarray): The current activity state of each neuron.
-        glia_calcium (np.ndarray): The calcium concentration in each glial cell.
-        blood_flow (np.ndarray): The blood flow in each vascular compartment.
+    Implements total coupling Hamiltonian:
+    H_total = H_synaptic + H_gap + H_ephaptic + H_glial + H_vascular
     """
     
     def __init__(self, N_neurons: int, N_glia: int, N_vascular: int):
-        """
-        Initializes the MultiPathCouplingHamiltonian.
-
-        Args:
-            N_neurons (int): The number of neurons in the system.
-            N_glia (int): The number of glial cells.
-            N_vascular (int): The number of vascular compartments.
-        """
         self.N_neurons = N_neurons
         self.N_glia = N_glia
         self.N_vascular = N_vascular
@@ -57,16 +35,7 @@ class MultiPathCouplingHamiltonian:
         self.blood_flow = np.random.uniform(40, 60, N_vascular)  # ml/100g/min
         
     def _initialize_synaptic_matrix(self) -> np.ndarray:
-        """
-        Initializes the synaptic coupling matrix J, enforcing Dale's law.
-
-        Dale's law states that a neuron releases the same neurotransmitter(s) at
-        all of its synapses. Here, we model this by setting 80% of neurons to be
-        excitatory (positive coupling) and 20% to be inhibitory (negative coupling).
-
-        Returns:
-            np.ndarray: The [N_neurons x N_neurons] synaptic coupling matrix.
-        """
+        """Initialize synaptic coupling matrix with Dale's law"""
         J = np.random.randn(self.N_neurons, self.N_neurons) * 0.1
         
         # Enforce Dale's law: 80% excitatory, 20% inhibitory
@@ -80,15 +49,7 @@ class MultiPathCouplingHamiltonian:
         return J
     
     def _initialize_gap_junctions(self) -> np.ndarray:
-        """
-        Initializes the gap junction conductance matrix g.
-
-        Gap junctions are primarily established between inhibitory interneurons. This
-        method creates a sparse matrix representing the electrical connections.
-
-        Returns:
-            np.ndarray: The [N_neurons x N_neurons] gap junction conductance matrix.
-        """
+        """Initialize gap junction conductances"""
         g = np.zeros((self.N_neurons, self.N_neurons))
         
         # Gap junctions primarily between inhibitory neurons
@@ -103,25 +64,13 @@ class MultiPathCouplingHamiltonian:
     
     def H_synaptic(self, sigma: np.ndarray) -> float:
         """
-        Calculates the chemical synaptic Hamiltonian.
-
-        Args:
-            sigma (np.ndarray): The current states of the neurons.
-
-        Returns:
-            float: The energy contribution from chemical synapses.
+        Chemical synaptic Hamiltonian: H_synaptic = -∑ᵢⱼ Jᵢⱼ σᵢσⱼ
         """
         return -0.5 * np.sum(sigma @ self.J_synaptic @ sigma)
     
     def H_gap(self, V: np.ndarray) -> float:
         """
-        Calculates the gap junction Hamiltonian.
-
-        Args:
-            V (np.ndarray): The membrane potentials of the neurons.
-
-        Returns:
-            float: The energy contribution from gap junctions.
+        Gap junction Hamiltonian: H_gap = -∑⟨ij⟩ gᵢⱼ(Vᵢ - Vⱼ)²
         """
         energy = 0
         for i in range(self.N_neurons):
@@ -132,50 +81,30 @@ class MultiPathCouplingHamiltonian:
     
     def H_ephaptic(self, E_field: np.ndarray) -> float:
         """
-        Calculates the ephaptic field Hamiltonian.
-
-        Args:
-            E_field (np.ndarray): The local electric field.
-
-        Returns:
-            float: The energy contribution from the electric field.
+        Ephaptic field Hamiltonian: H_ephaptic = -∫ ε₀|E|²/2 dV
         """
+        # Simplified: discrete sum over field points
         epsilon = self.epsilon_0 * self.tissue_permittivity
         return -0.5 * epsilon * np.sum(np.abs(E_field) ** 2)
     
     def H_glial(self, Ca_concentration: np.ndarray) -> float:
         """
-        Calculates the glial calcium wave Hamiltonian.
-
-        Args:
-            Ca_concentration (np.ndarray): The calcium concentrations in glial cells.
-
-        Returns:
-            float: The energy contribution from glial cell activity.
+        Glial calcium wave Hamiltonian: H_glial = -∑ₖ αₖ[Ca²⁺]ₖ
         """
+        # Alpha represents calcium-dependent energy
         alpha = 0.01  # Coupling constant
         return -alpha * np.sum(Ca_concentration)
     
     def H_vascular(self, flow: np.ndarray) -> float:
         """
-        Calculates the hemodynamic (vascular) coupling Hamiltonian.
-
-        Args:
-            flow (np.ndarray): The blood flow in vascular compartments.
-
-        Returns:
-            float: The energy contribution from neurovascular coupling.
+        Hemodynamic coupling Hamiltonian: H_vascular = -∑ᵥ βᵥ(flow)ᵥ
         """
         beta = 0.1  # Neurovascular coupling constant
         return -beta * np.sum(flow)
     
     def total_hamiltonian(self) -> float:
-        """
-        Calculates the total system Hamiltonian.
-
-        Returns:
-            float: The total energy of the coupled system.
-        """
+        """Calculate total system Hamiltonian"""
+        # Generate field from current neural states
         E_field = self._calculate_electric_field(self.neuron_states)
         
         H_total = (
@@ -190,89 +119,85 @@ class MultiPathCouplingHamiltonian:
     
     def _calculate_electric_field(self, neural_states: np.ndarray) -> np.ndarray:
         """
-        Calculates the local electric field from neural activity.
-
-        This is a simplified model where the field is proportional to the gradient
-        of neural activity across a 2D grid.
-
-        Args:
-            neural_states (np.ndarray): The current activity of neurons.
-
-        Returns:
-            np.ndarray: The magnitude of the electric field at each neuron's location.
+        Calculate electric field from neural activity
+        Simplified: field proportional to local neural activity gradient
         """
+        # Create spatial arrangement
         grid_size = int(np.sqrt(self.N_neurons))
         if grid_size ** 2 < self.N_neurons:
             grid_size += 1
         
+        # Pad states to fit grid
         padded_states = np.zeros(grid_size ** 2)
         padded_states[:self.N_neurons] = neural_states
         
+        # Reshape to 2D grid
         grid = padded_states.reshape(grid_size, grid_size)
         
+        # Calculate gradient (electric field)
         E_y, E_x = np.gradient(grid)
         E_field = np.sqrt(E_x ** 2 + E_y ** 2).flatten()[:self.N_neurons]
         
         return E_field
     
     def evolve_system(self, dt: float = 0.001) -> None:
-        """
-        Evolves the coupled system forward in time by one step.
-
-        Args:
-            dt (float): The time step for the simulation.
-        """
+        """Evolve the coupled system forward in time"""
+        # Neural dynamics
         dS_dt = -np.gradient(self.total_hamiltonian())
         self.neuron_states += dS_dt * dt
         
-        Ca_diffusion = 0.1
+        # Glial calcium dynamics (simplified)
+        # Calcium waves propagate through gap junctions
+        Ca_diffusion = 0.1  # Diffusion constant
         for i in range(self.N_glia):
+            # Simple diffusion to neighbors
             if i > 0:
                 self.glia_calcium[i] += Ca_diffusion * (self.glia_calcium[i-1] - self.glia_calcium[i]) * dt
             if i < self.N_glia - 1:
                 self.glia_calcium[i] += Ca_diffusion * (self.glia_calcium[i+1] - self.glia_calcium[i]) * dt
         
-        tau_neurovasc = 1.0
+        # Neurovascular coupling
+        # Blood flow follows neural activity with delay
+        tau_neurovasc = 1.0  # seconds
         target_flow = 40 + 20 * np.mean(np.abs(self.neuron_states))
         self.blood_flow += (target_flow - self.blood_flow) * dt / tau_neurovasc
 
+
 class ClinicalBiomarkers:
     """
-    Calculates clinical biomarkers from neural signals to assess consciousness states.
+    Clinical biomarkers for consciousness states
     """
     
     def __init__(self):
-        """Initializes the ClinicalBiomarkers calculator."""
         self.biomarkers = {}
         
     def phase_locking_value(self, signals: np.ndarray, freq_band: Tuple[float, float] = (8, 12)) -> float:
         """
-        Calculates the Phase Locking Value (PLV) for a given frequency band.
-
-        Args:
-            signals (np.ndarray): A [channels x samples] array of neural signals.
-            freq_band (Tuple[float, float]): The frequency band of interest (e.g., alpha band).
-
-        Returns:
-            float: The average PLV across all pairs of signals.
+        Calculate Phase Locking Value (PLV) for given frequency band
+        High PLV indicates strong phase synchronization
         """
         n_signals, n_samples = signals.shape
-        fs = 1000
+        
+        # Bandpass filter
+        fs = 1000  # Sampling frequency (Hz)
         nyquist = fs / 2
         low = freq_band[0] / nyquist
         high = freq_band[1] / nyquist
         
+        # Avoid filter issues
         if low <= 0 or high >= 1:
             return 0.0
         
         b, a = signal.butter(4, [low, high], btype='band')
         
+        # Filter signals and extract phase
         phases = np.zeros_like(signals)
         for i in range(n_signals):
             filtered = signal.filtfilt(b, a, signals[i])
             analytic = signal.hilbert(filtered)
             phases[i] = np.angle(analytic)
         
+        # Calculate PLV between all pairs
         plv_values = []
         for i in range(n_signals):
             for j in range(i + 1, n_signals):
@@ -284,23 +209,25 @@ class ClinicalBiomarkers:
     
     def weighted_phase_lag_index(self, signals: np.ndarray) -> float:
         """
-        Calculates the weighted Phase Lag Index (wPLI).
-
-        Args:
-            signals (np.ndarray): A [channels x samples] array of neural signals.
-
-        Returns:
-            float: The average wPLI.
+        Calculate weighted Phase Lag Index (wPLI)
+        Robust to volume conduction effects
         """
         n_signals, n_samples = signals.shape
+        
+        # Calculate cross-spectral density
         nperseg = min(256, n_samples // 4)
+        freqs, csd = signal.csd(signals[0], signals[0], fs=1000, nperseg=nperseg)
         
         wpli_matrix = np.zeros((n_signals, n_signals))
         
         for i in range(n_signals):
             for j in range(i + 1, n_signals):
                 _, Cxy = signal.csd(signals[i], signals[j], fs=1000, nperseg=nperseg)
+                
+                # Imaginary part of cross-spectrum
                 imag_csd = np.imag(Cxy)
+                
+                # wPLI calculation
                 numerator = np.abs(np.mean(imag_csd))
                 denominator = np.mean(np.abs(imag_csd))
                 
@@ -311,15 +238,12 @@ class ClinicalBiomarkers:
     
     def criticality_markers(self, activity: np.ndarray) -> Dict:
         """
-        Calculates markers of criticality, including the branching parameter.
-
-        Args:
-            activity (np.ndarray): A time-series of neural activity.
-
-        Returns:
-            Dict: A dictionary containing the branching parameter and clinical state.
+        Calculate markers of criticality
+        σ branching parameter: =1 critical, >1 supercritical, <1 subcritical
         """
         markers = {}
+        
+        # Branching parameter
         branching_ratios = []
         for t in range(len(activity) - 1):
             active_now = np.sum(activity[t] > 0)
@@ -329,6 +253,7 @@ class ClinicalBiomarkers:
         
         markers['branching_parameter'] = np.mean(branching_ratios) if branching_ratios else 0.0
         
+        # Determine state
         sigma = markers['branching_parameter']
         if sigma > 1.1:
             markers['state'] = 'supercritical'
@@ -340,76 +265,87 @@ class ClinicalBiomarkers:
             markers['state'] = 'critical'
             markers['clinical_correlate'] = 'healthy'
         
+        # Long-range temporal correlations (DFA)
         markers['dfa_exponent'] = self._detrended_fluctuation_analysis(activity.flatten())
+        
         return markers
     
     def _detrended_fluctuation_analysis(self, time_series: np.ndarray, scales: Optional[np.ndarray] = None) -> float:
         """
-        Performs Detrended Fluctuation Analysis (DFA).
-
-        Args:
-            time_series (np.ndarray): The time series to analyze.
-            scales (Optional[np.ndarray]): The scales to evaluate.
-
-        Returns:
-            float: The DFA scaling exponent.
+        Detrended Fluctuation Analysis (DFA) for long-range correlations
+        Returns scaling exponent (0.5 = white noise, 1.0 = 1/f noise)
         """
         if scales is None:
             scales = np.logspace(1, 3, 20, dtype=int)
         
+        # Integrate time series
         y = np.cumsum(time_series - np.mean(time_series))
         
         fluctuations = []
         for scale in scales:
-            if scale >= len(y): continue
+            if scale >= len(y):
+                continue
+                
+            # Divide into segments
             n_segments = len(y) // scale
-            if n_segments == 0: continue
+            
+            if n_segments == 0:
+                continue
             
             segment_vars = []
             for i in range(n_segments):
                 segment = y[i * scale:(i + 1) * scale]
+                
+                # Detrend with linear fit
                 x = np.arange(len(segment))
                 coeffs = np.polyfit(x, segment, 1)
                 trend = np.poly1d(coeffs)(x)
+                
+                # Calculate fluctuation
                 segment_var = np.sqrt(np.mean((segment - trend) ** 2))
                 segment_vars.append(segment_var)
             
             fluctuations.append(np.mean(segment_vars))
         
         if len(fluctuations) > 2:
+            # Fit power law
             valid_scales = scales[:len(fluctuations)]
-            alpha, _ = np.polyfit(np.log(valid_scales), np.log(fluctuations), 1)
+            log_scales = np.log(valid_scales)
+            log_fluct = np.log(fluctuations)
+            
+            # Linear regression in log-log space
+            alpha, _ = np.polyfit(log_scales, log_fluct, 1)
             return alpha
         
-        return 0.5
+        return 0.5  # Default to white noise
     
     def pathological_detection(self, neural_data: np.ndarray) -> Dict:
         """
-        Detects pathological states from neural dynamics using calculated biomarkers.
-
-        Args:
-            neural_data (np.ndarray): A [channels x samples] array of neural signals.
-
-        Returns:
-            Dict: A dictionary of detected pathologies and recommendations.
+        Detect pathological states from neural dynamics
         """
         detections = {}
+        
+        # Calculate biomarkers
         plv = self.phase_locking_value(neural_data)
         wpli = self.weighted_phase_lag_index(neural_data)
         criticality = self.criticality_markers(neural_data)
         
+        # Epilepsy detection
         if criticality['branching_parameter'] > 1.2:
             detections['epilepsy_risk'] = 'high'
             detections['recommendation'] = 'Consider anti-epileptic intervention'
         
+        # Depression detection
         if criticality['branching_parameter'] < 0.8 and plv < 0.3:
             detections['depression_markers'] = 'present'
             detections['recommendation'] = 'Evaluate for mood disorders'
         
+        # Schizophrenia markers
         if wpli < 0.2 and criticality['dfa_exponent'] < 0.6:
             detections['schizophrenia_markers'] = 'present'
             detections['recommendation'] = 'Assess connectivity disruption'
         
+        # Consciousness level
         consciousness_score = (plv + wpli + (1 - abs(1 - criticality['branching_parameter']))) / 3
         
         if consciousness_score > 0.7:
@@ -420,66 +356,79 @@ class ClinicalBiomarkers:
             detections['consciousness_level'] = 'minimal_consciousness'
         
         detections['biomarker_values'] = {
-            'PLV': plv, 'wPLI': wpli,
+            'PLV': plv,
+            'wPLI': wpli,
             'branching_parameter': criticality['branching_parameter'],
             'DFA_exponent': criticality['dfa_exponent']
         }
+        
         return detections
+
 
 class TherapeuticInterventions:
     """
-    Designs therapeutic interventions based on tissue synchronization biomarkers.
+    Therapeutic intervention protocols based on tissue synchronization
     """
     
     def __init__(self):
-        """Initializes the TherapeuticInterventions class."""
         self.protocols = {}
         
-    def transcranial_stimulation_protocol(self, target_frequency: float, current_state: str) -> Dict:
+    def transcranial_stimulation_protocol(self, 
+                                         target_frequency: float,
+                                         current_state: str) -> Dict:
         """
-        Designs a transcranial stimulation protocol based on the current brain state.
-
-        Args:
-            target_frequency (float): The target frequency for stimulation.
-            current_state (str): The clinical state (e.g., 'epilepsy_risk').
-
-        Returns:
-            Dict: A dictionary describing the stimulation protocol.
+        Design transcranial stimulation protocol
         """
         protocol = {
-            'type': 'tACS', 'frequency': target_frequency,
-            'intensity': 2.0, 'duration': 20, 'electrode_montage': 'F3-F4',
+            'type': 'tACS',  # Transcranial Alternating Current Stimulation
+            'frequency': target_frequency,
+            'intensity': 2.0,  # mA
+            'duration': 20,  # minutes
+            'electrode_montage': 'F3-F4',  # Frontal sites
         }
         
+        # Adjust based on pathological state
         if current_state == 'epilepsy_risk':
-            protocol.update({'type': 'tDCS', 'polarity': 'cathodal', 'intensity': 1.0})
+            # Reduce excitability
+            protocol['type'] = 'tDCS'  # Direct current
+            protocol['polarity'] = 'cathodal'
+            protocol['intensity'] = 1.0
+            
         elif current_state == 'depression_risk':
-            protocol.update({'frequency': 10.0, 'intensity': 2.5, 'electrode_montage': 'F3-Fp2'})
+            # Increase excitability
+            protocol['frequency'] = 10.0  # Alpha frequency
+            protocol['intensity'] = 2.5
+            protocol['electrode_montage'] = 'F3-Fp2'  # Left DLPFC
+            
         elif current_state == 'schizophrenia_markers':
-            protocol.update({'frequency': 40.0, 'intensity': 1.5})
+            # Enhance gamma synchronization
+            protocol['frequency'] = 40.0  # Gamma
+            protocol['intensity'] = 1.5
             
         return protocol
     
     def pharmacological_modulation(self, biomarkers: Dict) -> List[str]:
         """
-        Suggests pharmacological interventions based on criticality and synchronization.
-
-        Args:
-            biomarkers (Dict): A dictionary of biomarker values.
-
-        Returns:
-            List[str]: A list of suggested pharmacological agents.
+        Suggest pharmacological interventions based on criticality
         """
         suggestions = []
+        
         branching = biomarkers.get('branching_parameter', 1.0)
         
         if branching > 1.1:
-            suggestions.extend(["GABAergic enhancement (e.g., benzodiazepines)", "Sodium channel blockers (e.g., carbamazepine)"])
+            # Supercritical - reduce excitation
+            suggestions.append("GABAergic enhancement (e.g., benzodiazepines)")
+            suggestions.append("Sodium channel blockers (e.g., carbamazepine)")
+            
         elif branching < 0.9:
-            suggestions.extend(["NMDA receptor modulation (e.g., ketamine)", "Monoamine enhancement (e.g., SSRIs)"])
-
+            # Subcritical - increase excitation
+            suggestions.append("NMDA receptor modulation (e.g., ketamine)")
+            suggestions.append("Monoamine enhancement (e.g., SSRIs)")
+            
+        # Based on synchronization
         if biomarkers.get('PLV', 0) < 0.3:
             suggestions.append("Cholinergic enhancement for attention")
+            
         if biomarkers.get('wPLI', 0) < 0.2:
             suggestions.append("Dopaminergic modulation for connectivity")
             
@@ -487,32 +436,47 @@ class TherapeuticInterventions:
     
     def circadian_rhythm_intervention(self, current_phase: float) -> Dict:
         """
-        Designs a circadian rhythm intervention protocol.
-
-        Args:
-            current_phase (float): The current phase of the circadian rhythm.
-
-        Returns:
-            Dict: A dictionary describing the light, melatonin, and activity schedule.
+        Design circadian rhythm intervention
         """
-        optimal_phase = np.pi
+        optimal_phase = np.pi  # Noon
         phase_shift = optimal_phase - current_phase
         
-        return {
+        intervention = {
             'light_therapy': {
-                'timing': 'morning' if phase_shift > 0 else 'evening', 'intensity': 10000,
-                'duration': 30, 'wavelength': 480
+                'timing': 'morning' if phase_shift > 0 else 'evening',
+                'intensity': 10000,  # lux
+                'duration': 30,  # minutes
+                'wavelength': 480  # nm (blue light)
             },
-            'melatonin': {'dose': 3, 'timing': 'evening' if phase_shift > 0 else 'avoid'},
-            'activity_schedule': {'exercise': 'morning' if phase_shift > 0 else 'afternoon', 'meals': 'regular times, avoid late eating'}
+            'melatonin': {
+                'dose': 3,  # mg
+                'timing': 'evening' if phase_shift > 0 else 'avoid'
+            },
+            'activity_schedule': {
+                'exercise': 'morning' if phase_shift > 0 else 'afternoon',
+                'meals': 'regular times, avoid late eating'
+            }
         }
+        
+        return intervention
 
+
+# Example usage and testing
 if __name__ == "__main__":
     print("Testing Multi-Path Coupling Hamiltonian System...")
-    hamiltonian = MultiPathCouplingHamiltonian(N_neurons=50, N_glia=20, N_vascular=10)
+    
+    # Initialize system
+    hamiltonian = MultiPathCouplingHamiltonian(
+        N_neurons=50,
+        N_glia=20,
+        N_vascular=10
+    )
+    
+    # Calculate total energy
     H_total = hamiltonian.total_hamiltonian()
     print(f"Initial Hamiltonian energy: {H_total:.3f}")
     
+    # Evolve system
     for _ in range(100):
         hamiltonian.evolve_system(dt=0.01)
     
@@ -520,12 +484,18 @@ if __name__ == "__main__":
     print(f"Final Hamiltonian energy: {H_final:.3f}")
     
     print("\nTesting Clinical Biomarkers...")
-    n_channels, n_samples = 8, 1000
+    
+    # Generate test data
+    n_channels = 8
+    n_samples = 1000
     test_signals = np.random.randn(n_channels, n_samples)
+    
+    # Add some synchronization
     common_signal = np.sin(2 * np.pi * 10 * np.arange(n_samples) / 1000)
     for i in range(n_channels):
         test_signals[i] += 0.5 * common_signal
     
+    # Calculate biomarkers
     biomarkers = ClinicalBiomarkers()
     plv = biomarkers.phase_locking_value(test_signals)
     wpli = biomarkers.weighted_phase_lag_index(test_signals)
@@ -534,14 +504,24 @@ if __name__ == "__main__":
     print(f"PLV (alpha band): {plv:.3f}")
     print(f"wPLI: {wpli:.3f}")
     print(f"Criticality state: {criticality['state']}")
+    print(f"Branching parameter: {criticality['branching_parameter']:.3f}")
     
+    # Pathological detection
     detections = biomarkers.pathological_detection(test_signals)
     print(f"\nConsciousness level: {detections['consciousness_level']}")
+    print(f"Clinical recommendations: {detections.get('recommendation', 'None')}")
     
+    # Therapeutic interventions
     therapy = TherapeuticInterventions()
-    stim_protocol = therapy.transcranial_stimulation_protocol(target_frequency=10.0, current_state=criticality['clinical_correlate'])
+    
+    # Get stimulation protocol
+    stim_protocol = therapy.transcranial_stimulation_protocol(
+        target_frequency=10.0,
+        current_state=criticality['clinical_correlate']
+    )
     print(f"\nStimulation protocol: {stim_protocol}")
     
+    # Get pharmacological suggestions
     pharma = therapy.pharmacological_modulation(detections['biomarker_values'])
     if pharma:
         print(f"Pharmacological suggestions: {pharma[0]}")
