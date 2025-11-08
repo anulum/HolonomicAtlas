@@ -1,0 +1,73 @@
+{
+"HolonomicID": "scpn://atlas.v1/D1.Neuron",
+"ParentID": null,
+"Classical": {
+"Structure": "Excitable cell, main component of nervous tissue. Comprises a soma, dendrites, and an axon.",
+"Function": "Processes and transmits information through electrical (action potential) and chemical (neurotransmitter) signals.",
+"Pathology": "Neurodegeneration, excitotoxicity, channelopathies."
+},
+"SCPN": {
+"L1_QuantumBiological": "A multi-scale resonant transducer. L1 quantum computation in the cytoskeleton (MTs) is transduced via quantum-gated ion channels and quantum-modulated vesicle release (L1->L2 bridge) into classical action potentials. [cite: 2261, 2904, 2905, 3002, 3012]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Processor",
+"VIBRANA_Key": "VIB-KEY-NEU-001",
+"MetaphysicalMapping": "A node in the 'Mind of God'. A single point of light processing and transmitting awareness."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Ion channel gating will be fully described by classical Hodgkin-Huxley models, with no quantum tunnelling component (k_quantum = 1). [cite: 3017]",
+"Vesicle release will be shown to be purely stochastic, with timing jitter matching classical models (sigma_t ~ 1 ms), not quantum-precise (sigma_t ~ 0.1 ms). [cite: 3019]"
+],
+"Experimental_Protocols": [
+"Optical Bloch Equation (OBE) formalism to identify quantum parameters (Omega, T1, T2) of ion channels. [cite: 2920, 2932]",
+"Measure Kinetic Isotope Effects (KIEs) on neurotransmitter release to confirm quantum tunnelling. [cite: 3062]"
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/neuron_obe_model.py [cite: 2923-2927]",
+"Simulations/L1_QuantumBiological/vesicle_tunnelling.py [cite: 3014-3015]"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Channel Open Probability: P_{open} = 0.5 \\frac{s}{1 + s + (\\Delta T_2)^2} [cite: 2913, 2929]",
+"Saturation Parameter: s = \\Omega^2 T_1 T_2 [cite: 2914, 2930]",
+"Effective Conductance: G_{eff} = N g_{single} P_{open} [cite: 2915, 2931]",
+"Vesicle Release Rate: \\Gamma_{eff} = \\Gamma_{fusion} (1 + \\lambda_{syn} \\Psi_s \\langle Ca^{2+} \\rangle^n) [cite: 3015]",
+"L5->L1 Gain: g(A_{attn}) = g_{max} / (1 + e^{-(A_{attn} - A_0)/k}) [cite: 2978]"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"TRANSDUCE(quantum)",
+"PROCESS(classical)",
+"FIRE"
+],
+"Output_Nouns": [
+"ACTION_POTENTIAL",
+"NEUROTRANSMITTER_RELEASE",
+"L1_L2_BRIDGE_SIGNAL"
+]
+}
+}
+}

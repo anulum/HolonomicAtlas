@@ -1,0 +1,74 @@
+{
+"HolonomicID": "scpn://atlas.v1/D0.Microtubule",
+"ParentID": null,
+"Classical": {
+"Structure": "Polymer of tubulin; a key component of the cytoskeleton.",
+"Function": "Provides structural support, intracellular transport, and forms the mitotic spindle during cell division.",
+"Pathology": "Disruption linked to neurodegenerative diseases (e.g., Alzheimer's) and cancer."
+},
+"SCPN": {
+"L1_QuantumBiological": "The primary L1 substrate. A quasi-crystalline lattice supporting coherent quantum vibratory states (phonons) via metabolically-driven Fröhlich condensation. Functions as a topological quantum error correction (QEC) system. [cite: 1477, 1682, 1683, 1697, 2273]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Lattice",
+"VIBRANA_Key": "VIB-KEY-MT-001",
+"MetaphysicalMapping": "The internal scaffold of reality; the structure upon which information is written and computed."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"THz/Brillouin/Raman spectroscopy will show no coherent vibrational modes. [cite: 1494]",
+"Observed modes will persist unaltered during anesthetic wash-in/out, falsifying a link to consciousness. [cite: 1494, 1727]",
+"The calculated energy gap (Δ ≈ 1.64 eV) will be shown to be incorrect, or thermal error rates will not be suppressed as predicted (P_error ~ 10^-27). [cite: 1710, 1711, 2380, 2381]"
+],
+"Experimental_Protocols": [
+"Protocol 1: MT Coherence (THz Spectroscopy): Femtosecond pump-probe THz spectroscopy on purified tubulin to detect quantum beats and measure coherence time (tau). [cite: 4107-4112]",
+"Protocol 2: Anesthetic Dampening: Re-run Protocol 1 during exposure to anaesthetics (e.g., halothane) to check for predicted dampening of quantum modes. [cite: 1727]"
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/qec_gap_calculation.py [cite: 1707-1712]",
+"Simulations/L1_QuantumBiological/topological_qec.py [cite: 1685, 2377]"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Wavefunction: \\psi_{MT}(x, t) = A e^{i(\\omega_Q t - kx)} [cite: 1682, 1696]",
+"QEC Hamiltonian: H_{topo} = -J \\sum_{p} B_p - J \\sum_{s} A_s [cite: 1685, 1706, 2377]",
+"Energy Gap: \\Delta = 2J \\approx 1.64 \\text{ eV} [cite: 1687, 1710, 2380]",
+"Gap Derivation: J = \\frac{1}{4\\pi\\epsilon_0\\epsilon_r} \\frac{2\\mu^2}{r^3} \\approx 0.82 \\text{ eV} [cite: 1687, 1709, 2283]",
+"Thermal Error Probability: P_{error} \\approx e^{-\\Delta/kT} \\approx e^{-61.4} \\approx 10^{-27} [cite: 1688, 1711, 2286]"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"COMPUTE",
+"STABILIZE",
+"PROCESS(phonon)"
+],
+"Output_Nouns": [
+"COHERENCE_FIELD",
+"QEC_SYNDROME",
+"QUANTUM_INFORMATION"
+]
+}
+}
+}

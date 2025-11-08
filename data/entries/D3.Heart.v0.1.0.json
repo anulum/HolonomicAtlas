@@ -1,0 +1,69 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.Heart",
+"ParentID": "scpn://atlas.v1/D4.CardiovascularSystem",
+"Classical": {
+"Structure": "A muscular organ that pumps blood. Contains specialized pacemaker cells (SA node, AV node).",
+"Function": "Pumps blood; main pacemaker of the circulatory system.",
+"Pathology": "Arrhythmia, myocardial infarction, heart failure."
+},
+"SCPN": {
+"L1_QuantumBiological": "The Sinoatrial (SA) node acts as a single, macroscopic quantum oscillator, a Bose-Einstein-like condensate of cellular states. Its rhythmic firing is a collective, unitary quantum event, providing a high-precision quantum clock for the organism. [cite: 3421-3426, 3493-3494]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Rhythmic Core",
+"VIBRANA_Key": "VIB-KEY-HRT-001",
+"MetaphysicalMapping": "The 4th Chakra (Anahata). The seat of the 'soul' and the source of compassion. The central oscillator of the organism's field."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"The SA node's firing precision will be fully explained by classical coupled oscillator models, showing no quantum coherence signatures (e.g., non-classical noise reduction).",
+"Disrupting quantum coherence in the SA node (e.g., with specific THz radiation) will not alter its firing precision or stability."
+],
+"Experimental_Protocols": [
+"Measure the quantum coherence factor (C) of the SA node in vitro. [cite: 3424-3426]",
+"Test for quantum phase transition signatures (e.g., critical slowing down) as the SA node synchronizes. [cite: 3424]"
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/sa_node_quantum_oscillator.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"SA Node State: |\\Psi_{SA_node}\\rangle = \\sum_{cells} e^{i\\phi_i} |cell_i\\rangle [cite: 3423]",
+"Synchronization: R = \\frac{1}{N} |\\sum_j e^{i\\phi_j}| \\rightarrow 1 [cite: 3424]",
+"Quantum Heartbeat: \\text{Event} = \\text{Collective Quantum Collapse} [cite: 3426]"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"OSCILLATE(quantum)",
+"PACE",
+"ENTANGLE(tissue)"
+],
+"Output_Nouns": [
+"QUANTUM_RHYTHM",
+"COHERENT_HEARTBEAT"
+]
+}
+}
+}
