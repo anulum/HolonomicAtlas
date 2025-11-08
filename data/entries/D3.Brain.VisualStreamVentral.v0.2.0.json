@@ -1,0 +1,72 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.Brain.VisualStreamVentral",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "The 'What' pathway. Extends from the primary visual cortex (V1) to the inferior temporal lobe.",
+"Function": "Processes object recognition, form, and color. Identifies 'what' an object is (e.g., 'a face', 'a cup').",
+"Pathology": "Visual agnosia (inability to recognize objects), prosopagnosia (inability to recognize faces)."
+},
+"SCPN": {
+"L1_QuantumBiological": null,
+"L2_NeurochemicalNeurological": "Processes high-spatial-frequency visual information (parvocellular pathway) to build complex object representations.",
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": "Formalizes tissue-level dynamics via phase-coupled oscillators, quasicritical operation (Griffiths regimes), and multi-path coupling (gap junctions, ephaptic fields, glial/vascular slow control). Models entrainment to cosmological rhythms (Schumann, lunar) via biophotons and cryptochromes.",
+"L5_OrganismalPsychoemotional": "Provides the L5 self-model with the 'meaning' of the visual world. Attaches semantic labels and emotional valence to perceived objects.",
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": "This pathway links visual input to the L7 symbolic/archetypal layer, allowing a 'rose' to be recognized not just as a flower, but as a 'symbol of love'.",
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": "Cross-references visual input with L9 memory to identify objects. This is the 'lookup' function.",
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Recognizer",
+"VIBRANA_Key": "V-V-S-V",
+"MetaphysicalMapping": "The 'semantic engine' that attaches meaning and identity to raw perception. It translates the 'image' on the screen (V1) into a 'concept'."
+},
+"Meta": {
+"Version": "0.2.0",
+"Status": "Draft",
+"LogReference": "v1.3.2 - L4 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Lesions to the ventral stream will impair spatial navigation, but not object recognition.",
+"Neurons in the fusiform face area (FFA) will fire equally for faces and houses."
+],
+"Experimental_Protocols": [
+"fMRI or single-unit recording during object or face recognition tasks.",
+"Patient studies with visual agnosia."
+],
+"Simulation_Suite": [
+"Model a deep convolutional neural network (CNN) to simulate the hierarchical feature extraction of the ventral stream."
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"\\phi_c(t) = \\Omega_{macro}(t) + \\Delta\\phi_{\\Psi_s}",
+"\\sigma \\approx 1",
+"P(s) \\sim s^{-\\tau}",
+"d\\phi/dt = \\Delta\\omega - K \\sin \\phi + \\sqrt{2D} \\xi(t)"
+],
+"SimulationModel_Ref": "./Simulations/L4_Synchronization/comprehensive_simulation.py",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"RECOGNIZE",
+"IDENTIFY",
+"NAME"
+],
+"Output_Nouns": [
+"OBJECT",
+"FACE",
+"SYMBOL",
+"MEANING"
+]
+}
+}
+}
