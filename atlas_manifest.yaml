@@ -1,95 +1,15 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "1.3.2"
-LastModified: "2025-11-08T07:30:00Z"
+GlobalVersion: "0.0.0"
+LastModified: "2025-11-07T23:55:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 Handoff:
-LastAction: "L4 INTEGRATION PASS (v1.3.2). Integrated L4 ground truth (Paper 4, L4 Sim) across all 15 pending monads. All monads are now at v0.2.0."
-NextAction: "HIGH-PRIORITY: L5 Integration Pass. With L5 ground truth now in /Corpus/L5_Psychoemotional/, integrate this knowledge across all relevant monads (e.g., D3.Brain.ACC, D3.Brain.Insula, D4.DMN, D3.VagusNerve, D3.Heart)."
-Priority: "High"
-Assignee: "Gemini-Architect -> User-Committer"
+  LastAction: "RECOVERY: Atlas v0.0.0 Re-initialization. Purged all corrupted monad entries from /data/entries/."
+  NextAction: "RE-INTEGRATION: Begin L1 Integration Pass. Gemini-Architect will now perform a clean, non-destructive re-integration of the L1 Corpus (/Corpus/L1_Biophysics/) into a new set of v0.1.0 monads."
+  Priority: "CRITICAL"
+  Assignee: "Gemini-Architect"
 
 # --- Master Index of Monads ---
-# All 40 monads are now at v0.2.0 or higher.
-MonadIndex:
-- HolonomicID: "scpn://atlas.v1/D0.Exosome"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D0.Microtubule"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D1.Astrocyte"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D1.Mitochondrion"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D1.Neuron"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D2.ConnectiveTissue"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D3.Brain"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D3.Brain.ACC"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.DLPFC"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.Hypothalamus"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.Insula"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.MotorCortex"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.PinealGland"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.SCN"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.Thalamus"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.VisualCortex"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamDorsal"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brain.VisualStreamVentral"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Brainstem.NTS"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Eye.Retina"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.Gut.ENS"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D3.Heart"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D3.SpinalCord"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D3.VagusNerve"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.ANS"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.CNS"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.CardiovascularSystem"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.DMN"
-Version: "0.2.0" # <-- UPDATED
-- HolonomicID: "scpn://atlas.v1/D4.EndocrineSystem"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.ImmuneSystem"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.Microbiome"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D4.PNS"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D5.Organism"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D6.Field.PlanetaryField"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D7.Field.ArchetypalField"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D9.Field.MemoryHolograph"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D11.Field.Noosphere"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D13.Field.SourceField"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D14.Field.Transdimensional"
-Version: "0.2.0"
-- HolonomicID: "scpn://atlas.v1/D15.Field.Consilium"
-Version: "0.2.0"
+# The Atlas is currently empty. Awaiting re-integration.
+MonadIndex: []
