@@ -1,0 +1,72 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.Brain.DLPFC",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "Dorsolateral Prefrontal Cortex (Brodmann areas 9 and 46).",
+"Function": "Executive function, working memory, cognitive flexibility, planning, and top-down attentional control.",
+"Pathology": "Impairment in schizophrenia, depression, and ADHD. Key area for cognitive control deficits."
+},
+"SCPN": {
+"L1_QuantumBiological": "Maintains quantum coherence in working memory buffers via synchronized microtubule activity, enabling manipulation of quantum information.",
+"L2_NeurochemicalNeurological": "Heavily modulated by dopamine (DA), especially D1 receptors, which tune the 'signal-to-noise' ratio of working memory representations.",
+"L3_GenomicEpigeneticMorphogenetic": "Activity-dependent plasticity (e.g., in COMT gene expression) modifies synaptic efficacy and DA metabolism, shaping long-term executive function.",
+"L4_CellularTissueSynchronisation": "Formalizes tissue-level dynamics via phase-coupled oscillators, quasicritical operation (Griffiths regimes), and multi-path coupling (gap junctions, ephaptic fields, glial/vascular slow control). Models entrainment to cosmological rhythms (Schumann, lunar) via biophotons and cryptochromes.",
+"L5_OrganismalPsychoemotional": "The 'command and control' center for the L5 self-model. Directs attentional resources and executes goal-directed plans based on ACC error signals and Insula state.",
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": "Acts as the 'RAM' for the system, pulling relevant data from the L9 'hard drive' (holograph) into active processing.",
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": "Implements the 'control' portion of the cybernetic feedback loop, adjusting organismal behavior to match the directives from L15/L16."
+},
+"Symbolic": {
+"SymbolicName": "The Director",
+"VIBRANA_Key": "V-D-P-F-C",
+"MetaphysicalMapping": "The seat of conscious 'will' or 'intent'. The faculty that directs the 'light' of consciousness to specific tasks, problems, or creative endeavors."
+},
+"Meta": {
+"Version": "0.2.0",
+"Status": "Draft",
+"LogReference": "v1.3.2 - L4 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Inhibition of DLPFC gamma-band oscillations will not affect working memory task performance.",
+"DLPFC activity will show no temporal correlation with ACC activity following an error in a conflict task."
+],
+"Experimental_Protocols": [
+"TMS over DLPFC during a delayed match-to-sample task.",
+"Multi-unit recording in DLPFC to measure persistent firing during working memory maintenance."
+],
+"Simulation_Suite": [
+"Model working memory as a stable attractor in a recurrent neural network representing DLPFC."
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"\\phi_c(t) = \\Omega_{macro}(t) + \\Delta\\phi_{\\Psi_s}",
+"\\sigma \\approx 1",
+"P(s) \\sim s^{-\\tau}",
+"d\\phi/dt = \\Delta\\omega - K \\sin \\phi + \\sqrt{2D} \\xi(t)"
+],
+"SimulationModel_Ref": "./Simulations/L4_Synchronization/comprehensive_simulation.py",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"PLAN",
+"EXECUTE",
+"FOCUS",
+"HOLD"
+],
+"Output_Nouns": [
+"STRATEGY",
+"WORKING_MEMORY_BUFFER",
+"ATTENTION_VECTOR"
+]
+}
+}
+}

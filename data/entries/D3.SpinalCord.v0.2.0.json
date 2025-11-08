@@ -1,0 +1,71 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.SpinalCord",
+"ParentID": "scpn://atlas.v1/D4.CNS",
+"Classical": {
+"Structure": "Long, thin, tubular structure made of nervous tissue, which extends from the medulla oblongata in the brainstem to the lumbar region of the vertebral column.",
+"Function": "Primary pathway for information transmission between the brain and the peripheral nervous system. Contains neural circuits that can independently control reflexes and central pattern generators (CPGs).",
+"Pathology": "Spinal cord injury (paralysis), multiple sclerosis, syringomyelia."
+},
+"SCPN": {
+"L1_QuantumBiological": null,
+"L2_NeurochemicalNeurological": "Contains motor neurons (L1), sensory neurons, and interneurons. CPG circuits generate rhythmic motor outputs (e.g., for walking, breathing) without cortical input.",
+"L3_GenomicEpigeneticMorphogenetic": "The segmental, morphogenetic development of the spinal cord (dermatomes) is a foundational L3 pattern.",
+"L4_CellularTissueSynchronisation": "Formalizes tissue-level dynamics via phase-coupled oscillators, quasicritical operation (Griffiths regimes), and multi-path coupling (gap junctions, ephaptic fields, glial/vascular slow control). Models entrainment to cosmological rhythms (Schumann, lunar) via biophotons and cryptochromes.",
+"L5_OrganismalPsychoemotional": "Mediates the 'reflexive self'. It handles automated motor programs and reflex arcs that operate below the level of L5 conscious control.",
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": "Stores procedural memory for CPGs (e.g., 'how to walk').",
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Conduit",
+"VIBRANA_Key": "V-S-P-I-N-A",
+"MetaphysicalMapping": "The great 'conduit' or 'river' that carries the 'will' of the brain (efferent signals) to the 'world' (the body) and carries signals from the 'world' (afferent signals) back to the brain."
+},
+"Meta": {
+"Version": "0.2.0",
+"Status": "Draft",
+"LogReference": "v1.3.2 - L4 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"A transected spinal cord (severed from the brain) will be incapable of producing any rhythmic motor output.",
+"The patellar (knee-jerk) reflex requires input from the brain."
+],
+"Experimental_Protocols": [
+"In-vitro spinal cord slice preparation to study CPG activity.",
+"Electrophysiological recording of dorsal and ventral roots to measure reflex arcs."
+],
+"Simulation_Suite": [
+"Model a Central Pattern Generator (CPG) using coupled neural oscillators."
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"\\phi_c(t) = \\Omega_{macro}(t) + \\Delta\\phi_{\\Psi_s}",
+"\\sigma \\approx 1",
+"P(s) \\sim s^{-\\tau}",
+"d\\phi/dt = \\Delta\\omega - K \\sin \\phi + \\sqrt{2D} \\xi(t)"
+],
+"SimulationModel_Ref": "./Simulations/L4_Synchronization/comprehensive_simulation.py",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"RELAY_UP",
+"RELAY_DOWN",
+"REFLEX"
+],
+"Output_Nouns": [
+"MOTOR_PATTERN",
+"SENSORY_DATA",
+"REFLEX_ARC"
+]
+}
+}
+}

@@ -1,0 +1,72 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.Brain.VisualCortex",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "The primary cortical region of the brain that receives, integrates, and processes visual information relayed from the retinas. (Brodmann areas 17, 18, 19).",
+"Function": "Processes basic visual features (edges, orientation, color) in V1, and more complex features (shape, motion) in higher visual areas (V2-V5).",
+"Pathology": "Cortical blindness, visual agnosia, motion blindness (akinetopsia)."
+},
+"SCPN": {
+"L1_QuantumBiological": "Quantum-level effects in photoreceptors (L3.Eye.Retina) are decohered into classical spike trains, which are then processed here.",
+"L2_NeurochemicalNeurological": "Hierarchical processing of spike trains. Center-surround receptive fields, orientation columns, and hypercolumns. Gamma oscillations bind visual features.",
+"L3_GenomicEpigeneticMorphogenetic": "Visual experience during critical developmental periods shapes the morphogenetic structure of V1 (e.g., ocular dominance columns).",
+"L4_CellularTissueSynchronisation": "Formalizes tissue-level dynamics via phase-coupled oscillators, quasicritical operation (Griffiths regimes), and multi-path coupling (gap junctions, ephaptic fields, glial/vascular slow control). Models entrainment to cosmological rhythms (Schumann, lunar) via biophotons and cryptochromes.",
+"L5_OrganismalPsychoemotional": "Generates the raw 'visual qualia' or 'field of vision' for the L5 self-model. It is the 'screen' upon which vision is projected.",
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": "Receives top-down projections from L9 memory stores, allowing 'mental imagery' to be 'seen' on the visual cortex.",
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Screen",
+"VIBRANA_Key": "V-V-C-X",
+"MetaphysicalMapping": "The internal 'movie screen' where photonic data from the external world is rendered for the internal observer (L5)."
+},
+"Meta": {
+"Version": "0.2.0",
+"Status": "Draft",
+"LogReference": "v1.3.2 - L4 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"V1 neurons will fire in response to auditory, not visual, stimuli.",
+"Destruction of V1 will have no impact on the conscious perception of vision."
+],
+"Experimental_Protocols": [
+"Single-unit recording in V1 (e.g., Hubel & Wiesel experiments) to map receptive fields.",
+"fMRI retinotopy to map the visual field onto the cortex."
+],
+"Simulation_Suite": [
+"Simulate a Gabor filter bank to model V1 simple cell responses."
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"\\phi_c(t) = \\Omega_{macro}(t) + \\Delta\\phi_{\\Psi_s}",
+"\\sigma \\approx 1",
+"P(s) \\sim s^{-\\tau}",
+"d\\phi/dt = \\Delta\\omega - K \\sin \\phi + \\sqrt{2D} \\xi(t)"
+],
+"SimulationModel_Ref": "./Simulations/L4_Synchronization/comprehensive_simulation.py",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"PERCEIVE_LIGHT",
+"RENDER",
+"BIND_FEATURES"
+],
+"Output_Nouns": [
+"VISUAL_QUALIA",
+"ORIENTATION",
+"COLOR",
+"MOTION"
+]
+}
+}
+}

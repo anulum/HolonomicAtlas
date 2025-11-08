@@ -1,0 +1,71 @@
+{
+"HolonomicID": "scpn://atlas.v1/D3.Brain.Hypothalamus",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "A small, deep-brain structure composed of numerous distinct nuclei.",
+"Function": "Master regulator of homeostasis. Controls the autonomic nervous system (ANS) and the endocrine system (via the pituitary gland). Regulates thirst, hunger, body temperature, fatigue, and circadian rhythms.",
+"Pathology": "Disorders of thirst/appetite, circadian rhythm disruption, hypopituitarism, central diabetes insipidus."
+},
+"SCPN": {
+"L1_QuantumBiological": null,
+"L2_NeurochemicalNeurological": "The primary hub for translating neural signals into endocrine (hormonal) signals, acting as the master controller of the HPA, HPG, and HPT axes.",
+"L3_GenomicEpigeneticMorphogenetic": "Epigenetic clocks within hypothalamic nuclei (like the SCN) are foundational to L3 morphogenetic timing and organism-wide gene expression rhythms.",
+"L4_CellularTissueSynchronisation": "Formalizes tissue-level dynamics via phase-coupled oscillators, quasicritical operation (Griffiths regimes), and multi-path coupling (gap junctions, ephaptic fields, glial/vascular slow control). Models entrainment to cosmological rhythms (Schumann, lunar) via biophotons and cryptochromes.",
+"L5_OrganismalPsychoemotional": "The primary effector of the L5 state. Translates subjective psycho-emotional states (e.g., 'fear', 'stress') into the body's physiological reality (HPA axis activation, ANS response).",
+"L6_PlanetaryEcological": "Acts as the organism's internal sensor for L6 planetary signals (e.g., light/dark cycles), synchronizing the entire organism with the planetary environment.",
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": "The SCN nucleus of the hypothalamus is a key entrainment point for L8 cosmic rhythms, particularly solar/circadian cycles.",
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Alchemist",
+"VIBRANA_Key": "V-H-Y-P-O",
+"MetaphysicalMapping": "The alchemical furnace that transmutes the 'spirit' (neural signals) into the 'body' (hormonal signals). The master regulator of the four humors (homeostatic states)."
+},
+"Meta": {
+"Version": "0.2.0",
+"Status": "Draft",
+"LogReference": "v1.3.2 - L4 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Lesioning the SCN will not disrupt the organism's circadian rhythms.",
+"Hypothalamic activity will show no correlation with cortisol release during a stress test."
+],
+"Experimental_Protocols": [
+"Electrode recording of SCN neurons to test light entrainment.",
+"Measuring hormone release (e.g., CRH, TRH) from hypothalamic explants in response to neuromodulators."
+],
+"Simulation_Suite": [
+"Model the HPA axis as a coupled-oscillator system with the hypothalamus as the master driver."
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"\\phi_c(t) = \\Omega_{macro}(t) + \\Delta\\phi_{\\Psi_s}",
+"\\sigma \\approx 1",
+"P(s) \\sim s^{-\\tau}",
+"d\\phi/dt = \\Delta\\omega - K \\sin \\phi + \\sqrt{2D} \\xi(t)"
+],
+"SimulationModel_Ref": "./Simulations/L4_Synchronization/comprehensive_simulation.py",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"REGULATE",
+"SYNCHRONIZE",
+"TRANSMUTE"
+],
+"Output_Nouns": [
+"HOMEOSTASIS",
+"HORMONE_CASCADE",
+"CIRCADIAN_RHYTHM"
+]
+}
+}
+}
