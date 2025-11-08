@@ -1,50 +1,72 @@
 {
-    "HolonomicID": "scpn://atlas.v1/D1.Mitochondrion",
-    "ParentID": null,
-    "Classical": {
-        "Structure": "",
-        "Function": "",
-        "Pathology": null
-    },
-    "SCPN": {
-        "L1_QuantumBiological": null,
-        "L2_NeurochemicalNeurological": null,
-        "L3_GenomicEpigeneticMorphogenetic": null,
-        "L4_CellularTissueSynchronisation": null,
-        "L5_OrganismalPsychoemotional": null,
-        "L6_PlanetaryEcological": null,
-        "L7_ArchetypalSymbolic": null,
-        "L8_CosmicEntrainment": null,
-        "L9_MemoryHolograph": null,
-        "L10_CausalRetrocausal": null,
-        "L11_NoosphereCollective": null,
-        "L12_GeomanticTorsional": null,
-        "L13_SourceField": null,
-        "L14_Transdimensional": null,
-        "L15_ConsiliumOversoul": null,
-        "L16_MetaCybernetic": null
-    },
-    "Symbolic": {
-        "SymbolicName": "D1.Mitochondrion",
-        "VIBRANA_Key": null,
-        "MetaphysicalMapping": null
-    },
-    "Meta": {
-        "Version": "0.1.0",
-        "Status": "Draft",
-        "LogReference": "v0.1.0 - L1 Integration Pass"
-    },
-    "Validation": {
-        "Falsification_Hypotheses": [],
-        "Experimental_Protocols": [],
-        "Simulation_Suite": []
-    },
-    "Formalism": {
-        "KeyEquations_LaTeX": [],
-        "SimulationModel_Ref": null,
-        "VIBRANA_Interface": {
-            "Input_Verbs": [],
-            "Output_Nouns": []
-        }
-    }
+"HolonomicID": "scpn://atlas.v1/D1.Mitochondrion",
+"ParentID": null,
+"Classical": {
+"Structure": "Double-membraned organelle with inner folds (cristae).",
+"Function": "Generates most of the cell's ATP via aerobic respiration (oxidative phosphorylation).",
+"Pathology": "Mitochondrial diseases, implicated in aging and neurodegeneration."
+},
+"SCPN": {
+"L1_QuantumBiological": "A 'Quantum Heat Engine'. The respiratory chain (Complexes I-IV) is a series of quantum devices that use coherent electron tunnelling and quantum-coupled proton translocation to achieve super-classical efficiency (eta ~ 0.95). [cite_start]Cristae function as 'quantum waveguides' for coherent energy transfer. [cite: 1735, 1740-1744, 1777-1786, 1795-1798]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Powerplant",
+"VIBRANA_Key": "VIB-KEY-MIT-001",
+"MetaphysicalMapping": "The 'engine' of life. The alchemical furnace that transmutes inert energy (food) into conscious, living energy (ATP/coherence)."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"The efficiency of the electron transport chain will be fully described by classical thermodynamics (eta <= Carnot limit).",
+"Electron transfer rates (k_ij) will not show the exponential distance dependence (e^-beta*r) characteristic of quantum tunnelling.",
+"Applying a weak magnetic field will fail to alter mitochondrial respiration rates by 5-10% (falsifying spin-dependent quantum effects)."
+],
+"Experimental_Protocols": [
+"[cite_start]Measure electron transfer rates and kinetic isotope effects (KIEs) in the respiratory chain to confirm tunnelling. [cite: 1782-1786]",
+"Test respirometry in the presence of oscillating magnetic fields."
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/respiratory_chain_tunnelling.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Electron Tunnelling Rate: k_{ij} = k_0 e^{-\\beta(r_{ij} - r_0)} FC_{ij}",
+"Complex IV (Quantum Gearbox): |\\Psi_{pump}\\rangle = |e^-_{in}\\rangle \\otimes |H^+_{matrix}\\rangle \\rightarrow |e^-_{out}\\rangle \\otimes |H^+_{IMS}\\rangle",
+"Cristae as Waveguide: H_{cristae} = -\\frac{\\hbar^2}{2m_{eff}} \\frac{d^2}{dz^2} + V(z)",
+"ATP Synthase Rotor: H_{ATP} = H_{rotor} + H_{proton} + H_{synthesis}"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"ENERGIZE",
+"TRANSFORM(quantum)",
+"RESPIRATE"
+],
+"Output_Nouns": [
+"ATP",
+"COHERENT_ENERGY",
+"QUANTUM_HEAT"
+]
+}
+}
 }

@@ -1,50 +1,70 @@
 {
-    "HolonomicID": "scpn://atlas.v1/D1.Astrocyte",
-    "ParentID": null,
-    "Classical": {
-        "Structure": "",
-        "Function": "",
-        "Pathology": null
-    },
-    "SCPN": {
-        "L1_QuantumBiological": null,
-        "L2_NeurochemicalNeurological": null,
-        "L3_GenomicEpigeneticMorphogenetic": null,
-        "L4_CellularTissueSynchronisation": null,
-        "L5_OrganismalPsychoemotional": null,
-        "L6_PlanetaryEcological": null,
-        "L7_ArchetypalSymbolic": null,
-        "L8_CosmicEntrainment": null,
-        "L9_MemoryHolograph": null,
-        "L10_CausalRetrocausal": null,
-        "L11_NoosphereCollective": null,
-        "L12_GeomanticTorsional": null,
-        "L13_SourceField": null,
-        "L14_Transdimensional": null,
-        "L15_ConsiliumOversoul": null,
-        "L16_MetaCybernetic": null
-    },
-    "Symbolic": {
-        "SymbolicName": "D1.Astrocyte",
-        "VIBRANA_Key": null,
-        "MetaphysicalMapping": null
-    },
-    "Meta": {
-        "Version": "0.1.0",
-        "Status": "Draft",
-        "LogReference": "v0.1.0 - L1 Integration Pass"
-    },
-    "Validation": {
-        "Falsification_Hypotheses": [],
-        "Experimental_Protocols": [],
-        "Simulation_Suite": []
-    },
-    "Formalism": {
-        "KeyEquations_LaTeX": [],
-        "SimulationModel_Ref": null,
-        "VIBRANA_Interface": {
-            "Input_Verbs": [],
-            "Output_Nouns": []
-        }
-    }
+"HolonomicID": "scpn://atlas.v1/D1.Astrocyte",
+"ParentID": null,
+"Classical": {
+"Structure": "Star-shaped glial cell in the central nervous system.",
+"Function": "Maintains brain homeostasis, provides nutrients to neurons, modulates synaptic transmission, forms the blood-brain barrier.",
+"Pathology": "Astrogliosis (scarring), neurotoxicity (e.g., Alexander disease), role in neuroinflammation."
+},
+"SCPN": {
+"L1_QuantumBiological": "A core component of the 'Slow Control Network'. The astrocyte syncytium forms a macroscopic coherent network via gap junctions (connexin-43), which have a high quantum tunnelling amplitude. This network supports coherent calcium waves.",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Matrix Manager",
+"VIBRANA_Key": "VIB-KEY-AST-001",
+"MetaphysicalMapping": "The 'ground' or 'medium' of consciousness. Manages the coherence milieu and engineers the 'decoherence shield' for the neurons."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Blocking connexin-43 gap junctions will fail to disrupt long-range quantum coherence signatures (e.g., entanglement witnesses) across the astrocyte network.",
+"Calcium wave propagation will be fully described by classical diffusion, showing no quantum coherence (e.g., non-local correlation) signatures."
+],
+"Experimental_Protocols": [
+"[cite_start]Measure quantum entanglement entropy (S_entanglement) across an astrocyte syncytium in vitro. [cite: 1815-1819]",
+"Model calcium waves as a coherent quantum phenomenon and test for non-classical propagation."
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/astrocyte_gap_junction.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Astrocyte Hamiltonian: H_{astro} = H_{gap} + H_{Ca_wave} + H_{sync}",
+"Gap Junction Tunnelling: H_{gap} = -t_{cx} \\sum_{\\langle ij \\rangle} (\\sigma_i^+ \\sigma_j^- + h.c.) \\text{ (where } t_{cx} \\approx 0.08 \\text{ eV)}",
+"Calcium Wave (Bohmian): Q_{calcium} = -\\frac{\\hbar_{eff}^2}{2m_{eff}} \\frac{\\nabla^2 \\sqrt{\\rho}}{\\sqrt{\\rho}}"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"MODULATE(milieu)",
+"BUFFER",
+"SYNCHRONIZE(slow)"
+],
+"Output_Nouns": [
+"COHERENCE_MILIEU",
+"CALCIUM_WAVE",
+"SLOW_CONTROL_SIGNAL"
+]
+}
+}
 }

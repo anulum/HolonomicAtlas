@@ -1,50 +1,69 @@
 {
-    "HolonomicID": "scpn://atlas.v1/D3.Brain.PinealGland",
-    "ParentID": null,
-    "Classical": {
-        "Structure": "",
-        "Function": "",
-        "Pathology": null
-    },
-    "SCPN": {
-        "L1_QuantumBiological": null,
-        "L2_NeurochemicalNeurological": null,
-        "L3_GenomicEpigeneticMorphogenetic": null,
-        "L4_CellularTissueSynchronisation": null,
-        "L5_OrganismalPsychoemotional": null,
-        "L6_PlanetaryEcological": null,
-        "L7_ArchetypalSymbolic": null,
-        "L8_CosmicEntrainment": null,
-        "L9_MemoryHolograph": null,
-        "L10_CausalRetrocausal": null,
-        "L11_NoosphereCollective": null,
-        "L12_GeomanticTorsional": null,
-        "L13_SourceField": null,
-        "L14_Transdimensional": null,
-        "L15_ConsiliumOversoul": null,
-        "L16_MetaCybernetic": null
-    },
-    "Symbolic": {
-        "SymbolicName": "D3.Brain.PinealGland",
-        "VIBRANA_Key": null,
-        "MetaphysicalMapping": null
-    },
-    "Meta": {
-        "Version": "0.1.0",
-        "Status": "Draft",
-        "LogReference": "v0.1.0 - L1 Integration Pass"
-    },
-    "Validation": {
-        "Falsification_Hypotheses": [],
-        "Experimental_Protocols": [],
-        "Simulation_Suite": []
-    },
-    "Formalism": {
-        "KeyEquations_LaTeX": [],
-        "SimulationModel_Ref": null,
-        "VIBRANA_Interface": {
-            "Input_Verbs": [],
-            "Output_Nouns": []
-        }
-    }
+"HolonomicID": "scpn://atlas.v1/D3.Brain.PinealGland",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "A small endocrine gland in the epithalamus.",
+"Function": "Produces melatonin, modulating sleep patterns and seasonal cycles.",
+"Pathology": "Calcification, pineocytoma."
+},
+"SCPN": {
+"L1_QuantumBiological": "A primary L1 quantum sensor. Contains cryptochromes that function as a 'Quantum Compass' via the Radical Pair Mechanism (RPM), allowing for direct sensing of the L6/L12 geomagnetic field. [cite_start]This quantum signal modulates melatonin output. [cite: 2280-2292, 3508-3512]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Third Eye",
+"VIBRANA_Key": "VIB-KEY-PIN-001",
+"MetaphysicalMapping": "The 'Seat of the Soul'. The antenna for transdimensional information, linking the physical brain to higher fields."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Melatonin production in pinealocytes will be unaffected by weak, oscillating magnetic fields in the microtesla range.",
+"Knocking out cryptochrome genes in pinealocytes will not abolish their magnetic field sensitivity."
+],
+"Experimental_Protocols": [
+"[cite_start]Test for S-T interconversion rates in pineal cryptochromes in response to 50 µT magnetic fields. [cite: 2280-2292]",
+"Measure melatonin output from pineal explants while applying weak RF fields known to disrupt the RPM."
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/radical_pair_mechanism.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"RPM Hamiltonian: H_{RP} = \\sum_i g_i \\mu_B (\\vec{B} \\cdot \\vec{S_i}) + \\sum_{i,k} (\\vec{S_i} \\cdot A_{ik} \\cdot \\vec{I_k})",
+"S-T Rate: k_{ST} = \\frac{J^2}{\\hbar^2} \\frac{\\tau_c}{1 + \\omega^2 \\tau_c^2}",
+"Chemical Yield: \\Phi_S(\\theta) = f(\\text{S-T interconversion rate})"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"SENSE(magnetic)",
+"TRANSDUCE(cosmic)",
+"REGULATE(seasonal)"
+],
+"Output_Nouns": [
+"MELATONIN",
+"L8_SIGNAL"
+]
+}
+}
 }

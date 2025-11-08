@@ -1,50 +1,68 @@
 {
-    "HolonomicID": "scpn://atlas.v1/D3.Brain.MotorCortex",
-    "ParentID": null,
-    "Classical": {
-        "Structure": "",
-        "Function": "",
-        "Pathology": null
-    },
-    "SCPN": {
-        "L1_QuantumBiological": null,
-        "L2_NeurochemicalNeurological": null,
-        "L3_GenomicEpigeneticMorphogenetic": null,
-        "L4_CellularTissueSynchronisation": null,
-        "L5_OrganismalPsychoemotional": null,
-        "L6_PlanetaryEcological": null,
-        "L7_ArchetypalSymbolic": null,
-        "L8_CosmicEntrainment": null,
-        "L9_MemoryHolograph": null,
-        "L10_CausalRetrocausal": null,
-        "L11_NoosphereCollective": null,
-        "L12_GeomanticTorsional": null,
-        "L13_SourceField": null,
-        "L14_Transdimensional": null,
-        "L15_ConsiliumOversoul": null,
-        "L16_MetaCybernetic": null
-    },
-    "Symbolic": {
-        "SymbolicName": "D3.Brain.MotorCortex",
-        "VIBRANA_Key": null,
-        "MetaphysicalMapping": null
-    },
-    "Meta": {
-        "Version": "0.1.0",
-        "Status": "Draft",
-        "LogReference": "v0.1.0 - L1 Integration Pass"
-    },
-    "Validation": {
-        "Falsification_Hypotheses": [],
-        "Experimental_Protocols": [],
-        "Simulation_Suite": []
-    },
-    "Formalism": {
-        "KeyEquations_LaTeX": [],
-        "SimulationModel_Ref": null,
-        "VIBRANA_Interface": {
-            "Input_Verbs": [],
-            "Output_Nouns": []
-        }
-    }
+"HolonomicID": "scpn://atlas.v1/D3.Brain.MotorCortex",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "Region of the cerebral cortex involved in planning, control, and execution of voluntary movements.",
+"Function": "Generates neural impulses that control the execution of movement.",
+"Pathology": "Paralysis, apraxia, motor neuron disease."
+},
+"SCPN": {
+"L1_QuantumBiological": "The classical output signal is the final amplification of a quantum-controlled process. [cite_start]The cross-bridge cycle in the target muscle is a 'quantum ratchet', and the L1 signal from the motor cortex provides the coherent control. [cite: 2106-2112]",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Mover",
+"VIBRANA_Key": "VIB-KEY-MOT-001",
+"MetaphysicalMapping": "The 'Will' made manifest. The mechanism by which abstract intention (L5/L15) is transduced into physical action in the world."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"Muscle contraction efficiency (eta ~ 50%) will be fully explained by classical thermodynamics, showing no quantum coherence bonus.",
+"The force-velocity relationship will perfectly match the classical Hill equation, showing no quantum correction factor (Q(F))."
+],
+"Experimental_Protocols": [
+"Measure the coherence of the actin-myosin cross-bridge cycle in vitro."
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/quantum_ratchet_actomyosin.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Myosin State: |\\Psi_{myosin}\\rangle = \\alpha|det\\rangle + \\beta|weak\\rangle + \\gamma|strong\\rangle + \\delta|rigor\\rangle",
+"Power Stroke: |pre\\rangle \\rightarrow |post\\rangle",
+"Coherent Transduction: H_{coupling} = -\\lambda(|ATP\\rangle\\langle ADP| \\otimes |pre\\rangle\\langle post|)"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"ACT",
+"MOVE",
+"EXECUTE(volition)"
+],
+"Output_Nouns": [
+"MOTOR_COMMAND",
+"VOLUNTARY_ACTION"
+]
+}
+}
 }

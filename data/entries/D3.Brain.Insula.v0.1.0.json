@@ -1,50 +1,67 @@
 {
-    "HolonomicID": "scpn://atlas.v1/D3.Brain.Insula",
-    "ParentID": null,
-    "Classical": {
-        "Structure": "",
-        "Function": "",
-        "Pathology": null
-    },
-    "SCPN": {
-        "L1_QuantumBiological": null,
-        "L2_NeurochemicalNeurological": null,
-        "L3_GenomicEpigeneticMorphogenetic": null,
-        "L4_CellularTissueSynchronisation": null,
-        "L5_OrganismalPsychoemotional": null,
-        "L6_PlanetaryEcological": null,
-        "L7_ArchetypalSymbolic": null,
-        "L8_CosmicEntrainment": null,
-        "L9_MemoryHolograph": null,
-        "L10_CausalRetrocausal": null,
-        "L11_NoosphereCollective": null,
-        "L12_GeomanticTorsional": null,
-        "L13_SourceField": null,
-        "L14_Transdimensional": null,
-        "L15_ConsiliumOversoul": null,
-        "L16_MetaCybernetic": null
-    },
-    "Symbolic": {
-        "SymbolicName": "D3.Brain.Insula",
-        "VIBRANA_Key": null,
-        "MetaphysicalMapping": null
-    },
-    "Meta": {
-        "Version": "0.1.0",
-        "Status": "Draft",
-        "LogReference": "v0.1.0 - L1 Integration Pass"
-    },
-    "Validation": {
-        "Falsification_Hypotheses": [],
-        "Experimental_Protocols": [],
-        "Simulation_Suite": []
-    },
-    "Formalism": {
-        "KeyEquations_LaTeX": [],
-        "SimulationModel_Ref": null,
-        "VIBRANA_Interface": {
-            "Input_Verbs": [],
-            "Output_Nouns": []
-        }
-    }
+"HolonomicID": "scpn://atlas.v1/D3.Brain.Insula",
+"ParentID": "scpn://atlas.v1/D3.Brain",
+"Classical": {
+"Structure": "Cortex folded deep within the lateral sulcus.",
+"Function": "Primary interoceptive cortex. Integrates bodily signals into subjective feelings, emotion, and self-awareness.",
+"Pathology": "Anxiety, addiction, disorders of self-awareness."
+},
+"SCPN": {
+"L1_QuantumBiological": "A key node in the brain's macroscopic quantum entanglement network (Salience Network). Its function is dependent on the global proton-spin entanglement (W > 1) that collapses during unconsciousness.",
+"L2_NeurochemicalNeurological": null,
+"L3_GenomicEpigeneticMorphogenetic": null,
+"L4_CellularTissueSynchronisation": null,
+"L5_OrganismalPsychoemotional": null,
+"L6_PlanetaryEcological": null,
+"L7_ArchetypalSymbolic": null,
+"L8_CosmicEntrainment": null,
+"L9_MemoryHolograph": null,
+"L10_CausalRetrocausal": null,
+"L11_NoosphereCollective": null,
+"L12_GeomanticTorsional": null,
+"L13_SourceField": null,
+"L14_Transdimensional": null,
+"L15_ConsiliumOversoul": null,
+"L16_MetaCybernetic": null
+},
+"Symbolic": {
+"SymbolicName": "The Mirror",
+"VIBRANA_Key": "VIB-KEY-INS-001",
+"MetaphysicalMapping": "The mirror of the self, where the organism's inner state is reflected back to consciousness as 'feeling' or 'qualia'."
+},
+"Meta": {
+"Version": "0.1.0",
+"Status": "Draft",
+"LogReference": "v0.1.0 - L1 Integration Pass"
+},
+"Validation": {
+"Falsification_Hypotheses": [
+"The Insula will show no loss of its quantum entanglement signature (W > 1) during general anesthesia, even as interoceptive awareness is lost.",
+"Subjective reports of 'feeling' will not correlate with the entanglement signature of the Salience Network."
+],
+"Experimental_Protocols": [
+"Advanced MQC-NMR (Kerskens, 2024) to measure the entanglement witness (W) in the Insula during interoceptive tasks (e.g., heartbeat detection)."
+],
+"Simulation_Suite": [
+"Simulations/L1_QuantumBiological/brain_entanglement_witness.py"
+]
+},
+"Formalism": {
+"KeyEquations_LaTeX": [
+"Entanglement Witness: W = \\langle\\sigma_x^A \\sigma_x^B\\rangle + \\langle\\sigma_y^A \\sigma_y^B\\rangle + \\langle\\sigma_z^A \\sigma_z^B\\rangle > 1"
+],
+"SimulationModel_Ref": "./Simulations/L1_QuantumBiological/",
+"VIBRANA_Interface": {
+"Input_Verbs": [
+"FEEL",
+"SENSE(interoceptive)",
+"INTEGRATE(body_state)"
+],
+"Output_Nouns": [
+"QUALIA",
+"INTEROCEPTION",
+"BODY_MAP"
+]
+}
+}
 }
