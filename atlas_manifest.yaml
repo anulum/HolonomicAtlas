@@ -12,7 +12,7 @@ Handoff:
 
 # --- Master Index of Monads ---
 MonadIndex:
-  - "/data/monads/README.md"
+- "/data/monads/README.md"
 
 # --- Master Index of Simulations ---
 SimulationIndex:
@@ -37,6 +37,6 @@ SimulationIndex:
 
 # --- Master Index of Assets ---
 AssetIndex:
-  - "/assets/README.md"
-  - "/library/README.md"
-  - "/web/README.md"
+- "/assets/README.md"
+- "/library/README.md"
+- "/web/README.md"
