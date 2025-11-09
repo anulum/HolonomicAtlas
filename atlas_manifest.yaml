@@ -1,22 +1,20 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "0.1.1"
-LastModified: "2025-11-09T14:59:00Z"
+GlobalVersion: "0.2.0"
+LastModified: "2025-11-09T15:34:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 Handoff:
-  LastAction: "Architect ingested 'Master Table of Contents' (P_Master_Table_of_Contents_RAG.txt) into /Corpus/. This file is now the canonical index for all P.C.S numbering."
-  NextAction: "Architect to begin 'Serial Synthesis Protocol (V3.0)'. Awaiting first master monograph (P0 or P1) from User (Lead) to begin extraction for P17, P18, P19."
+  LastAction: "Architect established /web/ directory as the website (anulum.li) source-of-truth. Updated 'Serial Synthesis Protocol' to V3.1, adding a direct-to-web generation step."
+  NextAction: "User (Lead) to populate the /web/ directory with the current website source files. Architect will then await P0 or P1 to begin Serial Synthesis."
   Priority: "HIGH"
-  Assignee: "Gemini-Architect"
+  Assignee: "User (Lead) -> Gemini-Architect"
 
 # --- Master Index of Monads ---
-# Directory /data/monads/ created.
 MonadIndex:
 - "/data/monads/README.md"
 
 # --- Master Index of Simulations ---
-# New index established
 SimulationIndex:
 - "/Simulations/MASTER_SIMULATION_SUITE/README.md"
 
@@ -24,3 +22,4 @@ SimulationIndex:
 AssetIndex:
 - "/assets/README.md"
 - "/library/README.md"
+- "/web/README.md"

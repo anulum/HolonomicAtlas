@@ -19,3 +19,10 @@ This log records major workflow decisions, protocol changes, and architectural d
 * `Package 4:` JULES prompt with final code (`.py`) and docs (`.md`) for `/Simulations/MASTER_SIMULATION_SUITE/`.
 * **Step 5 (User):** Integrate these 4 packages into their respective destinations (the 3 manuscripts and the repository).
 * **Step 6 (User):** Command "proceed" to iterate to the next claim.
+
+**LOG: 2025-11-09**
+**ENTRY:** `PROTOCOL V3.1 - REPLACED /dist/ WITH /web/`
+
+- **Architectural Change:** Per User (Lead) directive, the `/dist/` (staging) concept is **abandoned**.
+- **New Component:** Created `/web/` as the single-source-of-truth directory for the *entire* `anulum.li` website source code.
+- **Protocol Update (V3.1):** **Step 7 "Generate Public Asset"** is now defined as: The Architect will generate final, web-ready files (e.g., HTML, Markdown) and place them directly into the `/web/` directory for commit and live server mirroring.
