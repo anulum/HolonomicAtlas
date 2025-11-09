@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 4: Cellular-Tissue Synchronisation Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 4 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Solar Tide" for circadian entrainment. 3. "The Body's Symphony" for heart-brain coherence. 4. "The Tidal Garden" for lunar harmonics. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Solar Tide: Goal: Visualize mass cellular entrainment. Method: Canvas animation of rotating clock-like particles. Interaction: A slider for "Ψ-Field Coupling" aligns the rotation of many cellular clocks with a sweeping wave of light. Justification: A more dynamic and population-based metaphor for circadian entrainment.
+        - The Body's Symphony: Goal: Illustrate nested harmonics. Method: Canvas animation. Interaction: A button initiates coherence, causing a swarm of fast "brain" particles to form patterns that ride on a slow, powerful "heart" wave. Justification: Better visualizes the concept of a foundational rhythm organizing faster, more complex signals.
+        - The Tidal Garden: Goal: Show subtle organizing influence of slow cycles. Method: Canvas animation. Interaction: A slider for "Lunar Resonance" causes a "garden" of cells to arrange into more ordered, crystalline patterns during the full moon phase. Justification: A more elegant metaphor for subtle environmental influence on biological organization.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 4: Tissue Synchronisation</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#tide" class="nav-link font-semibold text-stone-600">Solar Tide</a>
+                    <a href="#symphony" class="nav-link font-semibold text-stone-600">Symphony</a>
+                    <a href="#garden" class="nav-link font-semibold text-stone-600">Tidal Garden</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Symphony of the Body</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 4 describes how the trillions of cells in an organism synchronize their activities to form a coherent whole. This is not just random coordination; it is a precise entrainment of multicellular oscillators—from mitochondrial emissions to organ systems—with the vast, rhythmic cycles of the cosmos. The body becomes a resonant instrument tuned to the music of the spheres.
+            </p>
+        </section>
+
+        <section id="tide" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Solar Tide</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The 24-hour solar cycle acts like a great tide, sweeping across the biosphere. The Ψ-field allows the internal clocks of every cell to feel this tide and entrain to its rhythm. Increase the coupling strength to help the cellular clocks synchronize with the solar wave.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="tideCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="coupling-slider" class="font-semibold text-stone-700">Ψ-Field Coupling Strength: <span id="coupling-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the coupling to see the cellular clocks (dots) align their rotation with the passing solar wave.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coupling-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="symphony" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Body's Symphony</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The body's organs form a nested orchestra. The heart provides a powerful, slow bass rhythm (the carrier wave), while the brain produces a faster, more complex melody. In a state of coherence, the chaotic melody of the brain organizes itself, riding in harmony upon the foundational rhythm of the heart.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                 <canvas id="symphonyCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="coherence-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Initiate Coherence</button>
+            </div>
+        </section>
+
+        <section id="garden" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Tidal Garden</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Slow cosmic cycles, like the phases of the moon, exert a subtle organizing influence on life. This is not a forceful command, but a gentle tidal pull on biological processes. As lunar resonance increases, the chaotic garden of dividing cells is guided into more ordered, crystalline patterns in sync with the full moon.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="gardenCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="lunar-slider" class="font-semibold text-stone-700">Lunar Harmonic Resonance: <span id="lunar-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the resonance to see the cellular garden become more ordered and crystalline during the full moon phase.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="lunar-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Cellular-Tissue Synchronisation Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Nested Harmonic Chambers</h4>
+                            <p class="text-stone-600 text-sm">Organs are viewed as geometrically distinct resonant chambers. The heart's toroidal field geometry and the brain's complex cortical folding create a system of nested resonators that facilitate the transfer and amplification of rhythmic information.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Cellular Lattices</h4>
+                            <p class="text-stone-600 text-sm">Within tissues, cells form geometric lattices. This physical arrangement allows for the efficient propagation of synchronizing signals, such as biophotons and calcium waves, enabling millions of individual cellular clocks to lock into a single, coherent rhythm.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Field Relation for Phase-Locking</h4>
+                            <p class="text-stone-600">The phase of a cellular oscillator ($\phi_c$) is locked to a macroscopic rhythm ($\Omega_{macro}$) with a corrective shift ($\Delta\phi_{\Psi_s}$) from the consciousness field, ensuring stable entrainment.</p>
+                            <p class="my-2">$$\phi_c(t) = \Omega_{macro}(t) + \Delta\phi_{\Psi_s}$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Multi-modal Coherence Indices</h4>
+                            <p class="text-stone-600">The organism's overall coherence is quantified by integrating metrics like the Phase-Locking Value (PLV) across multiple systems (EEG, heart rate variability, respiration) into a single index, reflecting the unified state of consciousness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Mitochondrial Biophoton Emissions</h4>
+                            <p class="text-stone-600 text-sm">Coherent, ultraweak photon emissions from mitochondria serve as a physical mechanism for intercellular communication. These light fields can phase-lock to external solar cycles, synchronizing the entire organism's metabolism with the sun.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Cosmological Entrainment</h4>
+                            <p class="text-stone-600 text-sm">Biological processes are physically entrained by cosmic rhythms. The 24-hour solar cycle sets the master circadian clock, while the ~29.5-day lunar cycle is proposed to influence hormonal and reproductive cycles through subtle gravitational and EM effects.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Heart-Brain Coherence</h4>
+                            <p class="text-stone-600 text-sm">The heart's powerful electromagnetic field, which becomes highly coherent during positive emotional states, physically entrains neural oscillations in the brain. This creates a synchronized state of heart-brain coherence, optimizing cognitive and emotional function.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Solar Tide ---
+        const tideCanvas = document.getElementById('tideCanvas');
+        const tideCtx = tideCanvas.getContext('2d');
+        const couplingSlider = document.getElementById('coupling-slider');
+        const couplingValue = document.getElementById('coupling-value');
+        let tideTime = 0;
+        let clocks = [];
+
+        function initTide() {
+            const w = tideCanvas.width;
+            const h = tideCanvas.height;
+            for(let i=0; i<200; i++) {
+                clocks.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    angle: Math.random() * Math.PI * 2,
+                    speed: (Math.random() - 0.5) * 0.02
+                });
+            }
+        }
+
+        function animateTide() {
+            const w = tideCanvas.width;
+            const h = tideCanvas.height;
+            tideCtx.clearRect(0, 0, w, h);
+            tideTime += 0.01;
+
+            const coupling = parseInt(couplingSlider.value) / 100;
+            couplingValue.textContent = `${Math.round(coupling*100)}%`;
+
+            // Draw Solar Wave
+            const waveX = (tideTime * 50) % (w + 200) - 100;
+            const gradient = tideCtx.createLinearGradient(waveX - 100, 0, waveX + 100, 0);
+            gradient.addColorStop(0, 'rgba(250, 204, 21, 0)');
+            gradient.addColorStop(0.5, 'rgba(250, 204, 21, 0.2)');
+            gradient.addColorStop(1, 'rgba(250, 204, 21, 0)');
+            tideCtx.fillStyle = gradient;
+            tideCtx.fillRect(waveX - 100, 0, 200, h);
+
+            // Draw Clocks
+            clocks.forEach(c => {
+                const targetAngle = Math.PI / 2;
+                let angleDiff = targetAngle - c.angle;
+                while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
+                while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
+
+                let couplingStrength = 0;
+                if (Math.abs(c.x - waveX) < 100) {
+                    couplingStrength = coupling * (1 - Math.abs(c.x - waveX)/100);
+                }
+                
+                c.angle += c.speed * (1 - couplingStrength) + angleDiff * couplingStrength * 0.1;
+                
+                tideCtx.save();
+                tideCtx.translate(c.x, c.y);
+                tideCtx.rotate(c.angle);
+                tideCtx.strokeStyle = 'white';
+                tideCtx.lineWidth = 1.5;
+                tideCtx.beginPath();
+                tideCtx.moveTo(0, -5);
+                tideCtx.lineTo(0, 5);
+                tideCtx.stroke();
+                tideCtx.restore();
+            });
+            
+            requestAnimationFrame(animateTide);
+        }
+
+        // --- The Body's Symphony ---
+        const symphonyCanvas = document.getElementById('symphonyCanvas');
+        const symphonyCtx = symphonyCanvas.getContext('2d');
+        const coherenceBtn = document.getElementById('coherence-btn');
+        let symphonyTime = 0;
+        let brainParticles = [];
+        let coherenceActive = false;
+
+        function initSymphony() {
+            const w = symphonyCanvas.width;
+            const h = symphonyCanvas.height;
+            for(let i=0; i<300; i++) {
+                brainParticles.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateSymphony() {
+            const w = symphonyCanvas.width;
+            const h = symphonyCanvas.height;
+            symphonyCtx.clearRect(0, 0, w, h);
+            symphonyTime += 0.02;
+
+            // Draw Heart Wave
+            const heartWave = Math.sin(symphonyTime) * h * 0.2;
+            symphonyCtx.strokeStyle = 'rgba(239, 68, 68, 0.3)';
+            symphonyCtx.lineWidth = 4;
+            symphonyCtx.beginPath();
+            symphonyCtx.moveTo(0, h/2 + heartWave);
+            symphonyCtx.bezierCurveTo(w/3, h/2 + heartWave, 2*w/3, h/2 - heartWave, w, h/2 - heartWave);
+            symphonyCtx.stroke();
+
+            // Draw Brain Particles
+            brainParticles.forEach(p => {
+                if (coherenceActive) {
+                    const targetY = h/2 + Math.sin(p.x * 0.05) * Math.cos(symphonyTime * 5) * h * 0.1 + Math.sin(symphonyTime) * h * 0.2;
+                    p.vx += (w/2 - p.x) * 0.0001;
+                    p.vy += (targetY - p.y) * 0.01;
+                } else {
+                    p.vx += (Math.random() - 0.5) * 0.2;
+                    p.vy += (Math.random() - 0.5) * 0.2;
+                }
+                p.vx *= 0.95;
+                p.vy *= 0.95;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > w || p.y < 0 || p.y > h) {
+                    p.x = Math.random() * w;
+                    p.y = Math.random() * h;
+                }
+                
+                symphonyCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                symphonyCtx.fillRect(p.x, p.y, 2, 2);
+            });
+
+            requestAnimationFrame(animateSymphony);
+        }
+        coherenceBtn.addEventListener('click', () => {
+            coherenceActive = !coherenceActive;
+            coherenceBtn.textContent = coherenceActive ? 'Release Coherence' : 'Initiate Coherence';
+        });
+
+        // --- The Tidal Garden ---
+        const gardenCanvas = document.getElementById('gardenCanvas');
+        const gardenCtx = gardenCanvas.getContext('2d');
+        const lunarSlider = document.getElementById('lunar-slider');
+        const lunarValue = document.getElementById('lunar-value');
+        let lunarTime = 0;
+        let gardenCells = [];
+
+        function initGarden() {
+            const w = gardenCanvas.width;
+            const h = gardenCanvas.height;
+            for(let i=0; i<300; i++) {
+                gardenCells.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateGarden() {
+            const w = gardenCanvas.width;
+            const h = gardenCanvas.height;
+            gardenCtx.clearRect(0, 0, w, h);
+            lunarTime += 0.01;
+
+            const moonPhase = (Math.cos(lunarTime) + 1) / 2;
+            const resonance = parseInt(lunarSlider.value) / 100;
+            lunarValue.textContent = `${Math.round(resonance*100)}%`;
+
+            // Draw Moon
+            const moonX = w - 40, moonY = 40, moonR = 25;
+            gardenCtx.fillStyle = '#e2e8f0';
+            gardenCtx.beginPath();
+            gardenCtx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+            gardenCtx.fill();
+            gardenCtx.fillStyle = '#1e293b';
+            gardenCtx.beginPath();
+            gardenCtx.arc(moonX + (1-moonPhase*2) * moonR, moonY, moonR, 0, Math.PI * 2);
+            gardenCtx.fill();
+
+            // Draw cells
+            gardenCells.forEach(c => {
+                const order = resonance * moonPhase;
+                const targetX = (Math.round(c.x / 40) * 40);
+                const targetY = (Math.round(c.y / 40) * 40);
+                
+                c.vx += (targetX - c.x) * 0.001 * order;
+                c.vy += (targetY - c.y) * 0.001 * order;
+                c.vx += (Math.random() - 0.5) * 0.1 * (1 - order);
+                c.vy += (Math.random() - 0.5) * 0.1 * (1 - order);
+
+                c.vx *= 0.9;
+                c.vy *= 0.9;
+                c.x += c.vx;
+                c.y += c.vy;
+                
+                gardenCtx.fillStyle = `rgba(217, 119, 6, 0.7)`;
+                gardenCtx.beginPath();
+                gardenCtx.arc(c.x, c.y, 3, 0, Math.PI * 2);
+                gardenCtx.fill();
+            });
+
+            requestAnimationFrame(animateGarden);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            tideCanvas.width = tideCanvas.offsetWidth;
+            tideCanvas.height = tideCanvas.offsetHeight;
+            initTide();
+            animateTide();
+
+            symphonyCanvas.width = symphonyCanvas.offsetWidth;
+            symphonyCanvas.height = symphonyCanvas.offsetHeight;
+            initSymphony();
+            animateSymphony();
+
+            gardenCanvas.width = gardenCanvas.offsetWidth;
+            gardenCanvas.height = gardenCanvas.offsetHeight;
+            initGarden();
+            animateGarden();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 12: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 12, the trans-species "Gaian mind." The flow is: 1. Introduction to Gaian consciousness. 2. A simulation of the Biospheric Resonance Grid, showing inter-species coupling. 3. An interactive canvas demonstrating Schumann Resonance Entrainment of biological rhythms. 4. A visualization of the Mycelial Network as a forest's neural system. 5. A diagram of inter-layer connections. This structure makes the abstract concepts of a unified planetary consciousness tangible. -->
+    <!-- Visualization & Content Choices:
+        - Biospheric Resonance Grid: Goal: Visualize the interconnected web of life's consciousness. Method: Canvas animation. Interaction: A slider for "Ecological Coherence" strengthens the links between different species' consciousness nodes (humanity, forests, cetaceans), causing them to pulse in a more synchronized rhythm. Justification: Directly demonstrates the "trans-species ecological layer" concept.
+        - Schumann Resonance Entrainment: Goal: Show how Earth's EM field synchronizes life. Method: Canvas animation. Interaction: A button activates the "Schumann Resonance" (a 7.83 Hz wave), which gradually phase-locks chaotic "Biologic Rhythms" to its frequency. Justification: Provides a clear visual metaphor for the planet's "heartbeat" entraining the biosphere.
+        - Mycelial Network Communication: Goal: Illustrate the "wood-wide web" as a form of consciousness. Method: Interactive Canvas. Interaction: Clicking on a tree node sends a signal pulse through the fungal network to other trees. Justification: Visually explains how ecosystems can have their own neural-like communication channels.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 12. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 12 emerges from the Noosphere (L11) and connects to the ultimate Source Field (L13).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 12: Gaian Consciousness Integration</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#grid" class="nav-link font-semibold text-slate-600">Grid</a>
+                    <a href="#entrainment" class="nav-link font-semibold text-slate-600">Entrainment</a>
+                    <a href="#network" class="nav-link font-semibold text-slate-600">Network</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Mind of Gaia</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 12 represents the integration of all species-level consciousness fields into a single, unified Gaian mind. This is the collective consciousness of the entire biosphere, a trans-species ecological layer where Earth's living organisms form a self-regulating system with its own emergent awareness. Here, the human noosphere (Layer 11) interfaces with the consciousness of forests, oceans, and all life, nested within a planetary-scale feedback network.
+            </p>
+        </section>
+
+        <section id="grid" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Biospheric Resonance Grid</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The consciousness fields of different species are not isolated. They are nodes in a planetary grid, coupled through ecological interdependence and shared environmental fields. As ecological coherence increases, these nodes synchronize, strengthening the stability and awareness of the Gaian mind.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="gridCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="coherence-slider" class="font-semibold text-slate-700">Ecological Coherence: <span id="coherence-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the symbiotic coupling between species' consciousness fields.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coherence-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="entrainment" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Schumann Resonance Entrainment</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The Earth's ionospheric cavity generates a constant, extremely low-frequency electromagnetic standing wave known as the Schumann Resonance (~7.83 Hz). This planetary "heartbeat" acts as a global carrier wave, entraining the neural and biological rhythms of all life into a shared, fundamental phase.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="entrainmentCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="entrain-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Activate Schumann Resonance</button>
+                    <p class="text-sm text-slate-500 mt-4">Observe how the chaotic biological rhythms (white dots) gradually phase-lock to the planetary resonance wave (purple).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="network" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Mycelial Network: The Forest Mind</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Ecosystems like forests possess their own neural-like networks. The "wood-wide web" of underground mycelial fungi connects trees and plants, transmitting chemical and electrical signals. This network allows the forest to act as a single, coordinated intelligence—a localized manifestation of Gaian consciousness.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4 relative">
+                    <canvas id="mycelialCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <p class="font-semibold">Click on a tree node to send a signal through the forest network.</p>
+                     <p class="text-sm text-slate-500 mt-2">This demonstrates how stress cues or resources can be shared across the ecosystem via the mycelial web.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Biospheric Resonance Grid ---
+        const gridCanvas = document.getElementById('gridCanvas');
+        const gridCtx = gridCanvas.getContext('2d');
+        const coherenceSlider = document.getElementById('coherence-slider');
+        const coherenceValue = document.getElementById('coherence-value');
+        let gridNodes = [];
+        let gridTime = 0;
+
+        function initGrid() {
+            const w = gridCanvas.width;
+            const h = gridCanvas.height;
+            const labels = ["Humanity", "Forests", "Oceans", "Microbiome", "Insects"];
+            const colors = ["#facc15", "#4ade80", "#60a5fa", "#f472b6", "#a78bfa"];
+            for(let i=0; i<5; i++) {
+                gridNodes.push({
+                    x: w/2 + Math.cos(i * 2 * Math.PI / 5) * w * 0.35,
+                    y: h/2 + Math.sin(i * 2 * Math.PI / 5) * h * 0.35,
+                    phase: Math.random() * Math.PI * 2,
+                    label: labels[i],
+                    color: colors[i]
+                });
+            }
+        }
+
+        function animateGrid() {
+            const w = gridCanvas.width;
+            const h = gridCanvas.height;
+            gridCtx.clearRect(0, 0, w, h);
+            gridTime += 0.02;
+            
+            const coherence = parseInt(coherenceSlider.value) / 100;
+            coherenceValue.textContent = `${Math.round(coherence*100)}%`;
+
+            // Draw links
+            gridCtx.lineWidth = 0.5 + coherence * 2;
+            for (let i = 0; i < gridNodes.length; i++) {
+                for (let j = i + 1; j < gridNodes.length; j++) {
+                    gridCtx.strokeStyle = `rgba(148, 163, 184, ${0.1 + coherence * 0.4})`;
+                    gridCtx.beginPath();
+                    gridCtx.moveTo(gridNodes[i].x, gridNodes[i].y);
+                    gridCtx.lineTo(gridNodes[j].x, gridNodes[j].y);
+                    gridCtx.stroke();
+                }
+            }
+
+            // Draw nodes
+            gridNodes.forEach(node => {
+                const phaseShift = (1 - coherence) * Math.sin(gridTime * 5 + node.phase);
+                const size = 15 + Math.sin(gridTime * 2 + phaseShift) * 5;
+                
+                gridCtx.fillStyle = node.color;
+                gridCtx.beginPath();
+                gridCtx.arc(node.x, node.y, size, 0, Math.PI * 2);
+                gridCtx.fill();
+
+                gridCtx.fillStyle = "white";
+                gridCtx.font = "10px Inter";
+                gridCtx.textAlign = "center";
+                gridCtx.textBaseline = "middle";
+                gridCtx.fillText(node.label, node.x, node.y);
+            });
+
+            requestAnimationFrame(animateGrid);
+        }
+
+        // --- Schumann Resonance Entrainment ---
+        const entrainmentCanvas = document.getElementById('entrainmentCanvas');
+        const entrainmentCtx = entrainmentCanvas.getContext('2d');
+        const entrainBtn = document.getElementById('entrain-btn');
+        let entrainmentTime = 0;
+        let oscillators = [];
+        let entrainActive = false;
+
+        function initEntrainment() {
+            const w = entrainmentCanvas.width;
+            const h = entrainmentCanvas.height;
+            for(let i=0; i<100; i++) {
+                oscillators.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    phase: Math.random() * Math.PI * 2,
+                    freq: 0.05 + Math.random() * 0.1
+                });
+            }
+        }
+
+        function animateEntrainment() {
+            const w = entrainmentCanvas.width;
+            const h = entrainmentCanvas.height;
+            entrainmentCtx.clearRect(0,0,w,h);
+            entrainmentTime += 0.03;
+
+            const targetPhase = entrainmentTime * 2;
+
+            if (entrainActive) {
+                entrainmentCtx.strokeStyle = 'rgba(167, 139, 250, 0.3)';
+                entrainmentCtx.lineWidth = 4;
+                entrainmentCtx.beginPath();
+                for(let x=0; x<w; x++) {
+                    entrainmentCtx.lineTo(x, h/2 + Math.sin(x*0.02 + targetPhase) * h * 0.4);
+                }
+                entrainmentCtx.stroke();
+            }
+
+            oscillators.forEach(o => {
+                if(entrainActive) {
+                    const phaseDiff = (targetPhase - o.phase);
+                    o.phase += phaseDiff * 0.01;
+                } else {
+                    o.phase += o.freq;
+                }
+                const brightness = (Math.sin(o.phase) + 1) / 2;
+                entrainmentCtx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.8 + 0.1})`;
+                entrainmentCtx.beginPath();
+                entrainmentCtx.arc(o.x, o.y, 3, 0, Math.PI * 2);
+                entrainmentCtx.fill();
+            });
+
+            requestAnimationFrame(animateEntrainment);
+        }
+        entrainBtn.addEventListener('click', () => {
+            entrainActive = !entrainActive;
+            entrainBtn.textContent = entrainActive ? 'Deactivate Resonance' : 'Activate Schumann Resonance';
+        });
+
+        // --- Mycelial Network ---
+        const mycelialCanvas = document.getElementById('mycelialCanvas');
+        const mycelialCtx = mycelialCanvas.getContext('2d');
+        let treeNodes = [];
+        let signals = [];
+
+        function initMycelial() {
+            const w = mycelialCanvas.width;
+            const h = mycelialCanvas.height;
+            for(let i=0; i<15; i++) {
+                treeNodes.push({
+                    x: Math.random() * (w - 60) + 30,
+                    y: Math.random() * (h - 60) + 30,
+                    radius: Math.random() * 10 + 10,
+                    connections: [],
+                    activation: 0
+                });
+            }
+            // Create connections
+            treeNodes.forEach(n1 => {
+                treeNodes.forEach(n2 => {
+                    if (n1 !== n2) {
+                        const dist = Math.sqrt(Math.pow(n1.x - n2.x, 2) + Math.pow(n1.y - n2.y, 2));
+                        if (dist < 100 && Math.random() > 0.5) {
+                            n1.connections.push(n2);
+                        }
+                    }
+                });
+            });
+        }
+
+        function animateMycelial() {
+            const w = mycelialCanvas.width;
+            const h = mycelialCanvas.height;
+            mycelialCtx.clearRect(0,0,w,h);
+
+            // Draw connections
+            mycelialCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            mycelialCtx.lineWidth = 1;
+            treeNodes.forEach(n => {
+                n.connections.forEach(c => {
+                    mycelialCtx.beginPath();
+                    mycelialCtx.moveTo(n.x, n.y);
+                    mycelialCtx.lineTo(c.x, c.y);
+                    mycelialCtx.stroke();
+                });
+            });
+
+            // Draw nodes
+            treeNodes.forEach(n => {
+                if (n.activation > 0) n.activation -= 0.01;
+                const color = `rgba(74, 222, 128, ${0.3 + n.activation * 0.7})`;
+                mycelialCtx.fillStyle = color;
+                mycelialCtx.beginPath();
+                mycelialCtx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                mycelialCtx.fill();
+            });
+
+            // Animate signals
+            signals.forEach((s, i) => {
+                const dx = s.target.x - s.x;
+                const dy = s.target.y - s.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 2) {
+                    s.target.activation = 1.0;
+                    signals.splice(i, 1);
+                } else {
+                    s.x += dx / dist;
+                    s.y += dy / dist;
+                    mycelialCtx.fillStyle = '#facc15';
+                    mycelialCtx.beginPath();
+                    mycelialCtx.arc(s.x, s.y, 3, 0, Math.PI * 2);
+                    mycelialCtx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateMycelial);
+        }
+        mycelialCanvas.addEventListener('click', (e) => {
+            const rect = mycelialCanvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            treeNodes.forEach(n => {
+                const dist = Math.sqrt(Math.pow(n.x - mouseX, 2) + Math.pow(n.y - mouseY, 2));
+                if (dist < n.radius) {
+                    n.activation = 1.0;
+                    n.connections.forEach(c => {
+                        signals.push({ x: n.x, y: n.y, target: c });
+                    });
+                }
+            });
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            gridCanvas.width = gridCanvas.offsetWidth;
+            gridCanvas.height = gridCanvas.offsetHeight;
+            initGrid();
+            animateGrid();
+
+            entrainmentCanvas.width = entrainmentCanvas.offsetWidth;
+            entrainmentCanvas.height = entrainmentCanvas.offsetHeight;
+            initEntrainment();
+            animateEntrainment();
+            
+            mycelialCanvas.width = mycelialCanvas.offsetWidth;
+            mycelialCanvas.height = mycelialCanvas.offsetHeight;
+            initMycelial();
+            animateMycelial();
+        };
+    </script>
+</body>
+</html>

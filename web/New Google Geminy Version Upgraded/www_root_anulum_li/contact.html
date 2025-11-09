@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Contact & Collaboration | The Anulum Framework</title>
+    <meta name="description" content="Connect with the Anulum Framework project. Find contact information for general inquiries, academic collaboration, and investment opportunities.">
+    <meta name="keywords" content="contact, Anulum, Miroslav Šotek, collaboration, physics research, consciousness studies, investment">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/contact.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/contact.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/contact.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/contact.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/contact.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/contact.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/contact.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/contact.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anulum.li/contact.html">
+    <meta property="og:title" content="Contact & Collaboration | The Anulum Framework">
+    <meta property="og:description" content="Connect with the Anulum Framework project for inquiries, collaboration, and investment opportunities.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/contact.html">
+    <meta property="twitter:title" content="Contact & Collaboration | The Anulum Framework">
+    <meta property="twitter:description" content="Connect with the Anulum Framework project for inquiries, collaboration, and investment opportunities.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stripe Buy Button Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact & Collaboration | The Anulum Framework",
+      "url": "https://anulum.li/contact.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Anulum Frontiers",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://anulum.li/anulum-logo.png"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+41-76-607-9990",
+            "contactType": "General Inquiries",
+            "email": "protoscience@anulum.li"
+        }
+      },
+      "description": "Contact Miroslav Šotek and the Anulum Frontiers project for inquiries, collaborations, and discussions.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anulum.li/contact.html"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in">
+            <h1 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="contact_title">📮 Contact & Collaboration</h1>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="contact_intro">This research is an open and living project. We welcome inquiries, collaborations, and discussions from researchers, philosophers, potential investors, and anyone dedicated to exploring the profound questions of existence. Please direct your correspondence to the appropriate channel below.</p>
+            <div id="contact-content" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact info will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            contact_title: { en: '📮 Contact & Collaboration', de: '📮 Kontakt & Zusammenarbeit', fr: '📮 Contact & Collaboration', it: '📮 Contatti & Collaborazione', ja: '📮 連絡先と協力', zh: '📮 联系与合作' },
+            contact_intro: { en: 'This research is an open and living project. We welcome inquiries, collaborations, and discussions from researchers, philosophers, potential investors, and anyone dedicated to exploring the profound questions of existence. Please direct your correspondence to the appropriate channel below.', de: 'Diese Forschung ist ein offenes und lebendiges Projekt. Wir begrüßen Anfragen, Kooperationen und Diskussionen von Forschern, Philosophen, potenziellen Investoren und allen, die sich der Erforschung der tiefgreifenden Fragen der Existenz widmen. Bitte richten Sie Ihre Korrespondenz an den entsprechenden Kanal unten.', fr: 'Cette recherche est un projet ouvert et vivant. Nous accueillons les demandes de renseignements, les collaborations et les discussions de la part des chercheurs, des philosophes, des investisseurs potentiels et de toute personne désireuse d\'explorer les questions profondes de l\'existence. Veuillez adresser votre correspondance au canal approprié ci-dessous.', it: 'Questa ricerca è un progetto aperto e vivo. Accogliamo con favore richieste di informazioni, collaborazioni e discussioni da parte di ricercatori, filosofi, potenziali investitori e chiunque sia dedito all\'esplorazione delle profonde questioni dell\'esistenza. Si prega di indirizzare la corrispondenza al canale appropriato di seguito.', ja: 'この研究はオープンで生きたプロジェクトです。研究者、哲学者、潜在的な投資家、そして存在の深遠な問いを探求することに専念しているすべての人からの問い合わせ、協力、議論を歓迎します。以下の適切なチャネルにご連絡ください。', zh: '这项研究是一个开放且持续进行的项目。我们欢迎来自研究人员、哲学家、潜在投资者以及任何致力于探索存在之深刻问题的人士的垂询、合作和讨论。请将您的信函发送至以下适当的渠道。' },
+            contact_connect_title: { en: 'Connect Online', de: 'Online verbinden', fr: 'Connectez-vous en ligne', it: 'Connettiti Online', ja: 'オンラインで接続', zh: '在线联系' },
+            contact_address_title: { en: 'aaarthuus Studio Office', de: 'aaarthuus Studio Büro', fr: 'Bureau Studio aaarthuus', it: 'Ufficio Studio aaarthuus', ja: 'aaarthuusスタジオオフィス', zh: 'aaarthuus工作室办公室' },
+            contact_phone_label: { en: 'Phone/WhatsApp', de: 'Telefon/WhatsApp', fr: 'Téléphone/WhatsApp', it: 'Telefono/WhatsApp', ja: '電話/WhatsApp', zh: '电话/WhatsApp' },
+            contact_bank_transfer: { en: 'Bank Transfer Donations', de: 'Banküberweisung Spenden', fr: 'Dons par virement bancaire', it: 'Donazioni tramite bonifico bancario', ja: '銀行振込による寄付', zh: '银行转账捐款' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        },
+        contactData: {
+            items: [
+                { title: {en: 'General Inquiries', de: 'Allgemeine Anfragen', fr: 'Demandes Générales', it: 'Richieste Generali', ja: '一般のお問い合わせ', zh: '一般咨询'}, email: 'protoscience@anulum.li', description: {en: 'For general questions, media requests, or discussions about the theoretical framework.', de: 'Für allgemeine Fragen, Medienanfragen oder Diskussionen über den theoretischen Rahmen.', fr: 'Pour les questions générales, les demandes des médias ou les discussions sur le cadre théorique.', it: 'Per domande generali, richieste dei media o discussioni sul quadro teorico.', ja: '一般的な質問、メディアからの依頼、または理論的枠組みに関する議論のために。', zh: '适用于一般问题、媒体请求或关于理论框架的讨论。'} },
+                { title: {en: 'Peer Review & Academic Collaboration', de: 'Peer-Review & Akademische Zusammenarbeit', fr: 'Évaluation par les Pairs & Collaboration Académique', it: 'Peer Review & Collaborazione Accademica', ja: '査読と学術協力', zh: '同行评审与学术合作'}, email: 'review@anulum.li', description: {en: 'For researchers and academics interested in collaborating, reviewing the formalism, or discussing experimental protocols.', de: 'Für Forscher und Akademiker, die an einer Zusammenarbeit, der Überprüfung des Formalismus oder der Diskussion von Versuchsprotokollen interessiert sind.', fr: 'Pour les chercheurs et les universitaires intéressés à collaborer, à examiner le formalisme ou à discuter des protocoles expérimentaux.', it: 'Per ricercatori e accademici interessati a collaborare, revisionare il formalismo o discutere i protocolli sperimentali.', ja: '共同研究、形式主義のレビュー、または実験プロトコルの議論に興味のある研究者や学者向け。', zh: '适用于有兴趣合作、审查形式体系或讨论实验方案的研究人员和学者。'} },
+                { title: {en: 'Investment & Support', de: 'Investition & Unterstützung', fr: 'Investissement & Soutien', it: 'Investimenti & Supporto', ja: '投資とサポート', zh: '投资与支持'}, email: 'invest@anulum.li', description: {en: 'For potential investors, patrons, or donors interested in supporting the ongoing research and the development of the Anulum project.', de: 'Für potenzielle Investoren, Gönner oder Spender, die daran interessiert sind, die laufende Forschung und die Entwicklung des Anulum-Projekts zu unterstützen.', fr: 'Pour les investisseurs potentiels, les mécènes ou les donateurs intéressés à soutenir la recherche en cours et le développement du projet Anulum.', it: 'Per potenziali investitori, mecenati o donatori interessati a sostenere la ricerca in corso e lo sviluppo del progetto Anulum.', ja: '進行中の研究とAnulumプロジェクトの開発を支援することに関心のある潜在的な投資家、後援者、または寄付者向け。', zh: '适用于有兴趣支持正在进行的研究和Anulum项目发展的潜在投资者、赞助人或捐助者。'} }
+            ],
+            social: [
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/anulum/' },
+                { name: 'X / Twitter', url: 'https://x.com/anulum' },
+                { name: 'Academia.edu', url: 'https://independent.academia.edu/fortisstudio' }
+            ],
+            address: {
+                line1: 'Anulum CH&LI | Miroslav Šotek',
+                line2: 'Obergasse 8, 9437 Marbach SG',
+                line3: 'Switzerland',
+                phone: '+41 76 607 9990'
+            }
+        }
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+            const contactContainer = document.getElementById('contact-content');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+            
+            // --- Content Rendering ---
+            const renderContactPage = (lang) => {
+                if (!contactContainer) return;
+
+                const { items, social, address } = siteData.contactData;
+                const { translations } = siteData;
+
+                let leftColHtml = '<div class="space-y-6">';
+                items.forEach(item => {
+                    let cardContent = `<article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                        <h2 class="text-xl font-semibold text-accent-primary mb-2">${item.title[lang] || item.title['en']}</h2>
+                        <p class="text-text-secondary mb-2">${item.description[lang] || item.description['en']}</p>
+                        <a href="mailto:${item.email}" class="text-accent-secondary font-medium hover:underline">${item.email}</a>`;
+
+                    if (item.email === 'invest@anulum.li') {
+                        cardContent += `
+                            <div class="mt-4 flex flex-col items-start space-y-2">
+                                <div>
+                                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                                        <input type="hidden" name="hosted_button_id" value="4X5F6DNT934HY" />
+                                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                                        <img alt="" border="0" src="https://www.paypal.com/en_CH/i/scr/pixel.gif" width="1" height="1" />
+                                    </form>
+                                </div>
+                                <div>
+                                    <stripe-buy-button
+                                      buy-button-id="buy_btn_1RqCJYLGZGYXEKDYXhPKYRtb"
+                                      publishable-key="pk_live_51RqC2yLGZGYXEKDYnXfSeGuMCkKly2ihSCSCYA60BzIxzjlxWF6PXzjQOeR3atkhFdZTQFNgQhSrLyQaB5soU9qi00gCvxeN2A"
+                                    >
+                                    </stripe-buy-button>
+                                </div>
+                                <div>
+                                    <button style="width: auto; height: 58px; border-radius: 6px; display: flex; justify-content: center; cursor: pointer; background-color: transparent; border: none; align-items: center;" onclick="window.open('https://go.twint.ch/1/e/tw?tw=acq.lJTAypb8SL2s8vPg7fL0ubi2C220ajOH0BEQn1aKfEJIiIakLpt8jlEv8XdQ9tCp.', '_blank')">
+                                        <img style="width: auto; height: 58px" alt="Embedded TWINT button" src="https://go.twint.ch/static/img/button_dark_en.svg"/>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-border-color">
+                                <h3 class="font-semibold text-text-primary mb-2" data-lang-key="contact_bank_transfer">${translations.contact_bank_transfer[lang] || translations.contact_bank_transfer['en']}</h3>
+                                <p class="text-sm text-text-secondary"><strong class="font-medium">IBAN (CHF):</strong> CH14 8080 8002 1898 7544 1</p>
+                                <p class="text-sm text-text-secondary"><strong class="font-medium">IBAN (EUR):</strong> CH66 8080 8002 8173 6061 8</p>
+                            </div>
+                        `;
+                    }
+                    cardContent += `</article>`;
+                    leftColHtml += cardContent;
+                });
+                leftColHtml += '</div>';
+
+                let rightColHtml = '<div class="space-y-6">';
+                rightColHtml += `<article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="contact_connect_title">${translations.contact_connect_title[lang] || translations.contact_connect_title['en']}</h2>
+                    <ul class="space-y-2">`;
+                social.forEach(item => {
+                     rightColHtml += `<li><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-accent-secondary font-medium hover:underline">${item.name}</a></li>`;
+                });
+                rightColHtml += `</ul></article>`;
+                 rightColHtml += `<article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="contact_address_title">${translations.contact_address_title[lang] || translations.contact_address_title['en']}</h2>
+                    <address class="not-italic text-text-secondary">
+                        ${address.line1}<br>
+                        ${address.line2}<br>
+                        ${address.line3}<br>
+                        <span data-lang-key="contact_phone_label">${translations.contact_phone_label[lang] || translations.contact_phone_label['en']}</span>: <a href="tel:${address.phone.replace(/\s/g, '')}" class="text-accent-secondary hover:underline">${address.phone}</a>
+                    </address>
+                </article>`;
+                rightColHtml += '</div>';
+
+                contactContainer.innerHTML = leftColHtml + rightColHtml;
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                renderContactPage(currentLanguage);
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                if (!isExpanded) mobileMenu.querySelector('a').focus();
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+                renderContactPage(currentLanguage);
+
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('ServiceWorker registered.'))
+                        .catch(err => console.log('ServiceWorker registration failed: ', err));
+                });
+            }
+
+            initializeApp();
+
+        } catch (error) {
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load. Check console.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

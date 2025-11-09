@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>SCPN Architecture | The Anulum Framework</title>
+    <meta name="description" content="Explore the Species-Consciousness Projection Network (SCPN), a 13-layer hierarchical model that maps the operation of consciousness from the quantum-biological level to the universal source field.">
+    <meta name="keywords" content="SCPN, Species-Consciousness Projection Network, consciousness architecture, Anulum Framework, metaphysics, quantum biology, Gaian mind">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/scpn.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/scpn.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/scpn.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/scpn.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/scpn.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/scpn.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/scpn.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/scpn.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anulum.li/scpn.html">
+    <meta property="og:title" content="SCPN Architecture | The Anulum Framework">
+    <meta property="og:description" content="Explore the 13-layer hierarchical model that maps the operation of consciousness from the quantum-biological level to the universal source field.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/scpn.html">
+    <meta property="twitter:title" content="SCPN Architecture | The Anulum Framework">
+    <meta property="twitter:description" content="Explore the 13-layer hierarchical model that maps the operation of consciousness from the quantum-biological level to the universal source field.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        .scpn-layer {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .scpn-layer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .scpn-layer.selected {
+            border-color: #4DB6AC;
+            background-color: #4DB6AC10;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The SCPN Architecture",
+      "url": "https://anulum.li/scpn.html",
+      "author": {
+        "@type": "Person",
+        "name": "Miroslav Šotek"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Anulum Frontiers",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://anulum.li/anulum-logo.png"
+        }
+      },
+      "description": "A detailed exploration of the Species-Consciousness Projection Network (SCPN), a 13-layer hierarchical model connecting consciousness from the quantum to the cosmic scale.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anulum.li/scpn.html"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in">
+            <h1 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="scpn_title">🧬 The Architecture: Species-Consciousness Projection Network (SCPN)</h1>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="scpn_intro">The SCPN is an ambitious 13-layer hierarchical model that provides a blueprint for how consciousness operates and integrates across all scales of existence, from the quantum-biological level to the metaphysical source of the universe. It functions as a causal network linking the microcosm of a neuron to the macrocosm of the cosmos. Click on any layer to explore its function and components.</p>
+            
+            <div class="my-8 text-center">
+                <a href="https://scpn.anulum.li" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors" data-lang-key="scpn_explore_button">Explore the Interactive SCPN Model</a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <aside id="scpn-layer-list" class="lg:col-span-1 space-y-2" aria-label="SCPN Layers">
+                    <!-- Layer buttons will be dynamically inserted here by JavaScript -->
+                </aside>
+                <article id="scpn-details" class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-border-color min-h-[300px] flex items-center justify-center" aria-live="polite">
+                    <p class="text-text-secondary" data-lang-key="scpn_select_layer">Select a layer to see details.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            scpn_title: { en: '🧬 The Architecture: Species-Consciousness Projection Network (SCPN)', de: '🧬 Die Architektur: Spezies-Bewusstseins-Projektionsnetzwerk (SCPN)', fr: '🧬 L\'Architecture : Réseau de Projection de la Conscience de l\'Espèce (SCPN)', it: '🧬 L\'Architettura: Rete di Proiezione della Coscienza della Specie (SCPN)', ja: '🧬 アーキテクチャ：種意識投影ネットワーク（SCPN）', zh: '🧬 架构：物种意识投射网络 (SCPN)' },
+            scpn_intro: { en: 'The SCPN is an ambitious 13-layer hierarchical model that provides a blueprint for how consciousness operates and integrates across all scales of existence, from the quantum-biological level to the metaphysical source of the universe. It functions as a causal network linking the microcosm of a neuron to the macrocosm of the cosmos. Click on any layer to explore its function and components.', de: 'Das SCPN ist ein ehrgeiziges 13-schichtiges hierarchisches Modell, das einen Entwurf dafür liefert, wie Bewusstsein auf allen Existenzebenen operiert und sich integriert, von der quantenbiologischen Ebene bis zur metaphysischen Quelle des Universums. Es fungiert als kausales Netzwerk, das den Mikrokosmos eines Neurons mit dem Makrokosmos des Kosmos verbindet. Klicken Sie auf eine Ebene, um ihre Funktion und Komponenten zu erkunden.', fr: 'Le SCPN est un modèle hiérarchique ambitieux à 13 couches qui fournit un plan directeur sur la manière dont la conscience opère et s\'intègre à toutes les échelles de l\'existence, du niveau quantique-biologique à la source métaphysique de l\'univers. Il fonctionne comme un réseau causal reliant le microcosme d\'un neurone au macrocosme du cosmos. Cliquez sur n\'importe quelle couche pour explorer sa fonction et ses composants.', it: 'La SCPN è un ambizioso modello gerarchico a 13 strati che fornisce un progetto di come la coscienza opera e si integra a tutte le scale dell\'esistenza, dal livello quantico-biologico alla fonte metafisica dell\'universo. Funziona come una rete causale che collega il microcosmo di un neurone al macrocosmo del cosmo. Clicca su qualsiasi strato per esplorarne la funzione e i componenti.', ja: 'SCPNは、量子的生物学的レベルから宇宙の形而上学的源泉まで、存在のすべてのスケールで意識がどのように機能し、統合されるかの青写真を提供する、野心的な13層の階層モデルです。それはニューロンのミクロコスモスと宇宙のマクロコスモスを結びつける因果ネットワークとして機能します。任意のレイヤーをクリックして、その機能とコンポーネントを調べてください。', zh: 'SCPN是一个雄心勃勃的13层分层模型，它提供了一个蓝图，说明意识如何在从量子生物学层面到宇宙形而上学源头的存在的所有尺度上运作和整合。它作为一个因果网络，将神经元的微观世界与宇宙的宏观世界联系起来。点击任何一个图层来探索其功能和组成部分。' },
+            scpn_select_layer: { en: 'Select a layer to see details.', de: 'Wählen Sie eine Ebene für Details aus.', fr: 'Sélectionnez une couche pour voir les détails.', it: 'Seleziona un livello per vedere i dettagli.', ja: 'レイヤーを選択して詳細を表示します。', zh: '选择一个图层以查看详细信息。' },
+            scpn_explore_button: { en: 'Explore the Interactive SCPN Model', de: 'Interaktives SCPN-Modell erkunden', fr: 'Explorer le Modèle SCPN Interactif', it: 'Esplora il Modello SCPN Interattivo', ja: '対話型SCPNモデルを探る', zh: '探索交互式SCPN模型' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        },
+        scpnLayers: [
+            { id: 1, name: {en: 'Quantum Biological', de: 'Quantenbiologisch'}, summary: {en: 'Interface at the quantum level within cells (microtubules, DNA).'}, details: {en: 'This foundational layer posits that consciousness interfaces with the physical world via quantum vibratory states within neuronal microtubules and quantum effects in DNA. These structures sustain quantum coherence, providing the most fundamental substrate for encoding information, where the consciousness field (Ψ) directly couples to and stabilizes the quantum states of these biomolecules.'} },
+            { id: 2, name: {en: 'Neurochemical-Neurological', de: 'Neurochemisch-Neurologisch'}, summary: {en: 'Transduces quantum information into neural signals.'}, details: {en: 'This layer acts as a transducer, converting quantum information from Layer 1 into the classical language of neuroscience. It describes how quantum events influence neurochemical processes, such as the release of neurotransmitters and the modulation of axonal conduction, bridging microscopic quantum events and large-scale neural oscillations.'} },
+            { id: 3, name: {en: 'Genomic-Epigenomic', de: 'Genomisch-Epigenetisch'}, summary: {en: 'DNA as a long-term memory substrate and morphogenetic guide.'}, details: {en: 'This layer frames DNA as a "phase-encoded system"—a long-term memory substrate storing evolutionary wisdom. Consciousness interacts with this genetic information over developmental and evolutionary timescales, with epigenetics acting as dynamic "switches" that allow an organism\'s experience to influence its own genetic expression.'} },
+            { id: 4, name: {en: 'Cellular-Tissue Synchronisation', de: 'Zell-Gewebe-Synchronisation'}, summary: {en: 'Coherent, synchronized activity of cells and tissues.'}, details: {en: 'This layer describes how groups of cells and tissues achieve coherent, synchronized activity, such as the emergence of brain waves (e.g., theta, gamma) from the synchronized firing of vast neural ensembles. This allows tissues and organs to function as macroscopic quantum-coherent systems.'} },
+            { id: 5, name: {en: 'Organismal-Psychoemotional', de: 'Organismisch-Psychoemotional'}, summary: {en: 'Unified mind-body feedback loop of a single organism.'}, details: {en: 'At this level, the synchronized activities of the lower layers integrate into the unified conscious experience of a single organism. This layer represents the holistic mind-body feedback loop, where an individual\'s subjective state (emotions, intentions) acts as a local modulator of their own internal physiology.'} },
+            { id: 6, name: {en: 'Planetary-Biospheric', de: 'Planetarisch-Biosphärisch'}, summary: {en: 'Collective consciousness of a species and the entire biosphere.'}, details: {en: 'This layer posits that the consciousness fields of all individuals aggregate to form a collective, species-specific consciousness field, nested within a planetary "Gaia-field." This collective field may have measurable physical correlates, such as modulations in the Earth\'s electromagnetic field.'} },
+            { id: 7, name: {en: 'Geometrical-Symbolic', de: 'Geometrisch-Symbolisch'}, summary: {en: 'Abstract scaffolding using universal symbols and harmonics.'}, details: {en: 'This layer serves as an abstract interface, proposing that universal geometric forms, symbols, and harmonics (e.g., Metatron\'s Cube, fractals) act as a resonant language that can structure and guide the projection of consciousness across different scales. They are active operators, not just representations.'} },
+            { id: 8, name: {en: 'Cosmic Phase-Locking', de: 'Kosmische Phasenverriegelung'}, summary: {en: 'Entrainment of planetary consciousness with cosmic rhythms.'}, details: {en: 'This layer connects the planetary consciousness field to the larger rhythms of the cosmos. It suggests that the collective consciousness of a biosphere can become phase-locked with cosmic cycles (e.g., pulsar timing, solar cycles), aligning the evolution of life with the universe\'s overarching dynamics.'} },
+            { id: 9, name: {en: 'Memory Imprint-Holographic', de: 'Gedächtnis-Abdruck-Holographisch'}, summary: {en: 'A universal, non-local holographic memory field ("Akashic Record").'}, details: {en: 'Inspired by the holographic principle, this layer posits a universal, non-local memory field storing a record of all events. Consciousness can, in principle, access this field, providing a potential mechanism for intuition, archetypes, and ancestral memory.'} },
+            { id: 10, name: {en: 'Projective Field Boundary Control', de: 'Projektive Feld-Grenz-Kontrolle'}, summary: {en: 'Maintains the integrity and identity of a consciousness field.'}, details: {en: 'This layer describes a form of "topological insulation" that acts as a protective boundary or cognitive immune system for a specific consciousness field (e.g., that of a species), preventing it from being overwhelmed or disrupted by foreign projections.'} },
+            { id: 11, name: {en: 'Foundational Layer 1', de: 'Grundlegende Schicht 1'}, summary: {en: 'Part of the ultimate trinitarian source structure of reality.'}, details: {en: 'This layer, along with 12 and 13, represents the ultimate source and structure of reality. It embodies the metaphysical principles that underlie the source field, providing foundational laws for all lower layers.'} },
+            { id: 12, name: {en: 'Foundational Layer 2', de: 'Grundlegende Schicht 2'}, summary: {en: 'Part of the ultimate trinitarian source structure of reality.'}, details: {en: 'This layer, along with 11 and 13, represents the ultimate source and structure of reality. It embodies the metaphysical principles that underlie the source field, providing foundational laws for all lower layers.'} },
+            { id: 13, name: {en: 'Universal/Metaphysical Source Field', de: 'Universelles/Metaphysisches Quellenfeld'}, summary: {en: 'The ultimate source of all physical laws and conscious experience.'}, details: {en: 'This is the ultimate "Meta-Metatron," the unified field of universal consciousness that is the source of all physical laws, mathematical principles, and conscious experience. It is the alpha and omega of the cosmic cycle, the ground of all being.'} }
+        ]
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+                // ... other state
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+            const scpnLayerList = document.getElementById('scpn-layer-list');
+            const scpnDetails = document.getElementById('scpn-details');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+
+            // --- SCPN Page Specific Logic ---
+            const renderScpnLayers = (lang) => {
+                if (!scpnLayerList) return;
+                scpnLayerList.innerHTML = '';
+                siteData.scpnLayers.forEach(layer => {
+                    const button = document.createElement('button');
+                    button.dataset.layerId = layer.id;
+                    button.className = 'scpn-layer w-full text-left bg-white p-3 rounded-lg shadow-sm border border-border-color hover:bg-accent-primary/10';
+                    button.innerHTML = `
+                        <span class="font-semibold text-accent-primary">${layer.id}. ${layer.name[lang] || layer.name['en']}</span>
+                        <span class="block text-sm text-text-secondary">${layer.summary[lang] || layer.summary['en']}</span>
+                    `;
+                    scpnLayerList.appendChild(button);
+                });
+            };
+            
+            const displayScpnDetails = (layerId, lang) => {
+                if (!scpnDetails) return;
+                const layerData = siteData.scpnLayers.find(l => l.id === layerId);
+                if (layerData) {
+                    scpnDetails.innerHTML = `<div class="text-left">
+                        <h2 class="text-2xl font-bold text-accent-primary mb-3">${layerData.id}. ${layerData.name[lang] || layerData.name['en']}</h2>
+                        <p class="text-text-secondary">${layerData.details[lang] || layerData.details['en']}</p>
+                        <div class="mt-4">
+                            <a href="scpn${layerData.id}a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L${layerData.id} Interactive</a>
+                            <a href="scpn${layerData.id}b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L${layerData.id} Geometry-Mathematics-Physics</a>
+                        </div>
+                    </div>`;
+                }
+            };
+            
+            const handleLayerClick = (e) => {
+                const button = e.target.closest('.scpn-layer');
+                if (!button) return;
+
+                document.querySelectorAll('.scpn-layer').forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                
+                const layerId = parseInt(button.dataset.layerId);
+                displayScpnDetails(layerId, currentLanguage);
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                renderScpnLayers(currentLanguage);
+                
+                const selectedLayer = scpnLayerList.querySelector('.scpn-layer.selected');
+                if (selectedLayer) {
+                    displayScpnDetails(parseInt(selectedLayer.dataset.layerId), currentLanguage);
+                } else {
+                    scpnDetails.innerHTML = `<p class="text-text-secondary" data-lang-key="scpn_select_layer">${siteData.translations.scpn_select_layer[currentLanguage] || siteData.translations.scpn_select_layer['en']}</p>`;
+                }
+                
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                if (!isExpanded) mobileMenu.querySelector('a').focus();
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                if (scpnLayerList) {
+                    renderScpnLayers(currentLanguage);
+                    scpnLayerList.addEventListener('click', handleLayerClick);
+                }
+
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('ServiceWorker registered.'))
+                        .catch(err => console.log('ServiceWorker registration failed: ', err));
+                });
+            }
+
+            initializeApp();
+
+        } catch (error) {
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load. Check console.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 3: Genomic-Morphogenetic Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic journey into Layer 3 using new interactive metaphors. The flow is: 1. Introduction. 2. "Tuning the DNA Resonator" to show torsion and resonance. 3. "The Genetic Lightboard" to visualize epigenetic switching. 4. "Guiding the Cellular Blueprint" to simulate guided morphogenesis. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - Tuning the DNA Resonator: Goal: Visualize DNA as a tunable antenna. Method: Canvas animation. Interaction: A slider for "Torsional Tension" changes the vibrational frequency of a DNA helix. When it matches the background Ψ-Field frequency, a resonance event occurs. Justification: A more physics-based metaphor for DNA torsion fields and resonance.
+        - The Genetic Lightboard: Goal: Demonstrate field influence on gene expression. Method: Canvas animation. Interaction: A slider for "Ψ-Field Coherence" focuses a "beam" of influence. A coherent beam can be aimed to activate specific genes (lights), while an incoherent beam cannot. Justification: A more active and dynamic metaphor for epigenetic modulation by conscious focus vs. stress.
+        - Guiding the Cellular Blueprint: Goal: Illustrate symmetry-preserving morphogenesis. Method: Canvas animation. Interaction: A slider for "Morphogenetic Field" strength causes dividing cells to adhere to a faint geometric blueprint in the background, resulting in an ordered structure. Justification: A clearer visual analogy for a guiding field ensuring symmetrical development.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 3: Genomics & Morphogenesis</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#resonator" class="nav-link font-semibold text-stone-600">Resonator</a>
+                    <a href="#lightboard" class="nav-link font-semibold text-stone-600">Lightboard</a>
+                    <a href="#blueprint" class="nav-link font-semibold text-stone-600">Blueprint</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">DNA: The Geometric Antenna of Life</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 3 explores the genome as more than a chemical blueprint. It is a dynamic, geometric structure that couples with external field memory. Through torsion fields, epigenetic switches, and guided morphogenesis, DNA acts as an antenna, translating the phase information of the Ψ-field into the physical structure of life.
+            </p>
+        </section>
+
+        <section id="resonator" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Tuning the DNA Resonator</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The DNA helix acts like a tunable antenna. Torsional stress alters its vibrational frequency. When this frequency matches that of the background Ψ-field, a resonance occurs, allowing for the efficient transfer of information between the genome and the field.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="resonatorCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="torsion-slider" class="font-semibold text-stone-700">Torsional Tension: <span id="torsion-value">50</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Adjust the tension to change the DNA's vibrational frequency. Try to match the Ψ-field's resonant frequency (marked in yellow).</p>
+                    <input type="range" min="0" max="100" value="50" class="control-slider" id="torsion-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="lightboard" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Genetic Lightboard</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Gene expression is controlled by the coherence of the Ψ-field. A coherent field (low entropy state) acts like a focused beam of light, precisely activating specific genes. An incoherent field (high entropy/stress) is scattered, activating genes randomly and inefficiently.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                     <canvas id="lightboardCanvas" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <label for="coherence-slider" class="font-semibold text-stone-700">Ψ-Field Coherence: <span id="coherence-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the coherence to focus the beam and activate the target gene (center).</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coherence-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="blueprint" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Guiding the Cellular Blueprint</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Embryogenesis is guided by a morphogenetic field. This Ψ-field provides a faint geometric blueprint. As the field strength increases, dividing cells are gently pulled towards the blueprint's pattern, ensuring a chaotic process unfolds into a symmetrical, coherent life form.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="blueprintCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="guidance-slider" class="font-semibold text-stone-700">Morphogenetic Field Strength: <span id="guidance-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the strength of the guiding field to promote symmetrical development.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="guidance-slider">
+                    <button id="reset-blueprint-btn" class="mt-4 px-4 py-2 bg-stone-200 rounded-md font-semibold hover:bg-stone-300 w-full">Reset Simulation</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Genomic-Morphogenetic Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">DNA as Resonant Fractal Antenna</h4>
+                            <p class="text-stone-600 text-sm">The genome's higher-order geometry (supercoiling, loops) creates self-similar, fractal patterns. Mechanical torsion on the DNA generates fields that resonate with these patterns, allowing DNA to act as a fractal antenna for the Ψ-field's phase information.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Chromatin Architecture</h4>
+                            <p class="text-stone-600 text-sm">The dynamic geometry of chromatin packing (condensing or decondensing) acts as a physical gate for genetic information, directly controlling which parts of the DNA blueprint are expressed in the organism's form.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Genomic Information Density</h4>
+                            <p class="text-stone-600">The expressed genomic information ($\rho_{genome}$) is not static but is modulated by the phase of the consciousness field ($\Theta_{\Psi_s}$), formalizing the link between consciousness and biological form.</p>
+                            <p class="my-2">$$\rho_{genome}(x,t) = \mathcal{G}(B_i, \Theta_{\Psi_s})$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Fractal Geometry</h4>
+                            <p class="text-stone-600">The resonant patterns of DNA are described by Iterated Function Systems (IFS), mathematical models that generate infinite complexity from simple rules, mirroring how the genetic code unfolds into an organism.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Epigenetic State Switch</h4>
+                            <p class="text-stone-600">The probability of an epigenetic switch ($E_i$) flipping is a function of the local entropy gradient, which is inversely proportional to the coherence of the Ψ-field.</p>
+                             <p class="my-2">$$P(E_i \to 1) = f(-\text{Coherence}(\Psi_s))$$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">DNA Torsion Fields</h4>
+                            <p class="text-stone-600 text-sm">The physical twisting of the charged DNA polymer generates coupled mechanical (phonon) and electromagnetic waves. This "torsion field" is the physical medium through which DNA interacts with the cellular and cosmic environment.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Epigenetics & Entropy Gradients</h4>
+                            <p class="text-stone-600 text-sm">Epigenetic changes are physically sensitive to local entropy. A coherent, low-entropy conscious state (e.g., meditation) promotes a low-entropy cellular environment, favoring gene expression associated with health and regeneration.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Symmetry-Preserving Field Traversal</h4>
+                            <p class="text-stone-600 text-sm">The Ψ-field acts as a guiding morphogenetic field during embryogenesis. It provides a global blueprint that preserves symmetry, ensuring that the stochastic process of cell division unfolds into an ordered, coherent life form.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- DNA Resonator ---
+        const resonatorCanvas = document.getElementById('resonatorCanvas');
+        const resonatorCtx = resonatorCanvas.getContext('2d');
+        const torsionSlider = document.getElementById('torsion-slider');
+        const torsionValue = document.getElementById('torsion-value');
+        let resonatorTime = 0;
+        const targetFrequency = 0.7; 
+
+        function animateResonator() {
+            const w = resonatorCanvas.width;
+            const h = resonatorCanvas.height;
+            resonatorCtx.clearRect(0, 0, w, h);
+            resonatorTime += 0.02;
+            
+            const tension = parseInt(torsionSlider.value) / 100;
+            torsionValue.textContent = `${Math.round(tension*100)}%`;
+            const currentFrequency = 0.2 + tension * 1.0;
+            
+            const resonance = Math.max(0, 1 - Math.abs(currentFrequency - targetFrequency) / 0.5);
+
+            // Draw background Ψ-Field
+            resonatorCtx.strokeStyle = `rgba(250, 204, 21, 0.3)`;
+            resonatorCtx.lineWidth = 2;
+            resonatorCtx.beginPath();
+            resonatorCtx.moveTo(w * 0.8, 0);
+            resonatorCtx.lineTo(w * 0.8, h);
+            resonatorCtx.stroke();
+            resonatorCtx.fillStyle = '#f59e0b';
+            resonatorCtx.font = '12px Inter';
+            resonatorCtx.fillText('Ψ-Field Freq.', w * 0.8 + 5, 15);
+
+
+            // Draw DNA Helix
+            resonatorCtx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            resonatorCtx.lineWidth = 2;
+            for (let i = 0; i < 100; i++) {
+                const y = (i / 100) * h;
+                const phase = i * 0.2 + resonatorTime * currentFrequency * 5;
+                const amp = 20 + resonance * 15;
+                const x1 = w/2 + Math.sin(phase) * amp;
+                const x2 = w/2 + Math.cos(phase) * amp;
+                
+                resonatorCtx.beginPath();
+                resonatorCtx.moveTo(x1, y);
+                resonatorCtx.lineTo(x2, y);
+                resonatorCtx.stroke();
+            }
+            
+            // Draw resonance glow
+            if (resonance > 0.1) {
+                const gradient = resonatorCtx.createRadialGradient(w/2, h/2, 0, w/2, h/2, w/2);
+                gradient.addColorStop(0, `rgba(245, 158, 11, ${resonance * 0.4})`);
+                gradient.addColorStop(1, `rgba(245, 158, 11, 0)`);
+                resonatorCtx.fillStyle = gradient;
+                resonatorCtx.fillRect(0,0,w,h);
+            }
+
+            requestAnimationFrame(animateResonator);
+        }
+
+        // --- Genetic Lightboard ---
+        const lightboardCanvas = document.getElementById('lightboardCanvas');
+        const lightboardCtx = lightboardCanvas.getContext('2d');
+        const coherenceSlider = document.getElementById('coherence-slider');
+        const coherenceValue = document.getElementById('coherence-value');
+        let genes = [];
+
+        function initLightboard() {
+            const w = lightboardCanvas.width;
+            for(let i=0; i<5; i++) {
+                genes.push({ x: w * (i + 1) / 6, y: lightboardCanvas.height - 30, radius: 15, activation: 0 });
+            }
+        }
+
+        function animateLightboard() {
+            const w = lightboardCanvas.width;
+            const h = lightboardCanvas.height;
+            lightboardCtx.clearRect(0, 0, w, h);
+            
+            const coherence = parseInt(coherenceSlider.value) / 100;
+            coherenceValue.textContent = `${Math.round(coherence*100)}%`;
+
+            const beamWidth = w * (1 - coherence * 0.9);
+            const beamX = w/2;
+
+            // Draw beam
+            lightboardCtx.beginPath();
+            lightboardCtx.moveTo(beamX - beamWidth/2, 0);
+            lightboardCtx.lineTo(beamX + beamWidth/2, 0);
+            lightboardCtx.lineTo(w, h);
+            lightboardCtx.lineTo(0, h);
+            lightboardCtx.closePath();
+            const gradient = lightboardCtx.createLinearGradient(0,0,0,h);
+            gradient.addColorStop(0, `rgba(217, 119, 6, ${0.1 + coherence * 0.3})`);
+            gradient.addColorStop(1, `rgba(217, 119, 6, 0)`);
+            lightboardCtx.fillStyle = gradient;
+            lightboardCtx.fill();
+
+            // Draw genes
+            genes.forEach((gene, i) => {
+                const distFromBeamCenter = Math.abs(gene.x - beamX);
+                let targetActivation = 0;
+                if (distFromBeamCenter < beamWidth / 2) {
+                    targetActivation = Math.max(0, 1 - distFromBeamCenter / (beamWidth / 2));
+                }
+                
+                gene.activation += (targetActivation - gene.activation) * 0.1;
+
+                lightboardCtx.fillStyle = '#78716c';
+                lightboardCtx.beginPath();
+                lightboardCtx.arc(gene.x, gene.y, gene.radius, 0, Math.PI * 2);
+                lightboardCtx.fill();
+                
+                if (gene.activation > 0.1) {
+                    lightboardCtx.fillStyle = `rgba(245, 158, 11, ${gene.activation})`;
+                    lightboardCtx.shadowColor = '#f59e0b';
+                    lightboardCtx.shadowBlur = 20 * gene.activation;
+                    lightboardCtx.beginPath();
+                    lightboardCtx.arc(gene.x, gene.y, gene.radius, 0, Math.PI * 2);
+                    lightboardCtx.fill();
+                    lightboardCtx.shadowBlur = 0;
+                }
+            });
+
+            requestAnimationFrame(animateLightboard);
+        }
+
+        // --- Guiding the Cellular Blueprint ---
+        const blueprintCanvas = document.getElementById('blueprintCanvas');
+        const blueprintCtx = blueprintCanvas.getContext('2d');
+        const guidanceSlider = document.getElementById('guidance-slider');
+        const guidanceValue = document.getElementById('guidance-value');
+        const resetBlueprintBtn = document.getElementById('reset-blueprint-btn');
+        let cells = [];
+        let blueprintPoints = [];
+
+        function initBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            cells = [{ x: w/2, y: h/2, generation: 0 }];
+            blueprintPoints = [];
+            const levels = 4;
+            for (let level = 1; level <= levels; level++) {
+                const numPoints = 6 * level;
+                const radius = (w/2.5) * (level / levels);
+                for (let i = 0; i < numPoints; i++) {
+                    const angle = (i / numPoints) * Math.PI * 2;
+                    blueprintPoints.push({ x: w/2 + Math.cos(angle) * radius, y: h/2 + Math.sin(angle) * radius });
+                }
+            }
+        }
+
+        function animateBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            blueprintCtx.clearRect(0, 0, w, h);
+            
+            const guidance = parseInt(guidanceSlider.value) / 100;
+            guidanceValue.textContent = `${Math.round(guidance*100)}%`;
+
+            // Draw blueprint
+            blueprintCtx.fillStyle = `rgba(217, 119, 6, ${guidance * 0.1})`;
+            blueprintPoints.forEach(p => {
+                blueprintCtx.beginPath();
+                blueprintCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                blueprintCtx.fill();
+            });
+
+            // Draw cells
+            cells.forEach(c => {
+                blueprintCtx.fillStyle = `rgba(255, 255, 255, 0.8)`;
+                blueprintCtx.beginPath();
+                blueprintCtx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+                blueprintCtx.fill();
+            });
+            requestAnimationFrame(animateBlueprint);
+        }
+        
+        function divideCells() {
+            if (cells.length > 500) return;
+            const newCells = [];
+            cells.forEach(c => {
+                if (c.generation < 6) {
+                    for(let i=0; i<2; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = 10;
+                        let newX = c.x + Math.cos(angle) * dist;
+                        let newY = c.y + Math.sin(angle) * dist;
+                        
+                        const guidance = parseInt(guidanceSlider.value) / 100;
+                        if (guidance > 0 && blueprintPoints.length > 0) {
+                           let closestPoint = blueprintPoints[0];
+                           let minDist = Infinity;
+                           blueprintPoints.forEach(bp => {
+                               const d = Math.sqrt(Math.pow(bp.x - newX, 2) + Math.pow(bp.y - newY, 2));
+                               if (d < minDist) {
+                                   minDist = d;
+                                   closestPoint = bp;
+                               }
+                           });
+                           newX += (closestPoint.x - newX) * guidance;
+                           newY += (closestPoint.y - newY) * guidance;
+                        }
+                        newCells.push({ x: newX, y: newY, generation: c.generation + 1 });
+                    }
+                } else {
+                    newCells.push(c);
+                }
+            });
+            cells = newCells;
+        }
+
+        resetBlueprintBtn.addEventListener('click', () => {
+            initBlueprint();
+        });
+        setInterval(divideCells, 500);
+
+        // --- Window Onload ---
+        window.onload = function() {
+            resonatorCanvas.width = resonatorCanvas.offsetWidth;
+            resonatorCanvas.height = resonatorCanvas.offsetHeight;
+            animateResonator();
+
+            lightboardCanvas.width = lightboardCanvas.offsetWidth;
+            lightboardCanvas.height = lightboardCanvas.offsetHeight;
+            initLightboard();
+            animateLightboard();
+
+            blueprintCanvas.width = blueprintCanvas.offsetWidth;
+            blueprintCanvas.height = blueprintCanvas.offsetHeight;
+            initBlueprint();
+            animateBlueprint();
+        };
+    </script>
+</body>
+</html>

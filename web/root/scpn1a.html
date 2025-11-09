@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 1: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: Evolved from a primer to a full interactive manuscript. The structure now follows the manuscript's core arguments: 1. The Decoherence Problem (establishing the core challenge). 2. The Ψ-Field Simulator (interactive math). 3. VIBRANA (visualizing the information layer). 4. The Retrocausal Loop (animating the core mechanic). 5. Geometric Foundations (revealing the metaphysical structure). This layered approach allows a user to build a deep, intuitive understanding of the theory's interlocking components. -->
+    <!-- Visualization & Content Choices:
+        - Ψ-Field Simulator: Goal: Make math tangible. Method: Chart.js line chart updated by sliders. Interaction: User adjusts 'Focus (κ)' and 'Noise (Γ)' to see real-time impact on a quantum potential well. Justification: Turns abstract equations into an experimental tool.
+        - VIBRANA Language: Goal: Visualize information encoding. Method: HTML Canvas animation. Interaction: Buttons add phase-modulated waves representing 'Qualia' and 'Intent' to a base carrier wave. Justification: Shows the proposed mechanism for how consciousness encodes information.
+        - Retrocausal Loop: Goal: Demonstrate self-causation. Method: Animated HTML/CSS diagram with JS-timed pulses. Interaction: An automated animation shows a forward causal flow, followed by a distinct backward 'reinforcement' pulse. Justification: Clearly illustrates the non-linear, time-symmetric nature of the feedback loop.
+        - Geometric Foundations: Goal: Connect physics to metaphysics. Method: Interactive canvas drawing. Interaction: User clicks through steps to build Metatron's Cube from the Flower of Life, with explanatory text. Justification: Reveals the geometric first principles the model is built upon.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .interactive-toggle button.active { background-color: #7c3aed; color: white; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .loop-node { transition: all 0.5s ease-in-out; }
+        .loop-node.active { background-color: #8b5cf6; color: white; transform: scale(1.05); }
+        .loop-arrow { transition: color 0.5s ease-in-out; }
+        .loop-arrow.active { color: #8b5cf6; }
+        .geo-button.active { background-color: #7c3aed; color: white; border-color: #7c3aed; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900" data-translate-key="main_title">SCPN Interactive Manuscript</h1>
+            <div class="hidden md:flex items-center space-x-4">
+                 <div class="flex items-center space-x-6">
+                    <a href="#problem" class="nav-link font-semibold text-slate-600" data-translate-key="nav_problem">Problem</a>
+                    <a href="#simulator" class="nav-link font-semibold text-slate-600" data-translate-key="nav_simulator">Simulator</a>
+                    <a href="#vibrana" class="nav-link font-semibold text-slate-600" data-translate-key="nav_vibrana">VIBRANA</a>
+                    <a href="#loop" class="nav-link font-semibold text-slate-600" data-translate-key="nav_loop">Causal Loop</a>
+                    <a href="#geometry" class="nav-link font-semibold text-slate-600" data-translate-key="nav_geometry">Geometry</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors" data-translate-key="nav_back_overview">Back to Overview</a>
+                    <select id="language-selector" class="bg-white border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 focus:ring-violet-500 focus:border-violet-500">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="fr">Français</option>
+                        <option value="sk">Slovenčina</option>
+                        <option value="cs">Čeština</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="problem" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="problem_title">The Decoherence Problem</h2>
+                <p class="max-w-2xl mx-auto text-slate-600" data-translate-key="problem_desc">The core challenge: the brain is a warm, wet, noisy environment where fragile quantum states should collapse instantly, far too quickly to influence thought. This is the gap that must be bridged.</p>
+            </div>
+        </section>
+
+        <section id="simulator" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="simulator_title">The Ψ-Field Simulator</h2>
+                <p class="max-w-3xl mx-auto text-slate-600" data-translate-key="simulator_desc">The proposed Ψ-Field stabilizes quantum states. This simulator models the "Potential Well" hypothesis. Adjust the parameters to see how consciousness can theoretically protect its own quantum foundation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <div class="chart-container">
+                        <canvas id="psiFieldChart"></canvas>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <label for="focus-slider" class="font-semibold text-slate-700">
+                            <span data-translate-key="simulator_focus_label">Cognitive Focus (κ):</span> <span id="focus-value">0.5</span>
+                        </label>
+                        <p class="text-sm text-slate-500 mb-2" data-translate-key="simulator_focus_desc">How strongly consciousness stabilizes the state.</p>
+                        <input type="range" min="0.1" max="2" value="0.5" step="0.1" class="control-slider" id="focus-slider">
+                    </div>
+                    <div>
+                        <label for="noise-slider" class="font-semibold text-slate-700">
+                            <span data-translate-key="simulator_noise_label">Environmental Noise (Γ):</span> <span id="noise-value">0.8</span>
+                        </label>
+                        <p class="text-sm text-slate-500 mb-2" data-translate-key="simulator_noise_desc">The disruptive energy from the neural environment.</p>
+                        <input type="range" min="0.1" max="2" value="0.8" step="0.1" class="control-slider" id="noise-slider">
+                    </div>
+                    <div class="bg-slate-100 p-4 rounded-lg">
+                        <h4 class="font-semibold" data-translate-key="simulator_lifetime_label">State Lifetime:</h4>
+                        <p id="lifetime-text" class="text-lg font-bold text-violet-600">~10<sup>-10</sup> seconds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vibrana" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="vibrana_title">VIBRANA: The Language of Consciousness</h2>
+                <p class="max-w-3xl mx-auto text-slate-600" data-translate-key="vibrana_desc">Information is not just symbolic; it's vibrational. The theory proposes that qualia and intent are encoded as phase modulations on a base carrier wave of the Ψ-field. This creates complex interference patterns that are the building blocks of thought.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                <canvas id="vibranaCanvas" class="w-full h-64"></canvas>
+            </div>
+            <div class="flex justify-center mt-4 space-x-4">
+                <button onclick="addVibranaWave('intent')" class="px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300" data-translate-key="vibrana_btn_intent">Encode 'Intent'</button>
+                <button onclick="addVibranaWave('qualia')" class="px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300" data-translate-key="vibrana_btn_qualia">Encode 'Qualia: Red'</button>
+                <button onclick="resetVibrana()" class="px-4 py-2 bg-red-200 rounded-md font-semibold hover:bg-red-300" data-translate-key="vibrana_btn_reset">Reset</button>
+            </div>
+        </section>
+
+        <section id="loop" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="loop_title">The Retrocausal Feedback Loop</h2>
+                <p class="max-w-3xl mx-auto text-slate-600" data-translate-key="loop_desc">Consciousness is not a one-way street. It's a self-sustaining, recursive loop that influences its own past to ensure its future stability. The emergence of the mind reinforces the physical conditions required for its own existence.</p>
+            </div>
+            <div class="relative w-full max-w-lg mx-auto flex flex-col items-center space-y-1">
+                <div id="loop-node-5" class="loop-node p-4 bg-violet-100 text-violet-800 rounded-lg shadow-sm text-center font-semibold w-64" data-translate-key="loop_node5">5. Conscious State (Ψ Field)</div>
+                <div id="loop-arrow-51" class="loop-arrow text-4xl text-slate-400">↓</div>
+                <div id="loop-node-1" class="loop-node p-4 bg-slate-100 text-slate-800 rounded-lg shadow-sm text-center font-semibold w-64" data-translate-key="loop_node1">1. Quantum Coherence</div>
+                <div id="loop-arrow-12" class="loop-arrow text-4xl text-slate-400">↓</div>
+                <div id="loop-node-2" class="loop-node p-4 bg-slate-100 text-slate-800 rounded-lg shadow-sm text-center font-semibold w-64" data-translate-key="loop_node2">2. Neurochemistry</div>
+                <div id="loop-arrow-24" class="loop-arrow text-4xl text-slate-400">↓</div>
+                <div id="loop-node-4" class="loop-node p-4 bg-slate-100 text-slate-800 rounded-lg shadow-sm text-center font-semibold w-64" data-translate-key="loop_node4">4. Brain Rhythms (EEG)</div>
+                <div id="loop-arrow-45" class="loop-arrow text-4xl text-slate-400 transform rotate-90 -translate-x-40 -translate-y-48 absolute">→</div>
+                <div id="loop-arrow-retro" class="loop-arrow text-4xl text-slate-400 transform -rotate-90 translate-x-40 -translate-y-[28rem] absolute text-red-400">↩</div>
+            </div>
+             <div class="text-center mt-8">
+                <button onclick="startLoopAnimation()" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700" data-translate-key="loop_btn_animate">Animate the Loop</button>
+            </div>
+        </section>
+
+        <section id="geometry" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" data-translate-key="geometry_title">Geometric Foundations</h2>
+                <p class="max-w-3xl mx-auto text-slate-600" data-translate-key="geometry_desc">The Ψ-field is not arbitrary. Its stability points and flow-lines are proposed to map directly onto the vertices and vectors of a fundamental geometric structure. This interactive diagram builds this structure from first principles.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-2">
+                    <canvas id="geometryCanvas" class="w-full"></canvas>
+                </div>
+                <div>
+                    <div id="geometry-text" class="bg-slate-100 p-6 rounded-lg min-h-[20rem]">
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <button onclick="drawGeometry(1)" class="geo-button active px-3 py-1 border-2 border-slate-300 rounded-md text-sm" data-translate-key="geo_btn1">Seed of Life</button>
+                        <button onclick="drawGeometry(2)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm" data-translate-key="geo_btn2">Flower of Life</button>
+                        <button onclick="drawGeometry(3)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm" data-translate-key="geo_btn3">Fruit of Life</button>
+                        <button onclick="drawGeometry(4)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm" data-translate-key="geo_btn4">Metatron's Cube</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            en: {
+                main_title: "SCPN Interactive Manuscript",
+                nav_problem: "Problem", nav_simulator: "Simulator", nav_vibrana: "VIBRANA", nav_loop: "Causal Loop", nav_geometry: "Geometry", nav_back_overview: "Back to Overview",
+                problem_title: "The Decoherence Problem",
+                problem_desc: "The core challenge: the brain is a warm, wet, noisy environment where fragile quantum states should collapse instantly, far too quickly to influence thought. This is the gap that must be bridged.",
+                simulator_title: "The Ψ-Field Simulator",
+                simulator_desc: "The proposed Ψ-Field stabilizes quantum states. This simulator models the 'Potential Well' hypothesis. Adjust the parameters to see how consciousness can theoretically protect its own quantum foundation.",
+                simulator_focus_label: "Cognitive Focus (κ):", simulator_focus_desc: "How strongly consciousness stabilizes the state.",
+                simulator_noise_label: "Environmental Noise (Γ):", simulator_noise_desc: "The disruptive energy from the neural environment.",
+                simulator_lifetime_label: "State Lifetime:", simulator_chart_x: "Quantum State Space", simulator_chart_y: "Potential Energy",
+                vibrana_title: "VIBRANA: The Language of Consciousness",
+                vibrana_desc: "Information is not just symbolic; it's vibrational. The theory proposes that qualia and intent are encoded as phase modulations on a base carrier wave of the Ψ-field. This creates complex interference patterns that are the building blocks of thought.",
+                vibrana_btn_intent: "Encode 'Intent'", vibrana_btn_qualia: "Encode 'Qualia: Red'", vibrana_btn_reset: "Reset",
+                loop_title: "The Retrocausal Feedback Loop",
+                loop_desc: "Consciousness is not a one-way street. It's a self-sustaining, recursive loop that influences its own past to ensure its future stability. The emergence of the mind reinforces the physical conditions required for its own existence.",
+                loop_node5: "5. Conscious State (Ψ Field)", loop_node1: "1. Quantum Coherence", loop_node2: "2. Neurochemistry", loop_node4: "4. Brain Rhythms (EEG)",
+                loop_btn_animate: "Animate the Loop",
+                geometry_title: "Geometric Foundations",
+                geometry_desc: "The Ψ-field is not arbitrary. Its stability points and flow-lines are proposed to map directly onto the vertices and vectors of a fundamental geometric structure. This interactive diagram builds this structure from first principles.",
+                geo_btn1: "Seed of Life", geo_btn2: "Flower of Life", geo_btn3: "Fruit of Life", geo_btn4: "Metatron's Cube",
+                geo_step1_title: "Step 1: The Seed of Life", geo_step1_desc: "The process begins with seven overlapping circles, representing the seven days of creation, the seven notes in a scale, and the seven energy centers of the body. It is the blueprint of the universe.",
+                geo_step2_title: "Step 2: The Flower of Life", geo_step2_desc: "By extending the pattern outwards, we create the Flower of Life. This ancient symbol contains the patterns of creation and is found in major religions and ancient cultures all over the world. It represents the interconnectedness of all life.",
+                geo_step3_title: "Step 3: The Fruit of Life", geo_step3_desc: "Within the Flower of Life, 13 circles can be isolated. This is the Fruit of Life, a geometric figure considered to be the holy of holies of Sacred Geometry. It is the blueprint for the fabric of reality.",
+                geo_step4_title: "Step 4: Metatron's Cube", geo_step4_desc: "By connecting the centers of every circle in the Fruit of Life, we derive Metatron's Cube. This figure contains all five Platonic Solids, the building blocks of the universe. Its vectors and vertices map to the stability points of the Ψ-field."
+            },
+            de: {
+                main_title: "Interaktives SCPN-Manuskript",
+                nav_problem: "Problem", nav_simulator: "Simulator", nav_vibrana: "VIBRANA", nav_loop: "Kausalschleife", nav_geometry: "Geometrie", nav_back_overview: "Zurück zur Übersicht",
+                problem_title: "Das Dekohärenzproblem",
+                problem_desc: "Die Kernherausforderung: Das Gehirn ist eine warme, feuchte, laute Umgebung, in der fragile Quantenzustände sofort kollabieren sollten, viel zu schnell, um das Denken zu beeinflussen. Diese Lücke muss überbrückt werden.",
+                simulator_title: "Der Ψ-Feld-Simulator",
+                simulator_desc: "Das vorgeschlagene Ψ-Feld stabilisiert Quantenzustände. Dieser Simulator modelliert die „Potentialtopf“-Hypothese. Passen Sie die Parameter an, um zu sehen, wie das Bewusstsein theoretisch sein eigenes Quantenfundament schützen kann.",
+                simulator_focus_label: "Kognitiver Fokus (κ):", simulator_focus_desc: "Wie stark das Bewusstsein den Zustand stabilisiert.",
+                simulator_noise_label: "Umgebungsrauschen (Γ):", simulator_noise_desc: "Die störende Energie aus der neuronalen Umgebung.",
+                simulator_lifetime_label: "Zustandslebensdauer:", simulator_chart_x: "Quantenzustandsraum", simulator_chart_y: "Potentielle Energie",
+                vibrana_title: "VIBRANA: Die Sprache des Bewusstseins",
+                vibrana_desc: "Information ist nicht nur symbolisch; sie ist vibrational. Die Theorie besagt, dass Qualia und Absicht als Phasenmodulationen auf einer Basisträgerwelle des Ψ-Feldes kodiert sind. Dies erzeugt komplexe Interferenzmuster, die die Bausteine des Denkens sind.",
+                vibrana_btn_intent: "Absicht kodieren", vibrana_btn_qualia: "Qualia: Rot kodieren", vibrana_btn_reset: "Zurücksetzen",
+                loop_title: "Die retrokausale Rückkopplungsschleife",
+                loop_desc: "Bewusstsein ist keine Einbahnstraße. Es ist eine selbsterhaltende, rekursive Schleife, die ihre eigene Vergangenheit beeinflusst, um ihre zukünftige Stabilität zu sichern. Das Entstehen des Geistes stärkt die physischen Bedingungen für seine eigene Existenz.",
+                loop_node5: "5. Bewusster Zustand (Ψ-Feld)", loop_node1: "1. Quantenkohärenz", loop_node2: "2. Neurochemie", loop_node4: "4. Gehirnrhythmen (EEG)",
+                loop_btn_animate: "Schleife animieren",
+                geometry_title: "Geometrische Grundlagen",
+                geometry_desc: "Das Ψ-Feld ist nicht willkürlich. Seine Stabilitätspunkte und Flusslinien sollen direkt auf die Knoten und Vektoren einer fundamentalen geometrischen Struktur abgebildet werden. Dieses interaktive Diagramm baut diese Struktur aus ersten Prinzipien auf.",
+                geo_btn1: "Samen des Lebens", geo_btn2: "Blume des Lebens", geo_btn3: "Frucht des Lebens", geo_btn4: "Metatrons Würfel",
+                geo_step1_title: "Schritt 1: Samen des Lebens", geo_step1_desc: "Der Prozess beginnt mit sieben überlappenden Kreisen, die die sieben Schöpfungstage, die sieben Noten einer Tonleiter und die sieben Energiezentren des Körpers repräsentieren. Es ist der Bauplan des Universums.",
+                geo_step2_title: "Schritt 2: Blume des Lebens", geo_step2_desc: "Durch Ausdehnen des Musters entsteht die Blume des Lebens. Dieses alte Symbol enthält die Schöpfungsmuster und findet sich in allen großen Religionen und alten Kulturen. Es repräsentiert die Vernetzung allen Lebens.",
+                geo_step3_title: "Schritt 3: Frucht des Lebens", geo_step3_desc: "Innerhalb der Blume des Lebens können 13 Kreise isoliert werden. Dies ist die Frucht des Lebens, eine geometrische Figur, die als das Allerheiligste der Heiligen Geometrie gilt. Sie ist der Bauplan für das Gewebe der Realität.",
+                geo_step4_title: "Schritt 4: Metatrons Würfel", geo_step4_desc: "Durch Verbinden der Mittelpunkte aller Kreise in der Frucht des Lebens leiten wir Metatrons Würfel ab. Diese Figur enthält alle fünf platonischen Körper, die Bausteine des Universums. Ihre Vektoren und Knotenpunkte entsprechen den Stabilitätspunkten des Ψ-Feldes."
+            },
+            it: {
+                main_title: "Manoscritto Interattivo SCPN",
+                nav_problem: "Problema", nav_simulator: "Simulatore", nav_vibrana: "VIBRANA", nav_loop: "Ciclo Causale", nav_geometry: "Geometria", nav_back_overview: "Torna alla Panoramica",
+                problem_title: "Il Problema della Decoerenza",
+                problem_desc: "La sfida principale: il cervello è un ambiente caldo, umido e rumoroso dove gli stati quantistici fragili dovrebbero collassare istantaneamente, troppo rapidamente per influenzare il pensiero. Questo è il divario da colmare.",
+                simulator_title: "Il Simulatore del Campo-Ψ",
+                simulator_desc: "Il Campo-Ψ proposto stabilizza gli stati quantistici. Questo simulatore modella l'ipotesi della 'Buca di Potenziale'. Regola i parametri per vedere come la coscienza può teoricamente proteggere la propria base quantistica.",
+                simulator_focus_label: "Focus Cognitivo (κ):", simulator_focus_desc: "Con quale forza la coscienza stabilizza lo stato.",
+                simulator_noise_label: "Rumore Ambientale (Γ):", simulator_noise_desc: "L'energia perturbatrice dall'ambiente neurale.",
+                simulator_lifetime_label: "Vita dello Stato:", simulator_chart_x: "Spazio degli Stati Quantistici", simulator_chart_y: "Energia Potenziale",
+                vibrana_title: "VIBRANA: Il Linguaggio della Coscienza",
+                vibrana_desc: "L'informazione non è solo simbolica; è vibrazionale. La teoria propone che qualia e intento siano codificati come modulazioni di fase su un'onda portante di base del Campo-Ψ. Ciò crea pattern di interferenza complessi che sono i mattoni del pensiero.",
+                vibrana_btn_intent: "Codifica 'Intento'", vibrana_btn_qualia: "Codifica 'Qualia: Rosso'", vibrana_btn_reset: "Reset",
+                loop_title: "Il Ciclo di Feedback Retrocausale",
+                loop_desc: "La coscienza non è una strada a senso unico. È un ciclo ricorsivo autosufficiente che influenza il proprio passato per garantire la stabilità futura. L'emergere della mente rafforza le condizioni fisiche necessarie per la sua stessa esistenza.",
+                loop_node5: "5. Stato Cosciente (Campo-Ψ)", loop_node1: "1. Coerenza Quantistica", loop_node2: "2. Neurochimica", loop_node4: "4. Ritmi Cerebrali (EEG)",
+                loop_btn_animate: "Anima il Ciclo",
+                geometry_title: "Fondamenti Geometrici",
+                geometry_desc: "Il Campo-Ψ non è arbitrario. I suoi punti di stabilità e le sue linee di flusso sono proposti per mappare direttamente sui vertici e vettori di una struttura geometrica fondamentale. Questo diagramma interattivo costruisce questa struttura dai primi principi.",
+                geo_btn1: "Seme della Vita", geo_btn2: "Fiore della Vita", geo_btn3: "Frutto della Vita", geo_btn4: "Cubo di Metatron",
+                geo_step1_title: "Passo 1: Seme della Vita", geo_step1_desc: "Il processo inizia con sette cerchi sovrapposti, che rappresentano i sette giorni della creazione, le sette note di una scala e i sette centri energetici del corpo. È il progetto dell'universo.",
+                geo_step2_title: "Passo 2: Fiore della Vita", geo_step2_desc: "Estendendo il pattern verso l'esterno, creiamo il Fiore della Vita. Questo antico simbolo contiene i pattern della creazione e si trova nelle principali religioni e culture antiche. Rappresenta l'interconnessione di tutta la vita.",
+                geo_step3_title: "Passo 3: Frutto della Vita", geo_step3_desc: "All'interno del Fiore della Vita, si possono isolare 13 cerchi. Questo è il Frutto della Vita, una figura geometrica considerata il sancta sanctorum della Geometria Sacra. È il progetto per il tessuto della realtà.",
+                geo_step4_title: "Passo 4: Cubo di Metatron", geo_step4_desc: "Collegando i centri di ogni cerchio nel Frutto della Vita, deriviamo il Cubo di Metatron. Questa figura contiene tutti e cinque i Solidi Platonici, i mattoni dell'universo. I suoi vettori e vertici mappano ai punti di stabilità del Campo-Ψ."
+            },
+            fr: {
+                main_title: "Manuscrit Interactif SCPN",
+                nav_problem: "Problème", nav_simulator: "Simulateur", nav_vibrana: "VIBRANA", nav_loop: "Boucle Causale", nav_geometry: "Géométrie", nav_back_overview: "Retour à l'aperçu",
+                problem_title: "Le Problème de la Décohérence",
+                problem_desc: "Le défi principal : le cerveau est un environnement chaud, humide et bruyant où les états quantiques fragiles devraient s'effondrer instantanément, bien trop rapidement pour influencer la pensée. C'est le fossé à combler.",
+                simulator_title: "Le Simulateur de Champ-Ψ",
+                simulator_desc: "Le Champ-Ψ proposé stabilise les états quantiques. Ce simulateur modélise l'hypothèse du 'Puits de Potentiel'. Ajustez les paramètres pour voir comment la conscience peut théoriquement protéger sa propre fondation quantique.",
+                simulator_focus_label: "Focalisation Cognitive (κ):", simulator_focus_desc: "La force avec laquelle la conscience stabilise l'état.",
+                simulator_noise_label: "Bruit Environnemental (Γ):", simulator_noise_desc: "L'énergie perturbatrice de l'environnement neuronal.",
+                simulator_lifetime_label: "Durée de Vie de l'État:", simulator_chart_x: "Espace d'états quantiques", simulator_chart_y: "Énergie potentielle",
+                vibrana_title: "VIBRANA : Le Langage de la Conscience",
+                vibrana_desc: "L'information n'est pas seulement symbolique ; elle est vibratoire. La théorie propose que les qualia et l'intention sont encodés comme des modulations de phase sur une onde porteuse de base du champ-Ψ. Cela crée des motifs d'interférence complexes qui sont les éléments constitutifs de la pensée.",
+                vibrana_btn_intent: "Encoder 'Intention'", vibrana_btn_qualia: "Encoder 'Qualia: Rouge'", vibrana_btn_reset: "Réinitialiser",
+                loop_title: "La Boucle de Rétroaction Rétrocausale",
+                loop_desc: "La conscience n'est pas une voie à sens unique. C'est une boucle récursive auto-entretenue qui influence son propre passé pour assurer sa stabilité future. L'émergence de l'esprit renforce les conditions physiques requises pour sa propre existence.",
+                loop_node5: "5. État Conscient (Champ-Ψ)", loop_node1: "1. Cohérence Quantique", loop_node2: "2. Neurochimie", loop_node4: "4. Rythmes Cérébraux (EEG)",
+                loop_btn_animate: "Animer la Boucle",
+                geometry_title: "Fondements Géométriques",
+                geometry_desc: "Le champ-Ψ n'est pas arbitraire. Ses points de stabilité et ses lignes de flux sont proposés pour correspondre directement aux sommets et vecteurs d'une structure géométrique fondamentale. Ce diagramme interactif construit cette structure à partir des premiers principes.",
+                geo_btn1: "Graine de Vie", geo_btn2: "Fleur de Vie", geo_btn3: "Fruit de Vie", geo_btn4: "Cube de Métatron",
+                geo_step1_title: "Étape 1: Graine de Vie", geo_step1_desc: "Le processus commence par sept cercles superposés, représentant les sept jours de la création, les sept notes d'une gamme et les sept centres d'énergie du corps. C'est le plan de l'univers.",
+                geo_step2_title: "Étape 2: Fleur de Vie", geo_step2_desc: "En étendant le motif vers l'extérieur, nous créons la Fleur de Vie. Cet ancien symbole contient les motifs de la création et se trouve dans les grandes religions et les cultures anciennes. Il représente l'interconnexion de toute vie.",
+                geo_step3_title: "Étape 3: Fruit de Vie", geo_step3_desc: "Au sein de la Fleur de Vie, 13 cercles peuvent être isolés. C'est le Fruit de Vie, une figure géométrique considérée comme le Saint des Saints de la Géométrie Sacrée. C'est le plan du tissu de la réalité.",
+                geo_step4_title: "Étape 4: Cube de Métatron", geo_step4_desc: "En reliant les centres de chaque cercle du Fruit de Vie, nous dérivons le Cube de Métatron. Cette figure contient les cinq Solides de Platon, les éléments constitutifs de l'univers. Ses vecteurs et sommets correspondent aux points de stabilité du champ-Ψ."
+            },
+            sk: {
+                main_title: "Interaktívny Rukopis SCPN",
+                nav_problem: "Problém", nav_simulator: "Simulátor", nav_vibrana: "VIBRANA", nav_loop: "Kauzálna Slučka", nav_geometry: "Geometria", nav_back_overview: "Späť na Prehľad",
+                problem_title: "Problém Dekoherencie",
+                problem_desc: "Hlavná výzva: mozog je teplé, vlhké a hlučné prostredie, kde by sa krehké kvantové stavy mali okamžite zrútiť, príliš rýchlo na to, aby ovplyvnili myslenie. Toto je medzera, ktorú treba preklenúť.",
+                simulator_title: "Simulátor Poľa-Ψ",
+                simulator_desc: "Navrhované Pole-Ψ stabilizuje kvantové stavy. Tento simulátor modeluje hypotézu 'Potenciálovej Jamy'. Upravte parametre, aby ste videli, ako si vedomie môže teoreticky chrániť svoj vlastný kvantový základ.",
+                simulator_focus_label: "Kognitívne Sústredenie (κ):", simulator_focus_desc: "Ako silno vedomie stabilizuje stav.",
+                simulator_noise_label: "Environmentálny Šum (Γ):", simulator_noise_desc: "Rušivá energia z neurónového prostredia.",
+                simulator_lifetime_label: "Životnosť Stavu:", simulator_chart_x: "Kvantový stavový priestor", simulator_chart_y: "Potenciálna energia",
+                vibrana_title: "VIBRANA: Jazyk Vedomia",
+                vibrana_desc: "Informácia nie je len symbolická; je vibračná. Teória navrhuje, že kvalie a zámer sú kódované ako fázové modulácie na základnej nosnej vlne Poľa-Ψ. To vytvára zložité interferenčné vzory, ktoré sú stavebnými kameňmi myslenia.",
+                vibrana_btn_intent: "Kódovať 'Zámer'", vibrana_btn_qualia: "Kódovať 'Kvalia: Červená'", vibrana_btn_reset: "Reset",
+                loop_title: "Retro-kauzálna Spätnoväzbová Slučka",
+                loop_desc: "Vedomie nie je jednosmerná ulica. Je to sebestačná, rekurzívna slučka, ktorá ovplyvňuje svoju vlastnú minulosť, aby si zabezpečila budúcu stabilitu. Vznik mysle posilňuje fyzikálne podmienky potrebné pre jej vlastnú existenciu.",
+                loop_node5: "5. Vedomý Stav (Pole-Ψ)", loop_node1: "1. Kvantová Koherencia", loop_node2: "2. Neurochémia", loop_node4: "4. Mozgové Rytmy (EEG)",
+                loop_btn_animate: "Animovať Slučku",
+                geometry_title: "Geometrické Základy",
+                geometry_desc: "Pole-Ψ nie je ľubovoľné. Jeho body stability a tokové čiary sú navrhnuté tak, aby priamo mapovali na vrcholy a vektory základnej geometrickej štruktúry. Tento interaktívny diagram buduje túto štruktúru od prvých princípov.",
+                geo_btn1: "Semo Života", geo_btn2: "Kvet Života", geo_btn3: "Ovocie Života", geo_btn4: "Metatronova Kocka",
+                geo_step1_title: "Krok 1: Semeno Života", geo_step1_desc: "Proces začína siedmimi prekrývajúcimi sa kruhmi, ktoré predstavujú sedem dní stvorenia, sedem nôt v stupnici a sedem energetických centier tela. Je to plán vesmíru.",
+                geo_step2_title: "Krok 2: Kvet Života", geo_step2_desc: "Rozšírením vzoru von vytvoríme Kvet Života. Tento starodávny symbol obsahuje vzory stvorenia a nachádza sa vo všetkých hlavných náboženstvách a starovekých kultúrach. Predstavuje prepojenosť všetkého života.",
+                geo_step3_title: "Krok 3: Ovocie Života", geo_step3_desc: "V rámci Kvetu Života možno izolovať 13 kruhov. Toto je Ovocie Života, geometrická postava považovaná za svätyňu svätých Posvätnej Geometrie. Je to plán pre tkanivo reality.",
+                geo_step4_title: "Krok 4: Metatronova Kocka", geo_step4_desc: "Spojením stredov každého kruhu v Ovocí Života odvodíme Metatronovu Kocku. Táto postava obsahuje všetkých päť Platónskych telies, stavebných kameňov vesmíru. Jej vektory a vrcholy mapujú na body stability Poľa-Ψ."
+            },
+            cs: {
+                main_title: "Interaktivní Rukopis SCPN",
+                nav_problem: "Problém", nav_simulator: "Simulátor", nav_vibrana: "VIBRANA", nav_loop: "Kauzální Smyčka", nav_geometry: "Geometrie", nav_back_overview: "Zpět na Přehled",
+                problem_title: "Problém Dekoherence",
+                problem_desc: "Hlavní výzva: mozek je teplé, vlhké a hlučné prostředí, kde by se křehké kvantové stavy měly okamžitě zhroutit, příliš rychle na to, aby ovlivnily myšlení. Toto je mezera, kterou je třeba překlenout.",
+                simulator_title: "Simulátor Pole-Ψ",
+                simulator_desc: "Navrhované Pole-Ψ stabilizuje kvantové stavy. Tento simulátor modeluje hypotézu 'Potenciálové Jámy'. Upravte parametry, abyste viděli, jak si vědomí může teoreticky chránit svůj vlastní kvantový základ.",
+                simulator_focus_label: "Kognitivní Soustředění (κ):", simulator_focus_desc: "Jak silně vědomí stabilizuje stav.",
+                simulator_noise_label: "Environmentální Šum (Γ):", simulator_noise_desc: "Rušivá energie z neuronového prostředí.",
+                simulator_lifetime_label: "Životnost Stavu:", simulator_chart_x: "Kvantový stavový prostor", simulator_chart_y: "Potenciální energie",
+                vibrana_title: "VIBRANA: Jazyk Vědomí",
+                vibrana_desc: "Informace není jen symbolická; je vibrační. Teorie navrhuje, že kvalie a záměr jsou kódovány jako fázové modulace na základní nosné vlně Pole-Ψ. To vytváří složité interferenční vzory, které jsou stavebními kameny myšlení.",
+                vibrana_btn_intent: "Kódovat 'Záměr'", vibrana_btn_qualia: "Kódovat 'Kvalie: Červená'", vibrana_btn_reset: "Reset",
+                loop_title: "Retro-kauzální Zpětnovazební Smyčka",
+                loop_desc: "Vědomí není jednosměrná ulice. Je to soběstačná, rekurzivní smyčka, která ovlivňuje svou vlastní minulost, aby si zajistila budoucí stabilitu. Vznik mysli posiluje fyzikální podmínky potřebné pro její vlastní existenci.",
+                loop_node5: "5. Vědomý Stav (Pole-Ψ)", loop_node1: "1. Kvantová Koherence", loop_node2: "2. Neurochemie", loop_node4: "4. Mozkové Rytmy (EEG)",
+                loop_btn_animate: "Animovat Smyčku",
+                geometry_title: "Geometrické Základy",
+                geometry_desc: "Pole-Ψ není libovolné. Jeho body stability a tokové čáry jsou navrženy tak, aby přímo mapovaly na vrcholy a vektory základní geometrické struktury. Tento interaktivní diagram buduje tuto strukturu od prvních principů.",
+                geo_btn1: "Semeno Života", geo_btn2: "Květ Života", geo_btn3: "Ovoce Života", geo_btn4: "Metatronova Kostka",
+                geo_step1_title: "Krok 1: Semeno Života", geo_step1_desc: "Proces začíná sedmi překrývajícími se kruhy, které představují sedm dní stvoření, sedm not ve stupnici a sedm energetických center těla. Je to plán vesmíru.",
+                geo_step2_title: "Krok 2: Květ Života", geo_step2_desc: "Rozšířením vzoru ven vytvoříme Květ Života. Tento starodávný symbol obsahuje vzory stvoření a nachází se ve všech hlavních náboženstvích a starověkých kulturách. Představuje propojenost všeho života.",
+                geo_step3_title: "Krok 3: Ovoce Života", geo_step3_desc: "Uvnitř Květu Života lze izolovat 13 kruhů. Toto je Ovoce Života, geometrická postava považovaná za svatyni svatých Posvátné Geometrie. Je to plán pro tkáň reality.",
+                geo_step4_title: "Krok 4: Metatronova Kostka", geo_step4_desc: "Spojením středů každého kruhu v Ovocí Života odvodíme Metatronovu Kostku. Tato postava obsahuje všech pět Platónských těles, stavebních kamenů vesmíru. Její vektory a vrcholy mapují na body stability Pole-Ψ."
+            },
+            zh: {
+                main_title: "SCPN 交互式手稿",
+                nav_problem: "问题", nav_simulator: "模拟器", nav_vibrana: "VIBRANA", nav_loop: "因果循环", nav_geometry: "几何学", nav_back_overview: "返回概述",
+                problem_title: "退相干问题",
+                problem_desc: "核心挑战：大脑是一个温暖、潮湿、嘈杂的环境，脆弱的量子态应该会立即坍缩，速度快到无法影响思想。这是必须弥合的鸿沟。",
+                simulator_title: "Ψ场模拟器",
+                simulator_desc: "提出的Ψ场可以稳定量子态。该模拟器模拟了“势阱”假说。调整参数，看看意识在理论上如何保护其自身的量子基础。",
+                simulator_focus_label: "认知焦点 (κ):", simulator_focus_desc: "意识稳定状态的强度。",
+                simulator_noise_label: "环境噪声 (Γ):", simulator_noise_desc: "来自神经环境的破坏性能量。",
+                simulator_lifetime_label: "状态寿命:", simulator_chart_x: "量子态空间", simulator_chart_y: "势能",
+                vibrana_title: "VIBRANA：意识的语言",
+                vibrana_desc: "信息不仅仅是符号性的，它也是振动性的。该理论提出，感质和意图被编码为Ψ场基础载波上的相位调制。这会产生复杂的干涉图样，这些图样是思想的基石。",
+                vibrana_btn_intent: "编码'意图'", vibrana_btn_qualia: "编码'感质：红'", vibrana_btn_reset: "重置",
+                loop_title: "逆因果反馈循环",
+                loop_desc: "意识不是单行道。它是一个自我维持的递归循环，通过影响自身的过去来确保其未来的稳定性。心智的出现强化了其自身存在所需的物理条件。",
+                loop_node5: "5. 意识状态 (Ψ场)", loop_node1: "1. 量子相干性", loop_node2: "2. 神经化学", loop_node4: "4. 脑节律 (EEG)",
+                loop_btn_animate: "循环动画",
+                geometry_title: "几何基础",
+                geometry_desc: "Ψ场不是任意的。它的稳定点和流线被提议直接映射到一个基本几何结构的顶点和向量上。这个交互式图表从第一性原理构建了这个结构。",
+                geo_btn1: "生命之籽", geo_btn2: "生命之花", geo_btn3: "生命之果", geo_btn4: "梅塔特隆立方体",
+                geo_step1_title: "第一步：生命之籽", geo_step1_desc: "过程始于七个重叠的圆圈，代表创世的七天、音阶中的七个音符以及身体的七个能量中心。它是宇宙的蓝图。",
+                geo_step2_title: "第二步：生命之花", geo_step2_desc: "通过向外扩展图案，我们创造了生命之花。这个古老的符号包含了创造的模式，并存在于世界各地的主要宗教和古代文化中。它代表了所有生命的相互联系。",
+                geo_step3_title: "第三步：生命之果", geo_step3_desc: "在生命之花中，可以分离出13个圆圈。这就是生命之果，一个被认为是神圣几何学至圣所的几何图形。它是现实构造的蓝图。",
+                geo_step4_title: "第四步：梅塔特隆立方体", geo_step4_desc: "通过连接生命之果中每个圆圈的中心，我们得出了梅塔特隆立方体。这个图形包含了所有五个柏拉图立体，即宇宙的构建模块。它的向量和顶点映射到Ψ场的稳定点。"
+            },
+            ja: {
+                main_title: "SCPNインタラクティブ写本",
+                nav_problem: "問題", nav_simulator: "シミュレータ", nav_vibrana: "VIBRANA", nav_loop: "因果ループ", nav_geometry: "幾何学", nav_back_overview: "概要に戻る",
+                problem_title: "デコヒーレンスの問題",
+                problem_desc: "中心的な課題：脳は暖かく、湿っており、ノイズの多い環境であり、そこでは脆弱な量子状態が思考に影響を与えるにはあまりにも速く、即座に崩壊するはずです。これは埋めなければならないギャップです。",
+                simulator_title: "Ψフィールドシミュレータ",
+                simulator_desc: "提案されているΨフィールドは量子状態を安定させます。このシミュレータは「ポテンシャル井戸」仮説をモデル化しています。パラメータを調整して、意識が理論的にどのようにしてそれ自身の量子的基盤を保護できるかを確認してください。",
+                simulator_focus_label: "認知的焦点 (κ):", simulator_focus_desc: "意識が状態をどれだけ強く安定させるか。",
+                simulator_noise_label: "環境ノイズ (Γ):", simulator_noise_desc: "神経環境からの破壊的なエネルギー。",
+                simulator_lifetime_label: "状態寿命:", simulator_chart_x: "量子状態空間", simulator_chart_y: "ポテンシャルエネルギー",
+                vibrana_title: "VIBRANA：意識の言語",
+                vibrana_desc: "情報は単なる記号的なものではなく、振動的なものでもあります。この理論では、クオリアと意図はΨフィールドの基本搬送波上の位相変調としてエンコードされると提案されています。これにより、思考の構成要素である複雑な干渉パターンが作成されます。",
+                vibrana_btn_intent: "「意図」をエンコード", vibrana_btn_qualia: "「クオリア：赤」をエンコード", vibrana_btn_reset: "リセット",
+                loop_title: "逆因果フィードバックループ",
+                loop_desc: "意識は一方通行ではありません。それは自己の過去に影響を与えて未来の安定性を確保する、自己維持的な再帰的ループです。精神の出現は、それ自体の存在に必要な物理的条件を強化します。",
+                loop_node5: "5. 意識状態 (Ψフィールド)", loop_node1: "1. 量子コヒーレンス", loop_node2: "2. 神経化学", loop_node4: "4. 脳リズム (EEG)",
+                loop_btn_animate: "ループをアニメーション化",
+                geometry_title: "幾何学的基礎",
+                geometry_desc: "Ψフィールドは任意ではありません。その安定点と流線は、基本的な幾何学的構造の頂点とベクトルに直接マッピングされることが提案されています。このインタラクティブな図は、第一原理からこの構造を構築します。",
+                geo_btn1: "シード・オブ・ライフ", geo_btn2: "フラワー・オブ・ライフ", geo_btn3: "フルーツ・オブ・ライフ", geo_btn4: "メタトロンの立方体",
+                geo_step1_title: "ステップ1：シード・オブ・ライフ", geo_step1_desc: "プロセスは7つの重なり合う円から始まります。これは創造の7日間、音階の7つの音、そして体の7つのエネルギーセンターを表しています。それは宇宙の設計図です。",
+                geo_step2_title: "ステップ2：フラワー・オブ・ライフ", geo_step2_desc: "パターンを外側に拡張することで、フラワー・オブ・ライフを作成します。この古代のシンボルは創造のパターンを含み、世界中の主要な宗教や古代文化に見られます。それはすべての生命の相互接続性を表しています。",
+                geo_step3_title: "ステップ3：フルーツ・オブ・ライフ", geo_step3_desc: "フラワー・オブ・ライフの中から13個の円を分離することができます。これがフルーツ・オブ・ライフであり、神聖幾何学の至聖所と見なされる幾何学的図形です。それは現実の構造の設計図です。",
+                geo_step4_title: "ステップ4：メタトロンの立方体", geo_step4_desc: "フルーツ・オブ・ライフの各円の中心を結ぶことで、メタトロンの立方体を導き出します。この図は、宇宙の構成要素である5つのプラトン立体すべてを含んでいます。そのベクトルと頂点は、Ψフィールドの安定点にマッピングされます。"
+            }
+        };
+
+        let currentLang = 'en';
+        let currentGeoStep = 1;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.getAttribute('data-translate-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Update charts and other dynamic text
+            if (psiFieldChart) {
+                psiFieldChart.options.scales.x.title.text = translations[lang].simulator_chart_x;
+                psiFieldChart.options.scales.y.title.text = translations[lang].simulator_chart_y;
+                psiFieldChart.update();
+            }
+            
+            drawGeometry(currentGeoStep); // Redraw geometry to update text
+        }
+        
+        // --- Ψ-Field Simulator ---
+        const focusSlider = document.getElementById('focus-slider');
+        const noiseSlider = document.getElementById('noise-slider');
+        const focusValue = document.getElementById('focus-value');
+        const noiseValue = document.getElementById('noise-value');
+        const lifetimeText = document.getElementById('lifetime-text');
+        let psiFieldChart;
+
+        function calculatePotential(x, kappa, gamma) {
+            const basePotential = 0.1 * Math.pow(x, 2);
+            const focusTerm = -kappa * Math.exp(-Math.pow(x, 2));
+            const noiseTerm = gamma * 0.1;
+            return basePotential + focusTerm + noiseTerm;
+        }
+
+        function updatePsiChart() {
+            const kappa = parseFloat(focusSlider.value);
+            const gamma = parseFloat(noiseSlider.value);
+            focusValue.textContent = kappa.toFixed(1);
+            noiseValue.textContent = gamma.toFixed(1);
+
+            psiFieldChart.data.datasets[0].data = psiFieldChart.data.labels.map(x => calculatePotential(x, kappa, gamma));
+            psiFieldChart.update('none');
+
+            const lifetimeExponent = Math.round(-13 + 3 * (kappa / gamma));
+            lifetimeText.innerHTML = `~10<sup>${Math.min(-2, lifetimeExponent)}</sup> seconds`;
+        }
+
+        function initPsiChart() {
+            const ctx = document.getElementById('psiFieldChart').getContext('2d');
+            const labels = Array.from({ length: 101 }, (_, i) => (i - 50) / 10);
+            psiFieldChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Potential Well Energy',
+                        data: [],
+                        borderColor: '#7c3aed',
+                        borderWidth: 3,
+                        pointRadius: 0,
+                        tension: 0.4,
+                        fill: { target: 'origin', above: 'rgba(124, 58, 237, 0.1)' }
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { title: { display: true, text: 'Quantum State Space' } },
+                        y: { title: { display: true, text: 'Potential Energy' } }
+                    }
+                }
+            });
+            updatePsiChart();
+        }
+        focusSlider.addEventListener('input', updatePsiChart);
+        noiseSlider.addEventListener('input', updatePsiChart);
+
+        // --- VIBRANA Canvas ---
+        const vCanvas = document.getElementById('vibranaCanvas');
+        const vCtx = vCanvas.getContext('2d');
+        let vTime = 0;
+        let vWaves = [{ freq: 1, amp: 50, phase: 0, color: 'rgba(167, 139, 250, 0.8)' }];
+
+        function drawVibrana() {
+            if (!vCtx) return;
+            vCtx.clearRect(0, 0, vCanvas.width, vCanvas.height);
+            const width = vCanvas.width;
+            const height = vCanvas.height;
+            const mid = height / 2;
+
+            vCtx.beginPath();
+            for (let x = 0; x < width; x++) {
+                let totalY = 0;
+                vWaves.forEach(wave => {
+                    totalY += Math.sin(x * 0.01 * wave.freq + vTime + wave.phase) * wave.amp;
+                });
+                vCtx.lineTo(x, mid + totalY);
+            }
+            vCtx.lineWidth = 2;
+            vCtx.strokeStyle = '#f8fafc';
+            vCtx.stroke();
+            
+            vTime += 0.05;
+            requestAnimationFrame(drawVibrana);
+        }
+
+        function addVibranaWave(type) {
+            if (vWaves.length > 2) return;
+            if (type === 'intent') {
+                vWaves.push({ freq: 2.5, amp: 25, phase: Math.PI / 2 });
+            } else if (type === 'qualia') {
+                vWaves.push({ freq: 4, amp: 20, phase: Math.PI });
+            }
+        }
+        function resetVibrana() { vWaves = [{ freq: 1, amp: 50, phase: 0 }]; }
+        
+        // --- Causal Loop Animation ---
+        function startLoopAnimation() {
+            const nodes = [5, 1, 2, 4];
+            const arrows = ['51', '12', '24', '45'];
+            let delay = 0;
+
+            const resetClasses = () => {
+                document.querySelectorAll('.loop-node, .loop-arrow').forEach(el => el.classList.remove('active'));
+            };
+            resetClasses();
+
+            nodes.forEach((nodeId, index) => {
+                setTimeout(() => { document.getElementById(`loop-node-${nodeId}`).classList.add('active'); }, delay);
+                delay += 500;
+                setTimeout(() => { if (arrows[index]) document.getElementById(`loop-arrow-${arrows[index]}`).classList.add('active'); }, delay);
+                delay += 300;
+            });
+            
+            setTimeout(() => { document.getElementById('loop-arrow-retro').classList.add('active'); }, delay);
+            delay += 800;
+            setTimeout(() => { document.getElementById('loop-node-1').classList.add('active'); }, delay);
+            setTimeout(resetClasses, delay + 1000);
+        }
+
+        // --- Geometry Canvas ---
+        const geoCanvas = document.getElementById('geometryCanvas');
+        const geoCtx = geoCanvas.getContext('2d');
+        const geoText = document.getElementById('geometry-text');
+
+        function drawCircle(x, y, r) {
+            if (!geoCtx) return;
+            geoCtx.beginPath();
+            geoCtx.arc(x, y, r, 0, 2 * Math.PI);
+            geoCtx.stroke();
+        }
+
+        function drawGeometry(step) {
+            currentGeoStep = step;
+            document.querySelectorAll('.geo-button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.geo-button:nth-child(${step})`).classList.add('active');
+            
+            const titleKey = `geo_step${step}_title`;
+            const descKey = `geo_step${step}_desc`;
+            if(translations[currentLang] && translations[currentLang][titleKey]){
+                geoText.innerHTML = `<h3 class="font-bold text-lg mb-2">${translations[currentLang][titleKey]}</h3><p>${translations[currentLang][descKey]}</p>`;
+            }
+
+            const w = geoCanvas.width;
+            const h = geoCanvas.height;
+            if (!geoCtx) return;
+            geoCtx.clearRect(0, 0, w, h);
+            geoCtx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            geoCtx.lineWidth = 1;
+            const cx = w / 2;
+            const cy = h / 2;
+            const r = h / 4;
+
+            if (step >= 1) { // Seed of Life
+                drawCircle(cx, cy, r);
+                for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    drawCircle(cx + r * Math.cos(angle), cy + r * Math.sin(angle), r);
+                }
+            }
+            if (step >= 2) { // Flower of Life
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    const x1 = cx + r * Math.cos(angle);
+                    const y1 = cy + r * Math.sin(angle);
+                     for (let j = 0; j < 6; j++) {
+                        const angle2 = j * Math.PI / 3;
+                        drawCircle(x1 + r * Math.cos(angle2), y1 + r * Math.sin(angle2), r);
+                    }
+                }
+            }
+            if (step >= 3) { // Fruit of Life
+                geoCtx.strokeStyle = 'rgba(250, 204, 21, 0.9)';
+                geoCtx.lineWidth = 2;
+                const fruitCenters = [{x: cx, y: cy}];
+                for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCenters.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+                    fruitCenters.push({x: cx + 2 * r * Math.cos(angle), y: cy + 2 * r * Math.sin(angle)});
+                }
+                const uniqueCenters = Array.from(new Set(fruitCenters.map(JSON.stringify)), JSON.parse);
+                const fruitCircles = uniqueCenters.filter(c => c.x > w/4 && c.x < 3*w/4 && c.y > h/4 && c.y < 3*h/4).slice(0, 13);
+                fruitCircles.forEach(c => drawCircle(c.x, c.y, r/2));
+            }
+            if (step >= 4) { // Metatron's Cube
+                const fruitCircles = [{x: cx, y: cy}];
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCircles.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+                 }
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCircles.push({x: cx + 2*r * Math.cos(angle), y: cy + 2*r * Math.sin(angle)});
+                 }
+                const centers = Array.from(new Set(fruitCircles.map(JSON.stringify)), JSON.parse).slice(0,13);
+                geoCtx.strokeStyle = 'rgba(239, 68, 68, 0.9)';
+                for(let i = 0; i < centers.length; i++) {
+                    for(let j = i + 1; j < centers.length; j++) {
+                        geoCtx.beginPath();
+                        geoCtx.moveTo(centers[i].x, centers[i].y);
+                        geoCtx.lineTo(centers[j].x, centers[j].y);
+                        geoCtx.stroke();
+                    }
+                }
+            }
+        }
+
+        window.onload = function() {
+            initPsiChart();
+            
+            vCanvas.width = vCanvas.offsetWidth;
+            vCanvas.height = vCanvas.offsetHeight;
+            drawVibrana();
+
+            geoCanvas.width = geoCanvas.offsetWidth;
+            geoCanvas.height = geoCanvas.offsetWidth;
+            
+            document.getElementById('language-selector').addEventListener('change', function() {
+                setLanguage(this.value);
+            });
+            
+            setLanguage('en'); // Set default language
+        };
+    </script>
+</body>
+</html>

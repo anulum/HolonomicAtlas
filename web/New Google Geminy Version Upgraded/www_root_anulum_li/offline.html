@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Offline | The Anulum Framework</title>
+    <meta name="description" content="You are currently offline. Please check your network connection to continue exploring the Anulum Framework.">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <main class="min-h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-md w-full">
+            <div class="bg-white/50 p-8 rounded-lg shadow-lg border border-border-color">
+                <svg class="mx-auto h-16 w-16 text-accent-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                </svg>
+                <h1 class="text-3xl font-bold text-text-primary mt-6 mb-2">You Are Currently Offline</h1>
+                <p class="text-text-secondary mb-6">
+                    It seems your network connection has been lost. This page cannot be displayed until you are back online.
+                </p>
+                <button 
+                    onclick="window.location.reload()" 
+                    class="inline-block bg-accent-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-primary">
+                    Retry Connection
+                </button>
+            </div>
+            <p class="mt-8 text-sm text-text-secondary">
+                <a href="/index.html" class="hover:underline text-accent-primary">Return to Homepage</a>
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>

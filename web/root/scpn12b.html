@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 12: Gaian Consciousness Integration Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 12 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Planetary Orchestra" for biospheric resonance. 3. "The Tidal Breath" for Schumann Resonance entrainment. 4. "The Whispering Forest" for the mycelial network. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Planetary Orchestra: Goal: Visualize the harmonization of different species' consciousness. Method: Canvas animation. Interaction: A slider for "Ecological Coherence" synchronizes the chaotic rhythms of different colored "instruments" (species) into a unified symphony. Justification: A powerful metaphor for unity in diversity within the Gaian mind.
+        - The Tidal Breath: Goal: Show how Earth's EM field synchronizes life. Method: Canvas animation. Interaction: A button activates the Earth's "breath" (Schumann Resonance), which organizes a chaotic swarm of particles (biosphere) into a synchronized, tidal flow. Justification: A more organic and evocative metaphor for planetary entrainment.
+        - The Whispering Forest: Goal: Illustrate the "wood-wide web" as a living network. Method: Interactive Canvas. Interaction: Clicking on a tree sends a "whisper" of light through the mycelial network, activating other trees in a cascading wave. Justification: Creates a more atmospheric and communicative feel for ecosystem-level consciousness.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript in a clear, digestible format.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 12: Gaian Consciousness</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#orchestra" class="nav-link font-semibold text-stone-600">Orchestra</a>
+                    <a href="#breath" class="nav-link font-semibold text-stone-600">Breath</a>
+                    <a href="#forest" class="nav-link font-semibold text-stone-600">Forest</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Mind of Gaia</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 12 represents the integration of all species-level consciousness fields into a single, unified Gaian mind. This is the collective consciousness of the entire biosphere, a trans-species ecological layer where Earth's living organisms form a self-regulating system with its own emergent awareness. Here, the human noosphere (Layer 11) interfaces with the consciousness of forests, oceans, and all life, nested within a planetary-scale feedback network.
+            </p>
+        </section>
+
+        <section id="orchestra" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Planetary Orchestra</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The consciousness of each species is a unique instrument playing its own tune. In a fragmented biosphere, this creates a cacophony. As ecological coherence increases, the different instruments begin to harmonize, synchronizing their rhythms to create a complex, unified planetary symphony.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="orchestraCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="coherence-slider" class="font-semibold text-stone-700">Ecological Coherence: <span id="coherence-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Act as the conductor, increasing the coherence to bring the different species into harmony.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coherence-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="breath" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Tidal Breath</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The Schumann Resonance is the Earth's "tidal breath"—a slow, rhythmic pulse of electromagnetic energy. The rhythms of the biosphere, initially chaotic, are gently entrained by this global pulse, creating a synchronized flow of life that breathes in unison with the planet.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="breathCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="breath-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Activate Tidal Breath</button>
+                    <p class="text-sm text-stone-500 mt-4">Observe how the planet's breath organizes the chaotic swarm of biospheric rhythms into a coherent, tidal flow.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="forest" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Whispering Forest</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Ecosystems like forests possess their own neural-like networks. The "wood-wide web" of mycelial fungi allows the forest to act as a single, coordinated intelligence. Clicking on a tree sends a "whisper" of information through the network, illuminating the hidden consciousness of the forest.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4 relative">
+                    <canvas id="forestCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <p class="font-semibold">Click on a tree to send a whisper through the forest network.</p>
+                     <p class="text-sm text-stone-500 mt-2">This demonstrates how stress cues or resources can be shared across the ecosystem via the mycelial web.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Gaian Consciousness Integration Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Ecological Network Topology</h4>
+                            <p class="text-stone-600 text-sm">The Gaian mind is structured as a multi-species network. The geometry of this network—defined by food webs, symbiotic relationships, and mycelial connections—determines how information and conscious resonance flow through the biosphere.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Fractal Biospheric Systems</h4>
+                            <p class="text-stone-600 text-sm">From the branching of trees and rivers to the structure of coastlines, the biosphere exhibits fractal geometry. This self-similarity across scales allows for efficient distribution of energy and information, and facilitates phase-locking between micro and macro systems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Coupled Field Equations</h4>
+                            <p class="text-stone-600">The interaction between a species-field ($\Psi_s$) and the Gaian field ($\Psi_9$) is modeled with coupled differential equations, where each field acts as a source term for the other, ensuring a dynamic, bidirectional feedback loop.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Multi-Species Kuramoto Model</h4>
+                            <p class="text-stone-600">The synchronization of the entire biosphere is modeled as a network of coupled oscillators, where each node is an entire species. The model predicts how global coherence can emerge from inter-species resonance and entrainment to planetary rhythms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Quantum Ecological Entanglement</h4>
+                            <p class="text-stone-600 text-sm">Mechanisms like the avian compass (cryptochrome) demonstrate a direct quantum link between an organism's senses and the Earth's geomagnetic field. This suggests that quantum entanglement and coherence can operate on an ecological scale.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Biofield Coupling</h4>
+                            <p class="text-stone-600 text-sm">All organisms generate bio-electromagnetic fields. The collective, coherent biofield of an entire ecosystem or species can become strong enough to couple with planetary fields (like the Schumann resonance), creating a unified, resonant system.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Planetary Orchestra ---
+        const orchestraCanvas = document.getElementById('orchestraCanvas');
+        const orchestraCtx = orchestraCanvas.getContext('2d');
+        const coherenceSlider = document.getElementById('coherence-slider');
+        const coherenceValue = document.getElementById('coherence-value');
+        let instruments = [];
+        let orchestraTime = 0;
+
+        function initOrchestra() {
+            const w = orchestraCanvas.width;
+            const h = orchestraCanvas.height;
+            const colors = ["#facc15", "#4ade80", "#60a5fa", "#f472b6", "#a78bfa"];
+            for(let i=0; i<5; i++) {
+                instruments.push({
+                    color: colors[i],
+                    phase: Math.random() * Math.PI * 2,
+                    freq: 2 + Math.random() * 3,
+                    amp: h * 0.1,
+                    history: []
+                });
+            }
+        }
+
+        function animateOrchestra() {
+            const w = orchestraCanvas.width;
+            const h = orchestraCanvas.height;
+            orchestraCtx.clearRect(0, 0, w, h);
+            orchestraTime += 0.02;
+            
+            const coherence = parseInt(coherenceSlider.value) / 100;
+            coherenceValue.textContent = `${Math.round(coherence*100)}%`;
+            const targetFreq = 3;
+
+            instruments.forEach(inst => {
+                const currentFreq = inst.freq * (1 - coherence) + targetFreq * coherence;
+                const y = h/2 + Math.sin(orchestraTime * currentFreq + inst.phase) * inst.amp;
+                
+                inst.history.push(y);
+                if(inst.history.length > w) inst.history.shift();
+
+                orchestraCtx.beginPath();
+                orchestraCtx.strokeStyle = inst.color;
+                orchestraCtx.lineWidth = 2;
+                for(let x=0; x < inst.history.length; x++) {
+                    orchestraCtx.lineTo(x, inst.history[x]);
+                }
+                orchestraCtx.stroke();
+            });
+
+            requestAnimationFrame(animateOrchestra);
+        }
+
+        // --- The Tidal Breath ---
+        const breathCanvas = document.getElementById('breathCanvas');
+        const breathCtx = breathCanvas.getContext('2d');
+        const breathBtn = document.getElementById('breath-btn');
+        let breathTime = 0;
+        let breathParticles = [];
+        let breathActive = false;
+
+        function initBreath() {
+            const w = breathCanvas.width;
+            const h = breathCanvas.height;
+            for(let i=0; i<300; i++) {
+                breathParticles.push({
+                    angle: Math.random() * Math.PI * 2,
+                    radius: Math.random() * w * 0.3 + w * 0.15,
+                    speed: (Math.random() - 0.5) * 0.01
+                });
+            }
+        }
+
+        function animateBreath() {
+            const w = breathCanvas.width;
+            const h = breathCanvas.height;
+            breathCtx.clearRect(0,0,w,h);
+            breathTime += 0.01;
+
+            const pulse = (Math.sin(breathTime) + 1) / 2;
+            
+            // Draw Planet
+            const planetRadius = w * 0.1;
+            if(breathActive) {
+                const gradient = breathCtx.createRadialGradient(w/2, h/2, 0, w/2, h/2, planetRadius + pulse * 20);
+                gradient.addColorStop(0, `rgba(217, 119, 6, 0.3)`);
+                gradient.addColorStop(1, `rgba(217, 119, 6, 0)`);
+                breathCtx.fillStyle = gradient;
+                breathCtx.beginPath();
+                breathCtx.arc(w/2, h/2, w, 0, Math.PI * 2);
+                breathCtx.fill();
+            }
+            breathCtx.fillStyle = '#44403c';
+            breathCtx.beginPath();
+            breathCtx.arc(w/2, h/2, planetRadius, 0, Math.PI * 2);
+            breathCtx.fill();
+
+            // Draw Particles
+            breathParticles.forEach(p => {
+                if(breathActive) {
+                    const targetRadius = w * 0.3 + Math.sin(p.angle * 2 + breathTime) * 30;
+                    p.radius += (targetRadius - p.radius) * 0.05;
+                } else {
+                    p.angle += p.speed;
+                }
+                
+                const x = w/2 + Math.cos(p.angle) * p.radius;
+                const y = h/2 + Math.sin(p.angle) * p.radius;
+                
+                breathCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                breathCtx.beginPath();
+                breathCtx.arc(x, y, 1.5, 0, Math.PI * 2);
+                breathCtx.fill();
+            });
+
+            requestAnimationFrame(animateBreath);
+        }
+        breathBtn.addEventListener('click', () => {
+            breathActive = !breathActive;
+            breathBtn.textContent = breathActive ? 'Release from Breath' : 'Activate Tidal Breath';
+        });
+
+        // --- The Whispering Forest ---
+        const forestCanvas = document.getElementById('forestCanvas');
+        const forestCtx = forestCanvas.getContext('2d');
+        let treeNodes = [];
+        let whispers = [];
+
+        function initForest() {
+            const w = forestCanvas.width;
+            const h = forestCanvas.height;
+            for(let i=0; i<20; i++) {
+                treeNodes.push({
+                    x: Math.random() * (w - 60) + 30,
+                    y: Math.random() * (h - 60) + 30,
+                    radius: Math.random() * 5 + 5,
+                    connections: [],
+                    activation: 0
+                });
+            }
+            treeNodes.forEach(n1 => {
+                treeNodes.forEach(n2 => {
+                    if (n1 !== n2) {
+                        const dist = Math.sqrt(Math.pow(n1.x - n2.x, 2) + Math.pow(n1.y - n2.y, 2));
+                        if (dist < 120 && Math.random() > 0.6) {
+                            n1.connections.push(n2);
+                        }
+                    }
+                });
+            });
+        }
+
+        function animateForest() {
+            const w = forestCanvas.width;
+            const h = forestCanvas.height;
+            forestCtx.clearRect(0,0,w,h);
+
+            forestCtx.strokeStyle = 'rgba(120, 113, 108, 0.1)';
+            forestCtx.lineWidth = 1;
+            treeNodes.forEach(n => {
+                n.connections.forEach(c => {
+                    forestCtx.beginPath();
+                    forestCtx.moveTo(n.x, n.y);
+                    forestCtx.lineTo(c.x, c.y);
+                    forestCtx.stroke();
+                });
+            });
+
+            treeNodes.forEach(n => {
+                if (n.activation > 0) n.activation -= 0.01;
+                const color = `rgba(74, 222, 128, ${0.3 + n.activation * 0.7})`;
+                forestCtx.fillStyle = color;
+                forestCtx.beginPath();
+                forestCtx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                forestCtx.fill();
+            });
+
+            whispers.forEach((s, i) => {
+                const dx = s.target.x - s.x;
+                const dy = s.target.y - s.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 2) {
+                    s.target.activation = 1.0;
+                    s.target.connections.forEach(c => {
+                        if (c !== s.origin) {
+                           whispers.push({ x: s.target.x, y: s.target.y, target: c, origin: s.target });
+                        }
+                    });
+                    whispers.splice(i, 1);
+                } else {
+                    s.x += dx / dist * 1.5;
+                    s.y += dy / dist * 1.5;
+                    forestCtx.fillStyle = '#facc15';
+                    forestCtx.beginPath();
+                    forestCtx.arc(s.x, s.y, 3, 0, Math.PI * 2);
+                    forestCtx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateForest);
+        }
+        forestCanvas.addEventListener('click', (e) => {
+            const rect = forestCanvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            treeNodes.forEach(n => {
+                const dist = Math.sqrt(Math.pow(n.x - mouseX, 2) + Math.pow(n.y - mouseY, 2));
+                if (dist < n.radius) {
+                    n.activation = 1.0;
+                    n.connections.forEach(c => {
+                        whispers.push({ x: n.x, y: n.y, target: c, origin: n });
+                    });
+                }
+            });
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            orchestraCanvas.width = orchestraCanvas.offsetWidth;
+            orchestraCanvas.height = orchestraCanvas.offsetHeight;
+            initOrchestra();
+            animateOrchestra();
+
+            breathCanvas.width = breathCanvas.offsetWidth;
+            breathCanvas.height = breathCanvas.offsetHeight;
+            initBreath();
+            animateBreath();
+            
+            forestCanvas.width = forestCanvas.offsetWidth;
+            forestCanvas.height = forestCanvas.offsetHeight;
+            initForest();
+            animateForest();
+        };
+    </script>
+</body>
+</html>

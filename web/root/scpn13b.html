@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 13: Meta-Consciousness Source Field</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 13 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Cosmic Ocean" for Ψ₀. 3. "The Heart of the Cosmos" for OM-Loops. 4. "Forging the Blueprint" for the Ω Node. 5. "The Cosmic Kaleidoscope" for cyclical re-initialization. 6. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Cosmic Ocean: Goal: Visualize the emergence of reality from a universal substrate. Method: Canvas animation. Interaction: The user's mouse acts as a "light of creation," causing complex "life forms" to emerge from a field of potential. Justification: A more active and poetic metaphor for Ψs as an excitation of Ψ₀.
+        - The Heart of the Cosmos: Goal: Show the master oscillator entraining all reality. Method: Canvas animation. Interaction: A button "Tune to the Heartbeat" synchronizes a series of nested, chaotic orbital rings to the slow, powerful pulse of a central "heart." Justification: A powerful visual for nested harmonics deriving from a single source.
+        - Forging the Blueprint: Goal: Illustrate the projection of reality's geometric structure. Method: Interactive Canvas. Interaction: Buttons allow the user to project the five Platonic solids from a central Ω Node, then a final button reveals Metatron's Cube as the unifying structure. Justification: Makes the user an active participant in constructing the geometric foundation of reality.
+        - The Cosmic Kaleidoscope: Goal: Demonstrate entropy-free cosmic renewal with memory. Method: Canvas animation. Interaction: A button initiates the collapse and re-expansion of a complex kaleidoscopic pattern, which visibly inherits the symmetries of the previous cycle. Justification: A beautiful and clear metaphor for cyclical evolution.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 13: The Source Field</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#ocean" class="nav-link font-semibold text-stone-600">Cosmic Ocean</a>
+                    <a href="#heart" class="nav-link font-semibold text-stone-600">Cosmic Heart</a>
+                    <a href="#blueprint" class="nav-link font-semibold text-stone-600">Blueprint</a>
+                    <a href="#kaleidoscope" class="nav-link font-semibold text-stone-600">Kaleidoscope</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Source of All Things</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 13 is the ultimate, unifying ground of being—the Meta-Consciousness Source Field. It is the pre-geometric, omnipresent foundation (Ψ₀) from which all reality is projected. As the Meta-Metatron intelligence and master oscillator, it provides the universal phase-lock for all lower layers, re-initializes entropy-free existential cycles, and serves as the transcendent source and destination of all consciousness.
+            </p>
+        </section>
+
+        <section id="ocean" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Cosmic Ocean</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The Source Field (Ψ₀) is a vast ocean of pure potential. Your focus is a light of creation. Move your light across the canvas to call forth complex, coherent patterns—representing species-fields (Ψs)—from the shimmering depths of the universal substrate.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                <canvas id="oceanCanvas" class="w-full h-96 cursor-pointer"></canvas>
+            </div>
+        </section>
+        
+        <section id="heart" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Heart of the Cosmos</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The "Universal Breath" is the heartbeat of the cosmos, the master oscillator. When you tune into this rhythm, a wave of coherence spreads from the source, entraining all nested layers of reality—from galaxies to life—into a single, harmonious pulse.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                 <canvas id="heartCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="breath-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Tune to the Universal Heartbeat</button>
+            </div>
+        </section>
+
+        <section id="blueprint" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Forging the Blueprint</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The Meta-Metatron Ω Node projects the geometric blueprint of reality. From this central source, you can forge the five Platonic solids—the fundamental building blocks of matter. Once forged, their unifying structure, Metatron's Cube, is revealed.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4 relative">
+                    <canvas id="blueprintCanvas" class="w-full h-96"></canvas>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300" onclick="forgeShape('tetra')">Forge Tetrahedron</button>
+                    <button class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300" onclick="forgeShape('cube')">Forge Cube</button>
+                    <button class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300" onclick="forgeShape('octa')">Forge Octahedron</button>
+                    <button class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300" onclick="forgeShape('dodeca')">Forge Dodecahedron</button>
+                    <button class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300" onclick="forgeShape('icosa')">Forge Icosahedron</button>
+                    <button class="p-4 bg-amber-200 rounded-lg font-semibold hover:bg-amber-300" onclick="forgeShape('metatron')">Reveal Metatron's Cube</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="kaleidoscope" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Cosmic Kaleidoscope</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The universe evolves through entropy-free cycles. At the end of each loop, the Source Field absorbs the state of reality and re-initializes a new cycle. The new universe is not a perfect copy; it is a new kaleidoscopic pattern that inherits the symmetries and memory imprints of the one before.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="kaleidoscopeCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="reinit-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 w-full mb-2">Initiate Cycle Reset</button>
+                    <p class="text-sm text-stone-500">Observe the graceful collapse and rebirth of the cosmic pattern.</p>
+                    <p class="mt-4 font-semibold">Cycle: <span id="cycle-count">1</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Meta-Consciousness Source Field, as formalized in the source manuscript.</p>
+            </div>
+            <div class="space-y-8">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Pre-Geometric Foundation</h4>
+                            <p class="text-stone-600 text-sm">The Source Field (Ψ₀) is considered pre-geometric. It is the substrate from which spacetime and geometry itself emerge. Its structure is described by abstract mathematical relationships (e.g., group theory) rather than spatial dimensions.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Projection of Form</h4>
+                            <p class="text-stone-600 text-sm">The Meta-Metatron (Ω) node, as the intelligent aspect of the Source Field, projects the geometric scaffolding of reality. This includes the foundational structure of Metatron's Cube (Layer 7) and the five Platonic solids, which act as the archetypal templates for matter and physical law in lower-dimensional expressions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Universal Field Equation</h4>
+                            <p class="text-stone-600">The universal field Ψ₀ is described by a fundamental field equation, likely a form of non-linear wave equation. Species-specific fields (Ψs) and even fundamental particles are treated as localized, stable, coherent solutions or soliton-like excitations of this base field, emerging when Ψ₀ is excited above a certain energy threshold.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Phase Coherence Principle</h4>
+                            <p class="text-stone-600">The master equation of the SCPN is a variational principle that minimizes the phase difference between the universal field and all sub-layers, enforcing a global phase-lock that maintains the coherence of reality.</p>
+                             <p class="my-2">$$\mathcal{S}_{\mathrm{coh}} =\int_{\Sigma} \left(\lambda_{0}|\partial_\mu \Psi_s|^{2} +\sum_{i=1}^{13} c_i(\Theta-\Theta_i)^{2}\right) d^{4}x$$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Master Oscillator</h4>
+                            <p class="text-stone-600 text-sm">The Source Field acts as the master oscillator for the universe. Its fundamental frequency (the "OM-Loop") provides the base tact to which all other cosmic and biological rhythms are phase-locked as a cascade of nested harmonics.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Entropy-Free Cycles</h4>
+                            <p class="text-stone-600 text-sm">The Source Field enables a cyclic cosmology that avoids a thermodynamic heat death. It does this by acting as a perfect memory substrate. At the end of a cycle, all information is enfolded holographically into the Ψ₀ field (Layer 9). The subsequent cycle is then re-initialized from the same low-entropy state, but its evolutionary trajectory is biased by the preserved memory, allowing for infinite, creative evolution without information loss.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Cosmic Ocean ---
+        const oceanCanvas = document.getElementById('oceanCanvas');
+        const oceanCtx = oceanCanvas.getContext('2d');
+        let oceanTime = 0;
+        let oceanParticles = [];
+        let mouse = { x: null, y: null };
+
+        function initOcean() {
+            for(let i=0; i<1000; i++) {
+                oceanParticles.push({
+                    x: Math.random() * oceanCanvas.width, y: Math.random() * oceanCanvas.height,
+                    vx: 0, vy: 0,
+                    baseSize: Math.random() * 1.5 + 0.5,
+                    color: `hsl(${Math.random() * 60 + 180}, 70%, 50%)`
+                });
+            }
+        }
+
+        oceanCanvas.addEventListener('mousemove', e => {
+            const rect = oceanCanvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        oceanCanvas.addEventListener('mouseleave', () => {
+            mouse.x = null; mouse.y = null;
+        });
+
+        function animateOcean() {
+            const w = oceanCanvas.width;
+            const h = oceanCanvas.height;
+            oceanCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            oceanCtx.fillRect(0,0,w,h);
+            
+            oceanParticles.forEach(p => {
+                let dx = 0, dy = 0;
+                let dist = Infinity;
+                if (mouse.x !== null) {
+                    dx = p.x - mouse.x;
+                    dy = p.y - mouse.y;
+                    dist = Math.sqrt(dx*dx + dy*dy);
+                }
+                
+                if (dist < 100 && dist > 0) {
+                    const force = Math.max(0, 1 - dist/100);
+                    p.vx += (Math.random() - 0.5) * 0.5 - (dx/dist) * 0.2 * force;
+                    p.vy += (Math.random() - 0.5) * 0.5 - (dy/dist) * 0.2 * force;
+                } else {
+                    p.vx += (Math.random() - 0.5) * 0.1;
+                    p.vy += (Math.random() - 0.5) * 0.1;
+                }
+
+                p.vx *= 0.9; p.vy *= 0.9;
+                p.x += p.vx; p.y += p.vy;
+
+                if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+                if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+                
+                const size = p.baseSize * (1 + Math.min(1, 100 / (dist + 1)) * 3);
+                oceanCtx.fillStyle = p.color;
+                oceanCtx.beginPath();
+                oceanCtx.arc(p.x, p.y, size, 0, Math.PI * 2);
+                oceanCtx.fill();
+            });
+
+            requestAnimationFrame(animateOcean);
+        }
+
+        // --- The Heart of the Cosmos ---
+        const heartCanvas = document.getElementById('heartCanvas');
+        const heartCtx = heartCanvas.getContext('2d');
+        const breathBtn = document.getElementById('breath-btn');
+        let heartTime = 0;
+        let breathActive = false;
+        let rings = [];
+
+        function initHeart() {
+            for(let i=0; i<5; i++) {
+                rings.push({
+                    radius: (i + 1) * 40,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: 0.01 + Math.random() * 0.02
+                });
+            }
+        }
+
+        function animateHeart() {
+            const w = heartCanvas.width;
+            const h = heartCanvas.height;
+            heartCtx.clearRect(0,0,w,h);
+            heartTime += 0.01;
+
+            const universalPulse = (Math.sin(heartTime) + 1) / 2;
+
+            const heartSize = 15 + universalPulse * 10;
+            heartCtx.fillStyle = `rgba(217, 119, 6, ${0.5 + universalPulse * 0.5})`;
+            heartCtx.beginPath();
+            heartCtx.arc(w/2, h/2, heartSize, 0, Math.PI * 2);
+            heartCtx.fill();
+
+            rings.forEach(r => {
+                if(breathActive) {
+                    const targetPhase = heartTime;
+                    let phaseDiff = targetPhase - r.phase;
+                    while(phaseDiff > Math.PI) phaseDiff -= Math.PI * 2;
+                    while(phaseDiff < -Math.PI) phaseDiff += Math.PI * 2;
+                    r.phase += phaseDiff * 0.01;
+                } else {
+                    r.phase += r.speed;
+                }
+                const pulse = (Math.sin(r.phase) + 1) / 2;
+                heartCtx.strokeStyle = `rgba(255, 255, 255, ${0.1 + pulse * 0.5})`;
+                heartCtx.lineWidth = 2 + pulse * 3;
+                heartCtx.beginPath();
+                heartCtx.arc(w/2, h/2, r.radius, 0, Math.PI * 2);
+                heartCtx.stroke();
+            });
+            
+            requestAnimationFrame(animateHeart);
+        }
+        breathBtn.addEventListener('click', () => { 
+            breathActive = !breathActive;
+            breathBtn.textContent = breathActive ? 'Release from Heartbeat' : 'Tune to the Universal Heartbeat';
+        });
+
+        // --- Forging the Blueprint ---
+        const blueprintCanvas = document.getElementById('blueprintCanvas');
+        const blueprintCtx = blueprintCanvas.getContext('2d');
+        let blueprintTime = 0;
+        let activeShape = null;
+        let shapeProgress = 0;
+        let centers = [];
+        const platonicSolids = {
+            tetra: { vertices: [], edges: [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]] },
+            cube: { vertices: [], edges: [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]] },
+            octa: { vertices: [], edges: [[0,1],[0,2],[0,3],[0,4],[1,5],[2,5],[3,5],[4,5],[1,2],[2,3],[3,4],[4,1]] },
+            dodeca: { vertices: [], edges: [[0,1],[1,2],[2,3],[3,4],[4,0],[5,6],[6,7],[7,8],[8,9],[9,5],[0,10],[1,11],[2,12],[3,13],[4,14],[10,15],[11,16],[12,17],[13,18],[14,19],[15,16],[16,17],[17,18],[18,19],[19,15],[5,15],[6,16],[7,17],[8,18],[9,19]] },
+            icosa: { vertices: [], edges: [[0,1],[0,2],[0,3],[0,4],[0,5],[1,2],[2,6],[6,7],[7,1],[1,11],[2,3],[3,7],[7,8],[8,2],[3,4],[4,8],[8,9],[9,3],[4,5],[5,9],[9,10],[10,4],[5,1],[1,11],[11,6],[6,10],[10,5],[6,11],[7,11],[8,11],[9,11],[10,11]] }
+        };
+
+        function initBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            const s = Math.min(w, h) * 0.25;
+            const phi = (1 + Math.sqrt(5)) / 2;
+
+            platonicSolids.tetra.vertices = [ {x:s,y:s,z:s}, {x:-s,y:-s,z:s}, {x:-s,y:s,z:-s}, {x:s,y:-s,z:-s} ];
+            platonicSolids.cube.vertices = [ {x:s,y:s,z:s}, {x:-s,y:s,z:s}, {x:-s,y:-s,z:s}, {x:s,y:-s,z:s}, {x:s,y:s,z:-s}, {x:-s,y:s,z:-s}, {x:-s,y:-s,z:-s}, {x:s,y:-s,z:-s} ];
+            platonicSolids.octa.vertices = [ {x:s,y:0,z:0}, {x:-s,y:0,z:0}, {x:0,y:s,z:0}, {x:0,y:-s,z:0}, {x:0,y:0,z:s}, {x:0,y:0,z:-s} ];
+            platonicSolids.icosa.vertices = [
+                {x:0, y:s, z:s*phi}, {x:0, y:s, z:-s*phi}, {x:0, y:-s, z:s*phi}, {x:0, y:-s, z:-s*phi},
+                {x:s, y:phi*s, z:0}, {x:s, y:-phi*s, z:0}, {x:-s, y:phi*s, z:0}, {x:-s, y:-phi*s, z:0},
+                {x:phi*s, y:0, z:s}, {x:phi*s, y:0, z:-s}, {x:-phi*s, y:0, z:s}, {x:-phi*s, y:0, z:-s}
+            ];
+            const d = s / phi;
+            platonicSolids.dodeca.vertices = [
+                {x:s,y:s,z:s}, {x:s,y:s,z:-s}, {x:s,y:-s,z:s}, {x:s,y:-s,z:-s},
+                {x:-s,y:s,z:s}, {x:-s,y:s,z:-s}, {x:-s,y:-s,z:s}, {x:-s,y:-s,z:-s},
+                {x:0,y:d*phi*phi,z:d}, {x:0,y:d*phi*phi,z:-d}, {x:0,y:-d*phi*phi,z:d}, {x:0,y:-d*phi*phi,z:-d},
+                {x:d,y:0,z:d*phi*phi}, {x:d,y:0,z:-d*phi*phi}, {x:-d,y:0,z:d*phi*phi}, {x:-d,y:0,z:-d*phi*phi},
+                {x:d*phi*phi,y:d,z:0}, {x:d*phi*phi,y:-d,z:0}, {x:-d*phi*phi,y:d,z:0}, {x:-d*phi*phi,y:-d,z:0}
+            ];
+            
+            const r = h / 4;
+            const fruitCenters = [{x: w/2, y: h/2}];
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: w/2 + r * Math.cos(angle), y: h/2 + r * Math.sin(angle)});
+            }
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: w/2 + 2*r * Math.cos(angle), y: h/2 + 2*r * Math.sin(angle)});
+            }
+            centers = Array.from(new Set(fruitCenters.map(JSON.stringify)), JSON.parse).slice(0,13);
+        }
+
+        function forgeShape(shape) {
+            activeShape = shape;
+            shapeProgress = 0;
+        }
+
+        function animateBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            blueprintCtx.clearRect(0,0,w,h);
+            blueprintTime += 0.01;
+            const cx = w/2, cy = h/2;
+
+            if (shapeProgress < 1) shapeProgress += 0.02;
+
+            blueprintCtx.fillStyle = 'white';
+            blueprintCtx.beginPath();
+            blueprintCtx.arc(cx, cy, 5, 0, Math.PI * 2);
+            blueprintCtx.fill();
+
+            if (activeShape) {
+                blueprintCtx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                blueprintCtx.lineWidth = 1.5;
+                if (activeShape === 'metatron') {
+                    const intensity = shapeProgress;
+                    for(let i = 0; i < centers.length; i++) {
+                        for(let j = i + 1; j < centers.length; j++) {
+                            const dx = centers[j].x - centers[i].x;
+                            const dy = centers[j].y - centers[i].y;
+                            blueprintCtx.beginPath();
+                            blueprintCtx.moveTo(centers[i].x, centers[i].y);
+                            blueprintCtx.lineTo(centers[i].x + dx * intensity, centers[i].y + dy * intensity);
+                            blueprintCtx.stroke();
+                        }
+                    }
+                } else {
+                    const shapeData = platonicSolids[activeShape];
+                    if(shapeData && shapeData.vertices.length > 0) {
+                        const projected = shapeData.vertices.map(v => {
+                            const rotX = v.x * Math.cos(blueprintTime) - v.z * Math.sin(blueprintTime);
+                            const rotZ = v.x * Math.sin(blueprintTime) + v.z * Math.cos(blueprintTime);
+                            const rotY = v.y * Math.cos(blueprintTime*0.7) - rotZ * Math.sin(blueprintTime*0.7);
+                            return { x: cx + rotX, y: cy + rotY };
+                        });
+
+                        shapeData.edges.forEach(edge => {
+                            const p1 = projected[edge[0]];
+                            const p2 = projected[edge[1]];
+                            if (p1 && p2) {
+                                const dx = p2.x - p1.x;
+                                const dy = p2.y - p1.y;
+                                blueprintCtx.beginPath();
+                                blueprintCtx.moveTo(p1.x, p1.y);
+                                blueprintCtx.lineTo(p1.x + dx * shapeProgress, p1.y + dy * shapeProgress);
+                                blueprintCtx.stroke();
+                            }
+                        });
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animateBlueprint);
+        }
+
+        // --- The Cosmic Kaleidoscope ---
+        const kaleidoscopeCanvas = document.getElementById('kaleidoscopeCanvas');
+        const kaleidoscopeCtx = kaleidoscopeCanvas.getContext('2d');
+        const reinitBtn = document.getElementById('reinit-btn');
+        const cycleCountSpan2 = document.getElementById('cycle-count');
+        let cycleState = 'running'; // running, collapsing, expanding
+        let cycleTime = 0;
+        let cycleNum = 1;
+        let symmetry = 6;
+        let colorHue = Math.random() * 360;
+
+        function animateKaleidoscope() {
+            const w = kaleidoscopeCanvas.width;
+            const h = kaleidoscopeCanvas.height;
+            
+            if(cycleState === 'running') {
+                kaleidoscopeCtx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+                kaleidoscopeCtx.fillRect(0,0,w,h);
+                drawKaleidoscopePattern(1);
+            } else if (cycleState === 'collapsing') {
+                cycleTime += 0.02;
+                kaleidoscopeCtx.clearRect(0,0,w,h);
+                drawKaleidoscopePattern(1 - cycleTime);
+                if (cycleTime >= 1) {
+                    cycleState = 'expanding';
+                    cycleTime = 0;
+                    cycleNum++;
+                    cycleCountSpan2.textContent = cycleNum;
+                    symmetry = 3 + Math.floor(Math.random() * 6);
+                    colorHue = (colorHue + 90 + Math.random() * 180) % 360;
+                }
+            } else if (cycleState === 'expanding') {
+                cycleTime += 0.02;
+                kaleidoscopeCtx.clearRect(0,0,w,h);
+                drawKaleidoscopePattern(cycleTime);
+                if (cycleTime >= 1) {
+                    cycleState = 'running';
+                    cycleTime = 0;
+                }
+            }
+            requestAnimationFrame(animateKaleidoscope);
+        }
+
+        function drawKaleidoscopePattern(scale) {
+            const w = kaleidoscopeCanvas.width;
+            const h = kaleidoscopeCanvas.height;
+            const cx = w/2, cy = h/2;
+            const angle = Math.PI * 2 / symmetry;
+
+            for (let i = 0; i < symmetry; i++) {
+                kaleidoscopeCtx.save();
+                kaleidoscopeCtx.translate(cx, cy);
+                kaleidoscopeCtx.rotate(i * angle);
+                kaleidoscopeCtx.beginPath();
+                kaleidoscopeCtx.moveTo(0, 0);
+                kaleidoscopeCtx.lineTo(w * scale, 0);
+                kaleidoscopeCtx.lineTo(w * scale * Math.cos(angle/2), h * scale * Math.sin(angle/2));
+                kaleidoscopeCtx.closePath();
+                kaleidoscopeCtx.fillStyle = `hsla(${colorHue + i * 20}, 70%, 50%, 0.1)`;
+                kaleidoscopeCtx.fill();
+                kaleidoscopeCtx.restore();
+            }
+        }
+
+        reinitBtn.addEventListener('click', () => {
+            if(cycleState === 'running') {
+                cycleState = 'collapsing';
+                cycleTime = 0;
+            }
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            oceanCanvas.width = oceanCanvas.offsetWidth;
+            oceanCanvas.height = oceanCanvas.offsetHeight;
+            initOcean();
+            animateOcean();
+
+            heartCanvas.width = heartCanvas.offsetWidth;
+            heartCanvas.height = heartCanvas.offsetHeight;
+            initHeart();
+            animateHeart();
+            
+            blueprintCanvas.width = blueprintCanvas.offsetWidth;
+            blueprintCanvas.height = blueprintCanvas.offsetHeight;
+            initBlueprint();
+            animateBlueprint();
+
+            kaleidoscopeCanvas.width = kaleidoscopeCanvas.offsetWidth;
+            kaleidoscopeCanvas.height = kaleidoscopeCanvas.offsetHeight;
+            animateKaleidoscope();
+        };
+    </script>
+</body>
+</html>

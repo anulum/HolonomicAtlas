@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anulum - Under Construction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff3333 0%, #33ff33 50%, #33aaff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .logo .letter-a1 {
+            color: #ff3333;
+        }
+        
+        .logo .letter-a2 {
+            color: #33ff33;
+        }
+        
+        .logo .letter-a3 {
+            color: #33aaff;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .construction-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.7));
+            border-radius: 2px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .coming-soon {
+            font-size: 0.9em;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <!-- Your Anulum logo -->
+            <div class="logo">
+                <span class="letter-a1">a</span><span class="letter-a2">a</span><span class="letter-a3">a</span>
+            </div>
+        </div>
+        
+        <h1>ANULUM</h1>
+        <p class="subtitle">Something amazing is coming...</p>
+        
+        <div class="construction-text">
+            <p>We're working hard to bring you something special.</p>
+            <p>Our website is currently under construction.</p>
+        </div>
+        
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        
+        <p class="coming-soon">Coming Soon</p>
+        
+        <div class="contact-info">
+            <p>For inquiries, please contact us at:</p>
+            <p><strong>info@anulum.li</strong></p>
+        </div>
+    </div>
+</body>
+</html>

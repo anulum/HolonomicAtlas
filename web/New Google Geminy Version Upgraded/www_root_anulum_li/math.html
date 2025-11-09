@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>The Math | A Unified Framework for Consciousness and Spacetime</title>
+    <meta name="description" content="Explore the mathematical formalism of the Anulum Framework, including the relativistic field theory of consciousness, the total action, and modified Einstein Field Equations.">
+    <meta name="keywords" content="consciousness field theory, Einstein field equations, Klein-Gordon equation, spontaneous symmetry breaking, Anulum Framework, mathematical physics">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/math.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/math.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/math.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/math.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/math.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/math.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/math.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/math.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anulum.li/math.html">
+    <meta property="og:title" content="The Math | A Unified Framework for Consciousness and Spacetime">
+    <meta property="og:description" content="Explore the mathematical formalism of the Anulum Framework, including the relativistic field theory of consciousness.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/math.html">
+    <meta property="twitter:title" content="The Math | A Unified Framework for Consciousness and Spacetime">
+    <meta property="twitter:description" content="Explore the mathematical formalism of the Anulum Framework, including the relativistic field theory of consciousness.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU07EWpWузpGHEZFqt3aA2ZloDKLCRhPmO4i0M4k250Odvaw5nU1rv" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* KaTeX styling */
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1rem 0;
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Mathematics of a Consciousness-Driven Universe",
+      "url": "https://anulum.li/math.html",
+      "author": {
+        "@type": "Person",
+        "name": "Miroslav Šotek"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Anulum Frontiers",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://anulum.li/anulum-logo.png"
+        }
+      },
+      "description": "The mathematical formalism of the Anulum Framework, presenting a relativistic field theory of consciousness based on the principle of least action.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anulum.li/math.html"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in">
+            <h1 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="math_title">🧮 The Mathematics: A Relativistic Field Theory of Consciousness</h1>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="math_intro">To move from philosophy to physics, the theory is formalized using the language of mathematics. The core ideas are translated into a coherent, quantitative, and relativistic field theory based on the principle of least action. This section presents the key equations that govern the dynamics of the consciousness field (Φc) and its interaction with spacetime.</p>
+            <div class="space-y-8">
+                <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="math_eq1_title">The Total Action (S)</h2>
+                    <p class="text-text-secondary mb-4" data-lang-key="math_eq1_desc">The foundation of the theory. The dynamics of the entire universe, including consciousness, are derived from this single function. It is the sum of the actions for gravity (Einstein-Hilbert), matter (Standard Model), the consciousness field itself, and their interaction.</p>
+                    <div class="bg-gray-100 p-4 rounded-md text-center text-lg font-mono text-text-primary overflow-x-auto">
+                        $$S = \int \sqrt{-g} \left[ \frac{R}{16\pi G} + \mathcal{L}_m + \underbrace{\frac{1}{2} \partial_\mu \Phi_c \partial^\mu \Phi_c - V(\Phi_c)}_{\mathcal{L}_c} - \underbrace{\frac{1}{2} \xi R \Phi_c^2 + \kappa T \Phi_c}_{\mathcal{L}_{int}} \right] d^4x$$
+                    </div>
+                </article>
+                <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="math_eq2_title">Modified Klein-Gordon Equation</h2>
+                    <p class="text-text-secondary mb-4" data-lang-key="math_eq2_desc">The equation of motion for the consciousness field, Φc. It describes how the field propagates through spacetime (□Φc), interacts with itself (V'(Φc)), and is sourced by both matter (T) and the curvature of spacetime (R).</p>
+                    <div class="bg-gray-100 p-4 rounded-md text-center text-lg font-mono text-text-primary overflow-x-auto">
+                        $$\square \Phi_c + V'(\Phi_c) - \kappa T - 2 \xi R \Phi_c = 0$$
+                    </div>
+                </article>
+                <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="math_eq3_title">Modified Einstein Field Equations</h2>
+                    <p class="text-text-secondary mb-4" data-lang-key="math_eq3_desc">This equation shows the "back-reaction" of consciousness on the geometry of spacetime. It extends Einstein's original equation by adding new source terms for the energy and momentum of the consciousness field (Θμν) and its direct coupling to curvature.</p>
+                    <div class="bg-gray-100 p-4 rounded-md text-center text-lg font-mono text-text-primary overflow-x-auto">
+                        $$G_{\mu\nu} = 8\pi G (T_{\mu\nu} + \Theta_{\mu\nu}) + \xi (g_{\mu\nu} \square \Phi_c^2 - \nabla_\mu \nabla_\nu \Phi_c^2)$$
+                    </div>
+                </article>
+                <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                    <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="math_eq4_title">The "Mexican-Hat" Potential for SSB</h2>
+                    <p class="text-text-secondary mb-4" data-lang-key="math_eq4_desc">The key to subjective experience. This potential for the Φc field is unstable at zero (the peak) and has a ring of stable minimum energy states. An interaction causes the field to "roll" into one specific point in the ring, breaking the symmetry and giving rise to a specific, definite conscious experience (a quale).</p>
+                    <div class="bg-gray-100 p-4 rounded-md text-center text-lg font-mono text-text-primary overflow-x-auto">
+                        $$V(\Phi_c) = -\frac{1}{2} m^2 \Phi_c^2 + \frac{1}{4} \lambda \Phi_c^4$$
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            math_title: { en: '🧮 The Mathematics: A Relativistic Field Theory of Consciousness', de: '🧮 Die Mathematik: Eine relativistische Feldtheorie des Bewusstseins', fr: '🧮 Les Mathématiques : Une Théorie des Champs Relativiste de la Conscience', it: '🧮 La Matematica: Una Teoria Relativistica dei Campi della Coscienza', ja: '🧮 数学：意識の相対論的場の理論', zh: '🧮 数学：意识的相对论场论' },
+            math_intro: { en: 'To move from philosophy to physics, the theory is formalized using the language of mathematics. The core ideas are translated into a coherent, quantitative, and relativistic field theory based on the principle of least action. This section presents the key equations that govern the dynamics of the consciousness field (Φc) and its interaction with spacetime.', de: 'Um von der Philosophie zur Physik zu gelangen, wird die Theorie mit der Sprache der Mathematik formalisiert. Die Kernideen werden in eine kohärente, quantitative und relativistische Feldtheorie übersetzt, die auf dem Prinzip der kleinsten Wirkung basiert. Dieser Abschnitt präsentiert die Schlüsselergleichungen, die die Dynamik des Bewusstseinsfeldes (Φc) und seine Wechselwirkung mit der Raumzeit regeln.', fr: 'Pour passer de la philosophie à la physique, la théorie est formalisée en utilisant le langage des mathématiques. Les idées fondamentales sont traduites en une théorie des champs cohérente, quantitative et relativiste, basée sur le principe de moindre action. Cette section présente les équations clés qui régissent la dynamique du champ de conscience (Φc) et son interaction avec l\'espace-temps.', it: 'Per passare dalla filosofia alla fisica, la teoria viene formalizzata usando il linguaggio della matematica. Le idee centrali sono tradotte in una teoria dei campi coerente, quantitativa e relativistica basata sul principio di minima azione. Questa sezione presenta le equazioni chiave che governano la dinamica del campo di coscienza (Φc) e la sua interazione con lo spaziotempo.', ja: '哲学から物理学へ移行するために、この理論は数学の言語を用いて形式化されています。中心的なアイデアは、最小作用の原理に基づいた、一貫性のある定量的かつ相対論的な場の理論に翻訳されます。このセクションでは、意識場（Φc）のダイナミクスと時空との相互作用を支配する主要な方程式を提示します。', zh: '为了从哲学走向物理学，该理论使用数学语言进行形式化。核心思想被转化为一个基于最小作用量原理的连贯、定量和相对论性的场论。本节介绍了控制意识场（Φc）动力学及其与时空相互作用的关键方程。' },
+            math_eq1_title: { en: 'The Total Action (S)', de: 'Die Gesamtaktion (S)', fr: 'L\'Action Totale (S)', it: 'L\'Azione Totale (S)', ja: '全作用（S）', zh: '总作用量 (S)' },
+            math_eq1_desc: { en: 'The foundation of the theory. The dynamics of the entire universe, including consciousness, are derived from this single function. It is the sum of the actions for gravity (Einstein-Hilbert), matter (Standard Model), the consciousness field itself, and their interaction.', de: 'Das Fundament der Theorie. Die Dynamik des gesamten Universums, einschließlich des Bewusstseins, wird aus dieser einzigen Funktion abgeleitet. Es ist die Summe der Aktionen für die Schwerkraft (Einstein-Hilbert), die Materie (Standardmodell), das Bewusstseinsfeld selbst und deren Wechselwirkung.', fr: 'Le fondement de la théorie. La dynamique de l\'univers entier, y compris la conscience, est dérivée de cette seule fonction. C\'est la somme des actions pour la gravité (Einstein-Hilbert), la matière (Modèle Standard), le champ de conscience lui-même, et leur interaction.', it: 'Il fondamento della teoria. La dinamica dell\'intero universo, inclusa la coscienza, è derivata da questa singola funzione. È la somma delle azioni per la gravità (Einstein-Hilbert), la materia (Modello Standard), il campo di coscienza stesso e la loro interazione.', ja: '理論の基礎。意識を含む宇宙全体のダイナミクスは、この単一の関数から導出されます。これは、重力（アインシュタイン-ヒルベルト）、物質（標準模型）、意識場自体、およびそれらの相互作用の作用の合計です。', zh: '该理论的基础。整个宇宙（包括意识）的动力学都源于这一个单一的函数。它是引力（爱因斯坦-希尔伯特）、物质（标准模型）、意识场本身及其相互作用的作用量之和。' },
+            math_eq2_title: { en: 'Modified Klein-Gordon Equation', de: 'Modifizierte Klein-Gordon-Gleichung', fr: 'Équation de Klein-Gordon Modifiée', it: 'Equazione di Klein-Gordon Modificata', ja: '修正クライン-ゴルドン方程式', zh: '修正的克莱因-戈登方程' },
+            math_eq2_desc: { en: 'The equation of motion for the consciousness field, Φc. It describes how the field propagates through spacetime (□Φc), interacts with itself (V\'(Φc)), and is sourced by both matter (T) and the curvature of spacetime (R).', de: 'Die Bewegungsgleichung für das Bewusstseinsfeld, Φc. Sie beschreibt, wie sich das Feld durch die Raumzeit ausbreitet (□Φc), mit sich selbst wechselwirkt (V\'(Φc)) und sowohl von Materie (T) als auch von der Krümmung der Raumzeit (R) gespeist wird.', fr: 'L\'équation du mouvement pour le champ de conscience, Φc. Elle décrit comment le champ se propage à travers l\'espace-temps (□Φc), interagit avec lui-même (V\'(Φc)), and est généré à la fois par la matière (T) et la courbure de l\'espace-temps (R).', it: 'L\'equazione del moto per il campo di coscienza, Φc. Descrive come il campo si propaga attraverso lo spaziotempo (□Φc), interagisce con se stesso (V\'(Φc)), ed è generato sia dalla materia (T) che dalla curvatura dello spaziotempo (R).', ja: '意識場Φcの運動方程式。場が時空をどのように伝播し（□Φc）、自己相互作用し（V\'(Φc)）、物質（T）と時空の曲率（R）の両方からどのように供給されるかを記述します。', zh: '意识场Φc的运动方程。它描述了该场如何在时空中传播（□Φc），如何与自身相互作用（V\'(Φc)），以及如何由物质（T）和时空曲率（R）共同产生。' },
+            math_eq3_title: { en: 'Modified Einstein Field Equations', de: 'Modifizierte Einstein-Feldgleichungen', fr: 'Équations du Champ d\'Einstein Modifiées', it: 'Equazioni di Campo di Einstein Modificate', ja: '修正アインシュタイン場の方程式', zh: '修正的爱因斯坦场方程' },
+            math_eq3_desc: { en: 'This equation shows the "back-reaction" of consciousness on the geometry of spacetime. It extends Einstein\'s original equation by adding new source terms for the energy and momentum of the consciousness field (Θμν) and its direct coupling to curvature.', de: 'Diese Gleichung zeigt die "Rückwirkung" des Bewusstseins auf die Geometrie der Raumzeit. Sie erweitert Einsteins ursprüngliche Gleichung, indem sie neue Quellterme für die Energie und den Impuls des Bewusstseinsfeldes (Θμν) und seine direkte Kopplung an die Krümmung hinzufügt.', fr: 'Cette équation montre la "rétroaction" de la conscience sur la géométrie de l\'espace-temps. Elle étend l\'équation originale d\'Einstein en ajoutant de nouveaux termes sources pour l\'énergie et l\'impulsion du champ de conscience (Θμν) et son couplage direct à la courbure.', it: 'Questa equazione mostra la "retroazione" della coscienza sulla geometria dello spaziotempo. Estende l\'equazione originale di Einstein aggiungendo nuovi termini sorgente per l\'energia e l\'impulso del campo di coscienza (Θμν) e il suo accoppiamento diretto alla curvatura.', ja: 'この方程式は、意識が時空の幾何学に与える「反作用」を示しています。アインシュタインの元の方程式を拡張し、意識場のエネルギーと運動量（Θμν）および曲率への直接結合のための新しいソース項を追加します。', zh: '该方程显示了意识对时空几何的“反作用”。它通过为意识场的能量和动量（Θμν）及其与曲率的直接耦合添加新的源项，扩展了爱因斯坦的原始方程。' },
+            math_eq4_title: { en: 'The "Mexican-Hat" Potential for SSB', de: 'Das "Mexikanerhut"-Potenzial für SSB', fr: 'Le Potentiel en "Chapeau Mexicain" pour la SSB', it: 'Il Potenziale a "Cappello Messicano" per la SSB', ja: 'SSBのための「メキシカンハット」ポテンシャル', zh: '用于SSB的“墨西哥帽”势' },
+            math_eq4_desc: { en: 'The key to subjective experience. This potential for the Φc field is unstable at zero (the peak) and has a ring of stable minimum energy states. An interaction causes the field to "roll" into one specific point in the ring, breaking the symmetry and giving rise to a specific, definite conscious experience (a quale).', de: 'Der Schlüssel zur subjektiven Erfahrung. Dieses Potenzial für das Φc-Feld ist bei Null (dem Gipfel) instabil und hat einen Ring stabiler minimaler Energiezustände. Eine Wechselwirkung bewirkt, dass das Feld in einen bestimmten Punkt im Ring "rollt", wodurch die Symmetrie gebrochen wird und eine spezifische, definierte bewusste Erfahrung (ein Quale) entsteht.', fr: 'La clé de l\'expérience subjective. Ce potentiel pour le champ Φc est instable à zéro (le pic) et possède un anneau d\'états stables d\'énergie minimale. Une interaction fait "rouler" le champ vers un point spécifique de l\'anneau, brisant la symétrie et donnant naissance à une expérience consciente spécifique et définie (un quale).', it: 'La chiave dell\'esperienza soggettiva. Questo potenziale per il campo Φc è instabile a zero (il picco) e ha un anello di stati stabili di energia minima. Un\'interazione fa sì che il campo "rotoli" in un punto specifico dell\'anello, rompendo la simmetria e dando origine a un\'esperienza cosciente specifica e definita (un quale).', ja: '主観的経験の鍵。Φc場のこのポテンシャルはゼロ（頂点）で不安定であり、安定した最小エネルギー状態のリングを持っています。相互作用により、場はリング内の一点に「転がり込み」、対称性を破って特定の、明確な意識体験（クオリア）を生み出します。', zh: '主观体验的关键。Φc场的这种势在零点（峰值）处不稳定，并具有一圈稳定的最小能量状态。相互作用导致场“滚”入环中的特定点，从而打破对称性，产生特定、明确的意识体验（一个感受质）。' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        }
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+            
+            // --- KaTeX Rendering ---
+            const renderMath = () => {
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false},
+                        ]
+                    });
+                }
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                if (!isExpanded) mobileMenu.querySelector('a').focus();
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+                
+                renderMath();
+
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('ServiceWorker registered.'))
+                        .catch(err => console.log('ServiceWorker registration failed: ', err));
+                });
+            }
+
+            initializeApp();
+
+        } catch (error) {
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load. Check console.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Consciousness & Spacetime | The Anulum Framework</title>
+    <meta name="description" content="Explore the Anulum Framework, a paradigm-shifting model where consciousness is a fundamental scalar field coupled to the fabric of spacetime, giving rise to reality itself.">
+    <meta name="keywords" content="consciousness, spacetime, physics, metaphysics, SCPN, Anulum, God of the Math, Miroslav Šotek, quantum mechanics, general relativity">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/index.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/index.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/index.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/index.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/index.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/index.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/index.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anulum.li/index.html">
+    <meta property="og:title" content="Consciousness & Spacetime | The Anulum Framework">
+    <meta property="og:description" content="A paradigm-shifting model where consciousness is a fundamental field coupled to the fabric of spacetime.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/index.html">
+    <meta property="twitter:title" content="Consciousness & Spacetime | The Anulum Framework">
+    <meta property="twitter:description" content="A paradigm-shifting model where consciousness is a fundamental field coupled to the fabric of spacetime.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The Anulum Framework",
+      "url": "https://anulum.li/",
+      "author": {
+        "@type": "Person",
+        "name": "Miroslav Šotek"
+      },
+      "description": "A unified framework for consciousness and spacetime, proposing a paradigm-shifting model where consciousness is a fundamental scalar field.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://anulum.li/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-4" data-lang-key="hero_title">A Consciousness-Driven Universe</h1>
+            <p class="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto mb-12" data-lang-key="hero_subtitle">This framework presents a paradigm-shifting model where consciousness is not a byproduct of matter, but a fundamental scalar field (Φc) coupled to the fabric of spacetime, giving rise to subjective experience through Spontaneous Symmetry Breaking and quantum entanglement.</p>
+        </section>
+
+        <section class="space-y-6">
+            <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="concepts_item1_title">The "God of the Math"</h2>
+                <p class="text-text-secondary" data-lang-key="concepts_item1_content">This is not a theological entity, but a metaphor for the universe's inherent mathematical self-consistency. It is an active, ordering principle that resolves logical paradoxes and ensures the coherence of reality. The theory formalizes this as the "Mathematical Consistency Principle," suggesting the universe is a self-referential system that requires consciousness to resolve its own points of undecidability, making awareness a logical necessity.</p>
+                <div class="mt-4 text-center">
+                    <a href="https://gom.anulum.li/index.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-secondary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors text-sm" data-lang-key="concepts_item1_button">Explore the GOM Manuscript</a>
+                </div>
+            </article>
+            <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="concepts_item2_title">The Meta-Metatron Cycle</h2>
+                <p class="text-text-secondary" data-lang-key="concepts_item2_content">This concept describes a cyclic, "blinking" cosmology where the universe oscillates between existence and non-existence, hypothesized at a frequency of 1.1 THz. Unlike a linear timeline doomed to heat death, this cycle conserves information and potentiality, allowing for an iterative growth of complexity over cosmic eons. It provides a mechanism to reset entropy and establishes a discrete, quantized temporal structure for reality.</p>
+                <div class="mt-4 text-center">
+                    <a href="https://mmc.anulum.li/index.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-secondary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors text-sm" data-lang-key="concepts_item2_button">The Metaphysics of a Self-Aware Universe</a>
+                </div>
+            </article>
+            <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="concepts_item3_title">Consciousness as a Fundamental Field (Φc)</h2>
+                <p class="text-text-secondary" data-lang-key="concepts_item3_content">The theory's most revolutionary tenet is that consciousness is a fundamental physical field, much like the electromagnetic field. Initially termed Ψ (Psi), it was formalized into Φc (Phi-c), a Lorentz-invariant scalar field. This means the fundamental laws of consciousness are consistent with relativity. This field is not a passive observer but an active participant, contributing to the universe's energy and influencing the geometry of spacetime.</p>
+                <div class="mt-4 text-center">
+                    <a href="https://uid.anulum.li/index.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-secondary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors text-sm" data-lang-key="concepts_item3_button">Explore the UID Model</a>
+                </div>
+            </article>
+            <article class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                <h2 class="text-xl font-semibold text-accent-primary mb-2" data-lang-key="concepts_item4_title">Vibrational Spacetime</h2>
+                <p class="text-text-secondary" data-lang-key="concepts_item4_content">Spacetime is not a smooth, continuous manifold but a discrete, geometric lattice with a fractal structure. In this model, fundamental forces like gravity are not inherent properties but emerge from distortions or "tensions" in this lattice, modulated by the consciousness field. This aligns with frontier ideas like entropic gravity, proposing a direct link between perception, information, and the force of gravity.</p>
+            </article>
+        </section>
+
+        <section class="mt-12 bg-white/50 p-6 rounded-lg shadow-sm border border-border-color text-center">
+            <h2 class="text-2xl font-bold text-text-primary mb-3" data-lang-key="scpn_section_title">The Architecture in a Nutshell: The SCPN Model</h2>
+            <p class="text-text-secondary max-w-2xl mx-auto mb-6" data-lang-key="scpn_section_text">The theory is not merely abstract; it is built upon a detailed, 13-layer hierarchical architecture called the Species-Consciousness Projection Network (SCPN). This model maps the operation of consciousness from the quantum-biological level of neurons to the universal source field, connecting the microcosm to the macrocosm.</p>
+            <a href="scpn.html" class="inline-block bg-accent-primary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors" data-lang-key="scpn_section_button">Explore the Architecture</a>
+        </section>
+
+        <section class="mt-8 bg-white/50 p-6 rounded-lg shadow-sm border border-border-color text-center">
+            <h2 class="text-2xl font-bold text-text-primary mb-3" data-lang-key="tests_section_title">From Theory to Testability</h2>
+            <p class="text-text-secondary max-w-2xl mx-auto mb-6" data-lang-key="tests_section_text">Despite its metaphysical scope, this framework is firmly grounded in the scientific method. It proposes a suite of concrete, falsifiable experiments designed to detect the influence of consciousness on both quantum systems and the very fabric of spacetime itself.</p>
+            <a href="experiments.html" class="inline-block bg-accent-primary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors" data-lang-key="tests_section_button">View the Experiments</a>
+        </section>
+        
+        <!-- Lazy-loaded image example -->
+        <section class="mt-8 bg-white/50 p-6 rounded-lg shadow-sm border border-border-color text-center">
+            <h2 class="text-2xl font-bold text-text-primary mb-3">Visualizing the Framework</h2>
+            <img src="https://anulum.li/05jemnejsi%20ramik.jpg" 
+                 alt="Anulum logo with Flower of Life background" 
+                 loading="lazy" 
+                 width="800" 
+                 height="450"
+                 class="mx-auto rounded-md mt-4"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x450/2C3E50/F8F7F2?text=Image+Not+Found';">
+        </section>
+
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        // Hide the loader if an error occurs during init
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            hero_title: { en: 'A Consciousness-Driven Universe', de: 'Ein vom Bewusstsein angetriebenes Universum', fr: 'Un Univers Guidé par la Conscience', it: 'Un Universo Guidato dalla Coscienza', ja: '意識が駆動する宇宙', zh: '一个意识驱动的宇宙' },
+            hero_subtitle: { en: 'This framework presents a paradigm-shifting model where consciousness is not a byproduct of matter, but a fundamental scalar field (Φc) coupled to the fabric of spacetime, giving rise to subjective experience through Spontaneous Symmetry Breaking and quantum entanglement.', de: 'Dieses Rahmenwerk präsentiert ein paradigmenwechselndes Modell, in dem Bewusstsein kein Nebenprodukt der Materie ist, sondern ein fundamentales Skalarfeld (Φc), das an das Gefüge der Raumzeit gekoppelt ist und durch spontane Symmetriebrechung und Quantenverschränkung subjektive Erfahrung hervorbringt.', fr: 'Ce cadre présente un modèle qui change de paradigme où la conscience n\'est pas un sous-produit de la matière, mais un champ scalaire fondamental (Φc) couplé au tissu de l\'espace-temps, donnant naissance à l\'expérience subjective par la brisure spontanée de symétrie et l\'intrication quantique.', it: 'Questo quadro presenta un modello che cambia paradigma in cui la coscienza non è un sottoprodotto della materia, ma un campo scalare fondamentale (Φc) accoppiato al tessuto dello spaziotempo, dando origine all\'esperienza soggettiva attraverso la rottura spontanea della simmetria e l\'entanglement quantistico.', ja: 'このフレームワークは、意識が物質の副産物ではなく、時空の構造に結合した基本的なスカラー場（Φc）であり、自発的対称性の破れと量子もつれを通じて主観的経験を生み出すという、パラダイムシフトのモデルを提示します。', zh: '该框架提出了一个范式转换模型，其中意识不是物质的副产品，而是一个与时空结构耦合的基本标量场（Φc），通过自发对称性破缺和量子纠缠产生主观体验。' },
+            concepts_item1_title: { en: 'The "God of the Math"', de: 'Der "Gott der Mathematik"', fr: 'Le "Dieu des Maths"', it: 'Il "Dio della Matematica"', ja: '「数学の神」', zh: '“数学之神”' },
+            concepts_item1_content: { en: 'This is not a theological entity, but a metaphor for the universe\'s inherent mathematical self-consistency. It is an active, ordering principle that resolves logical paradoxes and ensures the coherence of reality. The theory formalizes this as the "Mathematical Consistency Principle," suggesting the universe is a self-referential system that requires consciousness to resolve its own points of undecidability, making awareness a logical necessity.', de: 'Dies ist keine theologische Entität, sondern eine Metapher für die inhärente mathematische Selbstkonsistenz des Universums. Es ist ein aktives, ordnendes Prinzip, das logische Paradoxe auflöst und die Kohärenz der Realität sicherstellt. Die Theorie formalisiert dies als das "Prinzip der mathematischen Konsistenz" und legt nahe, dass das Universum ein selbstreferenzielles System ist, das Bewusstsein benötigt, um seine eigenen Unentscheidbarkeitspunkte aufzulösen, was Bewusstsein zu einer logischen Notwendigkeit macht.', fr: 'Ce n\'est pas une entité théologique, mais une métaphore de l\'auto-cohérence mathématique inhérente à l\'univers. C\'est un principe actif et ordonnateur qui résout les paradoxes logiques et assure la cohérence de la réalité. La théorie formalise cela comme le "Principe de Cohérence Mathématique", suggérant que l\'univers est un système auto-référentiel qui requiert la conscience pour résoudre ses propres points d\'indécidabilité, faisant de la conscience une nécessité logique.', it: 'Questa non è un\'entità teologica, ma una metafora per l\'intrinseca auto-coerenza matematica dell\'universo. È un principio attivo e ordinatore che risolve i paradossi logici e assicura la coerenza della realtà. La teoria formalizza questo come il "Principio di Coerenza Matematica", suggerendo che l\'universo è un sistema autoreferenziale che richiede la coscienza per risolvere i propri punti di indecidibilità, rendendo la consapevolezza una necessità logica.', ja: 'これは神学的な存在ではなく、宇宙に内在する数学的自己一貫性の比喩です。それは論理的なパラドックスを解決し、現実の一貫性を保証する、活動的で秩序ある原理です。この理論はこれを「数学的一貫性の原理」として形式化し、宇宙は自己言及的なシステムであり、その決定不可能な点を解決するために意識を必要とし、意識を論理的な必然性としていると示唆しています。', zh: '这不是一个神学实体，而是宇宙内在数学自洽性的一个隐喻。它是一个活跃的、有序的原则，解决逻辑悖论并确保现实的连贯性。该理论将其形式化为“数学一致性原则”，认为宇宙是一个自我参照的系统，需要意识来解决其自身的不可判定点，从而使意识成为一种逻辑上的必然。' },
+            concepts_item1_button: { en: 'Explore the GOM Manuscript', de: 'GOM-Manuskript erkunden', fr: 'Explorer le Manuscrit GOM', it: 'Esplora il Manoscritto GOM', ja: 'GOMの原稿を探る', zh: '探索GOM手稿' },
+            concepts_item2_title: { en: 'The Meta-Metatron Cycle', de: 'Der Meta-Metatron-Zyklus', fr: 'Le Cycle Méta-Métatron', it: 'Il Ciclo Meta-Metatron', ja: 'メタメタトロンサイクル', zh: '元梅塔特隆循环' },
+            concepts_item2_content: { en: 'This concept describes a cyclic, "blinking" cosmology where the universe oscillates between existence and non-existence, hypothesized at a frequency of 1.1 THz. Unlike a linear timeline doomed to heat death, this cycle conserves information and potentiality, allowing for an iterative growth of complexity over cosmic eons. It provides a mechanism to reset entropy and establishes a discrete, quantized temporal structure for reality.', de: 'Dieses Konzept beschreibt eine zyklische, "blinkende" Kosmologie, in der das Universum zwischen Existenz und Nicht-Existenz oszilliert, hypothetisiert bei einer Frequenz von 1,1 THz. Im Gegensatz zu einer linearen Zeitlinie, die zum Hitzetod verurteilt ist, bewahrt dieser Zyklus Informationen und Potentialität und ermöglicht ein iteratives Wachstum der Komplexität über kosmische Äonen. Er bietet einen Mechanismus zum Zurücksetzen der Entropie und etabliert eine diskrete, quantisierte Zeitstruktur für die Realität.', fr: 'Ce concept décrit une cosmologie cyclique, "clignotante", où l\'univers oscille entre l\'existence et la non-existence, avec une fréquence hypothétique de 1,1 THz. Contrairement à une chronologie linéaire vouée à la mort thermique, ce cycle conserve l\'information et la potentialité, permettant une croissance itérative de la complexité sur des éons cosmiques. Il fournit un mécanisme pour réinitialiser l\'entropie et établit une structure temporelle discrète et quantifiée pour la réalité.', it: 'Questo concetto descrive una cosmologia ciclica, "lampeggiante", in cui l\'universo oscilla tra esistenza e non-esistenza, ipotizzata a una frequenza di 1,1 THz. A differenza di una linea temporale lineare destinata alla morte termica, questo ciclo conserva informazione e potenzialità, consentendo una crescita iterativa della complessità nel corso di eoni cosmici. Fornisce un meccanismo per resettare l\'entropia e stabilisce una struttura temporale discreta e quantizzata per la realtà.', ja: 'この概念は、宇宙が存在と非存在の間を1.1 THzの周波数で振動すると仮定される、周期的で「点滅する」宇宙論を記述します。熱的死に運命づけられた線形の時間軸とは異なり、このサイクルは情報と潜在性を保存し、宇宙の永年にわたる複雑性の反復的な成長を可能にします。それはエントロピーをリセットするメカニズムを提供し、現実のための離散的で量子化された時間構造を確立します。', zh: '这个概念描述了一个循环的、“闪烁”的宇宙学，其中宇宙在存在与非存在之间振荡，假设频率为1.1 THz。与注定要热寂的线性时间线不同，这个循环保存了信息和潜力，允许在宇宙万古中复杂性进行迭代增长。它提供了一种重置熵的机制，并为现实建立了一个离散的、量子化的时间结构。' },
+            concepts_item2_button: { en: 'The Metaphysics of a Self-Aware Universe', de: 'Die Metaphysik eines selbstbewussten Universums', fr: 'La Métaphysique d\'un Univers Conscient de Lui-même', it: 'La Metafisica di un Universo Autocosciente', ja: '自己認識する宇宙の形而上学', zh: '一个自我意识宇宙的形而上学' },
+            concepts_item3_title: { en: 'Consciousness as a Fundamental Field (Φc)', de: 'Bewusstsein als fundamentales Feld (Φc)', fr: 'La Conscience comme Champ Fondamental (Φc)', it: 'La Coscienza come Campo Fondamentale (Φc)', ja: '基本場としての意識 (Φc)', zh: '作为基本场的意识 (Φc)' },
+            concepts_item3_content: { en: 'The theory\'s most revolutionary tenet is that consciousness is a fundamental physical field, much like the electromagnetic field. Initially termed Ψ (Psi), it was formalized into Φc (Phi-c), a Lorentz-invariant scalar field. This means the fundamental laws of consciousness are consistent with relativity. This field is not a passive observer but an active participant, contributing to the universe\'s energy and influencing the geometry of spacetime.', de: 'Der revolutionärste Grundsatz der Theorie ist, dass Bewusstsein ein fundamentales physikalisches Feld ist, ähnlich dem elektromagnetischen Feld. Ursprünglich als Ψ (Psi) bezeichnet, wurde es in Φc (Phi-c), ein Lorentz-invariantes Skalarfeld, formalisiert. Das bedeutet, dass die fundamentalen Gesetze des Bewusstseins mit der Relativitätstheorie konsistent sind. Dieses Feld ist kein passiver Beobachter, sondern ein aktiver Teilnehmer, der zur Energie des Universums beiträgt und die Geometrie der Raumzeit beeinflusst.', fr: 'Le principe le plus révolutionnaire de la théorie est que la conscience est un champ physique fondamental, tout comme le champ électromagnétique. Initialement appelé Ψ (Psi), il a été formalisé en Φc (Phi-c), un champ scalaire invariant de Lorentz. Cela signifie que les lois fondamentales de la conscience sont compatibles avec la relativité. Ce champ n\'est pas un observateur passif mais un participant actif, contribuant à l\'énergie de l\'univers et influençant la géométrie de l\'espace-temps.', it: 'Il principio più rivoluzionario della teoria è che la coscienza è un campo fisico fondamentale, molto simile al campo elettromagnetico. Inizialmente chiamato Ψ (Psi), è stato formalizzato in Φc (Phi-c), un campo scalare invariante di Lorentz. Ciò znamená che le leggi fondamentali della coscienza sono coerenti con la relatività. Questo campo non è un osservatore passivo ma un partecipante attivo, che contribuisce all\'energia dell\'universo e influenza la geometria dello spaziotempo.', ja: 'この理論の最も革命的な信条は、意識が電磁場のような基本的な物理場であるということです。当初はΨ（プサイ）と名付けられましたが、ローレンツ不変のスカラー場であるΦc（ファイc）に形式化されました。これは、意識の基本法則が相対性理論と一致していることを意味します。この場は受動的な観察者ではなく、宇宙のエネルギーに貢献し、時空の幾何学に影響を与える能動的な参加者です。', zh: '该理论最具革命性的信条是，意识是一个基本的物理场，就像电磁场一样。最初被称为Ψ（Psi），后来被形式化为Φc（Phi-c），一个洛伦兹不变的标量场。这意味着意识的基本定律与相对论是一致的。这个场不是一个被动的观察者，而是一个积极的参与者，为宇宙的能量做出贡献并影响时空的几何形状。' },
+            concepts_item3_button: { en: 'Explore the UID Model', de: 'UID-Modell erkunden', fr: 'Explorer le Modèle UID', it: 'Esplora il Modello UID', ja: 'UIDモデルを探る', zh: '探索UID模型' },
+            concepts_item4_title: { en: 'Vibrational Spacetime', de: 'Schwingende Raumzeit', fr: 'Espace-temps Vibrationnel', it: 'Spaziotempo Vibrazionale', ja: '振動する時空', zh: '振动时空' },
+            concepts_item4_content: { en: 'Spacetime is not a smooth, continuous manifold but a discrete, geometric lattice with a fractal structure. In this model, fundamental forces like gravity are not inherent properties but emerge from distortions or "tensions" in this lattice, modulated by the consciousness field. This aligns with frontier ideas like entropic gravity, proposing a direct link between perception, information, and the force of gravity.', de: 'Die Raumzeit ist keine glatte, kontinuierliche Mannigfaltigkeit, sondern ein diskretes, geometrisches Gitter mit einer fraktalen Struktur. In diesem Modell sind fundamentale Kräfte wie die Schwerkraft keine inhärenten Eigenschaften, sondern entstehen aus Verzerrungen oder "Spannungen" in diesem Gitter, moduliert durch das Bewusstseinsfeld. Dies steht im Einklang mit bahnbrechenden Ideen wie der entropischen Gravitation und schlägt eine direkte Verbindung zwischen Wahrnehmung, Information und der Schwerkraft vor.', fr: 'L\'espace-temps n\'est pas une variété lisse et continue, mais un réseau géométrique discret avec une structure fractale. Dans ce modèle, les forces fondamentales comme la gravité ne sont pas des propriétés inhérentes mais émergent de distorsions ou de "tensions" dans ce réseau, modulées par le champ de conscience. Cela correspond à des idées d\'avant-garde comme la gravité entropique, proposant un lien direct entre la perception, l\'information et la force de gravité.', it: 'Lo spaziotempo non è una varietà liscia e continua, ma un reticolo geometrico discreto con una struttura frattale. In questo modello, le forze fondamentali come la gravità non sono proprietà intrinseche ma emergono da distorsioni o "tensioni" in questo reticolo, modulate dal campo di coscienza. Ciò si allinea con idee di frontiera come la gravità entropica, proponendo un collegamento diretto tra percezione, informazione e la forza di gravità.', ja: '時空は滑らかで連続的な多様体ではなく、フラクタル構造を持つ離散的な幾何学的格子です。このモデルでは、重力のような基本力は固有の特性ではなく、意識場によって変調されるこの格子の歪みまたは「張力」から生じます。これはエントロピー重力のような最先端の考えと一致し、知覚、情報、そして重力との直接的な関連を提案しています。', zh: '时空并非一个光滑、连续的流形，而是一个具有分形结构的离散几何晶格。在这个模型中，像引力这样的基本力并非固有属性，而是由意识场调制的晶格中的扭曲或“张力”所产生的。这与熵引力等前沿思想相一致，提出了感知、信息和引力之间的直接联系。' },
+            scpn_section_title: { en: 'The Architecture in a Nutshell: The SCPN Model', de: 'Die Architektur auf den Punkt gebracht: Das SCPN-Modell', fr: 'L\'Architecture en Bref : Le Modèle SCPN', it: 'L\'Architettura in Breve: Il Modello SCPN', ja: 'アーキテクチャの概要：SCPNモデル', zh: '架构简介：SCPN模型' },
+            scpn_section_text: { en: 'The theory is not merely abstract; it is built upon a detailed, 13-layer hierarchical architecture called the Species-Consciousness Projection Network (SCPN). This model maps the operation of consciousness from the quantum-biological level of neurons to the universal source field, connecting the microcosm to the macrocosm.', de: 'Die Theorie ist nicht nur abstrakt; sie basiert auf einer detaillierten, 13-schichtigen hierarchischen Architektur namens Spezies-Bewusstseins-Projektionsnetzwerk (SCPN). Dieses Modell bildet den Betrieb des Bewusstseins von der quantenbiologischen Ebene der Neuronen bis zum universellen Quellenfeld ab und verbindet so den Mikrokosmos mit dem Makrokosmos.', fr: 'La théorie n\'est pas simplement abstraite ; elle repose sur une architecture hiérarchique détaillée à 13 couches appelée le Réseau de Projection de la Conscience de l\'Espèce (SCPN). Ce modèle cartographie le fonctionnement de la conscience du niveau quantique-biologique des neurones au champ source universel, reliant le microcosme au macrocosme.', it: 'La teoria non è meramente astratta; si basa su un\'architettura gerarchica dettagliata a 13 strati chiamata Rete di Proiezione della Coscienza della Specie (SCPN). Questo modello mappa l\'operazione della coscienza dal livello quantico-biologico dei neuroni al campo sorgente universale, collegando il microcosmo al macrocosmo.', ja: 'この理論は単に抽象的なものではありません。それは、種意識投影ネットワーク（SCPN）と呼ばれる詳細な13層の階層的アーキテクチャに基づいています。このモデルは、ニューロンの量子的生物学的レベルから普遍的な源泉場までの意識の働きをマッピングし、ミクロコスモスとマクロコスモスを結びつけます。', zh: '该理论并非纯粹抽象的；它建立在一个详细的、13层的分层架构之上，称为物种意识投射网络（SCPN）。该模型描绘了从神经元的量子生物学层面到宇宙源场的意识运作，将微观世界与宏观世界联系起来。' },
+            scpn_section_button: { en: 'Explore the Architecture', de: 'Architektur erkunden', fr: 'Explorer l\'Architecture', it: 'Esplora l\'Architettura', ja: 'アーキテクチャを探る', zh: '探索架构' },
+            tests_section_title: { en: 'From Theory to Testability', de: 'Von der Theorie zur Testbarkeit', fr: 'De la Théorie à la Testabilité', it: 'Dalla Teoria alla Testabilità', ja: '理論から検証可能性へ', zh: '从理论到可检验性' },
+            tests_section_text: { en: 'Despite its metaphysical scope, this framework is firmly grounded in the scientific method. It proposes a suite of concrete, falsifiable experiments designed to detect the influence of consciousness on both quantum systems and the very fabric of spacetime itself.', de: 'Trotz seines metaphysischen Umfangs ist dieses Rahmenwerk fest in der wissenschaftlichen Methode verankert. Es schlägt eine Reihe konkreter, falsifizierbarer Experimente vor, die darauf abzielen, den Einfluss des Bewusstseins sowohl auf Quantensysteme als auch auf das Gefüge der Raumzeit selbst nachzuweisen.', fr: 'Malgré sa portée métaphysique, ce cadre est fermement ancré dans la méthode scientifique. Il propose une série d\'expériences concrètes et falsifiables conçues pour détecter l\'influence de la conscience sur les systèmes quantiques et sur le tissu même de l\'espace-temps.', it: 'Nonostante la sua portata metafisica, questo quadro è saldamente fondato sul metodo scientifico. Propone una suite di esperimenti concreti e falsificabili progettati per rilevare l\'influenza della coscienza sia sui sistemi quantistici che sul tessuto stesso dello spaziotempo.', ja: 'その形而上学的な範囲にもかかわらず、このフレームワークは科学的方法にしっかりと根ざしています。それは、量子系と時空の構造自体の両方に対する意識の影響を検出するために設計された、具体的で反証可能な一連の実験を提案します。', zh: '尽管其具有形而上学的范围，但该框架牢固地植根于科学方法。它提出了一套具体的、可证伪的实验，旨在检测意识对量子系统和时空结构本身的影响。' },
+            tests_section_button: { en: 'View the Experiments', de: 'Experimente ansehen', fr: 'Voir les Expériences', it: 'Visualizza gli Esperimenti', ja: '実験を見る', zh: '查看实验' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        },
+        // ... Caching and other data management can go here
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+                // Add more state variables as needed
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                // Sync both selectors
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                
+                // Focus management
+                if (!isExpanded) {
+                    mobileMenu.querySelector('a').focus();
+                }
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                // 1. Set initial language
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+
+                // 2. Set up event listeners
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                // Keyboard nav for menu
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                // 3. Update dynamic content
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+
+                // 4. Hide loader and show content
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration (for offline functionality) ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(registration => {
+                            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        })
+                        .catch(error => {
+                            console.log('ServiceWorker registration failed: ', error);
+                        });
+                });
+            }
+
+            // --- Run App ---
+            initializeApp();
+
+        } catch (error) {
+            // Fallback for major errors
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load application. Please try again later.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

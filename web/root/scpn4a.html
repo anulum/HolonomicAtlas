@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 4: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 4, focusing on multi-scale synchronization. The flow is: 1. Introduction to tissue-level coherence. 2. An interactive Circadian Entrainment simulator showing how internal clocks align with external light cycles. 3. A visualization of Organs as Nested Harmonic Chambers, demonstrating heart-brain coherence. 4. An interactive simulation of Lunar Harmonics influencing cell mitosis. 5. An explanation of the core Field Relation Equation. 6. A diagram of inter-layer connections. This structure makes the abstract concept of multi-cellular oscillators syncing with cosmic rhythms tangible. -->
+    <!-- Visualization & Content Choices:
+        - Circadian Entrainment: Goal: Visualize phase-locking of biological clocks. Method: Canvas animation of two sine waves. Interaction: A slider for "Ψ-Field Coupling" gradually aligns an "Internal Clock" wave with an "External Light Cycle" wave. Justification: Provides a clear, intuitive demonstration of entrainment, a core concept of this layer.
+        - Organ Resonance: Goal: Illustrate nested harmonics between organs. Method: Canvas animation. Interaction: A button initiates a coherent rhythm in a "Heart" element, which then propagates to and entrains oscillators in a "Brain" element at a higher frequency. Justification: Visually explains the "nested harmonic chambers" idea and heart-brain coherence.
+        - Lunar Harmonics & Mitosis: Goal: Show subtle influence of slow cosmic cycles. Method: Canvas animation. Interaction: A slider for "Lunar Resonance" causes the rate of simulated cell division to peak in sync with a full moon animation. Justification: Directly visualizes a key example from the manuscript in an interactive way.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 4. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 4 emerges from genetic structures (L3) and feeds into the organism's conscious state (L5).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 4: Tissue Synchronisation</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#circadian" class="nav-link font-semibold text-slate-600">Circadian Rhythms</a>
+                    <a href="#organs" class="nav-link font-semibold text-slate-600">Organ Resonance</a>
+                    <a href="#lunar" class="nav-link font-semibold text-slate-600">Lunar Harmonics</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Symphony of the Body</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 4 describes how the trillions of cells in an organism synchronize their activities to form a coherent whole. This is not just random coordination; it is a precise entrainment of multicellular oscillators—from mitochondrial emissions to organ systems—with the vast, rhythmic cycles of the cosmos. The body becomes a resonant instrument tuned to the music of the spheres.
+            </p>
+        </section>
+
+        <section id="circadian" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Circadian Rhythm Entrainment</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The most fundamental synchronization is the alignment of our internal biological clocks with the 24-hour solar cycle. The Ψ-field facilitates this phase-locking, ensuring our cellular processes remain in harmony with the planetary rhythm of day and night.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="circadianCanvas" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <label for="coupling-slider" class="font-semibold text-slate-700">Ψ-Field Coupling Strength: <span id="coupling-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the coupling to see the internal clock (purple) phase-lock with the external light cycle (yellow).</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coupling-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="organs" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Organs as Nested Harmonic Chambers</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Organs like the heart and brain are not independent; they form a system of nested oscillators. The powerful, coherent rhythm of the heart can entrain the faster, more complex oscillations of the brain, creating a state of systemic coherence that is crucial for emotional and cognitive stability.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                 <canvas id="organCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="coherence-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Initiate Heart-Brain Coherence</button>
+            </div>
+        </section>
+
+        <section id="lunar" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Lunar Harmonics and Cell Mitosis</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Life is also attuned to slower, more subtle cosmic rhythms, such as the lunar cycle. The SCPN proposes that processes like cell division (mitosis) are harmonized with these cycles, with cellular activity peaking in resonance with the lunar phases.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="lunarCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="lunar-slider" class="font-semibold text-slate-700">Lunar Harmonic Resonance: <span id="lunar-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the resonance to see the rate of cell division peak in sync with the full moon.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="lunar-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="equation" class="section-card text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">The Field Relation Equation</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 mb-6">This layer's dynamics are captured by a core equation that describes how a cell's internal phase aligns with a larger rhythm, guided by the consciousness field.</p>
+            <div class="p-6 bg-slate-100 rounded-lg inline-block shadow-inner">
+                <p class="text-2xl font-mono text-violet-700">φ<sub>c</sub>(t) = Ω<sub>macro</sub>(t) + Δφ<sub>Ψs</sub></p>
+            </div>
+            <div class="mt-6 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                <p><strong class="text-violet-700">φ<sub>c</sub>(t):</strong> The phase of the local cellular oscillator (e.g., a cell's metabolic cycle).</p>
+                <p><strong class="text-violet-700">Ω<sub>macro</sub>(t):</strong> The phase of the macroscopic driving rhythm (e.g., the solar or lunar cycle).</p>
+                <p><strong class="text-violet-700">Δφ<sub>Ψs</sub>:</strong> The corrective phase shift provided by the species-consciousness field to ensure precise and stable alignment.</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Circadian Entrainment ---
+        const circadianCanvas = document.getElementById('circadianCanvas');
+        const circadianCtx = circadianCanvas.getContext('2d');
+        const couplingSlider = document.getElementById('coupling-slider');
+        const couplingValue = document.getElementById('coupling-value');
+        let circadianTime = 0;
+        let internalPhase = Math.PI;
+
+        function animateCircadian() {
+            const w = circadianCanvas.width;
+            const h = circadianCanvas.height;
+            circadianCtx.clearRect(0, 0, w, h);
+            circadianTime += 0.02;
+
+            const coupling = parseInt(couplingSlider.value) / 100;
+            couplingValue.textContent = `${Math.round(coupling*100)}%`;
+
+            // External Light Cycle (Target)
+            circadianCtx.beginPath();
+            circadianCtx.strokeStyle = 'rgba(250, 204, 21, 0.8)';
+            circadianCtx.lineWidth = 2;
+            for (let x = 0; x < w; x++) {
+                circadianCtx.lineTo(x, h/2 + Math.sin(x * 0.05 + circadianTime) * h * 0.4);
+            }
+            circadianCtx.stroke();
+
+            // Internal Clock (Aligning)
+            const phaseDifference = (internalPhase - 0);
+            internalPhase -= phaseDifference * coupling * 0.05;
+
+            circadianCtx.beginPath();
+            circadianCtx.strokeStyle = '#a78bfa';
+            circadianCtx.lineWidth = 3;
+            for (let x = 0; x < w; x++) {
+                circadianCtx.lineTo(x, h/2 + Math.sin(x * 0.05 + circadianTime + internalPhase) * h * 0.4);
+            }
+            circadianCtx.stroke();
+            
+            requestAnimationFrame(animateCircadian);
+        }
+
+        // --- Organ Resonance ---
+        const organCanvas = document.getElementById('organCanvas');
+        const organCtx = organCanvas.getContext('2d');
+        const coherenceBtn = document.getElementById('coherence-btn');
+        let organTime = 0;
+        let heartOscillators = [];
+        let brainOscillators = [];
+        let coherenceActive = false;
+
+        function initOrgans() {
+            for(let i=0; i<30; i++) heartOscillators.push({ angle: Math.random() * Math.PI * 2, fireTime: Math.random() * 20 });
+            for(let i=0; i<100; i++) brainOscillators.push({ angle: Math.random() * Math.PI * 2, fireTime: Math.random() * 20 });
+        }
+
+        function animateOrgans() {
+            const w = organCanvas.width;
+            const h = organCanvas.height;
+            organCtx.clearRect(0, 0, w, h);
+            organTime++;
+
+            const heartX = w * 0.3, heartY = h * 0.6, heartR = w * 0.15;
+            const brainX = w * 0.7, brainY = h * 0.4, brainR = w * 0.2;
+
+            // Draw Heart
+            organCtx.strokeStyle = 'rgba(239, 68, 68, 0.5)';
+            organCtx.lineWidth = 3;
+            organCtx.beginPath();
+            organCtx.arc(heartX, heartY, heartR, 0, Math.PI * 2);
+            organCtx.stroke();
+            
+            // Draw Brain
+            organCtx.strokeStyle = 'rgba(167, 139, 250, 0.5)';
+            organCtx.lineWidth = 3;
+            organCtx.beginPath();
+            organCtx.arc(brainX, brainY, brainR, 0, Math.PI * 2);
+            organCtx.stroke();
+
+            // Heart Oscillators
+            heartOscillators.forEach(o => {
+                let fire = false;
+                if (coherenceActive) {
+                    if (organTime % 40 < 5) fire = true;
+                } else {
+                    o.fireTime--;
+                    if(o.fireTime < 0) { fire = true; o.fireTime = Math.random() * 30 + 20; }
+                }
+                if(fire) {
+                    organCtx.fillStyle = '#f87171';
+                    organCtx.beginPath();
+                    organCtx.arc(heartX + Math.cos(o.angle) * heartR * 0.7, heartY + Math.sin(o.angle) * heartR * 0.7, 4, 0, Math.PI*2);
+                    organCtx.fill();
+                }
+            });
+            
+            // Brain Oscillators & Propagation
+            if (coherenceActive && organTime % 40 < 5) {
+                const pulseX = heartX + heartR;
+                const pulseY = heartY - heartR * 0.5;
+                organCtx.fillStyle = 'rgba(239, 68, 68, 0.5)';
+                organCtx.beginPath();
+                organCtx.arc(pulseX + (organTime % 40) * 5, pulseY - (organTime % 40) * 2, 5, 0, Math.PI*2);
+                organCtx.fill();
+            }
+
+            brainOscillators.forEach(o => {
+                let fire = false;
+                if (coherenceActive) {
+                    if (organTime % 20 < 5) fire = true; // Fires at twice the heart rate
+                } else {
+                    o.fireTime--;
+                    if(o.fireTime < 0) { fire = true; o.fireTime = Math.random() * 20 + 10; }
+                }
+                if(fire) {
+                    organCtx.fillStyle = '#c4b5fd';
+                    organCtx.beginPath();
+                    organCtx.arc(brainX + Math.cos(o.angle) * brainR * 0.8, brainY + Math.sin(o.angle) * brainR * 0.8, 3, 0, Math.PI*2);
+                    organCtx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateOrgans);
+        }
+        coherenceBtn.addEventListener('click', () => {
+            coherenceActive = !coherenceActive;
+            coherenceBtn.textContent = coherenceActive ? 'Release Coherence' : 'Initiate Heart-Brain Coherence';
+        });
+
+        // --- Lunar Harmonics ---
+        const lunarCanvas = document.getElementById('lunarCanvas');
+        const lunarCtx = lunarCanvas.getContext('2d');
+        const lunarSlider = document.getElementById('lunar-slider');
+        const lunarValue = document.getElementById('lunar-value');
+        let lunarTime = 0;
+        let cells = [];
+
+        function initLunar() {
+            for(let i=0; i<50; i++) {
+                cells.push({ x: Math.random() * lunarCanvas.width, y: Math.random() * (lunarCanvas.height - 80) + 80, size: Math.random() * 2 + 1 });
+            }
+        }
+
+        function animateLunar() {
+            const w = lunarCanvas.width;
+            const h = lunarCanvas.height;
+            lunarCtx.clearRect(0, 0, w, h);
+            lunarTime += 0.01;
+
+            // Draw Moon
+            const moonPhase = (Math.cos(lunarTime) + 1) / 2; // 0 (new) to 1 (full)
+            const moonX = w/2, moonY = 40, moonR = 25;
+            lunarCtx.fillStyle = '#f1f5f9';
+            lunarCtx.beginPath();
+            lunarCtx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+            lunarCtx.fill();
+            lunarCtx.fillStyle = '#0f172a';
+            lunarCtx.beginPath();
+            lunarCtx.arc(moonX + (1-moonPhase*2) * moonR, moonY, moonR, 0, Math.PI * 2);
+            lunarCtx.fill();
+
+            // Cell division
+            const resonance = parseInt(lunarSlider.value) / 100;
+            lunarValue.textContent = `${Math.round(resonance*100)}%`;
+            const baseRate = 0.005;
+            const modulatedRate = baseRate + resonance * 0.02 * moonPhase;
+
+            if (cells.length < 500 && Math.random() < modulatedRate) {
+                cells.push({ x: Math.random() * w, y: Math.random() * (h - 80) + 80, size: Math.random() * 2 + 1 });
+            }
+            
+            // Draw cells
+            cells.forEach(c => {
+                lunarCtx.fillStyle = `rgba(167, 139, 250, 0.6)`;
+                lunarCtx.beginPath();
+                lunarCtx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+                lunarCtx.fill();
+            });
+
+            requestAnimationFrame(animateLunar);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            circadianCanvas.width = circadianCanvas.offsetWidth;
+            circadianCanvas.height = circadianCanvas.offsetHeight;
+            animateCircadian();
+
+            organCanvas.width = organCanvas.offsetWidth;
+            organCanvas.height = organCanvas.offsetHeight;
+            initOrgans();
+            animateOrgans();
+
+            lunarCanvas.width = lunarCanvas.offsetWidth;
+            lunarCanvas.height = lunarCanvas.offsetHeight;
+            initLunar();
+            animateLunar();
+        };
+    </script>
+</body>
+</html>

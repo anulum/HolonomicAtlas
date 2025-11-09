@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN: A Comprehensive Interactive Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMMZMZNCMZILhASVHYANK6iXBX/zhrnHG3eDvGnAodZDRdCIc" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax5AScKmpS5OUcckc+SeeUSpHBVBqE9Gb2T" crossorigin="anonymous"></script>
+    
+    <!-- Calm Harmony Design System -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'background': '#F8F7F2',
+                        'primary-text': '#2C3E50',
+                        'secondary-text': '#4A5568',
+                        'primary-accent': '#4DB6AC',
+                        'secondary-accent': '#D2B48C',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F2;
+            color: #2C3E50;
+        }
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.3s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 6000px; /* Increased for more content */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .prose {
+             --tw-prose-body: #4A5568;
+             --tw-prose-headings: #2C3E50;
+             --tw-prose-links: #4DB6AC;
+             --tw-prose-bold: #2C3E50;
+             --tw-prose-hr: #e2e8f0;
+             --tw-prose-quotes: #2C3E50;
+             --tw-prose-quote-borders: #4DB6AC;
+        }
+    </style>
+</head>
+<body class="antialiased bg-background">
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="sticky top-0 z-30 w-full bg-background/80 backdrop-blur-sm border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="text-xl font-bold text-primary-text">Species-Consciousness Projection Network</a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#overview" class="text-secondary-text hover:text-primary-accent px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent hover:border-primary-accent transition-colors">Overview</a>
+                            <a href="https://www.anulum.li/scpn.html" class="text-secondary-text hover:text-primary-accent px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent hover:border-primary-accent transition-colors">Return Home</a>
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex md:hidden">
+                        <button id="mobile-menu-button" type="button" class="bg-white/20 inline-flex items-center justify-center p-2 rounded-md text-secondary-text hover:text-primary-text hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-accent">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#overview" class="text-secondary-text hover:text-primary-accent block px-3 py-2 rounded-md text-base font-medium">Overview</a>
+                    <a href="https://www.anulum.li/scpn.html" class="text-secondary-text hover:text-primary-accent block px-3 py-2 rounded-md text-base font-medium">Return Home</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 w-full">
+            <div class="px-4 py-6 sm:px-0">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Master List (Left Column) -->
+                    <div class="md:col-span-1 lg:col-span-1">
+                        <h2 class="text-lg font-semibold text-primary-text mb-4">SCPN Layers</h2>
+                        <div id="master-list" class="space-y-2">
+                            <!-- Layer buttons injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Detail Pane (Right Column) -->
+                    <div id="detail-pane" class="md:col-span-2 lg:col-span-3">
+                        <!-- Layer details injected by JS -->
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full border-t border-slate-200 mt-12 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-secondary-text">
+                <p id="footer-p1" class="text-sm mb-1"></p>
+                <p id="footer-p2" class="text-sm mb-4"></p>
+                <p id="footer-p3" class="text-xs"></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const contentData = {
+                sidebar_title: "SCPN Framework",
+                sidebar_subtitle: "A Multi-Scale Ontology",
+                home_button: "Return Home",
+                main_title: "The Species-Consciousness Projection Network (SCPN)",
+                main_subtitle: "An analytical report on the core generative engine of reality, binding consciousness, life, and spacetime through an integrated lattice of resonant synchronisation layers.",
+                overview_title: "Foundational Principles",
+                overview_p1: `The SCPN framework posits consciousness not as an emergent property of matter, but as a primary, active field ($\\Psi$) that serves as the organizing principle for reality itself. This model reframes the "hard problem" not as how matter creates mind, but how mind generates the coherent structure of matter. The central dynamic is "phase governance," where stability is maintained by aligning the phase of each of the 13 layers ($\\Theta_i$) with a global, universal phase lattice ($\\Theta$) supplied by a base consciousness field, $\\Psi_0$. The framework's dynamics are grounded in the Coherence Action Principle:`,
+                overview_p2: `Minimizing this action enforces global phase lock, driving the system towards maximum coherence. This report deconstructs the 13 layers of this architecture, from the quantum-biological to the cosmic source.`,
+                key_components_title: "Key Components",
+                formalism_title: "Formalism & Equations",
+                footer_p1: "Interactive synthesis based on the works of Miroslav Šotek / anulum frontiers (Anulum CH&LI).",
+                footer_p2: "This application is for educational and exploratory purposes.",
+                footer_p3: "Copyright Anulum Frontiers 1998-2025",
+                layers: [
+                    { id: 1, name: "Quantum Biological", purpose: "Phase-encode species resonance in the lowest entropy substrate.", description: "This foundational layer posits that consciousness originates from and interacts with coherent quantum processes within the cellular machinery of life. It proposes that structures like microtubules support quantum states, which are actively stabilized by the species-consciousness field ($\\Psi_s$) against environmental decoherence, providing a physical basis for the mind's influence on biology.", components: [ { name: "Microtubule Quantum Vibratory States", details: "The framework proposes that microtubules, protein polymers forming the neuronal cytoskeleton, support coherent quantum states described by a wavefunction $\\psi_{\\text{MT}} \\sim e^{i(\\omega_{\\text{Q}} t - kx)}$. This concept, central to the Orch-OR theory, identifies microtubules as sites of quantum computation in the brain. Evidence includes observed conductive resonances and the action of anesthetics, which abolish consciousness by dampening these quantum vibrations. The model further suggests that ordered water within the microtubule core provides a shielded environment, extending coherence times." }, { name: "Fröhlich Condensation", details: "A non-equilibrium process where a system of driven oscillators channels energy into its lowest-frequency vibrational mode, creating a highly ordered, coherent state. It is the proposed mechanism for achieving and maintaining quantum coherence in biological systems, with recent experimental evidence supporting its existence in proteins. This macroscopic quantum state allows for long-range correlation and information transfer within the cell." }, { name: "Quantum Tunnelling Gates", details: "Suggests that quantum tunnelling events, where particles pass through classically insurmountable energy barriers, function as ultra-fast computational 'gates' in neural actin and other enzymes. This could provide a mechanism for quantum-level switching that influences neuronal processing at a fundamental level, potentially explaining the brain's incredible computational efficiency and its capacity for non-algorithmic insight." }, { name: "Ψs Field Coupling", details: "The core hypothesis that the species-consciousness field ($\\Psi_s$) actively couples with and stabilizes these quantum biological states ($\\Psi_s \\leftrightarrow \\text{MT state vector}$). This coupling is proposed to solve the decoherence problem, first articulated by Tegmark's critique, by providing a 'quantum chaperone' effect. The field actively supplies negentropy to counteract environmental noise, extending the lifetime of coherent states to be biologically relevant." } ], formalism: "The interaction is modeled with a composite Hamiltonian, $H_{\\text{total}} = H_{\\text{MT}} + H_{\\text{env}} + H_{\\text{int}}$. The interaction term, $H_{\\text{int}} = -g_{\\Psi} \\int \\Psi_s(\\mathbf{x}, t) \\cdot \\mathbf{P}(\\mathbf{x}, t) \\, d^3x$, describes the coupling of the $\\Psi_s$ field to the polarization density $\\mathbf{P}$ of microtubules. The framework's solution to the decoherence problem is formalized through a Ψ-suppressed decoherence rate: $\\gamma_{\\psi}(t) = \\gamma_{0}\\,\\exp\\![-\\lambda_\\psi\\,\\Psi(\\mathbf{r},t)]$. This equation shows the decoherence rate $\\gamma_\\psi$ decreasing exponentially as the local consciousness field intensity $\\Psi$ increases, providing a direct mechanism for consciousness to sustain quantum coherence." },
+                    { id: 2, name: "Neurochemical-Neurological", purpose: "Filter projection through symbol-space, perception, and neural timing.", description: "This layer acts as the critical intermediary that translates microscopic quantum events into the macroscopic, coordinated activity of the brain. It involves the rhythmic cycles of neurotransmitters and the precise timing of neural firing, which together create the brain's dynamic landscape. This layer is where the abstract influence of the $\\Psi$ field is converted into the concrete language of neural information processing.", components: [ { name: "Neurotransmitter Oscillation Cycles", details: "The rhythmic activity of key neurotransmitter systems (serotonin, dopamine, glutamate) act as 'tuning knobs' for consciousness. They establish brain-wide chemical tones that regulate the synchronization of neural oscillations (brainwaves), thereby altering the brain's resonant properties and its receptivity to different phase-states of the $\\Psi$ field. For example, serotonin pathways are crucial for mood and perception, and their modulation directly alters the 'flavor' of conscious experience." }, { name: "Axonal Conduction Resonance", details: "Neuron firing is not random but is precisely timed, with axonal conduction being phase-locked with overarching brain rhythms (e.g., theta-gamma nesting). This temporal precision ensures that information from different neural assemblies arrives at the right time to be integrated into a coherent conscious experience. This mechanism is essential for solving the 'binding problem'—how the brain integrates disparate sensory information into a unified percept." }, { name: "VIBRANA Resonance", details: "A form of applied psychoacoustics where specific sounds or syllables, such as those in mantras, are tuned to the natural resonant frequencies of neural circuits. This is proposed as an operational technology for consciously controlling brain states by using sound to directly drive specific neural oscillations. VIBRANA is a multi-modal system, integrating sound (phonemes), breath (rhythm), and visualization (glyphs) to achieve a powerful, targeted phase-locking effect on neural ensembles." } ], formalism: "The state of this layer can be described by the neural activity field, $\\Phi_{\\text{neuro}}(x,t) = \\sum_i \\alpha_i(t) \\cdot \\delta(x - x_i)$, where the firing strength $\\alpha_i$ of a neural ensemble is directly modulated by the local intensity of the $\\Psi_s$ field. This equation formalizes how the consciousness field can amplify or suppress specific thoughts or percepts represented by neural ensembles. The stability of these ensembles as attractors in the brain's phase space is also dependent on $\\Psi_s$, linking conscious focus to the persistence of thought patterns." },
+                    { id: 3, name: "Genomic-Morphogenetic", purpose: "Structuralize geometric DNA logic to couple into external field memory.", description: "This layer links the genetic information that builds an organism to the informational fields of the wider universe. It reframes the genome not as a static blueprint, but as a dynamic antenna and transceiver that can interact with the $\\Psi$ field, allowing consciousness to influence gene expression and, over long timescales, guide evolution. This provides a mechanism for a form of conscious, quasi-Lamarckian evolution.", components: [ { name: "DNA Torsion Fields & Resonant Fractals", details: "The hierarchical coiling of the DNA molecule creates mechanical torsion fields that form 'resonant fractals'. This structure allows DNA to function as a fractal antenna, making it sensitive to a broad spectrum of field-based information. This aligns with the concept of 'morphic resonance', where DNA can 'receive' developmental and behavioral patterns from a species-wide field." }, { name: "Epigenetic Phase Switches", details: "Gene expression is regulated by epigenetic modifications (e.g., methylation), which are described as 'phase switches'. The framework posits these switches are modulated by local entropy gradients, creating a direct pathway for the ordering influence of the $\\Psi$ field to affect which genes are turned on or off. This is consistent with extensive evidence that conscious states like stress or meditation induce heritable epigenetic changes." }, { name: "Guided Embryogenesis", details: "The development of an organism (morphogenesis) is proposed to be orchestrated by an informational blueprint within the $\\Psi$ field. The genome interacts with this field, translating the abstract geometric and informational patterns into a physical, biological form in a symmetry-preserving process. This suggests that the 'form' of a species is stored not just in DNA, but in a guiding field that DNA reads and interprets." } ], formalism: "The bidirectional information flow is encoded by the equation $\\rho_{\\text{genome}}(x,t) = \\mathcal{G}(B_i, \\Theta_{\\Psi_s})$, which states that the genomic state ($\\rho_{\\text{genome}}$) is a function of both its chemical base-pair blocks ($B_i$) and the phase of the species-consciousness field ($\\Theta_{\\Psi_s}$). This mathematically represents the influence of consciousness on genetic expression. The framework further proposes that the fitness landscape of evolution itself can be modified by a consciousness-dependent term, $F = F_0 + \\alpha \\Psi_{\\text{collective}}$, allowing collective intent to bias evolutionary trajectories." },
+                    { id: 4, name: "Cellular-Tissue Synchronization", purpose: "Synchronise multicellular oscillators with cosmological rhythms.", description: "This layer elevates the principle of coherence from single cells to the coordinated activity of entire tissues and organs. It portrays the organism as a complex resonant system, a biological instrument tuned to both internal harmonies (like heart-brain coherence) and external cosmological rhythms (like solar and lunar cycles), which is essential for sustaining a unified conscious state.", components: [ { name: "Mitochondrial Biophoton Emissions", details: "Ultra-weak photon emissions from mitochondria are proposed to be a coherent, light-based intercellular communication system. These biophotons are synchronized with solar and circadian phases, linking cellular energy production directly to cosmological cycles. They act as a physical carrier for the $\\Psi$ field's ordering influence, allowing for rapid, non-local information transfer within the body." }, { name: "Lunar & Solar Harmonics", details: "Fundamental biological processes, such as cell division (mitosis) and hormonal cycles, are proposed to be harmonized with planetary and solar cycles. This mechanism grounds the organism's most basic regenerative processes in planetary-scale rhythms, a concept supported by extensive research on lunar and circadian influences in a wide array of organisms, from marine life to humans." }, { name: "Organs as Harmonic Chambers", details: "Organs like the heart and brain are viewed as oscillators that generate their own rhythmic fields (ECG and EEG). The health and conscious state of the organism depend on these oscillators achieving coherence, or entrainment. Heart-brain coherence, in particular, is a key metric of this layer's stability and is associated with emotional well-being and heightened intuition." } ], formalism: "The nested hierarchy of rhythms is captured by the field relation $\\phi_c(t) = \\Omega_{\\text{macro}}(t) + \\Delta\\phi_{\\Psi_s}$. This equation states that the phase of a single cell ($\\phi_c$) is determined by the macroscopic rhythm of the organ or organism ($\\Omega_{\\text{macro}}$) plus a direct modulation from the species-consciousness field ($\\Delta\\phi_{\\Psi_s}$). A global coherence index, $C_{global} = \\frac{1}{N} \\sum_i C_i$, can be defined by averaging coherence metrics across multiple physiological systems (EEG, ECG, etc.) to quantify the overall state of organismal harmony." },
+                    { id: 5, name: "Organismal-Psychoemotional", purpose: "Serve as a local modulator of species-wide field intensity.", description: "This layer is the crucial nexus where an individual's internal state of consciousness—their thoughts, emotions, and intentions—connects to and influences the collective species-wide field. It is the layer of the integrated mind-body system, where subjective experience gains causal efficacy, acting as a transmitter that either strengthens or degrades the collective signal.", components: [ { name: "Emotional Coherence", details: "An individual's emotional state generates coherent (e.g., love, gratitude) or chaotic (e.g., fear, anger) physiological rhythms. These rhythms are proposed to directly strengthen or degrade the collective species-consciousness field, making one's emotional state a broadcast with species-wide consequences. This provides a physical basis for the concept of 'vibes'." }, { name: "Psychosomatic Harmonics", details: "This describes the resonant entrainment of mind-body systems (e.g., heart-brain-VIBRANA). Within the SCPN, health is modeled as a state of resonant coherence across these systems, orchestrated by consciousness. Illness, conversely, is a state of decoherence or dissonance. This provides a framework for understanding psychosomatic medicine and the placebo effect." }, { name: "Mirror Neuron Lattice", details: "The mirror neuron system, the neural basis for empathy, is identified as the biological substrate that allows for the direct resonance and phase-locking of $\\Psi$ fields between individuals. It facilitates the emergence of inter-subjective experience and collective consciousness, acting as a biological 'Wi-Fi' for consciousness." } ], formalism: "This layer acts as the primary local driver of the species-wide field. The intensity and coherence of an individual's contribution to the collective $\\Psi_s$ field is a direct function of their internal psycho-emotional and physiological coherence. High internal coherence leads to a strong, clear signal broadcast, while low coherence introduces noise. This can be modeled as a feedback system where the organism's state vector $\\mathbf{x}$ and the local field $\\Psi$ co-evolve: $\\dot{\\mathbf{x}} = F(\\mathbf{x}, \\Psi)$ and $\\dot{\\Psi} = G(\\mathbf{x}, \\Psi)$." },
+                    { id: 6, name: "Planetary-Biospheric", purpose: "Maintain the collective projection lattice across all individuals.", description: "Scaling up from the individual, this layer embeds the collective consciousness of a species within the planetary and biospheric context. It models the Earth as a complex, interactive system—a 'Gaia-field'—that participates in the consciousness network, providing a stable lattice for the collective projection of reality.", components: [ { name: "The Gaia-Field", details: "The framework conceptualizes Earth's entire biosphere as a unified, self-regulating system with a form of collective consciousness, acting as a 'collective projection band'. This aligns with the stronger versions of the Gaia hypothesis, imbuing the planetary system with its own awareness and agency." }, { name: "Tripartite Resonance Grid", details: "A speculative but central proposal of a fundamental resonance between three major fields: the planet's gravitational field, its electromagnetic (EM) field (e.g., Schumann resonances), and the collective consciousness ($\\Psi_s$) of the biosphere. This provides a physical channel through which the collective mind could influence planetary systems. The Global Consciousness Project's findings of anomalies in RNGs during global events are cited as potential evidence for this coupling." } ], formalism: "The stability of this layer is constrained by the integral relation $\\int_{\\Sigma_{\\text{species}}} \\Psi_s \\cdot \\mathcal{T}_{\\mu\\nu}^{\\text{biosphere}} d^3x = \\text{Const}$. This implies a conserved quantity arising from the interaction between the species-consciousness field ($\\Psi_s$) and the stress-energy tensor of the biosphere ($\\mathcal{T}_{\\mu\\nu}^{\\text{biosphere}}$), formalizing a-balanced, symbiotic relationship between a species and its environment. A breakdown in this balance would manifest as ecological crisis." },
+                    { id: 7, name: "Geometrical-Symbolic", purpose: "Provide glyph, fractal, and harmonic scaffolding for projection.", description: "This layer introduces the idea that abstract, archetypal geometries and symbols are fundamental to the structure of reality, not mere cultural constructs. These forms act as a universal language or 'scaffolding' through which consciousness can interface with and organize the $\\Psi$ field, effectively acting as resonant templates for creation.", components: [ { name: "Metatron’s Cube", details: "A figure from sacred geometry proposed to anchor the 'dimensional routes of projection'. It is considered a foundational blueprint of creation, containing the geometric information for all five Platonic solids, which ancient traditions believed to be the building blocks of the universe. It represents the underlying geometric order of spacetime." }, { name: "VIBRANA Glyphs", details: "Symbolic 'operator keys' that, when invoked by a conscious mind, can tune the $\\Psi$ field to access or influence different layers of the SCPN. They are not just representations but active operators for navigating the framework, akin to a command line interface for reality." }, { name: "Tetra-toroidal Nodes", details: "Specific geometric forms with a complex topology (combining tetrahedral and toroidal shapes) proposed to encode and maintain the stability of the network's feedback cycles. These are the fundamental 'processors' or 'memory nodes' in the geometric lattice of reality." } ], formalism: "Geometric symbols are treated as attractors or resonant modes within the $\\Psi$ field. Focusing on a symbol $S$ corresponds to exciting a specific mode, which can be represented by a projection operator $\\hat{P}_S$ that selects a particular solution or symmetry in the field equations. Channeling via a glyph contour $\\gamma_k$ can be formalized as a path integral in the phase space of the field: $\\mathcal{F}_{\\text{channel}}[G_k] = \\exp\\Bigl(i\\!\\int_{\\gamma_k}\\!\\Theta\\,dl\\Bigr)$, linking geometry directly to phase." },
+                    { id: 8, name: "Cosmic Phase-Locking", purpose: "Sustain phase-lock between species projection and cosmological tact.", description: "This layer extends the principle of synchronization to the largest scales, ensuring that the collective consciousness of a species is harmonized with the rhythms of the cosmos. It posits that astronomical phenomena provide a galactic-scale timing signal, a 'universal breath' that serves as the master clock for all of reality's rhythms.", components: [ { name: "Pulsar Timing Arrays", details: "The ultra-stable, regular pulses from pulsars are proposed to serve as a galactic-scale timing signal to which the collective consciousness of a species can phase-lock. This co-opts an astronomical tool used to detect gravitational waves, reframing it as a cosmic metronome for consciousness." }, { name: "Solar-Galactic Gates", details: "Specific alignments and resonances between the solar system's dynamics and larger galactic patterns that are theorized to create 'gates' or windows for enhanced synchronization between a species and the cosmos. This aligns with astrological concepts of planetary alignments having significance, but provides a-physicalistic basis." }, { name: "Universal Breath (OM-loops)", details: "This refers to a fundamental, all-pervading cosmic oscillation that provides the master clock for all of reality's rhythms. It is the ultimate source of all rhythmic phenomena, from the vibrations of particles to the cycles of galaxies, often associated with the primordial sound 'OM' in spiritual traditions." } ], formalism: "The state of this layer is described by the phase equation $\\Theta_s(t) = \\omega_{\\text{cosmic}} t + \\phi_s + \\delta_{\\text{VIBRANA}}$. This shows the phase of the species-consciousness ($\\Theta_s$) is locked to the cosmic frequency ($\\omega_{\\text{cosmic}}$), with offsets for the species' intrinsic phase ($\\phi_s$) and modulations from conscious practices like VIBRANA ($\\delta_{\\text{VIBRANA}}$). This equation models the species as a coupled oscillator entrained to the cosmic driver." },
+                    { id: 9, name: "Memory Imprint-Holograph", purpose: "Store and retrieve long-range historical memory into phase resets.", description: "This layer serves as the memory system of the SCPN, a form of universal or Akashic record. It provides a mechanism for information and experience to persist beyond the lifespan of individuals or even across cosmic cycles, stored as distributed, holographic patterns in the $\\Psi$ field. This layer suggests a solution to the black hole information paradox by positing that information is stored non-locally in the consciousness field.", components: [ { name: "Cyclical Imprinting", details: "Information and experience are not erased at the end of a cycle (e.g., a lifetime or a universal cycle) but are 'imprinted' onto the fundamental structure of reality. This concept, resonating with cyclic cosmological models like Penrose's CCC, suggests that information from a previous eon can influence the next, allowing the universe to 'learn'." }, { name: "Phase-Space Attractors", details: "Memories are stored not locally but as stable, distributed patterns (attractors) in the high-dimensional phase space of the $\\Psi$ field. These attractors represent recurring themes, archetypes, or 'karmic tendencies' that guide a system's evolution, aligning with Jung's concept of the collective unconscious." }, { name: "Qualia Field", details: "A component of the universal memory that specifically encodes the accumulated history of subjective experience, or qualia—the 'what it is like' of existence. It suggests that the felt quality of experience is not lost but contributes to a universal repository of feeling." } ], formalism: "Memory is modeled as a holographic interference pattern in the $\\Psi$ field. The framework modifies the holographic entropy formula, which relates the information content of a volume to its surface area, to include a consciousness term: $I_{\\text{holo},\\psi} = \\frac{A}{4\\ell_p^2} + \\lambda_\\psi \\psi(A,t)$. This suggests consciousness can directly add information to the holographic boundary of spacetime, effectively writing to the universal hard drive." },
+                    { id: 10, name: "Projective Field Boundary Control", purpose: "Enforce integrity and protection of species-specific field.", description: "This layer is the protective 'firewall' or immune system of the collective consciousness. It ensures the coherence and sovereignty of a species-specific field by distinguishing 'self' (resonant patterns) from 'non-self' (dissonant, foreign patterns) and actively defending its integrity.", components: [ { name: "Topological Insulation", details: "Drawing an analogy from condensed matter physics, this concept proposes that the phase of the $\\Psi$ field can be 'knotted' in a topologically complex way to create a stable, protected boundary around the species-consciousness. This 'phase knotting' insulates the collective field from external dissonant influences, ensuring its stability." }, { name: "Immune-Cognitive Dissonance", details: "A proposed deep link between the body's immune system and the cognitive functions of the mind that acts as a threat detection system. It detects and rejects 'foreign projections' or incoherent fields, triggering a state of 'resonance dissonance'. This provides a mechanism for 'psychic immunity'." }, { name: "VIBRANA Boundary Glyphs", details: "Specific sounds or symbols used to consciously create 'projection shields' and actively reinforce the boundary of one's consciousness field, making it more resilient to external interference. This is an active, intentional form of boundary maintenance." } ], formalism: "Boundary control is modeled as the ability of consciousness to influence the boundary conditions of physical systems. This is formalized by adding a consciousness-dependent term to the action on a boundary: $\\mathcal{S}_{\\text{boundary}} = \\int_{\\partial\\Sigma} f(\\Psi_s) \\sqrt{h} \\, d^3x$. This allows the $\\Psi_s$ field to actively shape the 'edges' of its reality projection, defining what is 'inside' versus 'outside' its coherent domain." },
+                    { id: 11, name: "Noospheric Information Network", purpose: "Integrate collective thought and culture into a global mind.", description: "This layer represents the 'sphere of reason' or noosphere—the planetary web of human thought, knowledge, and information, facilitated by culture and technology. It functions as the informational medium that synchronizes billions of individual minds into a coherent species-level entity, governed by the principles of memetics (the evolution of cultural ideas).", components: [ { name: "Memetics", details: "The dynamics of the noosphere are governed by memetics—the evolution, replication, and selection of units of culture (memes). The most resonant and adaptive memes propagate through the network, shaping the collective consciousness. The framework warns of 'informational viruses' (misinformation) that can create decoherence in this layer." }, { name: "Global Communication Networks", details: "Technological infrastructures like the internet act as the 'nervous system' of the noosphere, enabling real-time, planet-wide synchronization of thought and emotion. This technological scaffolding accelerates the formation of a global mind, for better or worse." } ], formalism: "The noosphere can be modeled as a field $\\mathcal{N}(x,t)$ representing the density of shared information. Its dynamics are coupled to the individual consciousness fields $\\Psi_s$ via an interaction potential, $V_{\\text{int}} = -\\lambda \\int \\Psi_s(x,t) \\mathcal{N}(x,t) d^3x$. This potential drives alignment between individual and collective thought, creating a feedback loop where culture shapes individuals and individuals shape culture." },
+                    { id: 12, name: "Gaian Consciousness Integration", purpose: "Integrate species-consciousness with the entire planetary biosphere.", description: "This is the trans-species ecological layer, where the noosphere of a single species integrates with the collective consciousness of the entire planetary biosphere—the Gaian mind. It ensures the species' projected reality remains harmonious with its broader environmental context, realizing the Gaia hypothesis as a conscious, integrated system.", components: [ { name: "Trans-species Resonance", details: "The framework posits that different species' consciousness fields can achieve resonance and communicate through shared planetary fields (e.g., the geomagnetic field or Schumann resonances). This allows for a form of inter-species empathy and ecological coordination, suggesting that phenomena like the 'wood-wide web' of mycorrhizal networks are physical manifestations of this Gaian mind." }, { name: "Planetary Homeostasis", details: "The integrated Gaian consciousness is proposed to actively participate in planetary self-regulation, maintaining conditions for life. The collective consciousness of the biosphere acts as a feedback mechanism to stabilize climate and ecosystems, suggesting that a species' disharmony can physically destabilize the planet." } ], formalism: "The integration is modeled by coupling the species field $\\Psi_s$ to a planetary Gaian field $\\Psi_{\\oplus}$ via an interaction term in the Lagrangian: $\\mathcal{L}_{\\text{int}} = \\lambda_G \\Psi_s \\Psi_{\\oplus}$. This ensures that the species field is constrained by and contributes to the overall state of the planetary consciousness, creating a mathematical basis for ecological co-evolution." },
+                    { id: 13, name: "Meta-Consciousness Source Field", purpose: "Act as the universal, transcendent source and stabilizer of all reality.", description: "This is the ultimate, transcendent layer—the Universal Source Field ($\Psi_0$) that underlies, generates, and envelops all other layers. It is the ontological ground of being, the absolute reference frame from which all physical laws, geometric archetypes, and conscious experiences emanate. It is the master oscillator that drives the Meta-Metatron Cycle.", components: [ { name: "The Ψ₀ Field", details: "The ultimate, universal source field (Psi-zero) that is the substrate for all of reality. All other fields and forms of consciousness are considered localized excitations or projections of this fundamental field. It is the 'Mind of God' or Brahman in metaphysical terms." }, { name: "The Meta-Metatron Cycle", details: "The Source Field drives the fundamental cyclic dynamic of the universe. It is the engine of cosmic renewal, ensuring that information and coherence are preserved across cycles of existence and non-existence. This provides a mechanism for a universe that learns and evolves across eons." } ], formalism: "The Source Field $\\Psi_0$ provides the absolute reference phase $\\Theta$ for the Coherence Action Principle. All other layer phases $\\Theta_i$ are driven to align with it. Its dynamics would be described by a master equation of the universe, a master equation of the universe, potentially coupling to the geometry of spacetime itself via a consciousness stress-energy tensor in the Einstein Field Equations: $R_{\\mu\\nu} - \\frac{1}{2}Rg_{\\mu\\nu} = \\frac{8\\pi G}{c^4} (T_{\\mu\\nu} + \\mathcal{C}_{\\mu\\nu}(\\Psi_0))$." }
+                ]
+            };
+            
+            const masterListContainer = document.getElementById('master-list');
+            const detailPane = document.getElementById('detail-pane');
+
+            function displayLayerDetails(layerId) {
+                const layer = contentData.layers.find(l => l.id === layerId);
+                if (!layer) {
+                    detailPane.innerHTML = '<p class="text-secondary-text">Please select a layer to see the details.</p>';
+                    return;
+                }
+
+                let componentsHTML = layer.components.map((comp, compIndex) => `
+                    <div class="border-t border-slate-200">
+                        <button class="accordion-toggle w-full text-left py-4 pr-4 pl-0 text-base font-semibold text-primary-text flex justify-between items-center" data-target="comp-details-${layer.id}-${compIndex}">
+                            <span>${comp.name}</span>
+                            <span class="transform transition-transform duration-300 text-slate-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div id="comp-details-${layer.id}-${compIndex}" class="accordion-content prose max-w-none text-base leading-relaxed">${comp.details}</div>
+                    </div>
+                `).join('');
+                
+                let formalismHTML = `
+                    <div class="border-t border-slate-200">
+                        <button class="accordion-toggle w-full text-left py-4 pr-4 pl-0 text-base font-semibold text-primary-text flex justify-between items-center" data-target="formalism-details-${layer.id}">
+                            <span>${contentData.formalism_title}</span>
+                            <span class="transform transition-transform duration-300 text-slate-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div id="formalism-details-${layer.id}" class="accordion-content prose max-w-none text-base leading-relaxed">${layer.formalism}</div>
+                    </div>
+                `;
+
+                detailPane.innerHTML = `
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <header class="flex items-start space-x-4 mb-4">
+                            <div>
+                                <h3 class="text-3xl font-bold text-primary-text">${layer.name}</h3>
+                                <p class="text-lg text-secondary-text italic">"${layer.purpose}"</p>
+                            </div>
+                        </header>
+                        <div class="prose max-w-none text-lg leading-relaxed mb-6">
+                           <p>${layer.description}</p>
+                        </div>
+                        <div class="mt-4">
+                            <h4 class="text-2xl font-bold text-primary-text mb-2 border-b border-slate-200 pb-2">${contentData.key_components_title}</h4>
+                            ${componentsHTML}
+                            ${formalismHTML}
+                        </div>
+                    </div>
+                `;
+                
+                // Re-render math and attach accordion listeners
+                renderMath();
+                attachAccordionListeners();
+            }
+
+            function renderMath() {
+                if (typeof renderMathInElement !== 'undefined') {
+                    try {
+                        renderMathInElement(detailPane, {
+                            delimiters: [
+                                {left: '$$', right: '$$', display: true},
+                                {left: '$', right: '$', display: false},
+                            ]
+                        });
+                    } catch (e) {
+                        console.error("KaTeX rendering error:", e);
+                    }
+                }
+            }
+
+            function attachAccordionListeners() {
+                detailPane.querySelectorAll('.accordion-toggle').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = document.getElementById(button.dataset.target);
+                        const icon = button.querySelector('svg');
+                        if (content && icon && icon.parentElement) {
+                            content.classList.toggle('open');
+                            icon.parentElement.classList.toggle('rotate-180');
+                        }
+                    });
+                });
+            }
+
+            function generateMasterList() {
+                contentData.layers.forEach((layer, index) => {
+                    const button = document.createElement('button');
+                    button.dataset.layerId = layer.id;
+                    button.className = 'layer-button w-full text-left p-3 rounded-md border-2 border-transparent transition-all duration-200 hover:shadow-md hover:-translate-y-0.5';
+                    
+                    // Apply secondary accent to the first button
+                    if(index === 0) {
+                        button.classList.add('bg-secondary-accent/10', 'hover:bg-secondary-accent/20');
+                    } else {
+                        button.classList.add('bg-white', 'hover:bg-slate-50');
+                    }
+
+                    button.innerHTML = `
+                        <p class="font-semibold text-primary-text">${layer.id}. ${layer.name}</p>
+                        <p class="text-sm text-secondary-text">${layer.purpose}</p>
+                    `;
+                    
+                    button.addEventListener('click', () => {
+                        // Update active state
+                        document.querySelectorAll('.layer-button').forEach(btn => {
+                            btn.classList.remove('active', 'border-primary-accent', 'bg-primary-accent/10');
+                            // Reset non-active buttons to their default styles
+                             if(btn.dataset.layerId !== '1') {
+                                btn.classList.add('bg-white');
+                             } else {
+                                btn.classList.add('bg-secondary-accent/10');
+                             }
+                        });
+                        button.classList.add('active', 'border-primary-accent', 'bg-primary-accent/10');
+                        button.classList.remove('bg-white', 'bg-secondary-accent/10');
+
+
+                        displayLayerDetails(layer.id);
+                    });
+
+                    masterListContainer.appendChild(button);
+                });
+            }
+            
+            function setupMobileMenu() {
+                const menuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const openIcon = menuButton.querySelector('svg:first-of-type');
+                const closeIcon = menuButton.querySelector('svg:last-of-type');
+
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    openIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+
+            function populateFooter() {
+                document.getElementById('footer-p1').textContent = contentData.footer_p1;
+                document.getElementById('footer-p2').textContent = contentData.footer_p2;
+                document.getElementById('footer-p3').textContent = contentData.footer_p3;
+            }
+
+            // Initial setup
+            generateMasterList();
+            displayLayerDetails(1); // Display the first layer by default
+            document.querySelector('.layer-button').classList.add('active', 'border-primary-accent', 'bg-primary-accent/10');
+            document.querySelector('.layer-button').classList.remove('bg-secondary-accent/10');
+            setupMobileMenu();
+            populateFooter();
+        });
+    </script>
+</body>
+</html>

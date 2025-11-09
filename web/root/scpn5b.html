@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 5: Organismal-Psychoemotional Feedback Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 5 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Field of Emotion" simulator for emotional coherence. 3. "The Symphony of Self" for psychosomatic harmonics. 4. "The Lattice of Empathy" for the mirror neuron system. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Field of Emotion: Goal: Visualize how emotions organize the Ψ-field. Method: Canvas particle system. Interaction: A slider from "Fear" to "Coherence" applies an organizing force, pulling chaotic particles into a stable, glowing vortex. Justification: A more dynamic and visceral metaphor for emotional coherence affecting field amplitude.
+        - The Symphony of Self: Goal: Illustrate nested harmonics. Method: Canvas animation. Interaction: A button initiates coherence, causing a swarm of fast "brain" particles to form patterns that ride on a slow, powerful "heart" wave. Justification: Better visualizes the concept of a foundational rhythm organizing faster, more complex signals.
+        - The Lattice of Empathy: Goal: Show the formation of an inter-personal field. Method: Canvas animation. Interaction: A button triggers an "action" in a central "Self" node, which propagates as a wave through the Ψ-field to activate "Other" nodes. Justification: Clearly demonstrates the mirror neuron lattice concept as a field-mediated resonance.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 5: Organismal Feedback</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#field" class="nav-link font-semibold text-stone-600">Field of Emotion</a>
+                    <a href="#symphony" class="nav-link font-semibold text-stone-600">Symphony</a>
+                    <a href="#lattice" class="nav-link font-semibold text-stone-600">Lattice</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Mind-Body Feedback Loop</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 5 represents the integrated consciousness of the whole organism—the unified self. This is not a passive observer but an active modulator. The organism's psychoemotional state serves as a local control node, feeding back to influence its own biology and contributing its unique resonance to the species-wide Ψ-field.
+            </p>
+        </section>
+
+        <section id="field" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Field of Emotion</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">An organism's emotional state directly shapes its biofield. Chaotic emotions like fear create a scattered, high-entropy field. Coherent emotions like compassion organize the field into a stable, powerful, low-entropy vortex, strengthening its contribution to the species resonance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="emotionCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="emotion-slider" class="font-semibold text-stone-700">Emotional State</label>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="emotion-slider">
+                    <div class="flex justify-between text-sm text-stone-500 mt-2">
+                        <span>Fear (Chaotic)</span>
+                        <span>Coherence (Compassion)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="symphony" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Symphony of Self</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The body's systems form a nested orchestra. The heart provides a powerful, slow bass rhythm (the carrier wave), while the brain produces a faster, more complex melody. In a state of coherence, the chaotic melody of the brain organizes itself, riding in harmony upon the foundational rhythm of the heart.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                 <canvas id="symphonyCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="coherence-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Initiate Coherence</button>
+            </div>
+        </section>
+
+        <section id="lattice" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Lattice of Empathy</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The mirror neuron system is the biological basis for empathy, linking individuals through the Ψ-field. When one person acts or feels, the resonant pattern propagates through the field, activating the same state in an observer. This forms a dynamic, empathic lattice connecting the species.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="latticeCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="lattice-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Trigger Action in Self</button>
+                    <p class="text-sm text-stone-500 mt-4">Observe how the action in the "Self" node propagates through the Ψ-field to create a resonant activation in the "Other" nodes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Organismal-Psychoemotional Feedback Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">The Body as a Coherent Field Geometry</h4>
+                            <p class="text-stone-600 text-sm">At this layer, the entire organism is treated as a single, coherent geometric object. Its physical form is not just a collection of parts but a unified resonant cavity. The geometry of the nervous, circulatory, and fascial networks creates pathways for psychosomatic harmonics.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Mirror Neuron Network Topology</h4>
+                            <p class="text-stone-600 text-sm">The neural circuits of the mirror neuron system form a specific network geometry designed for empathy and social resonance. This topology allows the brain to map the states of another organism onto its own, creating a geometric bridge between "self" and "other."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Emotional Coherence as Amplitude Modulator</h4>
+                            <p class="text-stone-600">The emotional state modulates the amplitude of the organism's contribution to the species-consciousness field ($\Psi_s$). High coherence (e.g., compassion) leads to a large, stable amplitude.</p>
+                            <p class="my-2">$$A_{\Psi_s, \text{organism}} = A_{base} \cdot C_{emotion}$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Psychosomatic Entrainment Models</h4>
+                            <p class="text-stone-600">Heart-brain entrainment is modeled using coupled oscillator equations. The heart's rhythm acts as a master oscillator driving the brain's faster oscillations, with VIBRANA techniques serving as a common signal to facilitate phase-locking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Biofeedback and Self-Regulation</h4>
+                            <p class="text-stone-600 text-sm">The unified conscious state can exert top-down control over autonomic processes. Focused intention (a coherent Ψ-field state) can directly influence heart rate (L4), neurochemistry (L2), and even gene expression (L3).</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Emotional Resonance</h4>
+                            <p class="text-stone-600 text-sm">Emotions are coherent energy patterns in the biofield. A coherent emotional state produces a powerful, resonant field that can be broadcast into the environment, influencing other organisms and contributing to the collective field.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Mirror Neuron Lattice Physics</h4>
+                            <p class="text-stone-600 text-sm">The mirror neuron system is the physical mechanism for inter-organismal resonance. The manuscript posits that this is mediated by the Ψ-field, which directly links the neural states of an actor and an observer, forming an empathic lattice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Field of Emotion ---
+        const emotionCanvas = document.getElementById('emotionCanvas');
+        const emotionCtx = emotionCanvas.getContext('2d');
+        const emotionSlider = document.getElementById('emotion-slider');
+        let emotionParticles = [];
+        let emotionTime = 0;
+
+        function initEmotionField() {
+            const w = emotionCanvas.width;
+            const h = emotionCanvas.height;
+            for(let i=0; i<500; i++) {
+                emotionParticles.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0,
+                    history: []
+                });
+            }
+        }
+
+        function animateEmotionField() {
+            const w = emotionCanvas.width;
+            const h = emotionCanvas.height;
+            emotionCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            emotionCtx.fillRect(0,0,w,h);
+            
+            const coherence = parseInt(emotionSlider.value) / 100;
+            const centerX = w / 2;
+            const centerY = h / 2;
+
+            emotionParticles.forEach(p => {
+                const dx = centerX - p.x;
+                const dy = centerY - p.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+
+                // Coherence force (vortex)
+                const force = Math.min(10, 100 / (dist + 1));
+                const ax = (dx / dist * force - p.vy) * 0.01 * coherence;
+                const ay = (dy / dist * force + p.vx) * 0.01 * coherence;
+                
+                p.vx += ax + (Math.random() - 0.5) * (1 - coherence);
+                p.vy += ay + (Math.random() - 0.5) * (1 - coherence);
+                
+                p.vx *= 0.95;
+                p.vy *= 0.95;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > w || p.y < 0 || p.y > h) {
+                    p.x = Math.random() * w;
+                    p.y = Math.random() * h;
+                }
+                
+                p.history.push({x: p.x, y: p.y});
+                if(p.history.length > 5) p.history.shift();
+                
+                emotionCtx.beginPath();
+                emotionCtx.moveTo(p.history[0].x, p.history[0].y);
+                for(let i=1; i<p.history.length; i++) {
+                    emotionCtx.lineTo(p.history[i].x, p.history[i].y);
+                }
+                const brightness = Math.min(1, dist / (w/2));
+                emotionCtx.strokeStyle = `rgba(217, 119, 6, ${brightness * 0.5 + 0.1})`;
+                emotionCtx.stroke();
+            });
+
+            requestAnimationFrame(animateEmotionField);
+        }
+
+        // --- The Symphony of Self ---
+        const symphonyCanvas = document.getElementById('symphonyCanvas');
+        const symphonyCtx = symphonyCanvas.getContext('2d');
+        const coherenceBtn = document.getElementById('coherence-btn');
+        let symphonyTime = 0;
+        let brainParticles = [];
+        let coherenceActive = false;
+
+        function initSymphony() {
+            const w = symphonyCanvas.width;
+            const h = symphonyCanvas.height;
+            for(let i=0; i<300; i++) {
+                brainParticles.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateSymphony() {
+            const w = symphonyCanvas.width;
+            const h = symphonyCanvas.height;
+            symphonyCtx.clearRect(0, 0, w, h);
+            symphonyTime += 0.02;
+
+            // Draw Heart Wave
+            const heartWaveY = h/2 + Math.sin(symphonyTime) * h * 0.3;
+            symphonyCtx.strokeStyle = 'rgba(239, 68, 68, 0.3)';
+            symphonyCtx.lineWidth = 4;
+            symphonyCtx.beginPath();
+            symphonyCtx.moveTo(0, heartWaveY);
+            symphonyCtx.bezierCurveTo(w/3, heartWaveY, 2*w/3, h - heartWaveY, w, h - heartWaveY);
+            symphonyCtx.stroke();
+
+            // Draw Brain Particles
+            brainParticles.forEach(p => {
+                if (coherenceActive) {
+                    const heartPhase = h/2 + Math.sin(symphonyTime) * h * 0.3;
+                    const targetY = heartPhase + Math.sin(p.x * 0.05 + symphonyTime * 10) * h * 0.1;
+                    p.vy += (targetY - p.y) * 0.01;
+                } else {
+                    p.vy += (Math.random() - 0.5) * 0.2;
+                }
+                p.vx += (Math.random() - 0.5) * 0.1;
+                p.vx *= 0.95;
+                p.vy *= 0.95;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < -10) p.x = w + 10;
+                if (p.x > w + 10) p.x = -10;
+                if (p.y < 0 || p.y > h) { p.y = Math.random() * h; }
+                
+                symphonyCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                symphonyCtx.fillRect(p.x, p.y, 2, 2);
+            });
+
+            requestAnimationFrame(animateSymphony);
+        }
+        coherenceBtn.addEventListener('click', () => {
+            coherenceActive = !coherenceActive;
+            coherenceBtn.textContent = coherenceActive ? 'Release Coherence' : 'Initiate Coherence';
+        });
+
+        // --- The Lattice of Empathy ---
+        const latticeCanvas = document.getElementById('latticeCanvas');
+        const latticeCtx = latticeCanvas.getContext('2d');
+        const latticeBtn = document.getElementById('lattice-btn');
+        let latticeNodes = [];
+        let actionPulse = null;
+
+        function initLattice() {
+            const w = latticeCanvas.width;
+            const h = latticeCanvas.height;
+            // Self node
+            latticeNodes.push({ x: w/2, y: h/2, isSelf: true, activation: 0 });
+            // Other nodes
+            for(let i=0; i<8; i++) {
+                const angle = (i/8) * Math.PI * 2;
+                const radius = Math.min(w,h) * 0.35;
+                latticeNodes.push({
+                    x: w/2 + Math.cos(angle) * radius,
+                    y: h/2 + Math.sin(angle) * radius,
+                    isSelf: false,
+                    activation: 0
+                });
+            }
+        }
+
+        function animateLattice() {
+            const w = latticeCanvas.width;
+            const h = latticeCanvas.height;
+            latticeCtx.clearRect(0, 0, w, h);
+            
+            // Animate pulse
+            if (actionPulse) {
+                actionPulse.radius += 3;
+                actionPulse.alpha -= 0.01;
+                if (actionPulse.alpha <= 0) {
+                    actionPulse = null;
+                } else {
+                    latticeCtx.strokeStyle = `rgba(250, 204, 21, ${actionPulse.alpha})`;
+                    latticeCtx.lineWidth = 3;
+                    latticeCtx.beginPath();
+                    latticeCtx.arc(actionPulse.x, actionPulse.y, actionPulse.radius, 0, Math.PI * 2);
+                    latticeCtx.stroke();
+                }
+            }
+            
+            // Draw nodes
+            latticeNodes.forEach(n => {
+                if (actionPulse) {
+                    const dx = n.x - actionPulse.x;
+                    const dy = n.y - actionPulse.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (Math.abs(dist - actionPulse.radius) < 5) {
+                        n.activation = 1.0;
+                    }
+                }
+
+                if (n.activation > 0) n.activation -= 0.01;
+
+                const size = n.isSelf ? 20 : 15;
+                latticeCtx.fillStyle = n.isSelf ? '#d97706' : '#a8a29e';
+                latticeCtx.beginPath();
+                latticeCtx.arc(n.x, n.y, size, 0, Math.PI * 2);
+                latticeCtx.fill();
+
+                if (n.activation > 0) {
+                    const gradient = latticeCtx.createRadialGradient(n.x, n.y, 0, n.x, n.y, size);
+                    gradient.addColorStop(0, `rgba(250, 204, 21, ${n.activation})`);
+                    gradient.addColorStop(1, `rgba(250, 204, 21, 0)`);
+                    latticeCtx.fillStyle = gradient;
+                    latticeCtx.beginPath();
+                    latticeCtx.arc(n.x, n.y, size*1.5, 0, Math.PI * 2);
+                    latticeCtx.fill();
+                }
+            });
+            
+            requestAnimationFrame(animateLattice);
+        }
+        latticeBtn.addEventListener('click', () => {
+            if (!actionPulse) {
+                const selfNode = latticeNodes.find(n => n.isSelf);
+                selfNode.activation = 1.0;
+                actionPulse = { x: selfNode.x, y: selfNode.y, radius: 0, alpha: 1.0 };
+            }
+        });
+
+
+        // --- Window Onload ---
+        window.onload = function() {
+            emotionCanvas.width = emotionCanvas.offsetWidth;
+            emotionCanvas.height = emotionCanvas.offsetHeight;
+            initEmotionField();
+            animateEmotionField();
+            
+            symphonyCanvas.width = symphonyCanvas.offsetWidth;
+            symphonyCanvas.height = symphonyCanvas.offsetHeight;
+            initSymphony();
+            animateSymphony();
+
+            latticeCanvas.width = latticeCanvas.offsetWidth;
+            latticeCanvas.height = latticeCanvas.offsetHeight;
+            initLattice();
+            animateLattice();
+        };
+    </script>
+</body>
+</html>

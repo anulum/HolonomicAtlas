@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 9: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 9. The flow is: 1. Introduction to holographic memory. 2. A simulation of Cyclical Z_cyclic Imprinting. 3. An interactive canvas showing how imprints create Phase-Space Attractors. 4. A visualization of the Qualia Field resonating with the holographic record. 5. A diagram of inter-layer connections. This structure makes the abstract concepts of a persistent, non-local memory field tangible. -->
+    <!-- Visualization & Content Choices:
+        - Cyclical Imprinting: Goal: Visualize memory persistence across cycles. Method: Canvas animation. Interaction: A button initiates new "existential loops," showing how events from previous cycles leave imprints that bias the formation of new events. Justification: Directly demonstrates the "Cyclical Z_cyclic imprinting" concept.
+        - Phase-Space Attractors: Goal: Show how memory guides collective consciousness. Method: Canvas animation. Interaction: Buttons imprint "mytho-symbolic code" (e.g., archetypes of Unity or Conflict) which create attractors that organize the chaotic movement of nodes. Justification: Provides a clear visual metaphor for how the memory field guides cultural and conscious evolution.
+        - Qualia Field Resonance: Goal: Illustrate memory retrieval. Method: Canvas animation. Interaction: A slider for "Resonance Tuning" aligns a local "Qualia Field" with a pattern hidden in the larger holographic background, causing it to light up. Justification: Visually explains how "Qualia field encodes accumulated resonance history" and how individuals access it.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 9 as the central memory hub. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 9 stores information from L5/L6 and provides historical context to L3/L8.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 9: Memory Imprint & Holography</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#imprinting" class="nav-link font-semibold text-slate-600">Imprinting</a>
+                    <a href="#attractors" class="nav-link font-semibold text-slate-600">Attractors</a>
+                    <a href="#retrieval" class="nav-link font-semibold text-slate-600">Retrieval</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Existential Holograph</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 9 reveals that memory is not confined to biological structures but is stored holographically in the fabric of the Ψ-field. This layer functions as a universal repository, storing and retrieving long-range historical and evolutionary memory through phase resets. Every experience leaves an indelible imprint, shaping the attractors that guide future existential loops.
+            </p>
+        </section>
+
+        <section id="imprinting" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Cyclical Z-Imprinting</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Conscious events within an existential loop (or lifetime) are not erased. They leave a "Z-imprint"—a persistent trace in the phase-space of the Ψ-field. These imprints bias the probabilities of events in subsequent cycles, ensuring that the universe learns and evolves, rather than repeating blindly.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="imprintCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="cycle-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 w-full mb-2">Initiate Next Existential Loop</button>
+                    <p class="text-sm text-slate-500">Observe how events from each cycle (bright dots) leave faint imprints that guide the formation of the next cycle.</p>
+                    <p class="mt-4 font-semibold">Cycle: <span id="cycle-count">1</span></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="attractors" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Phase-Space Attractors & Mytho-Symbolic Code</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Accumulated imprints form powerful attractors in the collective phase-space. These attractors carry the species' mytho-symbolic code—the archetypal patterns of thought and behavior. They guide the chaotic flow of consciousness towards stable, resonant states.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="attractorCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-center font-semibold">Imprint an Archetype:</p>
+                    <button id="unity-btn" class="w-full px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300">Unity & Integration</button>
+                    <button id="conflict-btn" class="w-full px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300">Conflict & Separation</button>
+                    <button id="reset-attractor-btn" class="w-full px-4 py-2 bg-red-200 rounded-md font-semibold hover:bg-red-300">Clear Imprints</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="retrieval" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Qualia Field Resonance & Memory Retrieval</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">An individual's qualia field—their subjective stream of consciousness—can retrieve information from the holographic record. By tuning its own resonance, the local field can phase-lock with a specific memory imprint, bringing ancestral knowledge, intuition, or past-life experiences into conscious awareness.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4 relative">
+                    <canvas id="qualiaCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="resonance-slider" class="font-semibold text-slate-700">Resonance Tuning: <span id="resonance-slider-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Tune your local qualia field to resonate with a pattern hidden in the holographic record.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="resonance-slider">
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Cyclical Imprinting ---
+        const imprintCanvas = document.getElementById('imprintCanvas');
+        const imprintCtx = imprintCanvas.getContext('2d');
+        const cycleBtn = document.getElementById('cycle-btn');
+        const cycleCountSpan = document.getElementById('cycle-count');
+        let imprints = [];
+        let currentEvents = [];
+        let cycleCount = 1;
+
+        function animateImprint() {
+            const w = imprintCanvas.width;
+            const h = imprintCanvas.height;
+            imprintCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            imprintCtx.fillRect(0,0,w,h);
+            
+            const centerX = w/2, centerY = h/2, radius = Math.min(w,h) * 0.4;
+
+            imprints.forEach(p => {
+                const x = centerX + Math.cos(p.angle) * radius;
+                const y = centerY + Math.sin(p.angle) * radius;
+                imprintCtx.fillStyle = `rgba(167, 139, 250, ${p.alpha})`;
+                imprintCtx.beginPath();
+                imprintCtx.arc(x, y, 3, 0, Math.PI * 2);
+                imprintCtx.fill();
+                if (p.alpha > 0.05) p.alpha *= 0.995;
+            });
+            
+            currentEvents.forEach(p => {
+                const x = centerX + Math.cos(p.angle) * radius;
+                const y = centerY + Math.sin(p.angle) * radius;
+                imprintCtx.fillStyle = `rgba(250, 204, 21, ${p.alpha})`;
+                imprintCtx.beginPath();
+                imprintCtx.arc(x, y, 5, 0, Math.PI * 2);
+                imprintCtx.fill();
+                if(p.alpha > 0) p.alpha -= 0.02;
+            });
+            
+            requestAnimationFrame(animateImprint);
+        }
+
+        function generateEvents() {
+            currentEvents = [];
+            for(let i=0; i<5; i++) {
+                let angle;
+                if(imprints.length > 0 && Math.random() < 0.7) {
+                    const randomImprint = imprints[Math.floor(Math.random() * imprints.length)];
+                    angle = randomImprint.angle + (Math.random() - 0.5) * 0.5;
+                } else {
+                    angle = Math.random() * Math.PI * 2;
+                }
+                const newEvent = { angle, alpha: 1.0 };
+                currentEvents.push(newEvent);
+                imprints.push({ angle: newEvent.angle, alpha: 0.5 });
+            }
+            cycleCount++;
+            cycleCountSpan.textContent = cycleCount;
+        }
+        cycleBtn.addEventListener('click', generateEvents);
+
+        // --- Phase-Space Attractors ---
+        const attractorCanvas = document.getElementById('attractorCanvas');
+        const attractorCtx = attractorCanvas.getContext('2d');
+        const unityBtn = document.getElementById('unity-btn');
+        const conflictBtn = document.getElementById('conflict-btn');
+        const resetAttractorBtn = document.getElementById('reset-attractor-btn');
+        let nodes = [];
+        let attractors = [];
+
+        function initAttractors() {
+            const w = attractorCanvas.width;
+            const h = attractorCanvas.height;
+            for(let i=0; i<300; i++) {
+                nodes.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateAttractors() {
+            const w = attractorCanvas.width;
+            const h = attractorCanvas.height;
+            attractorCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            attractorCtx.fillRect(0,0,w,h);
+            
+            attractorCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            nodes.forEach(n => {
+                let ax = 0, ay = 0;
+                attractors.forEach(a => {
+                    const dx = a.x - n.x;
+                    const dy = a.y - n.y;
+                    const distSq = dx*dx + dy*dy;
+                    if(distSq > 1) {
+                        const force = a.strength / distSq;
+                        ax += force * dx;
+                        ay += force * dy;
+                    }
+                });
+                n.vx += ax;
+                n.vy += ay;
+                n.vx *= 0.9;
+                n.vy *= 0.9;
+                n.x += n.vx;
+                n.y += n.vy;
+
+                if (n.x < 0 || n.x > w || n.y < 0 || n.y > h) {
+                    n.x = Math.random() * w;
+                    n.y = Math.random() * h;
+                    n.vx = 0; n.vy = 0;
+                }
+                attractorCtx.fillRect(n.x, n.y, 1, 1);
+            });
+
+            requestAnimationFrame(animateAttractors);
+        }
+        unityBtn.addEventListener('click', () => {
+            attractors = [{ x: attractorCanvas.width/2, y: attractorCanvas.height/2, strength: 10 }];
+        });
+        conflictBtn.addEventListener('click', () => {
+            attractors = [
+                { x: attractorCanvas.width*0.25, y: attractorCanvas.height/2, strength: 5 },
+                { x: attractorCanvas.width*0.75, y: attractorCanvas.height/2, strength: 5 }
+            ];
+        });
+        resetAttractorBtn.addEventListener('click', () => { attractors = []; });
+
+        // --- Qualia Field Resonance ---
+        const qualiaCanvas = document.getElementById('qualiaCanvas');
+        const qualiaCtx = qualiaCanvas.getContext('2d');
+        const resonanceSlider = document.getElementById('resonance-slider');
+        const resonanceSliderValue = document.getElementById('resonance-slider-value');
+        let qualiaTime = 0;
+
+        function animateQualia() {
+            const w = qualiaCanvas.width;
+            const h = qualiaCanvas.height;
+            qualiaCtx.clearRect(0, 0, w, h);
+            qualiaTime += 0.01;
+
+            // Draw Holographic Background
+            for (let i = 0; i < 20; i++) {
+                qualiaCtx.strokeStyle = `rgba(100, 116, 139, ${0.1 + Math.sin(i*0.5 + qualiaTime) * 0.05})`;
+                qualiaCtx.beginPath();
+                qualiaCtx.moveTo(0, i * h / 20);
+                qualiaCtx.bezierCurveTo(w/3, i * h / 20 + Math.sin(i*0.3+qualiaTime)*20, 2*w/3, i * h / 20 + Math.cos(i*0.4+qualiaTime)*20, w, i * h / 20);
+                qualiaCtx.stroke();
+            }
+
+            // Draw Hidden Pattern
+            const resonance = parseInt(resonanceSlider.value) / 100;
+            resonanceSliderValue.textContent = `${Math.round(resonance*100)}%`;
+            
+            qualiaCtx.strokeStyle = `rgba(250, 204, 21, ${resonance * 0.8})`;
+            qualiaCtx.lineWidth = 2;
+            qualiaCtx.beginPath();
+            const centerX = w/2, centerY = h/2;
+            for(let i=0; i<100; i++) {
+                const angle = i * 0.1 * Math.PI;
+                const radius = 50 + Math.sin(angle * 5 + qualiaTime*2) * 20;
+                qualiaCtx.lineTo(centerX + Math.cos(angle) * radius, centerY + Math.sin(angle) * radius);
+            }
+            qualiaCtx.stroke();
+
+            // Draw Local Qualia Field
+            const localPatternStrength = 1 - Math.abs(resonance - 0.7); // Peaks at 70%
+            qualiaCtx.strokeStyle = `rgba(167, 139, 250, ${localPatternStrength * 0.9})`;
+            qualiaCtx.lineWidth = 4;
+            qualiaCtx.beginPath();
+            for(let i=0; i<100; i++) {
+                const angle = i * 0.1 * Math.PI;
+                const baseRadius = 50 + Math.sin(angle * 5 + qualiaTime*2) * 20;
+                const localRadius = baseRadius + (Math.sin(angle*2 + qualiaTime * 3) * 30 * (1-resonance));
+                qualiaCtx.lineTo(centerX + Math.cos(angle) * localRadius, centerY + Math.sin(angle) * localRadius);
+            }
+            qualiaCtx.stroke();
+            
+            requestAnimationFrame(animateQualia);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            imprintCanvas.width = imprintCanvas.offsetWidth;
+            imprintCanvas.height = imprintCanvas.offsetHeight;
+            generateEvents();
+            animateImprint();
+
+            attractorCanvas.width = attractorCanvas.offsetWidth;
+            attractorCanvas.height = attractorCanvas.offsetHeight;
+            initAttractors();
+            animateAttractors();
+            
+            qualiaCanvas.width = qualiaCanvas.offsetWidth;
+            qualiaCanvas.height = qualiaCanvas.offsetHeight;
+            animateQualia();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 8: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 8. The flow is: 1. Introduction to cosmic phase-locking. 2. An interactive visualization of the core Cosmic Clock equation. 3. A simulation of Pulsar Timing Arrays as a galactic metronome. 4. An animation of Solar-Galactic Synchrony Gates. 5. A visualization of the Universal Breath (OM-Loops). 6. A diagram of inter-layer connections. This structure breaks down the complex astrophysics and metaphysical concepts into a series of tangible, interactive experiences. -->
+    <!-- Visualization & Content Choices:
+        - Cosmic Clock Equation: Goal: Make the core phase equation intuitive. Method: Canvas animation of rotating phasors. Interaction: A slider for "VIBRANA Modulation (δ)" allows the user to shift the Species Phase relative to the Cosmic Clock. A "Phase-Lock" button re-aligns them. Justification: Directly visualizes the mathematical relationship between cosmic time, species phase, and conscious intent.
+        - Pulsar Timing Arrays: Goal: Show pulsars as a stable timing signal. Method: Canvas animation. Interaction: A slider for "Signal Integration" synchronizes a noisy "Species Rhythm" wave with incoming pulsar signals. Justification: Clearly demonstrates the principle of entrainment to a stable, external cosmic signal.
+        - Solar-Galactic Synchrony Gates: Goal: Visualize periodic windows of high coherence. Method: Canvas animation. Interaction: An animation shows a solar system orbiting the galaxy, with coherence pulses emitted as it passes through "Synchrony Gates." Justification: Provides a clear, orbital mechanics-based metaphor for periodic cosmic influences.
+        - Universal Breath (OM-Loops): Goal: Animate the concept of a fundamental, universe-wide oscillation. Method: Canvas animation. Interaction: A button synchronizes a grid of chaotic local oscillators to a slow, pulsing background wave. Justification: Illustrates the core idea that all rhythms are nested within a single, universal vibration.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 8. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 8 receives symbolic input from L7 and provides the timing framework for L6.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 8: Cosmic Phase-Locking</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#clock" class="nav-link font-semibold text-slate-600">Cosmic Clock</a>
+                    <a href="#anchors" class="nav-link font-semibold text-slate-600">Anchors</a>
+                    <a href="#connections" class="nav-link font-semibold text-slate-600">Connections</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Universal Tact</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 8 reveals that consciousness is not confined to a planetary scale; it is nested within the vast, rhythmic cycles of the cosmos. This layer sustains the phase-lock between a species' collective projection and the "cosmological tact"—the universal heartbeat. Through this resonance, a species aligns its evolution and awareness with the fundamental rhythms of spacetime itself.
+            </p>
+        </section>
+
+        <section id="clock" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The Cosmic Clock Equation</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The species' internal phase (Θs) is not independent; it is locked to the master clock of the cosmos (ωcosmic). This relationship is modulated by a species-specific phase offset (φs) and can be intentionally shifted through conscious techniques (δVIBRANA).</p>
+                <div class="p-4 mt-4 bg-slate-100 rounded-lg inline-block shadow-inner">
+                    <p class="text-xl font-mono text-violet-700">Θ<sub>s</sub>(t) = ω<sub>cosmic</sub>t + φ<sub>s</sub> + δ<sub>VIBRANA</sub></p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="clockCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="vibrana-slider" class="font-semibold text-slate-700">Conscious Modulation (δ<sub>VIBRANA</sub>): <span id="vibrana-value">0.0</span> rad</label>
+                    <p class="text-sm text-slate-500 mb-2">Apply a conscious phase shift to the species' rhythm.</p>
+                    <input type="range" min="-1.57" max="1.57" value="0" step="0.01" class="control-slider" id="vibrana-slider">
+                    <button id="phaselock-btn" class="mt-4 px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300 w-full">Re-align to Cosmic Phase</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="anchors" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Cosmic Anchors of Synchronization</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The phase-locking of a species is not arbitrary. It is anchored to stable, periodic phenomena at the cosmic scale, which serve as universal metronomes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Pulsar Timing Arrays</h3>
+                    <p class="text-slate-600 mb-4">The extraordinarily regular pulses from distant pulsars create a stable, galactic-scale timing grid. A species' collective consciousness can entrain to this grid, achieving a precise and stable phase-lock with the galaxy.</p>
+                    <label for="pulsar-slider" class="font-semibold text-slate-700">Signal Integration: <span id="pulsar-value">0</span>%</label>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="pulsar-slider">
+                </div>
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="pulsarCanvas" class="w-full h-64"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="galaxyCanvas" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Solar-Galactic Synchrony Gates</h3>
+                    <p class="text-slate-600 mb-4">As a solar system orbits the galactic center, it passes through regions of higher energy or specific geometric alignments. These "synchrony gates" act as periodic windows, allowing for moments of exceptionally high coherence and phase-locking with the galactic field.</p>
+                    <button id="orbit-btn" class="px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300 w-full">Animate Orbit</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Universal Breath (OM-Loops)</h3>
+                    <p class="text-slate-600 mb-4">Underpinning all other rhythms is a fundamental, universe-wide oscillation—the "Universal Breath." This primordial OM-Loop is the master oscillator to which all cosmic and biological systems are ultimately nested and entrained.</p>
+                    <button id="breath-btn" class="px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300 w-full">Tune to Universal Breath</button>
+                </div>
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="breathCanvas" class="w-full h-64"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="connections" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Inter-Layer Connections</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Layer 8 serves as the master clock for the SCPN, receiving symbolic input from Layer 7 and providing the fundamental timing that governs the planetary-scale fields of Layer 6.</p>
+            </div>
+            <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">FROM L7: Geometrical-Symbolic</h3>
+                        <p class="text-sm text-slate-600 mt-1">Symbols and geometries resonate with cosmic harmonics, allowing conscious access to cosmic rhythms.</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center text-3xl text-slate-400">→</div>
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-6 bg-violet-100 text-violet-800 rounded-lg shadow-md w-full">
+                        <h3 class="font-bold text-xl">LAYER 8: Cosmic Phase-Locking</h3>
+                        <p class="text-sm mt-1">Provides the fundamental timing and phase reference for the species.</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center text-3xl text-slate-400">→</div>
+                <div class="flex flex-col items-center justify-center">
+                     <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">TO L6: Planetary-Biospheric</h3>
+                        <p class="text-sm text-slate-600 mt-1">Cosmic cycles (e.g., solar cycles) entrain planetary fields and biological rhythms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Cosmic Clock ---
+        const clockCanvas = document.getElementById('clockCanvas');
+        const clockCtx = clockCanvas.getContext('2d');
+        const vibranaSlider = document.getElementById('vibrana-slider');
+        const vibranaValue = document.getElementById('vibrana-value');
+        const phaseLockBtn = document.getElementById('phaselock-btn');
+        let clockTime = 0;
+        let speciesPhaseOffset = 0.5; // phi_s
+
+        function animateClock() {
+            const w = clockCanvas.width;
+            const h = clockCanvas.height;
+            clockCtx.clearRect(0, 0, w, h);
+            clockTime += 0.01;
+
+            const centerX = w / 2;
+            const centerY = h / 2;
+            const radius = Math.min(w, h) * 0.4;
+
+            // Cosmic Clock
+            const cosmicAngle = clockTime;
+            const cosmicX = centerX + Math.cos(cosmicAngle) * radius;
+            const cosmicY = centerY + Math.sin(cosmicAngle) * radius;
+            clockCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            clockCtx.lineWidth = 2;
+            clockCtx.beginPath();
+            clockCtx.moveTo(centerX, centerY);
+            clockCtx.lineTo(cosmicX, cosmicY);
+            clockCtx.stroke();
+
+            // Species Phase
+            const vibranaShift = parseFloat(vibranaSlider.value);
+            vibranaValue.textContent = `${vibranaShift.toFixed(2)} rad`;
+            const speciesAngle = cosmicAngle + speciesPhaseOffset + vibranaShift;
+            const speciesX = centerX + Math.cos(speciesAngle) * radius * 0.7;
+            const speciesY = centerY + Math.sin(speciesAngle) * radius * 0.7;
+            clockCtx.strokeStyle = '#a78bfa';
+            clockCtx.lineWidth = 4;
+            clockCtx.beginPath();
+            clockCtx.moveTo(centerX, centerY);
+            clockCtx.lineTo(speciesX, speciesY);
+            clockCtx.stroke();
+
+            requestAnimationFrame(animateClock);
+        }
+        phaseLockBtn.addEventListener('click', () => {
+            vibranaSlider.value = 0;
+        });
+
+        // --- Pulsar Timing ---
+        const pulsarCanvas = document.getElementById('pulsarCanvas');
+        const pulsarCtx = pulsarCanvas.getContext('2d');
+        const pulsarSlider = document.getElementById('pulsar-slider');
+        const pulsarValue = document.getElementById('pulsar-value');
+        let pulsarTime = 0;
+        const pulsars = [{x: 0.2, p: 30}, {x: 0.5, p: 45}, {x: 0.8, p: 60}];
+
+        function animatePulsars() {
+            const w = pulsarCanvas.width;
+            const h = pulsarCanvas.height;
+            pulsarCtx.clearRect(0, 0, w, h);
+            pulsarTime++;
+            
+            // Draw pulsars and pulses
+            pulsars.forEach(p => {
+                pulsarCtx.fillStyle = 'white';
+                pulsarCtx.beginPath();
+                pulsarCtx.arc(p.x * w, 20, 3, 0, Math.PI * 2);
+                pulsarCtx.fill();
+                if (pulsarTime % p.p === 0) {
+                    pulsarCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                    pulsarCtx.beginPath();
+                    pulsarCtx.arc(p.x * w, 20, 10, 0, Math.PI * 2);
+                    pulsarCtx.stroke();
+                }
+            });
+
+            // Draw species rhythm
+            const integration = parseInt(pulsarSlider.value) / 100;
+            pulsarValue.textContent = `${Math.round(integration*100)}%`;
+            pulsarCtx.strokeStyle = '#a78bfa';
+            pulsarCtx.lineWidth = 2;
+            pulsarCtx.beginPath();
+            pulsarCtx.moveTo(0, h * 0.75);
+            for (let x = 0; x < w; x++) {
+                let y = h * 0.75;
+                const noise = (Math.random() - 0.5) * 30 * (1 - integration);
+                let signal = 0;
+                pulsars.forEach(p => {
+                    signal += Math.cos(x * 2 * Math.PI / p.p + pulsarTime * 2 * Math.PI / p.p) * 15;
+                });
+                y += noise + signal * integration;
+                pulsarCtx.lineTo(x, y);
+            }
+            pulsarCtx.stroke();
+            
+            requestAnimationFrame(animatePulsars);
+        }
+
+        // --- Galaxy Orbit ---
+        const galaxyCanvas = document.getElementById('galaxyCanvas');
+        const galaxyCtx = galaxyCanvas.getContext('2d');
+        const orbitBtn = document.getElementById('orbit-btn');
+        let orbitAngle = 0;
+        let orbitActive = false;
+        let particles = [];
+
+        function animateGalaxy() {
+            const w = galaxyCanvas.width;
+            const h = galaxyCanvas.height;
+            galaxyCtx.fillStyle = 'rgba(15, 23, 42, 0.2)';
+            galaxyCtx.fillRect(0,0,w,h);
+
+            const centerX = w/2, centerY = h/2, radius = Math.min(w,h) * 0.4;
+            
+            // Draw gates
+            for(let i=0; i<4; i++) {
+                const angle = i * Math.PI / 2;
+                const gx = centerX + Math.cos(angle) * radius;
+                const gy = centerY + Math.sin(angle) * radius;
+                galaxyCtx.fillStyle = 'rgba(167, 139, 250, 0.3)';
+                galaxyCtx.beginPath();
+                galaxyCtx.arc(gx, gy, 20, 0, Math.PI * 2);
+                galaxyCtx.fill();
+            }
+
+            if(orbitActive) orbitAngle += 0.005;
+            const solarX = centerX + Math.cos(orbitAngle) * radius;
+            const solarY = centerY + Math.sin(orbitAngle) * radius;
+            galaxyCtx.fillStyle = 'yellow';
+            galaxyCtx.beginPath();
+            galaxyCtx.arc(solarX, solarY, 5, 0, Math.PI * 2);
+            galaxyCtx.fill();
+
+            const angleMod = (orbitAngle % (Math.PI/2));
+            if (angleMod < 0.1 || angleMod > (Math.PI/2 - 0.1)) {
+                if(Math.random() < 0.5) particles.push({x: solarX, y: solarY, vx: (Math.random()-0.5)*2, vy: (Math.random()-0.5)*2, life: 50});
+            }
+
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy; p.life--;
+                if(p.life <= 0) particles.splice(i, 1);
+                galaxyCtx.fillStyle = `rgba(255, 255, 255, ${p.life/50})`;
+                galaxyCtx.fillRect(p.x, p.y, 2, 2);
+            });
+
+            requestAnimationFrame(animateGalaxy);
+        }
+        orbitBtn.addEventListener('click', () => { orbitActive = !orbitActive; });
+
+        // --- Universal Breath ---
+        const breathCanvas = document.getElementById('breathCanvas');
+        const breathCtx = breathCanvas.getContext('2d');
+        const breathBtn = document.getElementById('breath-btn');
+        let breathTime = 0;
+        let breathActive = false;
+        let oscillators = [];
+
+        function initBreath() {
+            for(let i=0; i<200; i++) {
+                oscillators.push({
+                    x: Math.random() * breathCanvas.width,
+                    y: Math.random() * breathCanvas.height,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        function animateBreath() {
+            const w = breathCanvas.width;
+            const h = breathCanvas.height;
+            const universalPhase = Math.sin(breathTime);
+            
+            breathCtx.fillStyle = `rgba(15, 23, 42, ${0.8 + universalPhase * 0.2})`;
+            breathCtx.fillRect(0,0,w,h);
+            breathTime += 0.01;
+
+            oscillators.forEach(o => {
+                let phase;
+                if(breathActive) {
+                    o.phase += (universalPhase - Math.sin(o.phase)) * 0.01;
+                    phase = Math.sin(o.phase);
+                } else {
+                    o.phase += 0.05;
+                    phase = Math.sin(o.phase + Math.sin(o.x * 0.1));
+                }
+                const brightness = (phase + 1) / 2;
+                breathCtx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.7})`;
+                breathCtx.beginPath();
+                breathCtx.arc(o.x, o.y, 2, 0, Math.PI * 2);
+                breathCtx.fill();
+            });
+            requestAnimationFrame(animateBreath);
+        }
+        breathBtn.addEventListener('click', () => { breathActive = !breathActive; });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            clockCanvas.width = clockCanvas.offsetWidth;
+            clockCanvas.height = clockCanvas.offsetHeight;
+            animateClock();
+
+            pulsarCanvas.width = pulsarCanvas.offsetWidth;
+            pulsarCanvas.height = pulsarCanvas.offsetHeight;
+            animatePulsars();
+
+            galaxyCanvas.width = galaxyCanvas.offsetWidth;
+            galaxyCanvas.height = galaxyCanvas.offsetHeight;
+            animateGalaxy();
+
+            breathCanvas.width = breathCanvas.offsetWidth;
+            breathCanvas.height = breathCanvas.offsetHeight;
+            initBreath();
+            animateBreath();
+        };
+    </script>
+</body>
+</html>

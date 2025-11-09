@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Integrity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #f95d6a, #ff7c43, #ffa600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .pillar-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-gray-800 tracking-tight">The Architecture of <span class="gradient-text">Integrity</span></h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">From Personal Virtue to Systemic Resilience: Understanding the Foundation of Trust</p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://anulum.li/koans.html" class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300 w-full sm:w-auto">
+                    ← Back to Koans
+                </a>
+                <a href="https://anulum.li/aoi.html" class="inline-block bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-orange-600 transition-colors duration-300 w-full sm:w-auto">
+                    Read the Analysis →
+                </a>
+            </div>
+        </header>
+
+        <section id="introduction" class="mb-20">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">What is Integrity?</h2>
+                <p class="text-lg text-center mb-8">At its core, integrity comes from the Latin word <em class="font-semibold text-blue-800">integritas</em>, meaning "wholeness" or "completeness." It is a state of being unimpaired and resistant to corruption. This single concept applies to both the moral character of a person and the functional soundness of a system, creating the two fundamental faces of integrity.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <div class="border-2 border-blue-500 border-dashed rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-2">👤 Personal Integrity</h3>
+                        <p>A moral virtue and a personal choice. It's the consistency between one's values, beliefs, and actions—an uncompromising commitment to being honest, fair, and accountable.</p>
+                    </div>
+                    <div class="border-2 border-pink-500 border-dashed rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-pink-800 mb-2">⚙️ Systemic Integrity</h3>
+                        <p>A functional state of being. It's the measurable quality of a system—a database, a bridge, or an organization—performing its intended function in an unimpaired, sound manner.</p>
+                    </div>
+                </div>
+                 <p class="text-center mt-8 text-gray-600 italic">A crucial insight: The need for robust <strong class="text-pink-800">systemic integrity</strong> arises directly from the potential for failures in <strong class="text-blue-800">human integrity</strong>.</p>
+            </div>
+        </section>
+
+        <section id="philosophy" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">The Philosophical Spectrum of Integrity</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Philosophers view integrity through different lenses, each highlighting a unique facet of this complex concept. These accounts range from a focus on internal consistency to adherence to external moral principles, together forming a complete picture.</p>
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="chart-container mx-auto">
+                    <canvas id="philosophyChart"></canvas>
+                </div>
+                <p class="text-center mt-4 text-gray-600">This chart shows how different philosophical views contribute to our total understanding of integrity. While some focus on internal wholeness (Self-Integration, Identity), others emphasize moral purpose and social virtue.</p>
+            </div>
+        </section>
+
+        <section id="in-practice" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Integrity in Practice: Real-World Domains</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-12">The principles of integrity are not just abstract ideals; they are critical operational requirements in fields that underpin our society. Failures in these areas have tangible and severe consequences.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Cybersecurity: Protecting Information</h3>
+                    <p class="mb-6">In the digital world, integrity ensures that data is trustworthy and has not been altered by unauthorized actions. It's a cornerstone of the "CIA Triad" (Confidentiality, Integrity, Availability) that governs information security.</p>
+                    <div class="chart-container mx-auto">
+                        <canvas id="threatsChart"></canvas>
+                    </div>
+                    <p class="text-center mt-4 text-gray-600">Threats to data integrity come from both deliberate attacks and unintentional human error, requiring a layered defense strategy.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Engineering: Ensuring Structural Soundness</h3>
+                    <p class="mb-6">For an engineer, integrity is the physical ability of a structure to withstand its intended loads without failing. This provides a powerful physical metaphor for moral and organizational resilience.</p>
+                    <div class="chart-container mx-auto">
+                        <canvas id="failureCausesChart"></canvas>
+                    </div>
+                    <p class="text-center mt-4 text-gray-600">Structural failures often trace back to design flaws or human error ("shoddy workmanship"), a direct link between a system's physical integrity and the professional integrity of its creators.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 lg:col-span-2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Knowledge: The Foundation of Truth</h3>
+                    <p class="text-center max-w-3xl mx-auto mb-8">In science and journalism, integrity is the bedrock of credibility. Formal processes like peer review and fact-checking are society's mechanisms for creating a shared, trustworthy understanding of the world.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="text-center p-4">
+                            <div class="text-5xl mb-2">🔬</div>
+                            <h4 class="font-bold text-xl">Science</h4>
+                            <p>Honesty, Reproducibility, Fairness in Peer Review</p>
+                        </div>
+                        <div class="text-4xl text-gray-400 font-light">&rarr;</div>
+                        <div class="text-center p-4 bg-gray-100 rounded-lg border border-gray-200">
+                             <h4 class="font-bold text-xl">Process</h4>
+                             <p>Verification & Accountability</p>
+                        </div>
+                        <div class="text-4xl text-gray-400 font-light">&rarr;</div>
+                        <div class="text-center p-4">
+                            <div class="text-5xl mb-2">📰</div>
+                            <h4 class="font-bold text-xl">Journalism</h4>
+                            <p>Accuracy, Independence, Minimizing Harm</p>
+                        </div>
+                        <div class="text-4xl text-gray-400 font-light hidden md:block">&rarr;</div>
+                         <div class="text-center p-4 bg-green-100 text-green-800 rounded-lg border border-green-200 mt-4 md:mt-0">
+                             <h4 class="font-bold text-xl">Outcome</h4>
+                             <p>Public Trust & Informed Society</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">The High Cost of Low Integrity</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-8">Failures of integrity are never victimless. They erode the most valuable currency in any relationship, organization, or society: trust. This erosion has a devastating and asymmetrical impact.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-5xl font-black gradient-text">76%</p>
+                    <p class="mt-2 font-semibold">of employees have observed illegal or unethical conduct on the job.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-5xl font-black gradient-text">50%</p>
+                    <p class="mt-2 font-semibold">Decline in productivity observed in low-trust work environments.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-5xl font-black gradient-text">10x</p>
+                    <p class="mt-2 font-semibold">Trust is built in drops over years but can be lost in buckets in an instant.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">The Asymmetry of Trust</h3>
+                <p class="text-center mb-6">Trust is earned through consistent, reliable action over time. A single breach of integrity can destroy years of accumulated trust almost instantly, making recovery a long and difficult process.</p>
+                <div class="chart-container mx-auto h-64 md:h-80">
+                    <canvas id="trustChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="framework" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">A Unified Framework for Enhancing Integrity</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-12">Enhancing integrity requires a holistic approach that addresses the human, professional, and systemic dimensions simultaneously. A resilient, trustworthy environment is built on three interdependent pillars.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="pillar-card p-8 text-center">
+                    <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mb-6">
+                        <span class="text-4xl">💡</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-blue-800 mb-3">Pillar 1: The 'Why'</h3>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Personal Commitment</h4>
+                    <p class="text-gray-600">The internal engine of integrity. It's an individual's conscious choice to live by a set of core values, grounded in self-awareness, honesty, and accountability.</p>
+                </div>
+
+                <div class="pillar-card p-8 text-center">
+                    <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-pink-100 mb-6">
+                        <span class="text-4xl">🛠️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pink-800 mb-3">Pillar 2: The 'How'</h3>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Professional Practice</h4>
+                    <p class="text-gray-600">The disciplined application of integrity within a specific field. It's guided by shared ethical codes and standards that translate abstract values into concrete actions.</p>
+                </div>
+
+                <div class="pillar-card p-8 text-center">
+                     <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-yellow-100 mb-6">
+                        <span class="text-4xl">🛡️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-yellow-800 mb-3">Pillar 3: The 'What'</h3>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Systemic Controls</h4>
+                    <p class="text-gray-600">The tangible safeguards designed to prevent and detect integrity failures. This includes technical controls, engineering safety factors, and institutional processes like audits.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="mb-20">
+             <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Architecting Your Integrity</h2>
+             <p class="text-lg text-center max-w-3xl mx-auto mb-12">Building integrity is an active process. The following tools and concepts can help structure this effort at both the personal and technical levels.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Personal Integrity Compass</h3>
+                    <p class="mb-6">Developing personal integrity requires balancing a cluster of interrelated traits. This compass shows the key dimensions of a well-rounded, virtuous character.</p>
+                    <div class="chart-container mx-auto">
+                        <canvas id="personalIntegrityChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Technical Integrity Blueprint</h3>
+                    <p class="mb-6">A defense-in-depth strategy combines multiple layers of technical controls to create a resilient system that can protect, detect, and recover from integrity breaches.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-600 text-white flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Foundation</h4>
+                                <p class="text-sm text-gray-600">Hashing, Checksums, and File Integrity Monitoring (FIM) to detect unauthorized changes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-600 text-white flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Assurance</h4>
+                                <p class="text-sm text-gray-600">Digital Signatures to provide Authentication, Integrity, and Non-Repudiation.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start">
+                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-600 text-white flex items-center justify-center font-bold">3</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Policy & Control</h4>
+                                <p class="text-sm text-gray-600">Access Control (Least Privilege), Data Validation, and Encryption to reduce the attack surface.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start">
+                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-600 text-white flex items-center justify-center font-bold">4</div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Recovery</h4>
+                                <p class="text-sm text-gray-600">Regular Audits and secure Backups to enable restoration after a failure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">This infographic synthesizes key concepts from "<a href="https://anulum.li/aoi.html" class="underline hover:text-blue-300 transition-colors">An Analysis of Integrity and a Framework for Its Enhancement</a>."</p>
+            <p class="text-xs text-gray-500 mt-4">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        const brilliantBlues = {
+            blueDark: '#003f5c',
+            blueMid: '#2f4b7c',
+            purpleDark: '#665191',
+            purpleMid: '#a05195',
+            pinkDark: '#d45087',
+            pinkMid: '#f95d6a',
+            orange: '#ff7c43',
+            yellow: '#ffa600'
+        };
+
+        const chartColors = [
+            brilliantBlues.orange,
+            brilliantBlues.pinkMid,
+            brilliantBlues.purpleMid,
+            brilliantBlues.blueMid,
+            brilliantBlues.blueDark,
+        ];
+        
+        const textColor = '#4b5563';
+        const gridColor = '#e5e7eb';
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor,
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: textColor },
+                    grid: { color: gridColor }
+                },
+                x: {
+                    ticks: { color: textColor },
+                    grid: { color: 'transparent' }
+                }
+            }
+        };
+
+        function initPhilosophyChart() {
+            const ctx = document.getElementById('philosophyChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Self-Integration', 'Identity', 'Standing for Something', 'Moral Purpose', 'Virtue'],
+                    datasets: [{
+                        label: 'Philosophical Accounts',
+                        data: [20, 20, 20, 20, 20],
+                        backgroundColor: chartColors,
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                             labels: {
+                                color: textColor,
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                           callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        },
+                        title: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function initThreatsChart() {
+            const ctx = document.getElementById('threatsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Malicious Attacks', 'Human Error', 'System Flaws'],
+                    datasets: [{
+                        label: 'Frequency of Integrity Threats',
+                        data: [45, 35, 20],
+                        backgroundColor: [brilliantBlues.pinkMid, brilliantBlues.orange, brilliantBlues.purpleMid],
+                        borderRadius: 4,
+                    }]
+                },
+                options: { ...defaultChartOptions,
+                    plugins: { ...defaultChartOptions.plugins, legend: { display: false } },
+                    scales: { ...defaultChartOptions.scales, x: { ...defaultChartOptions.scales.x, ticks: { callback: function(value) { return wrapLabel(this.getLabelForValue(value), 10) } } } }
+                }
+            });
+        }
+        
+        function initFailureCausesChart() {
+            const ctx = document.getElementById('failureCausesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Design & Material Flaws', 'Deterioration (Fatigue/Corrosion)', 'Manufacturing & Human Error', 'Unexpected Events'],
+                    datasets: [{
+                        label: 'Causes of Structural Failure',
+                        data: [40, 25, 25, 10],
+                        backgroundColor: [brilliantBlues.blueMid, brilliantBlues.purpleMid, brilliantBlues.pinkMid, brilliantBlues.yellow],
+                        borderRadius: 4,
+                    }]
+                },
+                 options: { ...defaultChartOptions,
+                    indexAxis: 'y',
+                    plugins: { ...defaultChartOptions.plugins, legend: { display: false } },
+                    scales: { ...defaultChartOptions.scales, x: { ...defaultChartOptions.scales.x, grid: { color: gridColor } }, y: { ...defaultChartOptions.scales.y, grid: { color: 'transparent' }, ticks: { callback: function(value) { return wrapLabel(this.getLabelForValue(value), 16) } } } }
+                }
+            });
+        }
+        
+        function initTrustChart() {
+            const ctx = document.getElementById('trustChart').getContext('2d');
+            const data = {
+                labels: Array.from({length: 20}, (_, i) => `Year ${i + 1}`),
+                datasets: [{
+                    label: 'Level of Trust',
+                    data: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 15, 18, 22, 25, 28],
+                    borderColor: brilliantBlues.pinkMid,
+                    backgroundColor: 'rgba(249, 93, 106, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: (context) => context.dataIndex === 14 ? 6 : 0,
+                    pointBackgroundColor: brilliantBlues.pinkDark,
+                }]
+            };
+            
+            const annotation = {
+                type: 'line',
+                scaleID: 'x',
+                value: 'Year 15',
+                borderColor: brilliantBlues.blueDark,
+                borderWidth: 2,
+                borderDash: [6, 6],
+                label: {
+                    content: 'Integrity Breach',
+                    enabled: true,
+                    position: 'start',
+                    backgroundColor: brilliantBlues.blueDark,
+                    font: {
+                        family: "'Inter', sans-serif"
+                    }
+                }
+            };
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: { ...defaultChartOptions,
+                    plugins: { ...defaultChartOptions.plugins, legend: { display: false }, annotation: { annotations: { annotation } } },
+                    scales: { ...defaultChartOptions.scales, x: { display: false }, y: { min: 0, max: 100 } }
+                }
+            });
+        }
+
+        function initPersonalIntegrityChart() {
+            const ctx = document.getElementById('personalIntegrityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Honesty', 'Accountability', 'Consistency', 'Compassion', ['Self-', 'Awareness']],
+                    datasets: [{
+                        label: 'Personal Integrity',
+                        data: [85, 90, 80, 75, 95],
+                        backgroundColor: 'rgba(47, 75, 124, 0.2)',
+                        borderColor: brilliantBlues.blueMid,
+                        pointBackgroundColor: brilliantBlues.blueMid,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: brilliantBlues.blueMid,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                           callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: gridColor },
+                            grid: { color: gridColor },
+                            pointLabels: { 
+                                color: textColor,
+                                font: {
+                                    size: 14,
+                                    family: "'Inter', sans-serif"
+                                }
+                            },
+                            ticks: {
+                                backdropColor: '#f0f4f8',
+                                color: textColor
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = function() {
+            initPhilosophyChart();
+            initThreatsChart();
+            initFailureCausesChart();
+            initTrustChart();
+            initPersonalIntegrityChart();
+        };
+    </script>
+</body>
+</html>

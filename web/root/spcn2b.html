@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 2: Neurochemical-Neurological Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic, narrative structure using new interactive metaphors. The flow is: 1. Introduction. 2. "The Neural Orchestra" simulator for neuromodulator tuning. 3. "Sculpting Thought from Noise" simulation for neural attractors. 4. "The Rhythmic Gateway" visualization for phase-locking. 5. The detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Neural Orchestra: Goal: Visualize chemical influence on a population of oscillators. Method: Canvas animation. Interaction: Sliders for Serotonin (path smoothness/coherence), Dopamine (amplitude/radius), and Glutamate (frequency/speed). Justification: A more dynamic and intuitive metaphor for tuning a neural ensemble.
+        - Sculpting Thought from Noise: Goal: Explain how the Ψ-field stabilizes thought patterns. Method: Canvas animation of a particle system. Interaction: A slider for "Ψ-Field Coherence" applies a force that guides a subset of chaotic particles into a stable, geometric pattern. Justification: Better illustrates the concept of "sculpting" an attractor from noise.
+        - The Rhythmic Gateway: Goal: Visualize the function of theta-gamma nesting. Method: Canvas animation. Interaction: A slider for "Phase-Locking Strength" controls how many fast "gamma pulses" pass through a slow "theta gate" only at the correct phase. Justification: A functional metaphor that clearly shows phase-locking as a timing filter for information.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 2: Neurochemistry</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#orchestra" class="nav-link font-semibold text-stone-600">Orchestra</a>
+                    <a href="#sculpting" class="nav-link font-semibold text-stone-600">Sculpting</a>
+                    <a href="#gateway" class="nav-link font-semibold text-stone-600">Gateway</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Chemical Bridge of Consciousness</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 2 acts as the critical interface between the quantum events of Layer 1 and the large-scale neural rhythms of Layer 3. It is here that neurochemistry—the dance of neurotransmitters and neuromodulators—translates subtle quantum influences into the coherent brain activity required for conscious projection. This layer filters and tunes reality through chemical signals, symbol-space, and perception.
+            </p>
+        </section>
+
+        <section id="orchestra" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Neural Orchestra</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A neural ensemble is like an orchestra of oscillators. Neuromodulators act as the conductor, tuning the properties of the entire group to create a harmonious, coherent state ready for Ψ-field resonance. Use the sliders to conduct the orchestra.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3 bg-gray-900 rounded-lg p-4">
+                    <canvas id="orchestraCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <label for="serotonin-slider" class="font-semibold text-stone-700">Serotonin (Coherence): <span id="serotonin-value">50</span>%</label>
+                        <p class="text-sm text-stone-500 mb-2">Reduces random jitter, making each oscillator's path smoother and more coherent.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="serotonin-slider">
+                    </div>
+                    <div>
+                        <label for="dopamine-slider" class="font-semibold text-stone-700">Dopamine (Amplitude): <span id="dopamine-value">50</span>%</label>
+                        <p class="text-sm text-stone-500 mb-2">Increases the radius of oscillation, representing higher gain and signal strength.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="dopamine-slider">
+                    </div>
+                    <div>
+                        <label for="glutamate-slider" class="font-semibold text-stone-700">Glutamate (Frequency): <span id="glutamate-value">50</span>%</label>
+                        <p class="text-sm text-stone-500 mb-2">Increases the speed of oscillation, representing faster neural processing.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="glutamate-slider">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sculpting" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Sculpting Thought from Noise</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A thought or perception is a stable pattern—an attractor—sculpted from the brain's background noise. The Ψ-field provides the coherent force that guides a specific group of neurons into a stable, geometric firing pattern, allowing a clear signal to emerge from the chaos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                     <canvas id="sculptingCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="psi-coherence-slider" class="font-semibold text-stone-700">Ψ-Field Coherence: <span id="psi-coherence-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the coherence of the local Ψ-field to sculpt a stable attractor pattern from the noisy background activity.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="psi-coherence-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="gateway" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Rhythmic Gateway</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">To integrate information across the brain, signals must arrive at precise times. Slower brainwaves (like theta) create rhythmic "gateways," and only faster signals (gamma pulses) that are phase-locked to the gateway's opening can pass through, ensuring perfect timing.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="gatewayCanvas" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <label for="phaselock-slider" class="font-semibold text-stone-700">Phase-Locking Strength: <span id="phaselock-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the strength to synchronize the gamma pulses with the theta gateway, allowing more to pass through.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="phaselock-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Neurochemical-Neurological Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Synaptic Cleft Architecture</h4>
+                            <p class="text-stone-600 text-sm">The micro-geometry of the synapse—the precise arrangement of vesicles, receptors, and ion channels—creates a structured filter that shapes the translation of chemical signals into electrical ones, forming the basic unit of neural computation.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Neural Network Topology</h4>
+                            <p class="text-stone-600 text-sm">The large-scale wiring of the brain (the connectome) forms a complex network geometry. Its patterns of connectivity, such as small-world or hub-and-spoke structures, determine how signals propagate and synchronize to create coherent thought patterns.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Neurotransmitter Field Equation</h4>
+                            <p class="text-stone-600">The intensity of neurotransmitter release ($\alpha_i$) is directly modulated by the local species-consciousness field ($\Psi_s$), formalizing the top-down influence of mind on brain chemistry.</p>
+                            <p class="my-2">$$\Phi_{neuro}(x,t) = \sum_i \alpha_i(\Psi_s(t)) \cdot \delta(x - x_i)$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Coupled Oscillator Models</h4>
+                            <p class="text-stone-600">Neural ensembles are modeled as populations of coupled oscillators. Their degree of synchronization (phase-locking) is a key variable determining cognitive state. Neurotransmitters act as parameters that tune the coupling strength and frequencies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Reaction-Diffusion Dynamics</h4>
+                            <p class="text-stone-600 text-sm">The spread of neurotransmitters is governed by the physical laws of reaction and diffusion. These processes introduce crucial time delays and spatial gradients necessary for complex neural information processing.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Axonal Conduction Resonance</h4>
+                            <p class="text-stone-600 text-sm">The firing of action potentials becomes phase-locked to larger background brainwaves (e.g., theta-gamma nesting). This physical resonance ensures precise neural timing for the integration of information across brain regions.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Neural Attractors</h4>
+                            <p class="text-stone-600 text-sm">Thoughts and memories are stable patterns of neural firing—attractors in the brain's phase space. The Ψ-field acts as a stabilizing force, sculpting the energy landscape to create and select these attractors from background noise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Neural Orchestra ---
+        const serotoninSlider = document.getElementById('serotonin-slider');
+        const dopamineSlider = document.getElementById('dopamine-slider');
+        const glutamateSlider = document.getElementById('glutamate-slider');
+        const serotoninValue = document.getElementById('serotonin-value');
+        const dopamineValue = document.getElementById('dopamine-value');
+        const glutamateValue = document.getElementById('glutamate-value');
+        const orchestraCanvas = document.getElementById('orchestraCanvas');
+        const orchestraCtx = orchestraCanvas.getContext('2d');
+        let oscillators = [];
+        let orchestraTime = 0;
+
+        function initOrchestra() {
+            for (let i = 0; i < 50; i++) {
+                oscillators.push({
+                    phase: Math.random() * Math.PI * 2,
+                    baseRadius: Math.random() * 20 + 30,
+                    x: orchestraCanvas.width / 2,
+                    y: orchestraCanvas.height / 2
+                });
+            }
+        }
+
+        function animateOrchestra() {
+            const w = orchestraCanvas.width;
+            const h = orchestraCanvas.height;
+            orchestraCtx.clearRect(0, 0, w, h);
+            
+            const serotonin = parseInt(serotoninSlider.value) / 100;
+            const dopamine = parseInt(dopamineSlider.value) / 100;
+            const glutamate = parseInt(glutamateSlider.value) / 100;
+            serotoninValue.textContent = `${Math.round(serotonin*100)}%`;
+            dopamineValue.textContent = `${Math.round(dopamine*100)}%`;
+            glutamateValue.textContent = `${Math.round(glutamate*100)}%`;
+
+            const speed = 0.02 + glutamate * 0.08;
+            orchestraTime += speed;
+
+            oscillators.forEach(o => {
+                const amplitude = o.baseRadius * (0.5 + dopamine * 1.5);
+                const jitter = (1 - serotonin) * 10;
+                
+                const x = w/2 + Math.cos(orchestraTime + o.phase) * amplitude + (Math.random() - 0.5) * jitter;
+                const y = h/2 + Math.sin(orchestraTime + o.phase) * amplitude + (Math.random() - 0.5) * jitter;
+
+                orchestraCtx.beginPath();
+                orchestraCtx.arc(x, y, 3, 0, Math.PI * 2);
+                orchestraCtx.fillStyle = `rgba(217, 119, 6, 0.7)`;
+                orchestraCtx.fill();
+            });
+
+            requestAnimationFrame(animateOrchestra);
+        }
+
+        // --- Sculpting Thought from Noise ---
+        const sculptingCanvas = document.getElementById('sculptingCanvas');
+        const sculptingCtx = sculptingCanvas.getContext('2d');
+        const psiCoherenceSlider = document.getElementById('psi-coherence-slider');
+        const psiCoherenceValue = document.getElementById('psi-coherence-value');
+        let particles = [];
+        const attractorPoints = [];
+
+        function initSculpting() {
+            const w = sculptingCanvas.width;
+            const h = sculptingCanvas.height;
+            for (let i = 0; i < 500; i++) {
+                particles.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: 0, vy: 0,
+                    isAttractor: i < 100
+                });
+            }
+            // Define attractor shape (spiral)
+            for (let i = 0; i < 100; i++) {
+                const angle = 0.2 * i;
+                const r = 10 + 1 * i;
+                attractorPoints.push({
+                    x: w / 2 + r * Math.cos(angle),
+                    y: h / 2 + r * Math.sin(angle)
+                });
+            }
+        }
+
+        function animateSculpting() {
+            const w = sculptingCanvas.width;
+            const h = sculptingCanvas.height;
+            sculptingCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            sculptingCtx.fillRect(0,0,w,h);
+            
+            const coherence = parseInt(psiCoherenceSlider.value) / 100;
+            psiCoherenceValue.textContent = `${Math.round(coherence*100)}%`;
+
+            particles.forEach((p, i) => {
+                if (p.isAttractor) {
+                    const target = attractorPoints[i % attractorPoints.length];
+                    const ax = (target.x - p.x) * 0.01 * coherence;
+                    const ay = (target.y - p.y) * 0.01 * coherence;
+                    p.vx += ax;
+                    p.vy += ay;
+                    p.vx += (Math.random() - 0.5) * (1 - coherence);
+                    p.vy += (Math.random() - 0.5) * (1 - coherence);
+                } else {
+                    p.vx += (Math.random() - 0.5) * 0.5;
+                    p.vy += (Math.random() - 0.5) * 0.5;
+                }
+                
+                p.vx *= 0.9;
+                p.vy *= 0.9;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > w || p.y < 0 || p.y > h) {
+                    p.x = Math.random() * w;
+                    p.y = Math.random() * h;
+                }
+                
+                sculptingCtx.fillStyle = p.isAttractor ? `rgba(245, 158, 11, ${0.2 + coherence * 0.8})` : 'rgba(168, 162, 158, 0.5)';
+                sculptingCtx.fillRect(p.x, p.y, 1, 1);
+            });
+            requestAnimationFrame(animateSculpting);
+        }
+        
+        // --- The Rhythmic Gateway ---
+        const gatewayCanvas = document.getElementById('gatewayCanvas');
+        const gatewayCtx = gatewayCanvas.getContext('2d');
+        const phaseLockSlider = document.getElementById('phaselock-slider');
+        const phaseLockValue = document.getElementById('phaselock-value');
+        let gammaPulses = [];
+        let gatewayTime = 0;
+
+        function animateGateway() {
+            const w = gatewayCanvas.width;
+            const h = gatewayCanvas.height;
+            gatewayCtx.clearRect(0, 0, w, h);
+            gatewayTime += 0.03;
+
+            // Draw Theta Wave and Gateway
+            const thetaPhase = Math.sin(gatewayTime);
+            const gateOpenness = (thetaPhase + 1) / 2; // 0 to 1
+            gatewayCtx.strokeStyle = 'rgba(217, 119, 6, 0.3)';
+            gatewayCtx.lineWidth = 2 + gateOpenness * 10;
+            gatewayCtx.beginPath();
+            gatewayCtx.moveTo(w/2, 0);
+            gatewayCtx.lineTo(w/2, h);
+            gatewayCtx.stroke();
+
+            // Create and move Gamma Pulses
+            if (Math.random() < 0.2) {
+                gammaPulses.push({ x: 0, y: Math.random() * h, passed: false });
+            }
+
+            const strength = parseInt(phaseLockSlider.value) / 100;
+            phaseLockValue.textContent = `${Math.round(strength*100)}%`;
+
+            gammaPulses.forEach((p, i) => {
+                p.x += 3;
+                if (p.x > w) {
+                    gammaPulses.splice(i, 1);
+                }
+                
+                // Check if passing through gate
+                if (p.x > w/2 - 5 && p.x < w/2 + 5 && !p.passed) {
+                    const passProbability = (1 - strength) * 0.2 + strength * gateOpenness;
+                    if (Math.random() < passProbability) {
+                        p.passed = true;
+                    } else {
+                         p.x = w; // block it
+                    }
+                }
+                
+                gatewayCtx.fillStyle = p.passed ? '#f59e0b' : 'white';
+                gatewayCtx.beginPath();
+                gatewayCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                gatewayCtx.fill();
+            });
+
+            requestAnimationFrame(animateGateway);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            orchestraCanvas.width = orchestraCanvas.offsetWidth;
+            orchestraCanvas.height = orchestraCanvas.offsetHeight;
+            initOrchestra();
+            animateOrchestra();
+            
+            sculptingCanvas.width = sculptingCanvas.offsetWidth;
+            sculptingCanvas.height = sculptingCanvas.offsetHeight;
+            initSculpting();
+            animateSculpting();
+
+            gatewayCanvas.width = gatewayCanvas.offsetWidth;
+            gatewayCanvas.height = gatewayCanvas.offsetHeight;
+            animateGateway();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 9: Memory Imprint & Holography Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 9 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Cosmic Tapestry" for cyclical imprinting. 3. "The River of Consciousness" for phase-space attractors. 4. "The Holographic Library" for memory retrieval. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Cosmic Tapestry: Goal: Visualize memory persistence across cycles. Method: Canvas animation. Interaction: A button "Weave Next Cycle" adds a new thread to a tapestry, which is subtly guided by the texture of the threads already woven. Justification: A more poetic and dynamic metaphor for history building upon itself.
+        - The River of Consciousness: Goal: Show how memory guides collective consciousness. Method: Canvas particle system animation. Interaction: Buttons for "Unity" or "Conflict" carve channels into a landscape, guiding a flowing river of particles. Justification: A powerful, natural metaphor for how attractors guide a dynamic flow.
+        - The Holographic Library: Goal: Illustrate memory retrieval. Method: Canvas animation. Interaction: A slider for "Resonance Tuning" adjusts a "reading lens" over a noisy background, revealing a clear, hidden symbol when tuned correctly. Justification: Directly uses the "holographic" concept and provides a clear sense of tuning into a universal field.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 9: Memory Imprint & Holography</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#tapestry" class="nav-link font-semibold text-stone-600">Tapestry</a>
+                    <a href="#river" class="nav-link font-semibold text-stone-600">River</a>
+                    <a href="#library" class="nav-link font-semibold text-stone-600">Library</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Existential Holograph</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 9 reveals that memory is not confined to biological structures but is stored holographically in the fabric of the Ψ-field. This layer functions as a universal repository, storing and retrieving long-range historical and evolutionary memory through phase resets. Every experience leaves an indelible imprint, shaping the attractors that guide future existential loops.
+            </p>
+        </section>
+
+        <section id="tapestry" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Cosmic Tapestry</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">History is a tapestry woven from countless existential loops. Each cycle is a new thread, its path subtly guided by the texture of the threads already laid down. Events are not erased; they become part of the fabric of reality, imprinting a pattern that influences all that follows.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="tapestryCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="weave-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 w-full mb-2">Weave Next Cycle</button>
+                    <p class="text-sm text-stone-500">Observe how the new thread (bright) follows the faint imprints of past cycles, adding to the richness of the tapestry.</p>
+                    <p class="mt-4 font-semibold">Cycle: <span id="weave-count">1</span></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="river" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The River of Consciousness</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The flow of collective consciousness is like a river. Accumulated memory imprints—the mytho-symbolic codes of a species—carve deep channels into the landscape of reality. These attractors guide the chaotic flow of individual minds into powerful, coherent streams.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="riverCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-center font-semibold">Imprint an Archetype:</p>
+                    <button id="unity-btn" class="w-full px-4 py-2 bg-stone-200 rounded-md font-semibold hover:bg-stone-300">Unity & Integration</button>
+                    <button id="conflict-btn" class="w-full px-4 py-2 bg-stone-200 rounded-md font-semibold hover:bg-stone-300">Conflict & Separation</button>
+                    <button id="reset-river-btn" class="w-full px-4 py-2 bg-red-200 rounded-md font-semibold hover:bg-red-300">Clear Landscape</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="library" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Holographic Library</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The Ψ-field acts as a holographic library, holding the accumulated resonance history of all consciousness. An individual's qualia field is the reading lens. By tuning its resonance, one can phase-lock with a specific memory imprint, bringing universal knowledge into focus.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4 relative">
+                    <canvas id="libraryCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="resonance-slider" class="font-semibold text-stone-700">Resonance Tuning: <span id="resonance-slider-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Tune the reading lens to match the hidden frequency of an archetypal memory within the holographic static.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="resonance-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Memory Imprint & Holography Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Holographic Principle</h4>
+                            <p class="text-stone-600 text-sm">The geometry of this layer is holographic: information about a volume of spacetime is encoded on a lower-dimensional boundary. The existential holograph is the boundary surface upon which the memory of all events is stored as an interference pattern.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Phase-Space Attractors</h4>
+                            <p class="text-stone-600 text-sm">In the abstract mathematical space of all possible states (phase-space), memory imprints create stable, geometric structures called attractors. These fractal geometries guide the evolution of consciousness along preferred pathways.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Cyclical Z-Imprinting</h4>
+                            <p class="text-stone-600">A mathematical process where events in a given cycle ($Z_{cyclic}$) leave a persistent informational trace or "imprint" that modifies the initial conditions for all subsequent cycles, ensuring a universe that learns and evolves.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Attractor Dynamics</h4>
+                            <p class="text-stone-600">The evolution of the collective consciousness field is modeled using nonlinear dynamics. The mytho-symbolic codes of a species are represented as attractors in the system's equations, creating stable, recurring patterns of thought and behavior.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Information Conservation</h4>
+                            <p class="text-stone-600 text-sm">This layer provides a physical mechanism for the conservation of information, resolving paradoxes like that of black holes. Information is never lost; it is encoded as a phase pattern in the universal Ψ-field's holographic memory.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Qualia Field Resonance</h4>
+                            <p class="text-stone-600 text-sm">The subjective field of an individual's experience (their qualia field) acts as a resonant reader. By matching its vibrational state to a pattern stored in the holograph, it can retrieve information non-locally, experienced as intuition, insight, or ancestral memory.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Cosmic Tapestry ---
+        const tapestryCanvas = document.getElementById('tapestryCanvas');
+        const tapestryCtx = tapestryCanvas.getContext('2d');
+        const weaveBtn = document.getElementById('weave-btn');
+        const weaveCountSpan = document.getElementById('weave-count');
+        let threads = [];
+        let currentThread = null;
+        let weaveCount = 1;
+        let tapestryBgCanvas = null; // Offscreen canvas for woven threads
+
+        function updateTapestryBackground() {
+            if (!tapestryBgCanvas) {
+                tapestryBgCanvas = document.createElement('canvas');
+                tapestryBgCanvas.width = tapestryCanvas.width;
+                tapestryBgCanvas.height = tapestryCanvas.height;
+            }
+            const ctx = tapestryBgCanvas.getContext('2d');
+            ctx.clearRect(0, 0, tapestryBgCanvas.width, tapestryBgCanvas.height);
+            ctx.lineWidth = 1;
+            threads.forEach(thread => {
+                ctx.beginPath();
+                ctx.moveTo(0, thread.y);
+                for(let x=0; x<tapestryCanvas.width; x++) {
+                    ctx.lineTo(x, thread.y + thread.path[x]);
+                }
+                ctx.strokeStyle = `rgba(168, 162, 158, 0.2)`;
+                ctx.stroke();
+            });
+        }
+
+        function animateTapestry() {
+            const w = tapestryCanvas.width;
+            const h = tapestryCanvas.height;
+            tapestryCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            tapestryCtx.fillRect(0,0,w,h);
+            
+            if (tapestryBgCanvas) {
+                tapestryCtx.drawImage(tapestryBgCanvas, 0, 0);
+            }
+
+            if (currentThread) {
+                tapestryCtx.beginPath();
+                tapestryCtx.moveTo(0, currentThread.y);
+                for(let x=0; x < currentThread.progress; x++) {
+                    tapestryCtx.lineTo(x, currentThread.y + currentThread.path[x]);
+                }
+                tapestryCtx.strokeStyle = `rgba(250, 204, 21, 1)`;
+                tapestryCtx.lineWidth = 2;
+                tapestryCtx.stroke();
+                currentThread.progress += 5;
+                if (currentThread.progress >= w) {
+                    threads.push(currentThread);
+                    currentThread = null;
+                    updateTapestryBackground();
+                }
+            }
+            
+            requestAnimationFrame(animateTapestry);
+        }
+
+        function weaveNewThread() {
+            if (currentThread) return;
+            weaveCount++;
+            weaveCountSpan.textContent = weaveCount;
+            const path = [];
+            let y_offset = 0;
+            for(let x=0; x<tapestryCanvas.width; x++) {
+                let influence = 0;
+                threads.forEach(t => {
+                    influence += t.path[x] * 0.1; // Each old thread has a small influence
+                });
+                y_offset += (Math.random() - 0.5) * 2;
+                path.push(Math.sin(x*0.05) * 10 + y_offset + influence);
+            }
+            currentThread = { y: Math.random() * tapestryCanvas.height, path: path, progress: 0 };
+        }
+        weaveBtn.addEventListener('click', weaveNewThread);
+
+        // --- The River of Consciousness ---
+        const riverCanvas = document.getElementById('riverCanvas');
+        const riverCtx = riverCanvas.getContext('2d');
+        const unityBtn = document.getElementById('unity-btn');
+        const conflictBtn = document.getElementById('conflict-btn');
+        const resetRiverBtn = document.getElementById('reset-river-btn');
+        let riverParticles = [];
+        let channels = [];
+
+        function initRiver() {
+            for(let i=0; i<300; i++) {
+                riverParticles.push({
+                    x: Math.random() * riverCanvas.width, y: Math.random() * 50,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateRiver() {
+            const w = riverCanvas.width;
+            const h = riverCanvas.height;
+            riverCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            riverCtx.fillRect(0,0,w,h);
+            
+            riverCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            riverParticles.forEach(p => {
+                let ax = 0;
+                channels.forEach(c => {
+                    ax += (c.x - p.x) * c.strength / (Math.abs(c.x - p.x) + 50);
+                });
+                p.vx += ax;
+                p.vy = 2;
+
+                p.vx *= 0.9;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.y > h) {
+                    p.y = Math.random() * 50;
+                    p.x = Math.random() * w;
+                }
+                riverCtx.fillRect(p.x, p.y, 1, 1);
+            });
+
+            requestAnimationFrame(animateRiver);
+        }
+        unityBtn.addEventListener('click', () => {
+            channels = [{ x: riverCanvas.width/2, strength: 0.1 }];
+        });
+        conflictBtn.addEventListener('click', () => {
+            channels = [
+                { x: riverCanvas.width*0.25, strength: 0.1 },
+                { x: riverCanvas.width*0.75, strength: 0.1 }
+            ];
+        });
+        resetRiverBtn.addEventListener('click', () => { channels = []; });
+
+        // --- The Holographic Library ---
+        const libraryCanvas = document.getElementById('libraryCanvas');
+        const libraryCtx = libraryCanvas.getContext('2d');
+        const resonanceSlider = document.getElementById('resonance-slider');
+        const resonanceSliderValue = document.getElementById('resonance-slider-value');
+        let libraryTime = 0;
+        const hiddenPatternFreq = 70; // Target resonance
+        let staticNoiseCanvas = null;
+
+        function createStaticNoise() {
+            const w = libraryCanvas.width;
+            const h = libraryCanvas.height;
+            staticNoiseCanvas = document.createElement('canvas');
+            staticNoiseCanvas.width = w;
+            staticNoiseCanvas.height = h;
+            const ctx = staticNoiseCanvas.getContext('2d');
+            for (let i = 0; i < 10000; i++) {
+                const x = Math.random() * w;
+                const y = Math.random() * h;
+                const brightness = Math.random();
+                ctx.fillStyle = `rgba(120, 113, 108, ${brightness * 0.2})`;
+                ctx.fillRect(x,y,1,1);
+            }
+        }
+
+        function animateLibrary() {
+            const w = libraryCanvas.width;
+            const h = libraryCanvas.height;
+            libraryCtx.clearRect(0, 0, w, h);
+            libraryTime += 0.01;
+
+            if (staticNoiseCanvas) {
+                libraryCtx.drawImage(staticNoiseCanvas, 0, 0);
+            }
+
+            const resonance = parseInt(resonanceSlider.value);
+            resonanceSliderValue.textContent = `${resonance}%`;
+            const match = Math.max(0, 1 - Math.abs(resonance - hiddenPatternFreq) / 20);
+
+            if (match > 0.1) {
+                libraryCtx.strokeStyle = `rgba(250, 204, 21, ${match * 0.5})`;
+                libraryCtx.lineWidth = 1;
+                const r = h / 8;
+                const cx = w / 2;
+                const cy = h / 2;
+                drawCircle(libraryCtx, cx, cy, r);
+                for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    drawCircle(libraryCtx, cx + r * Math.cos(angle), cy + r * Math.sin(angle), r);
+                }
+            }
+
+            const lensRadius = w / 4;
+            const gradient = libraryCtx.createRadialGradient(w/2, h/2, lensRadius * 0.8, w/2, h/2, lensRadius);
+            gradient.addColorStop(0, 'rgba(217, 119, 6, 0)');
+            gradient.addColorStop(1, `rgba(217, 119, 6, 0.3)`);
+            libraryCtx.strokeStyle = `rgba(217, 119, 6, 0.8)`;
+            libraryCtx.lineWidth = 2;
+            libraryCtx.beginPath();
+            libraryCtx.arc(w/2, h/2, lensRadius, 0, Math.PI * 2);
+            libraryCtx.stroke();
+            libraryCtx.fillStyle = gradient;
+            libraryCtx.fill();
+            
+            requestAnimationFrame(animateLibrary);
+        }
+        
+        function drawCircle(ctx, x, y, r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            tapestryCanvas.width = tapestryCanvas.offsetWidth;
+            tapestryCanvas.height = tapestryCanvas.offsetHeight;
+            updateTapestryBackground();
+            weaveNewThread();
+            animateTapestry();
+
+            riverCanvas.width = riverCanvas.offsetWidth;
+            riverCanvas.height = riverCanvas.offsetHeight;
+            initRiver();
+            animateRiver();
+            
+            libraryCanvas.width = libraryCanvas.offsetWidth;
+            libraryCanvas.height = libraryCanvas.offsetHeight;
+            createStaticNoise();
+            animateLibrary();
+        };
+    </script>
+</body>
+</html>

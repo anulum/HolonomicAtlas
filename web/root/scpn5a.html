@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 5: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 5 as the hub of individual consciousness and feedback. The flow is: 1. Introduction to the organismal-level mind. 2. An Emotional Coherence simulator showing how emotional states modulate the Ψ-field's amplitude and stability. 3. A visualization of Psychosomatic Harmonics, demonstrating heart-brain-VIBRANA entrainment. 4. An animation of the Mirror Neuron Lattice, illustrating the link between the individual and the species-wide field. 5. A diagram of the inter-layer feedback loops that Layer 5 governs. This structure makes the abstract concepts of a unified conscious state and its modulatory power tangible. -->
+    <!-- Visualization & Content Choices:
+        - Emotional Coherence: Goal: Visualize how emotions affect the Ψ-field. Method: Chart.js line chart. Interaction: A slider ranging from "Fear" to "Coherence" adjusts the amplitude and noise of a wave representing the organism's Ψ-field. Justification: Directly demonstrates the manuscript's concept that "emotional coherence affects species resonance amplitude."
+        - Psychosomatic Harmonics: Goal: Illustrate heart-brain entrainment via VIBRANA. Method: Canvas animation. Interaction: A button initiates a coherent rhythm in a "Heart" element, which then entrains oscillators in a "Brain" element. Justification: Visually explains the "heart-brain-VIBRANA entrainment" mechanism.
+        - Mirror Neuron Lattice: Goal: Show the link between individual and species consciousness. Method: Canvas animation. Interaction: A button triggers an "action" in one brain outline, which is then mirrored in an "observer" brain via a visible Ψ-field link. Justification: Clearly visualizes the "mirror neuron lattice linking species-self to global Ψ_s."
+        - Inter-Layer Diagram: Goal: Contextualize Layer 5's role as a feedback hub. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 5 receives input from L4 and sends modulatory feedback to L2, L3, and upwards to L6.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 5: Organismal Feedback</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#coherence" class="nav-link font-semibold text-slate-600">Coherence</a>
+                    <a href="#harmonics" class="nav-link font-semibold text-slate-600">Harmonics</a>
+                    <a href="#mirror" class="nav-link font-semibold text-slate-600">Mirror Neurons</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Mind-Body Feedback Loop</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 5 represents the integrated consciousness of the whole organism—the unified self. This is not a passive observer but an active modulator. The organism's psychoemotional state serves as a local control node, feeding back to influence its own biology and contributing its unique resonance to the species-wide Ψ-field.
+            </p>
+        </section>
+
+        <section id="coherence" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Emotional Coherence & Field Amplitude</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The emotional state of an organism directly affects the stability and amplitude of its contribution to the species resonance. Coherent emotions like compassion create a strong, stable signal, while chaotic emotions like fear create a weak, noisy one. Adjust the slider to modulate the emotional state.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <div class="chart-container">
+                        <canvas id="emotionChart"></canvas>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <label for="emotion-slider" class="font-semibold text-slate-700">Emotional State</label>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="emotion-slider">
+                        <div class="flex justify-between text-sm text-slate-500 mt-2">
+                            <span>Fear (Chaotic)</span>
+                            <span>Coherence (Stable)</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-100 p-4 rounded-lg text-center">
+                        <h4 class="font-semibold">Species Resonance Contribution</h4>
+                        <p id="resonance-value" class="text-2xl font-bold text-violet-600">50%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="harmonics" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Psychosomatic Harmonics</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The body's systems create a symphony of nested rhythms. Through psychosomatic coherence, often achieved with VIBRANA techniques like patterned breathing, the powerful rhythm of the heart entrains the faster oscillations of the brain, creating a unified harmonic state across the entire organism.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                 <canvas id="harmonicsCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="harmonics-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Initiate Coherence (via VIBRANA)</button>
+            </div>
+        </section>
+
+        <section id="mirror" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The Mirror Neuron Lattice</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Mirror neurons form a critical bridge between the individual self and the collective species-self. By creating an internal resonance with the observed actions and emotions of others, they link individual Ψ-fields into a global lattice, allowing for empathy, social learning, and collective consciousness.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="mirrorCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="mirror-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Trigger Action</button>
+                    <p class="text-sm text-slate-500 mt-4">Observe how the action in the "Actor" brain is mirrored in the "Observer" brain via the Ψs Field Link.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Emotional Coherence ---
+        const emotionSlider = document.getElementById('emotion-slider');
+        const resonanceValue = document.getElementById('resonance-value');
+        let emotionChart;
+
+        function generateEmotionWave(amplitude, noise) {
+            const data = [];
+            for (let i = 0; i < 120; i++) {
+                data.push(Math.sin(i * 0.2) * amplitude + (Math.random() - 0.5) * noise);
+            }
+            return data;
+        }
+
+        function updateEmotionChart() {
+            const coherence = parseInt(emotionSlider.value);
+            resonanceValue.textContent = `${coherence}%`;
+            
+            const amplitude = 20 + (coherence * 0.8);
+            const noise = 100 - coherence;
+
+            emotionChart.data.datasets[0].data = generateEmotionWave(amplitude, noise);
+            emotionChart.update('none');
+        }
+
+        function initEmotionChart() {
+            const ctx = document.getElementById('emotionChart').getContext('2d');
+            emotionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: 120 }, (_, i) => i),
+                    datasets: [{
+                        label: 'Ψ-Field Amplitude',
+                        data: [],
+                        borderColor: '#8b5cf6',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4,
+                        fill: { target: 'origin', above: 'rgba(139, 92, 246, 0.1)' }
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: false, min: -120, max: 120 } }
+                }
+            });
+            updateEmotionChart();
+        }
+        emotionSlider.addEventListener('input', updateEmotionChart);
+
+        // --- Psychosomatic Harmonics ---
+        const harmonicsCanvas = document.getElementById('harmonicsCanvas');
+        const harmonicsCtx = harmonicsCanvas.getContext('2d');
+        const harmonicsBtn = document.getElementById('harmonics-btn');
+        let harmonicsTime = 0;
+        let heartBeat = 0;
+        let brainWaves = [];
+        let harmonicsActive = false;
+
+        function initHarmonics() {
+            for(let i=0; i<50; i++) {
+                brainWaves.push({ phase: Math.random() * Math.PI * 2, freq: Math.random() * 0.1 + 0.2 });
+            }
+        }
+
+        function animateHarmonics() {
+            const w = harmonicsCanvas.width;
+            const h = harmonicsCanvas.height;
+            harmonicsCtx.clearRect(0, 0, w, h);
+            harmonicsTime += 0.02;
+
+            // Draw Heart
+            const heartSize = harmonicsActive ? 1 + Math.sin(harmonicsTime * 5) * 0.1 : 1;
+            const heartX = w/4, heartY = h/2;
+            harmonicsCtx.fillStyle = '#ef4444';
+            harmonicsCtx.beginPath();
+            harmonicsCtx.arc(heartX, heartY, 40 * heartSize, 0, Math.PI * 2);
+            harmonicsCtx.fill();
+            
+            // Draw Brain
+            const brainX = w * 0.75, brainY = h/2;
+            harmonicsCtx.fillStyle = '#a78bfa';
+            harmonicsCtx.beginPath();
+            harmonicsCtx.rect(brainX - 50, brainY - 50, 100, 100);
+            harmonicsCtx.fill();
+
+            // Brain Waves
+            brainWaves.forEach((wave, i) => {
+                const x = brainX - 50 + (i/50)*100;
+                let y = brainY;
+                if(harmonicsActive) {
+                    y += Math.sin(harmonicsTime * 10 + wave.phase) * 20;
+                } else {
+                    y += Math.sin(harmonicsTime * wave.freq * 10 + wave.phase) * 20;
+                }
+                harmonicsCtx.fillStyle = 'white';
+                harmonicsCtx.beginPath();
+                harmonicsCtx.arc(x, y, 2, 0, Math.PI * 2);
+                harmonicsCtx.fill();
+            });
+
+            // Propagation
+            if (harmonicsActive) {
+                const pulseProgress = (harmonicsTime * 5) % (Math.PI * 2);
+                if (pulseProgress < Math.PI) {
+                    const pulseX = heartX + (brainX - heartX) * (pulseProgress / Math.PI);
+                    harmonicsCtx.fillStyle = 'rgba(239, 68, 68, 0.5)';
+                    harmonicsCtx.beginPath();
+                    harmonicsCtx.arc(pulseX, h/2, 10, 0, Math.PI*2);
+                    harmonicsCtx.fill();
+                }
+            }
+
+            requestAnimationFrame(animateHarmonics);
+        }
+        harmonicsBtn.addEventListener('click', () => {
+            harmonicsActive = !harmonicsActive;
+            harmonicsBtn.textContent = harmonicsActive ? 'Release Coherence' : 'Initiate Coherence (via VIBRANA)';
+        });
+
+        // --- Mirror Neuron Lattice ---
+        const mirrorCanvas = document.getElementById('mirrorCanvas');
+        const mirrorCtx = mirrorCanvas.getContext('2d');
+        const mirrorBtn = document.getElementById('mirror-btn');
+        let mirrorTime = 0;
+        let actionState = 'idle'; // idle, action, mirror, fade
+
+        function drawBrain(ctx, x, y, size, activity) {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.ellipse(x, y, size, size * 1.2, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            if (activity > 0) {
+                ctx.fillStyle = `rgba(250, 204, 21, ${activity})`;
+                ctx.beginPath();
+                ctx.ellipse(x, y + size * 0.2, size * 0.4, size * 0.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function animateMirror() {
+            const w = mirrorCanvas.width;
+            const h = mirrorCanvas.height;
+            mirrorCtx.clearRect(0, 0, w, h);
+            
+            const actorX = w * 0.25, observerX = w * 0.75, y = h/2, size = w * 0.15;
+
+            let actorActivity = 0;
+            let observerActivity = 0;
+            let linkActivity = 0;
+
+            if (actionState === 'action') {
+                actorActivity = 1;
+                linkActivity = 0.5;
+                if (mirrorTime > 30) { actionState = 'mirror'; mirrorTime = 0; }
+            } else if (actionState === 'mirror') {
+                actorActivity = 1;
+                observerActivity = 0.7;
+                linkActivity = 1;
+                if (mirrorTime > 60) { actionState = 'fade'; mirrorTime = 0; }
+            } else if (actionState === 'fade') {
+                const fade = Math.max(0, 1 - mirrorTime / 60);
+                actorActivity = fade;
+                observerActivity = fade * 0.7;
+                linkActivity = fade;
+                if (fade <= 0) { actionState = 'idle'; }
+            }
+            
+            // Draw Ψs Field Link
+            if (linkActivity > 0) {
+                mirrorCtx.strokeStyle = `rgba(167, 139, 250, ${linkActivity * 0.8})`;
+                mirrorCtx.lineWidth = 3 + linkActivity * 4;
+                mirrorCtx.beginPath();
+                mirrorCtx.moveTo(actorX + size, y);
+                mirrorCtx.bezierCurveTo(actorX + size * 2, y - 50, observerX - size * 2, y - 50, observerX - size, y);
+                mirrorCtx.stroke();
+            }
+
+            drawBrain(mirrorCtx, actorX, y, size, actorActivity);
+            drawBrain(mirrorCtx, observerX, y, size, observerActivity);
+            
+            mirrorTime++;
+            requestAnimationFrame(animateMirror);
+        }
+        mirrorBtn.addEventListener('click', () => {
+            if (actionState === 'idle' || actionState === 'fade') {
+                actionState = 'action';
+                mirrorTime = 0;
+            }
+        });
+
+
+        // --- Window Onload ---
+        window.onload = function() {
+            initEmotionChart();
+            
+            harmonicsCanvas.width = harmonicsCanvas.offsetWidth;
+            harmonicsCanvas.height = harmonicsCanvas.offsetHeight;
+            initHarmonics();
+            animateHarmonics();
+
+            mirrorCanvas.width = mirrorCanvas.offsetWidth;
+            mirrorCanvas.height = mirrorCanvas.offsetHeight;
+            animateMirror();
+        };
+    </script>
+</body>
+</html>

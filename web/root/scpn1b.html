@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 1: Quantum Biological Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic, narrative structure to guide the user through the abstract concepts of quantum biology. The flow is: 1. Introduction to the layer's purpose. 2. An interactive visualization of Microtubule Coherence via Frohlich Condensation. 3. A simulation of the Quantum Zeno Effect, showing how the Ψ-field suppresses decoherence. 4. A visualization of DNA as a Resonant Antenna. 5. A detailed scientific foundations section. 6. A diagram of inter-layer connections. This structure builds understanding from the core components to their interactions, using interactive elements to make the physics tangible. -->
+    <!-- Visualization & Content Choices:
+        - Microtubule Coherence: Goal: Visualize Frohlich condensation. Method: Canvas animation. Interaction: A slider for "Metabolic Energy" increases the number of synchronized, glowing tubulin dimers in a lattice. Justification: Provides a clear, cause-and-effect demonstration of how energy leads to a macroscopic quantum state.
+        - Quantum Zeno Effect: Goal: Explain decoherence suppression. Method: Chart.js line chart comparing two decay curves. Interaction: A slider for "Ψ-Field Coupling" dramatically slows the decoherence rate of the "Protected State" curve. Justification: A powerful and direct visual comparison that makes the abstract concept of the Zeno effect easy to grasp.
+        - DNA as Antenna: Goal: Show DNA resonating with external fields. Method: Canvas animation. Interaction: A button "Apply Resonant Field" causes a DNA helix animation to vibrate coherently and emit a visual energy field. Justification: Creates a simple, intuitive metaphor for DNA's role as a geometric antenna.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 1. Method: Static HTML/Tailwind diagram. Justification: Clearly shows how quantum events in Layer 1 feed up into the neurochemical processes of Layer 2.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 1: Quantum Biology</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#microtubules" class="nav-link font-semibold text-stone-600">Microtubules</a>
+                    <a href="#zeno" class="nav-link font-semibold text-stone-600">Decoherence</a>
+                    <a href="#dna" class="nav-link font-semibold text-stone-600">DNA</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Quantum Foundation of Life</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 1 is the substrate where consciousness interfaces with the physical world. It proposes that life harnesses quantum mechanics, using biological structures like microtubules and DNA as antennae to phase-encode information. This layer provides the lowest-entropy, highest-coherence medium for the Ψ-field to act, turning the cell into a quantum-level processor.
+            </p>
+        </section>
+
+        <section id="microtubules" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Microtubule Coherence</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Neural microtubules, typically seen as cellular scaffolding, are proposed to function as quantum processing units. When pumped with metabolic energy, the tubulin proteins can enter a state of **Frohlich condensation**, oscillating in unison as a single, macroscopic quantum object. Adjust the energy input to witness this emergence of coherence.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="microtubuleCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="energy-slider" class="font-semibold text-stone-700">Metabolic Energy Input: <span id="energy-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the energy pumped into the microtubule system.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="energy-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="zeno" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Decoherence & The Quantum Zeno Effect</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The primary challenge for quantum biology is decoherence—the rapid collapse of quantum states in a warm, noisy cell. The SCPN proposes that the Ψ-field actively protects these states through a process analogous to the Quantum Zeno Effect, dramatically extending their lifetime and making them biologically relevant.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="chart-container">
+                    <canvas id="zenoChart"></canvas>
+                </div>
+                <div>
+                     <label for="psi-slider" class="font-semibold text-stone-700">Ψ-Field Coupling Strength: <span id="psi-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the coupling strength of the Ψ-field to observe the stabilization of the quantum state.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="psi-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="dna" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">DNA as a Resonant Antenna</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The DNA double helix is not just a passive information store; its geometric structure acts as a fractal antenna. It is tuned to both receive and transmit phase-encoded information from the Ψ-field, allowing the universal field to influence genetic processes and store information holographically within the genome's structure.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4 relative">
+                    <canvas id="dnaCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="dna-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Apply Resonant Field</button>
+                    <p class="text-sm text-stone-500 mt-4">Simulates the Ψ-field resonating with the DNA, causing it to enter a coherent vibrational state.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Quantum Biological Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Microtubule Lattices</h4>
+                            <p class="text-stone-600 text-sm">The cylindrical, quasi-crystalline A-lattice of microtubules forms a protected inner waveguide. Its helical geometry, based on Fibonacci sequences, allows for complex resonant modes, making it an ideal biological antenna for the Ψ-field.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">DNA Helical Structure</h4>
+                            <p class="text-stone-600 text-sm">The double helix acts as a geometric antenna. Its precise dimensions, including the 34 Å pitch per turn, combined with higher-order supercoiling, create a fractal structure capable of storing and transducing phase-encoded information.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Quantum State Vector</h4>
+                            <p class="text-stone-600">The state of a microtubule segment is described by a state vector $|\psi_{MT}\rangle$ in a Hilbert space spanned by the states of N tubulin dimers.</p>
+                            <p class="my-2">$$|\psi_{MT}\rangle = \sum_{i} c_i(t) |s_1, s_2, ..., s_N\rangle_i$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Coherence Hamiltonian</h4>
+                            <p class="text-stone-600">The dynamics are governed by a Hamiltonian modeling dipole-dipole coupling ($J_{ij}$) between tubulins, leading to collective oscillations.</p>
+                             <p class="my-2">$$\hat{H}_{MT} = \sum_{i} \epsilon_i \hat{\sigma}_{z}^{(i)} + \sum_{i \neq j} J_{ij} (\hat{\sigma}_{+}^{(i)}\hat{\sigma}_{-}^{(j)} + \text{h.c.})$$</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Ψ-Field Coupling</h4>
+                            <p class="text-stone-600">The consciousness field ($\Psi_s$) couples to the system via an interaction term in the Hamiltonian.</p>
+                             <p class="my-2">$$\hat{H}_{int} = \lambda_{\psi,MT} \Psi_s(x,t) \hat{O}_{MT}$$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Quantum Zeno Effect</h4>
+                            <p class="text-stone-600 text-sm">The primary mechanism for protecting quantum states. The manuscript proposes that the Ψ-field's rapid, repeated coupling to a coherent state prevents environmental decoherence, extending the state's lifetime to biologically relevant timescales.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Frohlich Condensation</h4>
+                            <p class="text-stone-600 text-sm">The physical process by which microtubules achieve a macroscopic quantum state. Metabolic energy pumps the tubulin lattice into a Bose-Einstein-like condensate, causing it to oscillate coherently at GHz-THz frequencies.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Quantum Tunneling</h4>
+                            <p class="text-stone-600 text-sm">A key process in neural gates and enzyme function. The Ψ-field can subtly modulate the potential barriers, influencing tunneling probabilities and thereby altering the rates of critical biochemical reactions like neurotransmitter release.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- Microtubule Coherence ---
+        const microtubuleCanvas = document.getElementById('microtubuleCanvas');
+        const microtubuleCtx = microtubuleCanvas.getContext('2d');
+        const energySlider = document.getElementById('energy-slider');
+        const energyValue = document.getElementById('energy-value');
+        let tubulins = [];
+        let microtubuleTime = 0;
+
+        function initMicrotubules() {
+            for(let i=0; i<13; i++) { // 13 protofilaments
+                for(let j=0; j<20; j++) {
+                    tubulins.push({
+                        protofilament: i,
+                        ring: j,
+                        phase: Math.random() * Math.PI * 2,
+                        state: 0 // 0 = incoherent, 1 = coherent
+                    });
+                }
+            }
+        }
+
+        function animateMicrotubules() {
+            const w = microtubuleCanvas.width;
+            const h = microtubuleCanvas.height;
+            microtubuleCtx.clearRect(0,0,w,h);
+            microtubuleTime += 0.1;
+
+            const energy = parseInt(energySlider.value) / 100;
+            energyValue.textContent = `${Math.round(energy*100)}%`;
+
+            tubulins.forEach(t => {
+                if (Math.random() < energy * 0.1) {
+                    t.state = 1; // Condensate
+                } else if (Math.random() < 0.05) {
+                    t.state = 0; // Decohere
+                }
+
+                const x = t.protofilament * (w/13) + (w/26);
+                const y = t.ring * (h/20) + (h/40);
+                
+                let brightness = 0.3;
+                if(t.state === 1) { // Coherent
+                    brightness = (Math.sin(microtubuleTime) + 1) / 2 * 0.7 + 0.3;
+                } else { // Incoherent
+                    brightness = (Math.sin(microtubuleTime + t.phase) + 1) / 2 * 0.3;
+                }
+                
+                microtubuleCtx.fillStyle = `rgba(250, 204, 21, ${brightness})`;
+                microtubuleCtx.beginPath();
+                microtubuleCtx.arc(x, y, 4, 0, Math.PI * 2);
+                microtubuleCtx.fill();
+            });
+
+            requestAnimationFrame(animateMicrotubules);
+        }
+
+        // --- Quantum Zeno Effect ---
+        const zenoChartCanvas = document.getElementById('zenoChart').getContext('2d');
+        const psiSlider = document.getElementById('psi-slider');
+        const psiValue = document.getElementById('psi-value');
+        let zenoChart;
+        let zenoTime = 0;
+        let unprotectedState = 100;
+        let protectedState = 100;
+
+        function updateZenoData() {
+            zenoTime++;
+            const coupling = parseInt(psiSlider.value) / 100;
+            psiValue.textContent = `${Math.round(coupling*100)}%`;
+            
+            const decayRate = 0.05;
+            const protectedDecayRate = decayRate * (1 - coupling * 0.95);
+
+            unprotectedState *= (1 - decayRate);
+            protectedState *= (1 - protectedDecayRate);
+
+            if (zenoTime > 100) {
+                zenoTime = 0;
+                unprotectedState = 100;
+                protectedState = 100;
+                zenoChart.data.datasets[0].data = [];
+                zenoChart.data.datasets[1].data = [];
+            }
+            
+            zenoChart.data.datasets[0].data.push(unprotectedState);
+            zenoChart.data.datasets[1].data.push(protectedState);
+            zenoChart.data.labels.push(zenoTime);
+            
+            if(zenoChart.data.labels.length > 100) {
+                zenoChart.data.labels.shift();
+                zenoChart.data.datasets[0].data.shift();
+                zenoChart.data.datasets[1].data.shift();
+            }
+            zenoChart.update('none');
+        }
+
+        function initZenoChart() {
+            zenoChart = new Chart(zenoChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Unprotected State',
+                            data: [],
+                            borderColor: '#9ca3af',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            tension: 0.1,
+                        },
+                        {
+                            label: 'Ψ-Field Protected State',
+                            data: [],
+                            borderColor: '#d97706',
+                            borderWidth: 3,
+                            pointRadius: 0,
+                            tension: 0.1,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } },
+                    scales: { x: { display: false }, y: { min: 0, max: 100, title: { display: true, text: 'Coherence (%)' } } }
+                }
+            });
+            setInterval(updateZenoData, 50);
+        }
+
+        // --- DNA Antenna ---
+        const dnaCanvas = document.getElementById('dnaCanvas');
+        const dnaCtx = dnaCanvas.getContext('2d');
+        const dnaBtn = document.getElementById('dna-btn');
+        let dnaTime = 0;
+        let dnaActive = false;
+        let dnaActivation = 0;
+
+        function animateDna() {
+            const w = dnaCanvas.width;
+            const h = dnaCanvas.height;
+            dnaCtx.clearRect(0,0,w,h);
+            dnaTime += 0.02;
+
+            if (dnaActive && dnaActivation < 1) dnaActivation += 0.02;
+            if (!dnaActive && dnaActivation > 0) dnaActivation -= 0.02;
+
+            // Draw Helix
+            const helixY = h * 0.1;
+            const helixH = h * 0.8;
+            dnaCtx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            dnaCtx.lineWidth = 2;
+            for(let i=0; i<50; i++) {
+                const y = helixY + i * (helixH / 50);
+                const phase = i * 0.3 + dnaTime;
+                const vibration = dnaActivation * Math.sin(i*0.5 + dnaTime * 10) * 10;
+                const x1 = w/2 + Math.sin(phase) * (30 + vibration);
+                const x2 = w/2 + Math.sin(phase + Math.PI) * (30 + vibration);
+                
+                dnaCtx.fillStyle = '#60a5fa';
+                dnaCtx.beginPath();
+                dnaCtx.arc(x1, y, 3, 0, Math.PI * 2);
+                dnaCtx.fill();
+
+                dnaCtx.fillStyle = '#f472b6';
+                dnaCtx.beginPath();
+                dnaCtx.arc(x2, y, 3, 0, Math.PI * 2);
+                dnaCtx.fill();
+
+                dnaCtx.beginPath();
+                dnaCtx.moveTo(x1, y);
+                dnaCtx.lineTo(x2, y);
+                dnaCtx.stroke();
+            }
+
+            // Draw Field
+            if (dnaActivation > 0) {
+                const gradient = dnaCtx.createRadialGradient(w/2, h/2, 0, w/2, h/2, w/2);
+                gradient.addColorStop(0, `rgba(217, 119, 6, ${dnaActivation * 0.3})`);
+                gradient.addColorStop(1, `rgba(217, 119, 6, 0)`);
+                dnaCtx.fillStyle = gradient;
+                dnaCtx.fillRect(0,0,w,h);
+            }
+
+            requestAnimationFrame(animateDna);
+        }
+        dnaBtn.addEventListener('click', () => {
+            dnaActive = !dnaActive;
+            dnaBtn.textContent = dnaActive ? 'Release Field' : 'Apply Resonant Field';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            initMicrotubules();
+            microtubuleCanvas.width = microtubuleCanvas.offsetWidth;
+            microtubuleCanvas.height = microtubuleCanvas.offsetHeight;
+            animateMicrotubules();
+
+            initZenoChart();
+            
+            dnaCanvas.width = dnaCanvas.offsetWidth;
+            dnaCanvas.height = dnaCanvas.offsetHeight;
+            animateDna();
+        };
+    </script>
+</body>
+</html>

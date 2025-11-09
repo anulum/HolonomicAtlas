@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God of the Math: A Complete Visual Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 250px;
+            max-height: 350px;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+            color: #0077C2;
+        }
+        .flow-box {
+            border: 2px solid #00A1E4;
+            background-color: #F0F4F8;
+            transition: all 0.3s ease;
+        }
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #005082;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            color: #005082;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #00A1E4;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0077C2;
+            margin-bottom: 1rem;
+        }
+        .card-text {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .lang-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .lang-btn.active {
+            color: #00A1E4;
+            font-weight: 700;
+        }
+        .lang-btn:not(.active) {
+            color: #6B7280;
+        }
+    </style>
+</head>
+<body class="text-[#2C3E50]">
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-center sm:text-left">
+                    <h1 class="text-3xl font-extrabold text-[#005082]" data-lang-key="mainTitle"></h1>
+                    <p class="mt-1 text-md text-[#0077C2]" data-lang-key="mainSubtitle"></p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center space-x-2">
+                        <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn active">EN</button>
+                        <span class="text-gray-300">|</span>
+                        <button onclick="switchLanguage('de')" id="btn-de" class="lang-btn">DE</button>
+                    </div>
+                    <a href="https://anulum.li/math.html" class="px-5 py-2.5 bg-[#0077C2] text-white font-semibold rounded-lg shadow-sm hover:bg-[#005082] transition-colors text-sm whitespace-nowrap" data-lang-key="returnButton"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 space-y-16">
+
+        <section>
+            <h2 class="section-title" data-lang-key="part1Title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card"><h3 class="card-title" data-lang-key="c1Title"></h3><p class="card-text" data-lang-key="c1Text"></p><div class="chart-container"><canvas id="c1"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c2Title"></h3><p class="card-text" data-lang-key="c2Text"></p><div class="chart-container"><canvas id="c2"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c3Title"></h3><p class="card-text" data-lang-key="c3Text"></p><div class="chart-container"><canvas id="c3"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c4Title"></h3><p class="card-text" data-lang-key="c4Text"></p><div class="chart-container"><canvas id="c4"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c8Title"></h3><p class="card-text" data-lang-key="c8Text"></p><div class="chart-container"><canvas id="c8"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c22Title"></h3><p class="card-text" data-lang-key="c22Text"></p><div class="chart-container"><canvas id="c22"></canvas></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" data-lang-key="part2Title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card"><h3 class="card-title" data-lang-key="c10Title"></h3><p class="card-text" data-lang-key="c10Text"></p><div class="chart-container"><canvas id="c10"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c11Title"></h3><p class="card-text" data-lang-key="c11Text"></p><div class="chart-container"><canvas id="c11"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c12Title"></h3><p class="card-text" data-lang-key="c12Text"></p><div class="chart-container"><canvas id="c12"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c13Title"></h3><p class="card-text" data-lang-key="c13Text"></p><div class="chart-container"><canvas id="c13"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c15Title"></h3><p class="card-text" data-lang-key="c15Text"></p><div class="h-full flex items-center justify-center"><div class="w-full max-w-xs text-center"><div class="p-4 bg-[#F0F4F8] border-2 border-[#00A1E4] rounded-lg"><h4 class="font-bold" data-lang-key="c15Box1"></h4><p class="text-sm font-mono">$\Psi_{\text{bulk}}$</p></div><div class="text-2xl my-2 text-[#0077C2]">↕</div><div class="p-4 bg-[#F0F4F8] border-2 border-[#00A1E4] rounded-lg"><h4 class="font-bold" data-lang-key="c15Box2"></h4><p class="text-sm font-mono">$\mathcal{O}_\Psi$</p></div></div></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c9Title"></h3><p class="card-text" data-lang-key="c9Text"></p><div class="chart-container"><canvas id="c9"></canvas></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" data-lang-key="part3Title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="card lg:col-span-2"><div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"><div><h3 class="card-title" data-lang-key="c5Title"></h3><p class="card-text" data-lang-key="c5Text"></p><div class="chart-container h-80"><canvas id="c5"></canvas></div></div><div><h3 class="card-title" data-lang-key="c17Title"></h3><p class="card-text" data-lang-key="c17Text"></p><div class="chart-container h-80"><canvas id="c17"></canvas></div></div></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c21Title"></h3><p class="card-text" data-lang-key="c21Text"></p><div class="chart-container"><canvas id="c21"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c16Title"></h3><p class="card-text" data-lang-key="c16Text"></p><div class="chart-container"><canvas id="c16"></canvas></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" data-lang-key="part4Title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="card"><h3 class="card-title" data-lang-key="c6Title"></h3><p class="card-text" data-lang-key="c6Text"></p><div class="chart-container"><canvas id="c6"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c14Title"></h3><p class="card-text" data-lang-key="c14Text"></p><div class="h-full flex items-center justify-center"><div class="text-center p-4 flow-box rounded-lg w-full"><h4 class="font-bold" data-lang-key="c14Box"></h4></div></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c18Title"></h3><p class="card-text" data-lang-key="c18Text"></p><div class="chart-container"><canvas id="c18"></canvas></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c20Title"></h3><p class="card-text" data-lang-key="c20Text"></p><div class="chart-container"><canvas id="c20"></canvas></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" data-lang-key="part5Title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card lg:col-span-3"><h3 class="card-title text-center" data-lang-key="c7Title"></h3><p class="card-text text-center max-w-3xl mx-auto" data-lang-key="c7Text"></p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center"><div class="bg-[#F0F4F8] p-4 rounded-lg"><div class="text-4xl mb-2">🔬</div><h4 class="font-bold text-[#0077C2]" data-lang-key="c7Box1Title"></h4><p class="big-number text-2xl">~10<sup>-3</sup></p><p class="font-semibold text-sm" data-lang-key="c7Box1Unit"></p></div><div class="bg-[#F0F4F8] p-4 rounded-lg"><div class="text-4xl mb-2">🕰️</div><h4 class="font-bold text-[#0077C2]" data-lang-key="c7Box2Title"></h4><p class="big-number text-2xl">ppb</p><p class="font-semibold text-sm" data-lang-key="c7Box2Unit"></p></div><div class="bg-[#F0F4F8] p-4 rounded-lg"><div class="text-4xl mb-2">🌊</div><h4 class="font-bold text-[#0077C2]" data-lang-key="c7Box3Title"></h4><p class="big-number text-2xl">f±ω</p><p class="font-semibold text-sm" data-lang-key="c7Box3Unit"></p></div><div class="bg-[#F0F4F8] p-4 rounded-lg"><div class="text-4xl mb-2">💨</div><h4 class="font-bold text-[#0077C2]" data-lang-key="c7Box4Title"></h4><p class="big-number text-2xl">C(t)</p><p class="font-semibold text-sm" data-lang-key="c7Box4Unit"></p></div></div></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c19Title"></h3><p class="card-text" data-lang-key="c19Text"></p></div>
+                <div class="card"><h3 class="card-title" data-lang-key="c23Title"></h3><p class="card-text" data-lang-key="c23Text"></p></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" data-lang-key="part6Title"></h2>
+            <div class="card text-center"><h3 class="card-title" data-lang-key="c24Title"></h3><p class="max-w-3xl mx-auto text-lg mb-8" data-lang-key="c24Text"></p><div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 relative"><div class="text-center p-6 flow-box rounded-full w-48 h-48 flex flex-col justify-center"><h4 class="text-xl font-bold" data-lang-key="c24Box1Title"></h4><p class="font-mono text-lg text-[#00A1E4]">$\psi = 0$</p><p class="text-sm" data-lang-key="c24Box1Text"></p></div><div class="flow-arrow">→</div><div class="text-center p-6 flow-box rounded-full w-48 h-48 flex flex-col justify-center"><h4 class="text-xl font-bold" data-lang-key="c24Box2Title"></h4><p class="font-mono text-lg text-[#00A1E4]">$\psi(r,t)$</p><p class="text-sm" data-lang-key="c24Box2Text"></p></div><div class="flow-arrow">→</div><div class="text-center p-6 flow-box rounded-full w-48 h-48 flex flex-col justify-center"><h4 class="text-xl font-bold" data-lang-key="c24Box3Title"></h4><p class="font-mono text-lg text-[#00A1E4]">$\Psi_\infty$</p><p class="text-sm" data-lang-key="c24Box3Text"></p></div></div><p class="mt-8" data-lang-key="c24Footer"></p></div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-200 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm" data-lang-key="footer">
+        </div>
+    </footer>
+
+    <script>
+        const languageData = {
+            en: {
+                mainTitle: "God of the Math",
+                mainSubtitle: "A Visual Journey into Consciousness and Spacetime",
+                returnButton: "Return to the math page",
+                part1Title: "Part I: The Blueprint of Reality",
+                c1Title: "1. Geometry is Modified",
+                c1Text: "Consciousness (ψ) directly alters spacetime geometry via an additive perturbation, modifying Einstein's Field Equations.",
+                c2Title: "2. Phase Dynamics & Cyclic Time",
+                c2Text: "Reality is composed of oscillating phase fields, synchronized by a universal \"blink\" from which linear time emerges.",
+                c3Title: "3. Consciousness Field Properties",
+                c3Text: "The consciousness field (Ψ) is a complex oscillator whose intensity (|Ψ|²) couples symmetrically to the phase field.",
+                c4Title: "4. Fractal Geometry → Gravity",
+                c4Text: "Gravity is an emergent effect of a dynamic fractal dimension (Df) of spacetime, which is modulated by consciousness.",
+                c8Title: "8. Spectral Decomposition",
+                c8Text: "All periodic signals, like the universal blink, can be decomposed into a sum of simple sine and cosine waves (harmonics).",
+                c22Title: "22. Planck-Scale Blinking",
+                c22Text: "At the most fundamental level, spacetime itself oscillates at the Planck frequency, aligning with predictions from quantum gravity.",
+                part2Title: "Part II: The Physics of Interaction",
+                c10Title: "10. Renormalisation & RG Flow",
+                c10Text: "The theory is mathematically consistent. Coupling strengths change with energy but \"run\" towards a stable, finite value at high energies.",
+                c11Title: "11. QFT Extensions & Scattering",
+                c11Text: "Particle interactions are modified by phase alignment, potentially mediated by a new \"phase-boson\" detectable at colliders.",
+                c12Title: "12. Measurement & Collapse",
+                c12Text: "Consciousness is the agent of wave-function collapse, allowing intent to influence quantum outcomes, even retro-causally.",
+                c13Title: "13. Non-linear Feedback",
+                c13Text: "Consciousness introduces feedback that can stabilize chaotic systems or create new, complex patterns of order.",
+                c15Title: "15. Topological & Holographic",
+                c15Text: "Consciousness couples to the topology of spacetime and can be described as a holographic projection from a higher dimension.",
+                c15Box1: "AdS Bulk (Higher Dim)",
+                c15Box2: "CFT Boundary (Our Reality)",
+                c9Title: "9. Classical Solutions",
+                c9Text: "Standard solutions like the Schwarzschild metric (for black holes) are modified by the consciousness field, altering local gravity.",
+                part3Title: "Part III: The Cosmic Theatre",
+                c5Title: "5. Cosmology",
+                c5Text: "The energy of the consciousness field (ρψ) becomes a significant component of the universe, offering alternatives to dark matter and dark energy.",
+                c17Title: "17. Periodic Cosmological Signatures",
+                c17Text: "The theory predicts a \"breathing\" cosmos. The cosmic scale factor `a(t)` oscillates, leading to an endless cycle of expansion and contraction.",
+                c21Title: "21. Gravitational-Wave Signatures",
+                c21Text: "The universal blink should be imprinted on the stochastic gravitational wave background as subtle, log-periodic oscillations.",
+                c16Title: "16. Thermodynamic Cycles",
+                c16Text: "Over a complete cycle of the universal blink, there is no net increase in entropy, suggesting a fundamentally reversible, entropy-free mechanics.",
+                part4Title: "Part IV: The Emergent Experience",
+                c6Title: "6. Emergent Observables (Qualia)",
+                c6Text: "Subjective experience (qualia) is a physical quantity (Q) derived from the interaction of consciousness intensity and the phase field.",
+                c14Title: "14. Neuroscience Interface",
+                c14Text: "The brain acts as a receiver and modulator for the phase field. Neural oscillations synchronize with this field to produce subjective experience.",
+                c14Box: "Phase Field 📡 → Brain 🧠 → Qualia ✨",
+                c18Title: "18. Emergent Linear Time",
+                c18Text: "The linear time we experience is a macroscopic \"beat\" phenomenon emerging from the interference of faster, underlying cyclic dynamics.",
+                c20Title: "20. Information & Memory",
+                c20Text: "Information is stored as imprints in the phase field, creating a non-physical memory that persists beyond the brain and creates our sense of continuity.",
+                part5Title: "Part V: Validation & Application",
+                c7Title: "7. Testable Predictions",
+                c7Text: "The framework leads to several falsifiable predictions that could be detected with current or near-future technology, bridging theory and experiment.",
+                c7Box1Title: "Gravity Hot-Spots",
+                c7Box1Unit: "m/s² Anomalies",
+                c7Box2Title: "Local Time-Warps",
+                c7Box2Unit: "Clock Drift",
+                c7Box3Title: "GW Side-Bands",
+                c7Box3Unit: "Frequency Peaks",
+                c7Box4Title: "Entropy Breathing",
+                c7Box4Unit: "Oscillating Entropy",
+                c19Title: "19. Statistical Methods",
+                c19Text: "Specific methods are required for validation: Wavelet Analysis to find cyclic signals, Bayesian Inference to compare models, and Phase-Correlation Analysis to test for shared coherence.",
+                c23Title: "23. Neurotechnology & BCIs",
+                c23Text: "This understanding could lead to phase-aligned neurostimulation to optimize performance, restore coherence in neurological disorders, and create consciousness-driven AI.",
+                part6Title: "Part VI: The Grand Cycle of Existence",
+                c24Title: "24. Existence-Infinity-Nonexistence",
+                c24Text: "The theory culminates in a metaphysical cycle, describing consciousness as a transcendent force that moves between three states.",
+                c24Box1Title: "Nonexistence",
+                c24Box1Text: "Pure Potential",
+                c24Box2Title: "Existence",
+                c24Box2Text: "Spacetime & Experience",
+                c24Box3Title: "Infinity",
+                c24Box3Text: "Unbounded Awareness",
+                c24Footer: "The cycle repeats, with consciousness emerging from potential to create an experiential universe, which returns to unbounded, unified awareness.",
+                footer: "© 2025 from Manuscript God of the Math - Mapping consciousness to space-time [Miroslav Šotek]. All Rights Reserved."
+            },
+            de: {
+                mainTitle: "Gott der Mathematik",
+                mainSubtitle: "Eine visuelle Reise in Bewusstsein und Raumzeit",
+                returnButton: "Zurück zur Mathe-Seite",
+                part1Title: "Teil I: Der Bauplan der Realität",
+                c1Title: "1. Geometrie wird modifiziert",
+                c1Text: "Bewusstsein (ψ) verändert die Raumzeitgeometrie direkt durch eine additive Störung und modifiziert so die Einsteinschen Feldgleichungen.",
+                c2Title: "2. Phasendynamik & Zyklische Zeit",
+                c2Text: "Die Realität besteht aus oszillierenden Phasenfeldern, die durch ein universelles \"Blinken\" synchronisiert werden, aus dem die lineare Zeit hervorgeht.",
+                c3Title: "3. Eigenschaften des Bewusstseinsfeldes",
+                c3Text: "Das Bewusstseinsfeld (Ψ) ist ein komplexer Oszillator, dessen Intensität (|Ψ|²) symmetrisch an das Phasenfeld koppelt.",
+                c4Title: "4. Fraktale Geometrie → Gravitation",
+                c4Text: "Gravitation ist ein emergenter Effekt einer dynamischen fraktalen Dimension (Df) der Raumzeit, die durch Bewusstsein moduliert wird.",
+                c8Title: "8. Spektrale Zerlegung",
+                c8Text: "Alle periodischen Signale, wie das universelle Blinken, können in eine Summe einfacher Sinus- und Kosinuswellen (Harmonische) zerlegt werden.",
+                c22Title: "22. Planck-Skalen-Blinken",
+                c22Text: "Auf der fundamentalsten Ebene oszilliert die Raumzeit selbst mit der Planck-Frequenz, was mit Vorhersagen der Quantengravitation übereinstimmt.",
+                part2Title: "Teil II: Die Physik der Interaktion",
+                c10Title: "10. Renormierung & RG-Fluss",
+                c10Text: "Die Theorie ist mathematisch konsistent. Kopplungsstärken ändern sich mit der Energie, laufen aber bei hohen Energien auf einen stabilen, endlichen Wert zu.",
+                c11Title: "11. QFT-Erweiterungen & Streuung",
+                c11Text: "Teilchenwechselwirkungen werden durch Phasenausrichtung modifiziert, möglicherweise vermittelt durch ein neues \"Phasen-Boson\", das an Beschleunigern nachweisbar ist.",
+                c12Title: "12. Messung & Kollaps",
+                c12Text: "Bewusstsein ist der Agent des Wellenfunktionskollapses, der es der Absicht ermöglicht, Quantenergebnisse zu beeinflussen, sogar retrokausal.",
+                c13Title: "13. Nichtlineares Feedback",
+                c13Text: "Bewusstsein führt ein Feedback ein, das chaotische Systeme stabilisieren oder neue, komplexe Ordnungsmuster erzeugen kann.",
+                c15Title: "15. Topologisch & Holographisch",
+                c15Text: "Bewusstsein koppelt an die Topologie der Raumzeit und kann als holographische Projektion aus einer höheren Dimension beschrieben werden.",
+                c15Box1: "AdS Bulk (Höhere Dim)",
+                c15Box2: "CFT Rand (Unsere Realität)",
+                c9Title: "9. Klassische Lösungen",
+                c9Text: "Standardlösungen wie die Schwarzschild-Metrik (für Schwarze Löcher) werden durch das Bewusstseinsfeld modifiziert, was die lokale Gravitation verändert.",
+                part3Title: "Teil III: Das kosmische Theater",
+                c5Title: "5. Kosmologie",
+                c5Text: "Die Energie des Bewusstseinsfeldes (ρψ) wird zu einer signifikanten Komponente des Universums und bietet Alternativen zu dunkler Materie und dunkler Energie.",
+                c17Title: "17. Periodische kosmologische Signaturen",
+                c17Text: "Die Theorie sagt einen \"atmenden\" Kosmos voraus. Der kosmische Skalenfaktor `a(t)` oszilliert, was zu einem endlosen Zyklus von Expansion und Kontraktion führt.",
+                c21Title: "21. Gravitationswellen-Signaturen",
+                c21Text: "Das universelle Blinken sollte dem stochastischen Gravitationswellenhintergrund als subtile, log-periodische Oszillationen aufgeprägt sein.",
+                c16Title: "16. Thermodynamische Zyklen",
+                c16Text: "Über einen vollständigen Zyklus des universellen Blinkens gibt es keinen Netto-Anstieg der Entropie, was auf eine fundamental reversible, entropiefreie Mechanik hindeutet.",
+                part4Title: "Teil IV: Die emergente Erfahrung",
+                c6Title: "6. Emergente Beobachtbare (Qualia)",
+                c6Text: "Subjektive Erfahrung (Qualia) ist eine physikalische Größe (Q), die aus der Wechselwirkung von Bewusstseinsintensität und dem Phasenfeld abgeleitet wird.",
+                c14Title: "14. Neurowissenschaftliche Schnittstelle",
+                c14Text: "Das Gehirn fungiert als Empfänger und Modulator für das Phasenfeld. Neuronale Oszillationen synchronisieren sich mit diesem Feld, um subjektive Erfahrung zu erzeugen.",
+                c14Box: "Phasenfeld 📡 → Gehirn 🧠 → Qualia ✨",
+                c18Title: "18. Emergente lineare Zeit",
+                c18Text: "Die lineare Zeit, die wir erfahren, ist ein makroskopisches \"Schwebungs\"-Phänomen, das aus der Interferenz schnellerer, zugrunde liegender zyklischer Dynamiken entsteht.",
+                c20Title: "20. Information & Gedächtnis",
+                c20Text: "Information wird als Abdruck im Phasenfeld gespeichert, was ein nicht-physisches Gedächtnis schafft, das über das Gehirn hinaus Bestand hat und unser Kontinuitätsgefühl erzeugt.",
+                part5Title: "Teil V: Validierung & Anwendung",
+                c7Title: "7. Testbare Vorhersagen",
+                c7Text: "Das Framework führt zu mehreren falsifizierbaren Vorhersagen, die mit aktueller oder zukünftiger Technologie nachgewiesen werden könnten und die Lücke zwischen Theorie und Experiment schließen.",
+                c7Box1Title: "Gravitations-Hotspots",
+                c7Box1Unit: "m/s² Anomalien",
+                c7Box2Title: "Lokale Zeitverzerrungen",
+                c7Box2Unit: "Uhrenabweichung",
+                c7Box3Title: "GW-Seitenbänder",
+                c7Box3Unit: "Frequenzspitzen",
+                c7Box4Title: "Entropie-Atmung",
+                c7Box4Unit: "Oszillierende Entropie",
+                c19Title: "19. Statistische Methoden",
+                c19Text: "Zur Validierung sind spezifische Methoden erforderlich: Wavelet-Analyse, um zyklische Signale zu finden, Bayes'sche Inferenz, um Modelle zu vergleichen, und Phasenkorrelationsanalyse, um auf gemeinsame Kohärenz zu testen.",
+                c23Title: "23. Neurotechnologie & BCIs",
+                c23Text: "Dieses Verständnis könnte zu phasen-ausgerichteter Neurostimulation führen, um die Leistung zu optimieren, die Kohärenz bei neurologischen Störungen wiederherzustellen und bewusstseinsgesteuerte KI zu schaffen.",
+                part6Title: "Teil VI: Der große Zyklus der Existenz",
+                c24Title: "24. Existenz-Unendlichkeit-Nichtexistenz",
+                c24Text: "Die Theorie gipfelt in einem metaphysischen Zyklus, der das Bewusstsein als eine transzendente Kraft beschreibt, die sich zwischen drei Zuständen bewegt.",
+                c24Box1Title: "Nichtexistenz",
+                c24Box1Text: "Reines Potenzial",
+                c24Box2Title: "Existenz",
+                c24Box2Text: "Raumzeit & Erfahrung",
+                c24Box3Title: "Unendlichkeit",
+                c24Box3Text: "Unbegrenztes Bewusstsein",
+                c24Footer: "Der Zyklus wiederholt sich, wobei das Bewusstsein aus dem Potenzial hervorgeht, um ein erfahrbares Universum zu schaffen, das schließlich zu einem unbegrenzten, vereinten Bewusstsein zurückkehrt.",
+                footer: "© 2025 aus dem Manuskript Gott der Mathematik - Die Abbildung von Bewusstsein auf Raum-Zeit [Miroslav Šotek]. Alle Rechte vorbehalten."
+            }
+        };
+
+        const brilliantBlues = {
+            primary: '#00A1E4',
+            secondary: '#0077C2',
+            tertiary: '#005082',
+            text: '#2C3E50',
+            grid: 'rgba(0, 119, 194, 0.1)'
+        };
+
+        function wrapLabels(labels, maxChars = 16) {
+            return labels.map(label => {
+                if (typeof label !== 'string' || label.length <= maxChars) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxChars && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine ? ' ' : '') + word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            });
+        }
+        
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const chartDefaultOptions = (titleKey, lang) => ({
+            responsive: true,
+            maintainAspectRatio: false,
+            ...tooltipTitleCallback,
+            plugins: {
+                ...tooltipTitleCallback.plugins,
+                legend: { position: 'top', labels: { color: brilliantBlues.text, font: {size: 10} } },
+                title: { display: !!titleKey, text: languageData[lang][titleKey] || '', color: brilliantBlues.text, font: { size: 14, weight: 'bold' } }
+            },
+            scales: {
+                y: { beginAtZero: true, ticks: { color: brilliantBlues.text, font: {size: 10} }, grid: { color: brilliantBlues.grid } },
+                x: { ticks: { color: brilliantBlues.text, font: {size: 10} }, grid: { color: brilliantBlues.grid } }
+            }
+        });
+        
+        const smallChartOptions = () => ({
+             responsive: true, maintainAspectRatio: false, ...tooltipTitleCallback,
+             plugins: { ...tooltipTitleCallback.plugins, legend: { display: false }, title: { display: false } },
+             scales: { y: { display: false }, x: { display: false } }
+        });
+        
+        let chartInstances = {};
+
+        function renderCharts(lang) {
+            Object.values(chartInstances).forEach(chart => chart.destroy());
+            chartInstances = {};
+
+            const chartConfigs = [
+                { id: 'c1', type: 'bar', data: { labels: ['Std. GR', 'GOTM'], datasets: [{ label: 'Metric Complexity', data: [1, 1.5], backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary] }] }, options: smallChartOptions() },
+                { id: 'c2', type: 'line', data: { labels: Array(50).fill(''), datasets: [{ data: Array.from({ length: 50 }, (_, i) => Math.cos(i * 0.5)), borderColor: brilliantBlues.secondary, backgroundColor: brilliantBlues.primary + '40', fill: true, tension: 0.4, pointRadius: 0 }] }, options: smallChartOptions() },
+                { id: 'c3', type: 'doughnut', data: { labels: ['|Ψ|²', 'Φ²'], datasets: [{ data: [50, 50], backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary] }] }, options: { ...smallChartOptions(), plugins: { ...smallChartOptions().plugins, legend: { display: true, position: 'bottom', labels: { color: brilliantBlues.text, boxWidth: 10 } } } } },
+                { id: 'c4', type: 'line', data: { labels: ['Low ψ', 'High ψ'], datasets: [{ label: 'Fractal Dimension Df', data: [3.0, 3.001], borderColor: brilliantBlues.secondary, backgroundColor: brilliantBlues.primary + '40', fill: true }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c8', type: 'bar', data: { labels: ['f₀', '2f₀', '3f₀'], datasets: [{ label: 'Harmonic Amplitude', data: [10, 4, 2], backgroundColor: brilliantBlues.primary }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c22', type: 'line', data: { labels: Array(50).fill(''), datasets: [{ label: 'Metric gμν', data: Array.from({ length: 50 }, (_, i) => 1 + 0.01 * Math.sin(i * 2)), borderColor: brilliantBlues.tertiary, pointRadius: 0, borderWidth: 1.5 }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c10', type: 'line', data: { labels: wrapLabels(['Low Energy', 'High Energy']), datasets: [{ label: 'Coupling Strength', data: [0.8, 0.15], borderColor: brilliantBlues.secondary, fill: false, tension: 0.4 }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c11', type: 'bar', data: { labels: wrapLabels(['Standard Cross-Section', 'GOTM Modulated']), datasets: [{ data: [100, 102], backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary] }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c12', type: 'radar', data: { labels: wrapLabels(['Unitary Ev.', 'Measurement', 'GOTM Collapse', 'Retro-causal', 'Observer']), datasets: [{ label: 'Influence', data: [5, 2, 8, 6, 7], backgroundColor: brilliantBlues.primary + '60', borderColor: brilliantBlues.primary }] }, options: { ...chartDefaultOptions(null, lang), scales: { r: { suggestedMin: 0, suggestedMax: 10, ticks: { display: false } } } } },
+                { id: 'c13', type: 'line', data: { labels: Array(50).fill(''), datasets: [{ label: 'Chaotic System', data: Array.from({ length: 50 }, (_, i) => (Math.random() - 0.5) * Math.exp(-i/20)), borderColor: brilliantBlues.secondary, pointRadius: 0 }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c9', type: 'line', data: { labels: ['Distance r'], datasets: [{ label: 'Std. Gravity', data: [10, 5, 3.3, 2.5], borderColor: brilliantBlues.primary, fill: false }, { label: 'GOTM Gravity', data: [11, 5.5, 3.8, 2.9], borderColor: brilliantBlues.secondary, fill: false }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c5', type: 'bar', data: { labels: ['Std. Model', 'GOTM'], datasets: [{ label: 'Matter', data: [30, 30], backgroundColor: brilliantBlues.tertiary }, { label: 'Dark Energy', data: [70, 40], backgroundColor: brilliantBlues.secondary }, { label: 'Consciousness', data: [0, 30], backgroundColor: brilliantBlues.primary }] }, options: { ...chartDefaultOptions('c5ChartTitle', lang), scales: { x: { stacked: true }, y: { stacked: true } } } },
+                { id: 'c17', type: 'line', data: { labels: Array(100).fill(''), datasets: [{ label: 'Scale Factor a(t)', data: Array.from({ length: 100 }, (_, i) => 1.5 + Math.sin(i * 0.1)**2), borderColor: brilliantBlues.secondary, backgroundColor: brilliantBlues.primary+'40', fill: true, tension: 0.4, pointRadius: 0 }] }, options: chartDefaultOptions('c17ChartTitle', lang) },
+                { id: 'c21', type: 'line', data: { labels: Array.from({length:100},(_,i)=>(i/100)), datasets: [{ label: 'GW Power Spectrum', data: Array.from({length: 100}, (_, i) => Math.pow(i+1, -0.6) * (1 + 0.1 * Math.cos(20 * Math.log(i+1)))), borderColor: brilliantBlues.secondary, tension: 0.1, pointRadius: 0 }] }, options: {...chartDefaultOptions('c21ChartTitle', lang), scales: {x: {type: 'logarithmic', ticks: {color:brilliantBlues.text,font:{size:10}}}}} },
+                { id: 'c16', type: 'line', data: { labels: ['0', 'T/2', 'T'], datasets: [{ label: 'Entropy S(t)', data: [0, 1, 0], borderColor: brilliantBlues.secondary, backgroundColor: brilliantBlues.primary+'40', fill: 'start', tension: 0.4 }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c6', type: 'bar', data: { labels: wrapLabels(['Low Neural Sync', 'High Neural Sync']), datasets: [{ label: 'Qualia Intensity (Q)', data: [3, 9], backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary] }] }, options: { ...chartDefaultOptions(null, lang), scales: { y: { suggestedMax: 10 } } } },
+                { id: 'c18', type: 'line', data: { labels: Array(100).fill(''), datasets: [{ label: 'Fast Cycles', data: Array.from({length:100},(_,i)=>Math.cos(i*Math.PI/5)), borderColor: brilliantBlues.primary+'80', borderWidth: 1 }, { label: 'Emergent Beat (Time)', data: Array.from({length:100},(_,i)=>Math.cos(i*Math.PI/50)), borderColor: brilliantBlues.tertiary, borderWidth: 3 }] }, options: chartDefaultOptions(null, lang) },
+                { id: 'c20', type: 'line', data: { labels: ['Past', 'Present', 'Future'], datasets: [{ label: 'Memory Imprint Strength', data: [5, 9, 2], backgroundColor: brilliantBlues.primary, borderColor: brilliantBlues.secondary, tension: 0.4, fill: true }] }, options: chartDefaultOptions(null, lang) },
+            ];
+            
+            chartConfigs.forEach(config => {
+                const ctx = document.getElementById(config.id);
+                if (ctx) {
+                    chartInstances[config.id] = new Chart(ctx, {
+                        type: config.type,
+                        data: config.data,
+                        options: config.options
+                    });
+                }
+            });
+        }
+
+        function switchLanguage(lang) {
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                if (languageData[lang][key]) {
+                    el.innerHTML = languageData[lang][key];
+                }
+            });
+
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+            
+            renderCharts(lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 7: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 7, focusing on the geometric and symbolic underpinnings of reality. The flow is: 1. Introduction. 2. An interactive builder for Metatron's Cube. 3. A visualization of Tetra-toroidal Nodes. 4. NEW: A Harmonic Scaffolding simulator. 5. An interactive demonstration of VIBRANA Glyphs as operator keys, now with the core equation. 6. NEW: An Inter-Layer Connections diagram. This structure makes the highly abstract concepts of sacred geometry and symbolic operators tangible. -->
+    <!-- Visualization & Content Choices:
+        - Metatron's Cube Builder: Goal: Illustrate the foundational geometry. Method: Canvas animation. Interaction: Buttons guide the user through construction. Justification: Directly visualizes the "Metatron’s Cube anchors dimensional routes of projection" concept.
+        - Tetra-toroidal Nodes: Goal: Show feedback stability cycles. Method: Canvas animation. Interaction: Button activates a rotating tetrahedral structure with toroidal energy fields. Justification: Provides a clear visual metaphor for this complex geometric concept.
+        - NEW - Harmonic Scaffolding: Goal: Visualize how frequencies create form. Method: Canvas animation of particles arranging into Chladni-like patterns. Interaction: Sliders control harmonic frequencies. Justification: Makes the "harmonic scaffolding" concept from the manuscript interactive.
+        - VIBRANA Glyphs as Keys: Goal: Demonstrate symbolic operators. Method: Interactive Canvas. Interaction: Clicking glyphs triggers corresponding transformations in a simulated Ψ-field, now linked to the formal equation. Justification: Visually explains how "VIBRANA glyphs as operator keys for Ψ-layer traversal" functions.
+        - NEW - Inter-Layer Diagram: Goal: Contextualize Layer 7. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 7 provides the symbolic "language" for other layers to interact.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .glyph-btn { transition: all 0.2s ease-in-out; border: 2px solid transparent; }
+        .glyph-btn.active { border-color: #7c3aed; background-color: #f5f3ff; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 7: Geometrical-Symbolic Layer</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#metatron" class="nav-link font-semibold text-slate-600">Metatron's Cube</a>
+                    <a href="#harmonics" class="nav-link font-semibold text-slate-600">Harmonics</a>
+                    <a href="#glyphs" class="nav-link font-semibold text-slate-600">VIBRANA Glyphs</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Scaffolding of Reality</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 7 reveals the fundamental truth that reality is built upon a geometric, symbolic, and harmonic scaffold. Abstract forms like Metatron's Cube are not mere concepts; they are the stable anchors for the routes of conscious projection. This layer provides the glyphs, fractals, and harmonic structures that act as the language for interacting with the Ψ-field.
+            </p>
+        </section>
+
+        <section id="metatron" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Metatron's Cube: Anchor of Projection</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">This sacred geometric figure contains the blueprints of creation, including all five Platonic solids. Within the SCPN, its vertices and pathways serve as stable, resonant nodes that anchor the dimensional routes of conscious projection, ensuring the integrity and coherence of the perceived universe.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-2">
+                    <canvas id="metatronCanvas" class="w-full"></canvas>
+                </div>
+                <div>
+                    <div id="metatron-text" class="bg-slate-100 p-6 rounded-lg min-h-[16rem]">
+                        <h3 class="font-bold text-lg mb-2">Step 1: The Seed of Life</h3>
+                        <p>The process begins with seven overlapping circles. This foundational pattern represents the initial sevenfold division of consciousness that structures the quantum vacuum, forming the basic blueprint of the universe.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <button onclick="drawMetatron(1)" class="geo-button active px-3 py-1 border-2 border-slate-300 rounded-md text-sm">Seed of Life</button>
+                        <button onclick="drawMetatron(2)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm">Flower of Life</button>
+                        <button onclick="drawMetatron(3)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm">Fruit of Life</button>
+                        <button onclick="drawMetatron(4)" class="geo-button px-3 py-1 border-2 border-slate-300 rounded-md text-sm">Metatron's Cube</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="nodes" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Tetra-toroidal Feedback Nodes</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">At key intersections of the Ψ-field, stability is maintained by tetra-toroidal nodes. These complex geometries combine the perfect stability of the tetrahedron with the self-referential, flowing energy of the torus. This creates perfectly balanced, self-reinforcing feedback cycles that prevent the field from decohering.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                 <canvas id="torusCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="torus-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Activate Node</button>
+            </div>
+        </section>
+
+        <section id="harmonics" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Harmonic Scaffolding</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Form arises from frequency. The Ψ-field is a vibrational medium where standing waves create stable, geometric patterns. These harmonic structures act as a scaffold, guiding the organization of matter and consciousness from the quantum to the cosmic scale. Adjust the harmonic frequencies to see different patterns emerge.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="harmonicsCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label for="harmonic-n-slider" class="font-semibold text-slate-700">Harmonic Frequency N: <span id="harmonic-n-value">3</span></label>
+                        <input type="range" min="1" max="10" value="3" step="1" class="control-slider" id="harmonic-n-slider">
+                    </div>
+                     <div>
+                        <label for="harmonic-m-slider" class="font-semibold text-slate-700">Harmonic Frequency M: <span id="harmonic-m-value">4</span></label>
+                        <input type="range" min="1" max="10" value="4" step="1" class="control-slider" id="harmonic-m-slider">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="glyphs" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">VIBRANA Glyphs as Operator Keys</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">VIBRANA glyphs are functional operators that select specific eigenfrequencies of the Ψ-field. This "channeling" is formalized by the equation below, where a glyph (Gk) acts as a contour to select a specific phase state (Θ) of the field.</p>
+                 <div class="p-4 mt-4 bg-slate-100 rounded-lg inline-block shadow-inner">
+                    <p class="text-xl font-mono text-violet-700">F<sub>channel</sub>[G<sub>k</sub>] = e<sup>i ∫<sub>γk</sub> Θ dl</sup></p>
+                </div>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="glyphCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="glyph-btn p-4 rounded-lg bg-slate-100 active" onclick="selectGlyph('coherence')">
+                        <h4 class="font-bold">Coherence Glyph</h4>
+                        <p class="text-sm text-slate-600">Aligns chaotic field lines into a parallel, coherent state.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-slate-100" onclick="selectGlyph('amplify')">
+                        <h4 class="font-bold">Amplify Glyph</h4>
+                        <p class="text-sm text-slate-600">Increases the amplitude and intensity of the local field.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-slate-100" onclick="selectGlyph('stabilize')">
+                        <h4 class="font-bold">Stabilize Glyph</h4>
+                        <p class="text-sm text-slate-600">Creates a toroidal boundary to protect and stabilize the field.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-slate-100" onclick="selectGlyph('traverse')">
+                        <h4 class="font-bold">Traverse Glyph</h4>
+                        <p class="text-sm text-slate-600">Opens a dimensional gateway or shifts the field to a new layer.</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="connections" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Inter-Layer Connections</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Layer 7 serves as the universal language, providing the symbolic and geometric structures that mediate interactions between the individual, the collective, and the cosmos.</p>
+            </div>
+            <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">FROM L5: Organismal Consciousness</h3>
+                        <p class="text-sm text-slate-600 mt-1">An individual uses symbols (e.g., in meditation) to focus their Ψ-field.</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center text-3xl text-slate-400">↔</div>
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-6 bg-violet-100 text-violet-800 rounded-lg shadow-md w-full">
+                        <h3 class="font-bold text-xl">LAYER 7: Geometrical-Symbolic</h3>
+                        <p class="text-sm mt-1">Provides the fundamental glyphs, fractals, and harmonic structures.</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center text-3xl text-slate-400">↔</div>
+                <div class="flex flex-col items-center justify-center">
+                     <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">TO L8: Cosmic Phase-Locking</h3>
+                        <p class="text-sm text-slate-600 mt-1">Cosmic structures resonate with the same fundamental geometries and harmonics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Metatron's Cube ---
+        const metatronCanvas = document.getElementById('metatronCanvas');
+        const metatronCtx = metatronCanvas.getContext('2d');
+        const metatronText = document.getElementById('metatron-text');
+        const geoDescriptions = {
+            1: { title: "Step 1: The Seed of Life", text: "The process begins with seven overlapping circles. This foundational pattern represents the initial sevenfold division of consciousness that structures the quantum vacuum, forming the basic blueprint of the universe." },
+            2: { title: "Step 2: The Flower of Life", text: "By extending the pattern outwards, we create the Flower of Life. This ancient symbol contains the patterns of creation and represents the interconnectedness of all life and all layers of the Ψ-field." },
+            3: { title: "Step 3: The Fruit of Life", text: "Within the Flower of Life, 13 circles can be isolated. This is the Fruit of Life, a geometric figure representing the 13 informational layers of the SCPN. It is the blueprint for the fabric of reality." },
+            4: { title: "Step 4: Metatron's Cube", text: "By connecting the centers of every circle in the Fruit of Life, we derive Metatron's Cube. This figure contains all five Platonic Solids, the building blocks of the universe. Its vectors and vertices map to the stability points of the Ψ-field." }
+        };
+
+        function drawCircle(ctx, x, y, r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+
+        function drawMetatron(step) {
+            document.querySelectorAll('.geo-button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.geo-button:nth-child(${step})`).classList.add('active');
+            metatronText.innerHTML = `<h3 class="font-bold text-lg mb-2">${geoDescriptions[step].title}</h3><p>${geoDescriptions[step].text}</p>`;
+
+            const w = metatronCanvas.width;
+            const h = metatronCanvas.height;
+            metatronCtx.clearRect(0, 0, w, h);
+            metatronCtx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            metatronCtx.lineWidth = 1;
+            const cx = w / 2;
+            const cy = h / 2;
+            const r = h / 4;
+
+            if (step >= 1) { // Seed of Life
+                drawCircle(metatronCtx, cx, cy, r);
+                for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    drawCircle(metatronCtx, cx + r * Math.cos(angle), cy + r * Math.sin(angle), r);
+                }
+            }
+            if (step >= 2) { // Flower of Life
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    const x1 = cx + r * Math.cos(angle);
+                    const y1 = cy + r * Math.sin(angle);
+                     for (let j = 0; j < 6; j++) {
+                        const angle2 = j * Math.PI / 3;
+                        drawCircle(metatronCtx, x1 + r * Math.cos(angle2), y1 + r * Math.sin(angle2), r);
+                    }
+                }
+            }
+            if (step >= 3) { // Fruit of Life
+                metatronCtx.strokeStyle = 'rgba(250, 204, 21, 0.9)';
+                metatronCtx.lineWidth = 2;
+                const fruitCenters = [{x: cx, y: cy}];
+                for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCenters.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+                    fruitCenters.push({x: cx + 2 * r * Math.cos(angle), y: cy + 2 * r * Math.sin(angle)});
+                }
+                const uniqueCenters = Array.from(new Set(fruitCenters.map(JSON.stringify)), JSON.parse);
+                const fruitCircles = uniqueCenters.filter(c => c.x > w/4 && c.x < 3*w/4 && c.y > h/4 && c.y < 3*h/4).slice(0, 13);
+                fruitCircles.forEach(c => drawCircle(metatronCtx, c.x, c.y, r/2));
+            }
+            if (step >= 4) { // Metatron's Cube
+                const fruitCircles = [{x: cx, y: cy}];
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCircles.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+                 }
+                 for (let i = 0; i < 6; i++) {
+                    const angle = i * Math.PI / 3;
+                    fruitCircles.push({x: cx + 2*r * Math.cos(angle), y: cy + 2*r * Math.sin(angle)});
+                 }
+                const centers = Array.from(new Set(fruitCircles.map(JSON.stringify)), JSON.parse).slice(0,13);
+                metatronCtx.strokeStyle = 'rgba(239, 68, 68, 0.9)';
+                for(let i = 0; i < centers.length; i++) {
+                    for(let j = i + 1; j < centers.length; j++) {
+                        metatronCtx.beginPath();
+                        metatronCtx.moveTo(centers[i].x, centers[i].y);
+                        metatronCtx.lineTo(centers[j].x, centers[j].y);
+                        metatronCtx.stroke();
+                    }
+                }
+            }
+        }
+
+        // --- Tetra-toroidal Nodes ---
+        const torusCanvas = document.getElementById('torusCanvas');
+        const torusCtx = torusCanvas.getContext('2d');
+        const torusBtn = document.getElementById('torus-btn');
+        let torusTime = 0;
+        let torusActive = false;
+        let particles = [];
+
+        function initTorus() {
+            for(let i=0; i<100; i++) {
+                particles.push({
+                    angle: Math.random() * Math.PI * 2,
+                    radius: Math.random() * 20 + 50,
+                    speed: Math.random() * 0.01 + 0.01,
+                    alpha: 0
+                });
+            }
+        }
+        
+        function animateTorus() {
+            const w = torusCanvas.width;
+            const h = torusCanvas.height;
+            torusCtx.clearRect(0, 0, w, h);
+            torusTime += 0.01;
+
+            const size = Math.min(w, h) * 0.3;
+            const tetraPoints = [
+                { x: 0, y: -size, z: 0 },
+                { x: -size * Math.sqrt(8/9), y: size/3, z: 0 },
+                { x: size * Math.sqrt(2/9), y: size/3, z: size * Math.sqrt(2/3) },
+                { x: size * Math.sqrt(2/9), y: size/3, z: -size * Math.sqrt(2/3) },
+            ];
+
+            const projectedPoints = tetraPoints.map(p => {
+                const rotX = p.x * Math.cos(torusTime) - p.z * Math.sin(torusTime);
+                const rotZ = p.x * Math.sin(torusTime) + p.z * Math.cos(torusTime);
+                const rotY = p.y * Math.cos(torusTime*0.7) - rotZ * Math.sin(torusTime*0.7);
+                const finalZ = p.y * Math.sin(torusTime*0.7) + rotZ * Math.cos(torusTime*0.7);
+                return { x: w/2 + rotX, y: h/2 + rotY, z: finalZ };
+            });
+
+            torusCtx.strokeStyle = 'white';
+            torusCtx.lineWidth = 2;
+            for(let i=0; i<4; i++) {
+                for(let j=i+1; j<4; j++) {
+                    torusCtx.beginPath();
+                    torusCtx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
+                    torusCtx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
+                    torusCtx.stroke();
+                }
+            }
+
+            if(torusActive) {
+                particles.forEach(p => {
+                    p.angle += p.speed;
+                    if(p.alpha < 1) p.alpha += 0.01;
+                    const x = w/2 + Math.cos(p.angle) * p.radius;
+                    const y = h/2 + Math.sin(p.angle) * p.radius * 0.5;
+                    torusCtx.fillStyle = `rgba(167, 139, 250, ${p.alpha})`;
+                    torusCtx.beginPath();
+                    torusCtx.arc(x, y, 1.5, 0, Math.PI * 2);
+                    torusCtx.fill();
+                });
+            } else {
+                 particles.forEach(p => {
+                    if(p.alpha > 0) p.alpha -= 0.01;
+                 });
+            }
+            requestAnimationFrame(animateTorus);
+        }
+        torusBtn.addEventListener('click', () => {
+            torusActive = !torusActive;
+            torusBtn.textContent = torusActive ? 'Deactivate Node' : 'Activate Node';
+        });
+
+        // --- Harmonic Scaffolding ---
+        const harmonicsCanvas = document.getElementById('harmonicsCanvas');
+        const harmonicsCtx = harmonicsCanvas.getContext('2d');
+        const nSlider = document.getElementById('harmonic-n-slider');
+        const mSlider = document.getElementById('harmonic-m-slider');
+        const nValue = document.getElementById('harmonic-n-value');
+        const mValue = document.getElementById('harmonic-m-value');
+        let harmonicParticles = [];
+
+        function initHarmonics() {
+            for(let i=0; i<2000; i++) {
+                harmonicParticles.push({
+                    x: Math.random() * 2 - 1,
+                    y: Math.random() * 2 - 1,
+                    vx: 0, vy: 0
+                });
+            }
+        }
+
+        function animateHarmonics() {
+            const w = harmonicsCanvas.width;
+            const h = harmonicsCanvas.height;
+            harmonicsCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            harmonicsCtx.fillRect(0,0,w,h);
+
+            const n = parseInt(nSlider.value);
+            const m = parseInt(mSlider.value);
+            nValue.textContent = n;
+            mValue.textContent = m;
+
+            harmonicsCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            harmonicParticles.forEach(p => {
+                const r = Math.sqrt(p.x*p.x + p.y*p.y);
+                const theta = Math.atan2(p.y, p.x);
+                if (r < 1) {
+                    const val = Math.sin(n * Math.PI * r) * Math.cos(m * theta);
+                    const force = -val * 0.01;
+                    p.vx += force * p.x / r;
+                    p.vy += force * p.y / r;
+                }
+                p.vx *= 0.95;
+                p.vy *= 0.95;
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if (p.x < -1 || p.x > 1 || p.y < -1 || p.y > 1) {
+                    p.x = Math.random() * 2 - 1;
+                    p.y = Math.random() * 2 - 1;
+                    p.vx = 0; p.vy = 0;
+                }
+
+                const screenX = p.x * w/2 + w/2;
+                const screenY = p.y * h/2 + h/2;
+                harmonicsCtx.fillRect(screenX, screenY, 1, 1);
+            });
+
+            requestAnimationFrame(animateHarmonics);
+        }
+
+
+        // --- VIBRANA Glyphs ---
+        const glyphCanvas = document.getElementById('glyphCanvas');
+        const glyphCtx = glyphCanvas.getContext('2d');
+        let activeGlyph = 'coherence';
+        let fieldLines = [];
+        let glyphTime = 0;
+
+        function initGlyphs() {
+            for(let i=0; i<50; i++) {
+                fieldLines.push({ y: (i/50) * glyphCanvas.height, phase: Math.random() * Math.PI * 2, amp: 10 });
+            }
+        }
+        
+        function selectGlyph(glyph) {
+            activeGlyph = glyph;
+            document.querySelectorAll('.glyph-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.glyph-btn[onclick="selectGlyph('${glyph}')"]`).classList.add('active');
+        }
+
+        function animateGlyphs() {
+            const w = glyphCanvas.width;
+            const h = glyphCanvas.height;
+            glyphCtx.clearRect(0, 0, w, h);
+            glyphTime += 0.03;
+
+            glyphCtx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+            glyphCtx.lineWidth = 1;
+
+            fieldLines.forEach(line => {
+                glyphCtx.beginPath();
+                for(let x=0; x<w; x++) {
+                    let y = line.y;
+                    let amp = line.amp;
+                    if (activeGlyph === 'coherence') {
+                        amp = line.amp * (1 - Math.min(1, glyphTime/100));
+                    } else if (activeGlyph === 'amplify') {
+                        amp = line.amp * (1 + Math.min(1, glyphTime/100));
+                    }
+                    y += Math.sin(x * 0.05 + line.phase + glyphTime) * amp;
+                    glyphCtx.lineTo(x, y);
+                }
+                glyphCtx.stroke();
+            });
+            
+            if (activeGlyph === 'stabilize' && glyphTime > 30) {
+                 const alpha = Math.min(1, (glyphTime - 30)/60);
+                 glyphCtx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
+                 glyphCtx.lineWidth = 3;
+                 glyphCtx.beginPath();
+                 glyphCtx.ellipse(w/2, h/2, w*0.4, h*0.45, 0, 0, Math.PI * 2);
+                 glyphCtx.stroke();
+            }
+            
+            if (activeGlyph === 'traverse' && glyphTime > 30) {
+                 const radius = Math.min(50, (glyphTime-30));
+                 const alpha = Math.max(0, 1 - radius/50);
+                 glyphCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                 glyphCtx.beginPath();
+                 glyphCtx.arc(w/2, h/2, radius, 0, Math.PI * 2);
+                 glyphCtx.fill();
+            }
+
+            requestAnimationFrame(animateGlyphs);
+        }
+        document.querySelectorAll('.glyph-btn').forEach(btn => {
+            btn.addEventListener('click', () => { glyphTime = 0; });
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            metatronCanvas.width = metatronCanvas.offsetWidth;
+            metatronCanvas.height = metatronCanvas.offsetWidth;
+            drawMetatron(1);
+
+            torusCanvas.width = torusCanvas.offsetWidth;
+            torusCanvas.height = torusCanvas.offsetHeight;
+            initTorus();
+            animateTorus();
+
+            harmonicsCanvas.width = harmonicsCanvas.offsetWidth;
+            harmonicsCanvas.height = harmonicsCanvas.offsetHeight;
+            initHarmonics();
+            animateHarmonics();
+
+            glyphCanvas.width = glyphCanvas.offsetWidth;
+            glyphCanvas.height = glyphCanvas.offsetHeight;
+            initGlyphs();
+            animateGlyphs();
+        };
+    </script>
+</body>
+</html>

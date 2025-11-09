@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 10: Projective Field Boundary Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 10 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Phase Labyrinth" for topological insulation. 3. "The Resonant Chamber" for immune-cognitive dissonance. 4. "Forging the Shield" for VIBRANA glyphs. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Phase Labyrinth: Goal: Visualize a dynamic, protective boundary. Method: Canvas animation. Interaction: A slider for "Insulation Strength" controls the complexity of a shifting phase labyrinth that traps and expels foreign projections. Justification: A more active and complex metaphor for "phase knotting."
+        - The Resonant Chamber: Goal: Show how the field rejects incompatible signals. Method: Canvas animation. Interaction: A slider controls the frequency of incoming signals. Resonant signals are absorbed, strengthening the chamber; dissonant signals are repelled. Justification: A functional metaphor for resonance dissonance as a filtering mechanism.
+        - Forging the Shield: Goal: Illustrate active, conscious shielding. Method: Interactive Canvas. Interaction: Buttons for different VIBRANA glyphs allow the user to "forge" a geometric shield onto the field's boundary, which then visibly blocks incoming noise. Justification: Makes the "projection shield" concept feel like a direct, creative act of protection.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 10: Boundary Control</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#labyrinth" class="nav-link font-semibold text-stone-600">Labyrinth</a>
+                    <a href="#chamber" class="nav-link font-semibold text-stone-600">Chamber</a>
+                    <a href="#forge" class="nav-link font-semibold text-stone-600">Forge</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Integrity of Consciousness</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 10 describes the crucial mechanisms that enforce the integrity and protection of a species-specific consciousness field. To maintain a coherent shared reality, the field must be insulated from foreign projections, dissonant resonances, and entropic noise. This layer represents the active, dynamic boundary that defines and defends a species' unique mode of existence.
+            </p>
+        </section>
+
+        <section id="labyrinth" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Phase Labyrinth</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The field's boundary is a dynamic labyrinth of knotted phase lines. Foreign projections entering this boundary become trapped and dissipated by its complexity. A stronger field creates a more intricate and impassable labyrinth, ensuring topological insulation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="labyrinthCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="insulation-slider" class="font-semibold text-stone-700">Insulation Strength: <span id="insulation-value">20</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the strength to enhance the complexity of the phase labyrinth, improving its ability to trap foreign projections.</p>
+                    <input type="range" min="0" max="100" value="20" class="control-slider" id="insulation-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="chamber" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Resonant Chamber</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The species-field acts as a resonant chamber tuned to a specific frequency. Incoming signals that match this frequency are absorbed, strengthening the field. Dissonant signals are violently rejected, preserving the system's immune-cognitive integrity.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="chamberCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                     <label for="frequency-slider" class="font-semibold text-stone-700">Incoming Signal Frequency: <span id="frequency-value">5</span></label>
+                     <p class="text-sm text-stone-500 mb-2">Tune the frequency of incoming signals. The chamber's natural frequency is 10. Signals close to 10 will be absorbed; others will be rejected.</p>
+                    <input type="range" min="1" max="20" value="5" step="0.1" class="control-slider" id="frequency-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="forge" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Forging the Shield</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Through collective focus, a species can actively forge a protective shield using VIBRANA glyphs. These geometric operators are imprinted onto the field's boundary, creating a stable, coherent barrier that nullifies entropic noise and reinforces the field's integrity.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-gray-900 rounded-lg p-4 relative">
+                    <canvas id="forgeCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center grid grid-cols-2 gap-4">
+                    <button id="forge-tri-btn" class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300">Forge Triangle</button>
+                    <button id="forge-sq-btn" class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300">Forge Square</button>
+                    <button id="forge-hex-btn" class="p-4 bg-stone-200 rounded-lg font-semibold hover:bg-stone-300">Forge Hexagon</button>
+                    <button id="clear-shield-btn" class="p-4 bg-red-200 rounded-lg font-semibold hover:bg-red-300">Clear Shield</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Projective Field Boundary Control Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Topological Surfaces</h4>
+                            <p class="text-stone-600 text-sm">The field boundary is modeled as a dynamic topological surface (a 2-sphere in 3D space). Its integrity is maintained not by rigidity, but by complex, time-varying topology—phase knotting—which makes it resilient and self-repairing.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Glyphic Geometry</h4>
+                            <p class="text-stone-600 text-sm">VIBRANA boundary glyphs are specific geometric forms (e.g., toroidal or tetrahedral structures) that resonate with stable modes of the Ψ-field. Activating these geometries creates a coherent, stable boundary condition.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Topological Invariants</h4>
+                            <p class="text-stone-600">The "knotted" state of the boundary phase is described by topological invariants like winding numbers. These mathematical quantities are robust against small perturbations, ensuring the stability of the field's insulation.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Wave Interference</h4>
+                            <p class="text-stone-600">The rejection of dissonant signals is modeled by the mathematics of wave interference. When the phase difference ($\Delta\phi$) between the self-field and a foreign field exceeds a threshold ($\Delta\phi > \pi/2$), destructive interference dominates, leading to signal cancellation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Phase Rejection</h4>
+                            <p class="text-stone-600 text-sm">The "immune-cognitive" response is a physical process of phase rejection. A coherent system will naturally reject and expel signals that are out of phase, as they cannot be integrated into the system's resonant dynamics. This is a fundamental principle of coupled oscillator systems.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Constructive Interference Shields</h4>
+                            <p class="text-stone-600 text-sm">VIBRANA glyphs work by creating a state of massive constructive interference at the field boundary. Collective conscious focus on the glyph's geometry amplifies a specific, stable mode of the Ψ-field, forming a high-amplitude energy barrier that acts as a shield.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Phase Labyrinth ---
+        const labyrinthCanvas = document.getElementById('labyrinthCanvas');
+        const labyrinthCtx = labyrinthCanvas.getContext('2d');
+        const insulationSlider = document.getElementById('insulation-slider');
+        const insulationValue = document.getElementById('insulation-value');
+        let labyrinthTime = 0;
+        let labyrinthParticles = [];
+        let labyrinthWalls = [];
+
+        function updateLabyrinth() {
+            const strength = parseInt(insulationSlider.value) / 100;
+            insulationValue.textContent = `${Math.round(strength*100)}%`;
+            const numWalls = 5 + Math.floor(strength * 20);
+            labyrinthWalls = [];
+            for(let i=0; i<numWalls; i++) {
+                labyrinthWalls.push({
+                    x1: Math.random() * labyrinthCanvas.width, y1: Math.random() * labyrinthCanvas.height,
+                    x2: Math.random() * labyrinthCanvas.width, y2: Math.random() * labyrinthCanvas.height,
+                });
+            }
+        }
+
+        function animateLabyrinth() {
+            const w = labyrinthCanvas.width;
+            const h = labyrinthCanvas.height;
+            labyrinthCtx.clearRect(0,0,w,h);
+            labyrinthTime++;
+            
+            if (labyrinthTime % 10 === 0) updateLabyrinth();
+
+            // Draw Labyrinth
+            labyrinthCtx.strokeStyle = `rgba(217, 119, 6, 0.5)`;
+            labyrinthCtx.lineWidth = 2;
+            labyrinthWalls.forEach(wall => {
+                labyrinthCtx.beginPath();
+                labyrinthCtx.moveTo(wall.x1, wall.y1);
+                labyrinthCtx.lineTo(wall.x2, wall.y2);
+                labyrinthCtx.stroke();
+            });
+
+            // Particles
+            if(Math.random() < 0.2) {
+                labyrinthParticles.push({ x: 0, y: Math.random() * h, vx: 1, vy: 0, life: 200 });
+            }
+
+            labyrinthParticles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy; p.life--;
+                if(p.life <= 0 || p.x > w) labyrinthParticles.splice(i, 1);
+                
+                labyrinthCtx.fillStyle = 'rgba(239, 68, 68, 0.8)';
+                labyrinthCtx.beginPath();
+                labyrinthCtx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                labyrinthCtx.fill();
+            });
+
+            requestAnimationFrame(animateLabyrinth);
+        }
+
+        // --- The Resonant Chamber ---
+        const chamberCanvas = document.getElementById('chamberCanvas');
+        const chamberCtx = chamberCanvas.getContext('2d');
+        const frequencySlider = document.getElementById('frequency-slider');
+        const frequencyValue = document.getElementById('frequency-value');
+        let chamberTime = 0;
+        let chamberSignals = [];
+        let chamberGlow = 0;
+        const naturalFreq = 10;
+
+        function animateChamber() {
+            const w = chamberCanvas.width;
+            const h = chamberCanvas.height;
+            chamberCtx.clearRect(0,0,w,h);
+            
+            const chamberRadius = Math.min(w,h) * 0.2;
+            if (chamberGlow > 0) chamberGlow -= 0.01;
+
+            // Draw Chamber
+            chamberCtx.strokeStyle = '#d97706';
+            chamberCtx.lineWidth = 3;
+            chamberCtx.beginPath();
+            chamberCtx.arc(w/2, h/2, chamberRadius, 0, Math.PI * 2);
+            chamberCtx.stroke();
+            if (chamberGlow > 0) {
+                const gradient = chamberCtx.createRadialGradient(w/2, h/2, 0, w/2, h/2, chamberRadius);
+                gradient.addColorStop(0, `rgba(250, 204, 21, ${chamberGlow})`);
+                gradient.addColorStop(1, `rgba(250, 204, 21, 0)`);
+                chamberCtx.fillStyle = gradient;
+                chamberCtx.fill();
+            }
+
+            // Signals
+            if(Math.random() < 0.1) {
+                const freq = parseFloat(frequencySlider.value);
+                frequencyValue.textContent = freq.toFixed(1);
+                chamberSignals.push({ x: 0, y: Math.random() * h, freq: freq, life: w });
+            }
+
+            chamberSignals.forEach((s, i) => {
+                s.x += 2; s.life -= 2;
+                if(s.life <= 0) chamberSignals.splice(i, 1);
+
+                const dx = s.x - w/2;
+                const dy = s.y - h/2;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                
+                if (dist < chamberRadius) {
+                    const match = 1 - Math.abs(s.freq - naturalFreq) / 10;
+                    if (match > 0.8) { // Absorb
+                        chamberGlow = Math.min(1, chamberGlow + 0.5);
+                    } else { // Reject
+                        // No visual rejection needed, just fails to absorb
+                    }
+                    chamberSignals.splice(i, 1);
+                } else {
+                    chamberCtx.fillStyle = `rgba(255, 255, 255, 0.8)`;
+                    chamberCtx.beginPath();
+                    chamberCtx.arc(s.x, s.y, 3, 0, Math.PI * 2);
+                    chamberCtx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateChamber);
+        }
+
+        // --- Forging the Shield ---
+        const forgeCanvas = document.getElementById('forgeCanvas');
+        const forgeCtx = forgeCanvas.getContext('2d');
+        let forgeParticles = [];
+        let shieldGlyphs = [];
+
+        function initForge() {
+            for(let i=0; i<200; i++) {
+                forgeParticles.push({
+                    x: Math.random() * forgeCanvas.width, y: Math.random() * forgeCanvas.height,
+                    vx: (Math.random() - 0.5), vy: (Math.random() - 0.5)
+                });
+            }
+        }
+
+        function forgeGlyph(sides) {
+            const w = forgeCanvas.width;
+            const h = forgeCanvas.height;
+            shieldGlyphs.push({ sides: sides, radius: 0, maxRadius: Math.min(w,h) * 0.3, alpha: 1 });
+        }
+        document.getElementById('forge-tri-btn').addEventListener('click', () => forgeGlyph(3));
+        document.getElementById('forge-sq-btn').addEventListener('click', () => forgeGlyph(4));
+        document.getElementById('forge-hex-btn').addEventListener('click', () => forgeGlyph(6));
+        document.getElementById('clear-shield-btn').addEventListener('click', () => { shieldGlyphs = []; });
+
+        function animateForge() {
+            const w = forgeCanvas.width;
+            const h = forgeCanvas.height;
+            forgeCtx.clearRect(0,0,w,h);
+            
+            const centerX = w/2, centerY = h/2, coreRadius = Math.min(w,h) * 0.1;
+
+            // Draw Core
+            forgeCtx.fillStyle = `rgba(217, 119, 6, 0.5)`;
+            forgeCtx.beginPath();
+            forgeCtx.arc(centerX, centerY, coreRadius, 0, Math.PI * 2);
+            forgeCtx.fill();
+
+            // Draw Shield
+            shieldGlyphs.forEach((g, i) => {
+                if (g.radius < g.maxRadius) g.radius += 2;
+                g.alpha *= 0.995;
+                if(g.alpha < 0.01) shieldGlyphs.splice(i, 1);
+
+                forgeCtx.strokeStyle = `rgba(250, 204, 21, ${g.alpha})`;
+                forgeCtx.lineWidth = 3;
+                forgeCtx.beginPath();
+                for(let j=0; j<=g.sides; j++) {
+                    const angle = (j/g.sides) * Math.PI * 2;
+                    const x = centerX + Math.cos(angle) * g.radius;
+                    const y = centerY + Math.sin(angle) * g.radius;
+                    if (j === 0) forgeCtx.moveTo(x,y);
+                    else forgeCtx.lineTo(x,y);
+                }
+                forgeCtx.stroke();
+            });
+
+            // Draw Noise
+            forgeParticles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > w) p.vx *= -1;
+                if (p.y < 0 || p.y > h) p.vy *= -1;
+
+                let shielded = false;
+                shieldGlyphs.forEach(g => {
+                    const dx = p.x - centerX;
+                    const dy = p.y - centerY;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < g.radius + 5) shielded = true;
+                });
+
+                if (!shielded) {
+                    forgeCtx.fillStyle = `rgba(120, 113, 108, 0.5)`;
+                    forgeCtx.fillRect(p.x, p.y, 2, 2);
+                }
+            });
+
+            requestAnimationFrame(animateForge);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            labyrinthCanvas.width = labyrinthCanvas.offsetWidth;
+            labyrinthCanvas.height = labyrinthCanvas.offsetHeight;
+            updateLabyrinth();
+            animateLabyrinth();
+
+            chamberCanvas.width = chamberCanvas.offsetWidth;
+            chamberCanvas.height = chamberCanvas.offsetHeight;
+            animateChamber();
+
+            forgeCanvas.width = forgeCanvas.offsetWidth;
+            forgeCanvas.height = forgeCanvas.offsetHeight;
+            initForge();
+            animateForge();
+        };
+    </script>
+</body>
+</html>

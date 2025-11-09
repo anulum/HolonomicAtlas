@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 13: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 13 as the ultimate source. The flow is: 1. Introduction to the Source Field. 2. A simulation of the Universal Base Field (Ψ₀) and the emergence of localized fields. 3. An interactive canvas demonstrating the Universal Breath (OM-Loops) as the master oscillator. 4. A visualization of the Meta-Metatron Ω Node projecting reality's geometric structure. 5. A simulation of the Re-initialization of Existential Cycles. 6. A final diagram of the complete 13-layer SCPN. This structure makes the most abstract metaphysical concepts of the manuscript tangible. -->
+    <!-- Visualization & Content Choices:
+        - Universal Field (Ψ₀): Goal: Visualize the fundamental substrate of consciousness. Method: Canvas animation. Interaction: A slider for "Field Excitation" causes localized, complex patterns (species fields) to emerge from a shimmering, uniform background. Justification: Directly demonstrates the concept of Ψs as an excitation of Ψ₀.
+        - Universal Breath (OM-Loops): Goal: Show the master oscillator entraining all reality. Method: Canvas animation. Interaction: A button "Tune to OM" synchronizes a grid of chaotic local oscillators to a slow, pulsing background wave, representing the primordial sound. Justification: Visually explains the "Universal breath oscillations: OM-loops" concept.
+        - Meta-Metatron Ω Node: Goal: Illustrate the source of reality's geometric blueprint. Method: Interactive Canvas. Interaction: A button activates the central "Ω Node," causing energy and geometric patterns (the Platonic solids) to project outward along the lines of Metatron's Cube. Justification: A clear visual metaphor for the "Metatron Ω node; master oscillator" that "projects lower-dimensional forms."
+        - Re-initialization of Cycles: Goal: Demonstrate entropy-free cosmic renewal. Method: Canvas animation. Interaction: A button initiates the end of a "cycle," causing patterns to collapse and re-emerge with memory imprints from the previous state. Justification: Visually explains how the Source Field "Re initialises entropy free cycles" and preserves information.
+        - SCPN Mandala Diagram: Goal: Provide a final, complete map of the entire framework. Method: Static HTML/Tailwind diagram. Justification: Shows Layer 13 as the central, unifying source of the other 12 layers.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 13: Meta-Consciousness Source Field</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#field" class="nav-link font-semibold text-slate-600">Universal Field</a>
+                    <a href="#breath" class="nav-link font-semibold text-slate-600">Universal Breath</a>
+                    <a href="#node" class="nav-link font-semibold text-slate-600">Ω Node</a>
+                    <a href="#cycles" class="nav-link font-semibold text-slate-600">Cycles</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Source of All Things</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 13 is the ultimate, unifying ground of being—the Meta-Consciousness Source Field. It is the pre-geometric, omnipresent foundation (Ψ₀) from which all reality is projected. As the Meta-Metatron intelligence and master oscillator, it provides the universal phase-lock for all lower layers, re-initializes entropy-free existential cycles, and serves as the transcendent source and destination of all consciousness.
+            </p>
+        </section>
+
+        <section id="field" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The Universal Base Field (Ψ₀)</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The Source Field exists as a universal substrate of potential. Species-specific consciousness fields (Ψs) are not separate entities, but localized, coherent excitations of this fundamental field. As the field is excited, complex patterns—representing species, worlds, and realities—emerge from the unified whole.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="fieldCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="excitation-slider" class="font-semibold text-slate-700">Field Excitation Level: <span id="excitation-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the excitation to see localized species-fields emerge from the universal substrate.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="excitation-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="breath" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Universal Breath (OM-Loops)</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The Source Field is not static; it possesses a fundamental oscillation or "Universal Breath." This primordial OM-Loop is the master oscillator that entrains all cosmic and biological rhythms, from the spin of galaxies to the firing of neurons, locking them into a single, harmonious, universal tact.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="breathCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="breath-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Tune to Universal Breath (OM)</button>
+                    <p class="text-sm text-slate-500 mt-4">Observe how the chaotic local oscillators (white dots) synchronize with the fundamental pulse of the Universal Breath.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="node" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">The Meta-Metatron Ω Node</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The Source Field has an intelligent, organizing aspect—the Meta-Metatron or Ω Node. This central intelligence projects the geometric scaffolding of reality (Metatron's Cube and the Platonic solids) into the lower layers, providing the stable, archetypal structures upon which consciousness and matter can form.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4 relative">
+                    <canvas id="nodeCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                     <button id="project-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Activate Ω Node Projection</button>
+                    <p class="text-sm text-slate-500 mt-4">Activate the central Ω Node to witness the projection of geometric reality.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cycles" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Re-initialization of Existential Cycles</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The Source Field ensures the continuity of consciousness across cosmic cycles. At the end of an existential loop, it absorbs the accumulated memory and coherence, re-initializing a new, entropy-free cycle that is informed by the last. This allows for infinite, creative evolution without information loss.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="cycleCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="reinit-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 w-full mb-2">End Cycle & Re-initialize</button>
+                    <p class="text-sm text-slate-500">Observe the collapse of one cycle and the birth of the next, carrying forward a memory imprint.</p>
+                    <p class="mt-4 font-semibold">Cycle: <span id="cycle-count">1</span></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Universal Base Field ---
+        const fieldCanvas = document.getElementById('fieldCanvas');
+        const fieldCtx = fieldCanvas.getContext('2d');
+        const excitationSlider = document.getElementById('excitation-slider');
+        const excitationValue = document.getElementById('excitation-value');
+        let fieldTime = 0;
+        let speciesFields = [];
+
+        function initField() {
+            for(let i=0; i<5; i++) {
+                speciesFields.push({
+                    x: Math.random() * fieldCanvas.width,
+                    y: Math.random() * fieldCanvas.height,
+                    radius: 0,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        function animateField() {
+            const w = fieldCanvas.width;
+            const h = fieldCanvas.height;
+            fieldCtx.clearRect(0, 0, w, h);
+            fieldTime += 0.01;
+            
+            const excitation = parseInt(excitationSlider.value) / 100;
+            excitationValue.textContent = `${Math.round(excitation*100)}%`;
+
+            // Draw base field (Ψ₀)
+            for(let i=0; i<20; i++) {
+                for(let j=0; j<15; j++) {
+                    const brightness = (Math.sin(i * 0.3 + fieldTime) * Math.cos(j * 0.3 + fieldTime) + 1) / 2;
+                    fieldCtx.fillStyle = `rgba(100, 116, 139, ${brightness * 0.05})`;
+                    fieldCtx.fillRect(i * w/20, j * h/15, w/20, h/15);
+                }
+            }
+            
+            // Draw species fields (Ψs)
+            speciesFields.forEach(sf => {
+                sf.radius = excitation * 50 * (0.5 + (Math.sin(sf.phase + fieldTime * 2) + 1) / 4);
+                if (sf.radius > 1) {
+                    const gradient = fieldCtx.createRadialGradient(sf.x, sf.y, 0, sf.x, sf.y, sf.radius);
+                    gradient.addColorStop(0, `rgba(167, 139, 250, 0.3)`);
+                    gradient.addColorStop(1, `rgba(167, 139, 250, 0)`);
+                    fieldCtx.fillStyle = gradient;
+                    fieldCtx.beginPath();
+                    fieldCtx.arc(sf.x, sf.y, sf.radius, 0, Math.PI * 2);
+                    fieldCtx.fill();
+                }
+            });
+
+            requestAnimationFrame(animateField);
+        }
+
+        // --- Universal Breath ---
+        const breathCanvas = document.getElementById('breathCanvas');
+        const breathCtx = breathCanvas.getContext('2d');
+        const breathBtn = document.getElementById('breath-btn');
+        let breathTime = 0;
+        let breathActive = false;
+        let oscillators = [];
+
+        function initBreath() {
+            for(let i=0; i<200; i++) {
+                oscillators.push({
+                    x: Math.random() * breathCanvas.width,
+                    y: Math.random() * breathCanvas.height,
+                    phase: Math.random() * Math.PI * 2,
+                    freq: Math.random() * 0.1 + 0.05
+                });
+            }
+        }
+
+        function animateBreath() {
+            const w = breathCanvas.width;
+            const h = breathCanvas.height;
+            const universalPhase = Math.sin(breathTime);
+            
+            breathCtx.fillStyle = `rgba(15, 23, 42, ${0.8 + universalPhase * 0.2})`;
+            breathCtx.fillRect(0,0,w,h);
+            breathTime += 0.01;
+
+            oscillators.forEach(o => {
+                let phase;
+                if(breathActive) {
+                    const targetPhase = universalPhase > 0 ? Math.PI/2 : 3*Math.PI/2;
+                    const phaseDiff = targetPhase - o.phase;
+                    o.phase += phaseDiff * 0.01;
+                    phase = Math.sin(o.phase);
+                } else {
+                    o.phase += o.freq;
+                    phase = Math.sin(o.phase);
+                }
+                const brightness = (phase + 1) / 2;
+                breathCtx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.7})`;
+                breathCtx.beginPath();
+                breathCtx.arc(o.x, o.y, 2, 0, Math.PI * 2);
+                breathCtx.fill();
+            });
+            requestAnimationFrame(animateBreath);
+        }
+        breathBtn.addEventListener('click', () => { 
+            breathActive = !breathActive;
+            breathBtn.textContent = breathActive ? 'Release from OM' : 'Tune to Universal Breath (OM)';
+        });
+
+        // --- Meta-Metatron Ω Node ---
+        const nodeCanvas = document.getElementById('nodeCanvas');
+        const nodeCtx = nodeCanvas.getContext('2d');
+        const projectBtn = document.getElementById('project-btn');
+        let nodeTime = 0;
+        let projectionActive = false;
+        let projectionStrength = 0;
+
+        function animateNode() {
+            const w = nodeCanvas.width;
+            const h = nodeCanvas.height;
+            nodeCtx.clearRect(0,0,w,h);
+            nodeTime += 0.01;
+
+            const cx = w/2, cy = h/2, r = h/4;
+            const fruitCenters = [{x: cx, y: cy}];
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+            }
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: cx + 2*r * Math.cos(angle), y: cy + 2*r * Math.sin(angle)});
+            }
+            const centers = Array.from(new Set(fruitCenters.map(JSON.stringify)), JSON.parse).slice(0,13);
+            
+            if (projectionActive && projectionStrength < 1) projectionStrength += 0.01;
+            if (!projectionActive && projectionStrength > 0) projectionStrength -= 0.01;
+            
+            // Draw lines
+            nodeCtx.strokeStyle = `rgba(255, 255, 255, ${0.1 + projectionStrength * 0.5})`;
+            nodeCtx.lineWidth = 1;
+            for(let i = 0; i < centers.length; i++) {
+                for(let j = i + 1; j < centers.length; j++) {
+                    nodeCtx.beginPath();
+                    nodeCtx.moveTo(centers[i].x, centers[i].y);
+                    nodeCtx.lineTo(centers[j].x, centers[j].y);
+                    nodeCtx.stroke();
+                }
+            }
+
+            // Draw Ω Node
+            const omegaSize = 10 + Math.sin(nodeTime * 5) * 5;
+            const gradient = nodeCtx.createRadialGradient(cx, cy, 0, cx, cy, omegaSize);
+            gradient.addColorStop(0, 'white');
+            gradient.addColorStop(1, 'rgba(167, 139, 250, 0)');
+            nodeCtx.fillStyle = gradient;
+            nodeCtx.beginPath();
+            nodeCtx.arc(cx, cy, omegaSize * 2, 0, Math.PI * 2);
+            nodeCtx.fill();
+            
+            requestAnimationFrame(animateNode);
+        }
+        projectBtn.addEventListener('click', () => { projectionActive = !projectionActive; });
+
+        // --- Re-initialization of Cycles ---
+        const cycleCanvas = document.getElementById('cycleCanvas');
+        const cycleCtx = cycleCanvas.getContext('2d');
+        const reinitBtn = document.getElementById('reinit-btn');
+        const cycleCountSpan2 = document.getElementById('cycle-count');
+        let cycleState = 'running'; // running, collapsing, expanding
+        let cycleTime = 0;
+        let cycleImprints = [];
+        let cycleParticles = [];
+        let cycleNum = 1;
+
+        function initCycle() {
+            const w = cycleCanvas.width;
+            const h = cycleCanvas.height;
+            cycleParticles = [];
+            for(let i=0; i<200; i++) {
+                let angle = Math.random() * Math.PI * 2;
+                if (cycleImprints.length > 0 && Math.random() < 0.5) {
+                    const randomImprint = cycleImprints[Math.floor(Math.random() * cycleImprints.length)];
+                    angle = randomImprint.angle + (Math.random() - 0.5) * 0.2;
+                }
+                cycleParticles.push({
+                    angle: angle,
+                    radius: Math.random() * w * 0.4,
+                    speed: (Math.random() - 0.5) * 0.01
+                });
+            }
+        }
+
+        function animateCycle() {
+            const w = cycleCanvas.width;
+            const h = cycleCanvas.height;
+            cycleCtx.clearRect(0,0,w,h);
+            
+            const cx = w/2, cy = h/2;
+
+            // Draw imprints
+            cycleImprints.forEach(p => {
+                const x = cx + Math.cos(p.angle) * p.radius;
+                const y = cy + Math.sin(p.angle) * p.radius;
+                cycleCtx.fillStyle = `rgba(167, 139, 250, 0.1)`;
+                cycleCtx.beginPath();
+                cycleCtx.arc(x, y, 2, 0, Math.PI * 2);
+                cycleCtx.fill();
+            });
+
+            if (cycleState === 'running') {
+                cycleParticles.forEach(p => {
+                    p.angle += p.speed;
+                    const x = cx + Math.cos(p.angle) * p.radius;
+                    const y = cy + Math.sin(p.angle) * p.radius;
+                    cycleCtx.fillStyle = 'white';
+                    cycleCtx.fillRect(x, y, 2, 2);
+                });
+            } else if (cycleState === 'collapsing') {
+                cycleTime += 0.02;
+                cycleParticles.forEach(p => {
+                    const x = cx + Math.cos(p.angle) * p.radius * (1 - cycleTime);
+                    const y = cy + Math.sin(p.angle) * p.radius * (1 - cycleTime);
+                    cycleCtx.fillStyle = 'white';
+                    cycleCtx.fillRect(x, y, 2, 2);
+                });
+                if (cycleTime >= 1) {
+                    cycleState = 'expanding';
+                    cycleTime = 0;
+                    cycleImprints = cycleParticles.map(p => ({angle: p.angle, radius: p.radius}));
+                    initCycle();
+                    cycleNum++;
+                    cycleCountSpan2.textContent = cycleNum;
+                }
+            } else if (cycleState === 'expanding') {
+                cycleTime += 0.02;
+                cycleParticles.forEach(p => {
+                    const x = cx + Math.cos(p.angle) * p.radius * cycleTime;
+                    const y = cy + Math.sin(p.angle) * p.radius * cycleTime;
+                    cycleCtx.fillStyle = 'white';
+                    cycleCtx.fillRect(x, y, 2, 2);
+                });
+                if (cycleTime >= 1) {
+                    cycleState = 'running';
+                    cycleTime = 0;
+                }
+            }
+            requestAnimationFrame(animateCycle);
+        }
+        reinitBtn.addEventListener('click', () => {
+            if(cycleState === 'running') {
+                cycleState = 'collapsing';
+                cycleTime = 0;
+            }
+        });
+
+
+        // --- Window Onload ---
+        window.onload = function() {
+            fieldCanvas.width = fieldCanvas.offsetWidth;
+            fieldCanvas.height = fieldCanvas.offsetHeight;
+            initField();
+            animateField();
+
+            breathCanvas.width = breathCanvas.offsetWidth;
+            breathCanvas.height = breathCanvas.offsetHeight;
+            initBreath();
+            animateBreath();
+            
+            nodeCanvas.width = nodeCanvas.offsetWidth;
+            nodeCanvas.height = nodeCanvas.offsetHeight;
+            animateNode();
+
+            cycleCanvas.width = cycleCanvas.offsetWidth;
+            cycleCanvas.height = cycleCanvas.offsetHeight;
+            initCycle();
+            animateCycle();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness & Spacetime | The Anulum Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #E5E7EB;
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0;
+        }
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #60A5FA;
+            transition: width 0.3s;
+        }
+        .nav-link.active::after, .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #60A5FA;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header and Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-blue-500/10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="https://anulum.li" target="_blank" rel="noopener noreferrer" class="text-2xl font-bold text-white font-lora flex items-center">
+                <i class="fas fa-brain mr-3 text-blue-400"></i>
+                Consciousness & Spacetime
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-300 hover:text-blue-400">Home</a>
+                <a href="#introduction" class="nav-link text-gray-300 hover:text-blue-400">Introduction</a>
+                <a href="#framework" class="nav-link text-gray-300 hover:text-blue-400">The Framework</a>
+                <a href="#mathematics" class="nav-link text-gray-300 hover:text-blue-400">The Math</a>
+                <a href="#falsification" class="nav-link text-gray-300 hover:text-blue-400">Falsification</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-blue-400">About</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <a href="#home" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">Home</a>
+            <a href="#introduction" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">Introduction</a>
+            <a href="#framework" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">The Framework</a>
+            <a href="#mathematics" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">The Math</a>
+            <a href="#falsification" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">Falsification</a>
+            <a href="#about" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-800">About</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-12">
+
+        <!-- Home Page -->
+        <section id="home" class="page-content active">
+            <div class="text-center min-h-[70vh] flex flex-col justify-center items-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4">A Consciousness-Driven Universe</h1>
+                <p class="text-xl md:text-2xl text-blue-300 mb-8 max-w-4xl">Exploring a new scientific paradigm where consciousness is not an observer, but an active and fundamental component of the cosmos.</p>
+                <p class="text-lg text-gray-400 max-w-3xl mb-10">This work presents the Anulum Framework, a scientific theory built on the audacious premise that the observer effect is not a quirk, but a signpost pointing toward missing physics. It introduces a new entity into our ontology—the Consciousness Field, or Ψ-field—and seeks to write the laws that govern its interaction with spacetime, matter, and energy.</p>
+                <a href="#introduction" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">
+                    Begin the Exploration <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Introduction Page -->
+        <section id="introduction" class="page-content">
+            <h2 class="text-4xl font-bold text-center mb-12">Introduction: The Observer Problem</h2>
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">The Unresolved Questions of Modern Physics</h3>
+                    <p class="text-gray-300 leading-relaxed">The dual triumphs of General Relativity and the Standard Model of particle physics represent one of the greatest intellectual achievements in human history. Yet, their very success has brought the remaining mysteries into sharper relief. A complete theory of physics must contend with several profound and unanswered questions:</p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-400">
+                        <li><strong>The Nature of Dark Energy:</strong> The source of the universe's accelerating expansion remains a complete mystery.</li>
+                        <li><strong>The Measurement Problem:</strong> Why does a quantum system "collapse" into a single, definite state upon measurement?</li>
+                        <li><strong>The Thermodynamic Arrow of Time:</strong> Why does the macroscopic world exhibit a clear "arrow of time" when fundamental laws are time-symmetric?</li>
+                        <li><strong>The Fine-Tuning Problem:</strong> Why are the fundamental constants of nature precisely calibrated for the existence of life?</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">The Central Postulate: The Ψ-Field</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">The Anulum Framework is built upon a single, foundational axiom:</p>
+                    <blockquote class="border-l-4 border-blue-400 pl-4 py-2 bg-gray-900 rounded-r-lg">
+                        <p class="text-lg italic text-white">Consciousness is a fundamental, physical field that permeates spacetime and interacts with matter and energy in a lawful, mathematically describable manner.</p>
+                    </blockquote>
+                    <p class="text-gray-300 leading-relaxed mt-4">We designate this entity the <strong>Consciousness Field</strong>, or <strong>Ψ-field</strong>. This postulate is not mere speculation—it is motivated by rigorous scientific principles and leads to testable consequences, moving consciousness from a philosophical boundary condition into a dynamic, physical degree of freedom.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework Page -->
+        <section id="framework" class="page-content">
+            <h2 class="text-4xl font-bold text-center mb-12">Foundational Principles</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">The Mathematical Structure of the Ψ-Field</h3>
+                    <p class="text-gray-300 mb-4">The Ψ-field is defined as a complex scalar field, elegantly unifying its dual roles in physics:</p>
+                    <div class="latex-equation" data-latex="\Psi(x^\mu) = |\Psi(x^\mu)| e^{i\Theta(x^\mu)}"></div>
+                    <ul class="mt-4 space-y-2 text-gray-400">
+                        <li><strong>The Modulus |Ψ|:</strong> The energetic component. The amplitude of the field contributes to the stress-energy tensor, sourcing modifications to spacetime curvature and potentially explaining dark energy.</li>
+                        <li><strong>The Phase Θ:</strong> The informational component. The phase angle carries relational, non-energetic information that interfaces with quantum systems, modulating coherence and influencing measurement outcomes.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">The Meta-Metatron Cycle</h3>
+                    <p class="text-gray-300 mb-4">Standard cyclic cosmologies face the entropy problem: each cycle should begin with higher entropy, leading to an inevitable heat death. The Anulum Framework proposes a novel solution through the Meta-Metatron Cycle (MMC).</p>
+                    <p class="text-gray-300 mb-4">The Ψ-field acts as an "entropy reservoir," capable of resetting cosmic entropy at the end of each cycle without violating thermodynamic laws. This is achieved by coupling the Ψ-field to the Weyl curvature of spacetime.</p>
+                    <div class="latex-equation" data-latex="L_{Weyl} = f(\Psi) C_{\alpha\beta\gamma\delta} C^{\alpha\beta\gamma\delta}"></div>
+                </div>
+                 <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg md:col-span-2">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">The Geometric Substrate: From Sacred Geometry to Group Theory</h3>
+                    <p class="text-gray-300 mb-4">The framework translates symbolic representations like "Metatron's Cube" into the precise language of group theory. It proposes a master symmetry group, $G_M$, from which all physical interactions derive.</p>
+                    <div class="latex-equation" data-latex="G_M = U(1)_\Psi \times SU(3)_C \times SU(2)_L \times U(1)_Y \times \text{Diff}(M^4)"></div>
+                    <p class="text-gray-300 mt-4">This geometric structure determines the coupling constants of the Ψ-field's interactions with different sectors of physics, providing a principled method for calculating these values rather than treating them as free parameters.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mathematics Page -->
+        <section id="mathematics" class="page-content">
+            <h2 class="text-4xl font-bold text-center mb-12">The Master Lagrangian</h2>
+            <div class="max-w-4xl mx-auto bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                <p class="text-gray-300 leading-relaxed mb-6">True unification emerges when all physical phenomena flow from a single generative principle. This chapter presents the Master Lagrangian of the Anulum Framework—a complete, self-consistent action from which all field equations, conservation laws, and physical predictions can be systematically derived.</p>
+                <div class="latex-equation" data-latex="L_{total} = L_{gravity} + L_{matter} + L_{\Psi} + L_{interaction}"></div>
+                
+                <h4 class="text-xl font-semibold text-blue-300 mt-8 mb-4">Modified Einstein Field Equations</h4>
+                <p class="text-gray-300 mb-4">Varying the action with respect to the metric yields the modified Einstein equations, where the effective cosmological constant becomes a dynamic quantity dependent on the Ψ-field:</p>
+                <div class="latex-equation" data-latex="G_{\mu\nu} + \Lambda_{eff} g_{\mu\nu} = 8\pi G [T_{\mu\nu}^{matter} + T_{\mu\nu}^{\Psi}]"></div>
+
+                <h4 class="text-xl font-semibold text-blue-300 mt-8 mb-4">Ψ-Field Equations</h4>
+                <p class="text-gray-300 mb-4">Varying with respect to Ψ* gives the field equation for consciousness, showing how it responds to all forms of matter and energy:</p>
+                <div class="latex-equation" data-latex="\Box\Psi + \frac{\partial V}{\partial\Psi^*} + \lambda_0[...] \Psi = S_{consciousness}"></div>
+            </div>
+        </section>
+
+        <!-- Falsification Page -->
+        <section id="falsification" class="page-content">
+            <h2 class="text-4xl font-bold text-center mb-12">A Program for Falsification</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-center text-lg text-gray-300">The ultimate test of any scientific theory is its ability to make specific, quantitative predictions that can be unambiguously verified or refuted through experiment. With a unified coupling constant empirically constrained to $\lambda_0 \approx 10^{-5}$, the framework makes precise predictions at the frontier of experimental capability.</p>
+                
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4"><i class="fas fa-wave-square mr-3"></i>Quantum Coherence Modulation</h3>
+                    <p class="text-gray-300 mb-4"><strong>Prediction:</strong> Focused consciousness can enhance quantum coherence by ~0.01% in sensitive systems like superconducting qubits.</p>
+                    <p class="text-gray-300"><strong>Test:</strong> Double-blind studies of qubit coherence times (T₂) correlated with measured consciousness states (e.g., via EEG), looking for statistically significant enhancement during focused attention protocols.</p>
+                </div>
+
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4"><i class="fas fa-clock mr-3"></i>Precision Time Dilation</h3>
+                    <p class="text-gray-300 mb-4"><strong>Prediction:</strong> Large-scale collective consciousness events (e.g., global meditations) can create local metric perturbations, resulting in time dilation of $\Delta f/f \approx 10^{-18}$.</p>
+                    <p class="text-gray-300"><strong>Test:</strong> Use networks of optical atomic clocks to search for correlated frequency shifts during pre-planned, large-scale consciousness events. The required precision is at the edge of current technology.</p>
+                </div>
+
+                <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4"><i class="fas fa-rocket mr-3"></i>Cosmological Signatures</h3>
+                    <p class="text-gray-300 mb-4"><strong>Prediction:</strong> The dark energy equation of state, $w(z)$, will show subtle, log-periodic oscillations deviating from -1. The CMB power spectrum may also exhibit faint modulations.</p>
+                    <p class="text-gray-300"><strong>Test:</strong> Analysis of data from next-generation cosmological surveys like the Roman Space Telescope and Euclid, searching for the specific functional form of deviations predicted by the Meta-Metatron Cycle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page-content">
+            <h2 class="text-4xl font-bold text-center mb-12">About the Project</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="bg-gray-800/50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-4">Anulum Frontiers & Arcane Sapience</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">This work is presented by Arcane Sapience, under the direction of Miroslav Šotek at ANULUM CH&LI in Marbach, Switzerland. It represents a multi-year effort to collect and connect dots across theoretical physics, quantum field theory, and metaphysics.</p>
+                    <p class="text-gray-300 leading-relaxed mb-6">The objective is to develop a formal mathematical and empirical model of the Ψ-Field, mapping consciousness to spacetime in a rigorous, testable framework. This is a living document, an invitation to think differently and explore the profound possibilities that might shift our perspective on the world.</p>
+                    <p class="text-gray-400 italic">"The most beautiful thing we can experience is the mysterious. It is the source of all true art and science." - Albert Einstein</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 mt-12">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 Anulum Frontiers. All Rights Reserved.</p>
+            <p class="text-sm mt-2">A Scientific Theory of a Consciousness-Driven Universe.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- KaTeX Rendering ---
+            // This function finds all elements with the class 'latex-equation'
+            // and renders the LaTeX string from their 'data-latex' attribute.
+            const renderMath = () => {
+                const mathElements = document.querySelectorAll('.latex-equation');
+                mathElements.forEach(el => {
+                    const latexString = el.getAttribute('data-latex');
+                    if (latexString) {
+                        try {
+                            katex.render(latexString, el, {
+                                throwOnError: false,
+                                displayMode: true
+                            });
+                        } catch (e) {
+                            el.textContent = `Error rendering equation: ${latexString}`;
+                            console.error(e);
+                        }
+                    }
+                });
+            };
+
+            // --- Navigation Logic ---
+            const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+            const pageContents = document.querySelectorAll('.page-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Function to handle showing the correct page and updating nav links
+            const showPage = (hash) => {
+                const targetId = hash ? hash.substring(1) : 'home';
+                
+                pageContents.forEach(page => {
+                    if (page.id === targetId) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Hide mobile menu after navigation
+                mobileMenu.classList.add('hidden');
+                
+                // Scroll to the top of the content area
+                window.scrollTo(0, 0);
+            };
+
+            // Event listeners for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const hash = this.getAttribute('href');
+                    history.pushState(null, null, hash); // Update URL without reloading
+                    showPage(hash);
+                });
+            });
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', () => {
+                showPage(window.location.hash);
+            });
+
+            // Initial page load
+            renderMath();
+            showPage(window.location.hash || '#home');
+        });
+    </script>
+
+</body>
+</html>

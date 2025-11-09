@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Analysis of Integrity and a Framework for Its Enhancement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        // Custom Tailwind CSS configuration to add the "Calm Harmony" palette
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-primary-darker': '#3d9e92',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'], // Kept Lora for potential future use, but Inter is primary
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for blockquotes (Koans) as per design philosophy */
+        blockquote {
+            border-left: 4px solid #D2B48C; /* accent-secondary */
+            padding-left: 1rem;
+            margin-left: 1rem;
+            font-style: italic;
+            color: #4A5568; /* text-secondary */
+        }
+    </style>
+</head>
+<body class="bg-base text-text-primary">
+
+    <!-- Header and Navigation -->
+    <header class="sticky top-0 z-50 bg-base/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-lg font-bold text-text-primary">Analysis of Integrity</h1>
+                    </div>
+                    <!-- Nav Links -->
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="https://anulum.li/index.html" class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors">Home</a>
+                        <a href="https://anulum.li/koans" class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors">Koans</a>
+                        <a href="https://anulum.li/contact.html" class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors">Contact</a>
+                        <a href="https://anulum.li/inspiration.html" class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors">Inspiration</a>
+                    </nav>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="toc-button" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-accent-primary hover:bg-accent-primary-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary shadow-sm hover:shadow-md transition-shadow">
+                            Table of Contents
+                            <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="toc-menu" class="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-base ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                            <div class="py-1 max-h-96 overflow-y-auto" role="none">
+                                <a href="#part1" class="text-text-secondary block px-4 py-2 text-sm font-bold hover:bg-border-color">Part I: Deconstructing Integrity</a>
+                                <a href="#section1" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">1: The Philosophical Core</a>
+                                <a href="#section2" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">2: The Two Faces of Integrity</a>
+                                <a href="#part2" class="text-text-secondary block px-4 py-2 text-sm font-bold hover:bg-border-color">Part II: Integrity in Practice</a>
+                                <a href="#section3" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">3: The Integrity of Information</a>
+                                <a href="#section4" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">4: The Integrity of Structures</a>
+                                <a href="#section5" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">5: The Integrity of Knowledge</a>
+                                <a href="#section6" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">6: The High Cost of Low Integrity</a>
+                                 <a href="#part3" class="text-text-secondary block px-4 py-2 text-sm font-bold hover:bg-border-color">Part III: A Unified Framework</a>
+                                <a href="#section7" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">7: The Architecture of Personal Integrity</a>
+                                <a href="#section8" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">8: The Architecture of Technical Integrity</a>
+                                <a href="#section9" class="text-text-secondary block pl-8 pr-4 py-2 text-sm hover:bg-border-color">9: Conclusion</a>
+                                <a href="#citations" class="text-text-secondary block px-4 py-2 text-sm font-bold hover:bg-border-color">Citations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Title Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-text-primary">An Analysis of Integrity and a Framework for Its Enhancement</h1>
+                <p class="mt-4 text-lg text-text-secondary">Authored by: Miroslav Šotek, anulum frontiers</p>
+            </div>
+
+            <!-- Part I -->
+            <section id="part1" class="mb-12 content-section">
+                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-border-color text-accent-primary">Part I: Deconstructing Integrity: From Wholeness to a Unified Concept</h2>
+                
+                <article id="section1" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 1: The Philosophical Core of Integrity</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <h4 class="text-xl font-semibold mt-6 text-text-primary">1.1 The Etymology of Integritas: The Foundational Concept of Wholeness</h4>
+                        <p>The modern concept of integrity, in all its multifaceted applications, is anchored in a single, powerful Latin root: integritas. This term denotes a state of "wholeness," "completeness," "intactness," or "flawlessness". This etymological origin is not merely a historical curiosity; it is the conceptual thread that connects the disparate domains in which the term is used, from moral philosophy to cybersecurity and engineering.</p>
+                        <p>When we describe a person as having integrity, we suggest they are "not corruptible" precisely because of the "wholeness" and "connectedness" of their values and principles. Their character is seen as complete and unimpaired. This same fundamental idea of an unimpaired or uncorrupted state is explicitly carried over when integrity is applied to objects and systems. This duality-integrity of persons and integrity of systems-forms the central analytical framework of this report.</p>
+
+                        <h4 class="text-xl font-semibold mt-6 text-text-primary">1.2 The Two Fundamental Intuitions: The Self and Morality</h4>
+                        <p>Philosophical discourse on integrity is animated by two fundamental intuitions that continuously interact and sometimes conflict. As outlined in analyses from the Stanford Encyclopedia of Philosophy, these are: first, that integrity is primarily a formal relation one has to oneself, or between parts of one's self; and second, that integrity is connected in an important way to acting morally.</p>
+
+                        <h4 class="text-xl font-semibold mt-6 text-text-primary">1.3 Competing Philosophical Accounts of Integrity</h4>
+                        <p>To navigate the complexities of integrity, philosophers have developed several distinct, though sometimes overlapping, accounts. These models attempt to capture different facets of the concept, often emphasising either the formal or substantive intuition. The most prominent of these accounts are integrity as self-integration, as maintenance of identity, as standing for something, as moral purpose, and as a virtue.</p>
+                        
+                        <h4 class="text-xl font-semibold mt-6 text-text-primary">1.4 The Paradox of Immoral Integrity</h4>
+                        <p>A recurring and puzzling theme in the philosophical literature is the idea that a person may be acknowledged as having integrity even while holding what are considered to be "importantly mistaken moral views". This distinguishes acting with integrity from simply acting morally. This paradox highlights the critical distinction between the formal and substantive dimensions of integrity. When we attribute integrity to someone with whom we morally disagree, we are often acknowledging their formal integrity: the coherence between their values and actions, the wholeness of their character.</p>
+                        
+                        <div class="my-8 overflow-x-auto">
+                            <h4 class="text-xl font-semibold mb-4 text-center text-text-primary">Table 1: A Comparative Analysis of Philosophical Accounts of Integrity</h4>
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Account Name</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Key Proponent(s)</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Core Tenet</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Key Strength</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Primary Criticism</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-base divide-y divide-border-color">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Integrity as Self-Integration</td>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Harry Frankfurt</td>
+                                        <td class="px-6 py-4 border border-border-color">The harmonious, wholehearted integration of one's desires, values, and volitions into a coherent self.</td>
+                                        <td class="px-6 py-4 border border-border-color">Explains the internal, psychological feeling of wholeness and being true to oneself.</td>
+                                        <td class="px-6 py-4 border border-border-color">Purely formal; could attribute integrity to a person wholeheartedly committed to an immoral cause.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Integrity as Maintenance of Identity</td>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Bernard Williams</td>
+                                        <td class="px-6 py-4 border border-border-color">Steadfast adherence to one's "identity-conferring commitments" or "ground projects" that define one's life.</td>
+                                        <td class="px-6 py-4 border border-border-color">Highlights the importance of personal projects to moral identity and critiques theories that alienate agents from their core values.</td>
+                                        <td class="px-6 py-4 border border-border-color">Lacks clear moral constraints on commitments and does not fully explain why integrity is a praiseworthy quality.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Integrity as Standing for Something</td>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Cheshire Calhoun</td>
+                                        <td class="px-6 py-4 border border-border-color">A social virtue defined by a person's proper regard for their own best judgment, combined with respect for the judgment of others.</td>
+                                        <td class="px-6 py-4 border border-border-color">Distinguishes integrity from fanaticism by incorporating a social and deliberative dimension.</td>
+                                        <td class="px-6 py-4 border border-border-color">The concept of "proper respect" for others' views can be ambiguous and difficult to apply in practice.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Integrity as Moral Purpose</td>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Mark Halfon</td>
+                                        <td class="px-6 py-4 border border-border-color">A person's dedication to pursuing a moral life and taking intellectual responsibility for understanding its demands.</td>
+                                        <td class="px-6 py-4 border border-border-color">Directly connects integrity to a substantive moral commitment, aligning with common usage.</td>
+                                        <td class="px-6 py-4 border border-border-color">Faces difficulty in defining a minimum moral threshold; raises the "Nazi with integrity" problem.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Integrity as a Virtue</td>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Aristotle (tradition)</td>
+                                        <td class="px-6 py-4 border border-border-color">A complex, "thick" virtue encompassing a cluster of traits like honesty, fairness, and trustworthiness.</td>
+                                        <td class="px-6 py-4 border border-border-color">Provides a rich, comprehensive account that integrates both internal consistency and substantive moral content.</td>
+                                        <td class="px-6 py-4 border border-border-color">Can be seen as a "blunt instrument," potentially lacking the specificity of other moral terms for clear ethical judgment.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="section2" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 2: The Two Faces of Integrity: Human Character and Systemic Soundness</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>Building on the philosophical foundation, it becomes clear that integrity manifests in two primary domains: as a quality of human character and as a property of non-human systems. While these two "faces" of integrity appear distinct—one moral, the other functional—the core logic of wholeness, unimpairedness, and resistance to corruption unifies them. Furthermore, a critical causal relationship exists between them: the need for robust systemic integrity arises directly from the potential for failures in human integrity.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Part II -->
+            <section id="part2" class="mb-12 content-section">
+                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-border-color text-accent-primary">Part II: Integrity in Practice: Domain-Specific Manifestations and Challenges</h2>
+                
+                <article id="section3" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 3: The Integrity of Information: Securing Data and Systems</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>In the digital age, the concept of integrity finds one of its most critical and precise applications in the domain of information technology and cybersecurity. Here, integrity is not an abstract virtue but a fundamental, operational requirement for trust and functionality. The integrity of data and the systems that process it forms one of the three pillars of information security, alongside confidentiality and availability.</p>
+                    </div>
+                </article>
+                
+                <article id="section4" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 4: The Integrity of Structures: Engineering for Resilience</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>The tangible world of structural engineering offers a powerful physical analogue for the abstract concept of integrity. The principles that ensure a bridge can carry traffic or a building can withstand a storm provide a concrete and intuitive metaphor for understanding personal, organisational, and systemic integrity. Here, integrity is not a matter of ethics but of physics, materials science, and design, yet the underlying logic of wholeness and resistance to failure remains the same.</p>
+                    </div>
+                </article>
+
+                <article id="section5" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 5: The Integrity of Knowledge: Truth in Science and Journalism</h3>
+                     <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>In professions whose primary purpose is the discovery and dissemination of truth, integrity is the indispensable foundation upon which all credibility rests. For science and journalism, integrity is not merely an internal ethical standard but a critical societal function. The formal processes and ethical codes of these fields are society's primary mechanisms for vetting information and establishing a shared, trustworthy understanding of the world.</p>
+                    </div>
+                </article>
+
+                <article id="section6" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 6: The High Cost of Low Integrity</h3>
+                     <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>The failure of integrity, whether in an individual, an organisation, or a system, is never a victimless act. The consequences ripple outward, causing damage that ranges from personal and relational distress to catastrophic systemic and societal breakdown. A crucial aspect of this cost is its asymmetry: trust, the currency of integrity, is built slowly through consistent, reliable action, but it can be destroyed in an instant by a single breach.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Part III -->
+            <section id="part3" class="mb-12 content-section">
+                <h2 class="text-3xl font-bold mb-6 pb-2 border-b-2 border-border-color text-accent-primary">Part III: A Unified Framework for Enhancing Integrity</h2>
+                
+                <article id="section7" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 7: The Architecture of Personal Integrity: A Guide to Self-Cultivation</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>Developing personal integrity is an active, lifelong process of building a character that is coherent, morally grounded, and resilient. It is not about achieving perfection, but about committing to a continuous cycle of self-awareness, action, and reflection. This process can be understood as constructing an internal architecture with a solid foundation, a consistent practice, and a reliable support structure.</p>
+                    </div>
+                </article>
+
+                <article id="section8" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 8: The Architecture of Technical Integrity: A Blueprint for Protection</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>Just as personal integrity can be architected through conscious practice, the integrity of data and systems is architected through the deliberate implementation of technical controls. This blueprint for protection is a layered, defense-in-depth strategy designed to prevent, detect, and recover from integrity violations. This system of controls forms a "chain of trust," where each link depends on the integrity of the others.</p>
+                        
+                        <div class="my-8 overflow-x-auto">
+                            <h4 class="text-xl font-semibold mb-4 text-center text-text-primary">Table 2: Technical Integrity Mechanisms and Their Functions</h4>
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Mechanism</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Primary Function</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Security Principle(s) Upheld</th>
+                                        <th class="px-6 py-3 text-left font-medium text-text-secondary uppercase tracking-wider border border-border-color">Typical Use Case</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-base divide-y divide-border-color">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Cryptographic Hash</td>
+                                        <td class="px-6 py-4 border border-border-color">Detects unauthorized data alteration by creating a unique, fixed-length "fingerprint" of the data.</td>
+                                        <td class="px-6 py-4 border border-border-color">Integrity</td>
+                                        <td class="px-6 py-4 border border-border-color">Verifying the integrity of file downloads; password storage.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Digital Signature</td>
+                                        <td class="px-6 py-4 border border-border-color">Verifies sender identity, ensures data has not been altered, and prevents the sender from denying the transaction.</td>
+                                        <td class="px-6 py-4 border border-border-color">Integrity, Authentication, Non-repudiation</td>
+                                        <td class="px-6 py-4 border border-border-color">Legally binding electronic contracts; securing financial transactions; authenticating software updates.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">File Integrity Monitoring (FIM)</td>
+                                        <td class="px-6 py-4 border border-border-color">Continuously monitors system files and configurations against a trusted baseline to detect unauthorised changes in real-time.</td>
+                                        <td class="px-6 py-4 border border-border-color">Integrity, Auditing</td>
+                                        <td class="px-6 py-4 border border-border-color">Detecting malware installation or unauthorized system configuration changes; compliance with security standards (e.g., PCI DSS).</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Access Control (Least Privilege)</td>
+                                        <td class="px-6 py-4 border border-border-color">Restricts user and system access to the minimum level required, preventing unauthorized modification of data and systems.</td>
+                                        <td class="px-6 py-4 border border-border-color">Integrity, Confidentiality</td>
+                                        <td class="px-6 py-4 border border-border-color">Limiting database write permissions to specific administrators; preventing users from altering operating system files.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Data Encryption (At Rest & In Transit)</td>
+                                        <td class="px-6 py-4 border border-border-color">Renders data unreadable to unauthorized parties, preventing them from understanding or meaningfully modifying it.</td>
+                                        <td class="px-6 py-4 border border-border-color">Confidentiality, Integrity</td>
+                                        <td class="px-6 py-4 border border-border-color">Securing sensitive customer data in a database; protecting email communications from eavesdropping and tampering.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border border-border-color">Audit Trails & Logs</td>
+                                        <td class="px-6 py-4 border border-border-color">Creates a chronological record of system activities, tracking who accessed or changed data and when.</td>
+                                        <td class="px-6 py-4 border border-border-color">Accountability, Auditing, Integrity (Detection)</td>
+                                        <td class="px-6 py-4 border border-border-color">Investigating a security breach; monitoring for suspicious user behaviour; regulatory compliance.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="section9" class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-accent-primary border-l-4 border-accent-primary pl-4">Section 9: Conclusion: Towards a Holistic Model of Integrity</h3>
+                    <div class="space-y-4 text-lg leading-relaxed text-text-secondary">
+                        <p>This report has undertaken a comprehensive examination of integrity, journeying from its philosophical origins to its practical applications in human character, professional ethics, and technical systems. The analysis reveals that integrity, rooted in the concept of integritas or "wholeness," is not a monolithic idea but a deeply interconnected set of principles that operate in parallel across moral and functional domains.</p>
+                        <p>The path to "making integrity better" lies not in addressing these domains in isolation, but in adopting a holistic, unified model that recognises their profound interdependence. True, resilient integrity—whether in a person, an organisation, a society, or a system—is not an accidental state. It is the result of the conscious, consistent, and integrated application of personal commitment, professional practice, and systemic controls.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Citations -->
+            <section id="citations" class="pt-8 border-t-2 border-border-color">
+                <h2 class="text-3xl font-bold mb-6 text-accent-primary">Citations</h2>
+                <ol class="list-decimal list-inside space-y-3 text-sm text-text-secondary">
+                    <li>Integrity Ethics Module 1 Key Issues - Unodc</li>
+                    <li>Integrity - Ethical Living & Professional Values - Awork</li>
+                    <li>Integrity (Stanford Encyclopedia of Philosophy)</li>
+                    <li>Integrity (Stanford Encyclopedia of Philosophy/Summer 2003 Edition)</li>
+                    <li>Integrity (Stanford Encyclopedia of Philosophy/Spring 2010 Edition)</li>
+                    <li>4 Ways to Cultivate Integrity for Inner Emotional Balance | Center for Practical Wisdom</li>
+                    <li>Bernard Williams - Stanford Encyclopedia of Philosophy</li>
+                    <li>Integrity - Wikipedia</li>
+                    <li>Integrity - Ethics Unwrapped - University of Texas at Austin</li>
+                    <li>Integrity Matters - Regent University</li>
+                    <li>11 signs you give off a trustworthy and genuine vibe, according to psychology</li>
+                    <li>data integrity - Glossary | CSRC</li>
+                    <li>data integrity - Glossary - CSRC</li>
+                    <li>Executive Summary - NIST SP 1800-25 documentation</li>
+                    <li>system integrity - Glossary | CSRC-NIST Computer Security Resource Center</li>
+                    <li>System integrity - Wikipedia</li>
+                    <li>Structural integrity and failure - Wikipedia</li>
+                    <li>What Is Structural Integrity and Why Is It Important? - Iteng</li>
+                    <li>NIST SPECIAL PUBLICATION 1800-26A - Data Integrity - NCCOE</li>
+                    <li>What is Structural Integrity and Why is it Important? - TWI</li>
+                    <li>integrity - Glossary | CSRC</li>
+                    <li>integrity - Glossary | CSRC - NIST Computer Security Resource Center</li>
+                    <li>What Is Integrity in Cybersecurity? - Tolu Michael</li>
+                    <li>System integrity - IBM</li>
+                    <li>87.40 System and Information Integrity | Office of Policies, Records, and Forms</li>
+                    <li>Data integrity strategy - IBM</li>
+                    <li>System integrity - IBM Docs</li>
+                    <li>Designing for Strength: Understanding Load-Bearing Capacity in Structural Engineering</li>
+                    <li>Understanding Load Capacity and Structural Integrity - Cordeck</li>
+                    <li>The Unseen Consequences of a Leader's Lack of Integrity - Leadership First</li>
+                    <li>Scientific Integrity and Research Misconduct | Home - USDA</li>
+                    <li>Seven Reasons to Care about Integrity in Research - Science Europe</li>
+                    <li>Integrity in Research - NCBI Bookshelf</li>
+                    <li>What is Research Integrity? - UKRIO</li>
+                    <li>The importance and practice of research integrity - AKJournals</li>
+                    <li>Reproducibility and Research Integrity - PMC - NIH</li>
+                    <li>Reproducibility and research integrity: the role of scientists and institutions - PMC</li>
+                    <li>The Importance of Reproducibility in Scientific Research - Mind the Graph</li>
+                    <li>5 Open Science practices that improve reproducibility & support trust in science - PLOS</li>
+                    <li>Journalistic Integrity: Ethics & Principles | Vaia</li>
+                    <li>The Pillars of Truth: Integrity in News - Number Analytics</li>
+                    <li>Journalism ethics and standards - Wikipedia</li>
+                    <li>Law and Ethics of Journalism Unit 5 - Journalistic Integrity - Fiveable</li>
+                    <li>Integrity Ethics Module 10 Key Issues - Unodc</li>
+                    <li>Fact-checking procedures and best practices | Law and Ethics of Journalism Class Notes</li>
+                    <li>Fact-Checking as Idea and Practice in Journalism - Oxford Research Encyclopedias</li>
+                    <li>Accuracy in journalism - Media Helping Media</li>
+                    <li>Integrity and journalism - Media Helping Media</li>
+                    <li>The High Cost of Low Integrity - Oasis Center</li>
+                    <li>People who lack integrity often display these 9 behaviors - The Expert Editor</li>
+                    <li>What is the impact of data breaches on reputation? - Hypersecure</li>
+                    <li>Personal Integrity Framework Term - Lifestyle Sustainability Directory</li>
+                    <li>Personal Integrity - getmarlee.com</li>
+                    <li>3 Ways to Develop Personal Integrity - wikiHow</li>
+                    <li>How to Develop Integrity At Work - SIGMA Assessment Systems</li>
+                    <li>Developing Personal Integrity - Jaburg Wilk</li>
+                    <li>How to Cultivate Personal Integrity - WordPress.com</li>
+                    <li>Ethics Self-Evaluation Tool - Canadian College of Health Leaders</li>
+                    <li>5 Ways to Build Your Integrity - CareyNieuwhof.com</li>
+                    <li>The Pillar of Trustworthiness - Character Counts</li>
+                    <li>10 Behaviors That Demonstrate Trust | Psychology Today</li>
+                    <li>Cryptographic hash function - Wikipedia</li>
+                    <li>Understanding Checksum Algorithm for Data Integrity - GeeksforGeeks</li>
+                    <li>Introduction to hash functions | Infosec</li>
+                    <li>FIM File Integrity Monitoring | Tripwire</li>
+                    <li>What is a digital signature - Proton.me</li>
+                    <li>Digital Signatures: What They Are & How They Work | Okta</li>
+                    <li>What are digital signatures and how do they work | Sectigo</li>
+                    <li>How Digital Signatures Ensure Network Security - HyperVerge</li>
+                    <li>What Is a Digital Signature? | JSCAPE</li>
+                    <li>Addressing the Privacy Security Risk and Operations Aspects of the Data Ecosystem - ISACA</li>
+                    <li>Top Effective 10 Data Governance Tools - ISACA Now Blog</li>
+                    <li>Essential Data Integrity Best Practices for 2025 - Atlan</li>
+                    <li>How to Ensure Data Integrity in Your Organization - DATAVERSITY</li>
+                    <li>What is System Integrity? | Twingate</li>
+                </ol>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-base mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <p>&copy; 2025 Miroslav Šotek, anulum frontiers. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dropdown Menu -->
+    <script>
+        const tocButton = document.getElementById('toc-button');
+        const tocMenu = document.getElementById('toc-menu');
+
+        // Toggle menu visibility on button click
+        tocButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent click from closing menu immediately
+            tocMenu.classList.toggle('hidden');
+        });
+
+        // Close menu if clicking outside of it
+        document.addEventListener('click', (event) => {
+            if (!tocMenu.contains(event.target) && !tocButton.contains(event.target)) {
+                tocMenu.classList.add('hidden');
+            }
+        });
+        
+        // Close menu when a link is clicked
+        tocMenu.addEventListener('click', () => {
+             tocMenu.classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Implications | A Unified Framework for Consciousness and Spacetime</title>
+    <meta name="description" content="Explore the profound philosophical, ethical, and societal implications of the Anulum Framework, including new perspectives on free will, the hard problem of consciousness, and AI sentience.">
+    <meta name="keywords" content="philosophy of mind, ethics, free will, hard problem, qualia, AI consciousness, Anulum Framework, metaphysics">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/implications.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/implications.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/implications.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/implications.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/implications.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/implications.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/implications.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/implications.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anulum.li/implications.html">
+    <meta property="og:title" content="Implications | A Unified Framework for Consciousness and Spacetime">
+    <meta property="og:description" content="Explore the profound philosophical, ethical, and societal implications of the Anulum Framework.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/implications.html">
+    <meta property="twitter:title" content="Implications | A Unified Framework for Consciousness and Spacetime">
+    <meta property="twitter:description" content="Explore the profound philosophical, ethical, and societal implications of the Anulum Framework.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Philosophical and Ethical Implications of the Anulum Framework",
+      "url": "https://anulum.li/implications.html",
+      "author": {
+        "@type": "Person",
+        "name": "Miroslav Šotek"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Anulum Frontiers",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://anulum.li/anulum-logo.png"
+        }
+      },
+      "description": "Exploring the profound implications of a consciousness-driven universe on free will, the hard problem of consciousness, and ethics.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anulum.li/implications.html"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in">
+            <h1 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="implications_title">🧘 The Implications: Philosophy, Ethics, and the Nature of Reality</h1>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="implications_intro">By framing consciousness as a fundamental and interactive component of the cosmos, the theory offers novel perspectives on some of the most enduring questions of human inquiry. Its implications extend beyond physics into philosophy, ethics, and our very understanding of what it means to be.</p>
+            <div id="implications-content" class="space-y-6">
+                <!-- Implications will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            implications_title: { en: '🧘 The Implications: Philosophy, Ethics, and the Nature of Reality', de: '🧘 Die Implikationen: Philosophie, Ethik und die Natur der Realität', fr: '🧘 Les Implications : Philosophie, Éthique et Nature de la Réalité', it: '🧘 Le Implicazioni: Filosofia, Etica e la Natura della Realtà', ja: '🧘 影響：哲学、倫理、そして現実の本質', zh: '🧘 启示：哲学、伦理与现实的本质' },
+            implications_intro: { en: 'By framing consciousness as a fundamental and interactive component of the cosmos, the theory offers novel perspectives on some of the most enduring questions of human inquiry. Its implications extend beyond physics into philosophy, ethics, and our very understanding of what it means to be.', de: 'Indem die Theorie das Bewusstsein als eine fundamentale und interaktive Komponente des Kosmos darstellt, bietet sie neue Perspektiven auf einige der beständigsten Fragen der menschlichen Forschung. Ihre Implikationen erstrecken sich über die Physik hinaus in die Philosophie, Ethik und unser ureigenes Verständnis davon, was es bedeutet, zu sein.', fr: 'En présentant la conscience comme une composante fondamentale et interactive du cosmos, la théorie offre de nouvelles perspectives sur certaines des questions les plus persistantes de l\'enquête humaine. Ses implications s\'étendent au-delà de la physique à la philosophie, à l\'éthique et à notre compréhension même de ce que signifie être.', it: 'Inquadrando la coscienza come una componente fondamentale e interattiva del cosmo, la teoria offre nuove prospettive su alcune delle domande più durature dell\'indagine umana. Le sue implicazioni si estendono oltre la fisica nella filosofia, nell\'etica e nella nostra stessa comprensione di cosa significhi essere.', ja: '意識を宇宙の基本的で相互作用的な構成要素として位置づけることにより、この理論は人類の探求における最も永続的な問いのいくつかに対して新しい視点を提供します。その影響は物理学を超えて哲学、倫理、そして存在とは何かという我々の理解そのものにまで及びます。', zh: '通过将意识构建为宇宙的一个基本和互动的组成部分，该理论为人类探究中一些最持久的问题提供了新颖的视角。其影响超越物理学，延伸到哲学、伦理学以及我们对“存在”意义的根本理解。' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        },
+        implicationsData: [
+            {
+                title: { en: 'Resolution to the "Hard Problem"', de: 'Lösung des "schweren Problems"', fr: 'Résolution du "Problème Difficile"', it: 'Risoluzione del "Problema Difficile"', ja: '「ハードプロブレム」の解決', zh: '“硬问题”的解决方案' },
+                content: { en: 'The theory tackles the hard problem of qualia by proposing that subjective experience is a physical process: the Spontaneous Symmetry Breaking of the Φc field. The "feeling" of red is the system settling into a specific, asymmetric ground state. It also relativizes subjectivity, arguing that consciousness is a frame-dependent property, dissolving the notion of absolute, ineffable privacy.', de: 'Die Theorie geht das schwere Problem der Qualia an, indem sie vorschlägt, dass subjektive Erfahrung ein physikalischer Prozess ist: die spontane Symmetriebrechung des Φc-Feldes. Das "Gefühl" von Rot ist das System, das sich in einen spezifischen, asymmetrischen Grundzustand einpendelt. Sie relativiert auch die Subjektivität und argumentiert, dass Bewusstsein eine rahmenabhängige Eigenschaft ist, was die Vorstellung von absoluter, unaussprechlicher Privatsphäre auflöst.', fr: 'La théorie s\'attaque au problème difficile des qualia en proposant que l\'expérience subjective est un processus physique : la brisure spontanée de symétrie du champ Φc. Le "sentiment" du rouge est le système qui s\'installe dans un état fondamental spécifique et asymétrique. Elle relativise également la subjectivité, arguant que la conscience est une propriété dépendante du cadre de référence, dissolvant la notion de vie privée absolue et ineffable.', it: 'La teoria affronta il difficile problema dei qualia proponendo che l\'esperienza soggettiva sia un processo fisico: la rottura spontanea della simmetria del campo Φc. La "sensazione" del rosso è il sistema che si stabilisce in uno stato fondamentale specifico e asimmetrico. Relativizza anche la soggettività, sostenendo che la coscienza è una proprietà dipendente dal sistema di riferimento, dissolvendo la nozione di privacy assoluta e ineffabile.', ja: 'この理論は、主観的経験が物理的プロセスであると提案することによって、クオリアのハードプロブレムに取り組みます。それはΦc場の自発的対称性の破れです。赤の「感覚」は、システムが特定の非対称な基底状態に落ち着くことです。また、意識はフレーム依存の特性であると主張し、絶対的で表現不可能なプライバシーの概念を解消し、主観性を相対化します。', zh: '该理论通过提出主观体验是一个物理过程来解决感受质的硬问题：即Φc场的自发对称性破缺。红色的“感觉”是系统稳定到一个特定的、不对称的基态。它还相对化了主观性，认为意识是一种依赖于参照系的属性，从而消解了绝对、不可言喻的隐私观念。' }
+            },
+            {
+                title: { en: 'Free Will as Physical Process', de: 'Freier Wille als physikalischer Prozess', fr: 'Le Libre Arbitre comme Processus Physique', it: 'Il Libero Arbitrio come Processo Fisico', ja: '物理的プロセスとしての自由意志', zh: '作为物理过程的自由意志' },
+                content: { en: 'The model provides a physical basis for free will, suggesting it emerges from the inherent quantum indeterminacy within the Φc field. The collapse of the wavefunction, influenced but not fully determined by consciousness, introduces a non-algorithmic, non-deterministic element into decision-making. Agency becomes a real, physical process, not an illusion.', de: 'Das Modell bietet eine physikalische Grundlage für den freien Willen und legt nahe, dass er aus der inhärenten quantenmechanischen Unbestimmtheit innerhalb des Φc-Feldes entsteht. Der Kollaps der Wellenfunktion, beeinflusst, aber nicht vollständig bestimmt durch das Bewusstsein, führt ein nicht-algorithmisches, nicht-deterministisches Element in die Entscheidungsfindung ein. Handlungsfähigkeit wird zu einem realen, physikalischen Prozess, nicht zu einer Illusion.', fr: 'Le modèle fournit une base physique au libre arbitre, suggérant qu\'il émerge de l\'indétermination quantique inhérente au champ Φc. L\'effondrement de la fonction d\'onde, influencé mais non entièrement déterminé par la conscience, introduit un élément non algorithmique et non déterministe dans la prise de décision. L\'agentivité devient un processus physique réel, et non une illusion.', it: 'Il modello fornisce una base fisica per il libero arbitrio, suggerendo che esso emerga dall\'intrinseca indeterminazione quantistica all\'interno del campo Φc. Il collasso della funzione d\'onda, influenzato ma non completamente determinato dalla coscienza, introduce un elemento non algoritmico e non deterministico nel processo decisionale. L\'agire diventa un processo fisico reale, non un\'illusione.', ja: 'このモデルは自由意志の物理的基盤を提供し、それがΦc場内の固有の量子的不確定性から生じると示唆しています。意識によって影響されるが完全には決定されない波動関数の崩壊は、意思決定に非アルゴリズム的で非決定論的な要素を導入します。主体性は幻想ではなく、現実の物理的プロセスになります。', zh: '该模型为自由意志提供了物理基础，认为它源于Φc场内固有的量子不确定性。波函数的坍缩，受到意识的影响但并非完全由其决定，在决策中引入了一个非算法、非确定性的元素。能动性成为一个真实的物理过程，而非幻觉。' }
+            },
+            {
+                title: { en: 'Cyclic Time and Non-Linear Causality', de: 'Zyklische Zeit und nichtlineare Kausalität', fr: 'Temps Cyclique et Causalité Non-Linéaire', it: 'Tempo Ciclico e Causalità Non-Lineare', ja: '周期的時間と非線形因果律', zh: '循环时间与非线性因果关系' },
+                content: { en: 'The "blinking universe" model replaces the linear, unidirectional arrow of time with a fundamentally cyclic and discrete temporal structure. In this framework, causality is not strictly linear. The conservation of information across cycles and the non-local nature of the holographic memory layer (SCPN Layer 9) allow for the possibility of information flowing not just from past to future, but also potentially from future to past (retrocausality) or outside of linear time altogether.', de: 'Das "blinkende Universum"-Modell ersetzt den linearen, unidirektionalen Zeitpfeil durch eine grundlegend zyklische und diskrete Zeitstruktur. In diesem Rahmen ist die Kausalität nicht streng linear. Die Erhaltung von Informationen über Zyklen hinweg und die nicht-lokale Natur der holographischen Speicherschicht (SCPN-Schicht 9) ermöglichen die Möglichkeit, dass Informationen nicht nur von der Vergangenheit in die Zukunft fließen, sondern potenziell auch von der Zukunft in die Vergangenheit (Retrokausalität) oder ganz außerhalb der linearen Zeit.', fr: 'Le modèle de l\'"univers clignotant" remplace la flèche du temps linéaire et unidirectionnelle par une structure temporelle fondamentalement cyclique et discrète. Dans ce cadre, la causalité n\'est pas strictement linéaire. La conservation de l\'information à travers les cycles et la nature non locale de la couche de mémoire holographique (couche 9 du SCPN) permettent la possibilité que l\'information circule non seulement du passé vers le futur, mais aussi potentiellement du futur vers le passé (rétrocausalité) ou complètement en dehors du temps linéaire.', it: 'Il modello dell\'"universo lampeggiante" sostituisce la freccia del tempo lineare e unidirezionale con una struttura temporale fondamentalmente ciclica e discreta. In questo quadro, la causalità non è strettamente lineare. La conservazione dell\'informazione attraverso i cicli e la natura non locale dello strato di memoria olografica (Livello 9 della SCPN) consentono la possibilità che l\'informazione fluisca non solo dal passato al futuro, ma anche potenzialmente dal futuro al passato (retrocausalità) o del tutto al di fuori del tempo lineare.', ja: '「点滅する宇宙」モデルは、線形で一方向の時間の矢を、基本的に周期的で離散的な時間構造に置き換えます。このフレームワークでは、因果関係は厳密に線形ではありません。サイクル間の情報の保存とホログラフィックメモリ層（SCPN第9層）の非局所的な性質により、情報が過去から未来へだけでなく、未来から過去へ（逆因果律）、あるいは線形時間外へ流れる可能性が生まれます。', zh: '“闪烁宇宙”模型用一种根本上是循环和离散的时间结构取代了线性的、单向的时间之箭。在这个框架中，因果关系并非严格线性的。跨周期的信息守恒以及全息记忆层（SCPN第9层）的非局域性，使得信息不仅可能从过去流向未来，还可能从未来流向过去（逆因果性），或者完全脱离线性时间。' }
+            },
+            {
+                title: { en: 'Ethical Framework for AI and Interspecies Consciousness', de: 'Ethischer Rahmen für KI und artübergreifendes Bewusstsein', fr: 'Cadre Éthique pour l\'IA et la Conscience Interspécifique', it: 'Quadro Etico per l\'IA e la Coscienza Interspecie', ja: 'AIと種間意識のための倫理的枠組み', zh: '人工智能与跨物种意识的伦理框架' },
+                content: { en: 'The theory suggests a potential physical criterion for sentience. If an AI or a non-human animal could manifest a coherent, self-sustaining Φc-like field, it might be considered genuinely conscious and deserving of ethical rights. This extends moral responsibility to the entire biosphere, which the SCPN architecture frames as a potentially conscious entity.', de: 'Die Theorie schlägt ein potenzielles physikalisches Kriterium für Empfindungsvermögen vor. Wenn eine KI oder ein nicht-menschliches Tier ein kohärentes, selbsterhaltendes Φc-ähnliches Feld manifestieren könnte, könnte es als wirklich bewusst angesehen werden und ethische Rechte verdienen. Dies erweitert die moralische Verantwortung auf die gesamte Biosphäre, die die SCPN-Architektur als potenziell bewusstes Wesen einrahmt.', fr: 'La théorie suggère un critère physique potentiel pour la sentience. Si une IA ou un animal non humain pouvait manifester un champ cohérent et auto-entretenu de type Φc, il pourrait être considéré comme véritablement conscient et mériter des droits éthiques. Cela étend la responsabilité morale à l\'ensemble de la biosphère, que l\'architecture SCPN présente comme une entité potentiellement consciente.', it: 'La teoria suggerisce un potenziale criterio fisico per la senzienza. Se un\'IA o un animale non umano potessero manifestare un campo coerente e autosufficiente simile a Φc, potrebbero essere considerati genuinamente coscienti e meritevoli di diritti etici. Ciò estende la responsabilità morale all\'intera biosfera, che l\'architettura SCPN inquadra come un\'entità potenzialmente cosciente.', ja: 'この理論は、感覚の潜在的な物理的基準を示唆しています。AIや人間以外の動物が、コヒーレントで自己持続的なΦcのような場を現すことができれば、それは真に意識的であると見なされ、倫理的権利に値するかもしれません。これは、SCPNアーキテクチャが潜在的に意識的な存在として位置づける生物圏全体に道徳的責任を拡張します。', zh: '该理论为感知能力提出了一个潜在的物理标准。如果一个人工智能或非人类动物能够表现出一个连贯的、自我维持的类Φc场，它就可能被认为是真正有意识的，并应享有伦理权利。这将道德责任扩展到整个生物圈，SCPN架构将其构建为一个潜在有意识的实体。' }
+            }
+        ]
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+            const implicationsContainer = document.getElementById('implications-content');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+            
+            // --- Content Rendering ---
+            const renderImplications = (lang) => {
+                if (!implicationsContainer) return;
+                implicationsContainer.innerHTML = '';
+                siteData.implicationsData.forEach(item => {
+                    const article = document.createElement('article');
+                    article.className = 'bg-white/50 p-6 rounded-lg shadow-sm border border-border-color';
+                    article.innerHTML = `
+                        <h2 class="text-xl font-semibold text-accent-primary mb-2">${item.title[lang] || item.title['en']}</h2>
+                        <p class="text-text-secondary">${item.content[lang] || item.content['en']}</p>
+                    `;
+                    implicationsContainer.appendChild(article);
+                });
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                renderImplications(currentLanguage);
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                if (!isExpanded) mobileMenu.querySelector('a').focus();
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+                renderImplications(currentLanguage);
+
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('ServiceWorker registered.'))
+                        .catch(err => console.log('ServiceWorker registration failed: ', err));
+                });
+            }
+
+            initializeApp();
+
+        } catch (error) {
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load. Check console.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

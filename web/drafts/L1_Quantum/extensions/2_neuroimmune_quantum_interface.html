@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuroimmune Quantum Interface - Supporting Materials</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #2980b9;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "⚛️";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #e67e22;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .formula-title {
+            font-weight: bold;
+            color: #d35400;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .parameter-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .parameter-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .parameter-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .diagram-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .plot-container {
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #16a085;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Neuroimmune Quantum Interface</h1>
+            <p>Mathematical Formalism and Quantum Tunnelling in Immune Enzymatic Reactions</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Mathematical Framework</div>
+            
+            <div class="formula-box">
+                <div class="formula-title">Composite Neuroimmune Hamiltonian</div>
+                <div class="math">
+                    <strong>H<sub>NI</sub> = H<sub>cytokine</sub> + H<sub>tunnel</sub> + H<sub>coupling</sub></strong>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="formula-box">
+                    <div class="formula-title">Cytokine Hamiltonian</div>
+                    <div class="math">
+                        H<sub>cytokine</sub> = Σ<sub>k</sub> ℏω<sub>k</sub>(n<sub>k</sub> + 1/2) + Σ<sub>k,α</sub> g<sub>k,α</sub>(a<sub>k</sub> + a<sub>k</sub>†)|α⟩⟨α|
+                    </div>
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li>n<sub>k</sub>: cytokine oscillator occupation number</li>
+                        <li>|α⟩: quantum states of immune cells</li>
+                        <li>g<sub>k,α</sub>: coupling strength (0.01-0.05 eV)</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-title">Tunnelling Hamiltonian</div>
+                    <div class="math">
+                        H<sub>tunnel</sub> = -t<sub>eff</sub> Σ<sub>⟨i,j⟩</sub> exp(-γ<sub>ij</sub>d<sub>ij</sub>)(c<sub>i</sub>†c<sub>j</sub> + h.c.)
+                    </div>
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li>t<sub>eff</sub> ≈ 0.1 eV: effective tunnelling amplitude</li>
+                        <li>γ<sub>ij</sub> ≈ 1 Å⁻¹: decay constant</li>
+                        <li>d<sub>ij</sub>: enzyme active site distances</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Symbol</th>
+                        <th>Typical Value</th>
+                        <th>Physical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cytokine-immune coupling</td>
+                        <td>g<sub>k,α</sub></td>
+                        <td>0.01-0.05 eV</td>
+                        <td>Strength of cytokine-cell state interaction</td>
+                    </tr>
+                    <tr>
+                        <td>Tunnelling amplitude</td>
+                        <td>t<sub>eff</sub></td>
+                        <td>~0.1 eV</td>
+                        <td>Maximum quantum tunnelling probability</td>
+                    </tr>
+                    <tr>
+                        <td>Decay constant</td>
+                        <td>γ<sub>ij</sub></td>
+                        <td>~1 Å⁻¹</td>
+                        <td>Exponential distance dependence of tunnelling</td>
+                    </tr>
+                    <tr>
+                        <td>Active site distance</td>
+                        <td>d<sub>ij</sub></td>
+                        <td>0.5-1.5 Å</td>
+                        <td>Spatial scale of enzymatic reactions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Quantum Tunnelling Rate Analysis</div>
+            
+            <div class="diagram-container">
+                <div id="tunnelingRate" style="width:100%;height:400px;"></div>
+            </div>
+
+            <div class="highlight">
+                <strong>Key Insight:</strong> The exponential distance dependence exp(-γd) creates a critical threshold where small conformational changes in enzyme active sites can dramatically alter tunnelling rates, providing the quantum basis for immune system sensitivity and rapid response.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Cytokine-Neural Coupling Dynamics</div>
+            
+            <div class="diagram-container">
+                <div id="couplingDynamics" style="width:100%;height:400px;"></div>
+            </div>
+
+            <div class="formula-box">
+                <div class="formula-title">Effective Noise Modulation</div>
+                <div class="math">
+                    η(t) → η(t) · (1 + β · C<sub>cytokine</sub>)
+                </div>
+                <p>Where β is the neuroimmune coupling constant and C<sub>cytokine</sub> represents systemic cytokine concentration.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Energy Landscape Visualization</div>
+            
+            <div class="grid">
+                <div class="diagram-container">
+                    <div id="energyLandscape" style="width:100%;height:350px;"></div>
+                </div>
+                <div class="diagram-container">
+                    <div id="quantumStates" style="width:100%;height:350px;"></div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h3>🔬 Quantum Enhancement Mechanism</h3>
+                <p>The quantum tunnelling effect in immune enzymes allows particles to traverse energy barriers that would be classically forbidden. This mechanism is particularly important in:</p>
+                <ul>
+                    <li><strong>Antigen processing:</strong> Proteasome catalytic sites utilize proton tunnelling</li>
+                    <li><strong>Cytokine signalling:</strong> Kinase phosphorylation involves electron transfer tunnelling</li>
+                    <li><strong>Antibody maturation:</strong> Somatic hypermutation enhanced by quantum effects</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Phase Space Dynamics</div>
+            
+            <div class="diagram-container">
+                <div id="phaseSpace" style="width:100%;height:450px;"></div>
+            </div>
+
+            <div class="formula-box">
+                <div class="formula-title">Reduced Neural Synchrony</div>
+                <div class="math">
+                    R(C) = R₀ / (1 + α · C<sub>cytokine</sub>)
+                </div>
+                <p>This relationship demonstrates how inflammatory cytokines disrupt neural coherence, providing a quantum mechanical basis for sickness behavior and cognitive impairment during immune activation.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experimental Signatures</div>
+            
+            <div class="diagram-container">
+                <div id="experimentalSignatures" style="width:100%;height:400px;"></div>
+            </div>
+
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>Observable</th>
+                        <th>Quantum Signature</th>
+                        <th>Classical Prediction</th>
+                        <th>Measurement Technique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Enzymatic reaction rates</td>
+                        <td>Exponential temperature dependence</td>
+                        <td>Arrhenius behavior</td>
+                        <td>Single-molecule spectroscopy</td>
+                    </tr>
+                    <tr>
+                        <td>Cytokine oscillations</td>
+                        <td>Coherent vibrational modes</td>
+                        <td>Thermal fluctuations</td>
+                        <td>Raman spectroscopy</td>
+                    </tr>
+                    <tr>
+                        <td>Neural synchrony</td>
+                        <td>Inflammation-dependent decoherence</td>
+                        <td>Linear suppression</td>
+                        <td>EEG/MEG coherence analysis</td>
+                    </tr>
+                    <tr>
+                        <td>Immune response timing</td>
+                        <td>Quantum acceleration</td>
+                        <td>Diffusion-limited kinetics</td>
+                        <td>Flow cytometry dynamics</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Quantum Tunnelling Rate vs Distance
+        function plotTunnellingRate() {
+            const distances = [];
+            const rates = [];
+            const gamma = 1.0; // Å^-1
+            const t_eff = 0.1; // eV
+            
+            for (let d = 0.2; d <= 3.0; d += 0.1) {
+                distances.push(d);
+                rates.push(t_eff * Math.exp(-gamma * d));
+            }
+            
+            const trace = {
+                x: distances,
+                y: rates,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Tunnelling Rate',
+                line: {
+                    color: '#3498db',
+                    width: 3
+                }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Quantum Tunnelling Rate vs Active Site Distance',
+                    font: { size: 16, color: '#2c3e50' }
+                },
+                xaxis: {
+                    title: 'Distance (Å)',
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: {
+                    title: 'Tunnelling Rate (eV)',
+                    type: 'log',
+                    gridcolor: '#ecf0f1'
+                },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('tunnelingRate', [trace], layout);
+        }
+
+        // Cytokine-Neural Coupling
+        function plotCouplingDynamics() {
+            const time = [];
+            const cytokine = [];
+            const neural_sync = [];
+            
+            for (let t = 0; t <= 24; t += 0.1) {
+                time.push(t);
+                // Cytokine concentration with inflammatory spike
+                const C = 0.5 + 0.3 * Math.exp(-((t-8)**2)/8) + 0.1 * Math.sin(0.5*t);
+                cytokine.push(C);
+                // Neural synchrony inversely related to cytokine load
+                const R = 0.9 / (1 + 2*C);
+                neural_sync.push(R);
+            }
+            
+            const trace1 = {
+                x: time,
+                y: cytokine,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Cytokine Concentration',
+                yaxis: 'y',
+                line: { color: '#e74c3c', width: 3 }
+            };
+            
+            const trace2 = {
+                x: time,
+                y: neural_sync,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Neural Synchrony',
+                yaxis: 'y2',
+                line: { color: '#2980b9', width: 3 }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Cytokine-Neural Coupling Dynamics',
+                    font: { size: 16, color: '#2c3e50' }
+                },
+                xaxis: { title: 'Time (hours)' },
+                yaxis: {
+                    title: 'Cytokine Level',
+                    side: 'left',
+                    color: '#e74c3c'
+                },
+                yaxis2: {
+                    title: 'Neural Synchrony R',
+                    side: 'right',
+                    overlaying: 'y',
+                    color: '#2980b9'
+                },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('couplingDynamics', [trace1, trace2], layout);
+        }
+
+        // Energy Landscape
+        function plotEnergyLandscape() {
+            const x = [];
+            const y_classical = [];
+            const y_quantum = [];
+            
+            for (let pos = -2; pos <= 4; pos += 0.05) {
+                x.push(pos);
+                // Classical barrier
+                const E_classical = pos < 0 ? 2*pos*pos : pos > 2 ? 2*(pos-2)*(pos-2) : 0.5;
+                y_classical.push(E_classical);
+                // Quantum tunnelling creates effective lower barrier
+                const E_quantum = E_classical * (1 - 0.3 * Math.exp(-pos*pos));
+                y_quantum.push(E_quantum);
+            }
+            
+            const trace1 = {
+                x: x,
+                y: y_classical,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Classical Barrier',
+                line: { color: '#34495e', width: 3 }
+            };
+            
+            const trace2 = {
+                x: x,
+                y: y_quantum,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum-Modified Barrier',
+                line: { color: '#9b59b6', width: 3, dash: 'dash' }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Energy Landscape: Classical vs Quantum',
+                    font: { size: 14, color: '#2c3e50' }
+                },
+                xaxis: { title: 'Reaction Coordinate' },
+                yaxis: { title: 'Energy (eV)' },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('energyLandscape', [trace1, trace2], layout);
+        }
+
+        // Quantum States
+        function plotQuantumStates() {
+            const x = [];
+            const psi1 = [];
+            const psi2 = [];
+            
+            for (let pos = -3; pos <= 3; pos += 0.1) {
+                x.push(pos);
+                // Ground state wavefunction
+                psi1.push(Math.exp(-pos*pos/2) * Math.cos(2*pos));
+                // Excited state
+                psi2.push(Math.exp(-pos*pos/2) * pos * Math.sin(1.5*pos));
+            }
+            
+            const trace1 = {
+                x: x,
+                y: psi1,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Ground State |0⟩',
+                line: { color: '#16a085', width: 3 }
+            };
+            
+            const trace2 = {
+                x: x,
+                y: psi2,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Excited State |1⟩',
+                line: { color: '#f39c12', width: 3 }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Quantum State Wavefunctions',
+                    font: { size: 14, color: '#2c3e50' }
+                },
+                xaxis: { title: 'Position (Å)' },
+                yaxis: { title: 'Amplitude ψ(x)' },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('quantumStates', [trace1, trace2], layout);
+        }
+
+        // Phase Space Dynamics
+        function plotPhaseSpace() {
+            const R_values = [];
+            const C_values = [];
+            const colors = [];
+            
+            // Generate phase space trajectories
+            for (let i = 0; i < 200; i++) {
+                const angle = (i / 200) * 4 * Math.PI;
+                const radius = 0.5 + 0.3 * Math.sin(3 * angle);
+                const C = 0.5 + radius * Math.cos(angle);
+                const R = 0.8 / (1 + 1.5 * C) + 0.1 * Math.sin(5 * angle);
+                
+                C_values.push(C);
+                R_values.push(R);
+                colors.push(i);
+            }
+            
+            const trace = {
+                x: C_values,
+                y: R_values,
+                type: 'scatter',
+                mode: 'markers+lines',
+                marker: {
+                    color: colors,
+                    colorscale: 'Viridis',
+                    size: 6,
+                    colorbar: {
+                        title: 'Time Evolution'
+                    }
+                },
+                line: {
+                    color: 'rgba(44, 62, 80, 0.6)',
+                    width: 2
+                },
+                name: 'Phase Trajectory'
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Neuroimmune Phase Space Dynamics',
+                    font: { size: 16, color: '#2c3e50' }
+                },
+                xaxis: { 
+                    title: 'Cytokine Concentration C',
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: { 
+                    title: 'Neural Synchrony R',
+                    gridcolor: '#ecf0f1'
+                },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('phaseSpace', [trace], layout);
+        }
+
+        // Experimental Signatures
+        function plotExperimentalSignatures() {
+            const temperature = [];
+            const classical_rate = [];
+            const quantum_rate = [];
+            
+            const E_a = 0.5; // Activation energy in eV
+            const k_B = 8.617e-5; // Boltzmann constant in eV/K
+            
+            for (let T = 280; T <= 320; T += 2) {
+                temperature.push(T);
+                // Classical Arrhenius behavior
+                const k_classical = Math.exp(-E_a / (k_B * T));
+                classical_rate.push(k_classical);
+                // Quantum tunnelling contribution
+                const k_quantum = k_classical * (1 + 0.5 * Math.exp(-E_a / (2 * k_B * T)));
+                quantum_rate.push(k_quantum);
+            }
+            
+            const trace1 = {
+                x: temperature,
+                y: classical_rate,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Classical Rate',
+                line: { color: '#34495e', width: 3 }
+            };
+            
+            const trace2 = {
+                x: temperature,
+                y: quantum_rate,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum-Enhanced Rate',
+                line: { color: '#e74c3c', width: 3, dash: 'dash' }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Temperature Dependence of Enzymatic Rates',
+                    font: { size: 16, color: '#2c3e50' }
+                },
+                xaxis: { 
+                    title: 'Temperature (K)',
+                    gridcolor: '#ecf0f1'
+                },
+                yaxis: { 
+                    title: 'Reaction Rate (normalized)',
+                    type: 'log',
+                    gridcolor: '#ecf0f1'
+                },
+                plot_bgcolor: '#f8f9fa',
+                paper_bgcolor: 'white'
+            };
+            
+            Plotly.newPlot('experimentalSignatures', [trace1, trace2], layout);
+        }
+
+        // Initialize all plots
+        window.onload = function() {
+            plotTunnellingRate();
+            plotCouplingDynamics();
+            plotEnergyLandscape();
+            plotQuantumStates();
+            plotPhaseSpace();
+            plotExperimentalSignatures();
+        };
+    </script>
+</body>
+</html>

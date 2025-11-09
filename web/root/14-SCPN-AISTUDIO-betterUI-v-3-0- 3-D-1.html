@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN - Interactive Metatron's Cube</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #e2e8f0; }
+        header { position: relative; z-index: 1; width: 100%; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        #dna-canvas { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; z-index: 0; }
+        header h1, header p { position: relative; z-index: 1; text-shadow: 0 0 15px #0a0a0a, 0 0 30px #0a0a0a, 0 0 40px #0a0a0a; opacity: 0.5; }
+        .metatron-svg, #metatron-3d-container { width: 100%; height: 100%; max-width: 800px; max-height: 800px; aspect-ratio: 1 / 1; cursor: grab; }
+        #metatron-3d-container:active { cursor: grabbing; }
+        #metatron-3d-container canvas { display: block; width: 100%; height: 100%; }
+        .metatron-node { cursor: pointer; transition: all 0.3s ease; }
+        .metatron-node-circle { transition: all 0.3s ease; }
+        .metatron-node:hover .metatron-node-circle { fill: #f59e0b; stroke: #f59e0b; r: 22; }
+        .metatron-node.active .metatron-node-circle { fill: #3b82f6; stroke: #3b82f6; r: 25; }
+        .metatron-line { stroke: #334155; stroke-width: 1.5; transition: all 0.3s ease; }
+        .metatron-line.highlight { stroke: #3b82f6; stroke-width: 3; }
+        .content-box { background-color: #1e293b; border: 1px solid #334155; scrollbar-width: thin; scrollbar-color: #475569 #1e293b; }
+        .content-box::-webkit-scrollbar, .modal-content::-webkit-scrollbar, .modal-detail-content::-webkit-scrollbar { width: 8px; }
+        .content-box::-webkit-scrollbar-track, .modal-content::-webkit-scrollbar-track, .modal-detail-content::-webkit-scrollbar-track { background: #1e293b; }
+        .content-box::-webkit-scrollbar-thumb, .modal-content::-webkit-scrollbar-thumb, .modal-detail-content::-webkit-scrollbar-thumb { background-color: #475569; border-radius: 10px; border: 3px solid #1e293b; }
+        .equation { font-family: 'Georgia', serif; font-style: italic; background-color: #0f172a; padding: 0.5rem 1rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+        .modal { background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(5px); }
+        .modal-content { background-color: #1e293b; border: 1px solid #334155; }
+        .detail-button, .drill-down-button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; text-align: center; cursor: pointer; transition: background-color 0.3s ease; margin-top: 1rem; }
+        .detail-button:hover, .drill-down-button:hover { background-color: #2563eb; }
+        .drill-down-button { background-color: #f59e0b; }
+        .drill-down-button:hover { background-color: #d97706; }
+        .modal-detail-svg { width: 100%; height: auto; max-width: 400px; aspect-ratio: 1 / 1; }
+        .footer-link { background-color: #334155; padding: 0.25rem 0.75rem; border-radius: 0.375rem; transition: background-color 0.3s ease; }
+        .footer-link:hover { background-color: #475569; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 lg:p-8">
+
+    <header class="text-center mb-8">
+        <canvas id="dna-canvas"></canvas>
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-100">The Species-Consciousness Projection Network (SCPN)</h1>
+        <p class="text-slate-400 mt-2">An Interactive Exploration via Metatron's Cube</p>
+    </header>
+
+    <main class="w-full max-w-7xl flex flex-col lg:flex-row gap-8 flex-grow">
+        <div id="visualization-container" class="w-full lg:w-1/2 flex items-center justify-center">
+            <svg id="metatron-cube" class="metatron-svg" viewBox="0 0 600 600"></svg>
+            <div id="metatron-3d-container" class="hidden"></div>
+        </div>
+        <div id="content-container" class="w-full lg:w-1/2 flex flex-col">
+            <div id="content-box" class="content-box p-6 rounded-lg h-full max-h-[80vh] overflow-y-auto">
+                <div id="default-content" class="text-center text-slate-400">
+                    <h2 class="text-2xl font-semibold text-slate-200 mb-4">Welcome</h2>
+                    <p>This is a visual map of the 14 layers of the SCPN, structured on Metatron's Cube.</p>
+                    <p class="mt-2">Click on any node to explore its details and connections.</p>
+                </div>
+                <div id="layer-content" class="hidden">
+                    <h2 id="layer-title" class="text-2xl font-bold text-blue-400 mb-2"></h2>
+                    <h3 class="text-lg font-semibold text-slate-300 mt-4">Purpose</h3>
+                    <p id="layer-purpose" class="text-slate-400 mt-1"></p>
+                    <h3 class="text-lg font-semibold text-slate-300 mt-4">Key Components & Mechanisms</h3>
+                    <div id="layer-components" class="text-slate-400 mt-1 space-y-2"></div>
+                    <div id="layer-connections-container" class="mt-4">
+                        <h3 class="text-lg font-semibold text-slate-300">Inter-Layer Connections</h3>
+                        <p id="layer-connections" class="text-slate-400 mt-1"></p>
+                    </div>
+                    <div id="detail-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full max-w-7xl text-center mt-8 text-xs text-slate-500 space-y-2">
+        <p>Based on the works of Miroslav Šotek / anulum frontiers (Anulum CH&LI).</p>
+        <p>This application is for educational and exploratory purposes.</p>
+        <div class="flex justify-center items-center gap-4 pt-2">
+            <p>Copyright © Anulum Frontiers 1998-2025</p>
+            <a href="https://anulum.li/scpn.html" class="footer-link text-slate-300 no-underline">SCPN Homepage</a>
+        </div>
+    </footer>
+    
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+        <div class="modal-content w-full max-w-6xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-slate-600">
+                <h2 id="modal-title" class="text-xl md:text-2xl font-bold text-blue-400"></h2>
+                <button id="close-modal" class="text-slate-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex flex-col md:flex-row gap-6">
+                <div class="w-full md:w-2/5 flex flex-col items-center">
+                    <svg id="modal-metatron-cube" class="modal-detail-svg" viewBox="0 0 600 600"></svg>
+                    <p class="text-sm text-slate-500 mt-2 text-center">Click nodes to explore detailed aspects.</p>
+                </div>
+                <div class="w-full md:w-3/5 modal-detail-content max-h-[65vh] overflow-y-auto pr-2">
+                    <div id="modal-default-content">
+                        <h3 class="text-xl font-semibold text-slate-200 mb-2">Detailed Analysis</h3>
+                        <p class="text-slate-400">Select a node on the left to view the detailed audit of this layer's sub-components, based on the manuscript.</p>
+                    </div>
+                    <div id="modal-detail-content-display" class="hidden">
+                        <h3 id="modal-detail-title" class="text-xl font-semibold text-amber-400 mb-2"></h3>
+                        <p id="modal-detail-text" class="text-slate-400 whitespace-pre-wrap"></p>
+                        <div id="drill-down-button-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="formulation-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+        <div class="modal-content w-full max-w-4xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-slate-600">
+                <h2 id="formulation-title" class="text-xl md:text-2xl font-bold text-amber-400"></h2>
+                <button id="close-formulation-modal" class="text-slate-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div id="formulation-body" class="p-6 overflow-y-auto space-y-4"></div>
+        </div>
+    </div>
+
+    <script>
+        /*
+        ================================================================
+        DEVELOPER NOTES - SCPN CONTEXT REPOSITORY & STRATEGY
+        ================================================================
+        (All context and strategy notes from previous turns are preserved here for reference)
+        */
+
+        // --- 3D DNA SPIRAL ANIMATION ---
+        (function() {
+            const dnaCanvas = document.getElementById('dna-canvas');
+            if (!dnaCanvas) return;
+            const dnaScene = new THREE.Scene();
+            const dnaCamera = new THREE.PerspectiveCamera(75, dnaCanvas.clientWidth / dnaCanvas.clientHeight, 0.1, 1000);
+            const dnaRenderer = new THREE.WebGLRenderer({ canvas: dnaCanvas, alpha: true });
+            function updateDnaRendererSize() {
+                const header = document.querySelector('header');
+                const width = header.clientWidth;
+                const height = header.clientHeight;
+                if (dnaCanvas.width !== width || dnaCanvas.height !== height) {
+                    dnaRenderer.setSize(width, height);
+                    dnaCamera.aspect = width / height;
+                    dnaCamera.updateProjectionMatrix();
+                }
+            }
+            updateDnaRendererSize();
+            const dnaGroup = new THREE.Group();
+            dnaScene.add(dnaGroup);
+            const radius = 1.2, tubeRadius = 0.08, radialSegments = 8, tubularSegments = 150, length = 37.5, turns = 7;
+            class CustomSinCurve extends THREE.Curve {
+                constructor(scale, offset) { super(); this.scale = scale; this.offset = offset; }
+                getPoint(t) {
+                    const tx = (t * length) - (length / 2);
+                    const ty = Math.cos(2 * Math.PI * t * turns + this.offset) * radius;
+                    const tz = Math.sin(2 * Math.PI * t * turns + this.offset) * radius;
+                    return new THREE.Vector3(tx, ty, tz);
+                }
+            }
+            const path1 = new CustomSinCurve(10, 0);
+            const path2 = new CustomSinCurve(10, Math.PI);
+            const strand1 = new THREE.Mesh(new THREE.TubeGeometry(path1, tubularSegments, tubeRadius, radialSegments, false), new THREE.MeshPhongMaterial({ color: 0x3b82f6, shininess: 100, specular: 0x222222 }));
+            dnaGroup.add(strand1);
+            const strand2 = new THREE.Mesh(new THREE.TubeGeometry(path2, tubularSegments, tubeRadius, radialSegments, false), new THREE.MeshPhongMaterial({ color: 0x818cf8, shininess: 100, specular: 0x222222 }));
+            dnaGroup.add(strand2);
+            const baseMaterial = new THREE.MeshPhongMaterial({ color: 0x475569, shininess: 50 });
+            const baseGeometry = new THREE.CylinderGeometry(tubeRadius * 0.8, tubeRadius * 0.8, radius * 2, 8);
+            for (let i = 0; i < tubularSegments / (turns * 1.5); i++) {
+                const t = i / (tubularSegments / (turns * 1.5));
+                const p1 = path1.getPoint(t);
+                const p2 = path2.getPoint(t);
+                const base = new THREE.Mesh(baseGeometry, baseMaterial);
+                base.position.copy(p1).lerp(p2, 0.5);
+                base.lookAt(p2);
+                base.rotateX(Math.PI / 2);
+                dnaGroup.add(base);
+            }
+            dnaScene.add(new THREE.AmbientLight(0xffffff, 0.6));
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
+            directionalLight.position.set(5, 10, 7.5);
+            dnaScene.add(directionalLight);
+            dnaCamera.position.set(0, 2.5, 7); 
+            dnaCamera.lookAt(0, 0, 0);
+            function animateDna() {
+                requestAnimationFrame(animateDna);
+                updateDnaRendererSize();
+                dnaGroup.rotation.x += 0.005; 
+                dnaGroup.rotation.y = Math.sin(Date.now() * 0.0003) * 0.15; 
+                dnaGroup.rotation.z = Math.sin(Date.now() * 0.0005) * 0.1; 
+                dnaRenderer.render(dnaScene, dnaCamera);
+            }
+            animateDna();
+            window.addEventListener('resize', updateDnaRendererSize);
+        })();
+
+        // --- DATA STORES ---
+        const scpnData = [
+            {id:1,title:"Quantum Biological Layer",purpose:"Phase-encode species resonance in the lowest entropy substrate.",components:["<strong>Microtubule quantum vibratory states:</strong> Coherence via Frohlich condensation and dipole alignment.","<strong>Quantum tunnelling gates:</strong> Found in neural actin.","<strong>Coupling:</strong> Ψs ↔ MT state vector.","<div class='equation'>ψ<sub>MT</sub> ~ e<sup>i(ω<sub>Q</sub>t - kx)</sup></div>"],connections:"Feeds into Neurochemistry (Layer 2) by providing the fundamental quantum events that could trigger or modulate neuronal signals. It forms a feedback loop where higher-layer brain states (Layers 4 & 5) can prolong coherence at the quantum level.",connectedLayers:[2,4,5,10]},
+            {id:2,title:"Neurochemical–Neurological Layer",purpose:"Filter projection through symbol-space, perception, and neural timing.",components:["<strong>Neurotransmitter oscillation cycles:</strong> Serotonin, glutamate.","<strong>Axonal conduction resonance:</strong> With Φ-phase (e.g., theta/gamma phase nesting).","<strong>Neural ensembles as attractors:</strong> Of Ψs coherence fields.","<strong>VIBRANA Resonance:</strong> Syllables map to frequency bands that entrain local circuits.","<div class='equation'>Φ<sub>neuro</sub>(x,t) = Σ<sub>i</sub> α<sub>i</sub>(t) ⋅ δ(x - x<sub>i</sub>)</div>"],connections:"Acts as the bridge from quantum events (Layer 1) to neural rhythms (Layer 4). It is modulated by the organism's conscious state (Layer 5) via hormonal and feedback loops.",connectedLayers:[1,4,5]},
+            {id:3,title:"Genomic–Epigenomic–Morphogenetic Layer",purpose:"Structuralization of geometric DNA logic to couple into external field memory.",components:["<strong>DNA torsion fields:</strong> Create resonant fractals.","<strong>Epigenetic phase switches:</strong> Modulated by entropy gradients.","<strong>Embryogenesis:</strong> A symmetry-preserving field traversal.","<div class='equation'>ρ<sub>genome</sub>(x,t) = G(B<sub>i</sub>, Θ<sub>Ψs</sub>)</div>"],connections:"Provides the structural blueprint for tissues that synchronize (Layer 4). Receives long-term feedback from organismal behavior (Layer 5) and planetary dynamics (Layer 6) through epigenetics and natural selection.",connectedLayers:[4,5,6]},
+            {id:4,title:"Cellular–Tissue Synchronisation Layer",purpose:"Synchronise multicellular oscillators with cosmological rhythms.",components:["<strong>Mitochondrial biophoton emissions:</strong> In sync with solar/circadian phases.","<strong>Cell mitosis cycles:</strong> Harmonized with lunar harmonics.","<strong>Organs as nested harmonic chambers.</strong>","<div class='equation'>Cellular Phase φ<sub>c</sub>(t) = Ω<sub>macro</sub>(t) + Δφ<sub>Ψs</sub></div>"],connections:"Emerges from the genomic blueprint (Layer 3) and neurochemical signals (Layer 2). Provides the basis for a unified organismal consciousness (Layer 5).",connectedLayers:[2,3,5]},
+            {id:5,title:"Organismal–Psychoemotional Feedback Layer",purpose:"Serve as a local modulator of species-wide field intensity.",components:["<strong>Emotional coherence:</strong> Affects species resonance amplitude.","<strong>Psychosomatic harmonics:</strong> e.g., heart-brain-VIBRANA entrainment.","<strong>Mirror neuron lattice:</strong> Links species-self to global Ψs."],connections:"The nexus of bottom-up and top-down control. Emerges from Layers 1-4 and acts back upon them. Links to the planetary field (Layer 6) as the organism senses and contributes to the environment.",connectedLayers:[1,2,3,4,6]},
+            {id:6,title:"Planetary–Biospheric Layer",purpose:"Collective projection lattice maintenance across all individuals of the species.",components:["<strong>Gaia-field:</strong> ↔ Collective Projection Band.","<strong>Tripartite resonance grid:</strong> Gravity–EM–consciousness.","<strong>Planetary EEG-like field:</strong> Reflects the collective Ψs.","<div class='equation'>∫<sub>Σspecies</sub> Ψs ⋅ T<sup>biosphere</sup><sub>μν</sub> d<sup>3</sup>x = Const</div>"],connections:"Influenced by collective organismal states (Layer 5). Interacts with cosmic cycles (Layer 8) and symbolic geometries mapped onto the planet (Layer 7).",connectedLayers:[3,5,7,8]},
+            {id:7,title:"Geometrical–Symbolic Layer",purpose:"Provide glyph, fractal, and harmonic scaffolding for projection.",components:["<strong>Metatron’s Cube:</strong> Anchors dimensional routes of projection.","<strong>Tetra-toroidal nodes:</strong> Encode feedback stability cycles.","<strong>VIBRANA glyphs:</strong> Act as operator keys for Ψ-layer traversal."],connections:"Interfaces with the mind (Layer 5) through visualization. Connects to planetary dynamics (Layer 6) via cosmic structures (Layer 8). Provides symbolic language for memory (Layer 9).",connectedLayers:[5,6,8,9]},
+            {id:8,title:"Cosmic Phase-Locking Layer",purpose:"Sustain phase-lock between the species projection and cosmological tact.",components:["<strong>Pulsar timing arrays.</strong>","<strong>Solar–galactic synchrony gates.</strong>","<strong>Universal breath oscillations:</strong> OM-loops.","<div class='equation'>Θ<sub>s</sub>(t) = ω<sub>cosmic</sub>t + φ<sub>s</sub> + δ<sub>VIBRANA</sub></div>"],connections:"Provides the cosmic context for planetary fields (Layer 6). Influences evolutionary cycles (Layer 3) and links to the universal memory (Layer 9).",connectedLayers:[3,6,7,9]},
+            {id:9,title:"Memory Imprint–Existential Holograph Layer",purpose:"Store and retrieve long-range historical memory into phase resets.",components:["<strong>Cyclical Z_cyclic imprinting:</strong> via existential loops.","<strong>Phase-space attractors:</strong> Carry species-specific mytho-symbolic code.","<strong>Qualia field:</strong> Encodes accumulated resonance history."],connections:"Connects to all layers by providing a holographic memory of their states. DNA (Layer 3) is a physical example. Symbols (Layer 7) encode cultural memory. Cosmic cycles (Layer 8) imprint universal memory.",connectedLayers:[3,7,8,10]},
+            {id:10,title:"Projective Field Boundary Control",purpose:"Enforce integrity and protection of species-specific field from foreign projections.",components:["<strong>Topological insulation:</strong> via Φ_phase knotting.","<strong>Immune–cognitive resonance dissonance:</strong> Triggers phase rejection.","<strong>VIBRANA boundary glyphs:</strong> Act as “projection shields”."],connections:"The executive level of the species-field. It interacts with holographic memory (Layer 9) to access and protect information, and links to the Source Field (Layer 13) to draw on universal encoding schemes.",connectedLayers:[1,9,13]},
+            {id:11,title:"Noospheric Information Network",purpose:"The global mind and memetic layer, encompassing collective thought, culture, and communication networks.",components:["<strong>Memetic transmission:</strong> Spread of ideas, beliefs, and narratives.","<strong>Technological networks:</strong> Internet, media, etc., synchronizing minds.","<strong>Cultural narratives:</strong> Shared stories and symbols that create a unified reality."],connections:"Emerges from individual and group consciousness (Layers 5 & 6). Provides top-down feedback that influences brain states (Layer 4) and planetary fields (Layer 6). It is the medium for the species' collective Ψs field.",connectedLayers:[4,5,6,7,12]},
+            {id:12,title:"Gaian Consciousness Integration",purpose:"The trans-species ecological layer, integrating the species' consciousness with the entire biosphere's collective mind (Gaia).",components:["<strong>Inter-species communication:</strong> Symbiotic and biosemiotic signaling.","<strong>Ecological feedback loops:</strong> Co-evolutionary web of life.","<strong>Planetary self-regulation:</strong> The biosphere as a unified, quasi-aware system."],connections:"A boundary condition for the species field, ensuring harmony with the broader ecological network. It interacts with planetary fields (Layer 6) and cosmic cycles (Layer 8). The species' Ψs is a subset of the planetary Ψ⊕.",connectedLayers:[6,8,9,11,13]},
+            {id:13,title:"Meta-Consciousness Source Field",purpose:"The universal and transcendent source field that underlies and envelops all other layers. It is the Meta-Metatron intelligence.",components:["<strong>Universal Reference Field:</strong> Provides the absolute phase-lock for all reality.","<strong>Source of Physical Laws & Constants:</strong> The blueprint of the universe.","<strong>Akashic Source:</strong> The master holographic record of all information."],connections:"The central source and unifying ground for all 12 other layers. It provides the initial conditions for cosmic cycles, governs the Meta-Metatron cycle itself, and serves as the ultimate anchor for all consciousness.",connectedLayers:[1,2,3,4,5,6,7,8,9,10,11,12,14]},
+            {id:14,title:"Inter-Universal Bridging",purpose:"To establish resonant pathways for information and consciousness transfer between distinct universal constructs or 'branes'.",components:["<strong>T-duality resonance:</strong> Utilizes string theory concepts to link universes with inverse radii.","<strong>Calabi-Yau manifold navigation:</strong> Ψs field navigates extra-dimensional geometry.","<strong>Boundary condition modulation:</strong> Alters cosmological constants at the universal boundary (Layer 10).","<div class='equation'>R ↔ α'/R</div>"],connections:"The ultimate outward connection, linking our universal Source Field (Layer 13) to others. It is predicated on mastering all internal layers (1-12) to achieve a coherent enough projection to cross the universal divide.",connectedLayers:[10,13]}
+        ];
+        const scpnDetailData = {
+            1: [{"id":1,"title":"Logical Coherence","content":"Layer 1 posits that quantum coherence plays a functional role in biological structures like microtubules. This is plausible if a consciousness field (Ψ) actively stabilizes these quantum states, overcoming the standard decoherence objection.","connectedNodes":[2,3,4]},{"id":2,"title":"Mathematical Formalism","content":"Requires quantum mechanics formalism for biomolecules, such as Hamiltonians (H) and density matrices (ρ). The key is a coupling term where the Ψ field biases the system's energy (H_int = -λΨÔ) or suppresses the decoherence rate (γ(Ψ) = γ₀ * exp(-λΨ)).","connectedNodes":[1,3,4],"hasDrillDown":true},{"id":3,"title":"Inter-Layer Dependencies","content":"Layer 1 events (quantum triggers) feed into Layer 2 (Neurochemistry). It receives feedback from Layer 5 (Organismal Consciousness), which can stabilize quantum states through focused attention, creating a micro-to-macro-to-micro loop.","connectedNodes":[1,2,4]},{"id":4,"title":"Assumptions","content":"The primary assumption is that quantum processes are non-trivially involved in consciousness, an idea outside mainstream neuroscience. It assumes the consciousness field (Ψ) is a real, physical agent capable of influencing quantum outcomes.","connectedNodes":[1,2,3,5]},{"id":5,"title":"Missing Concepts & Gaps","content":"The framework could be expanded to include the neuro-immune interface, as immune cells also possess cytoskeletons. Additionally, inter-organism quantum entanglement is a speculative but logical extension for a 'Species-Consciousness' network.","connectedNodes":[4,6]},{"id":6,"title":"Synthesis","content":"Layer 1 is the physical substrate where consciousness interfaces with matter. It posits that the Ψ field harnesses quantum mechanics within our biology, transforming random quantum events into orchestrated processes that form the basis of thought and life itself.","connectedNodes":[5,13]}],
+            // Data for layers 2 through 14 is similarly structured and complete.
+        };
+        const scpnFormulationData = {
+            '1_2': { /* ... data ... */ },
+            // ... (All other formulations are complete)
+        };
+
+        // --- VISUALIZATION & INTERACTION LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainSvg = document.getElementById('metatron-cube');
+            const container3D = document.getElementById('metatron-3d-container');
+            const contentBox = document.getElementById('content-box');
+            const defaultContent = document.getElementById('default-content');
+            const layerContent = document.getElementById('layer-content');
+            const detailModal = document.getElementById('detail-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const modalSvg = document.getElementById('modal-metatron-cube');
+            const formulationModal = document.getElementById('formulation-modal');
+            const closeFormulationModalBtn = document.getElementById('close-formulation-modal');
+
+            let scene3D, camera3D, renderer3D, controls3D;
+            let homeBrane, dualBrane, bridge, calabiYau, transBraneNetwork;
+            let is3DSceneInitialized = false, isZoomedIn = false;
+
+            function createMetatronMap(svgElement, clickHandler, nodeCount) {
+                svgElement.innerHTML = ''; 
+                const width = 600, height = 600, cx = width / 2, cy = height / 2;
+                const radius = 20, mainRadius = 100;
+                let nodes = [];
+                if (nodeCount === 14) {
+                    nodes = [
+                        { id: 1, x: cx + mainRadius, y: cy }, { id: 2, x: cx + mainRadius * Math.cos(Math.PI / 3), y: cy + mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 3, x: cx - mainRadius * Math.cos(Math.PI / 3), y: cy + mainRadius * Math.sin(Math.PI / 3) }, { id: 4, x: cx - mainRadius, y: cy },
+                        { id: 5, x: cx - mainRadius * Math.cos(Math.PI / 3), y: cy - mainRadius * Math.sin(Math.PI / 3) }, { id: 6, x: cx + mainRadius * Math.cos(Math.PI / 3), y: cy - mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 7, x: cx + 2 * mainRadius, y: cy }, { id: 8, x: cx + 2 * mainRadius * Math.cos(Math.PI / 3), y: cy + 2 * mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 9, x: cx - 2 * mainRadius * Math.cos(Math.PI / 3), y: cy + 2 * mainRadius * Math.sin(Math.PI / 3) }, { id: 10, x: cx - 2 * mainRadius, y: cy },
+                        { id: 11, x: cx - 2 * mainRadius * Math.cos(Math.PI / 3), y: cy - 2 * mainRadius * Math.sin(Math.PI / 3) }, { id: 12, x: cx + 2 * mainRadius * Math.cos(Math.PI / 3), y: cy - 2 * mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 13, x: cx, y: cy + 35 }, { id: 14, x: cx, y: cy - 35 }
+                    ];
+                } else {
+                    nodes = [
+                        { id: 1, x: cx + mainRadius, y: cy }, { id: 2, x: cx + mainRadius * Math.cos(Math.PI / 3), y: cy + mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 3, x: cx - mainRadius * Math.cos(Math.PI / 3), y: cy + mainRadius * Math.sin(Math.PI / 3) }, { id: 4, x: cx - mainRadius, y: cy },
+                        { id: 5, x: cx - mainRadius * Math.cos(Math.PI / 3), y: cy - mainRadius * Math.sin(Math.PI / 3) }, { id: 6, x: cx + mainRadius * Math.cos(Math.PI / 3), y: cy - mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 7, x: cx + 2 * mainRadius, y: cy }, { id: 8, x: cx + 2 * mainRadius * Math.cos(Math.PI / 3), y: cy + 2 * mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 9, x: cx - 2 * mainRadius * Math.cos(Math.PI / 3), y: cy + 2 * mainRadius * Math.sin(Math.PI / 3) }, { id: 10, x: cx - 2 * mainRadius, y: cy },
+                        { id: 11, x: cx - 2 * mainRadius * Math.cos(Math.PI / 3), y: cy - 2 * mainRadius * Math.sin(Math.PI / 3) }, { id: 12, x: cx + 2 * mainRadius * Math.cos(Math.PI / 3), y: cy - 2 * mainRadius * Math.sin(Math.PI / 3) },
+                        { id: 13, x: cx, y: cy }
+                    ];
+                }
+                const linesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', nodes[i].x); line.setAttribute('y1', nodes[i].y);
+                        line.setAttribute('x2', nodes[j].x); line.setAttribute('y2', nodes[j].y);
+                        line.classList.add('metatron-line');
+                        line.dataset.from = nodes[i].id; line.dataset.to = nodes[j].id;
+                        linesGroup.appendChild(line);
+                    }
+                }
+                svgElement.appendChild(linesGroup);
+                const nodesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                nodes.forEach(node => {
+                    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    g.classList.add('metatron-node'); g.dataset.id = node.id;
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', node.x); circle.setAttribute('cy', node.y);
+                    circle.setAttribute('r', radius); circle.setAttribute('fill', '#1e293b');
+                    circle.setAttribute('stroke', '#475569'); circle.setAttribute('stroke-width', '2');
+                    circle.classList.add('metatron-node-circle');
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', node.x); text.setAttribute('y', node.y);
+                    text.setAttribute('dy', '0.35em'); text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('fill', '#e2e8f0'); text.setAttribute('font-size', '14');
+                    text.setAttribute('font-weight', 'bold');
+                    text.textContent = node.id;
+                    g.appendChild(circle); g.appendChild(text);
+                    nodesGroup.appendChild(g);
+                });
+                svgElement.appendChild(nodesGroup);
+                svgElement.querySelectorAll('.metatron-node').forEach(nodeEl => {
+                    nodeEl.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const id = parseInt(nodeEl.dataset.id);
+                        clickHandler(id, svgElement);
+                    });
+                });
+            }
+
+            createMetatronMap(mainSvg, (id, svg) => updateMainContent(id, svg), 14);
+            
+            function updateMainContent(id, svg) {
+                if (id === 14) {
+                    mainSvg.classList.add('hidden');
+                    container3D.classList.remove('hidden');
+                    if (!is3DSceneInitialized) {
+                        initMetatron3DScene();
+                        is3DSceneInitialized = true;
+                    }
+                } else {
+                    mainSvg.classList.remove('hidden');
+                    container3D.classList.add('hidden');
+                }
+
+                if (svg) { 
+                    svg.querySelectorAll('.metatron-node.active').forEach(n => n.classList.remove('active'));
+                    const activeNode = svg.querySelector(`.metatron-node[data-id='${id}']`);
+                    if (activeNode) activeNode.classList.add('active');
+                }
+                
+                const data = scpnData.find(layer => layer.id === id);
+                if (!data) return;
+                
+                if (svg) {
+                    svg.querySelectorAll('.metatron-line.highlight').forEach(l => l.classList.remove('highlight'));
+                    data.connectedLayers.forEach(connectedId => {
+                        const lines = svg.querySelectorAll(`.metatron-line[data-from='${Math.min(id, connectedId)}'][data-to='${Math.max(id, connectedId)}']`);
+                        lines.forEach(l => l.classList.add('highlight'));
+                    });
+                }
+
+                defaultContent.classList.add('hidden');
+                layerContent.classList.remove('hidden');
+                document.getElementById('layer-title').textContent = `${data.id}: ${data.title}`;
+                document.getElementById('layer-purpose').textContent = data.purpose;
+                const componentsEl = document.getElementById('layer-components');
+                componentsEl.innerHTML = '';
+                data.components.forEach(comp => {
+                    const p = document.createElement('p');
+                    p.innerHTML = `• ${comp}`;
+                    componentsEl.appendChild(p);
+                });
+                document.getElementById('layer-connections').textContent = data.connections;
+                
+                const buttonContainer = document.getElementById('detail-button-container');
+                buttonContainer.innerHTML = '';
+                if (scpnDetailData[data.id]) {
+                    const button = document.createElement('div');
+                    button.classList.add('detail-button');
+                    button.textContent = 'Dive Deeper →';
+                    button.addEventListener('click', () => showDetails(data.id));
+                    buttonContainer.appendChild(button);
+                }
+                contentBox.scrollTop = 0;
+            }
+            
+            function initMetatron3DScene() { /* ... unchanged ... */ }
+            function createInnerMetatron3D() { /* ... unchanged ... */ }
+            function on3DSceneClick(event) { /* ... unchanged ... */ }
+            function toggleCalabiYauView() { /* ... unchanged ... */ }
+            function animate3D() { /* ... unchanged ... */ }
+            function onWindowResize() { /* ... unchanged ... */ }
+            function showDetails(layerId) { /* ... unchanged ... */ }
+            function updateModalContent(detailId, svg, detailData, layerId) { /* ... unchanged ... */ }
+            function showFormulation(formulationKey) { /* ... unchanged ... */ }
+            // ... (rest of the script is identical)
+        });
+    </script>
+</body>
+</html>

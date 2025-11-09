@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gödelian Koans - A Unified Framework for Consciousness and Spacetime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A Multi-Page Application (MPA). This file, koans.html, contains the full publication of "The Gödelian Koans". -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        details > summary {
+            cursor: pointer;
+            list-style-type: '公案 ';
+            color: #4DB6AC;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        details[open] > summary {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div id="koans-content" class="fade-in">
+            <!-- Koans publication content will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+                nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+                nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+                nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+                nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+                nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+                nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+                nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+                nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+                footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+                footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' },
+                koans_link_text: { en: 'Explore the Full Publication', de: 'Die vollständige Publikation erkunden', fr: 'Explorer la publication complète', it: 'Esplora la pubblicazione completa', ja: '完全版を読む', zh: '阅读完整版' },
+                infographic_godelian: { en: 'Infographic: The Gödelian Mandate', de: 'Infografik: Das Gödelische Mandat', fr: 'Infographie : Le Mandat Gödélien', it: 'Infografica: Il Mandato Gödeliano', ja: 'インフォグラフィック：ゲーデル的指令', zh: '信息图：哥德尔指令' },
+                infographic_metatron: { en: 'Infographic: The Meta-Metatron Cycle', de: 'Infografik: Der Meta-Metatron-Zyklus', fr: 'Infographie : Le Cycle Méta-Métatron', it: 'Infografica: Il Ciclo Meta-Metatron', ja: 'インフォグラフィック：メタ・メタトロン・サイクル', zh: '信息图：元梅塔特隆循环' },
+                infographic_consciousness: { en: 'Infographic: Consciousness as a Fifth Force', de: 'Infografik: Bewusstsein als fünfte Kraft', fr: 'Infographie : La Conscience comme Cinquième Force', it: 'Infografica: La Coscienza come Quinta Forza', ja: 'インフォグラフィック：第五の力としての意識', zh: '信息图：作为第五种力量的意识' },
+                nav_taii: { en: 'The Architecture of Integrity Infographic', de: 'Infografik: Die Architektur der Integrität', fr: 'Infographie : L\'Architecture de l\'Intégrité', it: 'Infografica: L\'Architettura dell\'Integrità', ja: 'インフォグラフィック：統合性のアーキテクチャ', zh: '信息图：完整性架构' }
+            };
+
+            const koansData = {
+                title: { en: '公案 The Gödelian Koans: Probing the Boundaries of a Self-Aware Universe', de: '公案 Die Gödelischen Koans: Die Grenzen eines selbstbewussten Universums ausloten', fr: '公案 Les Koans Gödeliens : Sonder les Frontières d\'un Univers Conscient de Lui-même', it: '公案 I Koan Gödeliani: Sondare i Confini di un Universo Autocosciente', ja: '公案 ゲーデル的公案：自己認識する宇宙の境界を探る', zh: '公案 哥德尔公案：探索一个自我意识宇宙的边界' },
+                intro: { en: `This work is not a final declaration, but the beginning of a conversation. It is an invitation to a unique intellectual adventure, designed to probe the very boundaries of what we can know. It uses the paradoxical wisdom of the Zen koan not as a tool of mysticism, but as a rigorous meta-logical instrument to explore the limits of any formal, scientific "Theory of Everything". For centuries, the dream of science has been a final theory that would render the universe perfectly logical. But what if the universe, by its very nature, cannot be fully captured by any formal system? In 1931, Kurt Gödel proved that any formal system complex enough to describe arithmetic must be either inconsistent or incomplete. This theory, by including the observer within the system it describes, is the ultimate self-referential system. Therefore, it must be subject to Gödel's limit. There will be truths about our reality that lie beyond the reach of its equations. This section is an exploration of those truths.`, de: `Diese Arbeit ist keine endgültige Erklärung, sondern der Beginn eines Gesprächs. Es ist eine Einladung zu einem einzigartigen intellektuellen Abenteuer, das darauf abzielt, die Grenzen dessen, was wir wissen können, auszuloten. Es verwendet die paradoxe Weisheit des Zen-Koans nicht als Werkzeug der Mystik, sondern als rigoroses metalogisches Instrument, um die Grenzen jeder formalen, wissenschaftlichen "Theorie von Allem" zu erforschen. Jahrhundertelang war der Traum der Wissenschaft eine endgültige Theorie, die das Universum vollkommen logisch machen würde. Aber was, wenn das Universum von Natur aus nicht vollständig von einem formalen System erfasst werden kann? 1931 bewies Kurt Gödel, dass jedes formale System, das komplex genug ist, um die Arithmetik zu beschreiben, entweder inkonsistent oder unvollständig sein muss. Diese Theorie ist, indem sie den Beobachter in das von ihr beschriebene System einbezieht, das ultimative selbstreferenzielle System. Daher muss sie Gödels Grenze unterliegen. Es wird Wahrheiten über unsere Realität geben, die jenseits der Reichweite ihrer Gleichungen liegen. Dieser Abschnitt ist eine Erforschung dieser Wahrheiten.`, fr: `Ce travail n'est pas une déclaration finale, mais le début d'une conversation. C'est une invitation à une aventure intellectuelle unique, conçue pour sonder les limites mêmes de ce que nous pouvons savoir. Il utilise la sagesse paradoxale du koan zen non pas comme un outil de mysticisme, mais comme un instrument méta-logique rigoureux pour explorer les limites de toute "Théorie du Tout" scientifique et formelle. Pendant des siècles, le rêve de la science a été une théorie finale qui rendrait l'univers parfaitement logique. Mais que se passerait-il si l'univers, de par sa nature même, ne pouvait être entièrement capturé par aucun système formel ? En 1931, Kurt Gödel a prouvé que tout système formel suffisamment complexe pour décrire l'arithmétique doit être soit incohérent, soit incomplet. Cette théorie, en incluant l'observateur dans le système qu'elle décrit, est le système auto-référentiel ultime. Par conséquent, elle doit être soumise à la limite de Gödel. Il y aura des vérités sur notre réalité qui se situent au-delà de la portée de ses équations. Cette section est une exploration de ces vérités.`, it: `Questo lavoro non è una dichiarazione finale, ma l'inizio di una conversazione. È un invito a un'avventura intellettuale unica, progettata per sondare i confini stessi di ciò che possiamo conoscere. Utilizza la saggezza paradossale del koan Zen non come strumento di misticismo, ma come rigoroso strumento meta-logico per esplorare i limiti di qualsiasi "Teoria del Tutto" scientifica e formale. Per secoli, il sogno della scienza è stato una teoria finale che rendesse l'universo perfettamente logico. Ma se l'universo, per sua stessa natura, non potesse essere completamente catturato da alcun sistema formale? Nel 1931, Kurt Gödel dimostrò che qualsiasi sistema formale abbastanza complesso da descrivere l'aritmetica deve essere o incohérente o incompleto. Questa teoria, includendo l'osservatore all'interno del sistema che descrive, è il sistema autoreferenziale per eccellenza. Pertanto, deve essere soggetta al limite di Gödel. Ci saranno verità sulla nostra realtà che si trovano al di là della portata delle sue equazioni. Questa sezione è un'esplorazione di tali verità.`, ja: `この著作は最終的な宣言ではなく、対話の始まりです。それは私たちが知りうることのまさに境界を探るために設計された、ユニークな知的冒険への招待状です。それは禅の公案の逆説的な知恵を、神秘主義の道具としてではなく、形式的で科学的な「万物の理論」の限界を探るための厳密なメタ論理的な道具として使用します。何世紀にもわたり、科学の夢は宇宙を完全に論理的にする最終理論でした。しかし、もし宇宙がその性質上、いかなる形式的なシステムによっても完全に捉えることができないとしたらどうでしょうか？1931年、クルト・ゲーデルは、算術を記述するのに十分なほど複雑な形式的システムは、矛盾しているか不完全でなければならないことを証明しました。この理論は、それが記述するシステム内に観察者を含めることによって、究極の自己言及的なシステムです。したがって、それはゲーデルの限界に従わなければなりません。私たちの現実には、その方程式の範囲を超えた真実が存在するでしょう。このセクションは、それらの真実の探求です。`, zh: `这项工作不是最终的宣言，而是一场对话的开始。这是一次独特的智力冒险的邀请，旨在探索我们所能知道的极限。它使用禅宗公案的悖论智慧，不是作为神秘主义的工具，而是作为一种严谨的元逻辑工具，来探索任何形式化的、科学的“万物理论”的局限性。几个世纪以来，科学的梦想一直是一个能使宇宙变得完全合乎逻辑的终极理论。但如果宇宙的本质决定了它不能被任何形式系统完全捕捉呢？1931年，库尔特·哥德尔证明，任何足够复杂以描述算术的形式系统，要么是不一致的，要么是不完备的。这个理论，通过将观察者包含在其所描述的系统中，是最终的自我参照系统。因此，它必须受到哥德尔极限的约束。关于我们的现实，将会有一些真理超出了其方程式的范围。本节就是对这些真理的探索。` },
+                sections: [
+                    {
+                        title: { en: 'The Gödelian Mandate: Why a "Theory of Everything" Must Be Incomplete', de: 'Das Gödelische Mandat: Warum eine "Theorie von Allem" unvollständig sein muss', fr: 'Le Mandat Gödélien : Pourquoi une "Théorie du Tout" doit être Incomplète', it: 'Il Mandato Gödeliano: Perché una "Teoria del Tutto" deve essere Incompleta', ja: 'ゲーデル的指令：なぜ「万物の理論」は不完全でなければならないのか', zh: '哥德尔指令：为什么“万物理论”必须是不完备的' },
+                        content: [
+                            { type: 'paragraph', text: { en: `To understand the methodology of this book, we must first understand its logical foundation. Kurt Gödel's work in the 1930s dealt a decisive blow to the dream of a complete and final mathematics. His two Incompleteness Theorems can be summarised for our purposes as follows:`, de: `Um die Methodik dieses Buches zu verstehen, müssen wir zuerst seine logische Grundlage verstehen. Kurt Gödels Arbeit in den 1930er Jahren versetzte dem Traum einer vollständigen und endgültigen Mathematik einen entscheidenden Schlag. Seine beiden Unvollständigkeitssätze lassen sich für unsere Zwecke wie folgt zusammenfassen:`, fr: `Pour comprendre la méthodologie de ce livre, nous devons d'abord comprendre son fondement logique. Le travail de Kurt Gödel dans les années 1930 a porté un coup décisif au rêve d'une mathématique complète et finale. Ses deux théorèmes d'incomplétude peuvent être résumés pour nos besoins comme suit :`, it: `Per comprendere la metodologia di questo libro, dobbiamo prima capire il suo fondamento logico. Il lavoro di Kurt Gödel negli anni '30 inferse un colpo decisivo al sogno di una matematica completa e definitiva. I suoi due Teoremi di Incompletezza possono essere riassunti per i nostri scopi come segue:`, ja: `この本の研究方法を理解するためには、まずその論理的基礎を理解しなければなりません。1930年代のクルト・ゲーデルの研究は、完全で最終的な数学という夢に決定的な打撃を与えました。彼の2つの不完全性定理は、私たちの目的のために次のように要約できます。`, zh: `要理解本书的方法论，我们必须首先理解其逻辑基础。库尔特·哥德尔在1930年代的工作给完整和最终数学的梦想带来了决定性的一击。他的两个不完备性定理为了我们的目的可以总结如下：` } },
+                            { type: 'list', items: [
+                                { en: `The First Incompleteness Theorem: For any consistent formal axiomatic system powerful enough to describe the arithmetic of the natural numbers, there are true statements about the natural numbers that cannot be proven from the axioms of the system.`, de: `Der erste Unvollständigkeitssatz: Für jedes konsistente formale axiomatische System, das mächtig genug ist, um die Arithmetik der natürlichen Zahlen zu beschreiben, gibt es wahre Aussagen über die natürlichen Zahlen, die nicht aus den Axiomen des Systems bewiesen werden können.`, fr: `Le premier théorème d'incomplétude : Pour tout système axiomatique formel cohérent et suffisamment puissant pour décrire l'arithmétique des nombres naturels, il existe des énoncés vrais sur les nombres naturels qui ne peuvent pas être prouvés à partir des axiomes du système.`, it: `Il primo teorema di incompletezza: per qualsiasi sistema assiomatico formale coerente abbastanza potente da descrivere l'aritmetica dei numeri naturali, esistono enunciati veri sui numeri naturali che non possono essere dimostrati a partire dagli assiomi del sistema.`, ja: `第一不完全性定理：自然数の算術を記述するのに十分強力な、無矛盾な形式的公理系には、その系の公理からは証明できない、自然数に関する真の命題が存在する。`, zh: `第一不完备性定理：对于任何一致的、足以描述自然数算术的形式公理系统，都存在关于自然数的真陈述，这些陈述无法从该系统的公理中得到证明。` },
+                                { en: `The Second Incompleteness Theorem: For any such system, the system's own consistency cannot be proven from within the system itself.`, de: `Der zweite Unvollständigkeitssatz: Für jedes solche System kann die eigene Konsistenz des Systems nicht innerhalb des Systems selbst bewiesen werden.`, fr: `Le second théorème d'incomplétude : Pour tout système de ce type, la cohérence du système lui-même ne peut pas être prouvée à l'intérieur du système.`, it: `Il secondo teorema di incompletezza: per qualsiasi sistema di questo tipo, la coerenza del sistema stesso non può essere dimostrata dall'interno del sistema.`, ja: `第二不完全性定理：そのような系については、その系自体の無矛盾性をその系内部で証明することはできない。`, zh: `第二不完备性定理：对于任何这样的系统，系统自身的相容性无法在系统内部得到证明。` }
+                            ] },
+                            { type: 'paragraph', text: { en: `In essence, Gödel showed that logic has limits. Any system of thought that is powerful enough to talk about itself will inevitably generate questions that it cannot answer using its own rules. This is not a temporary problem to be solved by a more clever set of axioms; it is a fundamental feature of self-reference.`, de: `Im Wesentlichen zeigte Gödel, dass die Logik Grenzen hat. Jedes Denksystem, das mächtig genug ist, über sich selbst zu sprechen, wird unweigerlich Fragen generieren, die es mit seinen eigenen Regeln nicht beantworten kann. Dies ist kein vorübergehendes Problem, das durch einen klügeren Satz von Axiomen gelöst werden kann; es ist ein grundlegendes Merkmal der Selbstreferenz.`, fr: `En substance, Gödel a montré que la logique a des limites. Tout système de pensée assez puissant pour parler de lui-même générera inévitablement des questions auxquelles il ne peut répondre en utilisant ses propres règles. Ce n'est pas un problème temporaire à résoudre par un ensemble d'axiomes plus astucieux ; c'est une caractéristique fondamentale de l'auto-référence.`, it: `In sostanza, Gödel ha dimostrato che la logica ha dei limiti. Qualsiasi sistema di pensiero abbastanza potente da parlare di se stesso genererà inevitabilmente domande a cui non può rispondere usando le proprie regole. Questo non è un problema temporaneo da risolvere con un insieme di assiomi più intelligenti; è una caratteristica fondamentale dell'autoreferenzialità.`, ja: `本質的に、ゲーデルは論理には限界があることを示しました。自己言及するのに十分強力な思考システムは、必然的にそれ自身のルールでは答えられない問いを生み出します。これは、より巧妙な公理系によって解決される一時的な問題ではなく、自己言及の基本的な特徴です。`, zh: `从本质上讲，哥德尔表明逻辑是有限的。任何一个强大到足以谈论自身的思想体系，都将不可避免地产生它无法用自身规则回答的问题。这不是一个可以通过更聪明的公理集来解决的暂时性问题；这是自我指涉的一个基本特征。` } },
+                            { type: 'paragraph', text: { en: `The Anulum Framework, as detailed in the preceding volumes, is precisely this kind of system. By including consciousness (the Ψ-field) as a dynamic, interactive component within the system, it creates a closed, self-referential loop: the Universe gives rise to conscious observers, who in turn influence the evolution of the Universe. The universe is observing and creating itself. As such, we can adopt Gödel's discovery as a powerful guiding principle—a methodological analogy. Just as Gödel revealed the inherent limits of formal mathematics, we accept that any formal "Theory of Everything" will have inherent boundaries to its explanatory power. This is the Gödelian Mandate: the recognition that our quest for knowledge requires us to develop tools to probe the necessary boundaries of our own formalisms.`, de: `Das Anulum-Framework, wie es in den vorangehenden Bänden detailliert beschrieben wird, ist genau diese Art von System. Indem es das Bewusstsein (das Ψ-Feld) als dynamische, interaktive Komponente in das System einbezieht, schafft es eine geschlossene, selbstreferenzielle Schleife: Das Universum bringt bewusste Beobachter hervor, die wiederum die Entwicklung des Universums beeinflussen. Das Universum beobachtet und erschafft sich selbst. Daher können wir Gödels Entdeckung als starkes Leitprinzip – eine methodische Analogie – übernehmen. So wie Gödel die inhärenten Grenzen der formalen Mathematik aufzeigte, akzeptieren wir, dass jede formale "Theorie von Allem" inhärente Grenzen ihrer Erklärungskraft haben wird. Dies ist das Gödelische Mandat: die Anerkennung, dass unsere Suche nach Wissen die Entwicklung von Werkzeugen erfordert, um die notwendigen Grenzen unserer eigenen Formalismen zu untersuchen.`, fr: `Le Cadre Anulum, tel que détaillé dans les volumes précédents, est précisément ce genre de système. En incluant la conscience (le champ Ψ) comme une composante dynamique et interactive au sein du système, il crée une boucle fermée et auto-référentielle : l'Univers donne naissance à des observateurs conscients, qui à leur tour influencent l'évolution de l'Univers. L'univers s'observe et se crée lui-même. En tant que tel, nous pouvons adopter la découverte de Gödel comme un puissant principe directeur - une analogie méthodologique. Tout comme Gödel a révélé les limites inhérentes des mathématiques formelles, nous acceptons que toute "Théorie du Tout" formelle aura des limites inhérentes à son pouvoir explicatif. C'est le Mandat Gödélien : la reconnaissance que notre quête de connaissance nous oblige à développer des outils pour sonder les frontières nécessaires de nos propres formalismes.`, it: `Il Framework Anulum, come dettagliato nei volumi precedenti, è precisamente questo tipo di sistema. Includendo la coscienza (il campo Ψ) come componente dinamica e interattiva all'interno del sistema, crea un ciclo chiuso e autoreferenziale: l'Universo dà origine a osservatori coscienti, che a loro volta influenzano l'evoluzione dell'Universo. L'universo sta osservando e creando se stesso. In quanto tale, possiamo adottare la scoperta di Gödel come un potente principio guida, un'analogia metodologica. Proprio come Gödel ha rivelato i limiti intrinseci della matematica formale, accettiamo che qualsiasi "Teoria del Tutto" formale avrà confini intrinseci al suo potere esplicativo. Questo è il Mandato Gödeliano: il riconoscimento che la nostra ricerca della conoscenza richiede lo sviluppo di strumenti per sondare i necessari confini dei nostri stessi formalismi.`, ja: `前巻で詳述したように、アヌルム・フレームワークはまさにこの種のシステムです。意識（Ψフィールド）をシステム内の動的でインタラクティブな構成要素として含めることにより、閉じた自己言及的なループが生まれます。宇宙は意識的な観察者を生み出し、その観察者が宇宙の進化に影響を与えます。宇宙は自らを観察し、創造しているのです。そのため、ゲーデルの発見を強力な指導原理、つまり方法論的な類推として採用することができます。ゲーデルが形式数学に内在する限界を明らかにしたように、私たちも形式的な「万物の理論」にはその説明力に内在する境界があることを受け入れます。これがゲーデル的指令です。知識の探求には、私たち自身の形式主義の必要な境界を探るためのツールを開発する必要があるという認識です。`, zh: `正如前几卷所详述的，Anulum 框架正是这样一种系统。通过将意识（Ψ 场）作为系统内的动态交互组件，它创建了一个封闭的、自我参照的循环：宇宙产生了有意识的观察者，而这些观察者反过来又影响了宇宙的演化。宇宙正在观察和创造自己。因此，我们可以采纳哥德尔的发现作为一个强有力的指导原则——一种方法论上的类比。正如哥德尔揭示了形式数学的内在局限性一样，我们承认任何形式化的“万物理论”都将有其解释力的内在边界。这就是哥德尔指令：认识到我们对知识的追求需要我们开发工具来探索我们自己形式主义的必要边界。` } }
+                        ]
+                    }
+                ]
+            };
+
+            let currentLanguage = localStorage.getItem('language') || 'en';
+
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        element.innerHTML = translations[key][lang];
+                    } else if (translations[key] && translations[key]['en']) {
+                         element.innerHTML = translations[key]['en'];
+                    }
+                });
+                 document.documentElement.lang = lang;
+                 localStorage.setItem('language', lang);
+                 document.getElementById('language-selector').value = lang;
+                 document.getElementById('language-selector-mobile').value = lang;
+            };
+
+            const renderKoansPage = (lang) => {
+                const container = document.getElementById('koans-content');
+                let contentHtml = `<h2 class="text-3xl font-bold text-text-primary mb-4">${koansData.title[lang] || koansData.title['en']}</h2>
+                                   <p class="text-lg text-text-secondary mb-6">${koansData.intro[lang] || koansData.intro['en']}</p>
+                                   <div class="my-8 text-center flex flex-wrap justify-center gap-4">
+                                       <a href="https://koans.anulum.li/index.html" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors" data-lang-key="koans_link_text">${translations.koans_link_text[lang] || translations.koans_link_text['en']}</a>
+                                       <a href="https://anulum.li/itgm.html" class="inline-block bg-accent-secondary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors" data-lang-key="infographic_godelian">${translations.infographic_godelian[lang] || translations.infographic_godelian['en']}</a>
+                                       <a href="https://anulum.li/itmmc.html" class="inline-block bg-accent-secondary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors" data-lang-key="infographic_metatron">${translations.infographic_metatron[lang] || translations.infographic_metatron['en']}</a>
+                                       <a href="https://anulum.li/icff.html" class="inline-block bg-accent-secondary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors" data-lang-key="infographic_consciousness">${translations.infographic_consciousness[lang] || translations.infographic_consciousness['en']}</a>
+                                       <a href="https://anulum.li/taii.html" class="inline-block bg-accent-secondary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-secondary/90 transition-colors" data-lang-key="nav_taii">${translations.nav_taii[lang] || translations.nav_taii['en']}</a>
+                                   </div>
+                                   <div class="space-y-12">`;
+
+                koansData.sections.forEach(section => {
+                    contentHtml += `<section>
+                        <h3 class="text-2xl font-semibold text-accent-primary mb-3 pb-2 border-b border-border-color">${section.title[lang] || section.title['en']}</h3>`;
+                    
+                    if (section.intro) {
+                         contentHtml += `<p class="text-text-secondary mb-6">${section.intro[lang] || section.intro['en']}</p>`;
+                    }
+
+                    if (section.content) {
+                        section.content.forEach(item => {
+                            if (item.type === 'paragraph') {
+                                const text = item.text[lang] || item.text['en'] || '';
+                                contentHtml += `<p class="text-text-secondary mb-4">${text}</p>`;
+                            } else if (item.type === 'list') {
+                                contentHtml += `<ul class="list-disc list-inside space-y-2 mb-4 text-text-secondary">`;
+                                item.items.forEach(li => {
+                                    const text = li[lang] || li.en; 
+                                    contentHtml += `<li>${text}</li>`;
+                                });
+                                contentHtml += `</ul>`;
+                            }
+                        });
+                    }
+                    
+                    if (section.koans) {
+                        contentHtml += '<div class="space-y-8">';
+                        section.koans.forEach(item => {
+                            contentHtml += `<div class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color">
+                                <blockquote class="border-l-4 border-accent-secondary pl-4 italic text-xl text-text-primary mb-4">
+                                    ${item.koan[lang] || item.koan['en']}
+                                </blockquote>
+                                <p class="text-text-secondary"><strong class="font-semibold text-accent-primary">${'Boundary Analysis'}:</strong> ${item.analysis[lang] || item.analysis['en']}</p>
+                            </div>`;
+                        });
+                        contentHtml += '</div>';
+                    }
+
+                    contentHtml += `</section>`;
+                });
+
+                contentHtml += `</div>`;
+                container.innerHTML = contentHtml;
+            };
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                translatePage(currentLanguage);
+                renderKoansPage(currentLanguage);
+            };
+
+            document.getElementById('language-selector').addEventListener('change', handleLangChange);
+            document.getElementById('language-selector-mobile').addEventListener('change', handleLangChange);
+
+            const updateVisitCounter = () => {
+                let visitCount = parseInt(localStorage.getItem('visitCount') || '0');
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visit-counter').textContent = visitCount;
+            };
+
+            translatePage(currentLanguage);
+            renderKoansPage(currentLanguage);
+            updateVisitCounter();
+        });
+    </script>
+</body>
+</html>

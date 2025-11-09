@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 11: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 11, the "global mind." The flow is: 1. Introduction to the noosphere. 2. A simulation of the Emergence of the Noosphere via technological connectivity. 3. An interactive canvas demonstrating Memetic Propagation of ideas and VIBRANA codes. 4. A visualization of the Noosphere's Feedback Effect on individual consciousness. 5. A diagram of inter-layer connections. This structure makes the abstract concepts of a collective cognitive field tangible. -->
+    <!-- Visualization & Content Choices:
+        - Emergence of the Noosphere: Goal: Visualize the formation of a global mind network. Method: Canvas animation. Interaction: A slider for "Technological Connectivity" connects individual nodes on a globe, leading to a synchronized, glowing "noospheric field." Justification: Directly demonstrates the emergence of Layer 11 from interconnected individuals (L5/L6).
+        - Memetic Propagation: Goal: Show how ideas spread through the noosphere. Method: Canvas animation. Interaction: Buttons for different "memes" (Unity, Innovation, Fear) introduce colored pulses that propagate through the network at different speeds and coherence levels. Justification: Provides a clear visual metaphor for "memetic transmission" and integrates the VIBRANA concept.
+        - Noospheric Feedback: Goal: Illustrate the top-down influence of the collective on the individual. Method: Chart.js line chart. Interaction: A slider for "Noospheric Coherence" reduces the noise and stabilizes the rhythm of an "Individual Mind State" wave. Justification: Visually explains the feedback loop from the global field (L11) to personal consciousness (L5).
+        - Inter-Layer Diagram: Goal: Contextualize Layer 11's role. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 11 integrates inputs from lower layers (L5, L6, L7) and influences higher layers (L12).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 11: Noospheric Information Network</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#emergence" class="nav-link font-semibold text-slate-600">Emergence</a>
+                    <a href="#propagation" class="nav-link font-semibold text-slate-600">Propagation</a>
+                    <a href="#feedback" class="nav-link font-semibold text-slate-600">Feedback</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Global Mind</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 11 represents the noosphere—the sphere of collective human thought. It is an emergent field created by the sum of our cultural narratives, knowledge, and technological communication networks. This global mind acts as the informational glue that synchronizes individual consciousness into a coherent species-level projection, shaping our shared reality.
+            </p>
+        </section>
+
+        <section id="emergence" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Emergence of the Noosphere</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The noosphere arises from the interconnection of individual minds. As technological and cultural connectivity increases, a critical threshold is passed, and a coherent, self-organizing global field emerges. Adjust the connectivity to witness the formation of the noospheric network.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="emergenceCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="connectivity-slider" class="font-semibold text-slate-700">Technological Connectivity: <span id="connectivity-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the density and speed of the global information network.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="connectivity-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="propagation" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Memetic Propagation</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Ideas, or "memes," propagate through the noosphere like waves. The coherence of the network determines how quickly and effectively these memes spread. Coherent, resonant ideas—like the VIBRANA code for Unity—can entrain the entire network, while dissonant ideas may create fragmentation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="propagationCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-center font-semibold">Introduce a Meme:</p>
+                    <button id="unity-btn" class="w-full px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300">Unity (VIBRANA: Ke-tha-ra)</button>
+                    <button id="innovation-btn" class="w-full px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300">Innovation</button>
+                    <button id="fear-btn" class="w-full px-4 py-2 bg-slate-200 rounded-md font-semibold hover:bg-slate-300">Fear & Dissonance</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="feedback" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Noospheric Feedback Effect</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The state of the noosphere feeds back to influence individual consciousness. A coherent, harmonious global field reduces internal mental noise and stabilizes thought patterns. A fragmented, chaotic field increases internal dissonance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="feedbackChart"></canvas>
+                </div>
+                <div>
+                    <label for="noosphere-slider" class="font-semibold text-slate-700">Noospheric Coherence</label>
+                    <input type="range" min="0" max="100" value="20" class="control-slider" id="noosphere-slider">
+                     <div class="flex justify-between text-sm text-slate-500 mt-2">
+                        <span>Fragmented</span>
+                        <span>Harmonious</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Emergence of the Noosphere ---
+        const emergenceCanvas = document.getElementById('emergenceCanvas');
+        const emergenceCtx = emergenceCanvas.getContext('2d');
+        const connectivitySlider = document.getElementById('connectivity-slider');
+        const connectivityValue = document.getElementById('connectivity-value');
+        let emergencePoints = [];
+        let emergenceRotation = 0;
+
+        function initEmergence() {
+            const numPoints = 150;
+            for (let i = 0; i < numPoints; i++) {
+                const phi = Math.acos(-1 + (2 * i) / numPoints);
+                const theta = Math.sqrt(numPoints * Math.PI) * phi;
+                emergencePoints.push({
+                    x: Math.cos(theta) * Math.sin(phi),
+                    y: Math.sin(theta) * Math.sin(phi),
+                    z: Math.cos(phi),
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        function animateEmergence() {
+            const w = emergenceCanvas.width;
+            const h = emergenceCanvas.height;
+            emergenceCtx.clearRect(0, 0, w, h);
+            emergenceRotation += 0.005;
+            
+            const connectivity = parseInt(connectivitySlider.value) / 100;
+            connectivityValue.textContent = `${Math.round(connectivity*100)}%`;
+            const linkThreshold = 1.0 - connectivity * 0.7;
+
+            const projectedPoints = emergencePoints.map(p => {
+                const rotX = p.x * Math.cos(emergenceRotation) - p.z * Math.sin(emergenceRotation);
+                const rotZ = p.x * Math.sin(emergenceRotation) + p.z * Math.cos(emergenceRotation);
+                return {
+                    x: rotX * w * 0.4 + w / 2,
+                    y: p.y * h * 0.4 + h / 2,
+                    z: rotZ,
+                    phase: p.phase
+                };
+            }).filter(p => p.z > -0.5);
+            
+            // Global field aura
+            if (connectivity > 0.5) {
+                const gradient = emergenceCtx.createRadialGradient(w/2, h/2, w*0.3, w/2, h/2, w*0.5);
+                gradient.addColorStop(0, `rgba(167, 139, 250, 0)`);
+                gradient.addColorStop(1, `rgba(167, 139, 250, ${ (connectivity - 0.5) * 0.2 })`);
+                emergenceCtx.fillStyle = gradient;
+                emergenceCtx.fillRect(0,0,w,h);
+            }
+
+            // Draw links
+            emergenceCtx.strokeStyle = `rgba(167, 139, 250, ${connectivity * 0.3})`;
+            emergenceCtx.lineWidth = 0.5;
+            for (let i = 0; i < projectedPoints.length; i++) {
+                for (let j = i + 1; j < projectedPoints.length; j++) {
+                    const p1 = emergencePoints[i];
+                    const p2 = emergencePoints[j];
+                    const dist = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2) + Math.pow(p1.z - p2.z, 2));
+                    if (dist < linkThreshold) {
+                        emergenceCtx.beginPath();
+                        emergenceCtx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
+                        emergenceCtx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
+                        emergenceCtx.stroke();
+                    }
+                }
+            }
+
+            // Draw points
+            projectedPoints.forEach(p => {
+                const brightness = (Math.sin(p.phase) + 1) / 2;
+                p.phase += 0.05 * connectivity;
+                emergenceCtx.fillStyle = `rgba(255, 255, 255, ${0.5 + brightness * 0.5})`;
+                emergenceCtx.beginPath();
+                emergenceCtx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                emergenceCtx.fill();
+            });
+
+            requestAnimationFrame(animateEmergence);
+        }
+
+        // --- Memetic Propagation ---
+        const propagationCanvas = document.getElementById('propagationCanvas');
+        const propagationCtx = propagationCanvas.getContext('2d');
+        let propagationNodes = [];
+        let memes = [];
+
+        function initPropagation() {
+            const w = propagationCanvas.width;
+            const h = propagationCanvas.height;
+            for(let i=0; i<150; i++) {
+                propagationNodes.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    state: 0, // 0=neutral, 1=unity, 2=innovation, 3=fear
+                    activation: 0
+                });
+            }
+        }
+
+        function introduceMeme(type) {
+            const startNode = propagationNodes[Math.floor(Math.random() * propagationNodes.length)];
+            memes.push({
+                x: startNode.x, y: startNode.y,
+                type: type, // 1, 2, 3
+                radius: 0,
+                maxRadius: propagationCanvas.width * 0.8,
+                speed: type === 1 ? 2 : (type === 2 ? 1.5 : 1)
+            });
+        }
+        document.getElementById('unity-btn').addEventListener('click', () => introduceMeme(1));
+        document.getElementById('innovation-btn').addEventListener('click', () => introduceMeme(2));
+        document.getElementById('fear-btn').addEventListener('click', () => introduceMeme(3));
+
+        function animatePropagation() {
+            const w = propagationCanvas.width;
+            const h = propagationCanvas.height;
+            propagationCtx.clearRect(0,0,w,h);
+            
+            memes.forEach((meme, i) => {
+                meme.radius += meme.speed;
+                if (meme.radius > meme.maxRadius) {
+                    memes.splice(i, 1);
+                }
+            });
+
+            propagationNodes.forEach(node => {
+                let influenced = false;
+                memes.forEach(meme => {
+                    const dx = node.x - meme.x;
+                    const dy = node.y - meme.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (Math.abs(dist - meme.radius) < 5) {
+                        node.state = meme.type;
+                        node.activation = 1.0;
+                        influenced = true;
+                    }
+                });
+                
+                if (node.activation > 0) node.activation -= 0.01;
+                else node.state = 0;
+
+                let color = 'rgba(255, 255, 255, 0.7)';
+                if (node.state === 1) color = `rgba(167, 139, 250, ${node.activation})`; // Unity
+                if (node.state === 2) color = `rgba(59, 130, 246, ${node.activation})`; // Innovation
+                if (node.state === 3) color = `rgba(239, 68, 68, ${node.activation})`; // Fear
+                
+                propagationCtx.fillStyle = color;
+                propagationCtx.beginPath();
+                propagationCtx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+                propagationCtx.fill();
+            });
+
+            requestAnimationFrame(animatePropagation);
+        }
+
+        // --- Noospheric Feedback ---
+        const feedbackChartCanvas = document.getElementById('feedbackChart').getContext('2d');
+        const noosphereSlider = document.getElementById('noosphere-slider');
+        let feedbackChart;
+        let feedbackData = [];
+
+        function updateFeedbackData() {
+            const coherence = parseInt(noosphereSlider.value) / 100;
+            const noise = 30 * (1 - coherence);
+            const stability = 0.5 + coherence * 0.4;
+            
+            const lastValue = feedbackData.length > 0 ? feedbackData[feedbackData.length - 1] : 0;
+            const newValue = lastValue * stability + (Math.random() - 0.5) * noise + Math.sin(feedbackData.length * 0.1);
+            
+            feedbackData.push(newValue);
+            if (feedbackData.length > 100) {
+                feedbackData.shift();
+            }
+            feedbackChart.data.datasets[0].data = feedbackData;
+            feedbackChart.update('none');
+        }
+
+        function initFeedbackChart() {
+            feedbackChart = new Chart(feedbackChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: 100 }, (_, i) => i),
+                    datasets: [{
+                        label: 'Individual Mind State',
+                        data: [],
+                        borderColor: '#8b5cf6',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: true, min: -80, max: 80 } }
+                }
+            });
+            setInterval(updateFeedbackData, 50);
+        }
+
+        // --- Window Onload ---
+        window.onload = function() {
+            emergenceCanvas.width = emergenceCanvas.offsetWidth;
+            emergenceCanvas.height = emergenceCanvas.offsetHeight;
+            initEmergence();
+            animateEmergence();
+
+            propagationCanvas.width = propagationCanvas.offsetWidth;
+            propagationCanvas.height = propagationCanvas.offsetHeight;
+            initPropagation();
+            animatePropagation();
+            
+            initFeedbackChart();
+        };
+    </script>
+</body>
+</html>

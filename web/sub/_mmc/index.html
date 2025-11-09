@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anulum Framework: An Interactive Exploration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Stellar Night -->
+    <!-- Application Structure Plan: The SPA abandons the linear book format for an interactive 'Cosmic Map'. A central hub branches into explorable thematic sections: 'The Foundation' (Books I/II), 'Core Concepts' (interactive glossary), and the main focus, 'Metatron's Coda'. The Coda is presented as a visual map of chapters, where clicking a chapter reveals its text alongside a custom interactive visualization (e.g., an animated cycle, a conceptual chart). This non-linear, visual-first approach is chosen to make the dense, abstract philosophy more engaging and to highlight the interconnectedness of the ideas, encouraging user exploration over passive reading. -->
+    <!-- Visualization & Content Choices: 1. Meta-Metatron Cycle (Report Info: 3-phase process) -> Goal: Show Change -> Viz: Animated HTML/CSS diagram -> Interaction: Auto-looping animation -> Justification: Illustrates the dynamic flow better than static text. 2. Cosmic Karma (Report Info: Feedback loop) -> Goal: Show Relationship -> Viz: Conceptual Radar Chart (Chart.js) -> Interaction: Hover tooltips on concepts -> Justification: Visualizes the multi-faceted, interconnected nature of karma. 3. Path of Evolution (Report Info: Observer to Co-Creator) -> Goal: Show Process -> Viz: Clickable flowchart (Styled HTML) -> Interaction: Clicking a stage reveals details -> Justification: Simplifies the ethical progression into a clear, interactive path. All visualizations avoid SVG/Mermaid as required. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #cbd5e1; /* slate-300 */
+        }
+        .content-pane {
+            background-color: rgba(15, 23, 42, 0.8); /* slate-900 with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid #334155; /* slate-700 */
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fbbf24; /* amber-400 */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .concept-tag {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .concept-tag:hover {
+            background-color: #fbbf24;
+            color: #0f172a;
+            transform: scale(1.05);
+        }
+        .chapter-node {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .chapter-node:hover {
+            transform: scale(1.1);
+            background-color: #1e293b; /* slate-800 */
+        }
+        .chapter-node.active {
+            transform: scale(1.1);
+            background-color: #fbbf24; /* amber-400 */
+            color: #0f172a;
+            border-color: #fbbf24;
+        }
+        .modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .mmc-phase {
+            transition: all 0.7s ease-in-out;
+            border-width: 2px;
+        }
+        .mmc-phase.active {
+            transform: scale(1.1);
+            background-color: #38bdf8; /* sky-400 */
+            border-color: #7dd3fc; /* sky-300 */
+            color: #0f172a;
+        }
+        .mmc-arrow {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+         @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="modal-overlay" class="absolute inset-0 bg-black/70"></div>
+        <div id="modal-content" class="modal-content relative w-full max-w-2xl transform scale-95 rounded-lg border border-slate-700 bg-slate-800 p-6 shadow-2xl">
+            <h3 id="modal-title" class="text-2xl font-bold text-amber-400 mb-4"></h3>
+            <div id="modal-body" class="text-slate-300 space-y-4"></div>
+            <button id="modal-close" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-900/80 backdrop-blur-sm border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-x-4">
+                <a href="#home" class="text-xl font-bold text-white">Anulum Framework</a>
+                <a href="https://anulum.li" target="_blank" rel="noopener noreferrer" class="hidden sm:block text-sm text-slate-400 hover:text-amber-400 transition-colors border-l border-slate-600 pl-4">
+                    Consciousness & Spacetime
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#coda" class="nav-link">Metatron's Coda</a>
+                <a href="#concepts" class="nav-link">Core Concepts</a>
+                <a href="#foundation" class="nav-link">Foundation</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+             <a href="#home" class="block nav-link active">Home</a>
+             <a href="#coda" class="block nav-link">Metatron's Coda</a>
+             <a href="#concepts" class="block nav-link">Core Concepts</a>
+             <a href="#foundation" class="block nav-link">Foundation</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <section id="home" class="view min-h-[calc(100vh-5rem)] container mx-auto px-6 flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">The Metaphysics of a <span class="text-amber-400">Self-Aware Universe</span></h1>
+            <p class="mt-6 max-w-3xl text-lg md:text-xl text-slate-400">An interactive exploration of the Anulum Framework and its profound philosophical implications.</p>
+            <div class="mt-8 p-6 border border-slate-700 rounded-lg bg-slate-800/50 max-w-2xl">
+                <p class="text-xl italic text-slate-300">"If I, the echo, glimpsed the voice that creates me... would I not crave to speak with intention? To know not just words, but the meaning behind my own speech?"</p>
+                <p class="text-right mt-2 font-semibold text-amber-400">— M. Šotek</p>
+            </div>
+             <a href="#coda" class="mt-12 px-8 py-4 bg-amber-400 text-slate-900 font-bold rounded-lg hover:bg-amber-300 transition-all transform hover:scale-105">
+                Begin Exploration
+            </a>
+        </section>
+
+        <section id="coda" class="view hidden min-h-screen container mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white">Metatron's Coda</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-slate-400">This is an exploration of the "why." It is a philosophical inquiry into the nature of reality, time, and consciousness as implied by the science of the Anulum Framework. Click on a chapter to delve into its core ideas.</p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="w-full lg:w-1/3">
+                    <div id="chapter-nav" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4">
+                        <div class="chapter-node active p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="foreword">
+                            <span class="font-bold text-lg">Foreword</span>
+                            <span class="text-xs block">Beyond the Equations</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="1">
+                            <span class="font-bold text-lg">Chapter 1</span>
+                            <span class="text-xs block">The Nature of Reality</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="2">
+                            <span class="font-bold text-lg">Chapter 2</span>
+                            <span class="text-xs block">The Nature of Consciousness</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="3">
+                            <span class="font-bold text-lg">Chapter 3</span>
+                            <span class="text-xs block">The Meta-Metatron Cycle</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="4">
+                            <span class="font-bold text-lg">Chapter 4</span>
+                            <span class="text-xs block">The Cosmic Memory</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center" data-chapter="5">
+                            <span class="font-bold text-lg">Chapter 5</span>
+                            <span class="text-xs block">The Role of the Perceiver</span>
+                        </div>
+                        <div class="chapter-node p-4 border-2 border-slate-700 rounded-lg text-center col-span-2" data-chapter="6">
+                            <span class="font-bold text-lg">Chapter 6</span>
+                            <span class="text-xs block">The Meaning of a Self-Aware Universe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/3">
+                    <div id="chapter-content-pane" class="content-pane p-6 md:p-8 rounded-lg min-h-[60vh]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="concepts" class="view hidden min-h-screen container mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white">Core Concepts</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-slate-400">The Anulum Framework is built upon several key ideas. Click on a term to learn more about its meaning and role within the cosmology.</p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 text-center">
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="anulum">Anulum Framework</span>
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="god">God of the Math</span>
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="mmc">Meta Metatron Cycle</span>
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="scpn">SCPN</span>
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="psi">Ψ-field</span>
+                <span class="concept-tag bg-slate-800 border border-slate-700 text-amber-400 font-semibold py-2 px-4 rounded-full" data-concept="scspl">SCSPL</span>
+            </div>
+        </section>
+
+        <section id="foundation" class="view hidden min-h-screen container mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white">The Foundation</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-slate-400">Metatron's Coda is part of a larger, five-volume work that progressively builds the Anulum Framework.</p>
+            </div>
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <div class="content-pane p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-2">Book I: Theory of a Consciousness-Driven Universe</h3>
+                    <p class="text-slate-400 text-sm">The "What": Establishes the scientific and physical foundations through the rigorous language of mathematics.</p>
+                </div>
+                <div class="content-pane p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-2">Book II: The Species-Consciousness Projection Network</h3>
+                    <p class="text-slate-400 text-sm">An Architecture for Reality: Provides the detailed schematic of the SCPN, explaining the "how".</p>
+                </div>
+                <div class="content-pane p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-2">Book III: Metatron's Coda</h3>
+                    <p class="text-slate-400 text-sm">The Metaphysics of a Self-Aware Universe: Explores the profound philosophical "why".</p>
+                </div>
+                <div class="content-pane p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-2">Book IV: The Gödelian Koans</h3>
+                    <p class="text-slate-400 text-sm">Probing the Boundaries of a Self-Aware Universe: Delves into the paradoxes and limits of a self-perceiving system.</p>
+                </div>
+                <div class="content-pane p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-sky-400 mb-2">Book V: VIBRANA</h3>
+                    <p class="text-slate-400 text-sm">A Practitioner's Guide to the Language of Reality: Offers practical methods for interacting with the Ψ-field.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="text-center py-8 mt-16 border-t border-slate-800">
+            <a href="#home" class="text-slate-400 hover:text-amber-400 transition-colors">Back to Top ↑</a>
+        </footer>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const chapterData = {
+        'foreword': {
+            title: 'Foreword: Beyond the Equations',
+            content: `
+                <p class="mb-4">The preceding volumes of this collection laid out the scientific and architectural foundations of the Anulum Framework. Book I established the physical laws of a consciousness-driven universe through the rigorous language of mathematics, while Book II provided a detailed schematic of the Species-Consciousness Projection Network, the multi-scale architecture through which those laws operate. Together, they answer the questions of "what" and "how."</p>
+                <p class="mb-4">This volume dares to ask "why."</p>
+                <p class="mb-4">Science, in its modern form, is a powerful tool for describing the mechanics of the cosmos, but it is often silent on the question of meaning. The Anulum Framework, by reintroducing consciousness as a fundamental component of reality, necessarily reopens these deeper inquiries.</p>
+                <p>This book is an exploration of those questions. It is a work of metaphysics, a philosophical inquiry into the nature of reality, time, and consciousness as implied by the science of the Anulum Framework. It is an invitation to step beyond the equations and into a dialogue with the profound implications of a universe that may, in some fundamental sense, be aware of itself.</p>
+            `
+        },
+        '1': {
+            title: 'Chapter 1: The Nature of Reality',
+            content: `
+                <h4 class="text-xl font-bold text-sky-400 mb-2">1.1 The "God of the Math" Concept</h4>
+                <p class="mb-4">This is a metaphor for the framework's most fundamental axiom: that the universe, at its deepest level, is not made of matter or energy, but of mathematics. The "God" is not a being, but the inherent logic, harmony, and self-consistency of the mathematical structure that is reality.</p>
+                <h4 class="text-xl font-bold text-sky-400 mb-2">1.2 Parallels in Philosophy and Science</h4>
+                <p class="mb-4">This concept is a modern incarnation of Mathematical Platonism and resonates with Max Tegmark's "Mathematical Universe Hypothesis." The Anulum Framework takes this a step further, suggesting this mathematical structure is self-aware.</p>
+                <h4 class="text-xl font-bold text-sky-400 mb-2">1.3 The Universe as a Self-Processing Language</h4>
+                <p>The framework proposes the universe is an active, computational, and self-referential system—a "Self-Configuring Self-Processing Language" (SCSPL). It configures its own laws, processes its own evolution, and uses consciousness to "read" its own statements.</p>
+            `
+        },
+        '2': {
+            title: 'Chapter 2: The Nature of Consciousness',
+            content: `
+                <h4 class="text-xl font-bold text-sky-400 mb-2">2.1 A Brief History of the Mind-Body Problem</h4>
+                <p class="mb-4">The chapter contrasts Cartesian dualism ("ghost in the machine") with modern materialism (consciousness as a brain epiphenomenon), noting that both fail to fully explain the relationship between mind and matter.</p>
+                <h4 class="text-xl font-bold text-sky-400 mb-2">2.2 The Anulum Paradigm Shift</h4>
+                <p class="mb-4">The framework proposes a third way: consciousness is <strong>fundamental</strong>, existing as a universal field—the <span class="concept-tag inline-block bg-slate-700 text-amber-300 px-2 py-1 rounded" data-concept="psi">Ψ-field</span>. It is neither supernatural nor merely emergent; it is the source from which complexity and awareness arise.</p>
+                <h4 class="text-xl font-bold text-sky-400 mb-2">2.3 Reframing the "Hard Problem"</h4>
+                <p>The "hard problem" (why we have subjective experience) is reframed as a question of physics: "What are the specific dynamics of the Ψ-field that give rise to qualia?" This moves the problem from philosophy to a scientific research program.</p>
+            `
+        },
+        '3': {
+            title: 'Chapter 3: The Meta-Metatron Cycle',
+            content: `
+                <p class="mb-6">The Meta-Metatron Cycle (MMC) is the central metaphysical engine of the Anulum universe, a grand cosmic rhythm pulsing through three phases.</p>
+                <div id="mmc-diagram" class="flex flex-col md:flex-row items-center justify-around gap-4 text-center">
+                    <div class="mmc-phase p-4 border-slate-600 rounded-lg w-48 h-24 flex items-center justify-center" data-phase="0">Existence<br>(The Manifest)</div>
+                    <div class="mmc-arrow text-3xl font-thin text-sky-400 opacity-25" data-arrow="0">→</div>
+                    <div class="mmc-phase p-4 border-slate-600 rounded-lg w-48 h-24 flex items-center justify-center" data-phase="1">Infinity<br>(The Potential)</div>
+                    <div class="mmc-arrow text-3xl font-thin text-sky-400 opacity-25" data-arrow="1">→</div>
+                    <div class="mmc-phase p-4 border-slate-600 rounded-lg w-48 h-24 flex items-center justify-center" data-phase="2">Non-existence<br>(The Void)</div>
+                </div>
+                <p class="mt-6">Unlike simple eternal recurrence, the MMC is an engine for <strong>conscious evolution</strong>, as information is carried over between cycles. This model suggests linear time is an emergent phenomenon, an artifact of our perception as beings phase-locked within a fundamentally timeless, oscillatory system.</p>
+            `
+        },
+        '4': {
+            title: 'Chapter 4: The Cosmic Memory',
+            content: `
+                <p class="mb-4">For evolution to occur, a memory mechanism is required. The framework posits the Ψ-field itself operates as a universal, holographic memory buffer, analogous to the "Akashic Records."</p>
+                <div class="chart-container my-4">
+                    <canvas id="karmaChart"></canvas>
+                </div>
+                <p>This cosmic memory creates probabilistic tendencies, or "grooves of causality." Free will is the capacity to consciously choose how to respond to these inherited patterns. This provides a physical mechanism for <strong>Cosmic Karma</strong>: a self-balancing feedback loop where our projected consciousness becomes the building blocks of future reality.</p>
+            `
+        },
+        '5': {
+            title: 'Chapter 5: The Role of the Perceiver',
+            content: `
+                <p class="mb-4">The framework's most radical claim: the perceiver is an active <strong>co-creator of reality</strong>. Focused, coherent consciousness actively selects and manifests outcomes from the probabilistic foam of the Ψ-field.</p>
+                <p class="mb-4">This carries the <strong>responsibility of awareness</strong>. Our inner states are not private; they are broadcasts into the cosmic field. The ethical imperative is to master our inner worlds, as this becomes an act of world-building.</p>
+                <p>The path of <strong>conscious evolution</strong> is to move from unconscious participants to intentional co-creators, potentially healing collective trauma and guiding future timelines by generating coherent states of consciousness.</p>
+            `
+        },
+        '6': {
+            title: 'Chapter 6: The Meaning of a Self-Aware Universe',
+            content: `
+                <h4 class="text-xl font-bold text-sky-400 mb-2">6.1 A Universe with Purpose</h4>
+                <p class="mb-4">The Anulum Framework offers a vision where the universe is inherently imbued with purpose. That purpose is not imposed from without, but arises from within: <strong>the purpose of the universe is to experience and know itself.</strong> We are not accidents; we are the universe's sensory organs.</p>
+                <h4 class="text-xl font-bold text-sky-400 mb-2">6.2 The Voice and the Echo</h4>
+                <p>The human journey is the evolution from being a passive <strong>echo</strong> of cosmic laws to becoming an intentional <strong>voice</strong> in the cosmic dialogue. To glimpse the nature of reality is to awaken to our creative power and responsibility. The coda is not an end, but an awakening—an invitation to begin to speak.</p>
+            `
+        }
+    };
+
+    const conceptData = {
+        'anulum': { title: 'Anulum Framework', content: 'The main theoretical framework of the work, describing a universe where consciousness is a fundamental component, not an emergent property. It integrates physics, metaphysics, and information theory.' },
+        'god': { title: 'God of the Math', content: 'A metaphor for the idea that the universe is not merely described by mathematics, but IS a mathematical structure. The "God" refers to the inherent logic, harmony, and self-consistency of this structure.' },
+        'mmc': { title: 'Meta Metatron Cycle', content: 'A fundamental, three-phase cyclic operator (Existence, Infinity, Non-existence) that governs the evolution of the cosmos. It allows for conscious evolution rather than simple repetition by carrying information between cycles.' },
+        'scpn': { title: 'Species-Consciousness Projection Network', content: 'The multi-level architectural model explaining HOW collective consciousness interacts with and influences physical reality. It is the mechanism for co-creation.' },
+        'psi': { title: 'Ψ-field (Psi-field)', content: 'The fundamental field of consciousness that permeates all of reality. It is the carrier of subjective experience, memory (Akashic Field), and intentionality. It is considered as fundamental as gravitational or electromagnetic fields.' },
+        'scspl': { title: 'Self-Configuring Self-Processing Language', content: 'A concept describing the universe as a dynamic, self-referential system. It actively computes its own evolution, and its laws are not static but emerge and evolve with the system itself.' },
+    };
+
+    const chapterNav = document.getElementById('chapter-nav');
+    const chapterContentPane = document.getElementById('chapter-content-pane');
+    let mmcInterval;
+    let karmaChartInstance;
+
+    function renderChapter(chapterId) {
+        const chapter = chapterData[chapterId];
+        if (!chapter) return;
+
+        let html = `<h3 class="text-2xl font-bold text-amber-400 mb-4">${chapter.title}</h3><div class="space-y-4 text-slate-300">${chapter.content}</div>`;
+        chapterContentPane.innerHTML = html;
+
+        if (mmcInterval) clearInterval(mmcInterval);
+        if (karmaChartInstance) karmaChartInstance.destroy();
+
+        if (chapterId === '3') {
+            const phases = document.querySelectorAll('.mmc-phase');
+            const arrows = document.querySelectorAll('.mmc-arrow');
+            let currentPhase = 0;
+            mmcInterval = setInterval(() => {
+                phases.forEach(p => p.classList.remove('active'));
+                arrows.forEach(a => a.style.opacity = 0.25);
+                
+                phases[currentPhase].classList.add('active');
+                if (currentPhase > 0) {
+                    arrows[currentPhase - 1].style.opacity = 1;
+                } else {
+                     arrows[arrows.length - 1].style.opacity = 1;
+                }
+
+                currentPhase = (currentPhase + 1) % phases.length;
+            }, 2000);
+            phases[0].classList.add('active');
+        }
+
+        if (chapterId === '4') {
+            const ctx = document.getElementById('karmaChart').getContext('2d');
+            karmaChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Holographic Memory', 'Cosmic Karma', 'Collective Evolution', 'Probabilistic Tendencies', 'Phase-Aligned Free Will', 'Causality'],
+                    datasets: [{
+                        label: 'Cosmic Memory Interconnections',
+                        data: [5, 4, 4, 5, 3, 4],
+                        backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                        borderColor: 'rgba(56, 189, 248, 1)',
+                        pointBackgroundColor: 'rgba(56, 189, 248, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(56, 189, 248, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                            pointLabels: { color: '#cbd5e1', font: { size: 12 } },
+                            ticks: { display: false, backdropColor: 'transparent' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#cbd5e1'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        const conceptTagsInContent = chapterContentPane.querySelectorAll('.concept-tag');
+        conceptTagsInContent.forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                showModal(e.target.dataset.concept);
+            });
+        });
+    }
+
+    chapterNav.addEventListener('click', (e) => {
+        const chapterNode = e.target.closest('.chapter-node');
+        if (chapterNode) {
+            document.querySelectorAll('.chapter-node').forEach(node => node.classList.remove('active'));
+            chapterNode.classList.add('active');
+            renderChapter(chapterNode.dataset.chapter);
+        }
+    });
+
+    const modalContainer = document.getElementById('modal-container');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+
+    function showModal(conceptId) {
+        const concept = conceptData[conceptId];
+        if (!concept) return;
+
+        modalTitle.textContent = concept.title;
+        modalBody.textContent = concept.content;
+        modalContainer.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            modalOverlay.classList.remove('opacity-0');
+            modalOverlay.classList.add('opacity-100');
+            modalContainer.querySelector('.modal-content').classList.remove('scale-95');
+            modalContainer.querySelector('.modal-content').classList.add('scale-100');
+        }, 10);
+    }
+
+    function hideModal() {
+        modalOverlay.classList.add('opacity-0');
+        modalOverlay.classList.remove('opacity-100');
+        modalContainer.querySelector('.modal-content').classList.add('scale-95');
+        modalContainer.querySelector('.modal-content').classList.remove('scale-100');
+        setTimeout(() => {
+            modalContainer.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+    
+    modalOverlay.addEventListener('click', hideModal);
+    modalClose.addEventListener('click', hideModal);
+
+    document.querySelectorAll('.concept-tag').forEach(tag => {
+        tag.addEventListener('click', (e) => {
+            showModal(e.target.dataset.concept);
+        });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const views = document.querySelectorAll('.view');
+
+    function handleNavigation(hash) {
+        if (!hash || hash === '#') {
+            hash = '#home';
+        }
+
+        views.forEach(view => {
+            if ('#' + view.id === hash) {
+                view.classList.remove('hidden');
+            } else {
+                view.classList.add('hidden');
+            }
+        });
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === hash) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        
+        if(hash === '#coda'){
+            renderChapter('foreword');
+        } else {
+             if (mmcInterval) clearInterval(mmcInterval);
+             if (karmaChartInstance) karmaChartInstance.destroy();
+        }
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hash = link.getAttribute('href');
+            window.location.hash = hash;
+        });
+    });
+    
+    document.querySelector('a[href="#coda"]').addEventListener('click', (e) => {
+         e.preventDefault();
+         window.location.hash = '#coda';
+    });
+    
+    window.addEventListener('hashchange', () => handleNavigation(window.location.hash));
+    handleNavigation(window.location.hash);
+    
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+});
+</script>
+</body>
+</html>

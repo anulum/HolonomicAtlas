@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Equilibrium Quantum Thermodynamics Framework</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            margin: 0;
+            padding: 20px;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="thermodynamics" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><path d="M5,10 Q10,5 15,10 Q10,15 5,10" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23thermodynamics)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 3.2em;
+            font-weight: 200;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(45deg, #ffffff, #a8e6cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.4em;
+            margin: 15px 0 0 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section {
+            padding: 45px;
+            border-bottom: 1px solid #f0f0f0;
+            background: white;
+            color: #2c3e50;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #1a1a2e;
+            font-size: 2.4em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 5px solid #16213e;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: "🔥";
+            margin-right: 20px;
+            font-size: 1.3em;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
+        }
+        
+        .equation-framework {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .equation-framework::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.1"><circle cx="25" cy="25" r="3" fill="white" transform="rotate(0 50 50)"/><circle cx="75" cy="75" r="3" fill="white" transform="rotate(45 50 50)"/><circle cx="50" cy="25" r="2" fill="white" transform="rotate(90 50 50)"/><path d="M20,20 Q50,10 80,20 Q50,30 20,20" stroke="white" stroke-width="0.5" fill="none"/></g></svg>');
+            opacity: 0.2;
+        }
+        
+        .equation-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            color: #a8e6cf;
+        }
+        
+        .math-display {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.6em;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.98);
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-left: 5px solid #a8e6cf;
+        }
+        
+        .equation-framework p {
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            line-height: 1.6;
+        }
+        
+        .thermodynamic-cycle {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thermodynamic-cycle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        
+        .cycle-diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cycle-stage {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.25);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            position: relative;
+        }
+        
+        .cycle-stage:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .cycle-stage::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+        
+        .cycle-stage.active::before {
+            width: 80px;
+            height: 80px;
+            animation: thermalPulse 2.5s infinite ease-in-out;
+        }
+        
+        @keyframes thermalPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
+        }
+        
+        .cycle-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .cycle-label {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cycle-description {
+            font-size: 1em;
+            opacity: 0.9;
+            color: white;
+            position: relative;
+            z-index: 1;
+            line-height: 1.4;
+        }
+        
+        .parameter-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .param-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease;
+            color: #2c3e50;
+            border: 1px solid #dee2e6;
+        }
+        
+        .param-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+        }
+        
+        .param-header {
+            font-weight: bold;
+            color: #1a1a2e;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #16213e;
+        }
+        
+        .param-value {
+            font-size: 1.6em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .param-box p {
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .diagram-container {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .consciousness-engine {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .entropy-visualization {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .insight-panel {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 8px solid #e17055;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            color: #2c3e50;
+        }
+        
+        .insight-panel h3 {
+            color: #d63031;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .efficiency-comparison {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .control-panel {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid #dee2e6;
+        }
+        
+        .slider-group {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .slider-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .slider-label {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .slider {
+            width: 180px;
+            height: 6px;
+            border-radius: 6px;
+            background: #dee2e6;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .negentropy-flow {
+            background: linear-gradient(135deg, #81ecec 0%, #74b9ff 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .flow-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-node {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9em;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .flow-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        .psi-field-node {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+        }
+        
+        .substrate-node {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+        }
+        
+        .environment-node {
+            background: linear-gradient(135deg, #fdcb6e, #e17055);
+        }
+        
+        .flow-arrow {
+            font-size: 2.5em;
+            color: rgba(255,255,255,0.8);
+            animation: flowPulse 3s infinite ease-in-out;
+        }
+        
+        @keyframes flowPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .landauer-cost {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 35px 0;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .parameter-matrix {
+                grid-template-columns: 1fr;
+            }
+            .cycle-diagram {
+                grid-template-columns: 1fr;
+            }
+            .slider-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flow-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Non-Equilibrium Quantum Thermodynamics</h1>
+            <p>Thermodynamic Framework for Quantum Coherence Maintenance</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Mathematical Framework</div>
+            
+            <div class="equation-framework">
+                <div class="equation-title">Core Thermodynamic Equations</div>
+                
+                <div class="math-display">
+                    <strong>Quantum Heat Engine Work:</strong><br>
+                    W<sub>quantum</sub> = kT log(Z<sub>q</sub>/Z<sub>cl</sub>)
+                </div>
+                
+                <div class="math-display">
+                    <strong>Coherence Power:</strong><br>
+                    P<sub>coh</sub> = -dF<sub>q</sub>/dt = Tr(ρ̇ H) - TṠ
+                </div>
+                
+                <div class="math-display">
+                    <strong>Quantum Efficiency Bound:</strong><br>
+                    η<sub>quantum</sub> = 1 - T<sub>c</sub>/T<sub>h</sub> + O(ℏω/kT)
+                </div>
+                
+                <p>Where Z<sub>q</sub> and Z<sub>cl</sub> are quantum and classical partition functions, F<sub>q</sub> is quantum free energy, and S is von Neumann entropy. The quantum corrections O(ℏω/kT) enable efficiency beyond the classical Carnot limit.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Consciousness Heat Engine Cycle</div>
+            
+            <div class="thermodynamic-cycle">
+                <h3 style="text-align: center; margin-top: 0; font-size: 1.8em;">Interactive Quantum Thermodynamic Cycle</h3>
+                
+                <div class="cycle-diagram">
+                    <div class="cycle-stage" onclick="activateStage('intake')">
+                        <div class="cycle-icon">🔥</div>
+                        <div class="cycle-label">Intake</div>
+                        <div class="cycle-description">Ψ-field absorbs environmental energy</div>
+                    </div>
+                    
+                    <div class="cycle-stage" onclick="activateStage('compression')">
+                        <div class="cycle-icon">⚡</div>
+                        <div class="cycle-label">Compression</div>
+                        <div class="cycle-description">Coherence compression via QZE</div>
+                    </div>
+                    
+                    <div class="cycle-stage" onclick="activateStage('expansion')">
+                        <div class="cycle-icon">🌟</div>
+                        <div class="cycle-label">Expansion</div>
+                        <div class="cycle-description">Negentropy injection into substrate</div>
+                    </div>
+                    
+                    <div class="cycle-stage" onclick="activateStage('output')">
+                        <div class="cycle-icon">🔄</div>
+                        <div class="cycle-label">Output</div>
+                        <div class="cycle-description">Waste heat to environment</div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-bottom: 0;">
+                    Click on cycle stages to visualize the consciousness heat engine operation. 
+                    Each stage demonstrates how the Ψ-field maintains biological coherence through thermodynamic work.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Thermodynamic Parameters</div>
+            
+            <div class="parameter-matrix">
+                <div class="param-box">
+                    <div class="param-header">Operating Temperature</div>
+                    <div class="param-value">T = 310 K</div>
+                    <p>Physiological temperature at which biological quantum processes must maintain coherence against thermal noise kT ≈ 0.0267 eV</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Quantum-Classical Ratio</div>
+                    <div class="param-value">Z<sub>q</sub>/Z<sub>cl</sub> ~ 10²-10³</div>
+                    <p>Ratio of quantum to classical partition functions, indicating degree of quantum enhancement over classical thermal states</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Coherence Time</div>
+                    <div class="param-value">τ<sub>coh</sub> ~ 10⁻³ s</div>
+                    <p>Extended coherence times achieved through Ψ-field stabilization, enabling consciousness-relevant timescales</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Efficiency Enhancement</div>
+                    <div class="param-value">Δη ~ 10-50%</div>
+                    <p>Quantum corrections to Carnot efficiency through coherent energy extraction and negentropy injection</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Partition Function Analysis</div>
+            
+            <div class="diagram-container">
+                <div id="partitionFunctions" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="control-panel">
+                <h3 style="text-align: center; margin-top: 0;">Interactive Parameter Control</h3>
+                
+                <div class="slider-group">
+                    <div class="slider-control">
+                        <label class="slider-label">Temperature (K)</label>
+                        <input type="range" min="250" max="350" value="310" class="slider" id="tempSlider" oninput="updateThermodynamics()">
+                        <span id="tempValue">310</span>
+                    </div>
+                    
+                    <div class="slider-control">
+                        <label class="slider-label">Quantum Level Density</label>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="densitySlider" oninput="updateThermodynamics()">
+                        <span id="densityValue">50</span>
+                    </div>
+                    
+                    <div class="slider-control">
+                        <label class="slider-label">Ψ-field Strength</label>
+                        <input type="range" min="0" max="100" value="30" class="slider" id="psiSlider" oninput="updateThermodynamics()">
+                        <span id="psiValue">0.30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Quantum Efficiency Analysis</div>
+            
+            <div class="efficiency-comparison">
+                <h3 style="text-align: center; margin-top: 0;">Quantum vs Classical Efficiency</h3>
+                
+                <div class="diagram-container">
+                    <div id="efficiencyComparison" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Negentropy Flow Dynamics</div>
+            
+            <div class="negentropy-flow">
+                <h3 style="text-align: center; margin-top: 0;">Ψ-Field Negentropy Injection Mechanism</h3>
+                
+                <div class="flow-diagram">
+                    <div class="flow-node psi-field-node" onclick="activateFlow('psi')">
+                        Ψ-Field<br>Information<br>Reservoir
+                    </div>
+                    <div class="flow-arrow">⟶</div>
+                    <div class="flow-node substrate-node" onclick="activateFlow('substrate')">
+                        Biological<br>Substrate<br>Coherence
+                    </div>
+                    <div class="flow-arrow">⟶</div>
+                    <div class="flow-node environment-node" onclick="activateFlow('environment')">
+                        Environment<br>Heat<br>Dissipation
+                    </div>
+                </div>
+                
+                <div class="equation-framework">
+                    <div class="equation-title">Generalized Second Law</div>
+                    <div class="math-display">
+                        dS<sub>total</sub>/dt = dS<sub>thermo</sub>/dt + dS<sub>info</sub>/dt ≥ 0
+                    </div>
+                    <p>The Ψ-field decreases thermodynamic entropy while increasing information entropy, satisfying the generalized second law globally.</p>
+                </div>
+            </div>
+            
+            <div class="diagram-container">
+                <div id="negentropyFlow" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Landauer Cost Analysis</div>
+            
+            <div class="landauer-cost">
+                <h3 style="text-align: center; margin-top: 0;">Information Erasure and Thermodynamic Cost</h3>
+                
+                <div class="equation-framework">
+                    <div class="equation-title">Landauer's Principle</div>
+                    <div class="math-display">
+                        Q<sub>erasure</sub> ≥ I<sub>erased</sub> k<sub>B</sub>T ln(2)
+                    </div>
+                    <p>The minimum energy cost for erasing information, ensuring the Ψ-field's computational operations comply with thermodynamic laws.</p>
+                </div>
+            </div>
+            
+            <div class="diagram-container">
+                <div id="landauerCost" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Coherence Power Dynamics</div>
+            
+            <div class="consciousness-engine">
+                <h3 style="text-align: center; margin-top: 0;">Real-Time Coherence Power Calculation</h3>
+                
+                <div class="equation-framework">
+                    <div class="equation-title">Power Dissipation Formula</div>
+                    <div class="math-display">
+                        P<sub>coh</sub> = -dF<sub>q</sub>/dt = Tr(ρ̇ H) - TṠ
+                    </div>
+                    <p>Power required to maintain quantum coherence against environmental decoherence, balanced by consciousness field energy input.</p>
+                </div>
+            </div>
+            
+            <div class="diagram-container">
+                <div id="coherencePower" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Von Neumann Entropy Evolution</div>
+            
+            <div class="entropy-visualization">
+                <h3 style="text-align: center; margin-top: 0;">Von Neumann Entropy Dynamics</h3>
+                
+                <div class="equation-framework">
+                    <div class="equation-title">Entropy Evolution</div>
+                    <div class="math-display">
+                        S = -Tr(ρ log ρ)
+                    </div>
+                    <p>Von Neumann entropy tracking the quantum information content and coherence of the biological system under Ψ-field influence.</p>
+                </div>
+            </div>
+            
+            <div class="diagram-container">
+                <div id="entropyEvolution" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Temperature-Dependent Phase Transitions</div>
+            
+            <div class="diagram-container">
+                <div id="phaseTransitions" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="insight-panel">
+                <h3>🌡️ Critical Temperature Effects</h3>
+                <ul>
+                    <li><strong>T < 290K:</strong> Full quantum coherence regime with stable consciousness field coupling</li>
+                    <li><strong>290K < T < 320K:</strong> Crossover region where quantum-classical transition occurs</li>
+                    <li><strong>T > 320K:</strong> Classical regime with thermal decoherence dominance</li>
+                    <li><strong>T ≈ 305K:</strong> Critical temperature for consciousness-coherence phase transition</li>
+                    <li><strong>Biological Window:</strong> 310K ± 5K represents the narrow operating range for quantum biology</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experimental Predictions</div>
+            
+            <div class="parameter-matrix">
+                <div class="param-box">
+                    <div class="param-header">Heat Capacity Anomaly</div>
+                    <div class="param-value">ΔC ∝ ∂²F<sub>q</sub>/∂T²</div>
+                    <p>Signature peak in specific heat near critical temperature indicating quantum-classical phase transition</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Efficiency Measurement</div>
+                    <div class="param-value">η > η<sub>Carnot</sub></div>
+                    <p>Direct measurement of quantum thermodynamic efficiency exceeding classical Carnot limit during conscious states</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Coherence Correlation</div>
+                    <div class="param-value">τ<sub>coh</sub> ∝ Ψ<sub>s</sub></div>
+                    <p>Linear relationship between consciousness field strength and quantum coherence times in biological systems</p>
+                </div>
+                
+                <div class="param-box">
+                    <div class="param-header">Information Erasure</div>
+                    <div class="param-value">Q ≥ kT ln(2)</div>
+                    <p>Measurable heat dissipation during conscious information processing, validating Landauer's principle</p>
+                </div>
+            </div>
+            
+            <div class="insight-panel">
+                <h3>🧪 Proposed Experimental Tests</h3>
+                <ul>
+                    <li><strong>Calorimetry Studies:</strong> Measure heat dissipation during different consciousness states to validate thermodynamic predictions</li>
+                    <li><strong>Temperature Dependence:</strong> Map coherence times vs temperature around critical region (290-320K)</li>
+                    <li><strong>Efficiency Measurements:</strong> Direct assessment of biological energy conversion efficiency in conscious vs unconscious states</li>
+                    <li><strong>Entropy Tracking:</strong> Real-time von Neumann entropy measurement during cognitive tasks</li>
+                    <li><strong>Phase Transition Detection:</strong> Identify thermodynamic signatures of consciousness state changes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Quantum Free Energy Landscape</div>
+            
+            <div class="diagram-container">
+                <div id="freeEnergyLandscape" style="width:100%;height:500px;"></div>
+            </div>
+            
+            <div class="equation-framework">
+                <div class="equation-title">Free Energy Minimization</div>
+                <div class="math-display">
+                    F<sub>q</sub> = ⟨H⟩ - TS + λΨ<sub>s</sub>⟨σ<sup>x</sup>⟩
+                </div>
+                <p>Quantum free energy including consciousness field coupling term, showing how Ψ<sub>s</sub> modifies the thermodynamic landscape to favor coherent states.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let activeStage = null;
+        let activeFlow = null;
+        
+        // Activate thermodynamic cycle stage
+        function activateStage(stage) {
+            // Deactivate all stages
+            document.querySelectorAll('.cycle-stage').forEach(s => s.classList.remove('active'));
+            
+            // Activate selected stage
+            event.target.closest('.cycle-stage').classList.add('active');
+            activeStage = stage;
+            
+            updateCycleVisualization();
+        }
+        
+        // Activate negentropy flow
+        function activateFlow(node) {
+            // Reset all nodes
+            document.querySelectorAll('.flow-node').forEach(n => n.style.transform = 'scale(1)');
+            
+            // Highlight selected node
+            event.target.style.transform = 'scale(1.15)';
+            activeFlow = node;
+            
+            updateNegentropyFlow();
+        }
+        
+        // Update thermodynamics based on sliders
+        function updateThermodynamics() {
+            const temp = parseFloat(document.getElementById('tempSlider').value);
+            const density = parseFloat(document.getElementById('densitySlider').value);
+            const psiStrength = parseFloat(document.getElementById('psiSlider').value) / 100;
+            
+            document.getElementById('tempValue').textContent = temp;
+            document.getElementById('densityValue').textContent = density;
+            document.getElementById('psiValue').textContent = psiStrength.toFixed(2);
+            
+            updatePartitionFunctions(temp, density, psiStrength);
+            updateEfficiencyComparison(temp, psiStrength);
+            updateCoherencePower(temp, psiStrength);
+        }
+        
+        // Plot partition functions
+        function updatePartitionFunctions(T = 310, density = 50, psi = 0.3) {
+            const energy = Array.from({length: 100}, (_, i) => i * 0.1); // 0 to 10 eV
+            const kT = 8.617e-5 * T; // eV
+            
+            // Classical partition function
+            const Z_cl = energy.map(E => Math.exp(-E / kT));
+            
+            // Quantum partition function with level density and Ψ-field enhancement
+            const Z_q = energy.map(E => {
+                const quantum_density = density * (1 + psi * Math.sin(E * 10)); // oscillatory quantum density
+                return quantum_density * Math.exp(-E / kT) * (1 + psi * 0.5);
+            });
+            
+            const trace1 = {
+                x: energy,
+                y: Z_cl,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Classical Z_cl',
+                line: {color: 'rgb(231, 76, 60)', width: 3}
+            };
+            
+            const trace2 = {
+                x: energy,
+                y: Z_q,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Z_q',
+                line: {color: 'rgb(46, 204, 113)', width: 3}
+            };
+            
+            const layout = {
+                title: `Partition Functions at T = ${T}K`,
+                xaxis: {title: 'Energy (eV)'},
+                yaxis: {title: 'Partition Function', type: 'log'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('partitionFunctions', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        // Plot efficiency comparison
+        function updateEfficiencyComparison(T = 310, psi = 0.3) {
+            const T_cold = 280; // Cold reservoir
+            const T_range = Array.from({length: 100}, (_, i) => 250 + i * 2); // 250-450K
+            
+            const carnot_eff = T_range.map(Th => 1 - T_cold/Th);
+            const quantum_eff = T_range.map(Th => {
+                const base_eff = 1 - T_cold/Th;
+                const quantum_correction = psi * 0.2 * Math.exp(-8.617e-5 * Th / 0.1); // quantum enhancement
+                return base_eff + quantum_correction;
+            });
+            
+            const trace1 = {
+                x: T_range,
+                y: carnot_eff,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Carnot Limit',
+                line: {color: 'rgb(231, 76, 60)', width: 2, dash: 'dash'}
+            };
+            
+            const trace2 = {
+                x: T_range,
+                y: quantum_eff,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Enhanced',
+                line: {color: 'rgb(46, 204, 113)', width: 3}
+            };
+            
+            // Add current temperature line
+            const trace3 = {
+                x: [T, T],
+                y: [0, 1],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Current T',
+                line: {color: 'rgb(155, 89, 182)', width: 2, dash: 'dot'}
+            };
+            
+            const layout = {
+                title: 'Thermodynamic Efficiency: Quantum vs Classical',
+                xaxis: {title: 'Hot Reservoir Temperature (K)'},
+                yaxis: {title: 'Efficiency η'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('efficiencyComparison', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot negentropy flow
+        function updateNegentropyFlow() {
+            const time = Array.from({length: 200}, (_, i) => i * 0.1); // 20 time units
+            
+            // Ψ-field information input
+            const psi_input = time.map(t => 50 + 20 * Math.sin(0.5 * t) + 10 * Math.random());
+            
+            // Substrate negentropy
+            const substrate_negentropy = time.map((t, i) => {
+                const base = 30;
+                const psi_driven = 0.3 * psi_input[i];
+                const decay = -5 * Math.exp(-t/5);
+                return base + psi_driven + decay;
+            });
+            
+            // Environmental entropy increase
+            const env_entropy = time.map((t, i) => {
+                return 20 + 0.1 * psi_input[i] + 5 * t/20; // Landauer cost
+            });
+            
+            const trace1 = {
+                x: time,
+                y: psi_input,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Ψ-field Input',
+                line: {color: 'rgb(162, 155, 254)', width: 3}
+            };
+            
+            const trace2 = {
+                x: time,
+                y: substrate_negentropy,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Substrate Negentropy',
+                line: {color: 'rgb(253, 121, 168)', width: 3}
+            };
+            
+            const trace3 = {
+                x: time,
+                y: env_entropy,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Environmental Entropy',
+                line: {color: 'rgb(253, 203, 110)', width: 3}
+            };
+            
+            const layout = {
+                title: 'Negentropy Flow Dynamics',
+                xaxis: {title: 'Time'},
+                yaxis: {title: 'Information/Entropy Rate'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('negentropyFlow', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot Landauer cost
+        function plotLandauerCost() {
+            const info_erased = Array.from({length: 100}, (_, i) => i * 0.1); // bits
+            const T_values = [280, 310, 340]; // Different temperatures
+            
+            const traces = T_values.map((T, idx) => {
+                const kT = 8.617e-5 * T; // eV
+                const landauer_cost = info_erased.map(I => I * kT * Math.log(2) * 6.242e18); // Convert to J
+                
+                return {
+                    x: info_erased,
+                    y: landauer_cost,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: `T = ${T}K`,
+                    line: {width: 3}
+                };
+            });
+            
+            const layout = {
+                title: 'Landauer Cost of Information Erasure',
+                xaxis: {title: 'Information Erased (bits)'},
+                yaxis: {title: 'Minimum Energy Cost (J)'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('landauerCost', traces, layout, {responsive: true});
+        }
+        
+        // Plot coherence power
+        function updateCoherencePower(T = 310, psi = 0.3) {
+            const time = Array.from({length: 100}, (_, i) => i * 0.1);
+            const kT = 8.617e-5 * T;
+            
+            // Base decoherence power
+            const base_power = time.map(t => 10 * Math.exp(-t/2) + 5);
+            
+            // Ψ-field stabilization power
+            const psi_power = time.map(t => psi * 15 * (1 + 0.3 * Math.sin(t)));
+            
+            // Net coherence power
+            const net_power = time.map((t, i) => psi_power[i] - base_power[i]);
+            
+            const trace1 = {
+                x: time,
+                y: base_power,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Decoherence Power',
+                line: {color: 'rgb(231, 76, 60)', width: 2}
+            };
+            
+            const trace2 = {
+                x: time,
+                y: psi_power,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Ψ-field Power Input',
+                line: {color: 'rgb(46, 204, 113)', width: 3}
+            };
+            
+            const trace3 = {
+                x: time,
+                y: net_power,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Net Coherence Power',
+                line: {color: 'rgb(155, 89, 182)', width: 3}
+            };
+            
+            const layout = {
+                title: 'Coherence Power Balance',
+                xaxis: {title: 'Time'},
+                yaxis: {title: 'Power (arbitrary units)'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('coherencePower', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot entropy evolution
+        function plotEntropyEvolution() {
+            const time = Array.from({length: 200}, (_, i) => i * 0.05);
+            
+            // Von Neumann entropy without Ψ-field
+            const entropy_natural = time.map(t => {
+                const saturation = 2.5;
+                return saturation * (1 - Math.exp(-t/3)) + 0.1 * Math.random();
+            });
+            
+            // Von Neumann entropy with Ψ-field stabilization
+            const entropy_stabilized = time.map(t => {
+                const base = 0.5;
+                const oscillation = 0.3 * Math.sin(0.5 * t);
+                const growth = 0.1 * t * Math.exp(-t/5);
+                return base + oscillation + growth + 0.05 * Math.random();
+            });
+            
+            const trace1 = {
+                x: time,
+                y: entropy_natural,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Natural Evolution',
+                line: {color: 'rgb(231, 76, 60)', width: 2}
+            };
+            
+            const trace2 = {
+                x: time,
+                y: entropy_stabilized,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Ψ-field Stabilized',
+                line: {color: 'rgb(46, 204, 113)', width: 3}
+            };
+            
+            const layout = {
+                title: 'Von Neumann Entropy Evolution',
+                xaxis: {title: 'Time'},
+                yaxis: {title: 'S = -Tr(ρ log ρ)'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('entropyEvolution', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        // Plot phase transitions
+        function plotPhaseTransitions() {
+            const temperature = Array.from({length: 200}, (_, i) => 250 + i * 0.5); // 250-350K
+            
+            // Quantum coherence visibility
+            const visibility = temperature.map(T => {
+                const T_c = 305; // Critical temperature
+                const width = 10; // Transition width
+                return 1 / (1 + Math.exp((T - T_c) / width));
+            });
+            
+            // Heat capacity (derivative of entropy)
+            const heat_capacity = temperature.map(T => {
+                const T_c = 305;
+                const width = 5;
+                const peak = Math.exp(-Math.pow(T - T_c, 2) / (2 * width * width));
+                return 1 + 3 * peak; // Base + anomaly
+            });
+            
+            // Consciousness correlation
+            const consciousness = temperature.map(T => {
+                const T_c = 310; // Physiological optimum
+                const width = 15;
+                return Math.exp(-Math.pow(T - T_c, 2) / (2 * width * width));
+            });
+            
+            const trace1 = {
+                x: temperature,
+                y: visibility,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Visibility',
+                line: {color: 'rgb(46, 204, 113)', width: 3}
+            };
+            
+            const trace2 = {
+                x: temperature,
+                y: heat_capacity,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Heat Capacity',
+                yaxis: 'y2',
+                line: {color: 'rgb(231, 76, 60)', width: 3}
+            };
+            
+            const trace3 = {
+                x: temperature,
+                y: consciousness,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Consciousness Index',
+                line: {color: 'rgb(155, 89, 182)', width: 3}
+            };
+            
+            const layout = {
+                title: 'Temperature-Dependent Phase Transitions',
+                xaxis: {title: 'Temperature (K)'},
+                yaxis: {title: 'Quantum Visibility / Consciousness Index', side: 'left'},
+                yaxis2: {title: 'Heat Capacity (C)', side: 'right', overlaying: 'y'},
+                showlegend: true,
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                shapes: [
+                    {
+                        type: 'rect',
+                        x0: 290, x1: 320,
+                        y0: 0, y1: 1,
+                        fillcolor: 'rgba(255,255,0,0.2)',
+                        opacity: 0.3,
+                        line: {width: 0}
+                    }
+                ],
+                annotations: [
+                    {
+                        x: 305,
+                        y: 0.5,
+                        text: 'Critical Region',
+                        showarrow: false,
+                        font: {size: 12, color: 'rgb(0,0,0)'}
+                    }
+                ]
+            };
+            
+            Plotly.newPlot('phaseTransitions', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot free energy landscape
+        function plotFreeEnergyLandscape() {
+            const x = Array.from({length: 50}, (_, i) => -2 + i * 0.08); // -2 to 2
+            const y = Array.from({length: 50}, (_, i) => -2 + i * 0.08);
+            
+            const z = [];
+            for (let i = 0; i < 50; i++) {
+                const row = [];
+                for (let j = 0; j < 50; j++) {
+                    const xi = x[i];
+                    const yj = y[j];
+                    // Double well potential with Ψ-field bias
+                    const potential = Math.pow(xi*xi - 1, 2) + 0.5 * yj*yj - 0.3 * xi; // Bias toward coherent state
+                    row.push(potential);
+                }
+                z.push(row);
+            }
+            
+            const trace = {
+                z: z,
+                x: x,
+                y: y,
+                type: 'surface',
+                colorscale: 'Viridis',
+                showscale: true
+            };
+            
+            const layout = {
+                title: 'Quantum Free Energy Landscape',
+                scene: {
+                    xaxis: {title: 'Coherence Parameter α'},
+                    yaxis: {title: 'Phase Parameter φ'},
+                    zaxis: {title: 'Free Energy F_q'},
+                    camera: {
+                        eye: {x: 1.5, y: 1.5, z: 1.5}
+                    }
+                },
+                plot_bgcolor: 'rgba(240,240,240,0.3)',
+                paper_bgcolor: 'rgba(0,0,0,0)'
+            };
+            
+            Plotly.newPlot('freeEnergyLandscape', [trace], layout, {responsive: true});
+        }
+        
+        // Update cycle visualization based on active stage
+        function updateCycleVisualization() {
+            // This would update additional visualizations based on the active cycle stage
+            console.log(`Active thermodynamic stage: ${activeStage}`);
+        }
+        
+        // Initialize all plots
+        document.addEventListener('DOMContentLoaded', function() {
+            updateThermodynamics();
+            updateNegentropyFlow();
+            plotLandauerCost();
+            plotEntropyEvolution();
+            plotPhaseTransitions();
+            plotFreeEnergyLandscape();
+        });
+    </script>
+</body>
+</html>

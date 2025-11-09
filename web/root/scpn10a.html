@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 10: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 10, focusing on the active defense and integrity of the species-consciousness field. The flow is: 1. Introduction to boundary control. 2. A simulation of Topological Insulation via Φ-phase knotting. 3. An interactive canvas demonstrating Immune-Cognitive Resonance Dissonance. 4. A visualization of VIBRANA Boundary Glyphs as active projection shields. 5. A diagram of inter-layer connections. This structure makes the abstract concepts of field integrity and protection tangible. -->
+    <!-- Visualization & Content Choices:
+        - Topological Insulation: Goal: Visualize a dynamic, protective boundary. Method: Canvas animation. Interaction: A slider for "Insulation Strength" controls the complexity and speed of "phase knotting" on a boundary, which deflects incoming "foreign projections." Justification: Directly demonstrates the "Topological insulation via Φ_phase knotting" concept.
+        - Resonance Dissonance: Goal: Show how the field rejects incompatible signals. Method: Canvas animation of wave interference. Interaction: A slider controls the "Phase Dissonance" between a "Self" wave and a "Foreign" wave. Above a threshold, a rejection event is triggered. Justification: Provides a clear visual metaphor for "resonance dissonance triggers phase rejection."
+        - VIBRANA Boundary Glyphs: Goal: Illustrate active, conscious shielding. Method: Canvas animation. Interaction: A button activates a "Boundary Glyph," which generates a visible, pulsating shield around a core field, blocking incoming noise. Justification: Visually explains how "VIBRANA boundary glyphs act as 'projection shields'."
+        - Inter-Layer Diagram: Goal: Contextualize Layer 10's role. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 10 uses memory (L9) and symbolic operators (L7) to protect the entire species-field (L6).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px, height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 10: Projective Field Boundary Control</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#insulation" class="nav-link font-semibold text-slate-600">Insulation</a>
+                    <a href="#dissonance" class="nav-link font-semibold text-slate-600">Dissonance</a>
+                    <a href="#shields" class="nav-link font-semibold text-slate-600">Shields</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Integrity of Consciousness</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 10 describes the crucial mechanisms that enforce the integrity and protection of a species-specific consciousness field. To maintain a coherent shared reality, the field must be insulated from foreign projections, dissonant resonances, and entropic noise. This layer represents the active, dynamic boundary that defines and defends a species' unique mode of existence.
+            </p>
+        </section>
+
+        <section id="insulation" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Topological Insulation via Φ-Phase Knotting</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The boundary of the species-field is not a static wall but a dynamic, topological surface. By continuously twisting and "knotting" the phase of the field at its edge, the system creates a complex, self-repairing barrier that deflects incoherent or foreign informational patterns, preserving the internal integrity of the field.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="insulationCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="insulation-slider" class="font-semibold text-slate-700">Insulation Strength: <span id="insulation-value">20</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the strength to enhance the complexity and speed of the phase-knotting, improving the deflection of foreign projections.</p>
+                    <input type="range" min="0" max="100" value="20" class="control-slider" id="insulation-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="dissonance" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Immune-Cognitive Resonance Dissonance</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The species-field has a natural resonant frequency. When it encounters a foreign projection with a dissonant (out-of-phase) frequency, an "immune-cognitive" response is triggered. The system actively rejects the dissonant signal, preventing it from corrupting the internal coherence.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4">
+                    <canvas id="dissonanceCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                     <label for="dissonance-slider" class="font-semibold text-slate-700">Phase Dissonance: <span id="dissonance-value">0</span>°</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the phase difference between the "Self" field (purple) and the "Foreign" field (yellow). A rejection event will trigger above a critical dissonance threshold.</p>
+                    <input type="range" min="0" max="180" value="0" step="1" class="control-slider" id="dissonance-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="shields" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">VIBRANA Boundary Glyphs as Projection Shields</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Beyond passive defense, the species-field can be actively protected through the conscious use of VIBRANA boundary glyphs. These symbolic operators, when activated by collective focus, generate powerful, coherent "projection shields" that reinforce the field's boundary and nullify incoming noise.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="bg-black rounded-lg p-4 relative">
+                    <canvas id="shieldCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="shield-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Activate Boundary Glyph</button>
+                    <p class="text-sm text-slate-500 mt-4">Activate the glyph to generate a protective shield that blocks incoming entropic noise.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Topological Insulation ---
+        const insulationCanvas = document.getElementById('insulationCanvas');
+        const insulationCtx = insulationCanvas.getContext('2d');
+        const insulationSlider = document.getElementById('insulation-slider');
+        const insulationValue = document.getElementById('insulation-value');
+        let insulationTime = 0;
+        let foreignProjections = [];
+
+        function animateInsulation() {
+            const w = insulationCanvas.width;
+            const h = insulationCanvas.height;
+            insulationCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            insulationCtx.fillRect(0,0,w,h);
+            insulationTime += 0.01;
+
+            const strength = parseInt(insulationSlider.value) / 100;
+            insulationValue.textContent = `${Math.round(strength*100)}%`;
+
+            // Draw Boundary
+            const centerX = w/2, centerY = h/2, radius = Math.min(w,h) * 0.4;
+            insulationCtx.strokeStyle = '#a78bfa';
+            insulationCtx.lineWidth = 1 + strength * 2;
+            for(let i=0; i<50; i++) {
+                insulationCtx.beginPath();
+                let angle = (i/50) * Math.PI * 2;
+                let knotFreq = 2 + Math.floor(strength * 10);
+                let knotAmp = 15 * strength;
+                const r = radius + Math.sin(angle * knotFreq + insulationTime * 5) * knotAmp;
+                const x = centerX + Math.cos(angle) * r;
+                const y = centerY + Math.sin(angle) * r;
+                insulationCtx.arc(x, y, 1, 0, Math.PI*2);
+                insulationCtx.stroke();
+            }
+
+            // Foreign Projections
+            if(Math.random() < 0.1) {
+                foreignProjections.push({
+                    x: Math.random() < 0.5 ? 0 : w,
+                    y: Math.random() * h,
+                    vx: (w/2 - (Math.random() < 0.5 ? 0 : w)) / 100,
+                    vy: (h/2 - Math.random() * h) / 100,
+                    life: 100
+                });
+            }
+
+            foreignProjections.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life--;
+                
+                const dx = p.x - centerX;
+                const dy = p.y - centerY;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                const angle = Math.atan2(dy, dx);
+                let knotFreq = 2 + Math.floor(strength * 10);
+                let knotAmp = 15 * strength;
+                const boundaryR = radius + Math.sin(angle * knotFreq + insulationTime * 5) * knotAmp;
+
+                if (dist < boundaryR) {
+                    const delectionStrength = strength * 5;
+                    p.vx -= dx/dist * delectionStrength;
+                    p.vy -= dy/dist * delectionStrength;
+                }
+
+                if(p.life <= 0) foreignProjections.splice(i, 1);
+                
+                insulationCtx.fillStyle = 'rgba(252, 165, 165, 0.8)';
+                insulationCtx.beginPath();
+                insulationCtx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                insulationCtx.fill();
+            });
+
+            requestAnimationFrame(animateInsulation);
+        }
+
+        // --- Resonance Dissonance ---
+        const dissonanceCanvas = document.getElementById('dissonanceCanvas');
+        const dissonanceCtx = dissonanceCanvas.getContext('2d');
+        const dissonanceSlider = document.getElementById('dissonance-slider');
+        const dissonanceValue = document.getElementById('dissonance-value');
+        let dissonanceTime = 0;
+        let rejectionFlash = 0;
+
+        function animateDissonance() {
+            const w = dissonanceCanvas.width;
+            const h = dissonanceCanvas.height;
+            dissonanceCtx.clearRect(0,0,w,h);
+            dissonanceTime += 0.02;
+
+            const dissonance = parseInt(dissonanceSlider.value);
+            dissonanceValue.textContent = `${dissonance}°`;
+            const phaseShift = dissonance * Math.PI / 180;
+
+            // Self Field
+            dissonanceCtx.strokeStyle = '#a78bfa';
+            dissonanceCtx.lineWidth = 3;
+            dissonanceCtx.beginPath();
+            for(let x=0; x<w; x++) {
+                dissonanceCtx.lineTo(x, h/2 + Math.sin(x*0.05 + dissonanceTime) * h * 0.2);
+            }
+            dissonanceCtx.stroke();
+
+            // Foreign Field
+            dissonanceCtx.strokeStyle = 'rgba(250, 204, 21, 0.8)';
+            dissonanceCtx.lineWidth = 3;
+            dissonanceCtx.beginPath();
+            for(let x=0; x<w; x++) {
+                dissonanceCtx.lineTo(x, h/2 + Math.sin(x*0.05 + dissonanceTime + phaseShift) * h * 0.2);
+            }
+            dissonanceCtx.stroke();
+            
+            if (dissonance > 120 && rejectionFlash <= 0) {
+                rejectionFlash = 1.0;
+            }
+
+            if (rejectionFlash > 0) {
+                dissonanceCtx.fillStyle = `rgba(239, 68, 68, ${rejectionFlash})`;
+                dissonanceCtx.fillRect(0,0,w,h);
+                rejectionFlash -= 0.05;
+            }
+
+            requestAnimationFrame(animateDissonance);
+        }
+
+        // --- VIBRANA Shields ---
+        const shieldCanvas = document.getElementById('shieldCanvas');
+        const shieldCtx = shieldCanvas.getContext('2d');
+        const shieldBtn = document.getElementById('shield-btn');
+        let shieldTime = 0;
+        let shieldActive = false;
+        let shieldStrength = 0;
+        let noiseParticles = [];
+
+        function initShields() {
+            for(let i=0; i<100; i++) {
+                noiseParticles.push({
+                    x: Math.random() * shieldCanvas.width,
+                    y: Math.random() * shieldCanvas.height,
+                    vx: (Math.random() - 0.5),
+                    vy: (Math.random() - 0.5)
+                });
+            }
+        }
+
+        function animateShields() {
+            const w = shieldCanvas.width;
+            const h = shieldCanvas.height;
+            shieldCtx.clearRect(0,0,w,h);
+            shieldTime += 0.02;
+
+            const centerX = w/2, centerY = h/2, radius = Math.min(w,h) * 0.2;
+
+            // Core Field
+            shieldCtx.fillStyle = `rgba(167, 139, 250, 0.5)`;
+            shieldCtx.beginPath();
+            shieldCtx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            shieldCtx.fill();
+
+            if(shieldActive && shieldStrength < 1) shieldStrength += 0.02;
+            if(!shieldActive && shieldStrength > 0) shieldStrength -= 0.02;
+            shieldStrength = Math.max(0, Math.min(1, shieldStrength));
+
+            // Shield
+            if (shieldStrength > 0) {
+                const shieldRadius = radius + 20;
+                shieldCtx.strokeStyle = `rgba(250, 204, 21, ${shieldStrength})`;
+                shieldCtx.lineWidth = 2 + Math.sin(shieldTime * 10) * 2;
+                shieldCtx.beginPath();
+                shieldCtx.arc(centerX, centerY, shieldRadius, 0, Math.PI * 2);
+                shieldCtx.stroke();
+            }
+
+            // Noise
+            noiseParticles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > w) p.vx *= -1;
+                if (p.y < 0 || p.y > h) p.vy *= -1;
+
+                const dx = p.x - centerX;
+                const dy = p.y - centerY;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                
+                if (dist < radius + 20 && shieldStrength > 0.5) {
+                    // deflected
+                } else {
+                    shieldCtx.fillStyle = `rgba(100, 116, 139, 0.5)`;
+                    shieldCtx.fillRect(p.x, p.y, 2, 2);
+                }
+            });
+
+            requestAnimationFrame(animateShields);
+        }
+        shieldBtn.addEventListener('click', () => {
+            shieldActive = !shieldActive;
+            shieldBtn.textContent = shieldActive ? 'Deactivate Glyph' : 'Activate Boundary Glyph';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            insulationCanvas.width = insulationCanvas.offsetWidth;
+            insulationCanvas.height = insulationCanvas.offsetHeight;
+            animateInsulation();
+
+            dissonanceCanvas.width = dissonanceCanvas.offsetWidth;
+            dissonanceCanvas.height = dissonanceCanvas.offsetHeight;
+            animateDissonance();
+
+            shieldCanvas.width = shieldCanvas.offsetWidth;
+            shieldCanvas.height = shieldCanvas.offsetHeight;
+            initShields();
+            animateShields();
+        };
+    </script>
+</body>
+</html>

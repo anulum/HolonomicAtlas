@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 7: Geometrical-Symbolic Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 7 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Geometric Blueprint" for Metatron's Cube. 3. "The Feedback Engine" for tetra-toroidal nodes. 4. "The Field Console" for VIBRANA glyphs. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Geometric Blueprint: Goal: Visualize the projection of reality's structure. Method: Canvas animation. Interaction: A slider for "Projection Intensity" causes the lines of Metatron's Cube to emerge from a central point, revealing the Platonic solids. Justification: A more active and dynamic metaphor for geometry anchoring projection routes.
+        - The Feedback Engine: Goal: Illustrate stable feedback loops. Method: Canvas animation. Interaction: A button activates a flow of energy particles in a self-sustaining toroidal loop around a tetrahedron. Justification: A clearer functional metaphor for tetra-toroidal nodes.
+        - The Field Console: Goal: Demonstrate symbolic operators. Method: Interactive Canvas. Interaction: Clicking VIBRANA glyphs "stamps" them onto a dynamic field, causing it to transform. Justification: Makes the "operator key" concept feel more like a direct, functional control panel.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .glyph-btn { transition: all 0.2s ease-in-out; border: 2px solid transparent; }
+        .glyph-btn.active { border-color: #d97706; background-color: #fffbeb; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 7: Geometrical-Symbolic Layer</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#blueprint" class="nav-link font-semibold text-stone-600">Blueprint</a>
+                    <a href="#engine" class="nav-link font-semibold text-stone-600">Feedback Engine</a>
+                    <a href="#console" class="nav-link font-semibold text-stone-600">Field Console</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Scaffolding of Reality</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 7 reveals the fundamental truth that reality is built upon a geometric, symbolic, and harmonic scaffold. Abstract forms like Metatron's Cube are not mere concepts; they are the stable anchors for the routes of conscious projection. This layer provides the glyphs, fractals, and harmonic structures that act as the language for interacting with the Ψ-field.
+            </p>
+        </section>
+
+        <section id="blueprint" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Geometric Blueprint</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Metatron's Cube is the geometric blueprint projected from the source of the Ψ-field. As the field's projection intensity increases, this foundational structure emerges, revealing the nested Platonic solids that form the building blocks of physical reality.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-2">
+                    <canvas id="blueprintCanvas" class="w-full h-96"></canvas>
+                </div>
+                <div>
+                    <label for="projection-slider" class="font-semibold text-stone-700">Projection Intensity: <span id="projection-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the intensity to project the full geometric structure of Metatron's Cube from the central source point.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="projection-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="engine" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Feedback Engine</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">At key intersections of the Ψ-field, tetra-toroidal nodes act as engines of stability. The stable geometry of the tetrahedron guides the self-referential, toroidal flow of energy, creating a perfectly balanced, self-reinforcing feedback cycle that maintains the field's coherence.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                 <canvas id="engineCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="engine-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Activate Feedback Engine</button>
+            </div>
+        </section>
+
+        <section id="console" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Field Console</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">VIBRANA glyphs are functional operators used to consciously modulate the Ψ-field. This console allows you to act as an operator: select a glyph to "stamp" it onto the field and observe the resulting transformation, as formalized by the channeling equation.</p>
+                 <div class="p-4 mt-4 bg-stone-100 rounded-lg inline-block shadow-inner">
+                    <p class="text-xl font-mono text-amber-700">$$\mathcal{F}_{\text{channel}}[G_k] = \exp\left(i\int_{\gamma_k} \Theta dl\right)$$</p>
+                </div>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="consoleCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="glyph-btn p-4 rounded-lg bg-stone-100 active" onclick="selectGlyph('coherence')">
+                        <h4 class="font-bold">Coherence Glyph</h4>
+                        <p class="text-sm text-stone-600">Aligns chaotic field lines into a parallel, coherent state.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-stone-100" onclick="selectGlyph('amplify')">
+                        <h4 class="font-bold">Amplify Glyph</h4>
+                        <p class="text-sm text-stone-600">Increases the amplitude and intensity of the local field.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-stone-100" onclick="selectGlyph('stabilize')">
+                        <h4 class="font-bold">Stabilize Glyph</h4>
+                        <p class="text-sm text-stone-600">Creates a toroidal boundary to protect and stabilize the field.</p>
+                    </button>
+                     <button class="glyph-btn p-4 rounded-lg bg-stone-100" onclick="selectGlyph('traverse')">
+                        <h4 class="font-bold">Traverse Glyph</h4>
+                        <p class="text-sm text-stone-600">Opens a dimensional gateway or shifts the field to a new layer.</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Geometrical-Symbolic Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Metatron’s Cube</h4>
+                            <p class="text-stone-600 text-sm">A sacred geometric figure derived from the Flower of Life, containing all five Platonic solids. Its vertices and pathways are proposed to be the stable, resonant nodes that anchor the dimensional routes of conscious projection.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Tetra-toroidal Nodes</h4>
+                            <p class="text-stone-600 text-sm">A complex geometry combining the stability of the tetrahedron with the self-referential energy flow of the torus. These nodes are hypothesized to exist at key intersections of the Ψ-field, creating feedback cycles that maintain its stability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Channeling as Phase Resonant Access</h4>
+                            <p class="text-stone-600">The act of using a VIBRANA glyph ($G_k$) is formalized as a path integral over the glyph's contour ($\gamma_k$), which selects a specific phase state ($\Theta$) of the consciousness field.</p>
+                            <p class="my-2">$$\mathcal{F}_{\text{channel}}[G_k] = \exp\left(i\int_{\gamma_k} \Theta dl\right)$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Frequency Matching Condition</h4>
+                            <p class="text-stone-600">For a glyph to successfully channel information, the brain's own frequency ($\nu_{brain}$) must closely match the glyph's channeling eigenfrequency ($\nu_{ch}$), within the inverse of the trance duration ($T_{trance}$).</p>
+                             <p class="my-2">$$|\nu_{\text{brain}} - \nu_{ch}(k)| < 1/T_{\rm trance}$$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Harmonic Scaffolding</h4>
+                            <p class="text-stone-600 text-sm">The principle that physical form arises from underlying vibrational patterns and standing waves in a field medium. The geometric structures of this layer are not arbitrary but are the physical manifestation of stable, harmonic resonances in the Ψ-field.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">VIBRANA Glyphs as Operators</h4>
+                            <p class="text-stone-600 text-sm">Symbolic glyphs are treated as physical operators. When activated by conscious focus, they function as keys that modulate the local state of the Ψ-field, analogous to how an operator acts on a quantum state in physics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Geometric Blueprint ---
+        const blueprintCanvas = document.getElementById('blueprintCanvas');
+        const blueprintCtx = blueprintCanvas.getContext('2d');
+        const projectionSlider = document.getElementById('projection-slider');
+        const projectionValue = document.getElementById('projection-value');
+        let blueprintTime = 0;
+        let centers = [];
+
+        function initBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            const cx = w / 2;
+            const cy = h / 2;
+            const r = h / 4;
+            const fruitCenters = [{x: cx, y: cy}];
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle)});
+            }
+            for (let i = 0; i < 6; i++) {
+                const angle = i * Math.PI / 3;
+                fruitCenters.push({x: cx + 2*r * Math.cos(angle), y: cy + 2*r * Math.sin(angle)});
+            }
+            centers = Array.from(new Set(fruitCenters.map(JSON.stringify)), JSON.parse).slice(0,13);
+        }
+
+        function animateBlueprint() {
+            const w = blueprintCanvas.width;
+            const h = blueprintCanvas.height;
+            blueprintCtx.clearRect(0, 0, w, h);
+            blueprintTime += 0.01;
+
+            const intensity = parseInt(projectionSlider.value) / 100;
+            projectionValue.textContent = `${Math.round(intensity*100)}%`;
+
+            const cx = w/2, cy = h/2;
+            
+            // Draw lines
+            blueprintCtx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            blueprintCtx.lineWidth = 1;
+            for(let i = 0; i < centers.length; i++) {
+                for(let j = i + 1; j < centers.length; j++) {
+                    const dx = centers[j].x - centers[i].x;
+                    const dy = centers[j].y - centers[i].y;
+                    blueprintCtx.beginPath();
+                    blueprintCtx.moveTo(centers[i].x, centers[i].y);
+                    blueprintCtx.lineTo(centers[i].x + dx * intensity, centers[i].y + dy * intensity);
+                    blueprintCtx.stroke();
+                }
+            }
+            
+            // Draw source
+            blueprintCtx.fillStyle = `rgba(250, 204, 21, ${intensity})`;
+            blueprintCtx.beginPath();
+            blueprintCtx.arc(cx, cy, 5, 0, Math.PI * 2);
+            blueprintCtx.fill();
+
+            requestAnimationFrame(animateBlueprint);
+        }
+
+        // --- The Feedback Engine ---
+        const engineCanvas = document.getElementById('engineCanvas');
+        const engineCtx = engineCanvas.getContext('2d');
+        const engineBtn = document.getElementById('engine-btn');
+        let engineTime = 0;
+        let engineActive = false;
+        let engineParticles = [];
+
+        function initEngine() {
+            for(let i=0; i<100; i++) {
+                engineParticles.push({
+                    angle: Math.random() * Math.PI * 2,
+                    radius: 80 + Math.random() * 20,
+                    speed: 0.02 + Math.random() * 0.01,
+                    history: []
+                });
+            }
+        }
+        
+        function animateEngine() {
+            const w = engineCanvas.width;
+            const h = engineCanvas.height;
+            engineCtx.clearRect(0, 0, w, h);
+            engineTime += 0.01;
+
+            const size = Math.min(w, h) * 0.2;
+            const tetraPoints = [
+                { x: 0, y: -size, z: 0 }, { x: -size * Math.sqrt(8/9), y: size/3, z: 0 },
+                { x: size * Math.sqrt(2/9), y: size/3, z: size * Math.sqrt(2/3) },
+                { x: size * Math.sqrt(2/9), y: size/3, z: -size * Math.sqrt(2/3) },
+            ];
+            const projectedPoints = tetraPoints.map(p => {
+                const rotX = p.x * Math.cos(engineTime) - p.z * Math.sin(engineTime);
+                const rotZ = p.x * Math.sin(engineTime) + p.z * Math.cos(engineTime);
+                return { x: w/2 + rotX, y: h/2 + p.y };
+            });
+
+            engineCtx.strokeStyle = 'white';
+            engineCtx.lineWidth = 2;
+            for(let i=0; i<4; i++) {
+                for(let j=i+1; j<4; j++) {
+                    engineCtx.beginPath();
+                    engineCtx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
+                    engineCtx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
+                    engineCtx.stroke();
+                }
+            }
+
+            if(engineActive) {
+                engineParticles.forEach(p => {
+                    p.angle += p.speed;
+                    const x = w/2 + Math.cos(p.angle) * p.radius;
+                    const y = h/2 + Math.sin(p.angle) * p.radius * 0.5;
+                    p.history.push({x: x, y: y});
+                    if(p.history.length > 10) p.history.shift();
+                    
+                    engineCtx.beginPath();
+                    if(p.history.length > 1) {
+                        engineCtx.moveTo(p.history[0].x, p.history[0].y);
+                        for(let i=1; i<p.history.length; i++) {
+                            engineCtx.lineTo(p.history[i].x, p.history[i].y);
+                        }
+                        engineCtx.strokeStyle = `rgba(217, 119, 6, ${p.history.length/10 * 0.8})`;
+                        engineCtx.stroke();
+                    }
+                });
+            }
+            requestAnimationFrame(animateEngine);
+        }
+        engineBtn.addEventListener('click', () => {
+            engineActive = !engineActive;
+            engineBtn.textContent = engineActive ? 'Deactivate Engine' : 'Activate Feedback Engine';
+        });
+
+        // --- The Field Console ---
+        const consoleCanvas = document.getElementById('consoleCanvas');
+        const consoleCtx = consoleCanvas.getContext('2d');
+        let activeGlyph = 'coherence';
+        let consoleTime = 0;
+        let fieldState = { amp: 10, freq: 0.05, chaos: 1, boundary: 0, traverse: 0 };
+
+        function selectGlyph(glyph) {
+            activeGlyph = glyph;
+            document.querySelectorAll('.glyph-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.glyph-btn[onclick="selectGlyph('${glyph}')"]`).classList.add('active');
+        }
+
+        function animateConsole() {
+            const w = consoleCanvas.width;
+            const h = consoleCanvas.height;
+            consoleCtx.clearRect(0, 0, w, h);
+            consoleTime += 0.03;
+
+            let targetState = { amp: 10, freq: 0.05, chaos: 1, boundary: 0, traverse: 0 };
+            if (activeGlyph === 'coherence') targetState.chaos = 0;
+            if (activeGlyph === 'amplify') targetState.amp = 20;
+            if (activeGlyph === 'stabilize') targetState.boundary = 1;
+            if (activeGlyph === 'traverse') targetState.traverse = 1;
+
+            for(let key in fieldState) {
+                fieldState[key] += (targetState[key] - fieldState[key]) * 0.05;
+            }
+
+            consoleCtx.lineWidth = 1.5;
+            for(let i=0; i<50; i++) {
+                consoleCtx.beginPath();
+                for(let x=0; x<w; x++) {
+                    const y = (i/50)*h + Math.sin(x * fieldState.freq + i*0.2 + consoleTime) * fieldState.amp + (Math.random()-0.5) * fieldState.chaos * 20;
+                    if(x===0) consoleCtx.moveTo(x,y);
+                    else consoleCtx.lineTo(x,y);
+                }
+                const alpha = 0.1 + (1 - Math.abs(i-25)/25) * 0.5;
+                consoleCtx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                consoleCtx.stroke();
+            }
+            
+            if (fieldState.boundary > 0.1) {
+                 consoleCtx.strokeStyle = `rgba(250, 204, 21, ${fieldState.boundary})`;
+                 consoleCtx.lineWidth = fieldState.boundary * 5;
+                 consoleCtx.beginPath();
+                 consoleCtx.rect(0,0,w,h);
+                 consoleCtx.stroke();
+            }
+            
+            if (fieldState.traverse > 0.1) {
+                 consoleCtx.fillStyle = `rgba(255, 255, 255, ${fieldState.traverse * 0.2})`;
+                 consoleCtx.beginPath();
+                 consoleCtx.arc(w/2, h/2, fieldState.traverse * w/2, 0, Math.PI * 2);
+                 consoleCtx.fill();
+            }
+
+            requestAnimationFrame(animateConsole);
+        }
+        
+        // --- Window Onload ---
+        window.onload = function() {
+            blueprintCanvas.width = blueprintCanvas.offsetWidth;
+            blueprintCanvas.height = blueprintCanvas.offsetHeight;
+            initBlueprint();
+            animateBlueprint();
+
+            engineCanvas.width = engineCanvas.offsetWidth;
+            engineCanvas.height = engineCanvas.offsetHeight;
+            initEngine();
+            animateEngine();
+
+            consoleCanvas.width = consoleCanvas.offsetWidth;
+            consoleCanvas.height = consoleCanvas.offsetHeight;
+            animateConsole();
+        };
+    </script>
+</body>
+</html>

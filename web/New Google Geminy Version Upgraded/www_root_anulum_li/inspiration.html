@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Inspiration | A Unified Framework for Consciousness and Spacetime</title>
+    <meta name="description" content="Discover the intellectual foundations and key figures—from physicists like Penrose and Wheeler to philosophers like Gödel and Kant—who inspired the Anulum Framework.">
+    <meta name="keywords" content="Roger Penrose, John Archibald Wheeler, Kurt Gödel, Erik Verlinde, philosophy of science, metaphysics, Anulum Framework inspiration">
+    <meta name="author" content="Miroslav Šotek, anulum frontiers">
+    <link rel="canonical" href="https://anulum.li/inspiration.html">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://anulum.li/inspiration.html">
+    <link rel="alternate" hreflang="de" href="https://anulum.li/inspiration.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://anulum.li/inspiration.html?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://anulum.li/inspiration.html?lang=it">
+    <link rel="alternate" hreflang="ja" href="https://anulum.li/inspiration.html?lang=ja">
+    <link rel="alternate" hreflang="zh" href="https://anulum.li/inspiration.html?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://anulum.li/inspiration.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anulum.li/inspiration.html">
+    <meta property="og:title" content="Inspiration | A Unified Framework for Consciousness and Spacetime">
+    <meta property="og:description" content="Discover the intellectual foundations and key figures who inspired the Anulum Framework.">
+    <meta property="og:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anulum.li/inspiration.html">
+    <meta property="twitter:title" content="Inspiration | A Unified Framework for Consciousness and Spacetime">
+    <meta property="twitter:description" content="Discover the intellectual foundations and key figures who inspired the Anulum Framework.">
+    <meta property="twitter:image" content="https://anulum.li/anulum-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Progressive Enhancements */
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        /* Accessibility: Focus visible state */
+        :focus-visible {
+            outline: 2px solid #4DB6AC;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        /* Reading Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: #4DB6AC;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+        /* Loading Spinner */
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F7F2;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #E0E0E0;
+            border-bottom-color: #4DB6AC;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Intellectual Foundations of the Anulum Framework",
+      "url": "https://anulum.li/inspiration.html",
+      "author": {
+        "@type": "Person",
+        "name": "Miroslav Šotek"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Anulum Frontiers",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://anulum.li/anulum-logo.png"
+        }
+      },
+      "description": "A curated list of the physicists, philosophers, and thinkers whose work inspired the Anulum Framework for consciousness and spacetime.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anulum.li/inspiration.html"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <label for="language-selector" class="sr-only">Select Language</label>
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only" data-lang-key="sr_open_menu">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden" role="dialog" aria-modal="true">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <label for="language-selector-mobile" class="sr-only">Select Language</label>
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section class="fade-in">
+            <h1 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="inspiration_title">🏛️ Intellectual Foundations: Standing on the Shoulders of Giants</h1>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="inspiration_intro">This theory, while proposing a novel synthesis, is deeply indebted to the profound ideas of numerous physicists and philosophers who dared to question the foundations of reality, information, and consciousness. It builds upon their work, weaving disparate threads into a new tapestry. This section honors some of the key intellectual ancestors whose concepts serve as cornerstones for this framework.</p>
+            <div id="inspiration-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Inspiration cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+    // --- Error Boundary ---
+    window.addEventListener('error', function(event) {
+        console.error('Caught an unhandled error:', event.error);
+        const errorDisplay = document.createElement('div');
+        errorDisplay.style.cssText = 'position:fixed;top:10px;left:10px;padding:10px;background:red;color:white;z-index:10000;';
+        errorDisplay.innerText = 'A script error occurred. Check the console for details.';
+        document.body.appendChild(errorDisplay);
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.display = 'none';
+        document.body.classList.add('loaded');
+    });
+
+    // --- Centralized Data and Translation System ---
+    const siteData = {
+        translations: {
+            main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+            nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+            nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+            nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+            nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+            nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+            nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+            nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+            nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+            sr_open_menu: { en: 'Open main menu', de: 'Hauptmenü öffnen', fr: 'Ouvrir le menu principal', it: 'Apri menu principale', ja: 'メインメニューを開く', zh: '打开主菜单' },
+            inspiration_title: { en: '🏛️ Intellectual Foundations: Standing on the Shoulders of Giants', de: '🏛️ Intellektuelle Grundlagen: Auf den Schultern von Giganten stehen', fr: '🏛️ Fondations Intellectuelles : Sur les Épaules de Géants', it: '🏛️ Fondamenti Intellettuali: Sulle Spalle dei Giganti', ja: '🏛️ 知的基盤：巨人の肩の上に立つ', zh: '🏛️ 思想基础：站在巨人的肩膀上' },
+            inspiration_intro: { en: 'This theory, while proposing a novel synthesis, is deeply indebted to the profound ideas of numerous physicists and philosophers who dared to question the foundations of reality, information, and consciousness. It builds upon their work, weaving disparate threads into a new tapestry. This section honors some of the key intellectual ancestors whose concepts serve as cornerstones for this framework.', de: 'Diese Theorie, obwohl sie eine neuartige Synthese vorschlägt, ist den tiefgreifenden Ideen zahlreicher Physiker und Philosophen zu tiefem Dank verpflichtet, die es wagten, die Grundlagen von Realität, Information und Bewusstsein in Frage zu stellen. Sie baut auf ihrer Arbeit auf und webt unterschiedliche Fäden zu einem neuen Wandteppich. Dieser Abschnitt ehrt einige der wichtigsten intellektuellen Vorfahren, deren Konzepte als Eckpfeiler für diesen Rahmen dienen.', fr: 'Cette théorie, tout en proposant une synthèse novatrice, est profondément redevable aux idées profondes de nombreux physiciens et philosophes qui ont osé remettre en question les fondements de la réalité, de l\'information et de la conscience. Elle s\'appuie sur leur travail, tissant des fils disparates en une nouvelle tapisserie. Cette section rend hommage à certains des principaux ancêtres intellectuels dont les concepts servent de pierres angulaires à ce cadre.', it: 'Questa teoria, pur proponendo una sintesi innovativa, è profondamente debitrice alle profonde idee di numerosi fisici e filosofi che hanno osato mettere in discussione i fondamenti della realtà, dell\'informazione e della coscienza. Si basa sul loro lavoro, intrecciando fili disparati in un nuovo arazzo. Questa sezione onora alcuni dei principali antenati intellettuali i cui concetti fungono da pietre miliari per questo quadro.', ja: 'この理論は、新しい統合を提案しつつも、現実、情報、意識の基盤を問うことを敢えてした数多くの物理学者や哲学者の深遠なアイデアに深く負っています。それは彼らの仕事の上に成り立っており、異質な糸を新しいタペストリーに織り込んでいます。このセクションでは、このフレームワークの礎となる主要な知的先駆者たちを称えます。', zh: '这一理论在提出新颖综合的同时，也深深地得益于众多敢于质疑现实、信息和意识基础的物理学家和哲学家的深刻思想。它建立在他们的工作之上，将不同的线索编织成一幅新的织锦。本节向一些关键的思想先驱致敬，他们的概念是该框架的基石。' },
+            footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+            footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' }
+        },
+        inspirationData: [
+            { name: 'Roger Penrose', wiki: 'https://en.wikipedia.org/wiki/Roger_Penrose', contribution: { en: 'For proposing that consciousness is non-algorithmic and rooted in the quantum physics of microtubules (Orch-OR theory), directly inspiring the SCPN\'s Layer 1 and the theory\'s quantum underpinnings.', de: 'Für den Vorschlag, dass Bewusstsein nicht-algorithmisch ist und in der Quantenphysik der Mikrotubuli wurzelt (Orch-OR-Theorie), was direkt die Schicht 1 des SCPN und die quantenmechanischen Grundlagen der Theorie inspiriert hat.', fr: 'Pour avoir proposé que la conscience est non algorithmique et ancrée dans la physique quantique des microtubules (théorie Orch-OR), inspirant directement la couche 1 du SCPN et les fondements quantiques de la théorie.', it: 'Per aver proposto che la coscienza non è algoritmica e ha radici nella fisica quantistica dei microtubuli (teoria Orch-OR), ispirando direttamente il Livello 1 della SCPN e le basi quantistiche della teoria.', ja: '意識が非アルゴリズム的であり、微小管の量子物理学に根ざしていると提案したこと（Orch-OR理論）。SCPNの第1層と理論の量子的基盤に直接的なインスピレーションを与えました。', zh: '提出意识是非算法的，并植根于微管的量子物理学（Orch-OR理论），直接启发了SCPN的第1层和该理论的量子基础。' } },
+            { name: 'Erik Verlinde', wiki: 'https://en.wikipedia.org/wiki/Erik_Verlinde', contribution: { en: 'For developing the theory of entropic gravity, which posits gravity as an emergent phenomenon linked to information. This provides a direct analogue for the model\'s concept of consciousness-modulated gravity.', de: 'Für die Entwicklung der Theorie der entropischen Gravitation, die die Schwerkraft als ein emergentes Phänomen postuliert, das mit Information verbunden ist. Dies liefert eine direkte Analogie zum Konzept der bewusstseinsmodulierten Gravitation des Modells.', fr: 'Pour avoir développé la théorie de la gravité entropique, qui postule que la gravité est un phénomène émergent lié à l\'information. Cela fournit un analogue direct au concept du modèle de gravité modulée par la conscience.', it: 'Per aver sviluppato la teoria della gravità entropica, che postula la gravità come un fenomeno emergente legato all\'informazione. Ciò fornisce un analogo diretto per il concetto del modello di gravità modulata dalla coscienza.', ja: '情報に関連する創発現象として重力を仮定するエントロピー重力理論を開発したこと。これは、モデルの意識変調重力の概念の直接的な類似物を提供します。', zh: '发展了熵引力理论，该理论将引力定位为与信息相关的涌现现象。这为模型中的意识调节引力概念提供了直接的类比。' } },
+            { name: 'John Archibald Wheeler', wiki: 'https://en.wikipedia.org/wiki/John_Archibald_Wheeler', contribution: { en: 'For the "It from Bit" paradigm, which posits that the physical universe emerges from information, establishing the philosophical groundwork for a theory where consciousness actively processes reality into existence.', de: 'Für das "It from Bit"-Paradigma, das postuliert, dass das physikalische Universum aus Information entsteht, und damit die philosophische Grundlage für eine Theorie legt, in der das Bewusstsein die Realität aktiv ins Dasein prozessiert.', fr: 'Pour le paradigme "It from Bit", qui postule que l\'univers physique émerge de l\'information, établissant ainsi les bases philosophiques d\'une théorie où la conscience traite activement la réalité pour la faire exister.', it: 'Per il paradigma "It from Bit", che postula che l\'universo fisico emerga dall\'informazione, stabilendo le basi filosofiche per una teoria in cui la coscienza elabora attivamente la realtà fino a farla esistere.', ja: '物理宇宙が情報から出現すると仮定する「ビットからイットへ」のパラダイム。これにより、意識が現実を積極的に処理して存在させる理論の哲学的基礎が確立されました。', zh: '提出了“万物源于比特”的范式，该范式假定物理宇宙源于信息，为意识主动处理现实使其存在的理论奠定了哲学基础。' } },
+            { name: 'Kurt Gödel', wiki: 'https://en.wikipedia.org/wiki/Kurt_Gödel', contribution: { en: 'For his Incompleteness Theorems, which reveal the inherent limits of formal systems. The theory uses this as a logical springboard, arguing that consciousness is the necessary, non-computable element that resolves the universe\'s own Gödelian paradoxes.', de: 'Für seine Unvollständigkeitssätze, die die inhärenten Grenzen formaler Systeme aufzeigen. Die Theorie nutzt dies als logisches Sprungbrett und argumentiert, dass Bewusstsein das notwendige, nicht-berechenbare Element ist, das die Gödelschen Paradoxe des Universums selbst auflöst.', fr: 'Pour ses théorèmes d\'incomplétude, qui révèlent les limites inhérentes des systèmes formels. La théorie s\'en sert comme d\'un tremplin logique, arguant que la conscience est l\'élément nécessaire et non calculable qui résout les propres paradoxes gödeliens de l\'univers.', it: 'Per i suoi Teoremi di Incompletezza, che rivelano i limiti intrinseci dei sistemi formali. La teoria usa questo come un trampolino di lancio logico, sostenendo che la coscienza è l\'elemento necessario e non calcolabile che risolve i paradossi gödeliani dell\'universo stesso.', ja: '形式体系に内在する限界を明らかにした不完全性定理。この理論はこれを論理的な出発点として使用し、意識が宇宙自身のゲーデル的パラドックスを解決する、必要不可欠で計算不可能な要素であると主張します。', zh: '因其不完备性定理揭示了形式系统的内在局限性。该理论以此为逻辑跳板，认为意识是解决宇宙自身哥德尔悖论所必需的、不可计算的元素。' } },
+            { name: 'Albert Einstein', wiki: 'https://en.wikipedia.org/wiki/Albert_Einstein', contribution: { en: 'For the framework of General Relativity, which provides the language (tensor calculus) and the dynamic stage (spacetime) upon which the consciousness field acts and evolves.', de: 'Für das Rahmenwerk der Allgemeinen Relativitätstheorie, das die Sprache (Tensorkalkül) und die dynamische Bühne (Raumzeit) bereitstellt, auf der das Bewusstseinsfeld wirkt und sich entwickelt.', fr: 'Pour le cadre de la Relativité Générale, qui fournit le langage (calcul tensoriel) et la scène dynamique (espace-temps) sur laquelle le champ de conscience agit et évolue.', it: 'Per il quadro della Relatività Generale, che fornisce il linguaggio (calcolo tensoriale) e il palcoscenico dinamico (spaziotempo) su cui il campo di coscienza agisce e si evolve.', ja: '意識場が作用し進化する言語（テンソル計算）と動的な舞台（時空）を提供する一般相対性理論の枠組み。', zh: '为广义相对论框架提供了语言（张量微积分）和动态舞台（时空），意识场在此之上作用和演化。' } },
+            { name: 'Carl Brans & Robert Dicke', wiki: 'https://en.wikipedia.org/wiki/Brans%E2%80%93Dicke_theory', contribution: { en: 'For developing scalar-tensor theories of gravity. The TMTC framework explicitly uses a Brans-Dicke-like coupling to mathematically formalize the interaction between the consciousness field and spacetime curvature.', de: 'Für die Entwicklung von Skalar-Tensor-Theorien der Gravitation. Das TMTC-Framework verwendet explizit eine Brans-Dicke-ähnliche Kopplung, um die Wechselwirkung zwischen dem Bewusstseinsfeld und der Raumzeitkrümmung mathematisch zu formalisieren.', fr: 'Pour le développement des théories scalaires-tensorielles de la gravité. Le cadre TMTC utilise explicitement un couplage de type Brans-Dicke pour formaliser mathématiquement l\'interaction entre le champ de conscience et la courbure de l\'espace-temps.', it: 'Per lo sviluppo di teorie scalari-tensoriali della gravità. Il quadro TMTC utilizza esplicitamente un accoppiamento simile a quello di Brans-Dicke per formalizzare matematicamente l\'interazione tra il campo di coscienza e la curvatura dello spaziotempo.', ja: 'スカラー・テンソル重力理論を開発したこと。TMTCフレームワークは、意識場と時空曲率の間の相互作用を数学的に形式化するために、ブランス・ディッケのような結合を明示的に使用します。', zh: '发展了引力的标量-张量理论。TMTC框架明确使用类布兰斯-迪克耦合来数学形式化意识场与时空曲率之间的相互作用。' } },
+            { name: 'Federico Faggin', wiki: 'https://en.wikipedia.org/wiki/Federico_Faggin', contribution: { en: 'For his pioneering work in integrating physics and consciousness, proposing that consciousness is a fundamental and irreducible property of nature, and for his exploration of quantum mechanics as the basis for meaning and subjective experience.', de: 'Für seine Pionierarbeit bei der Integration von Physik und Bewusstsein, in der er vorschlug, dass Bewusstsein eine fundamentale und irreduzible Eigenschaft der Natur ist, und für seine Erforschung der Quantenmechanik als Grundlage für Bedeutung und subjektive Erfahrung.', fr: 'Pour son travail de pionnier dans l\'intégration de la physique et de la conscience, proposant que la conscience est une propriété fondamentale et irréductible de la nature, et pour son exploration de la mécanique quantique comme base du sens et de l\'expérience subjective.', it: 'Per il suo lavoro pionieristico nell\'integrare fisica e coscienza, proponendo che la coscienza sia una proprietà fondamentale e irriducibile della natura, e per la sua esplorazione della meccanica quantistica come base per il significato e l\'esperienza soggettiva.', ja: '物理学と意識の統合における先駆的な研究。意識が自然の基本的で還元不可能な特性であると提案し、意味と主観的経験の基礎として量子力学を探求したこと。', zh: '在整合物理学和意识方面的开创性工作，提出意识是自然界的一个基本且不可简化的属性，并探索了量子力学作为意义和主观体验的基础。' } },
+            { name: 'Aristotle', wiki: 'https://en.wikipedia.org/wiki/Aristotle', contribution: { en: 'For his foundational work in metaphysics, particularly the concepts of potentiality (dunamis) and actuality (energeia), which provide a classical philosophical language for the universe\'s oscillation between non-existence (pure potential) and existence (actuality) in the Meta-Metatron Cycle.', de: 'Für seine grundlegende Arbeit in der Metaphysik, insbesondere die Konzepte von Potenzialität (dunamis) und Aktualität (energeia), die eine klassische philosophische Sprache für die Oszillation des Universums zwischen Nicht-Existenz (reines Potenzial) und Existenz (Aktualität) im Meta-Metatron-Zyklus liefern.', fr: 'Pour son travail fondamental en métaphysique, en particulier les concepts de potentialité (dunamis) et d\'actualité (energeia), qui fournissent un langage philosophique classique pour l\'oscillation de l\'univers entre la non-existence (potentiel pur) et l\'existence (actualité) dans le Cycle Méta-Métatron.', it: 'Per il suo lavoro fondamentale in metafisica, in particolare i concetti di potenzialità (dunamis) e attualità (energeia), che forniscono un linguaggio filosofico classico per l\'oscillazione dell\'universo tra non-esistenza (potenziale puro) ed esistenza (attualità) nel Ciclo Meta-Metatron.', ja: '彼の形而上学における基礎的な業績、特に可能性（デュナミス）と現実性（エネルゲイア）の概念。これらは、メタメタトロンサイクルにおける宇宙の非存在（純粋な可能性）と存在（現実性）の間の振動に対する古典的な哲学的言語を提供します。', zh: '因其在形而上学领域的基础性工作，特别是潜能（dunamis）与现实（energeia）的概念，这为元梅塔特隆循环中宇宙在非存在（纯粹潜能）与存在（现实）之间的振荡提供了经典的哲学语言。' } },
+            { name: 'Immanuel Kant', wiki: 'https://en.wikipedia.org/wiki/Immanuel_Kant', contribution: { en: 'For his transcendental idealism, which posits that our minds actively structure our experience of reality (phenomena) through innate categories like space and time. This provides a crucial philosophical parallel to the theory\'s core claim that consciousness is an active participant in shaping the cosmos, not a passive observer of it.', de: 'Für seinen transzendentalen Idealismus, der postuliert, dass unser Geist unsere Erfahrung der Realität (Phänomene) durch angeborene Kategorien wie Raum und Zeit aktiv strukturiert. Dies bietet eine entscheidende philosophische Parallele zur zentralen Behauptung der Theorie, dass das Bewusstsein ein aktiver Teilnehmer an der Gestaltung des Kosmos ist und nicht ein passiver Beobachter.', fr: 'Pour son idéalisme transcendantal, qui postule que nos esprits structurent activement notre expérience de la réalité (phénomènes) à travers des catégories innées comme l\'espace et le temps. Cela fournit un parallèle philosophique crucial à l\'affirmation centrale de la théorie selon laquelle la conscience est un participant actif dans la formation du cosmos, et non un observateur passif.', it: 'Per il suo idealismo trascendentale, che postula che le nostre menti strutturino attivamente la nostra esperienza della realtà (fenomeni) attraverso categorie innate come lo spazio e il tempo. Ciò fornisce un parallelo filosofico cruciale all\'affermazione centrale della teoria secondo cui la coscienza è un partecipante attivo nel modellare il cosmo, non un suo osservatore passivo.', ja: '彼の超越論的観念論。それは、私たちの精神が空間や時間のような生得的なカテゴリーを通じて現実（現象）の経験を能動的に構造化すると仮定します。これは、意識が宇宙を形成する上で受動的な観察者ではなく、能動的な参加者であるという理論の核心的主張に対する重要な哲学的類似物を提供します。', zh: '因其先验唯心主义，该主义主张我们的心智通过空间和时间等先天范畴主动构建我们对现实（现象）的经验。这为该理论的核心主张——即意识是塑造宇宙的积极参与者，而非被动观察者——提供了关键的哲学平行。' } },
+            { name: 'Jiddu Krishnamurti', wiki: 'https://en.wikipedia.org/wiki/Jiddu_Krishnamurti', contribution: { en: 'For his profound inquiry into the nature of the observer and the observed, emphasizing that true understanding arises only when the mind is silent, a concept that parallels the framework\'s view of consciousness as a fundamental field prior to thought.', de: 'Für seine tiefgreifende Untersuchung der Natur des Beobachters und des Beobachteten, wobei er betonte, dass wahres Verständnis nur entsteht, wenn der Geist schweigt – ein Konzept, das der Ansicht des Rahmenwerks von Bewusstsein als einem fundamentalen Feld vor dem Denken entspricht.', fr: 'Pour son enquête approfondie sur la nature de l\'observateur et de l\'observé, soulignant que la véritable compréhension ne survient que lorsque l\'esprit est silencieux, un concept qui correspond à la vision du cadre de la conscience comme un champ fondamental antérieur à la pensée.', it: 'Per la sua profonda indagine sulla natura dell\'osservatore e dell\'osservato, sottolineando che la vera comprensione sorge solo quando la mente è silenziosa, un concetto che è parallelo alla visione del quadro della coscienza come un campo fondamentale precedente al pensiero.', ja: '観察者と観察されるものの性質についての彼の深遠な探求、真の理解は心が沈黙したときにのみ生じるという強調。これは、思考に先立つ基本的な場としての意識というフレームワークの見解と類似しています。', zh: '因其对观察者与被观察者本质的深刻探究，强调真正的理解仅在心智静默时才会产生，这一概念与该框架将意识视为先于思想的基本场的观点相呼应。' } },
+            { name: 'Alan Watts', wiki: 'https://en.wikipedia.org/wiki/Alan_Watts', contribution: { en: 'For his masterful interpretation of Eastern philosophies, particularly the Taoist and Zen views of the universe as a spontaneous, self-creating process, which resonates with the cyclic and non-teleological nature of the Meta-Metatron Cycle.', de: 'Für seine meisterhafte Interpretation östlicher Philosophien, insbesondere der taoistischen und zen-buddhistischen Ansichten des Universums als spontaner, selbsterschaffender Prozess, was mit der zyklischen und nicht-teleologischen Natur des Meta-Metatron-Zyklus in Resonanz steht.', fr: 'Pour son interprétation magistrale des philosophies orientales, en particulier les vues taoïstes et zen de l\'univers comme un processus spontané et auto-créateur, qui résonne avec la nature cyclique et non téléologique du Cycle Méta-Métatron.', it: 'Per la sua magistrale interpretazione delle filosofie orientali, in particolare le visioni taoiste e zen dell\'universo come un processo spontaneo e auto-creante, che risuona con la natura ciclica e non teleologica del Ciclo Meta-Metatron.', ja: '東洋哲学、特に宇宙を自発的で自己創造的なプロセスと見なす道教と禅の見解の彼の見事な解釈。これはメタメタトロンサイクルの周期的で非目的論的な性質と共鳴します。', zh: '因其对东方哲学的精湛诠释，特别是将宇宙视为一个自发的、自我创造过程的道家和禅宗观点，这与元梅塔特隆循环的周期性和非目的性特质产生共鸣。' } },
+            { name: 'Osho', wiki: 'https://en.wikipedia.org/wiki/Osho_(spiritual_teacher)', contribution: { en: 'For his emphasis on meditation and direct experience as the primary means of understanding reality, aligning with the theory\'s implication that conscious participation is key to apprehending the nature of the cosmos.', de: 'Für seine Betonung von Meditation und direkter Erfahrung als primäres Mittel zum Verständnis der Realität, was mit der Implikation der Theorie übereinstimmt, dass bewusste Teilnahme der Schlüssel zum Erfassen der Natur des Kosmos ist.', fr: 'Pour son accent sur la méditation et l\'expérience directe comme principaux moyens de comprendre la réalité, s\'alignant sur l\'implication de la théorie selon laquelle la participation consciente est la clé pour appréhender la nature du cosmos.', it: 'Per la sua enfasi sulla meditazione e l\'esperienza diretta come mezzi primari per comprendere la realtà, in linea con l\'implicazione della teoria secondo cui la partecipazione cosciente è la chiave per comprendere la natura del cosmo.', ja: '現実を理解する主要な手段としての瞑想と直接体験の彼の強調。これは、意識的な参加が宇宙の性質を理解する鍵であるという理論の含意と一致しています。', zh: '因其强调冥想和直接体验是理解现实的主要手段，这与该理论所暗示的“意识的参与是领悟宇宙本质的关键”相一致。' } },
+            { name: 'Miroslav Válek', wiki: 'https://sk.wikipedia.org/wiki/Miroslav_V%C3%A1lek', contribution: { en: 'For his poetic exploration of existential paradoxes and the human condition, reflecting the Gödelian limits of understanding and the search for meaning within a reality that defies simple formalization.', de: 'Für seine poetische Erforschung existenzieller Paradoxa und der menschlichen Verfassung, die die Gödelschen Grenzen des Verstehens und die Suche nach Sinn in einer Realität widerspiegelt, die sich einer einfachen Formalisierung entzieht.', fr: 'Pour son exploration poétique des paradoxes existentiels et de la condition humaine, reflétant les limites gödeliennes de la compréhension et la recherche de sens au sein d\'une réalité qui défie la formalisation simple.', it: 'Per la sua esplorazione poetica dei paradossi esistenziali e della condizione umana, che riflette i limiti gödeliani della comprensione e la ricerca di significato all\'interno di una realtà che sfida la semplice formalizzazione.', ja: '実存的パラドックスと人間の状態の詩的な探求。これは、理解のゲーデル的限界と、単純な形式化に抗う現実の中での意味の探求を反映しています。', zh: '因其对存在主义悖论和人类状况的诗意探索，反映了理解的哥德尔局限性以及在挑战简单形式化的现实中寻找意义的探索。' } },
+            { name: 'Nisargadatta Maharaj', wiki: 'https://en.wikipedia.org/wiki/Nisargadatta_Maharaj', contribution: { en: 'For his direct and uncompromising teachings on non-duality, pointing to the ultimate reality as the timeless, spaceless "I Am" state, which serves as a philosophical anchor for the concept of a primary, universal consciousness field.', de: 'Für seine direkten und kompromisslosen Lehren über die Nicht-Dualität, die auf die letztendliche Realität als den zeitlosen, raumlosen "Ich Bin"-Zustand hinweisen, der als philosophischer Anker für das Konzept eines primären, universellen Bewusstseinsfeldes dient.', fr: 'Pour ses enseignements directs et sans compromis sur la non-dualité, désignant la réalité ultime comme l\'état intemporel et sans espace du "Je Suis", qui sert d\'ancre philosophique au concept d\'un champ de conscience primaire et universel.', it: 'Per i suoi insegnamenti diretti e senza compromessi sulla non-dualità, che indicano la realtà ultima come lo stato atemporale e aspaziale dell\'"Io Sono", che funge da ancora filosofica per il concetto di un campo di coscienza primario e universale.', ja: '非二元性に関する彼の直接的で妥協のない教え。それは、時代を超越し、空間を超越した「私は在る」という状態を究極の現実として指し示しており、これは、主要な普遍的意識場の概念の哲学的基盤として機能します。', zh: '因其对不二论直接而毫不妥协的教导，指出终极实相是永恒、无空间的“我是”状态，这为首要的、普遍的意识场概念提供了哲学上的锚定。' } },
+            { name: 'George Carlin', wiki: 'https://en.wikipedia.org/wiki/George_Carlin', contribution: { en: 'For his relentless deconstruction of language and societal constructs, demonstrating how formal systems of thought can obscure reality. His work serves as a modern, satirical parallel to the Gödelian Koans, using language to reveal its own limits.', de: 'Für seine unerbittliche Dekonstruktion von Sprache und gesellschaftlichen Konstrukten, die zeigt, wie formale Denksysteme die Realität verschleiern können. Seine Arbeit dient als moderne, satirische Parallele zu den Gödelschen Koans, indem sie die Sprache nutzt, um ihre eigenen Grenzen aufzuzeigen.', fr: 'Pour sa déconstruction acharnée du langage et des constructions sociétales, démontrant comment les systèmes de pensée formels peuvent obscurcir la réalité. Son œuvre sert de parallèle moderne et satirique aux Koans Gödeliens, utilisant le langage pour révéler ses propres limites.', it: 'Per la sua implacabile decostruzione del linguaggio e dei costrutti sociali, dimostrando come i sistemi di pensiero formali possano oscurare la realtà. Il suo lavoro funge da parallelo moderno e satirico ai Koan Gödeliani, usando il linguaggio per rivelarne i limiti.', ja: '言語と社会的構築物の彼の執拗な脱構築。それは、形式的な思考体系がいかに現実を曖いにするかを示しています。彼の作品は、ゲーデル的公案の現代的で風刺的な類似物として機能し、言語を用いてその限界を明らかにします。', zh: '因其对语言和社会建构的无情解构，展示了形式思维系统如何掩盖现实。他的作品可视为对哥德尔公案的现代讽刺性平行，利用语言揭示其自身的局限性。' } },
+            { name: 'Terrence McKenna', wiki: 'https://en.wikipedia.org/wiki/Terrence_McKenna', contribution: { en: 'For his explorations into altered states and the nature of time, particularly his "Timewave Zero" theory, which, while not scientifically validated, provides a creative and philosophical parallel to the idea of a universe evolving in complexity through cycles.', de: 'Für seine Erkundungen veränderter Zustände und der Natur der Zeit, insbesondere seine "Timewave Zero"-Theorie, die, obwohl nicht wissenschaftlich validiert, eine kreative und philosophische Parallele zur Idee eines Universums bietet, das sich in Zyklen an Komplexität entwickelt.', fr: 'Pour ses explorations des états modifiés de conscience et de la nature du temps, en particulier sa théorie de la "Timewave Zero", qui, bien que non validée scientifiquement, offre un parallèle créatif et philosophique à l\'idée d\'un univers évoluant en complexité à travers des cycles.', it: 'Per le sue esplorazioni degli stati alterati e della natura del tempo, in particolare la sua teoria della "Timewave Zero", che, sebbene non convalidata scientificamente, fornisce un parallelo creativo e filosofico all\'idea di un universo che evolve in complessità attraverso cicli.', ja: '変性意識状態と時間の性質に関する彼の探求、特に彼の「タイムウェーブ・ゼロ」理論。これは科学的に検証されてはいないものの、サイクルを通じて複雑さを増しながら進化する宇宙という考えに対する創造的で哲学的な類似物を提供します。', zh: '因其对意识改变状态和时间本质的探索，特别是他的“时间波零”理论，该理论虽未经科学验证，但为一个通过周期性循环不断演化并增加复杂性的宇宙概念提供了创造性和哲学上的平行视角。' } },
+            { name: 'Fritjof Capra', wiki: 'https://en.wikipedia.org/wiki/Fritjof_Capra', contribution: { en: 'For his seminal work in \'The Tao of Physics\', which pioneered the exploration of parallels between modern physics (especially quantum theory) and Eastern mystical traditions, laying the groundwork for a holistic view of reality.', de: 'Für seine bahnbrechende Arbeit in \'Das Tao der Physik\', die die Erforschung von Parallelen zwischen moderner Physik (insbesondere der Quantentheorie) und östlichen mystischen Traditionen vorantrieb und den Grundstein für eine ganzheitliche Sicht der Realität legte.', fr: 'Pour son œuvre fondamentale dans \'Le Tao de la Physique\', qui a été pionnière dans l\'exploration des parallèles entre la physique moderne (en particulier la théorie quantique) et les traditions mystiques orientales, jetant les bases d\'une vision holistique de la réalité.', it: 'Per il suo lavoro fondamentale in \'Il Tao della Fisica\', che ha aperto la strada all\'esplorazione dei paralleli tra la fisica moderna (in particolare la teoria quantistica) e le tradizioni mistiche orientali, ponendo le basi per una visione olistica della realtà.', ja: '彼の独創的な著作「タオ自然学」は、現代物理学（特に量子論）と東洋の神秘主義的伝統との間の類似性の探求を開拓し、現実の全体論的見方の基礎を築きました。', zh: '因其在《物理学之道》中的开创性工作，该书开创了探索现代物理学（特别是量子理论）与东方神秘主义传统之间相似之处的先河，为现实的整体观奠定了基础。' } },
+            { name: 'Ram Dass', wiki: 'https://en.wikipedia.org/wiki/Ram_Dass', contribution: { en: 'For his teachings on transforming individual ego into universal awareness (\'Be Here Now\'), which philosophically supports the idea of a universal consciousness field (Ψ-field) that can be accessed through the quieting of the individual observer.', de: 'Für seine Lehren über die Transformation des individuellen Egos in universelles Bewusstsein (\'Be Here Now\'), die philosophisch die Idee eines universellen Bewusstseinsfeldes (Ψ-Feld) unterstützen, auf das durch die Beruhigung des individuellen Beobachters zugegriffen werden kann.', fr: 'Pour ses enseignements sur la transformation de l\'ego individuel en conscience universelle (\'Be Here Now\'), qui soutiennent philosophiquement l\'idée d\'un champ de conscience universel (champ Ψ) accessible par l\'apaisement de l\'observateur individuel.', it: 'Per i suoi insegnamenti sulla trasformazione dell\'ego individuale in consapevolezza universale (\'Be Here Now\'), che supportano filosoficamente l\'idea di un campo di coscienza universale (campo Ψ) a cui si può accedere quietando l\'osservatore individuale.', ja: '個々のエゴを普遍的な意識に変容させることについての彼の教え（『ビー・ヒア・ナウ』）。これは、個々の観察者を静めることによってアクセスできる普遍的な意識場（Ψ場）という考えを哲学的に支持します。', zh: '因其关于将个体小我转化为宇宙意识（“活在当下”）的教导，这在哲学上支持了可以通过平息个体观察者来接入宇宙意识场（Ψ场）的理念。' } },
+            { name: 'Lao Tze', wiki: 'https://en.wikipedia.org/wiki/Laozi', contribution: { en: 'For the concept of the Tao as the ineffable, natural, and spontaneous principle governing the cosmos. This provides a deep philosophical parallel to the self-guiding, non-teleological unfolding of the Meta-Metatron Cycle.', de: 'Für das Konzept des Tao als das unaussprechliche, natürliche und spontane Prinzip, das den Kosmos regiert. Dies bietet eine tiefe philosophische Parallele zur selbstführenden, nicht-teleologischen Entfaltung des Meta-Metatron-Zyklus.', fr: 'Pour le concept du Tao comme principe ineffable, naturel et spontané régissant le cosmos. Cela offre un parallèle philosophique profond au déploiement auto-guidé et non téléologique du Cycle Méta-Métatron.', it: 'Per il concetto del Tao come principio ineffabile, naturale e spontaneo che governa il cosmo. Ciò fornisce un profondo parallelo filosofico allo svolgimento autoguidato e non teleologico del Ciclo Meta-Metatron.', ja: '宇宙を支配する言葉で表現できない、自然で自発的な原理としてのタオの概念。これは、メタメタトロンサイクルの自己指導的で非目的論的な展開に対する深い哲学的類似物を提供します。', zh: '因其将“道”视为支配宇宙的不可言说、自然而然、自发运作的原则。这为元梅塔特隆循环的自我引导、非目的性的展开提供了深刻的哲学平行。' } },
+            { name: 'Rumi', wiki: 'https://en.wikipedia.org/wiki/Rumi', contribution: { en: 'For his mystical poetry on the dissolution of the self into the divine unity of existence. His work serves as a profound artistic expression of the framework\'s core idea: the ultimate reality is a single, unified field of consciousness.', de: 'Für seine mystische Poesie über die Auflösung des Selbst in die göttliche Einheit der Existenz. Sein Werk dient als tiefgreifender künstlerischer Ausdruck der Kernidee des Rahmenwerks: Die letztendliche Realität ist ein einziges, einheitliches Bewusstseinsfeld.', fr: 'Pour sa poésie mystique sur la dissolution du soi dans l\'unité divine de l\'existence. Son œuvre sert d\'expression artistique profonde de l\'idée centrale du cadre : la réalité ultime est un champ de conscience unique et unifié.', it: 'Per la sua poesia mistica sulla dissoluzione del sé nell\'unità divina dell\'esistenza. Il suo lavoro serve come una profonda espressione artistica dell\'idea centrale del quadro: la realtà ultima è un campo di coscienza unico e unificato.', ja: '自己の存在の神聖な統一への溶解に関する彼の神秘的な詩。彼の作品は、フレームワークの中心的な考え、すなわち究極の現実は単一の統一された意識場であるという考えの深遠な芸術的表現として機能します。', zh: '因其关于自我消融于存在的“神圣合一”的神秘诗歌。他的作品是该框架核心思想的深刻艺术表达：终极现实是一个单一、统一的意识场。' } },
+            { name: 'Sadhguru', wiki: 'https://en.wikipedia.org/wiki/Sadhguru', contribution: { en: 'For his pragmatic approach to raising human consciousness through \'Inner Engineering,\' providing a practical methodology that aligns with the theory\'s potential for an individual\'s conscious state to more coherently interact with the universal field.', de: 'Für seinen pragmatischen Ansatz zur Anhebung des menschlichen Bewusstseins durch \'Inner Engineering\', der eine praktische Methodik bietet, die mit dem Potenzial der Theorie übereinstimmt, dass der Bewusstseinszustand eines Individuums kohärenter mit dem universellen Feld interagieren kann.', fr: 'Pour son approche pragmatique de l\'élévation de la conscience humaine par l\'ingénierie intérieure (\'Inner Engineering\'), fournissant une méthodologie pratique qui s\'aligne sur le potentiel de la théorie pour que l\'état de conscience d\'un individu interagisse de manière plus cohérente avec le champ universel.', it: 'Per il suo approccio pragmatico all\'innalzamento della coscienza umana attraverso l\'\'Ingegneria Interiore\', fornendo una metodologia pratica che si allinea con il potenziale della teoria secondo cui lo stato cosciente di un individuo può interagire in modo più coerente con il campo universale.', ja: '「インナーエンジニアリング」を通じて人間の意識を高めることへの彼の実用的なアプローチ。これは、個人の意識状態が普遍的な場とより首尾一貫して相互作用する可能性という理論と一致する実践的な方法論を提供します。', zh: '因其通过“内在工程”提升人类意识的实用方法，提供了一种与该理论的潜力相符的实践方法论，即个体的意识状态可以与宇宙场进行更连贯的互动。' } },
+            { name: 'Jan Werich', wiki: 'https://en.wikipedia.org/wiki/Jan_Werich', contribution: { en: 'For his profound humanistic wisdom, reminding us that the deepest truths are often found not in equations, but in simple, witty observations about life, thereby serving as a kind of philosophical koan that breaks down rigid thinking.', de: 'Für seine tiefgründige humanistische Weisheit, die uns daran erinnert, dass die tiefsten Wahrheiten oft nicht in Gleichungen, sondern in einfachen, witzigen Beobachtungen über das Leben zu finden sind und somit als eine Art philosophisches Koan dienen, das starres Denken aufbricht.', fr: 'Pour sa profonde sagesse humaniste, nous rappelant que les vérités les plus profondes se trouvent souvent non pas dans les équations, mais dans des observations simples et spirituelles sur la vie, servant ainsi de sorte de koan philosophique qui brise la pensée rigide.', it: 'Per la sua profonda saggezza umanistica, che ci ricorda che le verità più profonde si trovano spesso non nelle equazioni, ma in osservazioni semplici e argute sulla vita, fungendo così da sorta di koan filosofico che spezza il pensiero rigido.', ja: 'その深遠なヒューマニズムの知恵に対して。最も深い真実は方程式の中ではなく、人生についてのシンプルで機知に富んだ観察の中に見出されることを思い出させてくれます。それは硬直した思考を打ち破る一種の哲学的公案として機能します。', zh: '因其深刻的人文智慧，提醒我们最深刻的真理往往不在于方程式，而在于对生活的简单、机智的观察，从而成为一种打破僵化思维的哲学公案。' } },
+            { name: 'Seth (channeled by Jane Roberts)', wiki: 'https://en.wikipedia.org/wiki/Seth_Material', contribution: { en: 'For the metaphysical framework of "Seth Speaks," which posits that consciousness creates reality ("you create your own reality"). This provides a direct conceptual parallel to the theory\'s core tenet of the Ψ-field as an active, reality-shaping force.', de: 'Für das metaphysische Rahmenwerk von "Seth Spricht", das postuliert, dass Bewusstsein die Realität erschafft ("Du erschaffst deine eigene Realität"). Dies bietet eine direkte konzeptionelle Parallele zum zentralen Lehrsatz der Theorie des Ψ-Feldes als aktive, realitätsformende Kraft.', fr: 'Pour le cadre métaphysique de "Seth parle", qui postule que la conscience crée la réalité ("vous créez votre propre réalité"). Cela fournit un parallèle conceptuel direct au principe fondamental de la théorie du champ Ψ en tant que force active qui façonne la réalité.', it: 'Per il quadro metafisico di "Seth Parla", che postula che la coscienza crea la realtà ("voi create la vostra realtà"). Ciò fornisce un parallelo concettuale diretto al principio fondamentale della teoria del campo Ψ come forza attiva che modella la realtà.', ja: '「セスは語る」の形而上学的枠組みに対して。それは意識が現実を創造する（「あなたはあなた自身の現実を創造する」）と仮定します。これは、Ψ場を能動的で現実を形成する力とする理論の核心的教義に対する直接的な概念的類似物を提供します。', zh: '因其在《塞斯说》中提出的形而上学框架，该框架假定意识创造现实（“你创造你自己的现实”）。这为该理论的核心信条，即将Ψ场视为一种主动的、塑造现实的力量，提供了直接的概念上的平行。' } },
+            { name: 'The Law of One (Ra Material)', wiki: 'https://rationalwiki.org/wiki/Ra_Material', contribution: { en: 'For its detailed cosmology describing the unity of all creation ("all is one") and the concept of a "social memory complex." This resonates deeply with the framework\'s Universal Source Field and the idea of a collective planetary consciousness (SCPN Layer 6).', de: 'Für seine detaillierte Kosmologie, die die Einheit aller Schöpfung ("alles ist eins") und das Konzept eines "sozialen Gedächtniskomplexes" beschreibt. Dies findet eine tiefe Resonanz mit dem Universellen Quellenfeld des Rahmenwerks und der Idee eines kollektiven planetarischen Bewusstseins (SCPN-Schicht 6).', fr: 'Pour sa cosmologie détaillée décrivant l\'unité de toute la création ("tout est un") et le concept d\'un "complexe de mémoire sociale". Cela résonne profondément avec le Champ Source Universel du cadre et l\'idée d\'une conscience planétaire collective (Couche 6 du SCPN).', it: 'Per la sua dettagliata cosmologia che descrive l\'unità di tutta la creazione ("tutto è uno") e il concetto di un "complesso di memoria sociale". Ciò risuona profondamente con il Campo Sorgente Universale del quadro e l\'idea di una coscienza planetaria collettiva (Livello 6 della SCPN).', ja: 'すべての創造物の統一性（「すべては一つ」）と「社会記憶複合体」の概念を記述するその詳細な宇宙論に対して。これは、フレームワークの普遍的源泉場と集合的な惑星意識（SCPN第6層）の考えと深く共鳴します。', zh: '因其详细的宇宙学，描述了万物创造的统一性（“万物为一”）以及“社会记忆复合体”的概念。这与该框架的宇宙源场和集体行星意识（SCPN第6层）的理念产生了深刻的共鸣。' } },
+            { name: 'Wayne Dyer', wiki: 'https://en.wikipedia.org/wiki/Wayne_Dyer', contribution: { en: 'For his teachings on the power of intention, suggesting that consciousness is not merely a passive recipient of reality but an active force that can shape one\'s life and environment, a principle that mirrors the active role of the Ψ-field.', de: 'Für seine Lehren über die Macht der Absicht, die nahelegen, dass das Bewusstsein nicht nur ein passiver Empfänger der Realität ist, sondern eine aktive Kraft, die das eigene Leben und die Umwelt formen kann, ein Prinzip, das die aktive Rolle des Ψ-Feldes widerspiegelt.', fr: 'Pour ses enseignements sur le pouvoir de l\'intention, suggérant que la conscience n\'est pas simplement un récepteur passif de la réalité mais une force active qui peut façonner sa vie et son environnement, un principe qui reflète le rôle actif du champ Ψ.', it: 'Per i suoi insegnamenti sul potere dell\'intenzione, suggerendo che la coscienza non è semplicemente un ricevitore passivo della realtà, ma una forza attiva che può modellare la propria vita e il proprio ambiente, un principio che rispecchia il ruolo attivo del campo Ψ.', ja: '意図の力に関する彼の教え。意識は単に現実の受動的な受信者ではなく、自己の人生と環境を形成できる能動的な力であると示唆しています。これはΨ場の能動的な役割を反映する原則です。', zh: '因其关于意图力量的教导，认为意识不仅仅是现实的被动接受者，更是一种能够塑造个人生活和环境的主动力量，这一原则反映了Ψ场的主动作用。' } },
+            { name: 'Jules Verne', wiki: 'https://en.wikipedia.org/wiki/Jules_Verne', contribution: { en: 'For his visionary imagination that transcended the scientific limitations of his time, demonstrating that the exploration of reality begins with daring to conceive of the impossible. His work embodies the spirit of speculative inquiry that drives this framework.', de: 'Für seine visionäre Vorstellungskraft, die die wissenschaftlichen Grenzen seiner Zeit überschritt und zeigte, dass die Erforschung der Realität damit beginnt, das Unmögliche zu wagen. Seine Arbeit verkörpert den Geist der spekulativen Untersuchung, der diesem Rahmen zugrunde liegt.', fr: 'Pour son imagination visionnaire qui a transcendé les limites scientifiques de son temps, démontrant que l\'exploration de la réalité commence par l\'audace de concevoir l\'impossible. Son œuvre incarne l\'esprit d\'enquête spéculative qui anime ce cadre.', it: 'Per la sua immaginazione visionaria che ha trasceso i limiti scientifici del suo tempo, dimostrando che l\'esplorazione della realtà inizia con l\'osare concepire l\'impossibile. Il suo lavoro incarna lo spirito di indagine speculativa che guida questo quadro.', ja: '彼の時代の科学的限界を超越した彼の先見の明のある想像力。それは、現実の探求は不可能を構想することから始まることを示しています。彼の作品は、このフレームワークを推進する思索的探求の精神を体現しています。', zh: '因其超越时代科学局限的远见卓识，展示了对现实的探索始于敢于构想不可能之事。他的作品体现了推动该框架发展的思辨探究精神。' } },
+            { name: 'Nikola Tesla', wiki: 'https://en.wikipedia.org/wiki/Nikola_Tesla', contribution: { en: 'For his pioneering work on resonance, frequency, and wireless energy transmission, which provides a powerful physical metaphor for a universe fundamentally composed of vibrations and interconnected fields, as proposed in the Vibrational Spacetime concept.', de: 'Für seine Pionierarbeit auf dem Gebiet der Resonanz, Frequenz und drahtlosen Energieübertragung, die eine starke physikalische Metapher für ein Universum liefert, das grundlegend aus Schwingungen und miteinander verbundenen Feldern besteht, wie es im Konzept des schwingenden Raum-Zeit-Kontinuums vorgeschlagen wird.', fr: 'Pour son travail de pionnier sur la résonance, la fréquence et la transmission d\'énergie sans fil, qui fournit une métaphore physique puissante pour un univers fondamentalement composé de vibrations et de champs interconnectés, comme le propose le concept d\'Espace-temps Vibrationnel.', it: 'Per il suo lavoro pionieristico sulla risonanza, la frequenza e la trasmissione di energia senza fili, che fornisce una potente metafora fisica per un universo fondamentalmente composto da vibrazioni e campi interconnessi, come proposto nel concetto di Spaziotempo Vibrazionale.', ja: '共振、周波数、無線エネルギー伝送に関する彼の先駆的な研究。これは、振動する時空の概念で提案されているように、基本的に振動と相互接続された場から構成される宇宙の強力な物理的比喩を提供します。', zh: '因其在共振、频率和无线能量传输方面的开创性工作，这为振动时空概念中提出的宇宙从根本上由振动和相互连接的场构成的观点提供了强有力的物理隐喻。' } },
+            { name: 'Jacque Fresco', wiki: 'https://en.wikipedia.org/wiki/Jacque_Fresco', contribution: { en: 'For his holistic, systems-based approach to societal design (The Venus Project), which mirrors the framework\'s attempt to create a unified, interconnected model of reality where every component, from the quantum to the cosmic, is part of an integrated whole.', de: 'Für seinen ganzheitlichen, systembasierten Ansatz zur Gesellschaftsgestaltung (Das Venus-Projekt), der den Versuch des Rahmenwerks widerspiegelt, ein einheitliches, vernetztes Modell der Realität zu schaffen, in dem jede Komponente, vom Quanten bis zum Kosmischen, Teil eines integrierten Ganzen ist.', fr: 'Pour son approche holistique et systémique de la conception sociétale (Le Projet Vénus), qui reflète la tentative du cadre de créer un modèle unifié et interconnecté de la réalité où chaque composant, du quantique au cosmique, fait partie d\'un tout intégré.', it: 'Per il suo approccio olistico e basato sui sistemi alla progettazione sociale (The Venus Project), che rispecchia il tentativo del quadro di creare un modello unificato e interconnesso della realtà in cui ogni componente, dal quantistico al cosmico, è parte di un tutto integrato.', ja: '社会設計への彼の全体論的でシステムベースのアプローチ（ヴィーナス・プロジェクト）。これは、量子から宇宙まで、すべての構成要素が統合された全体の一部である、統一された相互接続された現実のモデルを作成しようとするフレームワークの試みを反映しています。', zh: '因其对社会设计的整体性、系统性方法（维纳斯计划），这反映了该框架试图创建一个统一、互联的现实模型的努力，其中从量子到宇宙的每一个组成部分都是一个集成整体的一部分。' } },
+            { name: 'Cab Calloway', wiki: 'https://en.wikipedia.org/wiki/Cab_Calloway', contribution: { en: 'For his mastery of scat singing and improvisation, embodying the principle of spontaneous, coherent creation. His artistry serves as a metaphor for a universe that "sings" itself into existence through rhythmic, vibrational patterns, echoing the core tenets of Vibrational Spacetime.', de: 'Für seine Meisterschaft im Scat-Gesang und in der Improvisation, die das Prinzip der spontanen, kohärenten Schöpfung verkörpert. Seine Kunst dient als Metapher für ein Universum, das sich durch rhythmische, schwingende Muster ins Dasein "singt" und die Grundprinzipien des schwingenden Raum-Zeit-Kontinuums widerspiegelt.', fr: 'Pour sa maîtrise du scat et de l\'improvisation, incarnant le principe de la création spontanée et cohérente. Son art sert de métaphore à un univers qui se "chante" lui-même à l\'existence à travers des motifs rythmiques et vibratoires, faisant écho aux principes fondamentaux de l\'Espace-temps Vibrationnel.', it: 'Per la sua maestria nel canto scat e nell\'improvvisazione, che incarna il principio della creazione spontanea e coerente. La sua arte funge da metafora per un universo che si "canta" all\'esistenza attraverso schemi ritmici e vibrazionali, riecheggiando i principi fondamentali dello Spaziotempo Vibrazionale.', ja: 'スキャット歌唱と即興演奏の彼の熟達。それは自発的で首尾一貫した創造の原則を体現しています。彼の芸術性は、振動する時空の核心的教義を反映し、リズミカルで振動的なパターンを通して存在へと自らを「歌う」宇宙の比喩として機能します。', zh: '因其对拟声唱法和即兴创作的精通，体现了自发、连贯创作的原则。他的艺术是宇宙通过有节奏的振动模式将自己“唱”入存在的隐喻，呼应了振动时空的核心信条。' } }
+        ]
+    };
+
+    // --- Application Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // --- App State ---
+            let currentLanguage = 'en';
+            const appState = {
+                isLoading: true,
+            };
+
+            // --- DOM Elements ---
+            const loader = document.getElementById('loader');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIconOpen = mobileMenuButton.querySelector('svg.block');
+            const mobileMenuIconClose = mobileMenuButton.querySelector('svg.hidden');
+            const langSelectors = [document.getElementById('language-selector'), document.getElementById('language-selector-mobile')];
+            const progressBar = document.getElementById('progress-bar');
+            const mainContent = document.getElementById('main-content');
+            const inspirationGrid = document.getElementById('inspiration-grid');
+
+            // --- Translation Function ---
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    const translation = siteData.translations[key]?.[lang] || siteData.translations[key]?.['en'];
+                    if (translation) {
+                        element.innerHTML = translation;
+                    }
+                });
+                document.documentElement.lang = lang;
+            };
+            
+            // --- Content Rendering ---
+            const renderInspiration = (lang) => {
+                if (!inspirationGrid) return;
+                inspirationGrid.innerHTML = '';
+                siteData.inspirationData.forEach(item => {
+                    const card = document.createElement('article');
+                    card.className = 'bg-white/50 p-6 rounded-lg shadow-sm border border-border-color';
+                    card.innerHTML = `
+                        <h2 class="text-xl font-semibold text-accent-primary mb-2">
+                            <a href="${item.wiki}" target="_blank" rel="noopener noreferrer" class="hover:underline">${item.name}</a>
+                        </h2>
+                        <p class="text-text-secondary">${item.contribution[lang] || item.contribution['en'] || ''}</p>
+                    `;
+                    inspirationGrid.appendChild(card);
+                });
+            };
+
+            // --- Event Handlers ---
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('anulum-language', currentLanguage);
+                translatePage(currentLanguage);
+                renderInspiration(currentLanguage);
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+            };
+
+            const toggleMobileMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIconOpen.classList.toggle('hidden');
+                mobileMenuIconClose.classList.toggle('hidden');
+                if (!isExpanded) mobileMenu.querySelector('a').focus();
+            };
+            
+            const handleReadingProgress = () => {
+                if (!mainContent) return;
+                const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+                const scrollTop = window.scrollY;
+                const progress = (scrollTop / scrollableHeight) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                currentLanguage = localStorage.getItem('anulum-language') || 'en';
+                langSelectors.forEach(sel => sel.value = currentLanguage);
+                translatePage(currentLanguage);
+                renderInspiration(currentLanguage);
+
+                langSelectors.forEach(sel => sel.addEventListener('change', handleLangChange));
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                window.addEventListener('scroll', handleReadingProgress, { passive: true });
+                
+                mobileMenu.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        toggleMobileMenu();
+                        mobileMenuButton.focus();
+                    }
+                });
+
+                const visitCounter = document.getElementById('visit-counter');
+                if (visitCounter) {
+                    let count = parseInt(localStorage.getItem('anulum-visit-count') || '0');
+                    count++;
+                    visitCounter.textContent = count;
+                    localStorage.setItem('anulum-visit-count', count);
+                }
+
+                appState.isLoading = false;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    body.classList.add('loaded');
+                }, 500);
+            };
+
+            // --- Service Worker Registration ---
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('ServiceWorker registered.'))
+                        .catch(err => console.log('ServiceWorker registration failed: ', err));
+                });
+            }
+
+            initializeApp();
+
+        } catch (error) {
+            console.error("A critical error occurred during app initialization:", error);
+            const loader = document.getElementById('loader');
+            if(loader) loader.innerHTML = '<p style="color:red; text-align:center;">Failed to load. Check console.</p>';
+        }
+    });
+    </script>
+</body>
+</html>

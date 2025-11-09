@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 2: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 2, designed to make its function as a "tuning" layer clear. The flow is: 1. Introduction. 2. Neuromodulator Tuning Simulator (now with Glutamate). 3. NEW: Neural Ensembles as Attractors. 4. NEW: Axonal Conduction & Phase-Locking. 5. Ψ-Field Influence on Neurotransmission. 6. VIBRANA Entrainment. 7. Inter-Layer Connections. This revised structure now fully covers the key components from the manuscript. -->
+    <!-- Visualization & Content Choices:
+        - Neuromodulator Tuning: Goal: Demonstrate chemical influence. Method: Chart.js. Interaction: Sliders for Serotonin (coherence), Dopamine (gain), and NEW: Glutamate (frequency). Justification: Provides a more complete and accurate simulation of neurochemical tuning.
+        - NEW - Neural Ensembles as Attractors: Goal: Visualize Ψ-field stabilizing neural patterns. Method: Canvas animation. Interaction: Slider for Ψ-Field Coherence makes a specific neuron cluster fire in a stable pattern. Justification: Makes the abstract "attractor" concept tangible.
+        - NEW - Axonal Phase-Locking: Goal: Explain neural timing. Method: Canvas animation. Interaction: Slider for Phase-Locking Strength syncs a traveling pulse to a background brainwave. Justification: Clearly illustrates theta/gamma phase nesting.
+        - Ψ-Field & Release: Goal: Visualize field-to-chemistry coupling. Method: Canvas animation. Interaction: Slider modulates release intensity. Justification: Illustrates the core equation Φ_neuro = Σα_i(Ψ)δ(x-x_i).
+        - VIBRANA Entrainment: Goal: Show vibrational organization. Method: Canvas animation. Interaction: Button applies a coherent wave to synchronize random firing. Justification: Explains syllabic entrainment.
+        - Inter-Layer Diagram: Goal: Contextualize Layer 2. Method: Static HTML/Tailwind. Justification: Shows information flow between layers.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 2: Neurochemistry</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#tuning" class="nav-link font-semibold text-slate-600">Tuning</a>
+                    <a href="#attractors" class="nav-link font-semibold text-slate-600">Attractors</a>
+                    <a href="#phaselock" class="nav-link font-semibold text-slate-600">Phase-Locking</a>
+                    <a href="#connections" class="nav-link font-semibold text-slate-600">Connections</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Chemical Bridge of Consciousness</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 2 acts as the critical interface between the quantum events of Layer 1 and the large-scale neural rhythms of Layer 3. It is here that neurochemistry—the dance of neurotransmitters—translates subtle quantum influences into coherent brain activity. This layer filters the projection of consciousness through symbol-space and perception, tuning the very fabric of our experienced reality through chemical signals.
+            </p>
+        </section>
+
+        <section id="tuning" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Neuromodulator Tuning Simulator</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Neurotransmitters set the 'tone' of neural circuits, adjusting the gain, coherence, and frequency of brain rhythms to align with the Ψ-field. Adjust the sliders to see how brain chemistry tunes a neural gamma oscillation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <div class="chart-container">
+                        <canvas id="neuralOscillationChart"></canvas>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <label for="serotonin-slider" class="font-semibold text-slate-700">Serotonin Level: <span id="serotonin-value">50</span>%</label>
+                        <p class="text-sm text-slate-500 mb-2">Influences emotional tone and reduces neural noise, increasing signal coherence.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="serotonin-slider">
+                    </div>
+                    <div>
+                        <label for="dopamine-slider" class="font-semibold text-slate-700">Dopamine Level: <span id="dopamine-value">50</span>%</label>
+                        <p class="text-sm text-slate-500 mb-2">Modulates motivation and focus, increasing the signal's amplitude or 'gain'.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="dopamine-slider">
+                    </div>
+                    <div>
+                        <label for="glutamate-slider" class="font-semibold text-slate-700">Glutamate Level: <span id="glutamate-value">50</span>%</label>
+                        <p class="text-sm text-slate-500 mb-2">The primary excitatory signal, increasing the oscillation frequency and speed of processing.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="glutamate-slider">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="attractors" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Neural Ensembles as Attractors</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The consciousness field (Ψ_s) doesn't just act on single neurons; it stabilizes entire patterns of activity. Specific thoughts or perceptions correspond to "attractor states," where a dedicated ensemble of neurons fires in a stable, coherent pattern, sculpted from the background noise by the Ψ-field.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                     <canvas id="attractorCanvas" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <label for="psi-coherence-slider" class="font-semibold text-slate-700">Ψ-Field Coherence: <span id="psi-coherence-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the coherence of the local Ψ-field to see an attractor ensemble emerge and stabilize from the random background activity.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="psi-coherence-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="phaselock" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Axonal Conduction & Phase-Locking</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">For information to be integrated across the brain, the timing of neural signals is critical. Axonal conduction—the firing of signals down nerve fibers—resonates with larger brainwaves, a process known as phase-locking. This ensures signals arrive at the right time to contribute to a coherent thought.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="phaseLockCanvas" class="w-full h-48"></canvas>
+                </div>
+                <div>
+                    <label for="phaselock-slider" class="font-semibold text-slate-700">Phase-Locking Strength: <span id="phaselock-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the strength to see the axonal pulse (white dot) lock its firing to the peak of the background theta wave (purple).</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="phaselock-slider">
+                </div>
+            </div>
+        </section>
+
+        <section id="field-influence" class="section-card">
+             <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Ψ-Field Influence on Neurotransmission</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The SCPN proposes that the consciousness field (Ψ) directly modulates the intensity of neurotransmitter release. This provides a mechanism for top-down mental influence on brain chemistry. The core equation is <span class="font-mono bg-slate-100 p-1 rounded">Φ_neuro = Σ α_i(Ψ)δ(x-x_i)</span>, where release intensity <span class="font-mono bg-slate-100 p-1 rounded">α_i</span> is a function of the Ψ-field.</p>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="psiReleaseCanvas" class="w-full h-48"></canvas>
+                </div>
+                <div class="space-y-4">
+                     <div>
+                        <label for="psi-intensity-slider" class="font-semibold text-slate-700">Ψ-Field Intensity: <span id="psi-intensity-value">50</span>%</label>
+                        <p class="text-sm text-slate-500 mb-2">Adjust the intensity of the local consciousness field to see its effect on the strength of neurotransmitter release events.</p>
+                        <input type="range" min="0" max="100" value="50" class="control-slider" id="psi-intensity-slider">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="entrainment" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">VIBRANA: Syllabic Entrainment of Neural Circuits</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">VIBRANA syllables are vibrational keys that map to specific frequency bands. When applied, they can entrain chaotic local neural circuits into a coherent, phase-locked state, making them receptive to higher-order signals from the Ψ-field.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                <canvas id="vibranaEntrainmentCanvas" class="w-full h-64"></canvas>
+            </div>
+            <div class="text-center mt-4">
+                <button id="vibrana-entrain-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Apply VIBRANA Syllable</button>
+            </div>
+        </section>
+        
+        <section id="connections" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Inter-Layer Connections</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Layer 2 is a crucial hub, translating influences from both higher and lower layers into the chemical language of the brain.</p>
+            </div>
+            <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">FROM L1: Quantum Biology</h3>
+                        <p class="text-sm text-slate-600 mt-1">Quantum events (e.g., tunneling) bias the probability of neurotransmitter release.</p>
+                    </div>
+                     <div class="text-3xl text-slate-400 my-2">↓</div>
+                     <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">FROM L5: Conscious States</h3>
+                        <p class="text-sm text-slate-600 mt-1">Attention and intention (Ψ-field states) modulate neurochemical release patterns.</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center text-3xl text-slate-400">→</div>
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-6 bg-violet-100 text-violet-800 rounded-lg shadow-md w-full">
+                        <h3 class="font-bold text-xl">LAYER 2: Neurochemistry</h3>
+                        <p class="text-sm mt-1">Neurotransmitters & neuromodulators tune circuit gain and coherence.</p>
+                    </div>
+                </div>
+                 <div class="hidden md:flex items-center justify-center text-3xl text-slate-400">→</div>
+                 <div class="flex md:hidden items-center justify-center text-3xl text-slate-400 my-2">↓</div>
+                <div class="flex flex-col items-center justify-center">
+                     <div class="p-4 bg-slate-100 rounded-lg shadow-sm w-full">
+                        <h3 class="font-bold">TO L3: Neural Rhythms</h3>
+                        <p class="text-sm text-slate-600 mt-1">The tuned chemical environment enables large-scale neural synchronization (brain waves).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Neuromodulator Tuning Simulator ---
+        const serotoninSlider = document.getElementById('serotonin-slider');
+        const dopamineSlider = document.getElementById('dopamine-slider');
+        const glutamateSlider = document.getElementById('glutamate-slider');
+        const serotoninValue = document.getElementById('serotonin-value');
+        const dopamineValue = document.getElementById('dopamine-value');
+        const glutamateValue = document.getElementById('glutamate-value');
+        let neuralOscillationChart;
+
+        function generateNoisySineWave(amplitude, noise, frequency) {
+            const data = [];
+            for (let i = 0; i < 100; i++) {
+                const sineValue = Math.sin(i * frequency) * amplitude;
+                const noiseValue = (Math.random() - 0.5) * noise;
+                data.push(sineValue + noiseValue);
+            }
+            return data;
+        }
+
+        function updateNeuralChart() {
+            const serotonin = parseInt(serotoninSlider.value);
+            const dopamine = parseInt(dopamineSlider.value);
+            const glutamate = parseInt(glutamateSlider.value);
+            serotoninValue.textContent = `${serotonin}%`;
+            dopamineValue.textContent = `${dopamine}%`;
+            glutamateValue.textContent = `${glutamate}%`;
+
+            const amplitude = 50 + (dopamine * 0.5); 
+            const noise = 50 - (serotonin * 0.45); 
+            const frequency = 0.4 + (glutamate * 0.004);
+
+            neuralOscillationChart.data.datasets[0].data = generateNoisySineWave(amplitude, noise, frequency);
+            neuralOscillationChart.update('none');
+        }
+
+        function initNeuralChart() {
+            const ctx = document.getElementById('neuralOscillationChart').getContext('2d');
+            neuralOscillationChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: 100 }, (_, i) => i),
+                    datasets: [{
+                        label: 'Neural Oscillation (Gamma Band)',
+                        data: [],
+                        borderColor: '#7c3aed',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { display: false },
+                        y: { display: false, min: -120, max: 120 }
+                    }
+                }
+            });
+            updateNeuralChart();
+        }
+        serotoninSlider.addEventListener('input', updateNeuralChart);
+        dopamineSlider.addEventListener('input', updateNeuralChart);
+        glutamateSlider.addEventListener('input', updateNeuralChart);
+
+        // --- Attractor Canvas ---
+        const attractorCanvas = document.getElementById('attractorCanvas');
+        const attractorCtx = attractorCanvas.getContext('2d');
+        const psiCoherenceSlider = document.getElementById('psi-coherence-slider');
+        const psiCoherenceValue = document.getElementById('psi-coherence-value');
+        let attractorNeurons = [];
+        let attractorTime = 0;
+
+        function initAttractorCanvas() {
+            const w = attractorCanvas.width;
+            const h = attractorCanvas.height;
+            const centerX = w / 2;
+            const centerY = h / 2;
+            const radius = Math.min(w, h) * 0.3;
+            for (let i = 0; i < 200; i++) {
+                const isAttractor = i < 20;
+                let x, y;
+                if (isAttractor) {
+                    const angle = (i / 20) * Math.PI * 2;
+                    x = centerX + Math.cos(angle) * radius;
+                    y = centerY + Math.sin(angle) * radius;
+                } else {
+                    x = Math.random() * w;
+                    y = Math.random() * h;
+                }
+                attractorNeurons.push({ x, y, isAttractor, fireTime: Math.random() * 20 });
+            }
+        }
+
+        function animateAttractors() {
+            attractorCtx.clearRect(0, 0, attractorCanvas.width, attractorCanvas.height);
+            const coherence = parseInt(psiCoherenceSlider.value) / 100;
+            psiCoherenceValue.textContent = `${Math.round(coherence*100)}%`;
+            attractorTime++;
+
+            attractorNeurons.forEach(n => {
+                let fire = false;
+                if (n.isAttractor) {
+                    const stability = 0.1 + coherence * 0.9;
+                    if (Math.random() < stability && attractorTime % 15 < 5) {
+                        fire = true;
+                    }
+                } else {
+                    const noiseLevel = 1 - coherence;
+                    if (Math.random() < 0.05 * noiseLevel) {
+                         fire = true;
+                    }
+                }
+                
+                if (fire) {
+                    attractorCtx.beginPath();
+                    attractorCtx.arc(n.x, n.y, 3, 0, Math.PI * 2);
+                    attractorCtx.fillStyle = n.isAttractor ? '#a78bfa' : '#64748b';
+                    attractorCtx.fill();
+                } else {
+                    attractorCtx.beginPath();
+                    attractorCtx.arc(n.x, n.y, 1.5, 0, Math.PI * 2);
+                    attractorCtx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                    attractorCtx.fill();
+                }
+            });
+            requestAnimationFrame(animateAttractors);
+        }
+        
+        // --- Phase Lock Canvas ---
+        const phaseLockCanvas = document.getElementById('phaseLockCanvas');
+        const phaseLockCtx = phaseLockCanvas.getContext('2d');
+        const phaseLockSlider = document.getElementById('phaselock-slider');
+        const phaseLockValue = document.getElementById('phaselock-value');
+        let pulseX = 0;
+        let phaseLockTime = 0;
+
+        function animatePhaseLock() {
+            const w = phaseLockCanvas.width;
+            const h = phaseLockCanvas.height;
+            phaseLockCtx.clearRect(0, 0, w, h);
+            phaseLockTime += 0.03;
+            
+            // Draw background theta wave
+            phaseLockCtx.beginPath();
+            for (let x = 0; x < w; x++) {
+                phaseLockCtx.lineTo(x, h/2 + Math.sin(x * 0.05 + phaseLockTime) * h * 0.3);
+            }
+            phaseLockCtx.strokeStyle = 'rgba(124, 58, 237, 0.5)';
+            phaseLockCtx.lineWidth = 2;
+            phaseLockCtx.stroke();
+            
+            // Move and draw pulse
+            pulseX += 2;
+            if (pulseX > w) pulseX = 0;
+
+            const strength = parseInt(phaseLockSlider.value) / 100;
+            phaseLockValue.textContent = `${Math.round(strength*100)}%`;
+            
+            const wavePhaseAtPulse = (pulseX * 0.05 + phaseLockTime) % (Math.PI * 2);
+            const peakPhase = Math.PI / 2;
+            const phaseDifference = Math.abs(wavePhaseAtPulse - peakPhase);
+            
+            const fireProbability = (1 - strength) * 0.1 + strength * Math.max(0, 1 - phaseDifference / Math.PI);
+
+            if (Math.random() < fireProbability) {
+                phaseLockCtx.beginPath();
+                phaseLockCtx.arc(pulseX, h/2, 8, 0, Math.PI * 2);
+                phaseLockCtx.fillStyle = 'white';
+                phaseLockCtx.fill();
+            }
+
+            requestAnimationFrame(animatePhaseLock);
+        }
+
+
+        // --- Ψ-Field Release Simulator ---
+        const psiSlider = document.getElementById('psi-intensity-slider');
+        const psiValue = document.getElementById('psi-intensity-value');
+        const psiCanvas = document.getElementById('psiReleaseCanvas');
+        const psiCtx = psiCanvas.getContext('2d');
+        let particles = [];
+
+        function createParticle(intensity) {
+            const alpha = 0.2 + (intensity / 100) * 0.8;
+            return {
+                x: Math.random() * psiCanvas.width, y: psiCanvas.height, vy: -1 - Math.random(),
+                radius: 2 + Math.random() * 2, alpha: alpha, life: 100
+            };
+        }
+
+        function animatePsiRelease() {
+            psiCtx.clearRect(0, 0, psiCanvas.width, psiCanvas.height);
+            const intensity = parseInt(psiSlider.value);
+            psiValue.textContent = `${intensity}%`;
+
+            if (Math.random() < 0.2) { particles.push(createParticle(intensity)); }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.y += p.vy; p.life -= 1; p.alpha *= 0.98;
+                if (p.life <= 0) { particles.splice(i, 1); } 
+                else {
+                    psiCtx.beginPath();
+                    psiCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    psiCtx.fillStyle = `rgba(139, 92, 246, ${p.alpha})`;
+                    psiCtx.fill();
+                }
+            }
+            requestAnimationFrame(animatePsiRelease);
+        }
+
+        // --- VIBRANA Entrainment Canvas ---
+        const vEntrainCanvas = document.getElementById('vibranaEntrainmentCanvas');
+        const vEntrainCtx = vEntrainCanvas.getContext('2d');
+        const vEntrainBtn = document.getElementById('vibrana-entrain-btn');
+        let neurons = [];
+        let isEntraining = false;
+        let entrainTime = 0;
+
+        function initVibranaEntrainment() {
+            neurons = [];
+            for (let i = 0; i < 150; i++) {
+                neurons.push({
+                    x: Math.random() * vEntrainCanvas.width, y: Math.random() * vEntrainCanvas.height,
+                    phase: Math.random() * Math.PI * 2, fireTime: Math.random() * 10
+                });
+            }
+        }
+
+        function animateVibranaEntrainment() {
+            vEntrainCtx.clearRect(0, 0, vEntrainCanvas.width, vEntrainCanvas.height);
+            const w = vEntrainCanvas.width; const h = vEntrainCanvas.height;
+
+            if (isEntraining) {
+                entrainTime += 0.05;
+                vEntrainCtx.beginPath();
+                for (let x = 0; x < w; x++) { vEntrainCtx.lineTo(x, h/2 + Math.sin(x * 0.02 + entrainTime) * h * 0.2); }
+                vEntrainCtx.strokeStyle = 'rgba(124, 58, 237, 0.3)'; vEntrainCtx.lineWidth = 2; vEntrainCtx.stroke();
+            }
+
+            neurons.forEach(n => {
+                let fire = false;
+                if (isEntraining) {
+                    const targetPhase = (n.x * 0.02 + entrainTime) % (Math.PI * 2);
+                    if (Math.abs(targetPhase - Math.PI) < 0.1) { fire = true; }
+                } else {
+                    n.fireTime -= 0.1;
+                    if (n.fireTime <= 0) { fire = true; n.fireTime = Math.random() * 10; }
+                }
+
+                if (fire) {
+                    vEntrainCtx.beginPath(); vEntrainCtx.arc(n.x, n.y, 4, 0, Math.PI * 2);
+                    vEntrainCtx.fillStyle = '#fde047'; vEntrainCtx.fill();
+                } else {
+                    vEntrainCtx.beginPath(); vEntrainCtx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+                    vEntrainCtx.fillStyle = 'rgba(255, 255, 255, 0.5)'; vEntrainCtx.fill();
+                }
+            });
+            requestAnimationFrame(animateVibranaEntrainment);
+        }
+
+        vEntrainBtn.addEventListener('click', () => {
+            isEntraining = !isEntraining; entrainTime = 0;
+            vEntrainBtn.textContent = isEntraining ? 'Release Entrainment' : 'Apply VIBRANA Syllable';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            initNeuralChart();
+            
+            psiCanvas.width = psiCanvas.offsetWidth;
+            psiCanvas.height = psiCanvas.offsetHeight;
+            animatePsiRelease();
+
+            attractorCanvas.width = attractorCanvas.offsetWidth;
+            attractorCanvas.height = attractorCanvas.offsetHeight;
+            initAttractorCanvas();
+            animateAttractors();
+
+            phaseLockCanvas.width = phaseLockCanvas.offsetWidth;
+            phaseLockCanvas.height = phaseLockCanvas.offsetHeight;
+            animatePhaseLock();
+
+            vEntrainCanvas.width = vEntrainCanvas.offsetWidth;
+            vEntrainCanvas.height = vEntrainCanvas.offsetHeight;
+            initVibranaEntrainment();
+            animateVibranaEntrainment();
+        };
+    </script>
+</body>
+</html>

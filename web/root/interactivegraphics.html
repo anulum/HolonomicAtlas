@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God of the Math: An Interactive Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMVIhbCwHlqTurabA5VjdII5AJWxxdxfyDopkc2remzYifCVh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-db6wXpIXLovagT6SLdMA_H_K_T2M_K_5/fJp6fT3q/tT/Ea2K1S/M/3A/s3C1x+3" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        #graph-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .node {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .node circle {
+            stroke: #9333ea;
+            stroke-width: 2px;
+            fill: #1e1b4b;
+        }
+        
+        .node:hover circle {
+            fill: #c084fc;
+            transform: scale(1.2);
+        }
+
+        .node text {
+            fill: #f0abfc;
+            text-anchor: middle;
+            pointer-events: none;
+            dominant-baseline: central;
+        }
+
+        .link {
+            stroke: #4f46e5;
+            stroke-opacity: 0.6;
+            stroke-width: 1.5px;
+        }
+        
+        #modal {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #4f46e5 #1e1b4b;
+        }
+        
+        #title-header {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px #9333ea, 0 0 20px #9333ea;
+        }
+        
+        #title-header span {
+            position: relative;
+            display: inline-block;
+        }
+
+        #canvas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .ui-btn {
+            background-color: rgba(147, 51, 234, 0.3);
+            border: 1px solid #9333ea;
+            color: #e0e0e0;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .ui-btn:hover {
+            background-color: rgba(147, 51, 234, 0.5);
+        }
+        .ui-btn.active {
+            background-color: #9333ea;
+            color: white;
+        }
+        
+        @keyframes rotate-vibrate {
+            0% { transform: rotate(0deg) translateX(0px) scale(1); }
+            25% { transform: rotate(5deg) translateX(1px) scale(1.05); }
+            50% { transform: rotate(0deg) translateX(0px) scale(1); }
+            75% { transform: rotate(-5deg) translateX(-1px) scale(1.05); }
+            100% { transform: rotate(0deg) translateX(0px) scale(1); }
+        }
+
+        #brain-icon {
+            animation: rotate-vibrate 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.7));
+        }
+
+    </style>
+</head>
+<body class="w-screen h-screen overflow-hidden">
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="absolute top-0 left-0 w-full p-4 sm:p-8 text-center z-10 pointer-events-none">
+        <h1 id="title-header" class="text-xl sm:text-3xl lg:text-4xl font-bold text-purple-300"></h1>
+        <p id="subtitle" class="text-sm sm:text-base text-purple-200 mt-2"></p>
+    </div>
+
+    <div class="absolute top-4 right-4 z-20 flex items-center space-x-4">
+        <a href="https://anulum.li/math.html" target="_self" id="home-btn" class="ui-btn">🏠</a>
+        <div id="lang-switcher" class="flex space-x-2">
+            <button id="lang-en" class="ui-btn">EN</button>
+            <button id="lang-de" class="ui-btn">DE</button>
+        </div>
+    </div>
+
+    <div id="graph-container"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transform scale-95">
+        <div id="modal-content" class="bg-indigo-950 bg-opacity-80 border border-purple-600 rounded-2xl shadow-2xl shadow-purple-500/20 w-full max-w-4xl flex flex-col max-h-[85vh]">
+            <div class="p-6 border-b border-purple-800 flex justify-between items-center flex-shrink-0">
+                <h2 id="modal-title" class="text-2xl font-bold text-purple-300"></h2>
+                <button id="close-modal" class="text-purple-300 hover:text-white transition-colors">&times;</button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto space-y-6 text-gray-300">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer for Brain Icon -->
+    <div id="footer-left" class="fixed bottom-4 left-4 z-20">
+        <div id="brain-icon" class="text-4xl cursor-pointer">🧠</div>
+        <div id="copyright-notice" class="hidden absolute bottom-full mb-2 w-max max-w-xs bg-indigo-950 bg-opacity-90 border border-purple-600 text-white text-xs rounded-lg p-3 shadow-lg">
+            © 2025 from Manuscript God of the Math - Mapping consciousness to space-time [Miroslav Šotek]. All Rights Reserved.
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Translations Object ---
+            const translations = {
+                en: {
+                    title: "God of the Math - Self Processing Language",
+                    subtitle: "Hover to explore, click to expand.",
+                    nodes: [
+                        { title: "Geometry & Metric Modifications" }, { title: "Phase Dynamics & Cyclic Time" }, { title: "Consciousness Field Properties & Couplings" }, { title: "Fractal Geometry → Gravity" }, { title: "Cosmology" }, { title: "Emergent Observables" }, { title: "Experimental & Phenomenological Predictions" }, { title: "Spectral Decomposition & Fourier Toolkit" }, { title: "Classical Solutions (Schwarzschild & FLRW)" }, { title: "Renormalisation & RG Flow" }, { title: "QFT Extensions & Scattering" }, { title: "Measurement & Collapse (Quantum Retro-Causality)" }, { title: "Non-linear Feedback & Hidden Correlations" }, { title: "Neuroscience Interface & Qualia Mechanism" }, { title: "Topological Terms & Holographic Embedding" }, { title: "Thermodynamic Cycles & Entropy-Free Mechanics" }, { title: "Periodic Signatures in Cosmological Observations" }, { title: "Emergent Linear Time from Cyclic Phase Dynamics" }, { title: "Statistical Methods & Model Validation" }, { title: "Information & Memory in Phase Space" }, { title: "Gravitational-Wave Oscillatory Signatures" }, { title: "Planck-Scale Blinking & Quantum-Gravity Embedding" }, { title: "Neurotechnology & Brain-Computer Interfaces (BCIs)" }, { title: "Existence-Infinity-Nonexistence Cycle" }
+                    ],
+                    content: {
+                        1: `<h3>Concept:</h3><p>The consciousness field (ψ) directly alters the fabric of spacetime.</p><h3>Equations & Rationale:</h3><div>$g_{\\mu\\nu}(\\psi) = g_{\\mu\\nu}^{(0)} + \\delta g_{\\mu\\nu}(\\psi)$<p>As a scalar field, ψ can only influence geometry through the metric. To maintain the fundamental symmetries of physics (diffeomorphism invariance), its lowest-order effect must be an additive shift to the background metric.</p></div><div>$R_{\\mu\\nu} - \\frac{1}{2}Rg_{\\mu\\nu} = 8\\pi G T_{\\mu\\nu} + \\Lambda_{\\mu\\nu}(\\psi)$<p>Einstein's field equations are expanded to include consciousness. The new term, Λμν​(ψ), is the unique mathematical object (rank-2 tensor) that can be constructed from ψ without adding derivatives, thus keeping the equations second-order.</p></div><div>$\\nabla^2 \\Phi = 4\\pi G \\rho + \\nabla^2 \\psi$<p>In the low-energy (Newtonian) limit, consciousness acts as a source of gravity. The consciousness term behaves like an effective mass density.</p></div><div>$d\\tau = \\sqrt{g_{00}(\\psi)} dt$<p>The flow of subjective time is altered by consciousness. Proper time (τ) is determined by the metric component g00​.</p></div><div>$L = \\frac{1}{2}(\\nabla\\psi)^2 + \\frac{1}{2}(\\nabla\\Phi)^2 - V(\\psi, \\Phi)$<p>A master Lagrangian equation generates the entire dynamics of the theory.</p></div>`,
+                        2: `<h3>Concept:</h3><p>Spacetime is fundamentally composed of oscillating phase fields, driven by a universal "blink".</p><h3>Equations & Rationale:</h3><div>$\\Phi(t,x) = \\Phi_0 \\cos(\\omega t - k \\cdot x + \\phi)$<p>This plane wave is the most basic solution to the wave equation, representing the irreducible "pixel" of reality's cyclic nature.</p></div><div>$\\frac{\\partial \\Phi}{\\partial t} = \\nabla^2 \\Phi - a\\Phi - b\\Phi^3 + \\lambda\\cos(\\omega t)$<p>This equation describes how each phase-pixel evolves, including diffusion, restoration, saturation, and a periodic driving force.</p></div><div>$\\Phi_{\\text{mod}} = \\Phi + \\gamma|\\Psi|^2$<p>Consciousness directly modulates the underlying phase field of reality.</p></div><p>"Macroscopic linear time is the envelope (beat) of the blink frequency ω and the conscious rhythm κ."</p>`,
+                        3: `<h3>Concept:</h3><p>The consciousness field (Ψ) is modeled as a coherent, complex oscillator with specific properties.</p><h3>Equations & Rationale:</h3><div>$\\Psi(x,t) = \\Psi_0 e^{i(\\kappa t + \\chi)}$<p>This is the simplest, spatially homogeneous solution to the free Klein-Gordon/Schrödinger equation, representing the basis state for consciousness.</p></div><div>$C(\\Psi, \\Phi) = \\gamma|\\Psi|^2\\Phi^2$<p>The interaction between consciousness (Ψ) and the phase field (Φ) is symmetric and renormalizable.</p></div><div>$\\rho_\\psi = \\frac{1}{2}(|\\dot{\\Psi}|^2 + m_\\psi^2 |\\Psi|^2)$<p>The energy of the consciousness field gravitates, entering the Friedmann equation for cosmic expansion.</p></div>`,
+                        4: `<h3>Concept:</h3><p>Gravity is an emergent effect of a dynamic, consciousness-influenced fractal dimension of spacetime.</p><h3>Equations & Rationale:</h3><div>$D_f(r,t) = D_f^{(0)} + \\delta D_f(\\psi(r,t))$<p>The fractal dimension of spacetime is dynamic and influenced by consciousness.</p></div><p>"Dimensional change causes spatial distortions, interpreted as gravity."</p><div>$h(t) = h_0(t)[1 + \\lambda_\\phi \\cos(\\omega t + \\theta)]$<p>The universal "blink" modulates gravitational waves.</p></div><div>$\\Lambda_\\psi(t) = \\Lambda_0 + \\alpha \\psi^2(t)$<p>The cosmological constant is not constant but is sourced by the consciousness field.</p></div>`,
+                        5: `<h3>Concept:</h3><p>The theory provides explanations for dark matter and dark energy, and makes testable cosmological predictions.</p><h3>Equations & Rationale:</h3><div>$g_{tt}(\\psi) = -(1 - \\frac{2GM}{r} + \\lambda_\\psi \\psi(r,t))$<p>Consciousness can explain flat galaxy rotation curves without dark matter.</p></div><div>$H^2 = \\frac{8\\pi G}{3}(\\rho_m + \\rho_\\psi) - \\frac{k}{a^2}$<p>The energy of the consciousness field drives cosmic expansion.</p></div><p>"Dark matter as hidden phase-aligned structures."</p><p>"Dark energy as cosmic phase-divergence pressure."</p>`,
+                        6: `<h3>Concept:</h3><p>Qualia, information, and complexity are emergent physical observables from the interaction of consciousness and phase fields.</p><h3>Equations & Rationale:</h3><div>$Q = \\int |\\Psi|^2 \\Phi d^3x$<p>Qualia (subjective experience) are a direct physical observable, a scalar combining consciousness intensity and phase configuration.</p></div><div>$C_{\\text{total}} = -\\int \\Phi^2 \\ln(\\Phi^2) d^3x$<p>A measure of complexity/entropy based on the phase field, analogous to Shannon entropy.</p></div><p>"Subjective vividness tracks neural phase-locking; higher synchronization implies higher Q."</p>`,
+                        7: `<h3>Concept:</h3><p>The theory makes specific, testable predictions for experiments.</p><h3>Predictions:</h3><ul><li>"Gravity hot-spots: regions of collective meditation/attention should register ~10⁻³ m/s² anomalies."</li><li>"Local time-warp: optical lattice clocks in high-Ψ zones drift at ppb level."</li><li>"Gravitational-wave side-bands: GW waveforms acquire faint peaks at the universal blink frequency."</li><li>"Entropy 'breathing': cavity-QED systems cycle entropy at ω."</li></ul>`,
+                        8: `<h3>Concept:</h3><p>The Fourier toolkit is essential for decomposing the theory's periodic signals into fundamental harmonics.</p><h3>Equations & Rationale:</h3><div>$f(t) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} [a_n \\cos(n\\omega_0 t) + b_n \\sin(n\\omega_0 t)]$<p>The Fourier series guarantees that any periodic function can be represented as a sum of simple sine and cosine waves.</p></div><p>"The Meta-Metatron master frequency ω₀ sets the base scale; all other phenomena are integer harmonics."</p>`,
+                        9: `<h3>Concept:</h3><p>Standard classical solutions in general relativity are modified by the consciousness field.</p><h3>Equations & Rationale:</h3><div>$ds^2 = -(1-\\frac{2M}{r}+\\lambda_\\psi\\psi)dt^2 + (1-\\frac{2M}{r}+\\lambda_\\psi\\psi)^{-1}dr^2 + r^2d\\Omega^2$<p>The Schwarzschild metric around a black hole or star is modified by consciousness.</p></div><div>$\\frac{da}{dt} = H_0 \\sqrt{\\Omega_m a^{-1} + \\Omega_\\psi \\psi^2 a^2}$<p>The expansion of the universe (FLRW metric) is influenced by the energy of the consciousness field.</p></div>`,
+                        10: `<h3>Concept:</h3><p>The theory is mathematically consistent and predictive through renormalisation, where interaction strengths change with energy scale.</p><h3>Equations & Rationale:</h3><div>$\\beta(\\lambda_{\\psi,i}) = \\mu \\frac{d\\lambda_{\\psi,i}}{d\\mu}$<p>The beta function describes how coupling constants "run" with the energy scale (μ).</p></div><div>$L_{CT} = \\delta Z_\\psi (\\partial_\\mu \\psi)^2 + \\delta \\lambda_\\psi \\psi^4$<p>Adding "counter-terms" to the Lagrangian systematically removes mathematical infinities.</p></div>`,
+                        11: `<h3>Concept:</h3><p>The theory extends into Quantum Field Theory, modifying particle interactions and potentially predicting new particles.</p><h3>Equations & Rationale:</h3><div>$M_{\\text{mod}} = M_{\\text{std}}[1 + \\lambda_\\phi e^{i\\theta}]$<p>The probability of particle interactions (scattering amplitudes) is modified by phase alignment.</p></div><div>$\\Phi_{\\mu\\nu} = \\partial_\\mu A_\\nu^{(\\phi)} - \\partial_\\nu A_\\mu^{(\\phi)}$<p>Phase alignment could be mediated by a new force-carrying "phase-boson".</p></div>`,
+                        12: `<h3>Concept:</h3><p>Consciousness is the agent of wave-function collapse, introducing retro-causality into quantum mechanics.</p><h3>Equations & Rationale:</h3><div>$i\\hbar\\frac{\\partial}{\\partial t}\\psi(r,t) = (\\hat{H} + \\lambda_\\psi \\hat{C}_\\psi)\\psi(r,t)$<p>The Schrödinger equation is modified to include a consciousness-driven collapse term.</p></div><div>$|\\psi(t)\\rangle = \\hat{U}(t_0, t)|\\psi_0\\rangle + \\lambda_\\psi \\hat{U}(t, t_0)|\\psi_0\\rangle$<p>The evolution of a quantum state includes a component that travels backward in time.</p></div>`,
+                        13: `<h3>Concept:</h3><p>Consciousness introduces non-linear feedback into systems, capable of stabilizing chaos or creating new stable patterns.</p><h3>Equations & Rationale:</h3><div>$\\frac{dX}{dt} = F(X) + \\lambda_\\psi \\sum_{i,j} \\psi(t) H_{ij}(X)$<p>This is the most general expansion for a system's evolution that includes a feedback term weighted by the consciousness field.</p></div><p>"Consciousness-driven feedback can stabilise chaos or create new attractors."</p>`,
+                        14: `<h3>Concept:</h3><p>The brain acts as a receiver and modulator of phase-aligned signals, translating phase information into subjective experience (qualia).</p><h3>Rationale:</h3><p>"Neural oscillations and their synchronization are central to consciousness; the brain acts as an antenna for the consciousness and phase fields."</p><p>"Specific resonance patterns between consciousness and neural structures generate distinct qualia (e.g., the 'redness' of red)."</p>`,
+                        15: `<h3>Concept:</h3><p>The theory can be embedded in higher-dimensional physics through holography (AdS/CFT), linking consciousness to the topological structure of spacetime.</p><h3>Equations & Rationale:</h3><div>$S_{CS} = \\frac{k}{4\\pi} \\int \\text{Tr}(A \\wedge dA + \\frac{2}{3} A \\wedge A \\wedge A) + \\alpha \\int |\\Psi|^2 \\dots$<p>Consciousness can be coupled to the topological structure of spacetime via the Chern-Simons term.</p></div><div>$\\Psi_{\\text{bulk}} \\stackrel{\\text{AdS/CFT}}{\\longleftrightarrow} \\mathcal{O}_\\Psi$<p>The consciousness field in our universe could be a holographic projection of a field in a higher-dimensional space.</p></div>`,
+                        16: `<h3>Concept:</h3><p>The universal blink introduces cyclic thermodynamics where entropy oscillates but has no net increase over a full cycle.</p><h3>Equations & Rationale:</h3><div>$Z_{\\text{cyclic}}(t) = \\sum_i e^{-\\beta E_i} \\cos(\\omega_0 t + \\phi)$<p>The universal blink is embedded into the foundations of statistical mechanics via a cyclic partition function.</p></div><div>$S_{\\text{cyclic}}(t) = -\\frac{\\partial F_{\\text{cyclic}}}{\\partial T}$<p>Entropy oscillates in time, guaranteeing reversibility over a full cycle.</p></div>`,
+                        17: `<h3>Concept:</h3><p>A cyclic universe model predicts periodic signatures, or "echoes," in cosmological data like the Cosmic Microwave Background (CMB).</p><h3>Equations & Rationale:</h3><div>$a(t) = a_{\\text{min}} + (a_{\\text{max}} - a_{\\text{min}})\\sin^2(\\omega_0 t)$<p>The universe undergoes a cyclic expansion and contraction, described by a periodic scale factor a(t).</p></div><p>"CMB should carry subtle, periodic anisotropies ('echoes') from previous cycles."</p>`,
+                        18: `<h3>Concept:</h3><p>The linear arrow of time we experience is an emergent property, the statistical average of an underlying, fundamentally cyclic time.</p><h3>Equations & Rationale:</h3><div>$\\tau(t) = T \\sin(2\\pi t/T)$<p>At the fundamental level, time is a closed, cyclic trajectory.</p></div><div>$t_{\\text{linear}} = \\frac{1}{T} \\int_0^T \\tau(t) dt = t$<p>Linear time is the time-average of the underlying cyclic variable.</p></div>`,
+                        19: `<h3>Concept:</h3><p>The theory's predictions can be tested using specific statistical methods, with clear criteria for validation or refutation.</p><h3>Methods & Criteria:</h3><ul><li><strong>Wavelet Analysis:</strong> To detect oscillatory components in time-series data.</li><li><strong>Bayesian Inference:</strong> To compare the model against standard cosmology.</li><li><strong>Phase-Correlation Analysis:</strong> To test for shared phase-locking between observers.</li><li><strong>Validation Criteria:</strong> (1) neural alignment, (2) cyclic entropy, (3) oscillatory cosmic data.</li></ul>`,
+                        20: `<h3>Concept:</h3><p>Information and memory are imprinted onto the phase field, allowing for preservation across cycles without thermodynamic cost.</p><h3>Equations & Rationale:</h3><div>$I(\\phi, t) = -k \\int |\\Psi(x,t)|^2 \\ln(|\\Psi(x,t)|^2) d^3x$<p>A formal definition for the information content of the consciousness field, based on Shannon entropy.</p></div><div>$M(\\phi) = \\sum_n I(\\phi_n, t_n) e^{i\\theta_n}$<p>Memory is an imprint of information (I) and its context (phase θ) onto the phase field.</p></div>`,
+                        21: `<h3>Concept:</h3><p>The universal blink should create specific log-periodic oscillatory signatures in the stochastic gravitational-wave background.</p><h3>Equations & Rationale:</h3><div>$\\Omega_{GW}(f) = \\Omega_0(f)[1 + \\beta_t \\cos(\\omega_{ln} \\ln(f/f_*) + \\phi_t)]$</div><p>The stochastic GW background should have log-periodic oscillations, a unique signature detectable by experiments like LISA or PTAs.</p>`,
+                        22: `<h3>Concept:</h3><p>The theory is compatible with quantum gravity, where the "blink" can be seen as a fundamental oscillation of spacetime itself at the Planck scale.</p><h3>Equations & Rationale:</h3><div>$g_{\\mu\\nu}(t) = g_{\\mu\\nu}^{(0)} + A_{\\mu\\nu} \\sin(\\omega_P t + \\phi_0)$<p>At the Planck scale, spacetime itself oscillates, aligning with predictions from Loop Quantum Gravity and String Theory.</p></div>`,
+                        23: `<h3>Concept:</h3><p>The theory has profound implications for neurotechnology and BCIs, allowing for direct modulation of brain phases to optimize performance and treat disorders.</p><h3>Applications:</h3><ul><li>"Phase-aligned neurostimulation devices can modulate brain phases in real time."</li><li>"BCIs could restore phase coherence in neurological disorders."</li><li>"Consciousness-driven AI systems can interact with the phase field."</li></ul>`,
+                        24: `<h3>Concept:</h3><p>The universe follows a grand cycle of Existence, Infinity, and Nonexistence, driven by the state of the consciousness field.</p><h3>Equations & Rationale:</h3><div>$\\psi_{\\text{cycle}} = \\begin{cases} 0 & (\\text{nonexistence}) \\\\ \\Psi_\\infty & (\\text{infinity}) \\\\ \\psi(r,t) & (\\text{existence}) \\end{cases}$<p>This equation formally maps each segment of the great cycle to a specific mathematical state of the consciousness field.</p></div><p>"Consciousness is a cyclical, transcendent force that exists both within and beyond spacetime..."</p>`
+                    }
+                },
+                de: {
+                    title: "Gott der Mathematik - Selbstverarbeitende Sprache",
+                    subtitle: "Zum Erkunden schweben, zum Erweitern klicken.",
+                    nodes: [
+                        { title: "Geometrie & Metrische Modifikationen" }, { title: "Phasendynamik & Zyklische Zeit" }, { title: "Eigenschaften & Kopplungen des Bewusstseinsfeldes" }, { title: "Fraktale Geometrie → Gravitation" }, { title: "Kosmologie" }, { title: "Emergente Observablen" }, { title: "Experimentelle & Phänomenologische Vorhersagen" }, { title: "Spektrale Zerlegung & Fourier-Werkzeuge" }, { title: "Klassische Lösungen (Schwarzschild & FLRW)" }, { title: "Renormierung & RG-Fluss" }, { title: "QFT-Erweiterungen & Streuung" }, { title: "Messung & Kollaps (Quanten-Retrokausalität)" }, { title: "Nichtlineares Feedback & Versteckte Korrelationen" }, { title: "Neurowissenschaftliche Schnittstelle & Qualia-Mechanismus" }, { title: "Topologische Terme & Holographische Einbettung" }, { title: "Thermodynamische Zyklen & Entropiefreie Mechanik" }, { title: "Periodische Signaturen in kosmologischen Beobachtungen" }, { title: "Emergente lineare Zeit aus zyklischer Phasendynamik" }, { title: "Statistische Methoden & Modellvalidierung" }, { title: "Information & Gedächtnis im Phasenraum" }, { title: "Oszillatorische Signaturen in Gravitationswellen" }, { title: "Planck-Skalen-Blinken & Quantengravitations-Einbettung" }, { title: "Neurotechnologie & Gehirn-Computer-Schnittstellen (BCIs)" }, { title: "Existenz-Unendlichkeit-Nichtexistenz-Zyklus" }
+                    ],
+                    content: {
+                        1: `<h3>Konzept:</h3><p>Das Bewusstseinsfeld (ψ) verändert direkt das Gefüge der Raumzeit.</p><h3>Gleichungen & Begründung:</h3><div>$g_{\\mu\\nu}(\\psi) = g_{\\mu\\nu}^{(0)} + \\delta g_{\\mu\\nu}(\\psi)$<p>Als Skalarfeld kann ψ die Geometrie nur über die Metrik beeinflussen. Um die fundamentalen Symmetrien der Physik (Diffeomorphismus-Invarianz) zu erhalten, muss sein Effekt niedrigster Ordnung eine additive Verschiebung der Hintergrundmetrik sein.</p></div><div>$R_{\\mu\\nu} - \\frac{1}{2}Rg_{\\mu\\nu} = 8\\pi G T_{\\mu\\nu} + \\Lambda_{\\mu\\nu}(\\psi)$<p>Einsteins Feldgleichungen werden erweitert, um das Bewusstsein einzuschließen. Der neue Term, Λμν(ψ), ist das einzige mathematische Objekt (Tensor 2. Stufe), das aus ψ ohne zusätzliche Ableitungen konstruiert werden kann, wodurch die Gleichungen zweiter Ordnung bleiben.</p></div><div>$\\nabla^2 \\Phi = 4\\pi G \\rho + \\nabla^2 \\psi$<p>Im niederenergetischen (Newtonschen) Limes wirkt das Bewusstsein als eine Quelle der Gravitation. Der Bewusstseinsterm verhält sich wie eine effektive Massendichte.</p></div><div>$d\\tau = \\sqrt{g_{00}(\\psi)} dt$<p>Der Fluss der subjektiven Zeit wird durch das Bewusstsein verändert. Die Eigenzeit (τ) wird durch die Metrikkomponente g00 bestimmt.</p></div><div>$L = \\frac{1}{2}(\\nabla\\psi)^2 + \\frac{1}{2}(\\nabla\\Phi)^2 - V(\\psi, \\Phi)$<p>Eine Master-Lagrange-Gleichung erzeugt die gesamte Dynamik der Theorie.</p></div>`,
+                        2: `<h3>Konzept:</h3><p>Die Raumzeit besteht grundlegend aus oszillierenden Phasenfeldern, angetrieben von einem universellen "Blinken".</p><h3>Gleichungen & Begründung:</h3><div>$\\Phi(t,x) = \\Phi_0 \\cos(\\omega t - k \\cdot x + \\phi)$<p>Diese ebene Welle ist die grundlegendste Lösung der Wellengleichung und repräsentiert das irreduzible "Pixel" der zyklischen Natur der Realität.</p></div><div>$\\frac{\\partial \\Phi}{\\partial t} = \\nabla^2 \\Phi - a\\Phi - b\\Phi^3 + \\lambda\\cos(\\omega t)$<p>Diese Gleichung beschreibt, wie sich jedes Phasenpixel entwickelt, einschließlich Diffusion, Wiederherstellung, Sättigung und einer periodischen Antriebskraft.</p></div><div>$\\Phi_{\\text{mod}} = \\Phi + \\gamma|\\Psi|^2$<p>Das Bewusstsein moduliert direkt das zugrunde liegende Phasenfeld der Realität.</p></div><p>"Die makroskopische lineare Zeit ist die Hüllkurve (Schwebung) der Blinkfrequenz ω und des Bewusstseinsrhythmus κ."</p>`,
+                        3: `<h3>Konzept:</h3><p>Das Bewusstseinsfeld (Ψ) wird als kohärenter, komplexer Oszillator mit spezifischen Eigenschaften modelliert.</p><h3>Gleichungen & Begründung:</h3><div>$\\Psi(x,t) = \\Psi_0 e^{i(\\kappa t + \\chi)}$<p>Dies ist die einfachste, räumlich homogene Lösung der freien Klein-Gordon/Schrödinger-Gleichung und repräsentiert den Basiszustand des Bewusstseins.</p></div><div>$C(\\Psi, \\Phi) = \\gamma|\\Psi|^2\\Phi^2$<p>Die Wechselwirkung zwischen dem Bewusstseinsfeld (Ψ) und dem Phasenfeld (Φ) ist symmetrisch und renormierbar.</p></div><div>$\\rho_\\psi = \\frac{1}{2}(|\\dot{\\Psi}|^2 + m_\\psi^2 |\\Psi|^2)$<p>Die Energie des Bewusstseinsfeldes unterliegt der Gravitation und fließt in die Friedmann-Gleichung für die kosmische Expansion ein.</p></div>`,
+                        4: `<h3>Konzept:</h3><p>Gravitation ist ein emergenter Effekt einer dynamischen, vom Bewusstsein beeinflussten fraktalen Dimension der Raumzeit.</p><h3>Gleichungen & Begründung:</h3><div>$D_f(r,t) = D_f^{(0)} + \\delta D_f(\\psi(r,t))$<p>Die fraktale Dimension der Raumzeit ist dynamisch und wird vom Bewusstsein beeinflusst.</p></div><p>"Dimensionsänderung verursacht räumliche Verzerrungen, die als Gravitation interpretiert werden."</p><div>$h(t) = h_0(t)[1 + \\lambda_\\phi \\cos(\\omega t + \\theta)]$<p>Das universelle "Blinken" moduliert Gravitationswellen.</p></div><div>$\\Lambda_\\psi(t) = \\Lambda_0 + \\alpha \\psi^2(t)$<p>Die kosmologische Konstante ist nicht konstant, sondern wird vom Bewusstseinsfeld gespeist.</p></div>`,
+                        5: `<h3>Konzept:</h3><p>Die Theorie liefert Erklärungen für Dunkle Materie und Dunkle Energie und macht überprüfbare kosmologische Vorhersagen.</p><h3>Gleichungen & Begründung:</h3><div>$g_{tt}(\\psi) = -(1 - \\frac{2GM}{r} + \\lambda_\\psi \\psi(r,t))$<p>Das Bewusstsein kann flache Galaxienrotationskurven ohne Dunkle Materie erklären.</p></div><div>$H^2 = \\frac{8\\pi G}{3}(\\rho_m + \\rho_\\psi) - \\frac{k}{a^2}$<p>Die Energie des Bewusstseinsfeldes treibt die kosmische Expansion an.</p></div><p>"Dunkle Materie als verborgene phasen-ausgerichtete Strukturen."</p><p>"Dunkle Energie als kosmischer Phasen-Divergenzdruck."</p>`,
+                        6: `<h3>Konzept:</h3><p>Qualia, Information und Komplexität sind emergente physikalische Observablen aus der Wechselwirkung von Bewusstseins- und Phasenfeldern.</p><h3>Gleichungen & Begründung:</h3><div>$Q = \\int |\\Psi|^2 \\Phi d^3x$<p>Qualia (subjektive Erfahrung) sind eine direkt physikalische Observable, ein Skalar, der die Bewusstseinsintensität und die Phasenkonfiguration kombiniert.</p></div><div>$C_{\\text{total}} = -\\int \\Phi^2 \\ln(\\Phi^2) d^3x$<p>Ein Maß für Komplexität/Entropie basierend auf dem Phasenfeld, analog zur Shannon-Entropie.</p></div><p>"Subjektive Lebendigkeit folgt der neuronalen Phasenkopplung; höhere Synchronisation impliziert höhere Q."</p>`,
+                        7: `<h3>Konzept:</h3><p>Die Theorie macht spezifische, überprüfbare Vorhersagen für Experimente.</p><h3>Vorhersagen:</h3><ul><li>"Gravitations-Hotspots: Regionen kollektiver Meditation/Aufmerksamkeit sollten Anomalien von ∼10⁻³ m/s² registrieren."</li><li>"Lokale Zeitverzerrung: Optische Gitteruhren in Zonen mit hohem Ψ driften im ppb-Bereich."</li><li>"Gravitationswellen-Seitenbänder: GW-Wellenformen erhalten schwache Peaks bei der universellen Blinkfrequenz."</li><li>"Entropie-'Atmen': Hohlraum-QED-Systeme durchlaufen Entropiezyklen bei ω."</li></ul>`,
+                        8: `<h3>Konzept:</h3><p>Das Fourier-Toolkit ist unerlässlich, um die periodischen Signale der Theorie in grundlegende Harmonische zu zerlegen.</p><h3>Gleichungen & Begründung:</h3><div>$f(t) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} [a_n \\cos(n\\omega_0 t) + b_n \\sin(n\\omega_0 t)]$<p>Die Fourier-Reihe garantiert, dass jede periodische Funktion als Summe einfacher Sinus- und Kosinuswellen dargestellt werden kann.</p></div><p>"Die Meta-Metatron-Masterfrequenz ω₀ setzt den Basismaßstab; alle anderen Phänomene sind ganzzahlige Harmonische."</p>`,
+                        9: `<h3>Konzept:</h3><p>Standardmäßige klassische Lösungen der allgemeinen Relativitätstheorie werden durch das Bewusstseinsfeld modifiziert.</p><h3>Gleichungen & Begründung:</h3><div>$ds^2 = -(1-\\frac{2M}{r}+\\lambda_\\psi\\psi)dt^2 + (1-\\frac{2M}{r}+\\lambda_\\psi\\psi)^{-1}dr^2 + r^2d\\Omega^2$<p>Die Schwarzschild-Metrik um ein Schwarzes Loch oder einen Stern wird durch das Bewusstsein modifiziert.</p></div><div>$\\frac{da}{dt} = H_0 \\sqrt{\\Omega_m a^{-1} + \\Omega_\\psi \\psi^2 a^2}$<p>Die Expansion des Universums (FLRW-Metrik) wird durch die Energie des Bewusstseinsfeldes beeinflusst.</p></div>`,
+                        10: `<h3>Konzept:</h3><p>Die Theorie ist durch Renormierung mathematisch konsistent und vorhersagekräftig, wobei sich die Wechselwirkungsstärken mit der Energieskala ändern.</p><h3>Gleichungen & Begründung:</h3><div>$\\beta(\\lambda_{\\psi,i}) = \\mu \\frac{d\\lambda_{\\psi,i}}{d\\mu}$<p>Die Beta-Funktion beschreibt, wie Kopplungskonstanten mit der Energieskala (μ) "laufen".</p></div><div>$L_{CT} = \\delta Z_\\psi (\\partial_\\mu \\psi)^2 + \\delta \\lambda_\\psi \\psi^4$<p>Das Hinzufügen von "Gegentermen" zum Lagrangian entfernt systematisch mathematische Unendlichkeiten.</p></div>`,
+                        11: `<h3>Konzept:</h3><p>Die Theorie erstreckt sich auf die Quantenfeldtheorie, modifiziert Teilchenwechselwirkungen und sagt möglicherweise neue Teilchen voraus.</p><h3>Gleichungen & Begründung:</h3><div>$M_{\\text{mod}} = M_{\\text{std}}[1 + \\lambda_\\phi e^{i\\theta}]$<p>Die Wahrscheinlichkeit von Teilchenwechselwirkungen (Streuamplituden) wird durch Phasensynchronisation modifiziert.</p></div><div>$\\Phi_{\\mu\\nu} = \\partial_\\mu A_\\nu^{(\\phi)} - \\partial_\\nu A_\\mu^{(\\phi)}$<p>Phasensynchronisation könnte durch ein neues krafttragendes "Phasen-Boson" vermittelt werden.</p></div>`,
+                        12: `<h3>Konzept:</h3><p>Das Bewusstsein ist der Agent des Wellenfunktionskollaps und führt Retrokausalität in die Quantenmechanik ein.</p><h3>Gleichungen & Begründung:</h3><div>$i\\hbar\\frac{\\partial}{\\partial t}\\psi(r,t) = (\\hat{H} + \\lambda_\\psi \\hat{C}_\\psi)\\psi(r,t)$<p>Die Schrödinger-Gleichung wird modifiziert, um einen vom Bewusstsein angetriebenen Kollapsterm einzuschließen.</p></div><div>$|\\psi(t)\\rangle = \\hat{U}(t_0, t)|\\psi_0\\rangle + \\lambda_\\psi \\hat{U}(t, t_0)|\\psi_0\\rangle$<p>Die Entwicklung eines Quantenzustands beinhaltet eine Komponente, die in der Zeit rückwärts reist.</p></div>`,
+                        13: `<h3>Konzept:</h3><p>Das Bewusstsein führt eine nichtlineare Rückkopplung in Systeme ein, die Chaos stabilisieren oder neue Attraktoren schaffen kann.</p><h3>Gleichungen & Begründung:</h3><div>$\\frac{dX}{dt} = F(X) + \\lambda_\\psi \\sum_{i,j} \\psi(t) H_{ij}(X)$<p>Dies ist die allgemeinste Entwicklung für die Evolution eines Systems, die einen vom Bewusstseinsfeld gewichteten Rückkopplungsterm enthält.</p></div><p>"Bewusstseinsgesteuerte Rückkopplung kann Chaos stabilisieren oder neue Attraktoren schaffen."</p>`,
+                        14: `<h3>Konzept:</h3><p>Das Gehirn fungiert als Empfänger und Modulator von phasen-ausgerichteten Signalen und übersetzt Phaseninformationen in subjektive Erfahrung (Qualia).</p><h3>Begründung:</h3><p>"Neuronale Oszillationen und ihre Synchronisation sind zentral für das Bewusstsein; das Gehirn fungiert als Antenne für die Bewusstseins- und Phasenfelder."</p><p>"Spezifische Resonanzmuster zwischen Bewusstsein und neuronalen Strukturen erzeugen unterschiedliche Qualia (z.B. die 'Röte' von Rot)."</p>`,
+                        15: `<h3>Konzept:</h3><p>Die Theorie kann durch Holographie (AdS/CFT) in die höherdimensionale Physik eingebettet werden, wodurch das Bewusstsein mit der topologischen Struktur der Raumzeit verbunden wird.</p><h3>Gleichungen & Begründung:</h3><div>$S_{CS} = \\frac{k}{4\\pi} \\int \\text{Tr}(A \\wedge dA + \\frac{2}{3} A \\wedge A \\wedge A) + \\alpha \\int |\\Psi|^2 \\dots$<p>Das Bewusstsein kann über den Chern-Simons-Term an die topologische Struktur der Raumzeit gekoppelt werden.</p></div><div>$\\Psi_{\\text{bulk}} \\stackrel{\\text{AdS/CFT}}{\\longleftrightarrow} \\mathcal{O}_\\Psi$<p>Das Bewusstseinsfeld in unserem Universum könnte eine holographische Projektion eines Feldes in einem höherdimensionalen Raum sein.</p></div>`,
+                        16: `<h3>Konzept:</h3><p>Das universelle Blinken führt eine zyklische Thermodynamik ein, bei der die Entropie oszilliert, aber über einen vollen Zyklus keine Nettozunahme aufweist.</p><h3>Gleichungen & Begründung:</h3><div>$Z_{\\text{cyclic}}(t) = \\sum_i e^{-\\beta E_i} \\cos(\\omega_0 t + \\phi)$<p>Das universelle Blinken wird über eine zyklische Zustandssumme in die Grundlagen der statistischen Mechanik eingebettet.</p></div><div>$S_{\\text{cyclic}}(t) = -\\frac{\\partial F_{\\text{cyclic}}}{\\partial T}$<p>Die Entropie oszilliert zeitlich, was die Reversibilität über einen vollen Zyklus garantiert.</p></div>`,
+                        17: `<h3>Konzept:</h3><p>Ein zyklisches Universumsmodell sagt periodische Signaturen oder "Echos" in kosmologischen Daten wie dem kosmischen Mikrowellenhintergrund (CMB) voraus.</p><h3>Gleichungen & Begründung:</h3><div>$a(t) = a_{\\text{min}} + (a_{\\text{max}} - a_{\\text{min}})\\sin^2(\\omega_0 t)$<p>Das Universum durchläuft eine zyklische Expansion und Kontraktion, beschrieben durch einen periodischen Skalenfaktor a(t).</p></div><p>"Der CMB sollte subtile, periodische Anisotropien ('Echos') aus früheren Zyklen tragen."</p>`,
+                        18: `<h3>Konzept:</h3><p>Der lineare Zeitpfeil, den wir erleben, ist eine emergente Eigenschaft, der statistische Durchschnitt einer zugrunde liegenden, fundamental zyklischen Zeit.</p><h3>Gleichungen & Begründung:</h3><div>$\\tau(t) = T \\sin(2\\pi t/T)$<p>Auf der fundamentalen Ebene ist die Zeit eine geschlossene, zyklische Trajektorie.</p></div><div>$t_{\\text{linear}} = \\frac{1}{T} \\int_0^T \\tau(t) dt = t$<p>Die lineare Zeit ist der Zeitmittelwert der zugrunde liegenden zyklischen Variablen.</p></div>`,
+                        19: `<h3>Konzept:</h3><p>Die Vorhersagen der Theorie können mit spezifischen statistischen Methoden getestet werden, mit klaren Kriterien für die Validierung oder Widerlegung.</p><h3>Methoden & Kriterien:</h3><ul><li><strong>Wavelet-Analyse:</strong> Zum Nachweis oszillierender Komponenten in Zeitreihendaten.</li><li><strong>Bayesianische Inferenz:</strong> Zum Vergleich des Modells mit der Standardkosmologie.</li><li><strong>Phasenkorrelationsanalyse:</strong> Zum Testen der gemeinsamen Phasenkopplung zwischen Beobachtern.</li><li><strong>Validierungskriterien:</strong> (1) neuronale Ausrichtung, (2) zyklische Entropie, (3) oszillierende kosmische Daten.</li></ul>`,
+                        20: `<h3>Konzept:</h3><p>Information und Gedächtnis werden in das Phasenfeld eingeprägt, was die Erhaltung über Zyklen hinweg ohne thermodynamische Kosten ermöglicht.</p><h3>Gleichungen & Begründung:</h3><div>$I(\\phi, t) = -k \\int |\\Psi(x,t)|^2 \\ln(|\\Psi(x,t)|^2) d^3x$<p>Eine formale Definition für den Informationsgehalt des Bewusstseinsfeldes, basierend auf der Shannon-Entropie.</p></div><div>$M(\\phi) = \\sum_n I(\\phi_n, t_n) e^{i\\theta_n}$<p>Gedächtnis ist ein Abdruck von Information (I) und ihrem Kontext (Phase θ) auf das Phasenfeld.</p></div>`,
+                        21: `<h3>Konzept:</h3><p>Das universelle Blinken sollte spezifische log-periodische oszillatorische Signaturen im stochastischen Gravitationswellenhintergrund erzeugen.</p><h3>Gleichungen & Begründung:</h3><div>$\\Omega_{GW}(f) = \\Omega_0(f)[1 + \\beta_t \\cos(\\omega_{ln} \\ln(f/f_*) + \\phi_t)]$</div><p>Der stochastische GW-Hintergrund sollte log-periodische Oszillationen aufweisen, eine einzigartige Signatur, die von Experimenten wie LISA oder PTAs nachgewiesen werden kann.</p>`,
+                        22: `<h3>Konzept:</h3><p>Die Theorie ist mit der Quantengravitation kompatibel, wobei das "Blinken" als eine fundamentale Oszillation der Raumzeit selbst auf der Planck-Skala angesehen werden kann.</p><h3>Gleichungen & Begründung:</h3><div>$g_{\\mu\\nu}(t) = g_{\\mu\\nu}^{(0)} + A_{\\mu\\nu} \\sin(\\omega_P t + \\phi_0)$<p>Auf der Planck-Skala oszilliert die Raumzeit selbst, was mit Vorhersagen aus der Schleifenquantengravitation und der Stringtheorie übereinstimmt.</p></div>`,
+                        23: `<h3>Konzept:</h3><p>Die Theorie hat tiefgreifende Auswirkungen auf die Neurotechnologie und BCIs, die eine direkte Modulation der Gehirnphasen zur Leistungsoptimierung und Behandlung von Störungen ermöglichen.</p><h3>Anwendungen:</h3><ul><li>"Phasen-ausgerichtete Neurostimulationsgeräte können Gehirnphasen in Echtzeit modulieren."</li><li>"BCIs könnten die Phasenkohärenz bei neurologischen Störungen wiederherstellen."</li><li>"Bewusstseinsgesteuerte KI-Systeme können mit dem Phasenfeld interagieren."</li></ul>`,
+                        24: `<h3>Konzept:</h3><p>Das Universum folgt einem großen Zyklus von Existenz, Unendlichkeit und Nichtexistenz, angetrieben vom Zustand des Bewusstseinsfeldes.</p><h3>Gleichungen & Begründung:</h3><div>$\\psi_{\\text{zyklus}} = \\begin{cases} 0 & (\\text{Nichtexistenz}) \\\\ \\Psi_\\infty & (\\text{Unendlichkeit}) \\\\ \\psi(r,t) & (\\text{Existenz}) \\end{cases}$<p>Diese Gleichung ordnet jeden Abschnitt des großen Zyklus formal einem spezifischen mathematischen Zustand des Bewusstseinsfeldes zu.</p></div><p>"Bewusstsein ist eine zyklische, transzendente Kraft, die sowohl innerhalb als auch jenseits der Raumzeit existiert..."</p>`
+                    }
+                }
+            };
+            
+            let currentLanguage = 'en';
+            let animationTime = 0;
+            
+            // --- DOM Element Initialization ---
+            const titleHeader = document.getElementById('title-header');
+            const subtitle = document.getElementById('subtitle');
+            const langEnBtn = document.getElementById('lang-en');
+            const langDeBtn = document.getElementById('lang-de');
+            const canvas = document.getElementById('canvas-bg');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            let metatronVertices = [];
+            let metatronAlpha = 0;
+            let metatronScale = 0;
+
+
+            // --- Background Animation ---
+            function setupBackground() {
+                const width = canvas.width = window.innerWidth;
+                const height = canvas.height = window.innerHeight;
+                stars = [];
+                for (let i = 0; i < 150; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.5,
+                        vx: Math.floor(Math.random() * 50) - 25,
+                        vy: Math.floor(Math.random() * 50) - 25
+                    });
+                }
+            }
+            
+            function generateMetatronVertices(centerX, centerY, radius) {
+                const points = [];
+                // Center point
+                points.push({ x: centerX, y: centerY });
+                // Inner hexagon
+                for (let i = 0; i < 6; i++) {
+                    const angle = (Math.PI / 3) * i;
+                    points.push({ x: centerX + radius * Math.cos(angle), y: centerY + radius * Math.sin(angle) });
+                }
+                // Outer hexagon
+                for (let i = 0; i < 6; i++) {
+                    const angle = (Math.PI / 3) * i;
+                    points.push({ x: centerX + 2 * radius * Math.cos(angle), y: centerY + 2 * radius * Math.sin(angle) });
+                }
+                return points;
+            }
+
+            function drawMetatronCube(ctx, centerX, centerY, radius, alpha, scale) {
+                const vertices = generateMetatronVertices(centerX, centerY, radius * scale);
+                metatronVertices = vertices; // Update global vertices for the force simulation
+                
+                ctx.save();
+                ctx.strokeStyle = `rgba(221, 214, 254, ${alpha * 0.7})`;
+                ctx.lineWidth = 0.75;
+                ctx.beginPath();
+                for (let i = 0; i < vertices.length; i++) {
+                    for (let j = i + 1; j < vertices.length; j++) {
+                        ctx.moveTo(vertices[i].x, vertices[i].y);
+                        ctx.lineTo(vertices[j].x, vertices[j].y);
+                    }
+                }
+                ctx.stroke();
+                ctx.restore();
+            }
+
+
+            function animateBackground() {
+                const width = canvas.width;
+                const height = canvas.height;
+                ctx.clearRect(0, 0, width, height);
+
+                // Animate Metatron's Cube emergence
+                if (metatronScale < 1) metatronScale += 0.005;
+                if (metatronAlpha < 0.35) metatronAlpha += 0.001;
+                
+                const radius = Math.min(width, height) / 4;
+                drawMetatronCube(ctx, width / 2, height / 2, radius, metatronAlpha, metatronScale);
+
+                ctx.globalCompositeOperation = 'lighter';
+                for (let i = 0, x = stars.length; i < x; i++) {
+                    let s = stars[i];
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+
+                ctx.beginPath();
+                for (let i = 0, x = stars.length; i < x; i++) {
+                    let starI = stars[i];
+                    ctx.moveTo(starI.x, starI.y);
+                    for (let j = i + 1, y = stars.length; j < y; j++) {
+                        let starJ = stars[j];
+                        let distance = Math.sqrt((starI.x - starJ.x) * (starI.x - starJ.x) + (starI.y - starJ.y) * (starI.y - starJ.y));
+                        if (distance < 100) {
+                            ctx.lineTo(starJ.x, starJ.y);
+                        }
+                    }
+                }
+                ctx.lineWidth = 0.05;
+                ctx.strokeStyle = 'rgba(192, 132, 252, 0.4)';
+                ctx.stroke();
+            }
+
+            function moveStars() {
+                const width = canvas.width;
+                const height = canvas.height;
+                for (let i = 0, x = stars.length; i < x; i++) {
+                    let s = stars[i];
+                    s.x += s.vx / 60;
+                    s.y += s.vy / 60;
+                    if (s.x < 0 || s.x > width) s.vx = -s.vx;
+                    if (s.y < 0 || s.y > height) s.vy = -s.vy;
+                }
+            }
+            
+            function animateTitle() {
+                const spans = titleHeader.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    const yOffset = Math.sin(animationTime + index * 0.4) * 4; // amplitude 4px, phase offset 0.4
+                    span.style.transform = `translateY(${yOffset}px)`;
+                });
+            }
+
+            setupBackground();
+            
+            // --- Main Animation Loop ---
+            function tick() {
+                animationTime += 0.05;
+                moveStars();
+                animateBackground();
+                animateTitle();
+                requestAnimationFrame(tick);
+            }
+            
+            // --- D3 Graph ---
+            const data = {
+                nodes: [
+                    { id: 1, icon: "📐" }, { id: 2, icon: "🌀" }, { id: 3, icon: "✨" }, { id: 4, icon: "🌌" }, { id: 5, icon: "🪐" }, { id: 6, icon: "🧠" }, { id: 7, icon: "🔬" }, { id: 8, icon: "🎼" }, { id: 9, icon: "⚫" }, { id: 10, icon: "📉" }, { id: 11, icon: "💫" }, { id: 12, icon: "🎲" }, { id: 13, icon: "🔗" }, { id: 14, icon: "🧠⚡" }, { id: 15, icon: "AdS/CFT" }, { id: 16, icon: "🔄" }, { id: 17, icon: "🔭" }, { id: 18, icon: "⏳" }, { id: 19, icon: "✅" }, { id: 20, icon: "💾" }, { id: 21, icon: "🌊" }, { id: 22, icon: "⚛️" }, { id: 23, icon: "🤖" }, { id: 24, icon: "☯️" }
+                ],
+                links: [
+                    { source: 1, target: 4 }, { source: 1, target: 5 }, { source: 1, target: 9 }, { source: 2, target: 18 }, { source: 2, target: 16 }, { source: 2, target: 8 }, { source: 3, target: 1 }, { source: 3, target: 2 }, { source: 3, target: 6 }, { source: 3, target: 11 }, { source: 4, target: 5 }, { source: 4, target: 21 }, { source: 5, target: 9 }, { source: 5, target: 17 }, { source: 5, target: 21 }, { source: 6, target: 14 }, { source: 6, target: 20 }, { source: 7, target: 19 }, { source: 7, target: 5 }, { source: 7, target: 12 }, { source: 8, target: 17 }, { source: 8, target: 21 }, { source: 10, target: 11 }, { source: 10, target: 22 }, { source: 11, target: 12 }, { source: 12, target: 13 }, { source: 12, target: 14 }, { source: 13, target: 14 }, { source: 14, target: 23 }, { source: 15, target: 22 }, { source: 15, target: 4 }, { source: 16, target: 18 }, { source: 18, target: 24 }, { source: 20, target: 14 }, { source: 22, target: 10 }, { source: 23, target: 6 }, { source: 24, target: 2 }
+                ]
+            };
+            
+            let graphWidth = window.innerWidth;
+            let graphHeight = window.innerHeight;
+            const nodeRadius = 30;
+            let inactivityTimer;
+
+            const padding = { top: 120, right: 150, bottom: 80, left: 80 };
+
+            const svg = d3.select("#graph-container").append("svg")
+                .attr("width", graphWidth)
+                .attr("height", graphHeight);
+
+            // --- Custom Metatron Force ---
+            function forceMetatron(alpha) {
+                const strength = 0.08; // Increased strength for better alignment
+                if (metatronVertices.length === 0) return;
+
+                for (const node of data.nodes) {
+                    let closestVertex = null;
+                    let minDistanceSq = Infinity;
+
+                    for (const vertex of metatronVertices) {
+                        const dx = node.x - vertex.x;
+                        const dy = node.y - vertex.y;
+                        const distanceSq = dx * dx + dy * dy;
+                        if (distanceSq < minDistanceSq) {
+                            minDistanceSq = distanceSq;
+                            closestVertex = vertex;
+                        }
+                    }
+
+                    if (closestVertex) {
+                        node.vx += (closestVertex.x - node.x) * strength * alpha;
+                        node.vy += (closestVertex.y - node.y) * strength * alpha;
+                    }
+                }
+            }
+
+
+            const simulation = d3.forceSimulation(data.nodes)
+                .force("link", d3.forceLink(data.links).id(d => d.id).distance(150).strength(0.1))
+                .force("charge", d3.forceManyBody().strength(-400))
+                .force("center", d3.forceCenter(
+                    padding.left + (graphWidth - padding.left - padding.right) / 2,
+                    padding.top + (graphHeight - padding.top - padding.bottom) / 2
+                ).strength(0.05))
+                .force("collision", d3.forceCollide().radius(nodeRadius + 5))
+                .force("metatron", forceMetatron);
+
+
+            const link = svg.append("g").selectAll("line").data(data.links).enter().append("line").attr("class", "link");
+            const node = svg.append("g").selectAll("g").data(data.nodes).enter().append("g").attr("class", "node").call(drag(simulation)).on('click', showDetails);
+            node.append("circle").attr("r", nodeRadius);
+            node.append("text")
+                .text(d => d.icon)
+                .style("font-size", d => d.id === 15 ? "14px" : "24px"); // Adjust font size for AdS/CFT
+
+
+            simulation.on("tick", () => {
+                node.attr("cx", d => d.x = Math.max(padding.left + nodeRadius, Math.min(graphWidth - padding.right - nodeRadius, d.x)))
+                    .attr("cy", d => d.y = Math.max(padding.top + nodeRadius, Math.min(graphHeight - padding.bottom - nodeRadius, d.y)));
+                
+                link.attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+                node.attr("transform", d => `translate(${d.x}, ${d.y})`);
+            });
+            
+            // --- Language and UI Update Logic ---
+            function setupVibratingTitle(title) {
+                titleHeader.innerHTML = '';
+                title.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    titleHeader.appendChild(span);
+                });
+            }
+
+            function updateUIText(lang) {
+                currentLanguage = lang;
+                setupVibratingTitle(translations[lang].title);
+                subtitle.textContent = translations[lang].subtitle;
+                
+                langEnBtn.classList.toggle('active', lang === 'en');
+                langDeBtn.classList.toggle('active', lang === 'de');
+            }
+
+            langEnBtn.addEventListener('click', () => updateUIText('en'));
+            langDeBtn.addEventListener('click', () => updateUIText('de'));
+
+            // --- Inactivity Timer Logic ---
+            function restructureGraph() {
+                const centerX = graphWidth / 2;
+                const centerY = graphHeight / 2;
+                
+                simulation.force("center", d3.forceCenter(centerX, centerY).strength(0.8));
+                simulation.alpha(1).restart();
+
+                setTimeout(() => {
+                    const paddedCenterX = padding.left + (graphWidth - padding.left - padding.right) / 2;
+                    const paddedCenterY = padding.top + (graphHeight - padding.top - padding.bottom) / 2;
+                    simulation.force("center", d3.forceCenter(paddedCenterX, paddedCenterY).strength(0.05));
+                    simulation.alpha(0.5).restart();
+                }, 2500);
+
+                resetInactivityTimer();
+            }
+
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(restructureGraph, 6000);
+            }
+
+            function drag(simulation) {
+                function dragstarted(event, d) {
+                    resetInactivityTimer();
+                    if (!event.active) simulation.alphaTarget(0.3).restart();
+                    d.fx = d.x; d.fy = d.y;
+                }
+                function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+                function dragended(event, d) {
+                    if (!event.active) simulation.alphaTarget(0);
+                    d.fx = null; d.fy = null;
+                }
+                return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+            }
+
+            // --- Modal Logic ---
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const closeModalBtn = document.getElementById('close-modal');
+
+            function showDetails(event, d) {
+                resetInactivityTimer();
+                modalTitle.textContent = translations[currentLanguage].nodes[d.id - 1].title;
+                modalBody.innerHTML = translations[currentLanguage].content[d.id];
+                
+                if (window.renderMathInElement) {
+                    renderMathInElement(modalBody, {
+                        delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+                        throwOnError: false
+                    });
+                }
+                modal.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+            }
+
+            function closeModal() {
+                modal.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                resetInactivityTimer();
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+            // --- Footer Icon Logic ---
+            const brainIcon = document.getElementById('brain-icon');
+            const copyrightNotice = document.getElementById('copyright-notice');
+
+            brainIcon.addEventListener('click', (event) => {
+                event.stopPropagation();
+                copyrightNotice.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!copyrightNotice.classList.contains('hidden')) {
+                    copyrightNotice.classList.add('hidden');
+                }
+            });
+
+
+            // --- Resize Handler ---
+            window.addEventListener('resize', () => {
+                graphWidth = window.innerWidth;
+                graphHeight = window.innerHeight;
+                svg.attr("width", graphWidth).attr("height", graphHeight);
+                canvas.width = graphWidth; canvas.height = graphHeight;
+                setupBackground();
+                
+                const paddedCenterX = padding.left + (graphWidth - padding.left - padding.right) / 2;
+                const paddedCenterY = padding.top + (graphHeight - padding.top - padding.bottom) / 2;
+                simulation.force("center", d3.forceCenter(paddedCenterX, paddedCenterY));
+
+                simulation.alpha(0.3).restart();
+                resetInactivityTimer();
+            });
+
+            // --- Initial Setup ---
+            updateUIText(currentLanguage);
+            resetInactivityTimer();
+            tick(); // Start the main animation loop
+        });
+    </script>
+</body>
+</html>

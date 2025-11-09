@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 6: Planetary-Biospheric Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 6 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Weave of Consciousness" for the projection lattice. 3. "The Planetary Tuning Fork" for tripartite resonance. 4. "The Global Heartbeat" for the planetary EEG concept. 5. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Weave of Consciousness: Goal: Visualize the formation of a coherent global field. Method: Canvas particle animation. Interaction: A slider for "Collective Coherence" aligns the paths of chaotic light streams around a globe into a stable, flowing "weave." Justification: A more dynamic and beautiful metaphor for the projection lattice.
+        - The Planetary Tuning Fork: Goal: Show the interplay of fundamental fields. Method: Canvas animation. Interaction: A button initiates "Resonance," causing three visually distinct, chaotic energy layers (Gravity, EM, Consciousness) to synchronize into a nested, harmonic pulse. Justification: A more impactful and less abstract way to show tripartite resonance.
+        - The Global Heartbeat: Goal: Demonstrate the species' mind imprinting on a global field. Method: Canvas animation. Interaction: A button for "Collective Focus" transforms a shallow, erratic "breathing" glow around the Earth into a deep, regular, coherent pulse. Justification: A more organic and relatable metaphor for a planetary EEG.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 6: Planetary-Biospheric Layer</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#weave" class="nav-link font-semibold text-stone-600">Weave</a>
+                    <a href="#tuningfork" class="nav-link font-semibold text-stone-600">Tuning Fork</a>
+                    <a href="#heartbeat" class="nav-link font-semibold text-stone-600">Heartbeat</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Mind of a Species</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 6 describes how the consciousness of all individuals within a species aggregates to form a coherent, planetary-scale projection lattice. This "Gaia-field" is not merely a metaphor; it is a dynamic network that interfaces with Earth's physical fields, maintaining a resonant, homeostatic balance between the collective mind and the biosphere.
+            </p>
+        </section>
+
+        <section id="weave" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Weave of Consciousness</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Individual minds are like streams of light. In a state of low coherence, they flow chaotically. As collective coherence increases, these streams begin to resonate and align, weaving themselves into a stable, luminous, and interconnected global field that envelops the planet.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="weaveCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="coherence-slider" class="font-semibold text-stone-700">Collective Coherence: <span id="coherence-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the phase alignment among individuals to weave the chaotic streams into a coherent global field.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coherence-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="tuningfork" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Planetary Tuning Fork</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The planet itself is a resonant instrument. Its fundamental fields of Gravity, Electromagnetism, and the collective Consciousness of the biosphere are like three strings. When dissonant, they are chaotic. When a state of coherence is achieved, they resonate in harmony, creating a stable, unified planetary field.</p>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4">
+                 <canvas id="tuningforkCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="resonance-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Initiate Resonance</button>
+            </div>
+        </section>
+
+        <section id="heartbeat" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Global Heartbeat</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">The collective consciousness of the biosphere creates a planetary "heartbeat"—a slow, rhythmic pulse in the Ψ-field. In a fragmented state, this pulse is shallow and erratic. During moments of global focus, the heartbeat becomes deep, regular, and coherent, reflecting a unified planetary mind.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="heartbeatCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="focus-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Activate Collective Focus</button>
+                    <p class="text-sm text-stone-500 mt-4">Simulates a global event of synchronized attention, transforming the erratic pulse into a coherent, powerful heartbeat.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Planetary-Biospheric Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Spherical Resonant Cavity</h4>
+                            <p class="text-stone-600 text-sm">The primary geometry is the spherical shell between the Earth's surface and the ionosphere. This cavity acts as a natural resonator for extremely low-frequency (ELF) electromagnetic waves, most notably the Schumann resonances, providing a global standing wave pattern.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Collective Projection Lattice</h4>
+                            <p class="text-stone-600 text-sm">The species-consciousness field is modeled as a dynamic, geometric lattice covering the globe. The nodes are conscious organisms, and the links are lines of phase coherence. The stability and geometry of this lattice reflects the species' overall coherence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Gaia-Field Model</h4>
+                            <p class="text-stone-600">The collective consciousness is modeled as a "Gaia-field," which can be approximated as a mean-field average of all individual Ψ-field contributions. Its coherence can be described by a global order parameter, $R_{global}$, similar to that used in statistical physics.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Projection Constraint Equation</h4>
+                            <p class="text-stone-600">A core conservation law stating that the total interaction between the species-consciousness field ($\Psi_s$) and the biosphere's energy-momentum tensor ($\mathcal{T}_{\mu\nu}$) remains constant, ensuring homeostatic balance.</p>
+                            <p class="my-2">$$\int_{\Sigma_{\text{species}}} \Psi_s \cdot \mathcal{T}_{\mu\nu}^{\text{biosphere}} d^3x = \text{Constant}$$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Tripartite Resonance</h4>
+                            <p class="text-stone-600 text-sm">A fundamental resonance between three fields: Gravity, Electromagnetism, and Consciousness. The collective Ψ-field interacts with both Earth's gravitational and EM fields, creating a coupled, resonant system that stabilizes the biosphere.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Schumann Resonance Entrainment</h4>
+                            <p class="text-stone-600 text-sm">The Schumann resonances (~7.83 Hz) act as a natural driving signal, entraining brainwaves on a global scale and providing a common phase reference that helps to synchronize the entire species.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Planetary EEG-like Field</h4>
+                            <p class="text-stone-600 text-sm">The collective focus of the species imprints a coherent, information-rich signal onto the planet's background EM fields, creating a measurable, planetary-scale "EEG-like" signature.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Weave of Consciousness ---
+        const weaveCanvas = document.getElementById('weaveCanvas');
+        const weaveCtx = weaveCanvas.getContext('2d');
+        const coherenceSlider = document.getElementById('coherence-slider');
+        const coherenceValue = document.getElementById('coherence-value');
+        let particles = [];
+        let weaveTime = 0;
+
+        function initWeave() {
+            for (let i = 0; i < 300; i++) {
+                particles.push({
+                    angle: Math.random() * Math.PI * 2,
+                    radius: Math.random() * 50 + (weaveCanvas.width / 2 - 50),
+                    speed: (Math.random() - 0.5) * 0.01,
+                    history: []
+                });
+            }
+        }
+
+        function animateWeave() {
+            const w = weaveCanvas.width;
+            const h = weaveCanvas.height;
+            weaveCtx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+            weaveCtx.fillRect(0,0,w,h);
+            
+            const coherence = parseInt(coherenceSlider.value) / 100;
+            coherenceValue.textContent = `${Math.round(coherence*100)}%`;
+            
+            // Draw Globe
+            const globeRadius = w / 4;
+            weaveCtx.fillStyle = '#44403c';
+            weaveCtx.beginPath();
+            weaveCtx.arc(w/2, h/2, globeRadius, 0, Math.PI * 2);
+            weaveCtx.fill();
+
+            particles.forEach(p => {
+                const targetSpeed = 0.01;
+                p.speed += (targetSpeed - p.speed) * coherence * 0.1;
+                p.angle += p.speed + (Math.random() - 0.5) * 0.05 * (1 - coherence);
+
+                const x = w/2 + Math.cos(p.angle) * globeRadius * 1.2;
+                const y = h/2 + Math.sin(p.angle) * globeRadius * 1.2;
+                
+                p.history.push({x: x, y: y});
+                if(p.history.length > 10) p.history.shift();
+                
+                weaveCtx.beginPath();
+                if(p.history.length > 1) {
+                    weaveCtx.moveTo(p.history[0].x, p.history[0].y);
+                    for(let i=1; i<p.history.length; i++) {
+                        weaveCtx.lineTo(p.history[i].x, p.history[i].y);
+                    }
+                    weaveCtx.strokeStyle = `rgba(217, 119, 6, ${0.1 + coherence * 0.7})`;
+                    weaveCtx.lineWidth = 1;
+                    weaveCtx.stroke();
+                }
+            });
+
+            requestAnimationFrame(animateWeave);
+        }
+
+        // --- The Planetary Tuning Fork ---
+        const tuningforkCanvas = document.getElementById('tuningforkCanvas');
+        const tuningforkCtx = tuningforkCanvas.getContext('2d');
+        const resonanceBtn = document.getElementById('resonance-btn');
+        let resonanceTime = 0;
+        let resonanceActive = false;
+
+        function drawTuningField(ctx, time, freq, radius, color, chaos) {
+            const w = ctx.canvas.width;
+            const h = ctx.canvas.height;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            for (let i = 0; i < 200; i++) {
+                const angle = (i / 200) * Math.PI * 2;
+                const r = radius + Math.sin(angle * freq + time) * 10 + (Math.random() - 0.5) * chaos;
+                const x = w/2 + Math.cos(angle) * r;
+                const y = h/2 + Math.sin(angle) * r;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function animateTuningFork() {
+            const w = tuningforkCanvas.width;
+            const h = tuningforkCanvas.height;
+            tuningforkCtx.clearRect(0, 0, w, h);
+            resonanceTime += 0.02;
+
+            const chaos = resonanceActive ? 0 : 20;
+
+            // Gravity (slow, green)
+            drawTuningField(tuningforkCtx, resonanceTime * 0.5, 5, h * 0.4, 'rgba(34, 197, 94, 0.7)', chaos);
+            // EM (medium, blue)
+            drawTuningField(tuningforkCtx, resonanceTime * 1.5, 7, h * 0.3, 'rgba(59, 130, 246, 0.7)', chaos);
+            // Consciousness (fast, amber)
+            drawTuningField(tuningforkCtx, resonanceTime * 3.0, 11, h * 0.2, 'rgba(217, 119, 6, 0.7)', chaos);
+
+            // Draw Planet
+            tuningforkCtx.fillStyle = '#44403c';
+            tuningforkCtx.beginPath();
+            tuningforkCtx.arc(w/2, h/2, h*0.1, 0, Math.PI * 2);
+            tuningforkCtx.fill();
+
+            requestAnimationFrame(animateTuningFork);
+        }
+        resonanceBtn.addEventListener('click', () => {
+            resonanceActive = !resonanceActive;
+            resonanceBtn.textContent = resonanceActive ? 'Release Resonance' : 'Initiate Resonance';
+        });
+
+        // --- The Global Heartbeat ---
+        const heartbeatCanvas = document.getElementById('heartbeatCanvas');
+        const heartbeatCtx = heartbeatCanvas.getContext('2d');
+        const focusBtn = document.getElementById('focus-btn');
+        let heartbeatTime = 0;
+        let focusActive = false;
+        let focusStrength = 0;
+
+        function animateHeartbeat() {
+            const w = heartbeatCanvas.width;
+            const h = heartbeatCanvas.height;
+            heartbeatCtx.clearRect(0,0,w,h);
+            
+            if (focusActive && focusStrength < 1) {
+                focusStrength += 0.01;
+            } else if (!focusActive && focusStrength > 0) {
+                focusStrength -= 0.01;
+            }
+            focusStrength = Math.max(0, Math.min(1, focusStrength));
+
+            const baseSpeed = 0.02;
+            const focusedSpeed = 0.01;
+            const speed = baseSpeed * (1 - focusStrength) + focusedSpeed * focusStrength;
+            heartbeatTime += speed;
+
+            const baseAmp = 0.1;
+            const focusedAmp = 0.4;
+            const amplitude = baseAmp * (1 - focusStrength) + focusedAmp * focusStrength;
+
+            const baseJitter = 0.1;
+            const focusedJitter = 0.01;
+            const jitter = baseJitter * (1 - focusStrength) + focusedJitter * focusStrength;
+
+            const pulse = (Math.sin(heartbeatTime + Math.random() * jitter) + 1) / 2;
+            const radius = w * 0.1 + pulse * w * amplitude;
+
+            const gradient = heartbeatCtx.createRadialGradient(w/2, h/2, 0, w/2, h/2, radius);
+            gradient.addColorStop(0, `rgba(217, 119, 6, 0.3)`);
+            gradient.addColorStop(1, `rgba(217, 119, 6, 0)`);
+            
+            heartbeatCtx.fillStyle = gradient;
+            heartbeatCtx.beginPath();
+            heartbeatCtx.arc(w/2, h/2, radius, 0, Math.PI * 2);
+            heartbeatCtx.fill();
+
+            // Draw Planet
+            heartbeatCtx.fillStyle = '#44403c';
+            heartbeatCtx.beginPath();
+            heartbeatCtx.arc(w/2, h/2, w*0.1, 0, Math.PI * 2);
+            heartbeatCtx.fill();
+
+            requestAnimationFrame(animateHeartbeat);
+        }
+        focusBtn.addEventListener('click', () => {
+            focusActive = !focusActive;
+            focusBtn.textContent = focusActive ? 'Release Collective Focus' : 'Activate Collective Focus';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            weaveCanvas.width = weaveCanvas.offsetWidth;
+            weaveCanvas.height = weaveCanvas.offsetHeight;
+            initWeave();
+            animateWeave();
+
+            tuningforkCanvas.width = tuningforkCanvas.offsetWidth;
+            tuningforkCanvas.height = tuningforkCanvas.offsetHeight;
+            animateTuningFork();
+            
+            heartbeatCanvas.width = heartbeatCanvas.offsetWidth;
+            heartbeatCanvas.height = heartbeatCanvas.offsetHeight;
+            animateHeartbeat();
+        };
+    </script>
+</body>
+</html>

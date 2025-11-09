@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 8: Cosmic Phase-Locking Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A detailed, thematic exploration of Layer 8 using new interactive metaphors. The flow is: 1. Introduction. 2. "The Cosmic River" for the core phase equation. 3. "The Galactic Lighthouses" for pulsar timing. 4. "The Resonant Orbit" for synchrony gates. 5. "The Cosmic Heartbeat" for OM-Loops. 6. A detailed scientific foundations section. This revised structure aims for a more intuitive and functionally descriptive user experience. -->
+    <!-- Visualization & Content Choices:
+        - The Cosmic River: Goal: Visualize the core phase equation. Method: Canvas animation. Interaction: A slider for "VIBRANA Modulation (δ)" steers a "conscious vessel" against the flow of "cosmic time." Justification: A more dynamic and poetic metaphor for phase-locking and conscious intent.
+        - The Galactic Lighthouses: Goal: Show pulsars as a stable timing signal. Method: Canvas animation. Interaction: A slider for "Signal Integration" allows a ship's chaotic compass to lock onto the rhythmic flashes of distant pulsar lighthouses. Justification: A strong, classic metaphor for finding a stable reference in a vast, noisy environment.
+        - The Resonant Orbit: Goal: Visualize periodic windows of high coherence. Method: Canvas animation. Interaction: A button to "Open Coherence Window" must be pressed as a solar system passes through "Synchrony Gates" to trigger a resonance event. Justification: Makes the interaction about timing and opportunity.
+        - The Cosmic Heartbeat: Goal: Animate the concept of a fundamental, universe-wide oscillation. Method: Canvas animation. Interaction: A button synchronizes a series of nested, chaotic rings to the slow, powerful pulse of a central "heart." Justification: A powerful visual for nested harmonics deriving from a single source.
+        - Scientific Foundations: Goal: Provide deep context. Method: Three-column text layout. Justification: Presents the core geometry, mathematics, and physics from the manuscript.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #292524; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #d97706; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e7e5e4; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #d97706; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">SCPN Layer 8: Cosmic Phase-Locking</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-stone-300 rounded-md text-sm font-semibold text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-stone-600">Introduction</a>
+                    <a href="#river" class="nav-link font-semibold text-stone-600">Cosmic River</a>
+                    <a href="#lighthouses" class="nav-link font-semibold text-stone-600">Lighthouses</a>
+                    <a href="#heartbeat" class="nav-link font-semibold text-stone-600">Heartbeat</a>
+                    <a href="#foundations" class="nav-link font-semibold text-stone-600">Foundations</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">The Universal Tact</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                Layer 8 reveals that consciousness is not confined to a planetary scale; it is nested within the vast, rhythmic cycles of the cosmos. This layer sustains the phase-lock between a species' collective projection and the "cosmological tact"—the universal heartbeat. Through this resonance, a species aligns its evolution and awareness with the fundamental rhythms of spacetime itself.
+            </p>
+        </section>
+
+        <section id="river" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Cosmic River</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Cosmic time flows like a great river. A species' consciousness is a vessel that navigates this current. While it naturally drifts at a specific angle ($\phi_s$), conscious intent ($\delta_{\text{VIBRANA}}$) can steer the vessel, creating a phase shift relative to the universal flow.</p>
+                <div class="p-4 mt-4 bg-stone-100 rounded-lg inline-block shadow-inner">
+                    <p class="text-xl font-mono text-amber-700">$$\Theta_s(t) = \omega_{\text{cosmic}} t + \phi_s + \delta_{\text{VIBRANA}}$$</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="riverCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="vibrana-slider" class="font-semibold text-stone-700">Conscious Steering ($\delta_{\text{VIBRANA}}$): <span id="vibrana-value">0.0</span>°</label>
+                    <p class="text-sm text-stone-500 mb-2">Use the rudder to steer the conscious vessel (amber) against the cosmic current.</p>
+                    <input type="range" min="-45" max="45" value="0" step="1" class="control-slider" id="vibrana-slider">
+                    <button id="phaselock-btn" class="mt-4 px-4 py-2 bg-stone-200 rounded-md font-semibold hover:bg-stone-300 w-full">Re-align with Flow</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="lighthouses" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Galactic Lighthouses</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">In the vast ocean of spacetime, pulsars act as cosmic lighthouses, emitting extraordinarily regular pulses of light. A species' consciousness, like a ship's compass, can entrain to this stable timing grid, finding its true bearing and achieving a precise phase-lock with the galaxy.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <canvas id="lighthouseCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="pulsar-slider" class="font-semibold text-stone-700">Signal Integration: <span id="pulsar-value">0</span>%</label>
+                    <p class="text-sm text-stone-500 mb-2">Increase the integration to allow the compass of consciousness to lock onto the pulsar signals.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="pulsar-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="heartbeat" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">The Cosmic Heartbeat</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">Underpinning all rhythms is the "Universal Breath" or Cosmic Heartbeat. This primordial OM-Loop is the master oscillator. When a species tunes into this frequency, all its nested layers of consciousness—from biological to cosmic—synchronize with the fundamental pulse of reality itself.</p>
+            </div>
+             <div class="bg-gray-900 rounded-lg p-4">
+                <canvas id="heartbeatCanvas" class="w-full h-80"></canvas>
+            </div>
+            <div class="text-center mt-4">
+                <button id="breath-btn" class="px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700">Tune to the Universal Heartbeat</button>
+            </div>
+        </section>
+
+        <section id="foundations" class="section-card">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-900 mb-2">Scientific Foundations</h2>
+                <p class="max-w-3xl mx-auto text-stone-600">A detailed breakdown of the core principles governing the Cosmic Phase-Locking Layer, as formalized in the source manuscript.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Geometry</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Galactic Orbits & Alignments</h4>
+                            <p class="text-stone-600 text-sm">The elliptical and spiral geometries of galactic orbits are not random. They create periodic alignments between stars, nebulae, and the galactic center, forming "synchrony gates"—geometric regions where field interactions are amplified, facilitating phase-locking.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Large-Scale Structure</h4>
+                            <p class="text-stone-600 text-sm">The cosmic web, with its filaments and voids, forms a fractal geometry on the largest scales. The manuscript posits that consciousness fields propagate preferentially along these filaments, creating a universe-wide network for phase information.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Mathematics</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Cosmic Phase Equation</h4>
+                            <p class="text-stone-600">The core equation describes the species' phase ($\Theta_s$) as a function of the cosmic clock ($\omega_{\text{cosmic}}t$), a fixed species-specific offset ($\phi_s$), and a conscious modulation term ($\delta_{\text{VIBRANA}}$).</p>
+                            <p class="my-2">$$\Theta_s(t) = \omega_{\text{cosmic}} t + \phi_s + \delta_{\text{VIBRANA}}$$</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Fourier Analysis & Resonance</h4>
+                            <p class="text-stone-600">Cosmic and biological rhythms are analyzed as complex signals. Phase-locking occurs when a dominant frequency in the cosmic signal (e.g., from a pulsar) matches a natural resonant frequency of the species' consciousness field, leading to entrainment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-amber-700 mb-4">Physics</h3>
+                     <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-stone-800">Pulsars as Stable Clocks</h4>
+                            <p class="text-stone-600 text-sm">Pulsars (rapidly rotating neutron stars) emit beams of electromagnetic radiation with a regularity that rivals atomic clocks. An array of such pulsars provides an extremely stable, galaxy-wide timing reference grid for phase-locking.</p>
+                        </div>
+                         <div>
+                            <h4 class="font-semibold text-stone-800">Universal Breath (OM-Loops)</h4>
+                            <p class="text-stone-600 text-sm">The manuscript posits a fundamental, universe-wide oscillation of the Ψ-field itself, termed the "Universal Breath." This serves as the master oscillator, a primordial standing wave from which all other cosmic and biological rhythms are derived as nested harmonics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Anulum Institute. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">An interactive visualization of the SCPN framework from <em>God of the Math</em>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- The Cosmic River ---
+        const riverCanvas = document.getElementById('riverCanvas');
+        const riverCtx = riverCanvas.getContext('2d');
+        const vibranaSlider = document.getElementById('vibrana-slider');
+        const vibranaValue = document.getElementById('vibrana-value');
+        const phaseLockBtn = document.getElementById('phaselock-btn');
+        let riverTime = 0;
+        let particles = [];
+        let vessel = { y: 0, angle: 0 };
+
+        function initRiver() {
+            const w = riverCanvas.width;
+            const h = riverCanvas.height;
+            vessel.y = h / 2;
+            for(let i=0; i<100; i++) {
+                particles.push({x: Math.random() * w, y: Math.random() * h, speed: Math.random() * 0.5 + 0.2});
+            }
+        }
+
+        function animateRiver() {
+            const w = riverCanvas.width;
+            const h = riverCanvas.height;
+            riverCtx.clearRect(0, 0, w, h);
+            
+            particles.forEach(p => {
+                p.x -= p.speed;
+                if (p.x < 0) p.x = w;
+                riverCtx.fillStyle = `rgba(255, 255, 255, 0.5)`;
+                riverCtx.fillRect(p.x, p.y, 2, 1);
+            });
+
+            const steerAngle = parseFloat(vibranaSlider.value) * Math.PI / 180;
+            vibranaValue.textContent = `${(steerAngle * 180 / Math.PI).toFixed(0)}°`;
+            vessel.angle += (steerAngle - vessel.angle) * 0.1;
+            
+            vessel.y += Math.sin(vessel.angle);
+            if (vessel.y < 20 || vessel.y > h - 20) vessel.y -= Math.sin(vessel.angle);
+
+            riverCtx.save();
+            riverCtx.translate(w/4, vessel.y);
+            riverCtx.rotate(vessel.angle);
+            riverCtx.fillStyle = '#d97706';
+            riverCtx.beginPath();
+            riverCtx.moveTo(15, 0);
+            riverCtx.lineTo(-15, -7);
+            riverCtx.lineTo(-15, 7);
+            riverCtx.closePath();
+            riverCtx.fill();
+            riverCtx.restore();
+
+            requestAnimationFrame(animateRiver);
+        }
+        phaseLockBtn.addEventListener('click', () => { vibranaSlider.value = 0; });
+
+        // --- The Galactic Lighthouses ---
+        const lighthouseCanvas = document.getElementById('lighthouseCanvas');
+        const lighthouseCtx = lighthouseCanvas.getContext('2d');
+        const pulsarSlider = document.getElementById('pulsar-slider');
+        const pulsarValue = document.getElementById('pulsar-value');
+        let lighthouseTime = 0;
+        const lighthouses = [{p: 50, angle: 0.5}, {p: 70, angle: 2.5}, {p: 90, angle: 4.5}];
+        let compassAngle = 0;
+
+        function animateLighthouses() {
+            const w = lighthouseCanvas.width;
+            const h = lighthouseCanvas.height;
+            lighthouseCtx.clearRect(0, 0, w, h);
+            lighthouseTime++;
+            
+            const integration = parseInt(pulsarSlider.value) / 100;
+            pulsarValue.textContent = `${Math.round(integration*100)}%`;
+            
+            // Draw lighthouses and beams
+            lighthouses.forEach(p => {
+                const x = w/2 + Math.cos(p.angle) * w * 0.45;
+                const y = h/2 + Math.sin(p.angle) * h * 0.45;
+                if (lighthouseTime % p.p < 5) {
+                    const gradient = lighthouseCtx.createRadialGradient(x, y, 0, x, y, w/2);
+                    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+                    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    lighthouseCtx.fillStyle = gradient;
+                    lighthouseCtx.fillRect(0,0,w,h);
+                }
+                lighthouseCtx.fillStyle = 'white';
+                lighthouseCtx.beginPath();
+                lighthouseCtx.arc(x, y, 3, 0, Math.PI * 2);
+                lighthouseCtx.fill();
+            });
+
+            // Draw Ship and Compass
+            const shipX = w/2, shipY = h/2;
+            lighthouseCtx.fillStyle = '#a8a29e';
+            lighthouseCtx.beginPath();
+            lighthouseCtx.arc(shipX, shipY, 15, 0, Math.PI * 2);
+            lighthouseCtx.fill();
+
+            let targetAngle = 0;
+            lighthouses.forEach(p => {
+                if (lighthouseTime % p.p < 5) {
+                    targetAngle = p.angle;
+                }
+            });
+            
+            let angleDiff = targetAngle - compassAngle;
+            while (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
+            while (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
+
+            compassAngle += angleDiff * integration * 0.1 + (Math.random() - 0.5) * 0.1 * (1 - integration);
+
+            lighthouseCtx.save();
+            lighthouseCtx.translate(shipX, shipY);
+            lighthouseCtx.rotate(compassAngle);
+            lighthouseCtx.strokeStyle = '#f59e0b';
+            lighthouseCtx.lineWidth = 3;
+            lighthouseCtx.beginPath();
+            lighthouseCtx.moveTo(0,0);
+            lighthouseCtx.lineTo(25, 0);
+            lighthouseCtx.stroke();
+            lighthouseCtx.restore();
+            
+            requestAnimationFrame(animateLighthouses);
+        }
+
+        // --- The Cosmic Heartbeat ---
+        const heartbeatCanvas = document.getElementById('heartbeatCanvas');
+        const heartbeatCtx = heartbeatCanvas.getContext('2d');
+        const breathBtn = document.getElementById('breath-btn');
+        let heartbeatTime = 0;
+        let breathActive = false;
+        let rings = [];
+
+        function initHeartbeat() {
+            for(let i=0; i<5; i++) {
+                rings.push({
+                    radius: (i + 1) * 40,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: 0.01 + Math.random() * 0.02
+                });
+            }
+        }
+
+        function animateHeartbeat() {
+            const w = heartbeatCanvas.width;
+            const h = heartbeatCanvas.height;
+            heartbeatCtx.clearRect(0,0,w,h);
+            heartbeatTime += 0.01;
+
+            const universalPulse = (Math.sin(heartbeatTime) + 1) / 2;
+
+            // Draw Heart
+            const heartSize = 15 + universalPulse * 10;
+            heartbeatCtx.fillStyle = `rgba(217, 119, 6, ${0.5 + universalPulse * 0.5})`;
+            heartbeatCtx.beginPath();
+            heartbeatCtx.arc(w/2, h/2, heartSize, 0, Math.PI * 2);
+            heartbeatCtx.fill();
+
+            // Draw Rings
+            rings.forEach(r => {
+                if(breathActive) {
+                    r.phase += (heartbeatTime - r.phase) * 0.01;
+                } else {
+                    r.phase += r.speed;
+                }
+                const pulse = (Math.sin(r.phase) + 1) / 2;
+                heartbeatCtx.strokeStyle = `rgba(255, 255, 255, ${0.1 + pulse * 0.5})`;
+                heartbeatCtx.lineWidth = 2 + pulse * 3;
+                heartbeatCtx.beginPath();
+                heartbeatCtx.arc(w/2, h/2, r.radius, 0, Math.PI * 2);
+                heartbeatCtx.stroke();
+            });
+            
+            requestAnimationFrame(animateHeartbeat);
+        }
+        breathBtn.addEventListener('click', () => { 
+            breathActive = !breathActive;
+            breathBtn.textContent = breathActive ? 'Release from Heartbeat' : 'Tune to the Universal Heartbeat';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            riverCanvas.width = riverCanvas.offsetWidth;
+            riverCanvas.height = riverCanvas.offsetHeight;
+            initRiver();
+            animateRiver();
+
+            lighthouseCanvas.width = lighthouseCanvas.offsetWidth;
+            lighthouseCanvas.height = lighthouseCanvas.offsetHeight;
+            animateLighthouses();
+
+            heartbeatCanvas.width = heartbeatCanvas.offsetWidth;
+            heartbeatCanvas.height = heartbeatCanvas.offsetHeight;
+            initHeartbeat();
+            animateHeartbeat();
+        };
+    </script>
+</body>
+</html>

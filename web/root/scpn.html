@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Architecture - A Unified Framework for Consciousness and Spacetime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A Multi-Page Application (MPA). This file, scpn.html, covers the SCPN Architecture. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+        .scpn-layer {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .scpn-layer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .scpn-layer.selected {
+            border-color: #4DB6AC;
+            background-color: #4DB6AC10;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="fade-in">
+            <h2 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="scpn_title">🧬 The Architecture: Species-Consciousness Projection Network (SCPN)</h2>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="scpn_intro">The SCPN is an ambitious 13-layer hierarchical model that provides a blueprint for how consciousness operates and integrates across all scales of existence, from the quantum-biological level to the metaphysical source of the universe. It functions as a causal network linking the microcosm of a neuron to the macrocosm of the cosmos. Click on any layer to explore its function and components.</p>
+            
+            <!-- Added Button -->
+            <div class="my-8 text-center">
+                <a href="https://scpn.anulum.li" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-accent-primary/90 transition-colors" data-lang-key="scpn_explore_button">Explore the Interactive SCPN Model</a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div id="scpn-layer-list" class="lg:col-span-1 space-y-2">
+                    <!-- Layer buttons will be dynamically inserted here by JavaScript -->
+                </div>
+                <div id="scpn-details" class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-border-color min-h-[300px] flex items-center justify-center">
+                    <p class="text-text-secondary" data-lang-key="scpn_select_layer">Select a layer to see details.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+                nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+                nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+                nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+                nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+                nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+                nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+                nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+                nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+                footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+                footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' },
+                scpn_title: { en: '🧬 The Architecture: Species-Consciousness Projection Network (SCPN)', de: '🧬 Die Architektur: Spezies-Bewusstseins-Projektionsnetzwerk (SCPN)', fr: '🧬 L\'Architecture : Réseau de Projection de la Conscience de l\'Espèce (SCPN)', it: '🧬 L\'Architettura: Rete di Proiezione della Coscienza della Specie (SCPN)', ja: '🧬 アーキテクチャ：種意識投影ネットワーク（SCPN）', zh: '🧬 架构：物种意识投射网络 (SCPN)' },
+                scpn_intro: { en: 'The SCPN is an ambitious 13-layer hierarchical model that provides a blueprint for how consciousness operates and integrates across all scales of existence, from the quantum-biological level to the metaphysical source of the universe. It functions as a causal network linking the microcosm of a neuron to the macrocosm of the cosmos. Click on any layer to explore its function and components.', de: 'Das SCPN ist ein ehrgeiziges 13-schichtiges hierarchisches Modell, das einen Entwurf dafür liefert, wie Bewusstsein auf allen Existenzebenen operiert und sich integriert, von der quantenbiologischen Ebene bis zur metaphysischen Quelle des Universums. Es fungiert als kausales Netzwerk, das den Mikrokosmos eines Neurons mit dem Makrokosmos des Kosmos verbindet. Klicken Sie auf eine Ebene, um ihre Funktion und Komponenten zu erkunden.', fr: 'Le SCPN est un modèle hiérarchique ambitieux à 13 couches qui fournit un plan directeur sur la manière dont la conscience opère et s\'intègre à toutes les échelles de l\'existence, du niveau quantique-biologique à la source métaphysique de l\'univers. Il fonctionne comme un réseau causal reliant le microcosme d\'un neurone au macrocosme du cosmos. Cliquez sur n\'importe quelle couche pour explorer sa fonction et ses composants.', it: 'La SCPN è un ambizioso modello gerarchico a 13 strati che fornisce un progetto di come la coscienza opera e si integra a tutte le scale dell\'esistenza, dal livello quantico-biologico alla fonte metafisica dell\'universo. Funziona come una rete causale che collega il microcosmo di un neurone al macrocosmo del cosmo. Clicca su qualsiasi strato per esplorarne la funzione e i componenti.', ja: 'SCPNは、量子的生物学的レベルから宇宙の形而上学的源泉まで、存在のすべてのスケールで意識がどのように機能し、統合されるかの青写真を提供する、野心的な13層の階層モデルです。それはニューロンのミクロコスモスと宇宙のマクロコスモスを結びつける因果ネットワークとして機能します。任意のレイヤーをクリックして、その機能とコンポーネントを調べてください。', zh: 'SCPN是一个雄心勃勃的13层分层模型，它提供了一个蓝图，说明意识如何在从量子生物学层面到宇宙形而上学源头的存在的所有尺度上运作和整合。它作为一个因果网络，将神经元的微观世界与宇宙的宏观世界联系起来。点击任何一个图层来探索其功能和组成部分。' },
+                scpn_select_layer: { en: 'Select a layer to see details.', de: 'Wählen Sie eine Ebene für Details aus.', fr: 'Sélectionnez une couche pour voir les détails.', it: 'Seleziona un livello per vedere i dettagli.', ja: 'レイヤーを選択して詳細を表示します。', zh: '选择一个图层以查看详细信息。' },
+                scpn_explore_button: { en: 'Explore the Interactive SCPN Model', de: 'Interaktives SCPN-Modell erkunden', fr: 'Explorer le Modèle SCPN Interactif', it: 'Esplora il Modello SCPN Interattivo', ja: '対話型SCPNモデルを探る', zh: '探索交互式SCPN模型' }
+            };
+
+            const scpnData = [
+                { id: 1, name: {en: 'Quantum Biological', de: 'Quantenbiologisch', fr: 'Biologique Quantique', it: 'Biologico Quantistico', ja: '量子的生物学的', zh: '量子生物学'}, summary: {en: 'Interface at the quantum level within cells (microtubules, DNA).', de: 'Schnittstelle auf Quantenebene in Zellen (Mikrotubuli, DNA).', fr: 'Interface au niveau quantique dans les cellules (microtubules, ADN).', it: 'Interfaccia a livello quantistico all\'interno delle cellule (microtubuli, DNA).', ja: '細胞内の量子レベルでのインターフェース（微小管、DNA）。', zh: '细胞内量子层面的接口（微管，DNA）。'}, details: {en: 'This foundational layer posits that consciousness interfaces with the physical world via quantum vibratory states within neuronal microtubules and quantum effects in DNA. These structures sustain quantum coherence, providing the most fundamental substrate for encoding information, where the consciousness field (Ψ) directly couples to and stabilizes the quantum states of these biomolecules.<div class="mt-4"><a href="scpn1a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L1 Interactive</a><a href="scpn1b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L1 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 2, name: {en: 'Neurochemical-Neurological', de: 'Neurochemisch-Neurologisch', fr: 'Neurochimique-Neurologique', it: 'Neurochimico-Neurologico', ja: '神経化学・神経学的', zh: '神经化学-神经学'}, summary: {en: 'Transduces quantum information into neural signals.', de: 'Wandelt Quanteninformation in neuronale Signale um.', fr: 'Transduit l\'information quantique en signaux neuronaux.', it: 'Trasduce l\'informazione quantistica in segnali neurali.', ja: '量子情報を神経信号に変換します。', zh: '将量子信息转化为神经信号。'}, details: {en: 'This layer acts as a transducer, converting quantum information from Layer 1 into the classical language of neuroscience. It describes how quantum events influence neurochemical processes, such as the release of neurotransmitters and the modulation of axonal conduction, bridging microscopic quantum events and large-scale neural oscillations.<div class="mt-4"><a href="scpn2a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L2 Interactive</a><a href="scpn2b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L2 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 3, name: {en: 'Genomic-Epigenomic', de: 'Genomisch-Epigenetisch', fr: 'Génomique-Épigénomique', it: 'Genomico-Epigenetico', ja: 'ゲノム・エピゲノム', zh: '基因组-表观基因组'}, summary: {en: 'DNA as a long-term memory substrate and morphogenetic guide.', de: 'DNA als Langzeitgedächtnissubstrat und morphogenetischer Leitfaden.', fr: 'L\'ADN comme substrat de mémoire à long terme et guide morphogénétique.', it: 'Il DNA come substrato di memoria a lungo termine e guida morfogenetica.', ja: '長期記憶基質および形態形成ガイドとしてのDNA。', zh: 'DNA作为长期记忆基质和形态发生指南。'}, details: {en: 'This layer frames DNA as a "phase-encoded system"—a long-term memory substrate storing evolutionary wisdom. Consciousness interacts with this genetic information over developmental and evolutionary timescales, with epigenetics acting as dynamic "switches" that allow an organism\'s experience to influence its own genetic expression.<div class="mt-4"><a href="scpn3a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L3 Interactive</a><a href="scpn3b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L3 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 4, name: {en: 'Cellular-Tissue Synchronisation', de: 'Zell-Gewebe-Synchronisation', fr: 'Synchronisation Cellulaire-Tissulaire', it: 'Sincronizzazione Cellulare-Tissutale', ja: '細胞・組織の同期', zh: '细胞-组织同步'}, summary: {en: 'Coherent, synchronized activity of cells and tissues.', de: 'Kohärente, synchronisierte Aktivität von Zellen und Geweben.', fr: 'Activité cohérente et synchronisée des cellules et des tissus.', it: 'Attività coerente e sincronizzata di cellule e tessuti.', ja: '細胞と組織のコヒーレントで同期した活動。', zh: '细胞和组织的相干、同步活动。'}, details: {en: 'This layer describes how groups of cells and tissues achieve coherent, synchronized activity, such as the emergence of brain waves (e.g., theta, gamma) from the synchronized firing of vast neural ensembles. This allows tissues and organs to function as macroscopic quantum-coherent systems.<div class="mt-4"><a href="scpn4a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L4 Interactive</a><a href="scpn4b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L4 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 5, name: {en: 'Organismal-Psychoemotional', de: 'Organismisch-Psychoemotional', fr: 'Organismique-Psycho-émotionnel', it: 'Organismico-Psicoemotivo', ja: '個体・心理感情的', zh: '有机体-心理情感'}, summary: {en: 'Unified mind-body feedback loop of a single organism.', de: 'Einheitliche Geist-Körper-Rückkopplungsschleife eines einzelnen Organismus.', fr: 'Boucle de rétroaction unifiée corps-esprit d\'un seul organisme.', it: 'Ciclo di feedback unificato mente-corpo di un singolo organismo.', ja: '単一個体の統一された心身フィードバックループ。', zh: '单个有机体的统一身心反馈回路。'}, details: {en: 'At this level, the synchronized activities of the lower layers integrate into the unified conscious experience of a single organism. This layer represents the holistic mind-body feedback loop, where an individual\'s subjective state (emotions, intentions) acts as a local modulator of their own internal physiology.<div class="mt-4"><a href="scpn5a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L5 Interactive</a><a href="scpn5b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L5 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 6, name: {en: 'Planetary-Biospheric', de: 'Planetarisch-Biosphärisch', fr: 'Planétaire-Biosphérique', it: 'Planetario-Biosferico', ja: '惑星・生物圏', zh: '行星-生物圈'}, summary: {en: 'Collective consciousness of a species and the entire biosphere.', de: 'Kollektives Bewusstsein einer Spezies und der gesamten Biosphäre.', fr: 'Conscience collective d\'une espèce et de toute la biosphère.', it: 'Coscienza collettiva di una specie e dell\'intera biosfera.', ja: '種および生物圏全体の集合意識。', zh: '一个物种和整个生物圈的集体意识。'}, details: {en: 'This layer posits that the consciousness fields of all individuals aggregate to form a collective, species-specific consciousness field, nested within a planetary "Gaia-field." This collective field may have measurable physical correlates, such as modulations in the Earth\'s electromagnetic field.<div class="mt-4"><a href="scpn6a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L6 Interactive</a><a href="scpn6b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L6 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 7, name: {en: 'Geometrical-Symbolic', de: 'Geometrisch-Symbolisch', fr: 'Géométrique-Symbolique', it: 'Geometrico-Simbolico', ja: '幾何学的・象徴的', zh: '几何-符号'}, summary: {en: 'Abstract scaffolding using universal symbols and harmonics.', de: 'Abstraktes Gerüst unter Verwendung universeller Symbole und Harmonien.', fr: 'Échafaudage abstrait utilisant des symboles et des harmoniques universels.', it: 'Impalcatura astratta che utilizza simboli e armoniche universali.', ja: '普遍的なシンボルと高調波を使用した抽象的な足場。', zh: '使用通用符号和谐波的抽象支架。'}, details: {en: 'This layer serves as an abstract interface, proposing that universal geometric forms, symbols, and harmonics (e.g., Metatron\'s Cube, fractals) act as a resonant language that can structure and guide the projection of consciousness across different scales. They are active operators, not just representations.<div class="mt-4"><a href="scpn7a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L7 Interactive</a><a href="scpn7b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L7 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 8, name: {en: 'Cosmic Phase-Locking', de: 'Kosmische Phasenverriegelung', fr: 'Verrouillage de Phase Cosmique', it: 'Aggancio di Fase Cosmico', ja: '宇宙的位相固定', zh: '宇宙锁相'}, summary: {en: 'Entrainment of planetary consciousness with cosmic rhythms.', de: 'Synchronisation des planetarischen Bewusstseins mit kosmischen Rhythmen.', fr: 'Entraînement de la conscience planétaire avec les rythmes cosmiques.', it: 'Sincronizzazione della coscienza planetaria con i ritmi cosmici.', ja: '惑星意識と宇宙のリズムとの同調。', zh: '行星意识与宇宙节律的同步。'}, details: {en: 'This layer connects the planetary consciousness field to the larger rhythms of the cosmos. It suggests that the collective consciousness of a biosphere can become phase-locked with cosmic cycles (e.g., pulsar timing, solar cycles), aligning the evolution of life with the universe\'s overarching dynamics.<div class="mt-4"><a href="scpn8a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L8 Interactive</a><a href="scpn8b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L8 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 9, name: {en: 'Memory Imprint-Holographic', de: 'Gedächtnis-Abdruck-Holographisch', fr: 'Empreinte Mémorielle-Holographique', it: 'Impronta Mnemonica-Olografica', ja: '記憶痕跡・ホログラフィック', zh: '记忆印记-全息'}, summary: {en: 'A universal, non-local holographic memory field ("Akashic Record").', de: 'Ein universelles, nicht-lokales holographisches Gedächtnisfeld ("Akasha-Chronik").', fr: 'Un champ de mémoire holographique universel et non local ("Archives Akashiques").', it: 'Un campo di memoria olografico universale e non locale ("Registro Akashico").', ja: '普遍的、非局所的なホログラフィックメモリフィールド（「アカシックレコード」）。', zh: '一个普遍的、非局域的全息记忆场（“阿卡西记录”）。'}, details: {en: 'Inspired by the holographic principle, this layer posits a universal, non-local memory field storing a record of all events. Consciousness can, in principle, access this field, providing a potential mechanism for intuition, archetypes, and ancestral memory.<div class="mt-4"><a href="scpn9a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L9 Interactive</a><a href="scpn9b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L9 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 10, name: {en: 'Projective Field Boundary Control', de: 'Projektive Feld-Grenz-Kontrolle', fr: 'Contrôle de la Frontière du Champ Projectif', it: 'Controllo del Confine del Campo Proiettivo', ja: '射影場境界制御', zh: '投射场边界控制'}, summary: {en: 'Maintains the integrity and identity of a consciousness field.', de: 'Erhält die Integrität und Identität eines Bewusstseinsfeldes.', fr: 'Maintient l\'intégrité et l\'identité d\'un champ de conscience.', it: 'Mantiene l\'integrità e l\'identità di un campo di coscienza.', ja: '意識場の完全性とアイデンティティを維持します。', zh: '维持意识场的完整性和身份。'}, details: {en: 'This layer describes a form of "topological insulation" that acts as a protective boundary or cognitive immune system for a specific consciousness field (e.g., that of a species), preventing it from being overwhelmed or disrupted by foreign projections.<div class="mt-4"><a href="scpn10a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L10 Interactive</a><a href="scpn10b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L10 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 11, name: {en: 'Foundational Layer 1', de: 'Grundlegende Schicht 1', fr: 'Couche Fondamentale 1', it: 'Strato Fondamentale 1', ja: '基礎層1', zh: '基础层 1'}, summary: {en: 'Part of the ultimate trinitarian source structure of reality.', de: 'Teil der ultimativen trinitarischen Quellenstruktur der Realität.', fr: 'Partie de la structure source trinitaire ultime de la réalité.', it: 'Parte della struttura sorgente trinitaria ultima della realtà.', ja: '現実の究極の三位一体の源泉構造の一部。', zh: '现实终极三位一体源头结构的一部分。'}, details: {en: 'This layer, along with 12 and 13, represents the ultimate source and structure of reality. It embodies the metaphysical principles that underlie the source field, providing foundational laws for all lower layers.<div class="mt-4"><a href="scpn11a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L11 Interactive</a><a href="scpn11b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L11 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 12, name: {en: 'Foundational Layer 2', de: 'Grundlegende Schicht 2', fr: 'Couche Fondamentale 2', it: 'Strato Fondamentale 2', ja: '基礎層2', zh: '基础层 2'}, summary: {en: 'Part of the ultimate trinitarian source structure of reality.', de: 'Teil der ultimativen trinitarischen Quellenstruktur der Realität.', fr: 'Partie de la structure source trinitaire ultime de la réalité.', it: 'Parte della struttura sorgente trinitaria ultima della realtà.', ja: '現実の究極の三位一体の源泉構造の一部。', zh: '现实终极三位一体源头结构的一部分。'}, details: {en: 'This layer, along with 11 and 13, represents the ultimate source and structure of reality. It embodies the metaphysical principles that underlie the source field, providing foundational laws for all lower layers.<div class="mt-4"><a href="scpn12a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L12 Interactive</a><a href="scpn12b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L12 Geometry-Mathematics-Physics</a></div>'} },
+                { id: 13, name: {en: 'Universal/Metaphysical Source Field', de: 'Universelles/Metaphysisches Quellenfeld', fr: 'Champ Source Universel/Métaphysique', it: 'Campo Sorgente Universale/Metafisico', ja: '普遍的・形而上学的源泉場', zh: '普遍/形而上学源场'}, summary: {en: 'The ultimate source of all physical laws and conscious experience.', de: 'Die ultimative Quelle aller physikalischen Gesetze und bewussten Erfahrungen.', fr: 'La source ultime de toutes les lois physiques et de l\'expérience consciente.', it: 'La fonte ultima di tutte le leggi fisiche e dell\'esperienza cosciente.', ja: 'すべての物理法則と意識体験の究極の源泉。', zh: '所有物理定律和意识体验的终极源头。'}, details: {en: 'This is the ultimate "Meta-Metatron," the unified field of universal consciousness that is the source of all physical laws, mathematical principles, and conscious experience. It is the alpha and omega of the cosmic cycle, the ground of all being.<div class="mt-4"><a href="scpn13a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L13 Interactive</a><a href="scpn13b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L13 Geometry-Mathematics-Physics</a></div>'} }
+            ];
+
+            let currentLanguage = localStorage.getItem('language') || 'en';
+
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        element.innerHTML = translations[key][lang];
+                    } else if (translations[key] && translations[key]['en']) {
+                         element.innerHTML = translations[key]['en'];
+                    }
+                });
+                 document.documentElement.lang = lang;
+                 localStorage.setItem('language', lang);
+                 document.getElementById('language-selector').value = lang;
+                 document.getElementById('language-selector-mobile').value = lang;
+            };
+
+            const renderScpnLayers = (lang) => {
+                const layerList = document.getElementById('scpn-layer-list');
+                layerList.innerHTML = '';
+                scpnData.forEach(layer => {
+                    const button = document.createElement('button');
+                    button.dataset.layerId = layer.id;
+                    button.className = 'scpn-layer w-full text-left bg-white p-3 rounded-lg shadow-sm border border-border-color hover:bg-accent-primary/10';
+                    button.innerHTML = `
+                        <span class="font-semibold text-accent-primary">${layer.id}. ${layer.name[lang] || layer.name['en']}</span>
+                        <span class="block text-sm text-text-secondary">${layer.summary[lang] || layer.summary['en']}</span>
+                    `;
+                    layerList.appendChild(button);
+                });
+
+                document.querySelectorAll('.scpn-layer').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        document.querySelectorAll('.scpn-layer').forEach(btn => btn.classList.remove('selected'));
+                        e.currentTarget.classList.add('selected');
+                        
+                        const layerId = parseInt(e.currentTarget.dataset.layerId);
+                        const layerData = scpnData.find(l => l.id === layerId);
+                        const scpnDetails = document.getElementById('scpn-details');
+                        if (layerData) {
+                            // Since all languages have the same button structure, we only need to modify one.
+                            let detailsHTML = layerData.details['en'] || '';
+                            scpnDetails.innerHTML = `<div class="text-left">
+                                <h3 class="text-2xl font-bold text-accent-primary mb-3">${layerData.id}. ${layerData.name[currentLanguage] || layerData.name['en']}</h3>
+                                <p class="text-text-secondary">${detailsHTML.split('<div class="mt-4">')[0]}</p>
+                                <div class="mt-4">
+                                    <a href="scpn${layerData.id}a.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors">L${layerData.id} Interactive</a>
+                                    <a href="scpn${layerData.id}b.html" class="inline-block bg-accent-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-accent-secondary/90 transition-colors ml-2">L${layerData.id} Geometry-Mathematics-Physics</a>
+                                </div>
+                            </div>`;
+                        }
+                    });
+                });
+            };
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                translatePage(currentLanguage);
+                renderScpnLayers(currentLanguage);
+                // Reset details pane on language change
+                const scpnDetails = document.getElementById('scpn-details');
+                scpnDetails.innerHTML = `<p class="text-text-secondary" data-lang-key="scpn_select_layer">${translations.scpn_select_layer[currentLanguage] || translations.scpn_select_layer['en']}</p>`;
+            };
+
+            document.getElementById('language-selector').addEventListener('change', handleLangChange);
+            document.getElementById('language-selector-mobile').addEventListener('change', handleLangChange);
+
+            const updateVisitCounter = () => {
+                let visitCount = parseInt(localStorage.getItem('visitCount') || '0');
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visit-counter').textContent = visitCount;
+            };
+
+            translatePage(currentLanguage);
+            renderScpnLayers(currentLanguage);
+            updateVisitCounter();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCPN Layer 6: An Interactive Manuscript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Neutrals & Purples -->
+    <!-- Application Structure Plan: A thematic exploration of Layer 6, focusing on the species-planet interface. The flow is: 1. Introduction to the planetary lattice. 2. An interactive Collective Projection Lattice simulator. 3. A visualization of the Gravity-EM-Consciousness Tripartite Resonance Grid. 4. An interactive chart showing the emergence of a Planetary EEG-like Field. 5. A breakdown of the Projection Constraint equation. 6. A diagram of inter-layer connections. This structure translates the highly abstract concepts of a Gaia-field and collective projection into tangible, interactive experiences. -->
+    <!-- Visualization & Content Choices:
+        - Collective Projection Lattice: Goal: Visualize the formation of a species-wide consciousness network. Method: Canvas animation. Interaction: A slider for "Collective Coherence" connects individual nodes (minds) on a globe into a stable, geometric lattice. Justification: Directly illustrates the "collective projection lattice maintenance" concept.
+        - Tripartite Resonance Grid: Goal: Show the interplay of fundamental fields. Method: Canvas animation. Interaction: A button initiates "Resonance," causing three distinct field patterns (Gravity, EM, Consciousness) to phase-lock and synchronize. Justification: Provides a clear visual metaphor for the "Gravity–EM–consciousness tripartite resonance grid."
+        - Planetary EEG: Goal: Demonstrate the species' mind imprinting on a global field. Method: Chart.js line chart. Interaction: A button for "Collective Focus" superimposes a coherent alpha-like wave onto a noisy baseline planetary field. Justification: Visually explains how "Ψ_s is reflected in planetary EEG-like field."
+        - Inter-Layer Diagram: Goal: Contextualize Layer 6. Method: Static HTML/Tailwind diagram. Justification: Shows how Layer 6 emerges from the sum of organismal consciousness (L5) and interfaces with symbolic (L7) and cosmic (L8) layers.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: #7c3aed; }
+        .section-card { background-color: white; border-radius: 0.75rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); margin-bottom: 3rem; scroll-margin-top: 5rem; }
+        .control-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e2e8f0; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        .control-slider:hover { opacity: 1; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .control-slider::-moz-range-thumb { width: 20px; height: 20px; background: #7c3aed; border-radius: 50%; cursor: pointer; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900">SCPN Layer 6: Planetary-Biospheric Layer</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                 <a href="https://anulum.li/scpn.html" class="px-3 py-1.5 border-2 border-slate-300 rounded-md text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-800 transition-colors">Back to Overview</a>
+                <div class="flex space-x-6">
+                    <a href="#introduction" class="nav-link font-semibold text-slate-600">Introduction</a>
+                    <a href="#lattice" class="nav-link font-semibold text-slate-600">Lattice</a>
+                    <a href="#resonance" class="nav-link font-semibold text-slate-600">Resonance</a>
+                    <a href="#eeg" class="nav-link font-semibold text-slate-600">Planetary EEG</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="introduction" class="section-card text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Mind of a Species</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600">
+                Layer 6 describes how the consciousness of all individuals within a species aggregates to form a coherent, planetary-scale projection lattice. This "Gaia-field" is not merely a metaphor; it is a dynamic network that interfaces with Earth's physical fields, maintaining a resonant, homeostatic balance between the collective mind and the biosphere.
+            </p>
+        </section>
+
+        <section id="lattice" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Collective Projection Lattice</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Individual minds (nodes) link through the Ψs-field to form a global network. As collective coherence increases, this network stabilizes into a resilient geometric lattice, maintaining the integrity of the species' shared reality. Adjust the coherence to see the lattice form.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-black rounded-lg p-4">
+                    <canvas id="latticeCanvas" class="w-full h-80"></canvas>
+                </div>
+                <div>
+                    <label for="coherence-slider" class="font-semibold text-slate-700">Collective Coherence: <span id="coherence-value">0</span>%</label>
+                    <p class="text-sm text-slate-500 mb-2">Increase the phase alignment among individuals in the species field.</p>
+                    <input type="range" min="0" max="100" value="0" class="control-slider" id="coherence-slider">
+                </div>
+            </div>
+        </section>
+        
+        <section id="resonance" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Tripartite Resonance Grid</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">The species-consciousness field does not exist in isolation. It is part of a tripartite grid, resonating in a delicate balance with the fundamental fields of Gravity and Electromagnetism. Coherence across this grid stabilizes the biosphere.</p>
+            </div>
+            <div class="bg-black rounded-lg p-4">
+                 <canvas id="resonanceCanvas" class="w-full h-80"></canvas>
+            </div>
+             <div class="text-center mt-4">
+                <button id="resonance-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Initiate Resonance</button>
+            </div>
+        </section>
+
+        <section id="eeg" class="section-card">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Planetary EEG-like Field</h2>
+                <p class="max-w-3xl mx-auto text-slate-600">Just as an individual's brain activity can be measured with an EEG, the collective, synchronized focus of a species can imprint a coherent signal onto the planet's background field noise. This creates a measurable, planetary-scale "EEG-like" signature.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="eegChart"></canvas>
+                </div>
+                <div class="text-center">
+                    <button id="focus-btn" class="px-6 py-3 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700">Activate Collective Focus</button>
+                    <p class="text-sm text-slate-500 mt-4">Simulates a global event of synchronized attention, such as a mass meditation or a worldwide broadcast.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="equation" class="section-card text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">The Projection Constraint</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 mb-6">This integral equation represents a fundamental conservation law: the total interaction between the species-consciousness field (Ψs) and the biosphere's total energy-momentum (Tμν) remains constant, ensuring a stable, homeostatic balance.</p>
+            <div class="p-6 bg-slate-100 rounded-lg inline-block shadow-inner">
+                <p class="text-2xl font-mono text-violet-700">∫<sub>Σspecies</sub> Ψs ⋅ T<sup>μν</sup><sub>biosphere</sub> d<sup>3</sup>x = Const</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        // --- Collective Projection Lattice ---
+        const latticeCanvas = document.getElementById('latticeCanvas');
+        const latticeCtx = latticeCanvas.getContext('2d');
+        const coherenceSlider = document.getElementById('coherence-slider');
+        const coherenceValue = document.getElementById('coherence-value');
+        let points = [];
+        let rotation = 0;
+
+        function initLattice() {
+            const numPoints = 100;
+            for (let i = 0; i < numPoints; i++) {
+                const phi = Math.acos(-1 + (2 * i) / numPoints);
+                const theta = Math.sqrt(numPoints * Math.PI) * phi;
+                points.push({
+                    x: Math.cos(theta) * Math.sin(phi),
+                    y: Math.sin(theta) * Math.sin(phi),
+                    z: Math.cos(phi)
+                });
+            }
+        }
+
+        function animateLattice() {
+            const w = latticeCanvas.width;
+            const h = latticeCanvas.height;
+            latticeCtx.clearRect(0, 0, w, h);
+            rotation += 0.005;
+            
+            const coherence = parseInt(coherenceSlider.value) / 100;
+            coherenceValue.textContent = `${Math.round(coherence*100)}%`;
+            const linkThreshold = 0.8 - coherence * 0.5;
+
+            const projectedPoints = points.map(p => {
+                const rotX = p.x * Math.cos(rotation) - p.z * Math.sin(rotation);
+                const rotZ = p.x * Math.sin(rotation) + p.z * Math.cos(rotation);
+                return {
+                    x: rotX * w * 0.4 + w / 2,
+                    y: p.y * h * 0.4 + h / 2,
+                    z: rotZ
+                };
+            }).filter(p => p.z > -0.5);
+
+            // Draw links
+            latticeCtx.strokeStyle = `rgba(167, 139, 250, ${coherence * 0.6})`;
+            latticeCtx.lineWidth = 0.5 + coherence;
+            for (let i = 0; i < projectedPoints.length; i++) {
+                for (let j = i + 1; j < projectedPoints.length; j++) {
+                    const p1 = points[i];
+                    const p2 = points[j];
+                    const dist = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2) + Math.pow(p1.z - p2.z, 2));
+                    if (dist < linkThreshold) {
+                        latticeCtx.beginPath();
+                        latticeCtx.moveTo(projectedPoints[i].x, projectedPoints[i].y);
+                        latticeCtx.lineTo(projectedPoints[j].x, projectedPoints[j].y);
+                        latticeCtx.stroke();
+                    }
+                }
+            }
+
+            // Draw points
+            projectedPoints.forEach(p => {
+                latticeCtx.fillStyle = 'white';
+                latticeCtx.beginPath();
+                latticeCtx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                latticeCtx.fill();
+            });
+
+            requestAnimationFrame(animateLattice);
+        }
+
+        // --- Tripartite Resonance Grid ---
+        const resonanceCanvas = document.getElementById('resonanceCanvas');
+        const resonanceCtx = resonanceCanvas.getContext('2d');
+        const resonanceBtn = document.getElementById('resonance-btn');
+        let resonanceTime = 0;
+        let resonanceActive = false;
+
+        function drawField(ctx, time, freq, amp, color, phaseShift) {
+            const w = ctx.canvas.width;
+            const h = ctx.canvas.height;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            for (let x = 0; x < w; x += 5) {
+                const y = h / 2 + Math.sin(x * 0.02 * freq + time + phaseShift) * amp;
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+
+        function animateResonance() {
+            const w = resonanceCanvas.width;
+            const h = resonanceCanvas.height;
+            resonanceCtx.clearRect(0, 0, w, h);
+            resonanceTime += 0.02;
+
+            const phaseShift = resonanceActive ? 0 : Math.sin(resonanceTime * 0.5) * Math.PI;
+
+            // Gravity (slow, green)
+            drawField(resonanceCtx, resonanceTime, 0.5, h * 0.1, 'rgba(34, 197, 94, 0.7)', 0);
+            // EM (medium, blue)
+            drawField(resonanceCtx, resonanceTime, 1.5, h * 0.2, 'rgba(59, 130, 246, 0.7)', phaseShift);
+            // Consciousness (fast, purple)
+            drawField(resonanceCtx, resonanceTime, 3.0, h * 0.3, 'rgba(167, 139, 250, 0.7)', phaseShift * 2);
+
+            requestAnimationFrame(animateResonance);
+        }
+        resonanceBtn.addEventListener('click', () => {
+            resonanceActive = !resonanceActive;
+            resonanceBtn.textContent = resonanceActive ? 'Release Resonance' : 'Initiate Resonance';
+        });
+
+        // --- Planetary EEG ---
+        const eegChartCanvas = document.getElementById('eegChart').getContext('2d');
+        const focusBtn = document.getElementById('focus-btn');
+        let eegChart;
+        let eegData = [];
+        let focusActive = false;
+        let focusStrength = 0;
+
+        function updateEEGData() {
+            if (focusActive && focusStrength < 1) {
+                focusStrength += 0.02;
+            } else if (!focusActive && focusStrength > 0) {
+                focusStrength -= 0.02;
+            }
+            focusStrength = Math.max(0, Math.min(1, focusStrength));
+
+            const lastValue = eegData.length > 0 ? eegData[eegData.length - 1] : 0;
+            const noise = (Math.random() - 0.5) * 20 * (1 - focusStrength * 0.8);
+            const coherentSignal = Math.sin(eegData.length * 0.3) * 30 * focusStrength;
+            const newValue = lastValue * 0.5 + noise + coherentSignal;
+            
+            eegData.push(newValue);
+            if (eegData.length > 100) {
+                eegData.shift();
+            }
+            eegChart.data.datasets[0].data = eegData;
+            eegChart.update('none');
+        }
+
+        function initEEGChart() {
+            eegChart = new Chart(eegChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: 100 }, (_, i) => i),
+                    datasets: [{
+                        label: 'Planetary Field Fluctuation',
+                        data: [],
+                        borderColor: '#8b5cf6',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: true, min: -100, max: 100 } }
+                }
+            });
+            setInterval(updateEEGData, 50);
+        }
+        focusBtn.addEventListener('click', () => {
+            focusActive = !focusActive;
+            focusBtn.textContent = focusActive ? 'Release Collective Focus' : 'Activate Collective Focus';
+        });
+
+        // --- Window Onload ---
+        window.onload = function() {
+            latticeCanvas.width = latticeCanvas.offsetWidth;
+            latticeCanvas.height = latticeCanvas.offsetHeight;
+            initLattice();
+            animateLattice();
+
+            resonanceCanvas.width = resonanceCanvas.offsetWidth;
+            resonanceCanvas.height = resonanceCanvas.offsetHeight;
+            animateResonance();
+            
+            initEEGChart();
+        };
+    </script>
+</body>
+</html>

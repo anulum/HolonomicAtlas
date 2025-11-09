@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Coherence Networks</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #003366 50%, #001133 75%, #000000 100%);
+            margin: 0;
+            padding: 20px;
+            color: #e8e8e8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="network" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.2)"/><line x1="10" y1="10" x2="20" y2="10" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/><line x1="10" y1="10" x2="10" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23network)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: 300;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(45deg, #ffffff, #e0e0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.4em;
+            margin: 20px 0 0 0;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        
+        .section {
+            padding: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
+            color: #e8e8e8;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .section-title::before {
+            content: "🌐";
+            margin-right: 20px;
+            font-size: 1.2em;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        
+        .math-framework {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .formula-title {
+            font-weight: bold;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .math-equation {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.6em;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.95);
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            text-align: center;
+            border-left: 5px solid #667eea;
+        }
+        
+        .network-visualization {
+            background: linear-gradient(135deg, rgba(116, 185, 255, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 2px solid rgba(116, 185, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .network-node {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.6) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.3);
+            font-size: 0.9em;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .network-node:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.8);
+            background: radial-gradient(circle, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+        
+        .network-node.active {
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 165, 0, 0.7) 100%);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: quantumPulse 2s infinite ease-in-out;
+        }
+        
+        .network-node.synchronized {
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.9) 0%, rgba(39, 174, 96, 0.7) 100%);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+        }
+        
+        @keyframes quantumPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            }
+            50% { 
+                transform: scale(1.2); 
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            }
+        }
+        
+        .quantum-controls {
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.15) 0%, rgba(142, 68, 173, 0.15) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .control-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .control-label {
+            font-weight: bold;
+            color: #9b59b6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.1em;
+        }
+        
+        .slider {
+            width: 200px;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(155, 89, 182, 0.3);
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px rgba(155, 89, 182, 0.5);
+        }
+        
+        .value-display {
+            background: rgba(155, 89, 182, 0.2);
+            color: #e8e8e8;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: bold;
+            border: 1px solid rgba(155, 89, 182, 0.4);
+        }
+        
+        .diagram-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, rgba(241, 196, 15, 0.15) 0%, rgba(243, 156, 18, 0.15) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 6px solid #f1c40f;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+        
+        .insight-box h3 {
+            color: #f39c12;
+            margin-top: 0;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .prediction-card {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(39, 174, 96, 0.15) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .prediction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2);
+        }
+        
+        .prediction-title {
+            font-weight: bold;
+            color: #2ecc71;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .prediction-value {
+            font-size: 1.6em;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .adjacency-matrix {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+        }
+        
+        .matrix-cell {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .matrix-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .network-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 10px;
+            }
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+            .prediction-grid {
+                grid-template-columns: 1fr;
+            }
+            .matrix-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quantum Coherence Networks</h1>
+            <p>Network Theory of Distributed Quantum Coherence in Biological Systems</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Mathematical Foundation</div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Quantum Network Laplacian</div>
+                <div class="math-equation">
+                    <strong>L<sub>Q</sub> = D - A<sub>Q</sub></strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Where D is the degree matrix and A<sub>Q</sub> is the adjacency matrix encoding quantum correlations between network nodes.</p>
+            </div>
+
+            <div class="math-framework">
+                <div class="formula-title">Quantum Correlation Adjacency Matrix</div>
+                <div class="math-equation">
+                    <strong>(A<sub>Q</sub>)<sub>ij</sub> = |⟨ψ<sub>i</sub>|ψ<sub>j</sub>⟩|²</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Quantum correlations between states ψ<sub>i</sub> and ψ<sub>j</sub> determine the strength of network connections, enabling coherent information transfer.</p>
+            </div>
+
+            <div class="math-framework">
+                <div class="formula-title">Quantum Synchronization Order Parameter</div>
+                <div class="math-equation">
+                    <strong>r<sub>Q</sub> = |⟨e<sup>iφ</sup>⟩| = |Tr(ρe<sup>iĤt</sup>)|/N</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Measures the degree of quantum synchronization across the network, with r<sub>Q</sub> = 1 indicating perfect coherence and r<sub>Q</sub> = 0 indicating complete decoherence.</p>
+            </div>
+
+            <div class="math-framework">
+                <div class="formula-title">Critical Coupling for Quantum Synchronization</div>
+                <div class="math-equation">
+                    <strong>K<sub>c</sub> = 2ω₀/[πg(0)]</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Critical coupling strength where quantum synchronization emerges, determined by the natural frequency ω₀ and density of states g(0) at zero frequency.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Interactive Network Topology</div>
+            
+            <div class="network-visualization">
+                <h3 style="text-align: center; margin-top: 0; color: #74b9ff;">Quantum Coherence Network Nodes</h3>
+                
+                <div class="network-grid" id="networkGrid">
+                    <!-- Nodes will be generated by JavaScript -->
+                </div>
+                
+                <p style="text-align: center; margin-bottom: 0; color: #e8e8e8;">
+                    Click nodes to activate quantum states. Watch coherence propagate through quantum correlations.
+                    Active nodes show quantum entanglement patterns with synchronized neighbors.
+                </p>
+            </div>
+            
+            <div class="quantum-controls">
+                <h3 style="text-align: center; margin-top: 0; color: #9b59b6;">Network Parameters</h3>
+                
+                <div class="control-grid">
+                    <div class="control-item">
+                        <label class="control-label">Coupling Strength K</label>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="couplingSlider" oninput="updateNetworkParameters()">
+                        <span class="value-display" id="couplingValue">50</span>
+                    </div>
+                    
+                    <div class="control-item">
+                        <label class="control-label">Temperature T (K)</label>
+                        <input type="range" min="250" max="350" value="310" class="slider" id="temperatureSlider" oninput="updateNetworkParameters()">
+                        <span class="value-display" id="temperatureValue">310</span>
+                    </div>
+                    
+                    <div class="control-item">
+                        <label class="control-label">Decoherence Rate γ</label>
+                        <input type="range" min="0" max="100" value="20" class="slider" id="decoherenceSlider" oninput="updateNetworkParameters()">
+                        <span class="value-display" id="decoherenceValue">0.20</span>
+                    </div>
+                    
+                    <div class="control-item">
+                        <label class="control-label">Network Density ρ</label>
+                        <input type="range" min="10" max="90" value="50" class="slider" id="densitySlider" oninput="updateNetworkParameters()">
+                        <span class="value-display" id="densityValue">0.50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Quantum Adjacency Matrix</div>
+            
+            <div class="adjacency-matrix">
+                <h3 style="text-align: center; margin-top: 0; color: #e74c3c;">Quantum Correlation Matrix A<sub>Q</sub></h3>
+                
+                <div class="matrix-grid" id="adjacencyMatrix">
+                    <!-- Matrix cells will be generated by JavaScript -->
+                </div>
+                
+                <p style="text-align: center; margin-bottom: 0; color: #e8e8e8;">
+                    Matrix elements show |⟨ψ<sub>i</sub>|ψ<sub>j</sub>⟩|² quantum correlations. Brighter colors indicate stronger quantum entanglement between nodes.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Synchronization Dynamics</div>
+            
+            <div class="diagram-container">
+                <div id="synchronizationDynamics" style="width:100%;height:500px;"></div>
+            </div>
+            
+            <div class="insight-box">
+                <h3>🎯 Quantum Synchronization Regimes</h3>
+                <ul style="color: #e8e8e8;">
+                    <li><strong>Subcritical (K < K<sub>c</sub>):</strong> Nodes oscillate independently with minimal quantum correlations</li>
+                    <li><strong>Critical (K ≈ K<sub>c</sub>):</strong> Emergence of quantum synchronization clusters and chimera states</li>
+                    <li><strong>Supercritical (K > K<sub>c</sub>):</strong> Global quantum coherence with maximum entanglement</li>
+                    <li><strong>Decoherence Effects:</strong> Temperature and environmental noise disrupt synchronization patterns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Order Parameter Evolution</div>
+            
+            <div class="diagram-container">
+                <div id="orderParameter" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Quantum Kuramoto Model</div>
+                <div class="math-equation">
+                    <strong>dρ<sub>i</sub>/dt = -i[ω<sub>i</sub>σ<sub>z</sub>, ρ<sub>i</sub>] + (K/N)Σ<sub>j</sub>L<sub>sync</sub>[ρ<sub>i</sub>, ρ<sub>j</sub>]</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Quantum mechanical generalization of the Kuramoto model describing synchronization in networks of quantum oscillators with coupling strength K and natural frequencies ω<sub>i</sub>.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Network Spectral Properties</div>
+            
+            <div class="diagram-container">
+                <div id="spectralProperties" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="insight-box">
+                <h3>📊 Laplacian Eigenvalue Spectrum</h3>
+                <p style="color: #e8e8e8;">The eigenvalues of the quantum Laplacian L<sub>Q</sub> determine synchronization stability:</p>
+                <ul style="color: #e8e8e8;">
+                    <li><strong>λ₁ = 0:</strong> Always present, corresponding to the trivial eigenmode</li>
+                    <li><strong>λ₂ (Fiedler value):</strong> Controls synchronization onset - larger λ₂ enables faster synchronization</li>
+                    <li><strong>Higher eigenvalues:</strong> Determine stability against perturbations and formation of synchronized clusters</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Entanglement Network Growth</div>
+            
+            <div class="diagram-container">
+                <div id="entanglementGrowth" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Network Entanglement Entropy</div>
+                <div class="math-equation">
+                    <strong>E<sub>network</sub> = -Tr[ρ<sub>reduced</sub> log ρ<sub>reduced</sub>]</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Quantifies entanglement across network partitions. Growing entanglement indicates emerging quantum correlations and synchronized behavior.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Quantum vs Classical Synchronization</div>
+            
+            <div class="diagram-container">
+                <div id="quantumClassicalComparison" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Quantum Advantage in Synchronization</div>
+                <div class="math-equation">
+                    <strong>t<sub>sync</sub><sup>quantum</sup> = t<sub>sync</sub><sup>classical</sup>/√N</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Quantum networks achieve synchronization quadratically faster than classical networks, providing significant advantages for large-scale biological coordination.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Biological Applications</div>
+            
+            <div class="prediction-grid">
+                <div class="prediction-card">
+                    <div class="prediction-title">Neural Network Coherence</div>
+                    <div class="prediction-value">K<sub>c</sub> ~ 10⁻³ s⁻¹</div>
+                    <p style="color: #e8e8e8;">Critical coupling for quantum synchronization in neural microtubule networks enabling consciousness substrate.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Cellular Communication</div>
+                    <div class="prediction-value">|⟨ψ<sub>i</sub>|ψ<sub>j</sub>⟩|² ~ 0.8</div>
+                    <p style="color: #e8e8e8;">Quantum correlations between adjacent cells enabling non-local information transfer via entanglement.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Tissue Synchronization</div>
+                    <div class="prediction-value">r<sub>Q</sub> ~ 0.9</div>
+                    <p style="color: #e8e8e8;">High quantum order parameter in organized tissues like cardiac muscle during coordinated contractions.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Metabolic Networks</div>
+                    <div class="prediction-value">τ<sub>sync</sub> ~ ms</div>
+                    <p style="color: #e8e8e8;">Rapid synchronization timescales in mitochondrial networks via quantum coherence mechanisms.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Immune Coordination</div>
+                    <div class="prediction-value">ρ<sub>network</sub> ~ 0.6</div>
+                    <p style="color: #e8e8e8;">Moderate network density enabling both local specificity and global immune system coordination.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Developmental Patterns</div>
+                    <div class="prediction-value">λ₂ ~ 0.1</div>
+                    <p style="color: #e8e8e8;">Fiedler eigenvalue controlling morphogenetic field synchronization during embryonic development.</p>
+                </div>
+            </div>
+            
+            <div class="insight-box">
+                <h3>🧬 SCPN Integration Points</h3>
+                <ul style="color: #e8e8e8;">
+                    <li><strong>Layer 1 Quantum Substrate:</strong> Microtubule networks form quantum coherence networks with topological protection</li>
+                    <li><strong>Layer 4 Cellular Synchronization:</strong> Tissue-level coordination through quantum network synchronization</li>
+                    <li><strong>Layer 11 Cultural Networks:</strong> Social synchronization patterns mirror quantum network dynamics</li>
+                    <li><strong>Cross-Layer Coupling:</strong> Quantum coherence networks enable information flow between biological scales</li>
+                    <li><strong>Consciousness Field Modulation:</strong> Ψ<sub>s</sub> field strength correlates with network synchronization order parameter</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Critical Phenomena</div>
+            
+            <div class="diagram-container">
+                <div id="criticalPhenomena" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Critical Scaling Laws</div>
+                <div class="math-equation">
+                    <strong>r<sub>Q</sub> ∝ (K - K<sub>c</sub>)<sup>β</sup></strong><br>
+                    <strong>ξ ∝ |K - K<sub>c</sub>|<sup>-ν</sup></strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Near the critical coupling K<sub>c</sub>, the order parameter and correlation length exhibit power-law scaling with critical exponents β ≈ 0.5 and ν ≈ 1 for quantum networks.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Chimera States</div>
+            
+            <div class="diagram-container">
+                <div id="chimeraStates" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Quantum Chimera State</div>
+                <div class="math-equation">
+                    <strong>|Ψ<sub>chimera</sub>⟩ = |coherent⟩<sub>A</sub> ⊗ |incoherent⟩<sub>B</sub></strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Partial synchronization states where region A maintains quantum coherence while region B remains incoherent, relevant for brain network dynamics and consciousness states.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Temperature Dependence</div>
+            
+            <div class="diagram-container">
+                <div id="temperatureDependence" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="insight-box">
+                <h3>🌡️ Thermal Effects on Quantum Networks</h3>
+                <ul style="color: #e8e8e8;">
+                    <li><strong>Low Temperature (T < 280K):</strong> Robust quantum coherence, high synchronization</li>
+                    <li><strong>Physiological (T ≈ 310K):</strong> Metastable coherence requiring active stabilization</li>
+                    <li><strong>High Temperature (T > 340K):</strong> Thermal decoherence dominates, classical behavior</li>
+                    <li><strong>Critical Temperature:</strong> T<sub>c</sub> ≈ 305K marks quantum-classical transition</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Network Robustness</div>
+            
+            <div class="diagram-container">
+                <div id="networkRobustness" style="width:100%;height:450px;"></div>
+            </div>
+            
+            <div class="math-framework">
+                <div class="formula-title">Percolation Threshold</div>
+                <div class="math-equation">
+                    <strong>p<sub>c</sub> = ⟨k⟩/(⟨k²⟩ - ⟨k⟩)</strong>
+                </div>
+                <p style="color: #e8e8e8; margin: 20px 0;">Critical fraction of nodes that must remain connected to maintain network-wide quantum coherence, where ⟨k⟩ and ⟨k²⟩ are first and second moments of the degree distribution.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experimental Predictions</div>
+            
+            <div class="prediction-grid">
+                <div class="prediction-card">
+                    <div class="prediction-title">Spectroscopic Signatures</div>
+                    <div class="prediction-value">Δλ ~ 0.1 nm</div>
+                    <p style="color: #e8e8e8;">Quantum coherence networks produce characteristic spectral shifts in biophoton emission during synchronization.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Magnetic Susceptibility</div>
+                    <div class="prediction-value">χ ~ 10⁻⁶ emu/g</div>
+                    <p style="color: #e8e8e8;">Enhanced diamagnetic response in synchronized quantum networks due to coherent electron dynamics.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Coherence Length</div>
+                    <div class="prediction-value">ξ ~ 100 μm</div>
+                    <p style="color: #e8e8e8;">Spatial extent of quantum correlations in biological networks under optimal synchronization conditions.</p>
+                </div>
+                
+                <div class="prediction-card">
+                    <div class="prediction-title">Synchronization Time</div>
+                    <div class="prediction-value">τ ~ 1-10 ms</div>
+                    <p style="color: #e8e8e8;">Characteristic timescale for quantum network synchronization, matching neural oscillation periods.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let networkNodes = [];
+        let adjacencyMatrix = [];
+        let networkSize = 64; // 8x8 grid
+        let activeNodes = new Set();
+        let synchronizedNodes = new Set();
+        
+        // Network parameters
+        let couplingStrength = 50;
+        let temperature = 310;
+        let decoherenceRate = 20;
+        let networkDensity = 50;
+        
+        // Initialize network
+        function initializeNetwork() {
+            const grid = document.getElementById('networkGrid');
+            grid.innerHTML = '';
+            networkNodes = [];
+            activeNodes.clear();
+            synchronizedNodes.clear();
+            
+            // Create nodes
+            for (let i = 0; i < networkSize; i++) {
+                const node = document.createElement('div');
+                node.className = 'network-node';
+                node.textContent = i + 1;
+                node.onclick = () => activateNode(i);
+                grid.appendChild(node);
+                networkNodes.push({
+                    element: node,
+                    phase: Math.random() * 2 * Math.PI,
+                    frequency: 1 + 0.1 * (Math.random() - 0.5),
+                    active: false,
+                    synchronized: false
+                });
+            }
+            
+            // Initialize adjacency matrix
+            initializeAdjacencyMatrix();
+            updateNetworkVisualization();
+        }
+        
+        // Initialize adjacency matrix
+        function initializeAdjacencyMatrix() {
+            const matrixContainer = document.getElementById('adjacencyMatrix');
+            matrixContainer.innerHTML = '';
+            adjacencyMatrix = [];
+            
+            const size = 6; // 6x6 matrix for visualization
+            for (let i = 0; i < size; i++) {
+                adjacencyMatrix[i] = [];
+                for (let j = 0; j < size; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'matrix-cell';
+                    
+                    // Calculate quantum correlation
+                    const correlation = calculateQuantumCorrelation(i, j, size);
+                    adjacencyMatrix[i][j] = correlation;
+                    
+                    cell.textContent = correlation.toFixed(2);
+                    updateMatrixCellColor(cell, correlation);
+                    
+                    matrixContainer.appendChild(cell);
+                }
+            }
+        }
+        
+        // Calculate quantum correlation between nodes
+        function calculateQuantumCorrelation(i, j, size) {
+            if (i === j) return 1.0;
+            
+            // Distance-based correlation with quantum effects
+            const dx = (i % Math.sqrt(size)) - (j % Math.sqrt(size));
+            const dy = Math.floor(i / Math.sqrt(size)) - Math.floor(j / Math.sqrt(size));
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Quantum correlation with oscillatory behavior
+            const baseCorr = Math.exp(-distance / 2);
+            const quantumModulation = 0.3 * Math.cos(distance * Math.PI / 2);
+            
+            return Math.max(0, Math.min(1, baseCorr + quantumModulation));
+        }
+        
+        // Update matrix cell color
+        function updateMatrixCellColor(cell, value) {
+            const intensity = Math.floor(value * 255);
+            const red = Math.floor(231 * (1 - value) + 46 * value);
+            const green = Math.floor(76 * (1 - value) + 204 * value);
+            const blue = Math.floor(60 * (1 - value) + 113 * value);
+            
+            cell.style.background = `rgb(${red}, ${green}, ${blue})`;
+            cell.style.color = value > 0.5 ? 'white' : 'black';
+        }
+        
+        // Activate network node
+        function activateNode(index) {
+            const node = networkNodes[index];
+            
+            if (activeNodes.has(index)) {
+                activeNodes.delete(index);
+                node.element.classList.remove('active');
+                node.active = false;
+            } else {
+                activeNodes.add(index);
+                node.element.classList.add('active');
+                node.active = true;
+                
+                // Propagate activation based on quantum correlations
+                propagateActivation(index);
+            }
+            
+            updateSynchronization();
+            updatePlots();
+        }
+        
+        // Propagate activation through quantum correlations
+        function propagateActivation(sourceIndex) {
+            const gridSize = Math.sqrt(networkSize);
+            const sourceRow = Math.floor(sourceIndex / gridSize);
+            const sourceCol = sourceIndex % gridSize;
+            
+            for (let i = 0; i < networkSize; i++) {
+                if (i === sourceIndex) continue;
+                
+                const targetRow = Math.floor(i / gridSize);
+                const targetCol = i % gridSize;
+                const distance = Math.sqrt(
+                    Math.pow(sourceRow - targetRow, 2) + 
+                    Math.pow(sourceCol - targetCol, 2)
+                );
+                
+                // Probability based on quantum correlation and coupling strength
+                const correlation = Math.exp(-distance / 2) * (couplingStrength / 100);
+                const probability = correlation * 0.3; // Base activation probability
+                
+                if (Math.random() < probability) {
+                    setTimeout(() => {
+                        if (!activeNodes.has(i)) {
+                            activeNodes.add(i);
+                            networkNodes[i].element.classList.add('active');
+                            networkNodes[i].active = true;
+                        }
+                    }, distance * 100); // Delay based on distance
+                }
+            }
+        }
+        
+        // Update synchronization state
+        function updateSynchronization() {
+            synchronizedNodes.clear();
+            
+            // Calculate order parameter
+            let realSum = 0, imagSum = 0;
+            let activeCount = 0;
+            
+            activeNodes.forEach(index => {
+                const node = networkNodes[index];
+                realSum += Math.cos(node.phase);
+                imagSum += Math.sin(node.phase);
+                activeCount++;
+            });
+            
+            if (activeCount > 0) {
+                const orderParameter = Math.sqrt(realSum * realSum + imagSum * imagSum) / activeCount;
+                
+                // Determine synchronized nodes based on phase coherence
+                if (orderParameter > 0.7) {
+                    const avgPhase = Math.atan2(imagSum, realSum);
+                    
+                    activeNodes.forEach(index => {
+                        const node = networkNodes[index];
+                        const phaseDiff = Math.abs(node.phase - avgPhase);
+                        const normalizedDiff = Math.min(phaseDiff, 2 * Math.PI - phaseDiff);
+                        
+                        if (normalizedDiff < Math.PI / 4) { // Synchronized if within π/4
+                            synchronizedNodes.add(index);
+                            node.element.classList.add('synchronized');
+                            node.synchronized = true;
+                        } else {
+                            node.element.classList.remove('synchronized');
+                            node.synchronized = false;
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Update network parameters
+        function updateNetworkParameters() {
+            couplingStrength = parseFloat(document.getElementById('couplingSlider').value);
+            temperature = parseFloat(document.getElementById('temperatureSlider').value);
+            decoherenceRate = parseFloat(document.getElementById('decoherenceSlider').value);
+            networkDensity = parseFloat(document.getElementById('densitySlider').value);
+            
+            document.getElementById('couplingValue').textContent = couplingStrength;
+            document.getElementById('temperatureValue').textContent = temperature;
+            document.getElementById('decoherenceValue').textContent = (decoherenceRate / 100).toFixed(2);
+            document.getElementById('densityValue').textContent = (networkDensity / 100).toFixed(2);
+            
+            updateNetworkVisualization();
+            updatePlots();
+        }
+        
+        // Update network visualization
+        function updateNetworkVisualization() {
+            // Update node phases based on parameters
+            networkNodes.forEach((node, index) => {
+                // Phase evolution with coupling effects
+                let phaseChange = node.frequency * 0.1;
+                
+                if (node.active) {
+                    // Coupling to other active nodes
+                    activeNodes.forEach(otherIndex => {
+                        if (otherIndex !== index) {
+                            const otherNode = networkNodes[otherIndex];
+                            const coupling = calculateCouplingStrength(index, otherIndex);
+                            phaseChange += coupling * Math.sin(otherNode.phase - node.phase);
+                        }
+                    });
+                }
+                
+                // Add decoherence effects
+                phaseChange += (decoherenceRate / 1000) * (Math.random() - 0.5);
+                
+                node.phase += phaseChange;
+                node.phase = node.phase % (2 * Math.PI);
+            });
+        }
+        
+        // Calculate coupling strength between nodes
+        function calculateCouplingStrength(i, j) {
+            const gridSize = Math.sqrt(networkSize);
+            const iRow = Math.floor(i / gridSize);
+            const iCol = i % gridSize;
+            const jRow = Math.floor(j / gridSize);
+            const jCol = j % gridSize;
+            
+            const distance = Math.sqrt(
+                Math.pow(iRow - jRow, 2) + Math.pow(iCol - jCol, 2)
+            );
+            
+            return (couplingStrength / 100) * Math.exp(-distance / 3);
+        }
+        
+        // Plot synchronization dynamics
+        function plotSynchronizationDynamics() {
+            const time = Array.from({length: 200}, (_, i) => i * 0.1);
+            const couplingRange = Array.from({length: 100}, (_, i) => i);
+            
+            // Order parameter vs coupling strength
+            const orderParameter = couplingRange.map(k => {
+                const kNorm = k / 100;
+                const kc = 0.3; // Critical coupling
+                if (kNorm < kc) {
+                    return 0.1 * Math.sqrt(kNorm / kc);
+                } else {
+                    return Math.sqrt(1 - Math.exp(-(kNorm - kc) / 0.2));
+                }
+            });
+            
+            // Temperature effects
+            const tempEffect = couplingRange.map(k => {
+                const kNorm = k / 100;
+                const tempFactor = Math.exp(-(temperature - 310) / 50);
+                return orderParameter[k] * tempFactor;
+            });
+            
+            const trace1 = {
+                x: couplingRange,
+                y: orderParameter,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'T = 310K',
+                line: {color: '#3498db', width: 3}
+            };
+            
+            const trace2 = {
+                x: couplingRange,
+                y: tempEffect,
+                type: 'scatter',
+                mode: 'lines',
+                name: `T = ${temperature}K`,
+                line: {color: '#e74c3c', width: 3}
+            };
+            
+            const layout = {
+                title: 'Quantum Synchronization Order Parameter',
+                xaxis: {title: 'Coupling Strength K', color: '#e8e8e8'},
+                yaxis: {title: 'Order Parameter r<sub>Q</sub>', color: '#e8e8e8'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('synchronizationDynamics', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        // Plot order parameter evolution
+        function plotOrderParameter() {
+            const time = Array.from({length: 100}, (_, i) => i * 0.1);
+            
+            // Simulate order parameter evolution
+            const orderEvolution = time.map(t => {
+                const coupling = couplingStrength / 100;
+                const kc = 0.3;
+                const decoherence = decoherenceRate / 100;
+                
+                if (coupling < kc) {
+                    return 0.1 * Math.sin(t) * Math.exp(-decoherence * t);
+                } else {
+                    const growth = 1 - Math.exp(-coupling * t);
+                    const decay = Math.exp(-decoherence * t / 2);
+                    return growth * decay * (1 + 0.1 * Math.sin(5 * t));
+                }
+            });
+            
+            // Entanglement entropy
+            const entanglement = time.map(t => {
+                const order = orderEvolution[time.indexOf(t)];
+                return -order * Math.log(order + 0.01) - (1 - order) * Math.log(1 - order + 0.01);
+            });
+            
+            const trace1 = {
+                x: time,
+                y: orderEvolution,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Order Parameter',
+                line: {color: '#2ecc71', width: 3},
+                yaxis: 'y1'
+            };
+            
+            const trace2 = {
+                x: time,
+                y: entanglement,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Entanglement Entropy',
+                line: {color: '#9b59b6', width: 3},
+                yaxis: 'y2'
+            };
+            
+            const layout = {
+                title: 'Order Parameter and Entanglement Evolution',
+                xaxis: {title: 'Time', color: '#e8e8e8'},
+                yaxis: {title: 'Order Parameter r<sub>Q</sub>', color: '#2ecc71', side: 'left'},
+                yaxis2: {title: 'Entanglement Entropy', color: '#9b59b6', side: 'right', overlaying: 'y'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('orderParameter', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        // Plot spectral properties
+        function plotSpectralProperties() {
+            const eigenvalues = Array.from({length: 20}, (_, i) => i);
+            
+            // Generate Laplacian eigenvalues
+            const spectrum = eigenvalues.map(i => {
+                if (i === 0) return 0; // First eigenvalue is always 0
+                const density = networkDensity / 100;
+                const base = i * density * 0.2;
+                const quantum = 0.1 * Math.sin(i * Math.PI / 10);
+                return base + quantum;
+            });
+            
+            // Density of states
+            const dosEnergy = Array.from({length: 100}, (_, i) => i * 0.05);
+            const dos = dosEnergy.map(E => {
+                return Math.exp(-Math.pow(E - 1, 2) / 0.5) + 0.3 * Math.exp(-Math.pow(E - 2, 2) / 0.3);
+            });
+            
+            const trace1 = {
+                x: eigenvalues,
+                y: spectrum,
+                type: 'scatter',
+                mode: 'markers+lines',
+                name: 'Eigenvalue Spectrum',
+                marker: {size: 10, color: '#74b9ff'},
+                line: {color: '#74b9ff', width: 2}
+            };
+            
+            const trace2 = {
+                x: dosEnergy,
+                y: dos,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Density of States',
+                line: {color: '#fd79a8', width: 3},
+                yaxis: 'y2'
+            };
+            
+            const layout = {
+                title: 'Quantum Network Spectral Properties',
+                xaxis: {title: 'Mode Index / Energy', color: '#e8e8e8'},
+                yaxis: {title: 'Eigenvalue λ', color: '#74b9ff', side: 'left'},
+                yaxis2: {title: 'Density g(E)', color: '#fd79a8', side: 'right', overlaying: 'y'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('spectralProperties', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        // Plot entanglement growth
+        function plotEntanglementGrowth() {
+            const networkSize = Array.from({length: 20}, (_, i) => (i + 1) * 5);
+            
+            // Classical vs quantum entanglement scaling
+            const classicalEntanglement = networkSize.map(N => Math.log(N));
+            const quantumEntanglement = networkSize.map(N => {
+                const coupling = couplingStrength / 100;
+                return Math.log(N) * (1 + coupling) + 0.5 * Math.sqrt(N);
+            });
+            
+            // Time evolution
+            const time = Array.from({length: 50}, (_, i) => i * 0.2);
+            const entanglementTime = time.map(t => {
+                const saturation = 3;
+                const rate = couplingStrength / 50;
+                return saturation * (1 - Math.exp(-rate * t)) * (1 + 0.1 * Math.sin(2 * t));
+            });
+            
+            const trace1 = {
+                x: networkSize,
+                y: classicalEntanglement,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Classical Scaling',
+                line: {color: '#e74c3c', width: 2, dash: 'dash'}
+            };
+            
+            const trace2 = {
+                x: networkSize,
+                y: quantumEntanglement,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Scaling',
+                line: {color: '#2ecc71', width: 3}
+            };
+            
+            const trace3 = {
+                x: time,
+                y: entanglementTime,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Time Evolution',
+                line: {color: '#9b59b6', width: 3},
+                xaxis: 'x2',
+                yaxis: 'y2'
+            };
+            
+            const layout = {
+                title: 'Network Entanglement Growth',
+                xaxis: {title: 'Network Size N', color: '#e8e8e8', domain: [0, 0.45]},
+                yaxis: {title: 'Entanglement Entropy', color: '#e8e8e8'},
+                xaxis2: {title: 'Time', color: '#e8e8e8', domain: [0.55, 1]},
+                yaxis2: {title: 'Entanglement', color: '#e8e8e8', anchor: 'x2'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('entanglementGrowth', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot quantum vs classical comparison
+        function plotQuantumClassicalComparison() {
+            const networkSize = Array.from({length: 50}, (_, i) => (i + 1) * 2);
+            
+            // Synchronization time scaling
+            const classicalSync = networkSize.map(N => N * 0.5); // Linear scaling
+            const quantumSync = networkSize.map(N => Math.sqrt(N) * 2); // Square root advantage
+            
+            // Efficiency comparison
+            const efficiency = networkSize.map(N => {
+                const classical = N * 0.5;
+                const quantum = Math.sqrt(N) * 2;
+                return classical / quantum; // Speedup factor
+            });
+            
+            const trace1 = {
+                x: networkSize,
+                y: classicalSync,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Classical t<sub>sync</sub>',
+                line: {color: '#e74c3c', width: 3}
+            };
+            
+            const trace2 = {
+                x: networkSize,
+                y: quantumSync,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum t<sub>sync</sub>',
+                line: {color: '#3498db', width: 3}
+            };
+            
+            const trace3 = {
+                x: networkSize,
+                y: efficiency,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Speedup',
+                line: {color: '#2ecc71', width: 3},
+                yaxis: 'y2'
+            };
+            
+            const layout = {
+                title: 'Quantum vs Classical Synchronization',
+                xaxis: {title: 'Network Size N', color: '#e8e8e8'},
+                yaxis: {title: 'Synchronization Time', color: '#e8e8e8', side: 'left'},
+                yaxis2: {title: 'Speedup Factor', color: '#2ecc71', side: 'right', overlaying: 'y'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('quantumClassicalComparison', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot critical phenomena
+        function plotCriticalPhenomena() {
+            const coupling = Array.from({length: 100}, (_, i) => i / 100);
+            const kc = 0.3;
+            
+            // Order parameter with critical scaling
+            const orderParameter = coupling.map(k => {
+                if (k < kc) return 0;
+                return Math.pow(k - kc, 0.5); // β = 0.5
+            });
+            
+            // Correlation length
+            const correlationLength = coupling.map(k => {
+                const delta = Math.abs(k - kc);
+                if (delta < 0.01) return 10; // Diverges at critical point
+                return 1 / Math.pow(delta, 1); // ν = 1
+            });
+            
+            // Susceptibility
+            const susceptibility = coupling.map(k => {
+                const delta = Math.abs(k - kc);
+                if (delta < 0.01) return 20;
+                return 1 / Math.pow(delta, 1); // γ = 1
+            });
+            
+            const trace1 = {
+                x: coupling,
+                y: orderParameter,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Order Parameter',
+                line: {color: '#3498db', width: 3}
+            };
+            
+            const trace2 = {
+                x: coupling,
+                y: correlationLength,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Correlation Length',
+                line: {color: '#e74c3c', width: 3},
+                yaxis: 'y2'
+            };
+            
+            const trace3 = {
+                x: coupling,
+                y: susceptibility,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Susceptibility',
+                line: {color: '#9b59b6', width: 3},
+                yaxis: 'y3'
+            };
+            
+            const layout = {
+                title: 'Critical Phenomena in Quantum Networks',
+                xaxis: {title: 'Coupling Strength K', color: '#e8e8e8'},
+                yaxis: {title: 'Order Parameter', color: '#3498db', side: 'left'},
+                yaxis2: {title: 'Correlation Length', color: '#e74c3c', side: 'right', overlaying: 'y'},
+                yaxis3: {title: 'Susceptibility', color: '#9b59b6', side: 'right', overlaying: 'y', position: 0.85},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}},
+                annotations: [{
+                    x: kc,
+                    y: 0.5,
+                    text: 'K<sub>c</sub>',
+                    showarrow: true,
+                    arrowcolor: '#f1c40f',
+                    font: {color: '#f1c40f'}
+                }]
+            };
+            
+            Plotly.newPlot('criticalPhenomena', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot chimera states
+        function plotChimeraStates() {
+            const position = Array.from({length: 100}, (_, i) => i);
+            
+            // Local order parameter showing chimera pattern
+            const localOrder = position.map(x => {
+                if (x < 30 || x > 70) {
+                    // Coherent regions
+                    return 0.8 + 0.1 * Math.sin(x / 5);
+                } else {
+                    // Incoherent region
+                    return 0.2 + 0.3 * Math.random();
+                }
+            });
+            
+            // Phase distribution
+            const phaseCoherent = position.slice(0, 30).map(x => Math.sin(x / 10));
+            const phaseIncoherent = position.slice(30, 70).map(x => Math.sin(x / 3 + Math.random() * 2 * Math.PI));
+            const phaseCoherent2 = position.slice(70).map(x => Math.sin(x / 10));
+            
+            const trace1 = {
+                x: position,
+                y: localOrder,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Local Order Parameter',
+                line: {color: '#3498db', width: 3},
+                fill: 'tozeroy',
+                fillcolor: 'rgba(52, 152, 219, 0.3)'
+            };
+            
+            const trace2 = {
+                x: position.slice(0, 30),
+                y: phaseCoherent,
+                type: 'scatter',
+                mode: 'markers',
+                name: 'Coherent Region A',
+                marker: {color: '#2ecc71', size: 4},
+                yaxis: 'y2'
+            };
+            
+            const trace3 = {
+                x: position.slice(30, 70),
+                y: phaseIncoherent,
+                type: 'scatter',
+                mode: 'markers',
+                name: 'Incoherent Region B',
+                marker: {color: '#e74c3c', size: 4},
+                yaxis: 'y2'
+            };
+            
+            const trace4 = {
+                x: position.slice(70),
+                y: phaseCoherent2,
+                type: 'scatter',
+                mode: 'markers',
+                name: 'Coherent Region C',
+                marker: {color: '#2ecc71', size: 4},
+                yaxis: 'y2'
+            };
+            
+            const layout = {
+                title: 'Quantum Chimera States',
+                xaxis: {title: 'Spatial Position', color: '#e8e8e8'},
+                yaxis: {title: 'Local Order Parameter', color: '#3498db', side: 'left'},
+                yaxis2: {title: 'Phase', color: '#e8e8e8', side: 'right', overlaying: 'y'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('chimeraStates', [trace1, trace2, trace3, trace4], layout, {responsive: true});
+        }
+        
+        // Plot temperature dependence
+        function plotTemperatureDependence() {
+            const temp = Array.from({length: 100}, (_, i) => 250 + i * 1.5); // 250-400K
+            const tc = 305; // Critical temperature
+            
+            // Order parameter vs temperature
+            const orderParam = temp.map(T => {
+                if (T > tc) {
+                    return 0.1 * Math.exp(-(T - tc) / 20);
+                } else {
+                    return 0.9 * Math.exp(-(tc - T) / 50) * (1 - (T - 250) / (tc - 250));
+                }
+            });
+            
+            // Coherence time
+            const coherenceTime = temp.map(T => {
+                const kT = T * 8.617e-5; // eV
+                return Math.exp(-0.1 / kT) / (1 + Math.pow(T / tc, 3));
+            });
+            
+            // Quantum advantage
+            const quantumAdvantage = temp.map(T => {
+                const order = orderParam[temp.indexOf(T)];
+                return 1 + 9 * order; // 1x to 10x advantage
+            });
+            
+            const trace1 = {
+                x: temp,
+                y: orderParam,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Order Parameter',
+                line: {color: '#3498db', width: 3}
+            };
+            
+            const trace2 = {
+                x: temp,
+                y: coherenceTime,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Coherence Time',
+                line: {color: '#e74c3c', width: 3},
+                yaxis: 'y2'
+            };
+            
+            const trace3 = {
+                x: temp,
+                y: quantumAdvantage,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Quantum Advantage',
+                line: {color: '#2ecc71', width: 3},
+                yaxis: 'y3'
+            };
+            
+            const layout = {
+                title: 'Temperature Dependence of Quantum Networks',
+                xaxis: {title: 'Temperature (K)', color: '#e8e8e8'},
+                yaxis: {title: 'Order Parameter', color: '#3498db', side: 'left'},
+                yaxis2: {title: 'Coherence Time (s)', color: '#e74c3c', side: 'right', overlaying: 'y', type: 'log'},
+                yaxis3: {title: 'Quantum Advantage', color: '#2ecc71', side: 'right', overlaying: 'y', position: 0.85},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}},
+                shapes: [{
+                    type: 'line',
+                    x0: tc,
+                    x1: tc,
+                    y0: 0,
+                    y1: 1,
+                    line: {color: '#f1c40f', width: 2, dash: 'dash'}
+                }],
+                annotations: [{
+                    x: tc,
+                    y: 0.5,
+                    text: 'T<sub>c</sub> = 305K',
+                    showarrow: true,
+                    arrowcolor: '#f1c40f',
+                    font: {color: '#f1c40f'}
+                }]
+            };
+            
+            Plotly.newPlot('temperatureDependence', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Plot network robustness
+        function plotNetworkRobustness() {
+            const dilution = Array.from({length: 100}, (_, i) => i / 100); // Fraction of removed nodes
+            
+            // Giant component size
+            const giantComponent = dilution.map(p => {
+                const pc = 0.3; // Percolation threshold
+                if (p > pc) {
+                    return Math.max(0, Math.pow(1 - p, 2) - Math.pow(pc, 2));
+                } else {
+                    return Math.pow(1 - p, 0.5);
+                }
+            });
+            
+            // Synchronization robustness
+            const syncRobustness = dilution.map(p => {
+                const intact = 1 - p;
+                return intact * Math.exp(-p / 0.2); // Exponential decay
+            });
+            
+            // Quantum coherence preservation
+            const coherencePreservation = dilution.map(p => {
+                const networkIntegrity = giantComponent[dilution.indexOf(p)];
+                const quantumEffect = Math.exp(-p / 0.15);
+                return networkIntegrity * quantumEffect;
+            });
+            
+            const trace1 = {
+                x: dilution,
+                y: giantComponent,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Giant Component',
+                line: {color: '#3498db', width: 3}
+            };
+            
+            const trace2 = {
+                x: dilution,
+                y: syncRobustness,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Sync Robustness',
+                line: {color: '#e74c3c', width: 3}
+            };
+            
+            const trace3 = {
+                x: dilution,
+                y: coherencePreservation,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Coherence Preservation',
+                line: {color: '#2ecc71', width: 3}
+            };
+            
+            const layout = {
+                title: 'Network Robustness to Node Removal',
+                xaxis: {title: 'Fraction of Removed Nodes', color: '#e8e8e8'},
+                yaxis: {title: 'Normalized Performance', color: '#e8e8e8'},
+                plot_bgcolor: 'rgba(255,255,255,0.05)',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#e8e8e8'},
+                showlegend: true,
+                legend: {font: {color: '#e8e8e8'}}
+            };
+            
+            Plotly.newPlot('networkRobustness', [trace1, trace2, trace3], layout, {responsive: true});
+        }
+        
+        // Update all plots
+        function updatePlots() {
+            plotSynchronizationDynamics();
+            plotOrderParameter();
+            plotSpectralProperties();
+            plotEntanglementGrowth();
+            plotQuantumClassicalComparison();
+            plotCriticalPhenomena();
+            plotChimeraStates();
+            plotTemperatureDependence();
+            plotNetworkRobustness();
+        }
+        
+        // Animation loop for network dynamics
+        function animateNetwork() {
+            updateNetworkVisualization();
+            updateSynchronization();
+            
+            // Update adjacency matrix with current correlations
+            const matrixCells = document.querySelectorAll('.matrix-cell');
+            matrixCells.forEach((cell, index) => {
+                const size = 6;
+                const i = Math.floor(index / size);
+                const j = index % size;
+                
+                // Dynamic correlation based on active nodes
+                let correlation = adjacencyMatrix[i][j];
+                if (activeNodes.has(i) && activeNodes.has(j)) {
+                    correlation = Math.min(1, correlation * 1.5); // Enhanced correlation
+                }
+                
+                updateMatrixCellColor(cell, correlation);
+                cell.textContent = correlation.toFixed(2);
+            });
+            
+            setTimeout(animateNetwork, 100); // 10 FPS
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNetwork();
+            updatePlots();
+            animateNetwork();
+        });
+    </script>
+</body>
+</html>

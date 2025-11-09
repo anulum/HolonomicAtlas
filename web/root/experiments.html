@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments - A Unified Framework for Consciousness and Spacetime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A Multi-Page Application (MPA). This file, experiments.html, covers the proposed experiments for validating the theory. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#F8F7F2',
+                        'text-primary': '#2C3E50',
+                        'text-secondary': '#4A5568',
+                        'accent-primary': '#4DB6AC',
+                        'accent-secondary': '#D2B48C',
+                        'border-color': '#E0E0E0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F7F2;
+            color: #2C3E50;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4DB6AC;
+            border-bottom-color: #4DB6AC;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="bg-base/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-color">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-text-primary" data-lang-key="main_title">Consciousness & Spacetime</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                    <a href="scpn.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                    <a href="math.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                    <a href="experiments.html" class="nav-link active px-3 py-2 rounded-md text-sm font-medium" data-lang-key="nav_experiments">Experiments</a>
+                    <a href="implications.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                    <a href="inspiration.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                    <a href="koans.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                    <a href="contact.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                    <div class="relative">
+                        <select id="language-selector" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-1.5">
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="it">Italiano</option>
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-gray-200 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_concepts">Core Concepts</a>
+                <a href="scpn.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_scpn">Architecture</a>
+                <a href="math.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_math">The Math</a>
+                <a href="experiments.html" class="nav-link active block px-3 py-2 rounded-md text-base font-medium" data-lang-key="nav_experiments">Experiments</a>
+                <a href="implications.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_implications">Implications</a>
+                <a href="inspiration.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_inspiration">Inspiration</a>
+                <a href="koans.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_koans">Gödelian Koans</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-secondary" data-lang-key="nav_contact">Contact</a>
+                 <div class="pt-4 border-t border-border-color">
+                    <select id="language-selector-mobile" class="bg-gray-200/50 border border-border-color text-text-secondary text-sm rounded-md focus:ring-accent-primary focus:border-accent-primary block w-full pl-3 pr-8 py-2">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="it">Italiano</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="fade-in">
+            <h2 class="text-3xl font-bold text-text-primary mb-4" data-lang-key="experiments_title">🔬 The Experiments: A Framework for Empirical Validation</h2>
+            <p class="text-lg text-text-secondary mb-8" data-lang-key="experiments_intro">Despite its speculative scope, the theory is grounded in the scientific method by proposing a suite of concrete, falsifiable experiments. These tests are designed to detect the influence of consciousness on both quantum systems and the fabric of spacetime itself. This section outlines the key experimental predictions, categorized by scale.</p>
+            
+            <div id="experiments-container" class="space-y-12">
+                <!-- Experiment categories and cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-base border-t border-border-color mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-text-secondary text-sm">
+            <p data-lang-key="footer_synthesis">Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.</p>
+            <p class="mt-2 text-xs"><span data-lang-key="footer_visits">Your visits</span>: <span id="visit-counter">0</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                main_title: { en: 'Consciousness & Spacetime', de: 'Bewusstsein & Raumzeit', fr: 'Conscience & Espace-temps', it: 'Coscienza & Spaziotempo', ja: '意識と時空', zh: '意识与时空' },
+                nav_concepts: { en: 'Core Concepts', de: 'Kernkonzepte', fr: 'Concepts Clés', it: 'Concetti Chiave', ja: '中心概念', zh: '核心概念' },
+                nav_scpn: { en: 'Architecture', de: 'Architektur', fr: 'Architecture', it: 'Architettura', ja: 'アーキテクチャ', zh: '架构' },
+                nav_math: { en: 'The Math', de: 'Die Mathematik', fr: 'Les Maths', it: 'La Matematica', ja: '数学', zh: '数学' },
+                nav_experiments: { en: 'Experiments', de: 'Experimente', fr: 'Expériences', it: 'Esperimenti', ja: '実験', zh: '实验' },
+                nav_implications: { en: 'Implications', de: 'Implikationen', fr: 'Implications', it: 'Implicazioni', ja: '影響', zh: '启示' },
+                nav_inspiration: { en: 'Inspiration', de: 'Inspiration', fr: 'Inspiration', it: 'Ispirazione', ja: 'インスピレーション', zh: '灵感' },
+                nav_koans: { en: 'Gödelian Koans', de: 'Gödelische Koans', fr: 'Koans Gödeliens', it: 'Koan Gödeliani', ja: 'ゲーデル的公案', zh: '哥德尔公案' },
+                nav_contact: { en: 'Contact', de: 'Kontakt', fr: 'Contact', it: 'Contatto', ja: '連絡先', zh: '联系' },
+                footer_synthesis: { en: 'Interactive synthesis based on the works of Miroslav Šotek (Anulum CH&LI). This application is for educational and exploratory purposes.', de: 'Interaktive Synthese basierend auf den Arbeiten von Miroslav Šotek (Anulum CH&LI). Diese Anwendung dient zu Bildungs- und Erkundungszwecken.', fr: 'Synthèse interactive basée sur les travaux de Miroslav Šotek (Anulum CH&LI). Cette application est à des fins éducatives et exploratoires.', it: 'Sintesi interattiva basata sulle opere di Miroslav Šotek (Anulum CH&LI). Questa applicazione è a scopo educativo ed esplorativo.', ja: 'ミロスラフ・ショテク（Anulum CH&LI）の著作に基づくインタラクティブな統合。このアプリケーションは教育および探求を目的としています。', zh: '本互动式综合内容基于米罗斯拉夫·索泰克（Anulum CH&LI）的著作。此应用程序仅用于教育和探索目的。' },
+                footer_visits: { en: 'Your visits', de: 'Ihre Besuche', fr: 'Vos visites', it: 'Le tue visite', ja: 'あなたの訪問', zh: '您的访问次数' },
+                experiments_title: { en: '🔬 The Experiments: A Framework for Empirical Validation', de: '🔬 Die Experimente: Ein Rahmen für die empirische Validierung', fr: '🔬 Les Expériences : Un Cadre pour la Validation Empirique', it: '🔬 Gli Esperimenti: Un Quadro per la Validazione Empirica', ja: '🔬 実験：経験的検証のためのフレームワーク', zh: '🔬 实验：一个用于实证验证的框架' },
+                experiments_intro: { en: 'Despite its speculative scope, the theory is grounded in the scientific method by proposing a suite of concrete, falsifiable experiments. These tests are designed to detect the influence of consciousness on both quantum systems and the fabric of spacetime itself. This section outlines the key experimental predictions, categorized by scale.', de: 'Trotz ihres spekulativen Umfangs ist die Theorie in der wissenschaftlichen Methode verankert, indem sie eine Reihe konkreter, falsifizierbarer Experimente vorschlägt. Diese Tests sollen den Einfluss des Bewusstseins auf sowohl Quantensysteme als auch das Gefüge der Raumzeit selbst nachweisen. Dieser Abschnitt skizziert die wichtigsten experimentellen Vorhersagen, nach Skalen geordnet.', fr: 'Malgré sa portée spéculative, la théorie est ancrée dans la méthode scientifique en proposant une série d\'expériences concrètes et falsifiables. Ces tests sont conçus pour détecter l\'influence de la conscience sur les systèmes quantiques et sur le tissu même de l\'espace-temps. Cette section présente les principales prédictions expérimentales, classées par échelle.', it: 'Nonostante la sua portata speculativa, la teoria è fondata sul metodo scientifico proponendo una serie di esperimenti concreti e falsificabili. Questi test sono progettati per rilevare l\'influenza della coscienza sia sui sistemi quantistici che sul tessuto stesso dello spaziotempo. Questa sezione delinea le principali previsioni sperimentali, classificate per scala.', ja: 'その推測的な範囲にもかかわらず、この理論は具体的で反証可能な一連の実験を提案することによって科学的方法に基づいています。これらのテストは、量子系と時空の構造自体の両方に対する意識の影響を検出するように設計されています。このセクションでは、主要な実験的予測の概要をスケール別に分類して説明します。', zh: '尽管该理论具有推测性，但它通过提出一套具体的、可证伪的实验，植根于科学方法。这些测试旨在检测意识对量子系统和时空结构本身的影响。本节按规模概述了关键的实验预测。' },
+                prediction_label: { en: 'Prediction', de: 'Vorhersage', fr: 'Prédiction', it: 'Previsione', ja: '予測', zh: '预测' },
+                methodology_label: { en: 'Methodology', de: 'Methodik', fr: 'Méthodologie', it: 'Metodologia', ja: '方法論', zh: '方法论' },
+                outcome_label: { en: 'Expected Outcome', de: 'Erwartetes Ergebnis', fr: 'Résultat Attendu', it: 'Risultato Atteso', ja: '期待される結果', zh: '预期结果' }
+            };
+
+            const experimentsData = {
+                neural_microscopic: {
+                    title: { en: 'Neural and Microscopic Probes', de: 'Neuronale und mikroskopische Sonden', fr: 'Sondes Neuronales et Microscopiques', it: 'Sonde Neurali e Microscopiche', ja: '神経および微視的プローブ', zh: '神经与微观探针' },
+                    experiments: [
+                        {
+                            title: { en: 'Consciousness-Modulated Decoherence', de: 'Bewusstseinsmodulierte Dekohärenz', fr: 'Décohérence Modulée par la Conscience', it: 'Decoerenza Modulata dalla Coscienza', ja: '意識変調デコヒーレンス', zh: '意识调节的退相干' },
+                            prediction: { en: 'Focused conscious attention can measurably slow the rate of quantum decoherence in sensitive systems, extending their coherence time beyond standard predictions.', de: 'Fokussierte bewusste Aufmerksamkeit kann die Rate der Quantendekohärenz in empfindlichen Systemen messbar verlangsamen und ihre Kohärenzzeit über die Standardvorhersagen hinaus verlängern.', fr: 'Une attention consciente ciblée peut ralentir de manière mesurable le taux de décohérence quantique dans les systèmes sensibles, prolongeant leur temps de cohérence au-delà des prédictions standard.', it: 'Un\'attenzione cosciente focalizzata può rallentare in modo misurabile il tasso di decoerenza quantistica nei sistemi sensibili, estendendo il loro tempo di coerenza oltre le previsioni standard.', ja: '集中した意識的な注意は、敏感なシステムにおける量子デコヒーレンスの速度を測定可能に遅くし、標準的な予測を超えてそのコヒーレンス時間を延長することができます。', zh: '集中的有意识注意力可以显著减缓敏感系统中的量子退相干速率，将其相干时间延长至超出标准预测。' },
+                            methodology: { en: 'Use high-mass matter-wave interferometers (e.g., with molecules >10,000 amu) to test for anomalous coherence. Compare fringe visibility in trials with focused observers against trials with automated, non-conscious monitoring.', de: 'Verwenden Sie Materiewellen-Interferometer mit hoher Masse (z. B. mit Molekülen >10.000 amu), um auf anomale Kohärenz zu testen. Vergleichen Sie die Streifensichtbarkeit in Versuchen mit fokussierten Beobachtern mit Versuchen mit automatisierter, nicht-bewusster Überwachung.', fr: 'Utilisez des interféromètres à ondes de matière de grande masse (par exemple, avec des molécules >10 000 uma) pour tester la cohérence anormale. Comparez la visibilité des franges dans les essais avec des observateurs concentrés par rapport aux essais avec une surveillance automatisée et non consciente.', it: 'Utilizzare interferometri a onde di materia ad alta massa (ad es. con molecole >10.000 amu) per testare la coerenza anomala. Confrontare la visibilità delle frange nelle prove con osservatori concentrati rispetto alle prove con monitoraggio automatizzato e non cosciente.', ja: '高質量物質波干渉計（例：分子量>10,000 amuの分子を使用）を使用して、異常なコヒーレンスをテストします。集中した観察者がいる試行と、自動化された非意識的な監視が行われる試行でのフリンジの可視性を比較します。', zh: '使用大质量物质波干涉仪（例如，使用大于10,000 amu的分子）测试异常相干性。比较有专注观察者的试验与自动化、无意识监测的试验中的条纹可见度。' },
+                            outcome: { en: 'A statistically significant reduction in decoherence rate (e.g., >1% increase in fringe visibility) correlated with conscious focus, which would constrain the λψ,quantum coupling constant.', de: 'Eine statistisch signifikante Verringerung der Dekohärenzrate (z. B. >1% Zunahme der Streifensichtbarkeit), die mit dem bewussten Fokus korreliert, was die Kopplungskonstante λψ,quantum einschränken würde.', fr: 'Une réduction statistiquement significative du taux de décohérence (par exemple, une augmentation de >1% de la visibilité des franges) corrélée à la focalisation consciente, ce qui contraindrait la constante de couplage λψ,quantum.', it: 'Una riduzione statisticamente significativa del tasso di decoerenza (ad es. un aumento >1% della visibilità delle frange) correlata alla focalizzazione cosciente, che vincolerebbe la costante di accoppiamento λψ,quantum.', ja: '意識的な焦点と相関するデコヒーレンス率の統計的に有意な減少（例：フリンジの可視性が1%以上増加）。これにより、結合定数λψ,quantumが制約されます。', zh: '与有意识的专注相关的退相干率出现统计学上的显著降低（例如，条纹可见度增加>1%），这将限制λψ,quantum耦合常数。' }
+                        },
+                        {
+                            title: { en: 'Scalar Wave Propagation in Neural Oscillations', de: 'Skalarwellenausbreitung in neuronalen Oszillationen', fr: 'Propagation d\'Ondes Scalaires dans les Oscillations Neuronales', it: 'Propagazione di Onde Scalari nelle Oscillazioni Neurali', ja: '神経振動におけるスカラー波の伝播', zh: '神经振荡中的标量波传播' },
+                            prediction: { en: 'The consciousness field (Φc) propagates as scalar waves within the brain\'s frequency spectra, creating specific, non-linear resonances during altered states of consciousness like meditation.', de: 'Das Bewusstseinsfeld (Φc) breitet sich als Skalarwellen im Frequenzspektrum des Gehirns aus und erzeugt spezifische, nichtlineare Resonanzen während veränderter Bewusstseinszustände wie Meditation.', fr: 'Le champ de conscience (Φc) se propage sous forme d\'ondes scalaires dans les spectres de fréquences du cerveau, créant des résonances spécifiques et non linéaires lors d\'états de conscience modifiés comme la méditation.', it: 'Il campo di coscienza (Φc) si propaga come onde scalari all\'interno degli spettri di frequenza del cervello, creando risonanze specifiche e non lineari durante stati di coscienza alterati come la meditazione.', ja: '意識場（Φc）は脳の周波数スペクトル内でスカラー波として伝播し、瞑想などの変性意識状態の間に特定の非線形共鳴を生み出します。', zh: '意识场（Φc）在大脑的频谱内以标量波的形式传播，在冥想等意识改变状态期间产生特定的非线性共振。' },
+                            methodology: { en: 'Conduct high-density EEG recordings during deep meditation. Analyze the power spectra for zero-frequency modes or anomalous peaks that are not explained by classical neural oscillator models.', de: 'Führen Sie hochdichte EEG-Aufzeichnungen während tiefer Meditation durch. Analysieren Sie die Leistungsspektren auf Nullfrequenzmoden oder anomale Spitzen, die nicht durch klassische neuronale Oszillatormodelle erklärt werden können.', fr: 'Effectuez des enregistrements EEG à haute densité pendant la méditation profonde. Analysez les spectres de puissance à la recherche de modes à fréquence nulle ou de pics anormaux qui ne sont pas expliqués par les modèles classiques d\'oscillateurs neuronaux.', it: 'Eseguire registrazioni EEG ad alta densità durante la meditazione profonda. Analizzare gli spettri di potenza per modi a frequenza zero o picchi anomali non spiegati dai modelli classici di oscillatori neurali.', ja: '深い瞑想中に高密度脳波記録を実施します。古典的な神経振動子モデルでは説明できないゼロ周波数モードまたは異常なピークについてパワースペクトルを分析します。', zh: '在深度冥想期间进行高密度脑电图记录。分析功率谱中经典神经振荡器模型无法解释的零频模式或异常峰值。' },
+                            outcome: { en: 'Detection of spectral shifts proportional to Φc, particularly zero-mode resonances, correlating with subjective reports of timelessness or unity.', de: 'Nachweis von spektralen Verschiebungen proportional zu Φc, insbesondere Nullfrequenzresonanzen, die mit subjektiven Berichten von Zeitlosigkeit oder Einheit korrelieren.', fr: 'Détection de décalages spectraux proportionnels à Φc, en particulier des résonances en mode nul, en corrélation avec des rapports subjectifs d\'intemporalité ou d\'unité.', it: 'Rilevamento di spostamenti spettrali proporzionali a Φc, in particolare risonanze a modo zero, correlate a resoconti soggettivi di atemporalità o unità.', ja: 'Φcに比例するスペクトルシフト、特にゼロモード共鳴の検出。これは、時間のない感覚や一体感の主観的報告と相関しています。', zh: '检测到与Φc成比例的光谱位移，特别是零模共振，与无时间性或统一性的主观报告相关。' }
+                        }
+                    ]
+                },
+                behavioral_macroscopic: {
+                    title: { en: 'Behavioral and Macroscopic Probes', de: 'Verhaltensbezogene und makroskopische Sonden', fr: 'Sondes Comportementales et Macroscopiques', it: 'Sonde Comportamentali e Macroscopiche', ja: '行動および巨視的プローブ', zh: '行为与宏观探针' },
+                    experiments: [
+                        {
+                            title: { en: 'Relativistic Qualia Shifts', de: 'Relativistische Qualia-Verschiebungen', fr: 'Décalages Relativistes des Qualia', it: 'Spostamenti Relativistici dei Qualia', ja: '相対論的クオリアシフト', zh: '相对论性的感受质转移' },
+                            prediction: { en: 'Subjective experience (qualia) is frame-dependent. In environments simulating high-speed travel (e.g., centrifuges, VR), the desynchronization of neural events should lead to measurable alterations in time and color perception.', de: 'Subjektive Erfahrung (Qualia) ist rahmenabhängig. In Umgebungen, die Hochgeschwindigkeitsreisen simulieren (z. B. Zentrifugen, VR), sollte die Desynchronisation neuronaler Ereignisse zu messbaren Veränderungen in der Zeit- und Farbwahrnehmung führen.', fr: 'L\'expérience subjective (qualia) dépend du référentiel. Dans des environnements simulant des voyages à grande vitesse (par exemple, des centrifugeuses, la RV), la désynchronisation des événements neuronaux devrait entraîner des altérations mesurables de la perception du temps et des couleurs.', it: 'L\'esperienza soggettiva (qualia) è dipendente dal sistema di riferimento. In ambienti che simulano viaggi ad alta velocità (ad es. centrifughe, VR), la desincronizzazione degli eventi neurali dovrebbe portare ad alterazioni misurabili nella percezione del tempo e del colore.', ja: '主観的経験（クオリア）はフレームに依存します。高速移動をシミュレートする環境（例：遠心分離機、VR）では、神経イベントの非同期化により、時間と色の知覚に測定可能な変化が生じるはずです。', zh: '主观体验（感受质）是依赖于参照系的。在模拟高速旅行的环境中（例如，离心机、虚拟现实），神经事件的去同步化应导致时间和颜色感知的可测量变化。' },
+                            methodology: { en: 'Place subjects in high-g centrifuges or immersive VR environments that simulate relativistic speeds. Administer precise psychophysical tests to measure reaction times, interval estimations, and color matching before, during, and after exposure.', de: 'Setzen Sie Probanden in Hoch-g-Zentrifugen oder immersive VR-Umgebungen, die relativistische Geschwindigkeiten simulieren. Führen Sie präzise psychophysische Tests durch, um Reaktionszeiten, Intervallschätzungen und Farbabstimmungen vor, während und nach der Exposition zu messen.', fr: 'Placez les sujets dans des centrifugeuses à haute gravité ou des environnements de RV immersifs qui simulent des vitesses relativistes. Administrez des tests psychophysiques précis pour mesurer les temps de réaction, les estimations d\'intervalles et la correspondance des couleurs avant, pendant et après l\'exposition.', it: 'Posizionare i soggetti in centrifughe ad alta gravità o in ambienti VR immersivi che simulano velocità relativistiche. Somministrare test psicofisici precisi per misurare i tempi di reazione, le stime degli intervalli e la corrispondenza dei colori prima, durante e dopo l\'esposizione.', ja: '被験者を高G遠心分離機または相対論的速度をシミュレートする没入型VR環境に置きます。曝露前、曝露中、曝露後に、反応時間、時間間隔の推定、および色のマッチングを測定するための正確な精神物理学的テストを実施します。', zh: '将受试者置于模拟相对论速度的高重力离心机或沉浸式虚拟现实环境中。在暴露之前、期间和之后进行精确的心理物理学测试，以测量反应时间、间隔估计和颜色匹配。' },
+                            outcome: { en: 'Perception shifts that scale with the simulated Lorentz factor (γ), exceeding predictions from classical psychology alone.', de: 'Wahrnehmungsverschiebungen, die mit dem simulierten Lorentz-Faktor (γ) skalieren und die Vorhersagen der klassischen Psychologie allein übertreffen.', fr: 'Des décalages de perception qui évoluent avec le facteur de Lorentz simulé (γ), dépassant les prédictions de la psychologie classique seule.', it: 'Spostamenti percettivi che scalano con il fattore di Lorentz simulato (γ), superando le previsioni della sola psicologia classica.', ja: 'シミュレートされたローレンツ因子（γ）でスケーリングする知覚シフト。これは、古典的な心理学だけからの予測を超えています。', zh: '与模拟洛伦兹因子（γ）成比例的感知变化，超出了仅经典心理学的预测。' }
+                        }
+                    ]
+                },
+                cosmic_theoretical: {
+                    title: { en: 'Cosmic and Gravitational Probes', de: 'Kosmische und gravitationelle Sonden', fr: 'Sondes Cosmiques et Gravitationnelles', it: 'Sonde Cosmiche e Gravitazionali', ja: '宇宙および重力プローブ', zh: '宇宙与引力探针' },
+                    experiments: [
+                        {
+                            title: { en: 'Localized Gravitational Anomaly Test', de: 'Lokalisierter Gravitationsanomalie-Test', fr: 'Test d\'Anomalie Gravitationnelle Localisée', it: 'Test di Anomalia Gravitazionale Localizzata', ja: '局所的な重力異常テスト', zh: '局部引力异常测试' },
+                            prediction: { en: 'A transient, localized gravitational anomaly should be detectable in a region of intense, collective conscious focus (e.g., a group meditation). The effect size must be below current detection limits of ~10⁻⁸ m/s² to remain consistent with existing null results.', de: 'Eine vorübergehende, lokalisierte Gravitationsanomalie sollte in einer Region intensiver, kollektiver bewusster Fokussierung (z. B. einer Gruppenmeditation) nachweisbar sein. Die Effektgröße muss unter den aktuellen Nachweisgrenzen von ~10⁻⁸ m/s² liegen, um mit bestehenden Nulleffekten konsistent zu bleiben.', fr: 'Une anomalie gravitationnelle transitoire et localisée devrait être détectable dans une région de focalisation consciente collective intense (par exemple, une méditation de groupe). La taille de l\'effet doit être inférieure aux limites de détection actuelles d\'environ 10⁻⁸ m/s² pour rester cohérente avec les résultats nuls existants.', it: 'Un\'anomalia gravitazionale transitoria e localizzata dovrebbe essere rilevabile in una regione di intensa focalizzazione cosciente collettiva (ad es. una meditazione di gruppo). La dimensione dell\'effetto deve essere inferiore agli attuali limiti di rilevamento di ~10⁻⁸ m/s² per rimanere coerente con i risultati nulli esistenti.', ja: '強烈な集団的意識的焦点の領域（例：集団瞑想）で、一時的で局所的な重力異常が検出可能であるべきです。効果の大きさは、既存のヌル結果と一致するために、現在の検出限界である約10⁻⁸ m/s²未満でなければなりません。', zh: '在强烈的集体有意识专注区域（例如，团体冥想）中，应可检测到短暂的、局部的引力异常。效应大小必须低于当前约10⁻⁸ m/s²的检测极限，以与现有的零结果保持一致。' },
+                            methodology: { en: 'Deploy highly sensitive differential gravimeters (e.g., cold-atom interferometers) at the center of the group and in a shielded reference location. Correlate differential signals with periods of synchronized focus.', de: 'Setzen Sie hochempfindliche Differentialgravimeter (z. B. Kaltatom-Interferometer) im Zentrum der Gruppe und an einem abgeschirmten Referenzort ein. Korrelieren Sie differentielle Signale mit Perioden synchronisierter Fokussierung.', fr: 'Déployez des gravimètres différentiels très sensibles (par exemple, des interféromètres à atomes froids) au centre du groupe et dans un lieu de référence blindé. Corrélez les signaux différentiels avec des périodes de focalisation synchronisée.', it: 'Dispiegare gravimetri differenziali altamente sensibili (ad es. interferometri ad atomi freddi) al centro del gruppo e in una posizione di riferimento schermata. Correlare i segnali differenziali con periodi di focalizzazione sincronizzata.', ja: '高感度の差動重力計（例：冷却原子干渉計）をグループの中心と遮蔽された基準場所に配置します。差動信号を同期した焦点の期間と相関させます。', zh: '在团体中心和屏蔽参考位置部署高灵敏度差分重力仪（例如，冷原子干涉仪）。将差分信号与同步专注的时期相关联。' },
+                            outcome: { en: 'A statistically significant gravitational signal (<10⁻⁸ m/s²) correlated with high collective coherence, providing a direct test of consciousness-spacetime coupling.', de: 'Ein statistisch signifikantes Gravitationssignal (<10⁻⁸ m/s²), das mit hoher kollektiver Kohärenz korreliert und einen direkten Test der Bewusstseins-Raumzeit-Kopplung darstellt.', fr: 'Un signal gravitationnel statistiquement significatif (<10⁻⁸ m/s²) corrélé à une cohérence collective élevée, fournissant un test direct du couplage conscience-espace-temps.', it: 'Un segnale gravitazionale statisticamente significativo (<10⁻⁸ m/s²) correlato ad un\'alta coerenza collettiva, fornendo un test diretto dell\'accoppiamento coscienza-spaziotempo.', ja: '高い集団的コヒーレンスと相関する統計的に有意な重力信号（<10⁻⁸ m/s²）。これは、意識と時空の結合を直接テストするものです。', zh: '与高集体相干性相关的统计显著引力信号（<10⁻⁸ m/s²），为意识-时空耦合提供了直接测试。' }
+                        },
+                        {
+                            title: { en: 'Atomic Clock Drift Test', de: 'Atomuhr-Drift-Test', fr: 'Test de Dérive d\'Horloge Atomique', it: 'Test di Deriva dell\'Orologio Atomico', ja: '原子時計ドリフトテスト', zh: '原子钟漂移测试' },
+                            prediction: { en: 'The rate of time flow can be altered by consciousness. This should manifest as an anomalous frequency drift in a high-precision atomic clock situated in a "high-Ψ" zone. The effect must be below the current experimental limit of ~10⁻¹⁷/year drift.', de: 'Die Geschwindigkeit des Zeitablaufs kann durch das Bewusstsein verändert werden. Dies sollte sich als anomale Frequenzdrift in einer hochpräzisen Atomuhr manifestieren, die sich in einer "Hoch-Ψ"-Zone befindet. Der Effekt muss unter der aktuellen experimentellen Grenze von ~10⁻¹⁷/Jahr Drift liegen.', fr: 'Le taux d\'écoulement du temps peut être altéré par la conscience. Cela devrait se manifester par une dérive de fréquence anormale dans une horloge atomique de haute précision située dans une zone de "haute Ψ". L\'effet doit être inférieur à la limite expérimentale actuelle de dérive d\'environ 10⁻¹⁷/an.', it: 'La velocità del flusso del tempo può essere alterata dalla coscienza. Ciò dovrebbe manifestarsi come una deriva di frequenza anomala in un orologio atomico di alta precisione situato in una "zona ad alta Ψ". L\'effetto deve essere inferiore all\'attuale limite sperimentale di deriva di ~10⁻¹⁷/anno.', ja: '時間の流れの速さは意識によって変えることができます。これは、「高Ψ」ゾーンに設置された高精度原子時計における異常な周波数ドリフトとして現れるはずです。効果は、現在の実験限界である年間約10⁻¹⁷のドリフト未満でなければなりません。', zh: '意识可以改变时间流逝的速率。这应该表现为位于“高Ψ”区域的高精度原子钟出现异常频率漂移。该效应必须低于当前每年约10⁻¹⁷的实验漂移极限。' },
+                            methodology: { en: 'Synchronize and compare two of the world\'s most stable atomic clocks (e.g., optical lattice clocks). One clock is exposed to the high-consciousness environment and one is isolated. Look for a sustained differential drift.', de: 'Synchronisieren und vergleichen Sie zwei der stabilsten Atomuhren der Welt (z. B. optische Gitteruhren). Eine Uhr wird der Umgebung mit hohem Bewusstsein ausgesetzt und eine wird isoliert. Suchen Sie nach einer anhaltenden differentiellen Drift.', fr: 'Synchronisez et comparez deux des horloges atomiques les plus stables au monde (par exemple, des horloges à réseau optique). Une horloge est exposée à l\'environnement de haute conscience et une est isolée. Recherchez une dérive différentielle soutenue.', it: 'Sincronizzare e confrontare due degli orologi atomici più stabili al mondo (ad es. orologi a reticolo ottico). Un orologio è esposto all\'ambiente ad alta coscienza e uno è isolato. Cercare una deriva differenziale sostenuta.', ja: '世界で最も安定した2つの原子時計（例：光格子時計）を同期させて比較します。一方の時計は高意識環境にさらし、もう一方は隔離します。持続的な差動ドリフトを探します。', zh: '同步并比较世界上最稳定的两个原子钟（例如，光学晶格钟）。一个时钟暴露在高意识环境中，另一个则被隔离。寻找持续的差异漂移。' },
+                            outcome: { en: 'A sustained drift correlated with high-intensity periods that cannot be explained by known physics, providing a test for consciousness-induced time dilation.', de: 'Eine anhaltende Drift, die mit Perioden hoher Intensität korreliert und nicht durch bekannte Physik erklärt werden kann, was einen Test für bewusstseinsinduzierte Zeitdilatation darstellt.', fr: 'Une dérive soutenue corrélée avec des périodes de haute intensité qui ne peut être expliquée par la physique connue, fournissant un test pour la dilatation du temps induite par la conscience.', it: 'Una deriva sostenuta correlata a periodi di alta intensità che non può essere spiegata dalla fisica nota, fornendo un test per la dilatazione del tempo indotta dalla coscienza.', ja: '既知の物理学では説明できない高強度期間と相関する持続的なドリフト。これは、意識によって誘発される時間膨張のテストを提供します。', zh: '与高强度时期相关的持续漂移，无法用已知物理学解释，为意识引起的时间膨胀提供了测试。' }
+                        },
+                        {
+                            title: { en: 'Gravitational Wave Signatures', de: 'Gravitationswellen-Signaturen', fr: 'Signatures d\'Ondes Gravitationnelles', it: 'Firme di Onde Gravitazionali', ja: '重力波の署名', zh: '引力波特征' },
+                            prediction: { en: 'The stochastic gravitational wave background may contain faint, log-periodic oscillations resulting from the "blinking universe" mechanism at the Planck frequency.', de: 'Der stochastische Gravitationswellenhintergrund könnte schwache, log-periodische Oszillationen enthalten, die aus dem "blinkenden Universum"-Mechanismus bei der Planck-Frequenz resultieren.', fr: 'Le fond stochastique d\'ondes gravitationnelles peut contenir de faibles oscillations log-périodiques résultant du mécanisme de l\'"univers clignotant" à la fréquence de Planck.', it: 'Il fondo stocastico di onde gravitazionali potrebbe contenere deboli oscillazioni log-periodiche derivanti dal meccanismo dell\'"universo lampeggiante" alla frequenza di Planck.', ja: '確率的な重力波背景には、プランク周波数での「点滅する宇宙」メカニズムに起因する、かすかな対数周期的な振動が含まれている可能性があります。', zh: '随机引力波背景可能包含由普朗克频率下的“闪烁宇宙”机制产生的微弱的对数周期性振荡。' },
+                            methodology: { en: 'Analyze data from gravitational wave observatories (LIGO, Virgo, LISA) for specific log-periodic signatures in the stochastic background, as described by the ΩGW(f) equation.', de: 'Analysieren Sie Daten von Gravitationswellen-Observatorien (LIGO, Virgo, LISA) auf spezifische log-periodische Signaturen im stochastischen Hintergrund, wie durch die ΩGW(f)-Gleichung beschrieben.', fr: 'Analysez les données des observatoires d\'ondes gravitationnelles (LIGO, Virgo, LISA) à la recherche de signatures log-périodiques spécifiques dans le fond stochastique, comme décrit par l\'équation ΩGW(f).', it: 'Analizzare i dati degli osservatori di onde gravitazionali (LIGO, Virgo, LISA) per firme log-periodiche specifiche nel fondo stocastico, come descritto dall\'equazione ΩGW(f).', ja: 'ΩGW(f)方程式で記述されているように、重力波観測所（LIGO、Virgo、LISA）のデータを分析して、確率的背景における特定の対数周期的署名を探します。', zh: '分析来自引力波天文台（LIGO、Virgo、LISA）的数据，以寻找随机背景中的特定对数周期性特征，如ΩGW(f)方程所描述。' },
+                            outcome: { en: 'Detection of a log-periodic signal consistent with the model would provide strong evidence for a cyclic, Planck-scale origin of spacetime.', de: 'Der Nachweis eines mit dem Modell konsistenten log-periodischen Signals würde einen starken Beweis für einen zyklischen, Planck-skaligen Ursprung der Raumzeit liefern.', fr: 'La détection d\'un signal log-périodique cohérent avec le modèle fournirait une preuve solide d\'une origine cyclique de l\'espace-temps à l\'échelle de Planck.', it: 'La rilevazione di un segnale log-periodico coerente con il modello fornirebbe una forte prova di un\'origine ciclica e su scala di Planck dello spaziotempo.', ja: 'モデルと一致する対数周期的信号の検出は、時空の周期的でプランクスケールの起源の強力な証拠を提供するでしょう。', zh: '检测到与模型一致的对数周期性信号将为时空的周期性、普朗克尺度起源提供有力证据。' }
+                        }
+                    ]
+                }
+            };
+
+            let currentLanguage = localStorage.getItem('language') || 'en';
+
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        element.innerHTML = translations[key][lang];
+                    } else if (translations[key] && translations[key]['en']) {
+                         element.innerHTML = translations[key]['en'];
+                    }
+                });
+                 document.documentElement.lang = lang;
+                 localStorage.setItem('language', lang);
+                 document.getElementById('language-selector').value = lang;
+                 document.getElementById('language-selector-mobile').value = lang;
+            };
+
+            const renderExperiments = (lang) => {
+                const container = document.getElementById('experiments-container');
+                container.innerHTML = '';
+
+                for (const categoryKey in experimentsData) {
+                    const category = experimentsData[categoryKey];
+                    
+                    const categorySection = document.createElement('section');
+                    
+                    let categoryHtml = `<h3 class="text-2xl font-bold text-text-primary mb-6 pb-2 border-b border-border-color">${category.title[lang] || category.title['en']}</h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">`;
+
+                    category.experiments.forEach(item => {
+                        categoryHtml += `
+                            <div class="bg-white/50 p-6 rounded-lg shadow-sm border border-border-color flex flex-col">
+                                <h4 class="text-xl font-semibold text-accent-primary mb-3">${item.title[lang] || item.title['en']}</h4>
+                                <p class="text-text-secondary text-sm mb-2"><strong class="text-text-primary" data-lang-key="prediction_label">${translations.prediction_label[lang] || translations.prediction_label['en']}:</strong> ${item.prediction[lang] || item.prediction['en']}</p>
+                                <p class="text-text-secondary text-sm mb-4"><strong class="text-text-primary" data-lang-key="methodology_label">${translations.methodology_label[lang] || translations.methodology_label['en']}:</strong> ${item.methodology[lang] || item.methodology['en']}</p>
+                                <div class="mt-auto pt-4 border-t border-dashed border-border-color">
+                                    <p class="text-text-secondary text-sm"><strong class="text-text-primary" data-lang-key="outcome_label">${translations.outcome_label[lang] || translations.outcome_label['en']}:</strong> ${item.outcome[lang] || item.outcome['en']}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    categoryHtml += `</div>`;
+                    categorySection.innerHTML = categoryHtml;
+                    container.appendChild(categorySection);
+                }
+            };
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const handleLangChange = (e) => {
+                currentLanguage = e.target.value;
+                translatePage(currentLanguage);
+                renderExperiments(currentLanguage);
+            };
+
+            document.getElementById('language-selector').addEventListener('change', handleLangChange);
+            document.getElementById('language-selector-mobile').addEventListener('change', handleLangChange);
+
+            const updateVisitCounter = () => {
+                let visitCount = parseInt(localStorage.getItem('visitCount') || '0');
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visit-counter').textContent = visitCount;
+            };
+
+            translatePage(currentLanguage);
+            renderExperiments(currentLanguage);
+            updateVisitCounter();
+        });
+    </script>
+</body>
+</html>
