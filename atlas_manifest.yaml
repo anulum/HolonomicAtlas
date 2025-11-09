@@ -1,14 +1,14 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "0.2.0"
-LastModified: "2025-11-09T15:34:00Z"
+GlobalVersion: "0.2.1"
+LastModified: "2025-11-09T16:10:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 Handoff:
-  LastAction: "Architect established /web/ directory as the website (anulum.li) source-of-truth. Updated 'Serial Synthesis Protocol' to V3.1, adding a direct-to-web generation step."
-  NextAction: "User (Lead) to populate the /web/ directory with the current website source files. Architect will then await P0 or P1 to begin Serial Synthesis."
+  LastAction: "User (Lead) populated the /web/ directory with the initial source files for anulum.li. The repo now contains the baseline website for future dynamic updates."
+  NextAction: "Architect to begin 'Serial Synthesis Protocol (V3.1)'. Awaiting first master manuscript (P0 or P1) from User (Lead) to begin extraction for P17, P18, P19."
   Priority: "HIGH"
-  Assignee: "User (Lead) -> Gemini-Architect"
+  Assignee: "Gemini-Architect"
 
 # --- Master Index of Monads ---
 MonadIndex:
