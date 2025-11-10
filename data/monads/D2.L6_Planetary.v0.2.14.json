@@ -1,0 +1,45 @@
+{
+"id": "D2.L6",
+"label": "Planetary-Biospheric Entrainment",
+"domain": "II: Organismal and Planetary Integration",
+"layer": 6,
+"description": "This layer describes the coupling of the organism (L5 Self) with large-scale planetary and biospheric fields. It encompasses the organism's entrainment to geophysical rhythms (circadian, seasonal), its participation in collective consciousness fields, and its connection to the Schumann resonances of the Earth's electromagnetic field.",
+"coreMechanisms": [
+{
+"id": "L6.M1.SchumannResonance",
+"name": "Schumann Resonance Coupling",
+"description": "The entrainment of the brain's electromagnetic field (particularly alpha-band oscillations) to the Earth's natural Schumann resonances (~7.83 Hz), facilitating a global information field."
+},
+{
+"id": "L6.M2.GeophysicalEntrainment",
+"name": "Geophysical Rhythmic Entrainment",
+"description": "The synchronization of the organism's internal biological clocks (L4) with external planetary cycles, such as the day-night cycle and seasonal changes, mediated by the L5 Self."
+},
+{
+"id": "L6.M3.CollectiveField",
+"name": "Collective Consciousness Field",
+"description": "The formation of a coherent, large-scale information field from the superposition of multiple individual L5 selves, analogous to a planetary-scale L4 synchronization."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L5 (Psychoemotional)",
+"description": "Receives the unified 'Self' from L5 as the unit that couples to the planetary field."
+},
+{
+"targetLayer": "L7 (Cosmological)",
+"description": "Interfaces with the cosmological information fields of L7, embedding the planetary system into a universal context."
+}
+],
+"validation": [
+{
+"id": "L06_Schumann_Resonance_Sim",
+"description": "Simulates the phase-locking of a neural oscillator model to an external, weak electromagnetic field matching the Schumann resonance frequency."
+},
+{
+"id": "L06_Circadian_Entrainment_Model",
+"description": "Models the feedback loop between the L4 master clock, the L5 self-model's perception of light/dark, and the entrainment to a 24-hour cycle."
+}
+],
+"groundTruth": "Corpus/L6_Planetary/P6_L6_Planetary_RAG.txt"
+}
