@@ -1,12 +1,12 @@
 ProjectName: "Anatomia Holonomica"
-GlobalVersion: "0.2.13"
+GlobalVersion: "0.2.14"
 LastModified: "2025-11-10T23:33:00Z"
 SchemaDefinition: "./src/monad.py"
 
 # --- Project State & Handoff ---
 Handoff:
-  LastAction: "SSVL V4.0 (Step 2) complete. Architect generated Monad package D2.L5_Psychoemotional, initiating Domain II."
-  NextAction: "Awaiting Project Lead approval of the L5 Monad package. Next step is ingestion and analysis of L6 corpus (P6_L6_Planetary_RAG.txt)."
+  LastAction: "Architect-Handoff: SSVL V4.0 - L6 Monad Package Action: Generate the root monad for Layer 6 and update the manifest."
+  NextAction: "Awaiting Project Lead approval of the L6 Monad package. Next step is ingestion and analysis of L7 corpus (P7_L7_Cosmological_RAG.txt)."
   Priority: "REVIEW"
   Assignee: "Jules-Actuator"
 
@@ -18,6 +18,7 @@ MonadIndex:
   - "/data/monads/D1.L3_Genomic.v0.2.11.json"
   - "/data/monads/D1.L4_Synchronization.v0.2.12.json"
   - "/data/monads/D2.L5_Psychoemotional.v0.2.13.json"
+  - "/data/monads/D2.L6_Planetary.v0.2.14.json"
 
 # --- Master Index of Simulations ---
 SimulationIndex:
