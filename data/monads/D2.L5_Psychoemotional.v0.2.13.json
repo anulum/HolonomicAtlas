@@ -1,0 +1,49 @@
+{
+"id": "D2.L5",
+"label": "Organismal-Psychoemotional Feedback",
+"domain": "II: Organismal and Planetary Integration",
+"layer": 5,
+"description": "The layer of the unified 'Self'. This monad describes the emergence of a coherent, solitonic self-model from the synchronized fields of L4. It is the seat of interoception, psychoemotional feedback, and Active Inference. This layer's primary function is the generation of qualia, which are hypothesized to be identical to the geometric properties of the underlying informational field (Geometric Qualia Hypothesis).",
+"coreMechanisms": [
+{
+"id": "L5.M1.SolitonicSelf",
+"name": "Solitonic Self-Model",
+"description": "The emergence of a stable, unified, and self-sustaining informational structure (a soliton) from the L4 synchronous fields, which constitutes the operational 'Self'."
+},
+{
+"id": "L5.M2.FourStrokeEngine",
+"name": "Four-Stroke Engine (Active Inference)",
+"description": "The core computational cycle of consciousness, detailed in P5. It consists of: 1. Projection (Generative Model), 2. Perception (Prediction Error), 3. Policy Selection (Action), 4. Collapse (Qualia generation)."
+},
+{
+"id": "L5.M3.GeometricQualia",
+"name": "Geometric Qualia Hypothesis",
+"description": "The central hypothesis that subjective experience (qualia) is not correlated with, but is identical to, the intrinsic topological and geometric properties of the underlying neural information field."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L4 (Synchronization)",
+"description": "Emerges from the coherent, large-scale synchronous fields of L4, which provide the 'carrier wave' for the self-model."
+},
+{
+"targetLayer": "L2 (Neurochemical)",
+"description": "Exerts top-down control over the L2 neurotransmitter economy, translating affective states (qualia) into biochemical signals (emotion)."
+},
+{
+"targetLayer": "L6 (Planetary)",
+"description": "Provides the unified 'Self' that interfaces with the planetary and biospheric fields of L6, enabling environmental entrainment."
+}
+],
+"validation": [
+{
+"id": "L05_Four_Stroke_Engine",
+"description": "Validates L5.M2. Simulates the four-stroke cycle of Active Inference (Projection, Perception, Policy, Collapse) as the fundamental process of the Self."
+},
+{
+"id": "L05_Geometric_Qualia_TDA",
+"description": "Validates L5.M3. Provides the computational pipeline (Topological Data Analysis) to extract geometric features (Betti numbers) from simulated neural data, serving as a proxy for qualia."
+}
+],
+"groundTruth": "Corpus/L5_Psychoemotional/P5_L5_Psychoemotional_RAG.txt"
+}
