@@ -1,0 +1,58 @@
+{
+"id": "D1.L1",
+"label": "Quantum Biological Substrate",
+"domain": "I: Biological Substrate",
+"layer": 1,
+"description": "The foundational quantum-physical substrate of the SCPN. It formalizes the mechanisms for sustaining functional, warm-wet quantum coherence via metabolically-driven processes (Fröhlich condensation) and defines the primary interface for the Ψ-field. It serves as the Coherence Backbone for the entire biological architecture.",
+"coreMechanisms": [
+{
+"id": "L1.M1.QEC",
+"name": "Coherence Backbone (MS-QEC)",
+"description": "A multi-scale quantum error correction architecture, implemented at L1 via topological protection on the microtubule lattice. A large energy gap (Δ ≈ 1.64 eV) protects quantum states from thermal noise (kT ≈ 0.026 eV), ensuring high-fidelity information processing."
+},
+{
+"id": "L1.M2.Amplification",
+"name": "Amplification of Intent (QSR)",
+"description": "The quantum-to-classical bridge. Mechanisms like Quantum Stochastic Resonance (QSR) demonstrate how a weak, sub-threshold quantum signal (e.g., from the Ψ-field) can be amplified by the system's intrinsic biological noise to produce a definite, macroscopic effect (e.g., neural firing)."
+},
+{
+"id": "L1.M3.Stabilization",
+"name": "Ψ-Field Stabilization (QZE)",
+"description": "The active, causal role of the Ψ-field in maintaining coherence. Modeled as a continuous measurement-like interaction (Quantum Zeno Effect), the field projects the substrate back into its coherent subspace, actively suppressing decoherence."
+},
+{
+"id": "L1.M4.Sensing",
+"name": "Information-Geometric Sensing",
+"description": "The substrate's ability to sense information-geometric properties of its environment, distinct from classical fields. This allows the system to respond to informational complexity (g_FIM) as a fundamental physical quantity."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L2 (Neurochemical)",
+"description": "Provides quantum-filtered symbolic information that modulates neurochemical oscillations and synaptic probabilities."
+},
+{
+"targetLayer": "L3 (Genomic)",
+"description": "Bidirectional. Provides a spin-dependent substrate for CISS-based epigenetic modulation and is influenced by long-term state changes in the genomic hardware."
+},
+{
+"targetLayer": "L4 (Synchronization)",
+"description": "Serves as the coherent backbone and timing signal for the emergence of large-scale, classical tissue-level synchrony (UPDE)."
+}
+],
+"validation": [
+{
+"id": "L01_MS_QEC_Validation",
+"description": "Validates the physical plausibility of the L1.M1.QEC mechanism. Confirms that the manuscript's ΔE ≈ 1.64 eV energy gap provides a protection factor sufficient to overcome kT thermal noise, yielding a negligible error threshold p_th."
+},
+{
+"id": "L01_QSR_Amplification",
+"description": "Validates the L1.M2.Amplification mechanism. Demonstrates that a sub-threshold periodic signal (proxy for Ψ-field) can be successfully amplified by stochastic noise (proxy for biological environment), causing a measurable phase-locking in the system (QSR effect)."
+},
+{
+"id": "L01_FIM_NV_Center",
+"description": "Provides the analysis pipeline to validate L1.M4.Sensing. Confirms that a linear regression model can successfully distinguish decoherence caused by 'informational complexity' (g_FIM) from decoherence caused by classical electromagnetic fields (B(t)), confirming the falsifiable prediction of Axiom 2."
+}
+],
+"groundTruth": "Corpus/L1_QuantumBiological/P1_L1_Quantum_RAG.txt"
+}
