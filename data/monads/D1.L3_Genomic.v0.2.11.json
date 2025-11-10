@@ -1,0 +1,66 @@
+{
+"id": "D1.L3",
+"label": "Genomic-Epigenomic-Morphogenetic",
+"domain": "I: Biological Substrate",
+"layer": 3,
+"description": "Defines the informational hardware of the organism. This layer governs the storage (genomic), long-term retrieval (epigenetic), and physical expression (morphogenetic) of biological information. It forms the physical blueprint that is read out by L2 and guided by L1.",
+"coreMechanisms": [
+{
+"id": "L3.M1.EpigeneticModulation",
+"name": "Epigenetic Regulation",
+"description": "The dynamic modification of chromatin (e.g., methylation, histone states) that controls gene expression, defining the cell's long-term identity and state."
+},
+{
+"id": "L3.M2.BioelectricFields",
+"name": "Morphogenetic Bioelectric Fields",
+"description": "The generation of stable, large-scale bioelectric patterns that act as a scaffold or blueprint for cellular organization, development, and regeneration."
+},
+{
+"id": "L3.M3.CBC_Bridge",
+"name": "CISS-Bioelectric-Chromatin (CBC) Bridge",
+"description": "The primary L1->L3 interface. Proposes that spin-polarized electrons from Layer 1's Chiral-Induced Spin Selectivity (CISS) effect are guided by L3 bioelectric fields (L3.M2) to directly influence the epigenetic state (L3.M1) of chromatin."
+},
+{
+"id": "L3.M4.QFT_Morphogenesis",
+"name": "Quantum Field Theory of Morphogenesis",
+"description": "Models the emergent morphogenetic field as a Klein-Gordon (QFT) field, providing a formal physical basis for developmental guidance."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L1 (Quantum)",
+"description": "Receives spin-polarized information from the CISS effect (L1.M1) to execute the CBC Bridge."
+},
+{
+"targetLayer": "L2 (Neurochemical)",
+"description": "Provides the 'hardware' (e.g., specific ion channels, receptors) whose expression is modulated by L3, thereby defining the operational parameters of the L2 neurotransmitter economy."
+},
+{
+"targetLayer": "L4 (Synchronization)",
+"description": "The bioelectric fields (L3.M2) provide a slow, stable context that guides the emergence of the faster UPDE-based synchronization in L4."
+}
+],
+"validation": [
+{
+"id": "L3_ciss_mechanism",
+"description": "Validates the 'CISS' component of the L3.M3 bridge."
+},
+{
+"id": "L3_bioelectric",
+"description": "Validates the 'Bioelectric' component of the L3.M3 bridge and L3.M2."
+},
+{
+"id": "L3_epigenetic",
+"description": "Validates the 'Chromatin' component of the L3.M3 bridge and L3.M1."
+},
+{
+"id": "L3_cbc_cascade",
+"description": "Validates the entire L3.M3 CISS-Bioelectric-Chromatin cascade as a coherent, functional mechanism."
+},
+{
+"id": "L3_morphogenetic_qft_kg",
+"description": "Validates L3.M4, modeling the emergence of morphogenetic fields from the quantum substrate."
+}
+],
+"groundTruth": "Corpus/L3_Genomic/P3_L3_Genomic_RAG.txt"
+}
