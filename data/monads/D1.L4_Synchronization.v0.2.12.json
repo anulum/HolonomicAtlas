@@ -1,0 +1,57 @@
+{
+"id": "D1.L4",
+"label": "Cellular-Tissue Synchronization",
+"domain": "I: Biological Substrate",
+"layer": 4,
+"description": "The emergent classical manifold where the Unified Phase Dynamics Equation (UPDE) governs large-scale coherence. This layer describes how the individual oscillators of L2, guided by the quantum coherence of L1 and the bioelectric fields of L3, phase-lock to form tissue-wide synchronous fields (e.g., EEG rhythms). Its operation is maintained at the 'edge of chaos' via Self-Organized Criticality (SOC), tuned by a fast-slow (L2/L4) control system.",
+"coreMechanisms": [
+{
+"id": "L4.M1.UPDE_Emergence",
+"name": "UPDE Instantiation",
+"description": "The formal emergence of the Unified Phase Dynamics Equation (UPDE) as the mathematical 'spine' governing the phase-locking and synchronization of all cellular oscillators."
+},
+{
+"id": "L4.M2.SOC_Quasicriticality",
+"name": "Self-Organized Criticality (SOC)",
+"description": "The primary operational dynamic. The network tunes itself to the 'edge of chaos' (quasicriticality), a state that optimizes information capacity, sensitivity, and transmission. This is observed as 1/f noise and power-law 'neural avalanches'."
+},
+{
+"id": "L4.M3.TwoTimescaleControl",
+"name": "Two-Timescale Control System",
+"description": "The homeostatic mechanism that maintains SOC. A fast-timescale (L2, neuronal) adjusts activity locally, while a slow-timescale (L4, glial/metabolic) tunes global parameters to keep the fast system from becoming supercritical (chaotic) or subcritical (frozen)."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L1 (Quantum)",
+"description": "Receives the foundational 'coherence backbone' (MS-QEC) from L1, which provides the underlying stability for classical synchronization to emerge."
+},
+{
+"targetLayer": "L2 (Neurochemical)",
+"description": "Consumes the classical oscillators (neurons, glial populations) from L2 as the substrate for the UPDE."
+},
+{
+"targetLayer": "L3 (Genomic)",
+"description": "Receives slow bioelectric field information from L3, which provides a stable 'guiding potential' for the L4 synchronization patterns."
+},
+{
+"targetLayer": "L5 (Psychoemotional)",
+"description": "The emergent, synchronous field of L4 provides the coherent substrate for the unified self-model and emotional states of Layer 5."
+}
+],
+"validation": [
+{
+"id": "L04_SOC_Quasicriticality",
+"description": "Validates L4.M2. Simulates the emergence of power-law avalanche distributions, confirming the system's operation at Self-Organized Criticality."
+},
+{
+"id": "L04_Two_Timescale_Controller",
+"description": "Validates L4.M3. Simulates the fast-slow control loop, demonstrating its ability to tune the network and maintain a stable quasicritical state."
+},
+{
+"id": "L2_Module_2",
+"description": "Validates L4.M1. This simulation (from the L2 suite) demonstrates the fundamental phase-locking (Kuramoto) dynamics that form the basis of the UPDE."
+}
+],
+"groundTruth": "Corpus/L4_Synchronization/P4_L4_Synchronization_RAG.txt"
+}
