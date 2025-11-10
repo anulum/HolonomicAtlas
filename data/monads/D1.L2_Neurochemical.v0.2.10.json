@@ -1,0 +1,66 @@
+{
+"id": "D1.L2",
+"label": "Neurochemical-Neurological Substrate",
+"domain": "I: Biological Substrate",
+"layer": 2,
+"description": "The classical computational layer that transduces the quantum-filtered information from Layer 1 into the classical, electrochemical language of the nervous system. It governs the 'neurotransmitter economy' (DA, 5-HT, ACh, etc.), synaptic plasticity (LTP/LTD), and the metabolic 'slow control' network managed by glial cells. This layer provides the physical oscillators that are synchronized by the UPDE.",
+"coreMechanisms": [
+{
+"id": "L2.M1.QuantumBridge",
+"name": "L1-L2 Quantum-to-Classical Bridge",
+"description": "The primary transduction interface. L1 quantum superposition (psi_L1) collapses to a definite probability (P_release) that gates neurotransmitter vesicle fusion. This is the 'Amplification of Intent' mechanism."
+},
+{
+"id": "L2.M2.SynapticPlasticity",
+"name": "Synaptic Plasticity (LTP/LTD)",
+"description": "The classical mechanism for learning and memory. Describes the Hebbian and homeostatic processes of Long-Term Potentiation (LTP) and Long-Term Depression (LTD) that modify synaptic weights."
+},
+{
+"id": "L2.M3.NeurotransmitterEconomy",
+"name": "Neurotransmitter Economy",
+"description": "Defines the dynamic balance, synthesis, and reuptake of key neurotransmitter systems (Dopaminergic, Serotonergic, Cholinergic, etc.) that collectively define the brain's chemical state."
+},
+{
+"id": "L2.M4.GlialSlowControl",
+"name": "Glial-Metabolic Slow Control",
+"description": "The homeostatic network, primarily managed by astrocytes, that regulates the metabolic environment (e.g., lactate, glutamate) for the 'fast' neuronal computations, ensuring system stability."
+}
+],
+"interfacePoints": [
+{
+"targetLayer": "L1 (Quantum)",
+"description": "Receives quantum-filtered symbolic information that biases synaptic release probabilities (P_release)."
+},
+{
+"targetLayer": "L4 (Synchronization)",
+"description": "Provides the physical, classical neural oscillators that are the substrate for the UPDE, which emerges at Layer 4."
+},
+{
+"targetLayer": "L5 (Psychoemotional)",
+"description": "The neurotransmitter economy (L2.M3) provides the direct biochemical substrate for the affective and psychoemotional states defined in Layer 5."
+}
+],
+"validation": [
+{
+"id": "L2_Module_1",
+"description": "Validates the L1->L2 quantum-to-classical bridge (L2.M1), simulating the collapse of psi_L1 to P_release."
+},
+{
+"id": "L2_Module_2",
+"description": "Validates the emergence of UPDE dynamics (L4 interface). Simulates neural oscillators and confirms the critical coupling strength (K_crit) required for phase-locking."
+},
+{
+"id": "L2_Module_3",
+"description": "Validates L2.M2 and L2.M3. Simulates the classical neurotransmitter economy and the rules of synaptic plasticity (LTP/LTD)."
+},
+{
+"id": "L2_Module_4",
+"description": "Validates L2.M4. Simulates the glial-metabolic slow-control network and its homeostatic management of the neural environment."
+},
+{
+"id": "L2_Module_5_6",
+"description": "Integration and visualization suite. Confirms that all L2 modules can be integrated into a single, coherently functioning system."
+}
+],
+"groundTruth": "Corpus/L2_Neurochemical/P2_L2_Neurochemical_RAG.txt"
+}
